@@ -1,0 +1,42 @@
+{
+  "title": "GCP-OASE Workshop: Governed Pre-Clinical R&D on Google Cloud",
+  "scene_count": 6,
+  "scenes": [
+    {
+      "number": 1,
+      "title": "Chapter 1: Campaign Seed & Co-Scientist Tournament",
+      "ssml": "<speak>Welcome to the Google Cloud <say-as interpret-as=\"characters\">OASE</say-as> Workshop, the Open Agentic Science Engine, running live in Argolis. In Chapter 1, the Science Engine ingests a twenty-eight match Co-Scientist <phoneme alphabet=\"ipa\" ph=\"ˈiːloʊ\">Elo</phoneme> tournament for oral P-C-S-K-9 inhibition, selecting the allosteric groove series at an <phoneme alphabet=\"ipa\" ph=\"ˈiːloʊ\">Elo</phoneme> score of sixteen forty-two.</speak>",
+      "voiceover": "Welcome to the Google Cloud O.A.S.E. Workshop, the Open Agentic Science Engine, running live in Argolis. In Chapter 1, the Science Engine ingests a 28-match Co-Scientist Elo tournament for oral PCSK9 inhibition, selecting the allosteric groove series at an Elo score of 1642."
+    },
+    {
+      "number": 2,
+      "title": "Chapter 2: Stage 1 Target Validation & Liver Specificity",
+      "ssml": "<speak>In Chapter 2, the Science Engine validates human genetics and tissue specificity across Work Orders two and three. Nomad confirms P-C-S-K-9 is tolerant to loss of function, OpenTargets confirms familial hypercholesterolemia association at zero point eight six live, and our mandatory relay flags extra-hepatic expression for downstream toxicology.</speak>",
+      "voiceover": "In Chapter 2, the Science Engine validates human genetics and tissue specificity across Work Orders 2 and 3. gnomAD confirms PCSK9 is tolerant to loss of function, OpenTargets confirms familial hypercholesterolemia association at 0.86 live, and our mandatory relay flags extra-hepatic expression for downstream toxicology."
+    },
+    {
+      "number": 3,
+      "title": "Chapter 3: Stage 2 Structural Biology & Allosteric Docking",
+      "ssml": "<speak>In Chapter 3, the Science Engine moves to structural biology and pocket druggability. AlphaFold three models the P-C-S-K-9 interface at zero point eight four confidence, while F-pocket proves the cryptic allosteric groove is druggable at zero point six eight and docks our lead scaffold in AutoDock Vina at minus nine point four kilocalories per mole.</speak>",
+      "voiceover": "In Chapter 3, the Science Engine moves to structural biology and pocket druggability. AlphaFold 3 models the PCSK9 interface at 0.84 confidence, while fpocket proves the cryptic allosteric groove is druggable at 0.68 and docks our lead scaffold in AutoDock Vina at -9.4 kcal/mol."
+    },
+    {
+      "number": 4,
+      "title": "Chapter 4: Stage 3-4 DMTA Lead Optimization & hERG Remediation",
+      "ssml": "<speak>Chapter 4 shows where the Science Engine catches optimism bias. Our top-docking hit, A-zero-two, triggers three critical <phoneme alphabet=\"ipa\" ph=\"ˈædmɛt\">ADMET</phoneme> liabilities, including a <phoneme alphabet=\"ipa\" ph=\"hɜːrɡ\">hERG</phoneme> potassium channel alert at log P five point zero nine. The Science Engine disqualifies A-zero-two, substitutes a polar oxadiazole in A-zero-three at log P three point zero one, and nominates candidate zero-one-four for once-daily oral dosing.</speak>",
+      "voiceover": "Chapter 4 shows where the Science Engine catches optimism bias. Our top-docking hit, A02, triggers three critical ADMET liabilities, including a hERG potassium channel alert at LogP 5.09. The Science Engine disqualifies A02, substitutes a polar oxadiazole in A03 at LogP 3.01, and nominates candidate 014 for once-daily oral dosing."
+    },
+    {
+      "number": 5,
+      "title": "Chapter 5: Mechanical Governance Drills & Verification",
+      "ssml": "<speak>In Chapter 5, we test the mechanical teeth of the Science Engine validator. Every work order must pass ten deterministic provenance, citation, threshold, and relay checks. Across our four adversarial tamper drills, corrupting a file hash, inflating a docking score, deleting a risk relay, or stripping a threshold set immediately fails validation.</speak>",
+      "voiceover": "In Chapter 5, we test the mechanical teeth of the Science Engine validator. Every work order must pass 10 deterministic provenance, citation, threshold, and relay checks. Across our four adversarial tamper drills, corrupting a file hash, inflating a docking score, deleting a risk relay, or stripping a threshold set immediately fails validation."
+    },
+    {
+      "number": 6,
+      "title": "Chapter 6: Static Evidence Portal & Stage-Gate Dossier",
+      "ssml": "<speak>Finally, in Chapter 6, the Science Engine compiles all eight work orders into a thirty-one page Evidence Portal and stage-gate nomination dossier. Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace wet-lab biology, but the Science Engine eliminates silent narrative drift and makes every scientific claim auditable.</speak>",
+      "voiceover": "Finally, in Chapter 6, the Science Engine compiles all 8 work orders into a 31-page Evidence Portal and stage-gate nomination dossier. Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace wet-lab biology, but the Science Engine eliminates silent narrative drift and makes every scientific claim auditable."
+    }
+  ]
+}

@@ -52,6 +52,12 @@ OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/si
 # 4. Serve the 31-page Evidence Portal & Interactive Chapter Replay locally
 python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/sim-pcsk9-oral/_site
 # Open http://127.0.0.1:8765/chapters.html and http://127.0.0.1:8765/index.html
+
+# 5. (Optional) Re-synthesize SSML voiceover & re-record the 6-chapter demo video
+python3 scripts/record-demo-video.py \
+  --portal-url http://127.0.0.1:8765 \
+  --work-dir /tmp/oase-video-build \
+  --quota-project my-oase-workshop
 ```
 
 ---
@@ -71,7 +77,7 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/sim-pcsk9-oral/_si
 - **[Surface Connectivity Reference](docs/surface-connectivity-reference.md):** Connecting Gemini Enterprise (GA), Antigravity IDE (AGY), Gemini CLI, and Scion Web Console (`scion.hlscde.dev`) to the same OASE workspace.
 - **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh`), pacing, and live demo recovery.
 - **[Troubleshooting & Validator Reference](docs/07-troubleshooting.md):** Exact remediation steps for `PROV-001`..`002`, `CIT-001`..`003`, `REL-001`, and `THR-001`.
-- **[Technical Article](ARTICLE.md) & [Design PRFAQ](PRFAQ.md):** Background narrative, Working-Backwards rationale, and our 5 field engineering discoveries from deploying OASE v0.3.0 in Argolis.
+- **[Technical Article](ARTICLE.md), [Design PRFAQ](PRFAQ.md) & [Field Evaluation Scorecard](EVALUATION.md):** Background narrative, Working-Backwards rationale, and our 5 field engineering discoveries from deploying OASE v0.3.0 in Argolis.
 
 ---
 
@@ -82,13 +88,15 @@ oase-workshop/
 ├── README.md                                 # Quickstart, e2e reproduction commands, and curriculum map
 ├── ARTICLE.md                                # Technical overview, architecture, and 5 field discoveries
 ├── PRFAQ.md                                  # Working-Backwards design document
+├── EVALUATION.md                             # Reflective comparison of PRFAQ/Article vs. deployed reality
 ├── .env.example                              # Generic environment template
-├── docs/                                     # Step-by-step workshop modules (00–07 + connectivity reference)
+├── docs/                                     # Step-by-step workshop modules (00–07, video-scenes.json, connectivity ref)
 ├── scripts/
 │   ├── provision-argolis-project.py          # Repeatable Argolis GCP project & SA provisioner
 │   ├── bootstrap-oase-env.sh                 # Builds Python 3.11 venv + 7 scientific binaries + offline KaTeX
 │   ├── run-e2e-simulation.sh                 # Runs Chapters 1–6, 8 WO validations, 4 negative drills & portal build
 │   ├── build-chapter-portal.py               # Generates _site/chapters.html replay & links all 30 portal pages
+│   ├── record-demo-video.py                  # Repeatable Cloud TTS SSML + Playwright 1080p demo video recorder
 │   ├── preflight.sh                          # Checks tools, auth, and repo hygiene (--check-hygiene)
 │   ├── seed-hub.sh                           # Provisions the 7-part pcsk9-oral seed on a Scion Hub
 │   ├── checkpoint.sh                         # Restores verified campaign states (ch0..ch4)
