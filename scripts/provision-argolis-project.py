@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Repeatable Argolis GCP Project & Workshop Identity Provisioner for GCP-OASE.
+"""Repeatable Google Cloud GCP Project & Workshop Identity Provisioner for GCP-OASE.
 
 Creates (or reconciles) an isolated GCP project under an Organization, binds
 Owner/Editor IAM roles, enables required IAM/Resource Manager/Vertex APIs, and
 provisions the isolated workshop Service Account (`scion-default-agent`).
 
 Usage:
-  python3 scripts/provision-argolis-project.py \
+  python3 scripts/provision-google-cloud-project.py \
     --project-id my-oase-workshop \
     --org-id 123456789012 \
     --admin-user admin@example.com \
@@ -237,7 +237,7 @@ def try_link_billing(
 
     print(
         f"[info] Service account lacks roles/billing.user on {billing_account} (HTTP {status}).\n"
-        f"       To link billing interactively as the Argolis Org Admin, run:\n"
+        f"       To link billing interactively as the Google Cloud Org Admin, run:\n"
         f"         gcloud billing projects link {project_id} --billing-account={billing_account.split('/')[-1]}"
     )
     return False
@@ -272,7 +272,7 @@ def main() -> int:
 
     if not args.org_id:
         print(
-            "[error] --org-id (or OASE_ORG_ID) is required to provision an Argolis project.",
+            "[error] --org-id (or OASE_ORG_ID) is required to provision an Google Cloud project.",
             file=sys.stderr,
         )
         return 1

@@ -35,11 +35,11 @@ cp .env.example .env
 
 ## Reproduce End-to-End (Automated Provisioning, Bootstrap & 6-Chapter Simulation)
 
-To provision a net-new Argolis GCP project, compile the 7 scientific binaries (`vina`, `fpocket`, `rate4site`, `muscle`, `hypex`, `elo`, `prox`) + Python 3.11 environment, and execute the full 6-chapter simulation (`live-runs/` + `WO-001`..`WO-008` validation + 4 adversarial tamper drills + 31-page Evidence Portal):
+To provision a net-new Google Cloud GCP project, compile the 7 scientific binaries (`vina`, `fpocket`, `rate4site`, `muscle`, `hypex`, `elo`, `prox`) + Python 3.11 environment, and execute the full 6-chapter simulation (`live-runs/` + `WO-001`..`WO-008` validation + 4 adversarial tamper drills + 31-page Evidence Portal):
 
 ```bash
-# 1. (Optional) Provision an isolated Argolis GCP project + scion-default-agent SA
-python3 scripts/provision-argolis-project.py \
+# 1. (Optional) Provision an isolated Google Cloud GCP project + scion-default-agent SA
+python3 scripts/provision-google-cloud-project.py \
   --project-id my-oase-workshop \
   --org-id 123456789012
 
@@ -66,7 +66,7 @@ python3 scripts/record-demo-video.py \
 
 | Curriculum Module | Simulation Chapter | Time | Stage & Work Orders | Checkpoint |
 | :--- | :--- | :--- | :--- | :--- |
-| **[00 — Prerequisites & Setup](docs/00-prerequisites.md)** | Prep | T-15m | CLI preflight, Argolis project & Scion Hub auth, and surface selection | `ch0` |
+| **[00 — Prerequisites & Setup](docs/00-prerequisites.md)** | Prep | T-15m | CLI preflight, Google Cloud project & Scion Hub auth, and surface selection | `ch0` |
 | **[01 — Tour the Grove](docs/01-tour-the-grove.md)** | **Chapter 1** (`#ch1`) | 0:00–0:20 | Stage 0 (`WO-001`): `oase doctor`, Co-Scientist tournament ingest/analyze (`IC-001` Elo `1642.5` vs `IC-002` `1588.0`), and `hypothesis.adopted_not_generated` relay | `ch1` |
 | **[02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md)** | **Chapter 2** (`#ch2`) | 0:20–0:45 | Stage 1 (`WO-002`, `WO-003`): `gnomAD` (`LOF_TOLERANT`), `OpenTargets` (`0.86` live / `0.96` seeded), `GTEx`/`HPA` (`184.2 TPM` / `47.5 nTPM`), and `AlphaGenome` (`0.984`) | `ch2` |
 | **[03 — Structural Biology & Docking](docs/03-structure-docking-af3.md)** | **Chapter 3** (`#ch3`) | 0:45–1:15 | Stage 2 (`WO-004`, `WO-005`): AFDB `Q8NBP7` (`pLDDT = 85.19`), seeded AF3 co-fold (`ipTM = 0.84`), `fpocket` (`0.788` live / `0.68` groove vs `0.24` surface), and AutoDock Vina (`-9.4 kcal/mol`) | `ch3` |
@@ -77,7 +77,7 @@ python3 scripts/record-demo-video.py \
 - **[Surface Connectivity Reference](docs/surface-connectivity-reference.md):** Connecting Gemini Enterprise (GA), Antigravity IDE (AGY), Gemini CLI, and Scion Web Console (`scion.hlscde.dev`) to the same OASE workspace.
 - **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh`), pacing, and live demo recovery.
 - **[Troubleshooting & Validator Reference](docs/07-troubleshooting.md):** Exact remediation steps for `PROV-001`..`002`, `CIT-001`..`003`, `REL-001`, and `THR-001`.
-- **[Technical Article](ARTICLE.md), [Design PRFAQ](PRFAQ.md) & [Field Evaluation Scorecard](EVALUATION.md):** Background narrative, Working-Backwards rationale, and our 5 field engineering discoveries from deploying OASE v0.3.0 in Argolis.
+- **[Technical Article](ARTICLE.md), [Design PRFAQ](PRFAQ.md) & [Field Evaluation Scorecard](EVALUATION.md):** Background narrative, Working-Backwards rationale, and our 5 field engineering discoveries from deploying OASE v0.3.0 in Google Cloud.
 
 ---
 
@@ -92,7 +92,7 @@ oase-workshop/
 ├── .env.example                              # Generic environment template
 ├── docs/                                     # Step-by-step workshop modules (00–07, video-scenes.json, connectivity ref)
 ├── scripts/
-│   ├── provision-argolis-project.py          # Repeatable Argolis GCP project & SA provisioner
+│   ├── provision-google-cloud-project.py          # Repeatable Google Cloud GCP project & SA provisioner
 │   ├── bootstrap-oase-env.sh                 # Builds Python 3.11 venv + 7 scientific binaries + offline KaTeX
 │   ├── run-e2e-simulation.sh                 # Runs Chapters 1–6, 8 WO validations, 4 negative drills & portal build
 │   ├── build-chapter-portal.py               # Generates _site/chapters.html replay & links all 30 portal pages

@@ -282,9 +282,9 @@ And whenever your platform engineering team wants to plug an internal Python pac
 
 ---
 
-## What We Learned Deploying OASE v0.3.0 Live in Argolis: 5 Field Engineering Discoveries
+## What We Learned Deploying OASE v0.3.0 Live in Google Cloud: 5 Field Engineering Discoveries
 
-Architecture diagrams look clean on paper; running `oase v0.3.0` end-to-end on a fresh Google Cloud Argolis project (`pcsk9-oral` across `WO-001`..`WO-008`) surfaced five real-world engineering lessons and epistemic boundaries that we codified into our repeatable workshop scripts (`scripts/provision-argolis-project.py`, `scripts/bootstrap-oase-env.sh`, `scripts/run-e2e-simulation.sh`, and `scripts/build-chapter-portal.py`):
+Architecture diagrams look clean on paper; running `oase v0.3.0` end-to-end on a fresh Google Cloud Google Cloud project (`pcsk9-oral` across `WO-001`..`WO-008`) surfaced five real-world engineering lessons and epistemic boundaries that we codified into our repeatable workshop scripts (`scripts/provision-google-cloud-project.py`, `scripts/bootstrap-oase-env.sh`, `scripts/run-e2e-simulation.sh`, and `scripts/build-chapter-portal.py`):
 
 1. **Discovery 1 — 13 of 36 Default Threshold Schemas Ship With `UNRESOLVED` Sentinels (`oase/core/thresholds.py`):**
    While the two-phase latch (`fetch` vs. offline `analyze`) works as designed across all 51 `analyze*` subcommands, 13 of the 36 built-in threshold sets (`gtex-expression@1.0`, `docking-scores@1.0`, `gnomad-constraint@1.0`, `pk-parameters@1.0`, etc.) intentionally set key cutoffs to `UNRESOLVED = object()`. Running `oase gtex analyze PCSK9` without a program-level `.oase/thresholds.yaml` immediately halts with `ThresholdError`. Furthermore, `.oase/thresholds.yaml` strictly rejects any key not present in `_DEFAULTS[name].values` (such as `version: "1.0"`). Pre-populating all 13 unresolved sets in `.oase/thresholds.yaml` across `checkpoints/ch0`..`ch4` gives workshop participants `36/36` resolved threshold schemas out of the box.

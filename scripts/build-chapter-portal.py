@@ -420,7 +420,7 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
         </div>
       </div>
       <div>
-        <p>Summary of the compiled 31-page Static Evidence Portal (`WO-008` Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud Argolis execution:</p>
+        <p>Summary of the compiled 31-page Static Evidence Portal (`WO-008` Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud Google Cloud execution:</p>
         <table>
           <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Field Discovery &amp; Takeaway</th><th>Verdict</th></tr></thead>
           <tbody>
@@ -499,7 +499,7 @@ def main() -> int:
             copied_imgs += 1
 
     proj_badge = os.environ.get(
-        "OASE_PROJECT_BADGE", "gcp-oase-workshop (Argolis)"
+        "OASE_PROJECT_BADGE", "gcp-oase-workshop (Google Cloud)"
     )
     env_sha = "sha256:61020936449a"
     tools_home = os.environ.get("OASE_TOOLS_HOME", "")

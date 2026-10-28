@@ -13,7 +13,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 if [[ "${1:-}" == "--check-hygiene" ]]; then
   echo "=== Running Public Repository Hygiene Gate ==="
   cd "${REPO_ROOT}"
-  FORBIDDEN_REGEX="Amgen|ARIA|Lili Peng|Mickey Makhija|Andres Plata|@amgen\.com|Thousand Oaks|pharma-oss-factory|826100493373|5713950e|\bRVP\b|\bVenter\b"
+  FORBIDDEN_REGEX="Amgen|ARIA|Lili Peng|Mickey Makhija|Andres Plata|@amgen\.com|Thousand Oaks|pharma-oss-factory|826100493373|5713950e|\bRVP\b|\bVenter\b|Argolis|argolis"
   if git grep -n -I -E "${FORBIDDEN_REGEX}" -- . ":(exclude)scripts/preflight.sh" ; then
     echo "[FAIL] Customer-specific or internal identifiers detected in tracked files!" >&2
     exit 1
