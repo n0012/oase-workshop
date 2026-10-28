@@ -85,120 +85,149 @@ CHAPTERS_HTML = """<!DOCTYPE html>
 </nav>
 
 <div class="hero">
-  <h1>From Isolated Chatbots to Team-Based, Provenance-Locked Pre-Clinical R&amp;D on Google Cloud</h1>
-  <p>Combining <strong>Google Cloud Scion</strong> (multi-user Projects/Groves, model-agnostic Harnesses across Gemini, Claude &amp; OpenAI, 22 specialized agent templates, and <code>suspended</code> CRO session continuation) with <strong>O.A.S.E. — the Open Agentic Science Engine</strong> (two-phase tool latches, SHA-256 sidecars, and 10-check Dual Validation).</p>
+  <h1>Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
+  <p><strong>OASE (Open Agentic Science Engine)</strong> is a drug discovery solution on Google Cloud that traces AI model predictions, wet-lab measurements, computed results, and stage-gate decisions across five layers of artifacts. Built on top of the open-source, multi-agent, multi-user <strong>SCION</strong> agent platform, GCP-OASE pairs a 5-scientist human discovery pod with a mirrored multi-model AI agent team (Gemini, Claude, OpenAI).</p>
   <div class="kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">4 Tiers / 22</div><div class="kpi-lbl">Scion Agent Templates</div></div>
+    <div class="kpi-card"><div class="kpi-val">5 Human + 10 AI</div><div class="kpi-lbl">Team Roles in The Grove</div></div>
+    <div class="kpi-card"><div class="kpi-val">5 Artifact Layers</div><div class="kpi-lbl">Separation of Powers</div></div>
     <div class="kpi-card"><div class="kpi-val">36 / 36</div><div class="kpi-lbl">Threshold Sets Resolved</div></div>
     <div class="kpi-card"><div class="kpi-val">8 / 8 [PASS]</div><div class="kpi-lbl">Work Orders Accepted</div></div>
-    <div class="kpi-card"><div class="kpi-val">4 / 4 Caught</div><div class="kpi-lbl">Adversarial Tamper Drills</div></div>
-    <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Oral Lead (40 mg QD)</div></div>
-    <div class="kpi-card"><div class="kpi-val">31 Pages</div><div class="kpi-lbl">Static Evidence Portal</div></div>
+    <div class="kpi-card"><div class="kpi-val">4 / 4 Caught</div><div class="kpi-lbl">Tamper Drills Blocked</div></div>
+    <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Lead (40 mg QD)</div></div>
   </div>
 </div>
 
 <div class="chapter-bar">
-  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">1. Why Chatbot Science Fails</button>
-  <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">2. Scion + OASE Value &amp; Architecture</button>
-  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">3. Stage 0 Tournament (WO-001)</button>
-  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">4. Stage 1 Genetics &amp; Omics (WO-002..003)</button>
-  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">5. Stage 2 AF3 &amp; Docking (WO-004..005)</button>
-  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Stages 3–4 DMTA &amp; hERG Gate (WO-006..007)</button>
-  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. 4 Adversarial Tamper Drills</button>
-  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Complete Picture &amp; Scorecard</button>
+  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">1. Why Agentic Discovery Is Hard &amp; Demo Overview</button>
+  <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">2. Data &amp; Control Architecture (4 Pillars)</button>
+  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">3. Step 1: Stage 0 Tournament (WO-001)</button>
+  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">4. Step 2: Genetics &amp; Omics (WO-002..003)</button>
+  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">5. Step 3: AF3 &amp; Docking (WO-004..005)</button>
+  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Step 4 &amp; Lab Gate: DMTA &amp; PK (WO-006..007)</button>
+  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. Step 5: 4 Tamper Drills</button>
+  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Step 6: Complete Picture &amp; Dossier</button>
 </div>
 
 <div class="container">
-  <!-- PANEL WHY: THE PROBLEM & 4 REAL-WORLD FAILURE MODES -->
+  <!-- PANEL WHY: THE PROBLEM, 4 CHALLENGES & WHAT YOU'LL SEE IN THIS DEMO -->
   <section class="chapter-panel active" id="panel-why">
     <div class="chapter-header">
-      <h2>Act I (Part 1) — Why Agentic Drug Discovery Is Harder Than It Looks</h2>
-      <span class="stage-pill">Problem Statement · 4 Failure Modes in Unchecked AI Pipelines</span>
+      <h2>Act I (Part 1) — Why Agentic Drug Discovery Is Harder Than It Looks &amp; What You'll See in This Demo</h2>
+      <span class="stage-pill">4 Challenges · 5 Artifact Layers · 6 Steps + Wet-Lab Gate</span>
     </div>
     <div class="grid-2">
       <div>
         <div class="plate-box" id="plate-challenges">
           <img src="assets/oase_challenges.jpg" alt="Agentic Drug Discovery Challenges">
-          <div class="plate-caption">Figure 1 — The 4 structural failure modes that break static DAGs and single-player chatbots in pre-clinical R&amp;D.</div>
+          <div class="plate-caption">Figure 1 — The 4 challenges in production pharmaceutical R&amp;D: Rigid Workflows, Chatbot Fabrication, Single-Model Echo Chambers, and Lack of Organizational Governance.</div>
         </div>
         <div class="plate-box" id="plate-thumb">
           <img src="assets/oase_post_thumbnail.jpg" alt="GCP-OASE Platform Overview">
-          <div class="plate-caption">Figure 2 — Moving from single-player chatbot prompts to team-based, provenance-locked discovery on Google Cloud.</div>
+          <div class="plate-caption">Figure 2 — Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud.</div>
+        </div>
+        <div class="plate-box" id="plate-stage-gate">
+          <img src="assets/oase_stage_gate_process.png" alt="GCP-OASE Stage-Gate Process">
+          <div class="plate-caption">Figure 3 — Stage-Gate Process: Human + AI Program Leads co-sign Stage Gates while specialists execute two-phase tool work orders.</div>
         </div>
       </div>
       <div>
-        <p>Giving an LLM access to biological APIs is easy; making its conclusions <strong>auditable by a pharma stage-gate governance board</strong> requires solving four failure modes observed across real discovery pilots:</p>
+        <p>Building production-ready agentic science that a <strong>pharma portfolio review committee can sign off on</strong> requires addressing four core challenges:</p>
         <table>
-          <thead><tr><th>Discovery Failure Mode</th><th>What an Unguarded Chatbot / Static DAG Does</th><th>How GCP-OASE + Scion Solves It</th></tr></thead>
+          <thead><tr><th>Discovery Challenge</th><th>What Breaks in Standard Pipelines / Chatbots</th><th>How GCP-OASE Solves It</th></tr></thead>
           <tbody>
             <tr id="why-row-1">
-              <td><strong>1. Rigid Pipeline vs. Biological Surprise</strong><br>(<code>Pilot-4</code> Liver Fibrosis)</td>
-              <td>Drops a target when bulk GTEx liver RNA-seq returns near-zero expression.</td>
-              <td>Pivots dynamically to slice a 58k-cell cirrhotic <code>.h5ad</code> atlas (<code>oase h5ad</code>) and isolates activated hepatic stellate cells.</td>
+              <td><strong>1. The Rigid Workflow Problem</strong></td>
+              <td>Static pipelines (Nextflow, Snakemake) drop a target when bulk RNA-seq returns near-zero expression and cannot pause for multi-week wet-lab assays.</td>
+              <td><strong>Dynamic routing &amp; lab handoff gates:</strong> Pivots to single-cell data when bulk tissue is low, and pauses on disk across multi-week wet-lab CRO assays.</td>
             </tr>
             <tr id="why-row-2">
-              <td><strong>2. Hallucinated Numbers &amp; Padded Citations</strong><br>(<code>Pilot-9b</code> Hidradenitis Suppurativa)</td>
-              <td>Summarizes 50 MB tables in context, invents plausible IC50s, or rubber-stamps weak Stage 0 seeds.</td>
-              <td>Enforces <strong>Two-Phase Tool Latches</strong> + <code>{source: path $.jsonpath}</code> citations checked within <strong>&plusmn;1%</strong>; advanced <code>0/8</code> weak seeds (<code>DEC-145</code>).</td>
+              <td><strong>2. The Chatbot Fabrication Trap</strong></td>
+              <td>Summarizes large tables in prompt context, invents plausible binding numbers, pads citations, or confuses <code>NA</code> with <code>0</code>.</td>
+              <td><strong>Two-phase tool execution &amp; verified citations:</strong> Raw tool outputs + SHA-256 receipts are scored offline; every number in prose is checked within <strong>&plusmn;1%</strong> (<code>CIT-003</code>).</td>
             </tr>
             <tr id="why-row-3">
-              <td><strong>3. Optimism Bias &amp; Dropped Caveats</strong><br>(<code>pcsk9-oral</code> &amp; <code>Pilot-6</code> NSCLC)</td>
-              <td>Celebrates a tight docking score (`-9.4 kcal/mol`) while quietly omitting a `hERG` cardiac liability or `A549` `STK11`/`KEAP1` mutation.</td>
-              <td>Every Phase-2 <code>.analysis.json</code> emits mandatory <code>**Relay: `code`**</code> caveats; dropping any caveat fails <code>REL-001</code> validation.</td>
+              <td><strong>3. The Single-Model Echo Chamber</strong></td>
+              <td>Uses a single model family to generate hypotheses, interpret literature, and review its own work, reinforcing correlated bias.</td>
+              <td><strong>Multi-model agent teams:</strong> Runs Gemini, Claude, and OpenAI side-by-side inside a shared Grove for blind hypothesis tournaments and cross-model review.</td>
             </tr>
             <tr id="why-row-4">
-              <td><strong>4. Single-Model Echo Chambers &amp; Wet-Lab Gaps</strong></td>
-              <td>Uses one model vendor to generate, interpret, and review its own hypotheses with no way to pause for 3-week CRO assays.</td>
-              <td><strong>Scion Harnesses</strong> mix Gemini, Claude, and OpenAI in one Project and use Scion's <code>suspended</code> phase to pause/resume across CRO cycles.</td>
+              <td><strong>4. Lack of Organizational Governance in Foundation Models</strong></td>
+              <td>General-purpose LLMs lack a pharma organization's stage-gate criteria, risk tolerance, and decision-making rigor.</td>
+              <td><strong>Clear separation of powers across 5 artifact layers:</strong> Raw data files, specialist findings, scientific decision logs, organization stage gates, and executive views.</td>
             </tr>
+          </tbody>
+        </table>
+        <h4 style="margin: 1rem 0 0.4rem 0; color: #0f172a;">What You'll See in This Demo: Oral PCSK9 Campaign (<code>pcsk9-oral</code>)</h4>
+        <p style="font-size: 0.85rem; color: #334155; margin: 0 0 0.5rem 0;">A <strong>human pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, ADMET/DMPK Scientist) collaborates with a <strong>mirrored AI agent team</strong> across 6 steps and a physical wet-lab gate:</p>
+        <table>
+          <thead><tr><th>Step</th><th>Stage &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td>Seed &amp; rank 28-match blind Elo tournament: small-molecule <code>Pocket #1</code> (<code>1642.5 Elo</code>) beats cyclic peptide (<code>1588.0 Elo</code>).</td></tr>
+            <tr><td><strong>Step 2</strong></td><td>Stage 1 (<code>WO-002..003</code>)</td><td>Validate PCSK9 in human genetics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). Human + AI co-sign Gate 1.</td></tr>
+            <tr><td><strong>Step 3</strong></td><td>Stage 2 (<code>WO-004..005</code>)</td><td>AlphaFold 3 co-fold (<code>pLDDT 91.4</code>, <code>ipTM 0.84</code>), <code>fpocket</code> (<code>0.68</code> vs <code>0.24</code>), and AutoDock Vina (<code>-9.4 kcal/mol</code>).</td></tr>
+            <tr><td><strong>Step 4</strong></td><td>Stage 3 (<code>WO-006</code>)</td><td>Catch the hERG trap: reject <code>PCSK9-A02</code> (<code>cLogP 5.09</code>, 3 liabilities); redesign polar oxadiazole <code>PCSK9-A03</code> / <code>OASE-PCSK9-014</code> (<code>0</code> liabilities).</td></tr>
+            <tr><td><strong>&#9208; Lab Gate</strong></td><td>Stage 3 &rarr; 4 Handoff (<code>WO-007</code>)</td><td>Campaign pauses on disk for physical SPR/FRET (<code>KD = 4.2 nM</code>, <code>IC50 = 11.8 nM</code>) and PK CSVs (<code>F = 52%</code>, <code>t1/2 = 14.8 h</code>, <code>40 mg QD</code>).</td></tr>
+            <tr><td><strong>Steps 5–6</strong></td><td>Stage 4 (<code>WO-008</code>)</td><td>Run 4 tamper drills (all 4 caught by validator) and compile the 31-page candidate nomination dossier.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- PANEL SCION: SCION + OASE VALUE PROPOSITION & ARCHITECTURE -->
+  <!-- PANEL SCION: DATA AND CONTROL ARCHITECTURE (4 PILLARS) -->
   <section class="chapter-panel" id="panel-scion">
     <div class="chapter-header">
-      <h2>Act I (Part 2) — Google Cloud Scion + O.A.S.E. Control &amp; Data Architecture</h2>
-      <span class="stage-pill">Scion Hub · 4 Tiers / 22 Templates · Two-Phase Artifact Latch</span>
+      <h2>Act I (Part 2) — GCP-OASE Data and Control Architecture</h2>
+      <span class="stage-pill">1. The Grove · 2. Work Orders &amp; Dual Validation · 3. Stage-Gate Review · 4. Two-Phase Tool Execution</span>
     </div>
     <div class="grid-2">
       <div>
         <div class="plate-box" id="plate-benefits">
           <img src="assets/oase_benefits.jpg" alt="GCP-OASE Value Proposition">
-          <div class="plate-caption">Figure 3 — Four core value pillars: Team Collaboration, Multi-Model Heterogeneity, CRO Pause/Resume, and Provenance Gates.</div>
+          <div class="plate-caption">Figure 4 — Four core solutions: Dynamic Routing &amp; Lab Gates, Two-Phase Tool Execution, Multi-Model Agent Teams, and 5-Layer Separation of Powers.</div>
         </div>
         <div class="plate-box" id="plate-arch">
           <img src="assets/oase_data_arch.jpg" alt="GCP-OASE Data and Control Architecture">
-          <div class="plate-caption">Figure 4 — Surface-to-OASE Contract, 4-Tier / 22-Template Scion Project Roster, and Layer 0 &rarr; Layer 1 &rarr; Layer 2 Data Flow.</div>
+          <div class="plate-caption">Figure 5 — The 4 Architectural Mechanisms: The Grove, Work Orders &amp; Dual Validation, Stage-Gate Review, and Two-Phase Tool Execution across 5 Artifact Layers.</div>
         </div>
       </div>
       <div>
         <div class="pillar-grid">
           <div class="pillar-card" id="scion-card-1">
-            <h4>1. Scion Hub, Projects &amp; Runtime Brokers</h4>
-            <p>The <strong>Scion Hub</strong> coordinates OAuth identity, WebDAV workspace state, and container orchestration across <strong>Projects (Groves)</strong>. Runtime Brokers run isolated agent containers on Docker, GKE Kubernetes, or GKE Agent Substrate.</p>
+            <h4>1. The Grove ("Who is doing the work?")</h4>
+            <p>Shared project workspace on SCION where the 5-scientist human pod and mirrored AI agent team (Gemini, Claude, OpenAI) collaborate. Specialists write findings to their own folders; only the <strong>AI Program Lead</strong> writes official decisions.</p>
           </div>
           <div class="pillar-card" id="scion-card-2">
-            <h4>2. Model-Agnostic Harnesses (Gemini + Claude + OpenAI)</h4>
-            <p>Scion <strong>Harness-Configs</strong> (<code>GeminiCLI</code>, <code>ClaudeCode</code>, <code>Codex</code>) wrap heterogeneous models into a uniform OCI lifecycle so a Claude or OpenAI <code>scientific-reviewer</code> can adversarially audit a Gemini specialist.</p>
+            <h4>2. Work Orders &amp; Dual Validation ("How is work checked?")</h4>
+            <p>Every assignment is a numbered Work Order (<code>WO-001</code>..<code>WO-008</code>). Before promotion, every finding must pass <strong>10 automated mechanical checks</strong> (<code>oase validate check</code>) plus an independent <strong>scientific review</strong>.</p>
           </div>
           <div class="pillar-card" id="scion-card-3">
-            <h4>3. 3D Agent State: <code>blocked</code> &amp; <code>suspended</code></h4>
-            <p>OASE specialists idle in Scion's sticky <code>blocked</code> activity on a push-only message bus (zero polling tokens) and enter Scion's <code>suspended</code> phase during multi-week wet-lab CRO assays—resuming the exact session via <code>--resume</code> when CSVs return.</p>
+            <h4>3. Stage-Gate Review ("Who decides to move forward?")</h4>
+            <p>The program is divided into Stage 0..4 go/no-go gates. The human Program Lead co-signs <strong>Gate 1 (target validation)</strong> and <strong>Gate 4 (candidate nomination)</strong>, and the <strong>Lab Handoff Gate</strong> pauses on disk until wet-lab CSVs return.</p>
           </div>
           <div class="pillar-card" id="scion-card-4">
-            <h4>4. 4-Tier / 22-Template Roster &amp; Dual Validation</h4>
-            <p>Separates <strong>Authority</strong> (<code>science-program-lead</code>, sole writer of Layer 2), <strong>Operations</strong> (<code>research-operations-controller</code>, <code>finding-validator</code>), <strong>9 Domain/Review Specialists</strong>, and <strong>7 HypEx Tournament Agents</strong>.</p>
+            <h4>4. Two-Phase Tool Execution ("Why trust the numbers?")</h4>
+            <p><strong>Phase 1 (Run/Fetch)</strong> writes raw tool outputs + SHA-256 receipts (<code>.meta.json</code>). <strong>Phase 2 (Analyze)</strong> scores outputs offline against 36 fixed threshold sets (<code>.analysis.json</code>) and emits mandatory <code>**Relay:**</code> caveats.</p>
           </div>
         </div>
+        <h4 style="margin: 0.9rem 0 0.4rem 0; color: #0f172a;">Worked Example of Two-Phase Execution (Step 3 Pocket Analysis)</h4>
         <table>
-          <thead><tr><th>OASE Storage Layer</th><th>Writer Role</th><th>Mechanical Contract Enforced by <code>oase validate check</code></th></tr></thead>
+          <thead><tr><th>Phase</th><th>Command</th><th>File Written</th><th>What Happens</th></tr></thead>
           <tbody>
-            <tr id="arch-row-1"><td><strong>Layer 0 (`raw/<class>/`)</strong></td><td>Phase-1 &amp; Phase-2 CLI Tools</td><td>Immutable raw files + SHA-256 <code>.meta.json</code> sidecars (<code>PROV-001/002</code>) + offline <code>.analysis.json</code> against 36 threshold schemas (<code>THR-001</code>).</td></tr>
-            <tr id="arch-row-2"><td><strong>Layer 1 (`findings/<domain>/`)</strong></td><td>8 Ephemeral Specialists</td><td>Markdown synthesis where every number carries a <code>{source: ... $.metrics.x}</code> tag (&plusmn;1%, <code>CIT-003</code>) and every caveat relay is preserved (<code>REL-001</code>).</td></tr>
-            <tr id="arch-row-3"><td><strong>Layer 2 (`program-state/`)</strong></td><td><code>science-program-lead</code> Only</td><td>Promoted only after passing <strong>Validation 1</strong> (10-check mechanical validator) + <strong>Validation 2</strong> (independent scientific review).</td></tr>
+            <tr><td><strong>Phase 1 — Run</strong></td><td><code>oase pocket run raw/structures/AF-Q8NBP7-F1.cif</code></td><td><code>raw/pockets/AF-Q8NBP7-F1.pockets.json</code> + <code>.meta.json</code></td><td>Runs compiled <code>fpocket 4.2.2</code> on PCSK9 and writes raw cavity scores plus a SHA-256 receipt.</td></tr>
+            <tr><td><strong>Phase 2 — Analyze</strong></td><td><code>oase pocket analyze raw/pockets/AF-Q8NBP7-F1.pockets.json</code></td><td><code>raw/pockets/AF-Q8NBP7-F1.analysis.json</code></td><td>Applies fixed threshold set <code>pocket@1.0+program</code> (<code>&ge; 0.50</code> cutoff): catalytic groove <code>0.68</code> passes; flat EGF-A <code>0.24</code> fails; attaches mandatory caveat <code>fpocket.druggability_is_not_affinity</code>.</td></tr>
+            <tr><td><strong>Specialist Report</strong></td><td>Structural Biologist writes <code>WO-004.md</code></td><td><code>findings/structural-biology/WO-004.md</code></td><td>Cites <code>0.68 {source: raw/pockets/... $.best_druggability_score}</code> and carries the caveat relay verbatim; verified by <code>oase validate check</code>.</td></tr>
+          </tbody>
+        </table>
+        <h4 style="margin: 0.9rem 0 0.4rem 0; color: #0f172a;">Separation of Powers Across 5 Layers of Artifacts</h4>
+        <table>
+          <thead><tr><th>Artifact Layer</th><th>Directory / Surface</th><th>Writer &amp; Governance Rule</th></tr></thead>
+          <tbody>
+            <tr id="arch-row-1"><td><strong>1. Raw Data &amp; Receipts</strong></td><td><code>raw/&lt;class&gt;/</code> (<code>.json</code>, <code>.meta.json</code>, <code>.analysis.json</code>)</td><td>Written only by deterministic Phase-1 &amp; Phase-2 CLI tools; SHA-256 hash-locked (<code>PROV-001/002</code>, <code>THR-001</code>).</td></tr>
+            <tr id="arch-row-2"><td><strong>2. Specialist Findings</strong></td><td><code>findings/&lt;domain&gt;/WO-XXX.md</code></td><td>Written by domain specialists; every number requires a JSONPath citation within &plusmn;1% (<code>CIT-003</code>) and all caveat relays (<code>REL-001</code>).</td></tr>
+            <tr id="arch-row-3"><td><strong>3. Scientific Decision Logs</strong></td><td><code>program-state/decision-log.md</code> &amp; <code>liability-tracker.md</code></td><td>Written exclusively by the AI Program Lead after Dual Validation passes.</td></tr>
+            <tr><td><strong>4. Organization Stage Gates</strong></td><td><code>program-state/PROGRAM_SUMMARY.md</code> &amp; Gate Co-Signs</td><td>Human Program Lead co-signs Gate 1 and Gate 4 go/no-go checkpoints and wet-lab assay handoffs.</td></tr>
+            <tr><td><strong>5. Executive Views</strong></td><td><code>_site/index.html</code> &amp; <code>_site/chapters.html</code> (31 pages)</td><td>Compiled by <code>oase site build</code> into a self-contained static HTML Evidence Portal for portfolio review.</td></tr>
           </tbody>
         </table>
       </div>
@@ -412,7 +441,7 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
       <div>
         <div class="plate-box" id="plate-complete">
           <img src="assets/oase_complete_picture.jpg" alt="GCP-OASE Complete Architecture Picture">
-          <div class="plate-caption">Figure 5 — End-to-End GCP-OASE Architecture: Scion Hub, Multi-Model Groves, Cloud Batch/Vertex Compute, and Static Evidence Portal.</div>
+          <div class="plate-caption">Figure 6 — The Complete Picture: 6 Steps + Wet-Lab Gate from Stage 0 Hypothesis Tournament to Stage 4 Candidate Nomination Dossier.</div>
         </div>
         <div class="portal-links">
           <a href="index.html">Open 30-Page Evidence Portal Index</a>
@@ -420,7 +449,7 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
         </div>
       </div>
       <div>
-        <p>Summary of the compiled 31-page Static Evidence Portal (`WO-008` Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud Google Cloud execution:</p>
+        <p>Summary of the compiled 31-page Static Evidence Portal (<code>WO-008</code> Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud execution:</p>
         <table>
           <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Field Discovery &amp; Takeaway</th><th>Verdict</th></tr></thead>
           <tbody>
@@ -494,8 +523,8 @@ def main() -> int:
     site_assets.mkdir(parents=True, exist_ok=True)
     copied_imgs = 0
     if repo_assets.is_dir():
-        for jpg in sorted(repo_assets.glob("*.jpg")):
-            shutil.copy2(jpg, site_assets / jpg.name)
+        for img in sorted(list(repo_assets.glob("*.jpg")) + list(repo_assets.glob("*.png"))):
+            shutil.copy2(img, site_assets / img.name)
             copied_imgs += 1
 
     proj_badge = os.environ.get(
