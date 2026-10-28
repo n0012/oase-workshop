@@ -1,64 +1,63 @@
 {
   "title": "GCP-OASE & Scion: Team-Based, Provenance-Locked Pre-Clinical R&D on Google Cloud",
   "scene_count": 8,
-  "tts_model": "gemini-2.5-flash-tts",
-  "tts_voice": "Charon",
+  "tts_model": "gemini-3.8-flash-tts",
   "scenes": [
     {
       "number": 1,
       "title": "Why Single-Player Chatbot Science Fails Governance",
-      "tts_script": "Welcome to the Google Cloud Scion and Oh-Ay-Ess-Ee Workshop, the Open Agentic Science Engine. Standard drug discovery pipelines and single-player chatbots break under pharma governance. Rigid workflows drop targets when bulk omics data surprises them. Meanwhile, unguarded models hallucinate metrics, drop negative caveats, and reinforce single-vendor blind spots.",
+      "tts_script": "Welcome to the Google Cloud Scion and O-A-S-E Workshop, the Open Agentic Science Engine. Standard drug discovery pipelines and single-player chatbots break under pharma governance. Rigid workflows drop targets when bulk omics data surprises them. Meanwhile, unguarded models hallucinate metrics, drop negative caveats, and reinforce single-vendor blind spots.",
       "voiceover": "Welcome to the Google Cloud Scion and O.A.S.E. Workshop, the Open Agentic Science Engine. Standard drug discovery pipelines and single-player chatbots break under pharma governance. Rigid workflows drop targets when bulk omics data surprises them. Meanwhile, unguarded models hallucinate metrics, drop negative caveats, and reinforce single-vendor blind spots.",
-      "audio_duration_ms": 30410
+      "audio_duration_ms": 25240
     },
     {
       "number": 2,
       "title": "Scion + OASE Value Proposition & Multi-Model Projects",
       "tts_script": "Google Cloud Scion and the Science Engine replace isolated chatbots with team-based discovery. Scion's central Hub coordinates shared Projects across Gemini Enterprise, Antigravity, and the command line. Model-agnostic Harnesses let Gemini, Claude, and OpenAI cross-check each other. Furthermore, Scion's suspended phase pauses and resumes sessions across multi-week wet-lab assay cycles.",
       "voiceover": "Google Cloud Scion and the Science Engine replace isolated chatbots with team-based discovery. Scion's central Hub coordinates shared Projects across Gemini Enterprise, Antigravity, and the command line. Model-agnostic Harnesses let Gemini, Claude, and OpenAI cross-check each other. Furthermore, Scion's suspended phase pauses and resumes sessions across multi-week wet-lab assay cycles.",
-      "audio_duration_ms": 34250
+      "audio_duration_ms": 26640
     },
     {
       "number": 3,
       "title": "4-Tier Agent Roster, 9-State Work Orders & Two-Phase Latch",
       "tts_script": "Inside each Scion Project, twenty-two specialized templates separate governance, operations, domain specialists, and independent reviewers. Specialists never judge raw data in prose. Instead, every tool runs in two separate stages. Stage one writes immutable files with S-H-A two-fifty-six sidecars. Stage two computes offline verdicts against thirty-six versioned threshold sets.",
       "voiceover": "Inside each Scion Project, 22 specialized templates separate governance, operations, domain specialists, and independent reviewers. Specialists never judge raw data in prose. Instead, every tool runs in two separate stages. Stage one writes immutable files with SHA-256 sidecars. Stage two computes offline verdicts against 36 versioned threshold sets.",
-      "audio_duration_ms": 35330
+      "audio_duration_ms": 24840
     },
     {
       "number": 4,
       "title": "Stages 0-1: Hypothesis Tournament & Human Genetics (WO-001..003)",
       "tts_script": "Now let's watch this architecture run our oral P-C-S-K-9 campaign live in Argolis. In Stages zero and one, the Science Engine ingests a twenty-eight match Co-Scientist Ee-low tournament at sixteen forty-two. Next, it confirms Nomad loss-of-function tolerance and OpenTargets disease association at zero point eight six. It then forces mandatory toxicology relays forward into the next stage.",
       "voiceover": "Now let's watch this architecture run our oral PCSK9 campaign live in Argolis. In Stages 0 and 1, the Science Engine ingests a 28-match Co-Scientist Elo tournament at 1642. Next, it confirms gnomAD loss-of-function tolerance and OpenTargets disease association at 0.86. It then forces mandatory toxicology relays forward into the next stage.",
-      "audio_duration_ms": 33210
+      "audio_duration_ms": 25040
     },
     {
       "number": 5,
       "title": "Stages 2-4: Allosteric Co-Folding & Catching the hERG Trap (WO-004..007)",
       "tts_script": "In Stages two through four, AlphaFold three and F-pocket confirm a druggable allosteric groove at zero point six eight. AutoDock Vina then scores candidate A-zero-two at minus nine point four kilocalories per mole. Where a chatbot would declare victory, the Science Engine flags A-zero-two for three AD-met and hurg alerts. It pivots to polar oxadiazole A-zero-three and nominates candidate zero-one-four for once-daily oral dosing.",
       "voiceover": "In Stages 2 through 4, AlphaFold 3 and fpocket confirm a druggable allosteric groove at 0.68. AutoDock Vina then scores candidate A02 at -9.4 kcal/mol. Where a chatbot would declare victory, the Science Engine flags A02 for 3 ADMET and hERG alerts. It pivots to polar oxadiazole A03 and nominates candidate 014 for once-daily oral dosing.",
-      "audio_duration_ms": 35770
+      "audio_duration_ms": 29600
     },
     {
       "number": 6,
       "title": "Mechanical Governance Teeth: 4 Adversarial Tamper Drills",
       "tts_script": "Next, we test the mechanical teeth of Dual Validation. Every work order must pass ten deterministic provenance, citation, threshold, and relay checks before promotion. Across four adversarial drills, we flip a file byte, inflate a docking score, delete a caveat, and strip a threshold set. In every single drill, the verification latch immediately halts promotion.",
       "voiceover": "Next, we test the mechanical teeth of Dual Validation. Every work order must pass 10 deterministic provenance, citation, threshold, and relay checks before promotion. Across 4 adversarial drills, we flip a file byte, inflate a docking score, delete a caveat, and strip a threshold set. In every single drill, the verification latch immediately halts promotion.",
-      "audio_duration_ms": 30730
+      "audio_duration_ms": 23320
     },
     {
       "number": 7,
       "title": "The Complete Picture & 31-Page Stage-Gate Dossier (WO-008)",
       "tts_script": "In our final stage, the Project Curator compiles all eight validated work orders and eleven mandatory relays. It generates our candidate nomination dossier and an interactive evidence portal with thirty-one pages. Every claim in the regulatory narrative resolves within one percent of its S-H-A two-fifty-six artifact on Google Cloud.",
       "voiceover": "In our final stage, the Project Curator compiles all 8 validated work orders and 11 mandatory relays. It generates our candidate nomination dossier and an interactive evidence portal with 31 pages. Every claim in the regulatory narrative resolves within 1% of its SHA-256 artifact on Google Cloud.",
-      "audio_duration_ms": 27850
+      "audio_duration_ms": 23120
     },
     {
       "number": 8,
       "title": "Architecture Scorecard & Field Takeaways",
       "tts_script": "Running this full campaign live in Argolis confirms our core architectural takeaway. Mechanical latches cannot replace physical wet-lab biology. However, combining Google Cloud Scion's multi-model projects with the Science Engine's provenance gates eliminates silent narrative drift. Together, they make agentic pre-clinical discovery reproducible, multi-perspective, and audit-ready.",
       "voiceover": "Running this full campaign live in Argolis confirms our core architectural takeaway. Mechanical latches cannot replace physical wet-lab biology. However, combining Google Cloud Scion's multi-model projects with the Science Engine's provenance gates eliminates silent narrative drift. Together, they make agentic pre-clinical discovery reproducible, multi-perspective, and audit-ready.",
-      "audio_duration_ms": 32170
+      "audio_duration_ms": 24880
     }
   ]
 }

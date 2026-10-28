@@ -143,35 +143,47 @@ def synthesize_gemini_tts_scenes(
     audio_dir: Path,
     quota_project: str,
     voice_name: str = "Charon",
-    model_name: str = "gemini-2.5-flash-tts",
-    location: str = "us-central1",
+    model_name: str = "gemini-3.8-flash-tts",
+    location: str = "global",
     credentials_path: str | None = None,
 ) -> dict:
     audio_dir.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     token = get_bearer_token(credentials_path)
+    host = (
+        "aiplatform.googleapis.com"
+        if location == "global"
+        else f"{location}-aiplatform.googleapis.com"
+    )
+    api_ver = "v1beta1" if "3.8" in model_name or location == "global" else "v1"
     url = (
-        f"https://{location}-aiplatform.googleapis.com/v1/projects/{quota_project}"
+        f"https://{host}/{api_ver}/projects/{quota_project}"
         f"/locations/{location}/publishers/google/models/{model_name}:generateContent"
     )
+    is_custom_voice = voice_name.startswith(("voice_", "voicekey_"))
 
     for scene in manifest["scenes"]:
         num = scene["number"]
         script = scene.get("tts_script") or scene["voiceover"]
-        prompt = (
-            "Read the following narration script verbatim in a calm, smooth, authoritative "
-            "technical presenter voice. Speak at a steady, natural pace. Output only the spoken script:\n\n"
-            f"{script}"
+        text_input = (
+            script
+            if "3.8" in model_name
+            else (
+                "Read the following narration script verbatim in a calm, smooth, authoritative "
+                "technical presenter voice. Speak at a steady, natural pace. Output only the spoken script:\n\n"
+                f"{script}"
+            )
+        )
+        voice_cfg = (
+            {"voice": voice_name}
+            if is_custom_voice or "3.8" in model_name
+            else {"prebuiltVoiceConfig": {"voiceName": voice_name}}
         )
         body = {
-            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "contents": [{"role": "user", "parts": [{"text": text_input}]}],
             "generationConfig": {
                 "responseModalities": ["AUDIO"],
-                "speechConfig": {
-                    "voiceConfig": {
-                        "prebuiltVoiceConfig": {"voiceName": voice_name}
-                    }
-                },
+                "speechConfig": {"voiceConfig": voice_cfg},
             },
         }
         req = urllib.request.Request(
@@ -180,24 +192,30 @@ def synthesize_gemini_tts_scenes(
             headers={
                 "Authorization": f"Bearer {token}",
                 "Content-Type": "application/json",
+                "x-goog-user-project": quota_project,
             },
             method="POST",
         )
         with urllib.request.urlopen(req, timeout=90) as resp:
             res = json.loads(resp.read().decode("utf-8"))
         pcm_bytes = b""
+        mime_type = ""
         for cand in res.get("candidates", []):
             for part in cand.get("content", {}).get("parts", []):
                 inl = part.get("inlineData")
                 if inl and inl.get("data"):
                     pcm_bytes += base64.b64decode(inl["data"])
+                    mime_type = inl.get("mimeType", "")
 
         wav_file = audio_dir / f"scene-{num:02d}.wav"
-        with wave.open(str(wav_file), "wb") as wf:
-            wf.setnchannels(1)
-            wf.setsampwidth(2)
-            wf.setframerate(24000)
-            wf.writeframes(pcm_bytes)
+        if "wav" in mime_type or pcm_bytes[:4] == b"RIFF":
+            wav_file.write_bytes(pcm_bytes)
+        else:
+            with wave.open(str(wav_file), "wb") as wf:
+                wf.setnchannels(1)
+                wf.setsampwidth(2)
+                wf.setframerate(24000)
+                wf.writeframes(pcm_bytes)
 
         out_file = audio_dir / f"scene-{num:02d}.mp3"
         subprocess.run(
