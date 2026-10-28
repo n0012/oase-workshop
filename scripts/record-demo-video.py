@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Repeatable 6-Chapter GCP-OASE Demo Video Generator (TTS + Playwright + FFmpeg).
+"""Repeatable 8-Scene (3-Act) GCP-OASE & Scion Demo Video Generator (TTS + Playwright + FFmpeg).
 
 Usage:
   python3 scripts/record-demo-video.py \
     --portal-url http://127.0.0.1:8765 \
     --work-dir /tmp/oase-video-build \
-    --output /tmp/oase_workshop_demo.mp4
+    --quota-project my-oase-workshop
 
 Pronunciation & Audio Rules Codified:
   1. First mention of OASE uses `<say-as interpret-as="characters">OASE</say-as>`
@@ -15,10 +15,10 @@ Pronunciation & Audio Rules Codified:
   4. Avoid `<break>` tags inside `en-US-Studio-O` SSML blocks, as Studio neural
      prosody can overlap consecutive sentences across explicit `<break>` boundaries;
      rely on natural sentence periods instead.
-  5. Keep each SSML scene block under ~27 seconds (~42 words) to prevent Cloud TTS
+  5. Keep each SSML scene block under ~27 seconds (~45 words) to prevent Cloud TTS
      Studio voice buffer truncation.
   6. Inject an animated spotlight cursor (`#oase-demo-cursor`) so compact views
-     that fit inside 1920x1080 never trigger static-frame visual stall detectors.
+     and architectural plates never trigger static-frame visual stall detectors.
 """
 
 from __future__ import annotations
@@ -40,12 +40,12 @@ CURSOR_JS = """
   style.textContent = `
     #oase-demo-cursor {
       position: fixed;
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: rgba(37, 99, 235, 0.35);
       border: 2.5px solid #2563eb;
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.75);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.85);
       pointer-events: none;
       z-index: 999999;
       transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1), top 0.65s cubic-bezier(0.22, 1, 0.36, 1);
@@ -53,7 +53,7 @@ CURSOR_JS = """
       top: 240px;
     }
     .oase-demo-focus {
-      outline: 2px solid #38bdf8 !important;
+      outline: 2.5px solid #38bdf8 !important;
       outline-offset: 3px !important;
       transition: outline 0.25s ease !important;
     }
@@ -221,7 +221,7 @@ def record_portal_scenes(
             x: int = 960,
             y: int = 360,
             scroll_y: int | None = None,
-            wait_ms: int = 1350,
+            wait_ms: int = 1450,
         ):
             page.evaluate(CURSOR_JS)
             page.evaluate(
@@ -261,77 +261,126 @@ def record_portal_scenes(
                 page.wait_for_timeout(min(1300, max(250, rem)))
             cur["end_ms"] = at_ms()
 
-        page.goto(f"{portal_url}/chapters.html", wait_until="networkidle")
+        page.goto(f"{portal_url}/chapters.html#why", wait_until="networkidle")
         page.evaluate(CURSOR_JS)
         page.wait_for_timeout(400)
 
-        s1 = mark(1, "Chapter 1: Campaign Seed & Co-Scientist Tournament")
-        page.click("#btn-ch1")
-        spotlight(".kpi-card", 0)
-        spotlight("#panel-ch1 tr", 1)
-        spotlight("#panel-ch1 tr", 2)
-        spotlight("#panel-ch1 .terminal", 0)
-        page.click("a[href='finding_findings_computational-biology_WO-001_md.html']")
-        page.wait_for_load_state("networkidle")
-        spotlight("table tr", 1, scroll_y=240)
-        page.goto(f"{portal_url}/artifact_hypotheses.html", wait_until="networkidle")
-        active_pace_to_end(s1, [("table tr", 1), ("table tr", 2), ("pre, code, p", 0)])
+        s1 = mark(1, "Why Single-Player Chatbot Science Fails Governance")
+        page.click("#btn-why")
+        spotlight("#plate-challenges", 0)
+        spotlight("#why-row-1", 0)
+        spotlight("#why-row-2", 0)
+        spotlight("#why-row-3", 0)
+        spotlight("#why-row-4", 0)
+        spotlight("#plate-thumb", 0)
+        active_pace_to_end(
+            s1,
+            [
+                ("#why-row-1", 0),
+                ("#why-row-2", 0),
+                ("#why-row-3", 0),
+                ("#why-row-4", 0),
+                ("#plate-challenges", 0),
+            ],
+        )
 
-        s2 = mark(2, "Chapter 2: Stage 1 Target Validation & Liver Specificity")
-        page.goto(f"{portal_url}/chapters.html#ch2", wait_until="networkidle")
+        s2 = mark(2, "Scion + OASE Value Proposition & Multi-Model Projects")
+        page.click("#btn-scion")
+        spotlight("#plate-benefits", 0)
+        spotlight("#scion-card-1", 0)
+        spotlight("#scion-card-2", 0)
+        spotlight("#scion-card-3", 0)
+        spotlight(".kpi-card", 0)
+        active_pace_to_end(
+            s2,
+            [
+                ("#scion-card-1", 0),
+                ("#scion-card-2", 0),
+                ("#scion-card-3", 0),
+                ("#plate-benefits", 0),
+            ],
+        )
+
+        s3 = mark(3, "4-Tier Agent Roster, 9-State Work Orders & Two-Phase Latch")
+        spotlight("#plate-arch", 0)
+        spotlight("#scion-card-4", 0)
+        spotlight("#arch-row-1", 0)
+        spotlight("#arch-row-2", 0)
+        spotlight("#arch-row-3", 0)
+        active_pace_to_end(
+            s3,
+            [
+                ("#plate-arch", 0),
+                ("#arch-row-1", 0),
+                ("#arch-row-2", 0),
+                ("#arch-row-3", 0),
+                ("#scion-card-4", 0),
+            ],
+        )
+
+        s4 = mark(4, "Stages 0-1: Hypothesis Tournament & Human Genetics (WO-001..003)")
+        page.click("#btn-ch1")
+        spotlight("#panel-ch1 tr", 1)
+        spotlight("#panel-ch1 .terminal", 0)
         page.click("#btn-ch2")
         spotlight("#panel-ch2 tr", 1)
         spotlight("#panel-ch2 tr", 2)
-        spotlight("#panel-ch2 .terminal", 0)
+        spotlight("#panel-ch2 .relay-box", 0)
         page.click("a[href='finding_findings_computational-biology_WO-002_md.html']")
         page.wait_for_load_state("networkidle")
-        spotlight("li, p", 2, scroll_y=260)
-        page.goto(f"{portal_url}/finding_findings_computational-biology_WO-003_md.html", wait_until="networkidle")
-        active_pace_to_end(s2, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
+        active_pace_to_end(s4, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
 
-        s3 = mark(3, "Chapter 3: Stage 2 Structural Biology & Allosteric Docking")
+        s5 = mark(5, "Stages 2-4: Allosteric Co-Folding & Catching the hERG Trap (WO-004..007)")
         page.goto(f"{portal_url}/chapters.html#ch3", wait_until="networkidle")
         page.click("#btn-ch3")
-        spotlight("#panel-ch3 tr", 1)
+        spotlight("#panel-ch3 tr", 2)
         spotlight("#panel-ch3 tr", 3)
-        spotlight("#panel-ch3 .terminal", 0)
-        page.click("a[href='finding_findings_structural-biology_WO-004_md.html']")
-        page.wait_for_load_state("networkidle")
-        spotlight("li, p", 2, scroll_y=280)
-        page.goto(f"{portal_url}/finding_findings_computational-chemistry_WO-005_md.html", wait_until="networkidle")
-        active_pace_to_end(s3, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
-
-        s4 = mark(4, "Chapter 4: Stage 3-4 DMTA Lead Optimization & hERG Remediation")
-        page.goto(f"{portal_url}/chapters.html#ch4", wait_until="networkidle")
         page.click("#btn-ch4")
         spotlight("#panel-ch4 tr", 1)
         spotlight("#panel-ch4 tr", 2)
         spotlight("#panel-ch4 .terminal", 0)
         page.click("a[href='finding_findings_medicinal-chemistry_WO-006_md.html']")
         page.wait_for_load_state("networkidle")
-        spotlight("li, p", 2, scroll_y=260)
-        page.goto(f"{portal_url}/finding_findings_admet-dmpk_WO-007_md.html", wait_until="networkidle")
-        active_pace_to_end(s4, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
+        active_pace_to_end(s5, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
 
-        s5 = mark(5, "Chapter 5: Mechanical Governance Drills & Verification")
+        s6 = mark(6, "Mechanical Governance Teeth: 4 Adversarial Tamper Drills")
         page.goto(f"{portal_url}/chapters.html#ch5", wait_until="networkidle")
         page.click("#btn-ch5")
         spotlight("#panel-ch5 tr", 1)
         spotlight("#panel-ch5 tr", 2)
         spotlight("#panel-ch5 tr", 3)
+        spotlight("#panel-ch5 tr", 4)
         spotlight("#panel-ch5 .terminal", 0)
         page.click("a[href='workorder_WO-005_r1.html']")
         page.wait_for_load_state("networkidle")
-        active_pace_to_end(s5, [("table tr, li, p", 1), ("table tr, li, p", 3), ("pre, code", 0)])
+        active_pace_to_end(s6, [("table tr, li, p", 1), ("table tr, li, p", 3), ("pre, code", 0)])
 
-        s6 = mark(6, "Chapter 6: Static Evidence Portal & Stage-Gate Dossier")
+        s7 = mark(7, "The Complete Picture & 31-Page Stage-Gate Dossier (WO-008)")
+        page.goto(f"{portal_url}/chapters.html#ch6", wait_until="networkidle")
+        page.click("#btn-ch6")
+        spotlight("#plate-complete", 0)
         page.goto(f"{portal_url}/index.html", wait_until="networkidle")
         spotlight("a, tr, li", 2, scroll_y=240)
         page.goto(f"{portal_url}/finding_findings_regulatory_WO-008_md.html", wait_until="networkidle")
-        spotlight("li, p", 2, scroll_y=280)
+        active_pace_to_end(s7, [("li, p", 1), ("li, p", 3), ("li, p", 5), ("table tr", 1)])
+
+        s8 = mark(8, "Architecture Scorecard & Field Takeaways")
         page.goto(f"{portal_url}/chapters.html#ch6", wait_until="networkidle")
         page.click("#btn-ch6")
-        active_pace_to_end(s6, [("#panel-ch6 tr", 1), ("#panel-ch6 tr", 2), ("#panel-ch6 tr", 3), ("#panel-ch6 tr", 4)])
+        spotlight("#score-row-1", 0)
+        spotlight("#score-row-2", 0)
+        spotlight("#score-row-3", 0)
+        spotlight("#score-row-4", 0)
+        spotlight("#plate-complete", 0)
+        active_pace_to_end(
+            s8,
+            [
+                ("#score-row-1", 0),
+                ("#score-row-2", 0),
+                ("#score-row-3", 0),
+                ("#score-row-4", 0),
+            ],
+        )
 
         video_obj = page.video
         page.close()

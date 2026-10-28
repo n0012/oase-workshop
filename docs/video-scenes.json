@@ -1,42 +1,54 @@
 {
-  "title": "GCP-OASE Workshop: Governed Pre-Clinical R&D on Google Cloud",
-  "scene_count": 6,
+  "title": "GCP-OASE & Scion: Team-Based, Provenance-Locked Pre-Clinical R&D on Google Cloud",
+  "scene_count": 8,
   "scenes": [
     {
       "number": 1,
-      "title": "Chapter 1: Campaign Seed & Co-Scientist Tournament",
-      "ssml": "<speak>Welcome to the Google Cloud <say-as interpret-as=\"characters\">OASE</say-as> Workshop, the Open Agentic Science Engine, running live in Argolis. In Chapter 1, the Science Engine ingests a twenty-eight match Co-Scientist <phoneme alphabet=\"ipa\" ph=\"ˈiːloʊ\">Elo</phoneme> tournament for oral P-C-S-K-9 inhibition, selecting the allosteric groove series at an <phoneme alphabet=\"ipa\" ph=\"ˈiːloʊ\">Elo</phoneme> score of sixteen forty-two.</speak>",
-      "voiceover": "Welcome to the Google Cloud O.A.S.E. Workshop, the Open Agentic Science Engine, running live in Argolis. In Chapter 1, the Science Engine ingests a 28-match Co-Scientist Elo tournament for oral PCSK9 inhibition, selecting the allosteric groove series at an Elo score of 1642."
+      "title": "Why Single-Player Chatbot Science Fails Governance",
+      "ssml": "<speak>Welcome to the Google Cloud Scion and <say-as interpret-as=\"characters\">OASE</say-as> Workshop, the Open Agentic Science Engine. Standard drug discovery pipelines and single-player chatbots break under pharma governance: rigid workflows drop targets when bulk omics surprises them, while unguarded models hallucinate metrics, drop negative caveats, and reinforce single-vendor blind spots.</speak>",
+      "voiceover": "Welcome to the Google Cloud Scion and O.A.S.E. Workshop, the Open Agentic Science Engine. Standard drug discovery pipelines and single-player chatbots break under pharma governance: rigid workflows drop targets when bulk omics surprises them, while unguarded models hallucinate metrics, drop negative caveats, and reinforce single-vendor blind spots."
     },
     {
       "number": 2,
-      "title": "Chapter 2: Stage 1 Target Validation & Liver Specificity",
-      "ssml": "<speak>In Chapter 2, the Science Engine validates human genetics and tissue specificity across Work Orders two and three. Nomad confirms P-C-S-K-9 is tolerant to loss of function, OpenTargets confirms familial hypercholesterolemia association at zero point eight six live, and our mandatory relay flags extra-hepatic expression for downstream toxicology.</speak>",
-      "voiceover": "In Chapter 2, the Science Engine validates human genetics and tissue specificity across Work Orders 2 and 3. gnomAD confirms PCSK9 is tolerant to loss of function, OpenTargets confirms familial hypercholesterolemia association at 0.86 live, and our mandatory relay flags extra-hepatic expression for downstream toxicology."
+      "title": "Scion + OASE Value Proposition & Multi-Model Projects",
+      "ssml": "<speak>Google Cloud Scion and the Science Engine replace isolated chatbots with team-based, multi-model discovery. Scion's central Hub coordinates shared Projects across Gemini Enterprise, Antigravity, and the C-L-I. Model-agnostic Harnesses let Gemini, Claude, and OpenAI cross-check each other, while Scion's suspended phase pauses and resumes sessions across multi-week wet-lab C-R-O assays.</speak>",
+      "voiceover": "Google Cloud Scion and the Science Engine replace isolated chatbots with team-based, multi-model discovery. Scion's central Hub coordinates shared Projects across Gemini Enterprise, Antigravity, and the CLI. Model-agnostic Harnesses let Gemini, Claude, and OpenAI cross-check each other, while Scion's suspended phase pauses and resumes sessions across multi-week wet-lab CRO assays."
     },
     {
       "number": 3,
-      "title": "Chapter 3: Stage 2 Structural Biology & Allosteric Docking",
-      "ssml": "<speak>In Chapter 3, the Science Engine moves to structural biology and pocket druggability. AlphaFold three models the P-C-S-K-9 interface at zero point eight four confidence, while F-pocket proves the cryptic allosteric groove is druggable at zero point six eight and docks our lead scaffold in AutoDock Vina at minus nine point four kilocalories per mole.</speak>",
-      "voiceover": "In Chapter 3, the Science Engine moves to structural biology and pocket druggability. AlphaFold 3 models the PCSK9 interface at 0.84 confidence, while fpocket proves the cryptic allosteric groove is druggable at 0.68 and docks our lead scaffold in AutoDock Vina at -9.4 kcal/mol."
+      "title": "4-Tier Agent Roster, 9-State Work Orders & Two-Phase Latch",
+      "ssml": "<speak>Inside each Scion Project, twenty-two specialized templates separate governance authority, operations, eight domain specialists, and independent reviewers on a push-only message bus. Specialists never judge raw data in prose: every tool runs in two phases, writing immutable files with S-H-A two-fifty-six sidecars before computing offline verdicts against thirty-six versioned threshold sets.</speak>",
+      "voiceover": "Inside each Scion Project, 22 specialized templates separate governance authority, operations, 8 domain specialists, and independent reviewers on a push-only message bus. Specialists never judge raw data in prose: every tool runs in two phases, writing immutable files with SHA-256 sidecars before computing offline verdicts against 36 versioned threshold sets."
     },
     {
       "number": 4,
-      "title": "Chapter 4: Stage 3-4 DMTA Lead Optimization & hERG Remediation",
-      "ssml": "<speak>Chapter 4 shows where the Science Engine catches optimism bias. Our top-docking hit, A-zero-two, triggers three critical <phoneme alphabet=\"ipa\" ph=\"ˈædmɛt\">ADMET</phoneme> liabilities, including a <phoneme alphabet=\"ipa\" ph=\"hɜːrɡ\">hERG</phoneme> potassium channel alert at log P five point zero nine. The Science Engine disqualifies A-zero-two, substitutes a polar oxadiazole in A-zero-three at log P three point zero one, and nominates candidate zero-one-four for once-daily oral dosing.</speak>",
-      "voiceover": "Chapter 4 shows where the Science Engine catches optimism bias. Our top-docking hit, A02, triggers three critical ADMET liabilities, including a hERG potassium channel alert at LogP 5.09. The Science Engine disqualifies A02, substitutes a polar oxadiazole in A03 at LogP 3.01, and nominates candidate 014 for once-daily oral dosing."
+      "title": "Stages 0-1: Hypothesis Tournament & Human Genetics (WO-001..003)",
+      "ssml": "<speak>Now let's watch this architecture run our oral P-C-S-K-9 campaign live in Argolis. In Stages zero and one, the Science Engine ingests a twenty-eight match Co-Scientist <phoneme alphabet=\"ipa\" ph=\"ˈiːloʊ\">Elo</phoneme> tournament at sixteen forty-two, confirms Nomad loss-of-function tolerance and OpenTargets familial hypercholesterolemia association at zero point eight six, and forces mandatory toxicology relays forward.</speak>",
+      "voiceover": "Now let's watch this architecture run our oral PCSK9 campaign live in Argolis. In Stages 0 and 1, the Science Engine ingests a 28-match Co-Scientist Elo tournament at 1642, confirms gnomAD loss-of-function tolerance and OpenTargets familial hypercholesterolemia association at 0.86, and forces mandatory toxicology relays forward."
     },
     {
       "number": 5,
-      "title": "Chapter 5: Mechanical Governance Drills & Verification",
-      "ssml": "<speak>In Chapter 5, we test the mechanical teeth of the Science Engine validator. Every work order must pass ten deterministic provenance, citation, threshold, and relay checks. Across our four adversarial tamper drills, corrupting a file hash, inflating a docking score, deleting a risk relay, or stripping a threshold set immediately fails validation.</speak>",
-      "voiceover": "In Chapter 5, we test the mechanical teeth of the Science Engine validator. Every work order must pass 10 deterministic provenance, citation, threshold, and relay checks. Across our four adversarial tamper drills, corrupting a file hash, inflating a docking score, deleting a risk relay, or stripping a threshold set immediately fails validation."
+      "title": "Stages 2-4: Allosteric Co-Folding & Catching the hERG Trap (WO-004..007)",
+      "ssml": "<speak>In Stages two through four, AlphaFold three and F-pocket confirm a druggable allosteric groove at zero point six eight, and AutoDock Vina scores candidate A-zero-two at minus nine point four kilocalories per mole. Where a chatbot would declare victory, the Science Engine flags A-zero-two for three <phoneme alphabet=\"ipa\" ph=\"ˈædmɛt\">ADMET</phoneme> and <phoneme alphabet=\"ipa\" ph=\"hɜːrɡ\">hERG</phoneme> alerts, pivots to polar oxadiazole A-zero-three, and nominates candidate zero-one-four for once-daily oral dosing.</speak>",
+      "voiceover": "In Stages 2 through 4, AlphaFold 3 and fpocket confirm a druggable allosteric groove at 0.68, and AutoDock Vina scores candidate A02 at -9.4 kcal/mol. Where a chatbot would declare victory, the Science Engine flags A02 for 3 ADMET and hERG alerts, pivots to polar oxadiazole A03, and nominates candidate 014 for once-daily oral dosing."
     },
     {
       "number": 6,
-      "title": "Chapter 6: Static Evidence Portal & Stage-Gate Dossier",
-      "ssml": "<speak>Finally, in Chapter 6, the Science Engine compiles all eight work orders into a thirty-one page Evidence Portal and stage-gate nomination dossier. Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace wet-lab biology, but the Science Engine eliminates silent narrative drift and makes every scientific claim auditable.</speak>",
-      "voiceover": "Finally, in Chapter 6, the Science Engine compiles all 8 work orders into a 31-page Evidence Portal and stage-gate nomination dossier. Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace wet-lab biology, but the Science Engine eliminates silent narrative drift and makes every scientific claim auditable."
+      "title": "Mechanical Governance Teeth: 4 Adversarial Tamper Drills",
+      "ssml": "<speak>Next, we test the mechanical teeth of Dual Validation. Every work order must pass ten deterministic provenance, citation, threshold, and relay checks before the Science Program Lead can promote it. Across four adversarial drills, flipping a file byte, inflating a docking score, deleting a disorder caveat, or stripping a threshold set immediately halts promotion.</speak>",
+      "voiceover": "Next, we test the mechanical teeth of Dual Validation. Every work order must pass 10 deterministic provenance, citation, threshold, and relay checks before the Science Program Lead can promote it. Across 4 adversarial drills, flipping a file byte, inflating a docking score, deleting a disorder caveat, or stripping a threshold set immediately halts promotion."
+    },
+    {
+      "number": 7,
+      "title": "The Complete Picture & 31-Page Stage-Gate Dossier (WO-008)",
+      "ssml": "<speak>In our final stage, the Project Curator compiles all eight validated work orders and eleven mandatory relays into a thirty-one page Static Evidence Portal and candidate nomination dossier. Every claim in the regulatory narrative resolves within one percent of its underlying S-H-A two-fifty-six artifact on Google Cloud.</speak>",
+      "voiceover": "In our final stage, the Project Curator compiles all 8 validated work orders and 11 mandatory relays into a 31-page Static Evidence Portal and candidate nomination dossier. Every claim in the regulatory narrative resolves within 1% of its underlying SHA-256 artifact on Google Cloud."
+    },
+    {
+      "number": 8,
+      "title": "Architecture Scorecard & Field Takeaways",
+      "ssml": "<speak>Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace physical wet-lab biology, but combining Google Cloud Scion's multi-model projects with the Science Engine's provenance gates eliminates silent narrative drift and makes agentic discovery auditable.</speak>",
+      "voiceover": "Running this full campaign live in Argolis confirms our core architectural takeaway: mechanical latches cannot replace physical wet-lab biology, but combining Google Cloud Scion's multi-model projects with the Science Engine's provenance gates eliminates silent narrative drift and makes agentic discovery auditable."
     }
   ]
 }
