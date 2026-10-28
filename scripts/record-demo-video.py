@@ -118,36 +118,113 @@ def synthesize_ssml_scenes(
     credentials_path: str | None = None,
 ) -> dict:
     audio_dir.mkdir(parents=True, exist_ok=True)
+    parts_dir = audio_dir / "parts"
+    parts_dir.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     token = get_bearer_token(credentials_path)
 
+    silence_mp3 = parts_dir / "silence_140ms.mp3"
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-f",
+            "lavfi",
+            "-i",
+            "anullsrc=r=44100:cl=stereo",
+            "-t",
+            "0.14",
+            "-c:a",
+            "libmp3lame",
+            "-b:a",
+            "192k",
+            str(silence_mp3),
+        ],
+        check=True,
+        capture_output=True,
+    )
+
     for scene in manifest["scenes"]:
         num = scene["number"]
-        ssml = scene["ssml"]
-        body = {
-            "input": {"ssml": ssml},
-            "voice": {"languageCode": "en-US", "name": "en-US-Studio-O"},
-            "audioConfig": {
-                "audioEncoding": "MP3",
-                "speakingRate": 0.96,
-                "pitch": 0,
-            },
-        }
-        req = urllib.request.Request(
-            "https://texttospeech.googleapis.com/v1/text:synthesize",
-            data=json.dumps(body).encode("utf-8"),
-            headers={
-                "Authorization": f"Bearer {token}",
-                "Content-Type": "application/json",
-                "x-goog-user-project": quota_project,
-            },
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            res = json.loads(resp.read().decode("utf-8"))
-        mp3_bytes = base64.b64decode(res["audioContent"])
+        sentences = scene.get("sentences_ssml") or [scene["ssml"]]
+        part_files: list[Path] = []
+        for idx, s_ssml in enumerate(sentences):
+            body = {
+                "input": {"ssml": s_ssml},
+                "voice": {"languageCode": "en-US", "name": "en-US-Neural2-F"},
+                "audioConfig": {
+                    "audioEncoding": "MP3",
+                    "speakingRate": 1.10,
+                    "pitch": 0,
+                    "sampleRateHertz": 44100,
+                },
+            }
+            req = urllib.request.Request(
+                "https://texttospeech.googleapis.com/v1/text:synthesize",
+                data=json.dumps(body).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {token}",
+                    "Content-Type": "application/json",
+                    "x-goog-user-project": quota_project,
+                },
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                res = json.loads(resp.read().decode("utf-8"))
+            raw_mp3 = parts_dir / f"s{num:02d}_p{idx:02d}_raw.mp3"
+            raw_mp3.write_bytes(base64.b64decode(res["audioContent"]))
+            norm_mp3 = parts_dir / f"s{num:02d}_p{idx:02d}.mp3"
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-i",
+                    str(raw_mp3),
+                    "-ar",
+                    "44100",
+                    "-ac",
+                    "2",
+                    "-c:a",
+                    "libmp3lame",
+                    "-b:a",
+                    "192k",
+                    str(norm_mp3),
+                ],
+                check=True,
+                capture_output=True,
+            )
+            part_files.append(norm_mp3)
+            if idx < len(sentences) - 1:
+                part_files.append(silence_mp3)
+
         out_file = audio_dir / f"scene-{num:02d}.mp3"
-        out_file.write_bytes(mp3_bytes)
+        concat_txt = parts_dir / f"s{num:02d}_concat.txt"
+        concat_txt.write_text(
+            "".join(f"file '{p}'\n" for p in part_files), encoding="utf-8"
+        )
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-f",
+                "concat",
+                "-safe",
+                "0",
+                "-i",
+                str(concat_txt),
+                "-c:a",
+                "libmp3lame",
+                "-b:a",
+                "192k",
+                "-ar",
+                "44100",
+                "-ac",
+                "2",
+                str(out_file),
+            ],
+            check=True,
+            capture_output=True,
+        )
         probe = subprocess.run(
             [
                 "ffprobe",

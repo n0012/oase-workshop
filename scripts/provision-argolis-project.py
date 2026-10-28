@@ -45,6 +45,9 @@ REQUIRED_APIS = [
 BILLING_DEPENDENT_APIS = [
     "aiplatform.googleapis.com",
     "compute.googleapis.com",
+    "run.googleapis.com",
+    "iap.googleapis.com",
+    "cloudbuild.googleapis.com",
     "storage.googleapis.com",
     "bigquery.googleapis.com",
     "texttospeech.googleapis.com",
