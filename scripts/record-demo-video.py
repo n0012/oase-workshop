@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repeatable 8-Scene (3-Act) GCP-OASE & Scion Demo Video Generator (TTS + Playwright + FFmpeg).
+"""Repeatable 8-Scene (3-Act) GCP-OASE & Scion Demo Video Generator (Gemini TTS Charon + Smooth Playwright + FFmpeg).
 
 Usage:
   python3 scripts/record-demo-video.py \
@@ -7,18 +7,15 @@ Usage:
     --work-dir /tmp/oase-video-build \
     --quota-project my-oase-workshop
 
-Pronunciation & Audio Rules Codified:
-  1. First mention of OASE uses `<say-as interpret-as="characters">OASE</say-as>`
-     ("O-A-S-E") and refers to it as "the Science Engine" thereafter.
-  2. Elo ratings use IPA `<phoneme alphabet="ipa" ph="ˈiːloʊ">Elo</phoneme>` ("ee-low").
-  3. ADMET and hERG use IPA `<phoneme>` tags (`ˈædmɛt`, `hɜːrɡ`).
-  4. Avoid `<break>` tags inside `en-US-Studio-O` SSML blocks, as Studio neural
-     prosody can overlap consecutive sentences across explicit `<break>` boundaries;
-     rely on natural sentence periods instead.
-  5. Keep each SSML scene block under ~27 seconds (~45 words) to prevent Cloud TTS
-     Studio voice buffer truncation.
-  6. Inject an animated spotlight cursor (`#oase-demo-cursor`) so compact views
-     and architectural plates never trigger static-frame visual stall detectors.
+Pronunciation & Pacing Rules Codified:
+  1. Uses native Vertex Gemini TTS (`gemini-2.5-flash-tts`, voice `Charon`) at 24kHz PCM,
+     transcoded to 44.1kHz stereo MP3.
+  2. First mention of OASE is spoken as "O-A-S-E" and referred to as "the Science Engine" thereafter.
+  3. Phonetic guidance in narration text ensures natural pronunciation of Elo ("Ee-low"),
+     gnomAD ("Nomad"), ADMET ("AD-met"), and hERG ("hurg").
+  4. Smooth, simple screen motion: each scene divides its exact audio duration into 3 calm,
+     linear top-to-bottom steps (~8-10s per step) with a slow 2.2s cubic-bezier glide, fixed
+     horizontal alignment (no left-right zig-zagging), and a subtle 3px top progress bar.
 """
 
 from __future__ import annotations
@@ -31,41 +28,69 @@ import shutil
 import subprocess
 import time
 import urllib.request
+import wave
 from pathlib import Path
 
-CURSOR_JS = """
-(() => {
-  if (document.getElementById('oase-demo-cursor')) return;
-  const style = document.createElement('style');
-  style.textContent = `
-    #oase-demo-cursor {
-      position: fixed;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(37, 99, 235, 0.35);
-      border: 2.5px solid #2563eb;
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.85);
-      pointer-events: none;
-      z-index: 999999;
-      transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1), top 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-      left: 960px;
-      top: 240px;
-    }
-    .oase-demo-focus {
-      outline: 2.5px solid #38bdf8 !important;
-      outline-offset: 3px !important;
-      transition: outline 0.25s ease !important;
-    }
-  `;
-  document.head.appendChild(style);
-  const cur = document.createElement('div');
-  cur.id = 'oase-demo-cursor';
-  document.body.appendChild(cur);
-})();
+SMOOTH_UI_JS = """
+(durMs) => {
+  if (!document.getElementById('oase-smooth-style')) {
+    const style = document.createElement('style');
+    style.id = 'oase-smooth-style';
+    style.textContent = `
+      #oase-demo-cursor {
+        position: fixed;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.22);
+        border: 2px solid rgba(37, 99, 235, 0.75);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+        pointer-events: none;
+        z-index: 999999;
+        transition: top 2.2s cubic-bezier(0.25, 0.1, 0.25, 1), left 2.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        left: 520px;
+        top: 260px;
+      }
+      #oase-scene-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #2563eb, #38bdf8);
+        z-index: 1000000;
+        width: 0%;
+        pointer-events: none;
+      }
+      .oase-demo-focus {
+        outline: 2px solid rgba(56, 189, 248, 0.75) !important;
+        outline-offset: 4px !important;
+        transition: outline 0.6s ease !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  if (!document.getElementById('oase-demo-cursor')) {
+    const cur = document.createElement('div');
+    cur.id = 'oase-demo-cursor';
+    document.body.appendChild(cur);
+  }
+  let bar = document.getElementById('oase-scene-progress');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'oase-scene-progress';
+    document.body.appendChild(bar);
+  }
+  if (durMs && durMs > 0) {
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    void bar.offsetWidth;
+    bar.style.transition = `width ${durMs}ms linear`;
+    bar.style.width = '100%';
+  }
+}
 """
 
-MOVE_JS = """
+GLIDE_TO_JS = """
 (arg) => {
   const cur = document.getElementById('oase-demo-cursor');
   document.querySelectorAll('.oase-demo-focus').forEach(el => el.classList.remove('oase-demo-focus'));
@@ -77,18 +102,20 @@ MOVE_JS = """
       el.classList.add('oase-demo-focus');
       const r = el.getBoundingClientRect();
       if (cur) {
-        cur.style.left = Math.max(40, Math.min(1860, r.left + Math.min(r.width * 0.35, 260))) + 'px';
-        cur.style.top = Math.max(40, Math.min(1020, r.top + r.height * 0.5)) + 'px';
+        const targetX = arg.x || 520;
+        const targetY = Math.max(120, Math.min(920, Math.round(r.top + Math.min(r.height * 0.45, 220))));
+        cur.style.left = targetX + 'px';
+        cur.style.top = targetY + 'px';
       }
       return;
     }
   }
-  if (cur && arg.x && arg.y) {
-    cur.style.left = arg.x + 'px';
-    cur.style.top = arg.y + 'px';
-  }
   if (typeof arg.scrollY === 'number') {
     window.scrollTo({top: arg.scrollY, behavior: 'smooth'});
+  }
+  if (cur && arg.y) {
+    cur.style.left = (arg.x || 520) + 'px';
+    cur.style.top = arg.y + 'px';
   }
 }
 """
@@ -111,115 +138,82 @@ def get_bearer_token(credentials_path: str | None) -> str:
     return out
 
 
-def synthesize_ssml_scenes(
+def synthesize_gemini_tts_scenes(
     manifest_path: Path,
     audio_dir: Path,
     quota_project: str,
+    voice_name: str = "Charon",
+    model_name: str = "gemini-2.5-flash-tts",
+    location: str = "us-central1",
     credentials_path: str | None = None,
 ) -> dict:
     audio_dir.mkdir(parents=True, exist_ok=True)
-    parts_dir = audio_dir / "parts"
-    parts_dir.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     token = get_bearer_token(credentials_path)
-
-    silence_mp3 = parts_dir / "silence_140ms.mp3"
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-f",
-            "lavfi",
-            "-i",
-            "anullsrc=r=44100:cl=stereo",
-            "-t",
-            "0.14",
-            "-c:a",
-            "libmp3lame",
-            "-b:a",
-            "192k",
-            str(silence_mp3),
-        ],
-        check=True,
-        capture_output=True,
+    url = (
+        f"https://{location}-aiplatform.googleapis.com/v1/projects/{quota_project}"
+        f"/locations/{location}/publishers/google/models/{model_name}:generateContent"
     )
 
     for scene in manifest["scenes"]:
         num = scene["number"]
-        sentences = scene.get("sentences_ssml") or [scene["ssml"]]
-        part_files: list[Path] = []
-        for idx, s_ssml in enumerate(sentences):
-            body = {
-                "input": {"ssml": s_ssml},
-                "voice": {"languageCode": "en-US", "name": "en-US-Neural2-F"},
-                "audioConfig": {
-                    "audioEncoding": "MP3",
-                    "speakingRate": 1.10,
-                    "pitch": 0,
-                    "sampleRateHertz": 44100,
+        script = scene.get("tts_script") or scene["voiceover"]
+        prompt = (
+            "Read the following narration script verbatim in a calm, smooth, authoritative "
+            "technical presenter voice. Speak at a steady, natural pace. Output only the spoken script:\n\n"
+            f"{script}"
+        )
+        body = {
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "responseModalities": ["AUDIO"],
+                "speechConfig": {
+                    "voiceConfig": {
+                        "prebuiltVoiceConfig": {"voiceName": voice_name}
+                    }
                 },
-            }
-            req = urllib.request.Request(
-                "https://texttospeech.googleapis.com/v1/text:synthesize",
-                data=json.dumps(body).encode("utf-8"),
-                headers={
-                    "Authorization": f"Bearer {token}",
-                    "Content-Type": "application/json",
-                    "x-goog-user-project": quota_project,
-                },
-                method="POST",
-            )
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                res = json.loads(resp.read().decode("utf-8"))
-            raw_mp3 = parts_dir / f"s{num:02d}_p{idx:02d}_raw.mp3"
-            raw_mp3.write_bytes(base64.b64decode(res["audioContent"]))
-            norm_mp3 = parts_dir / f"s{num:02d}_p{idx:02d}.mp3"
-            subprocess.run(
-                [
-                    "ffmpeg",
-                    "-y",
-                    "-i",
-                    str(raw_mp3),
-                    "-ar",
-                    "44100",
-                    "-ac",
-                    "2",
-                    "-c:a",
-                    "libmp3lame",
-                    "-b:a",
-                    "192k",
-                    str(norm_mp3),
-                ],
-                check=True,
-                capture_output=True,
-            )
-            part_files.append(norm_mp3)
-            if idx < len(sentences) - 1:
-                part_files.append(silence_mp3)
+            },
+        }
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(body).encode("utf-8"),
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            res = json.loads(resp.read().decode("utf-8"))
+        pcm_bytes = b""
+        for cand in res.get("candidates", []):
+            for part in cand.get("content", {}).get("parts", []):
+                inl = part.get("inlineData")
+                if inl and inl.get("data"):
+                    pcm_bytes += base64.b64decode(inl["data"])
+
+        wav_file = audio_dir / f"scene-{num:02d}.wav"
+        with wave.open(str(wav_file), "wb") as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(2)
+            wf.setframerate(24000)
+            wf.writeframes(pcm_bytes)
 
         out_file = audio_dir / f"scene-{num:02d}.mp3"
-        concat_txt = parts_dir / f"s{num:02d}_concat.txt"
-        concat_txt.write_text(
-            "".join(f"file '{p}'\n" for p in part_files), encoding="utf-8"
-        )
         subprocess.run(
             [
                 "ffmpeg",
                 "-y",
-                "-f",
-                "concat",
-                "-safe",
-                "0",
                 "-i",
-                str(concat_txt),
-                "-c:a",
-                "libmp3lame",
-                "-b:a",
-                "192k",
+                str(wav_file),
                 "-ar",
                 "44100",
                 "-ac",
                 "2",
+                "-c:a",
+                "libmp3lame",
+                "-b:a",
+                "192k",
                 str(out_file),
             ],
             check=True,
@@ -243,7 +237,9 @@ def synthesize_ssml_scenes(
         dur_ms = int(float(probe.stdout.strip()) * 1000)
         scene["audio_path"] = str(out_file)
         scene["audio_duration_ms"] = dur_ms
-        print(f"✓ TTS Scene {num}: {dur_ms/1000:.1f}s -> {out_file.name}")
+        scene["tts_model"] = model_name
+        scene["tts_voice"] = voice_name
+        print(f"✓ Gemini TTS ({voice_name}) Scene {num}: {dur_ms/1000:.1f}s -> {out_file.name}")
 
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest
@@ -254,15 +250,13 @@ def record_portal_scenes(
 ) -> Path:
     from playwright.sync_api import sync_playwright
 
-    shots_dir = work_dir / "shots"
     raw_video_dir = work_dir / "raw_video"
-    shots_dir.mkdir(parents=True, exist_ok=True)
     if raw_video_dir.exists():
         shutil.rmtree(raw_video_dir)
     raw_video_dir.mkdir(parents=True, exist_ok=True)
 
     audio_dur_ms = {
-        s["number"]: int(s.get("audio_duration_ms") or 22000)
+        s["number"]: int(s.get("audio_duration_ms") or 28000)
         for s in manifest["scenes"]
     }
     scenes_out = []
@@ -292,170 +286,184 @@ def record_portal_scenes(
         def at_ms() -> int:
             return int((time.monotonic() - t0) * 1000)
 
-        def spotlight(
-            sel: str | None = None,
-            idx: int = 0,
-            x: int = 960,
-            y: int = 360,
-            scroll_y: int | None = None,
-            wait_ms: int = 1450,
-        ):
-            page.evaluate(CURSOR_JS)
-            page.evaluate(
-                MOVE_JS,
-                {"sel": sel, "idx": idx, "x": x, "y": y, "scrollY": scroll_y},
-            )
-            page.wait_for_timeout(wait_ms)
+        def run_calm_scene(num: int, title: str, steps: list[dict]):
+            start = at_ms()
+            target_ms = audio_dur_ms[num] + 250
+            step_count = len(steps)
+            step_budget = target_ms // step_count
 
-        def mark(num: int, title: str) -> dict:
-            cur = {"number": num, "title": title, "start_ms": at_ms()}
-            scenes_out.append(cur)
-            return cur
+            for i, st in enumerate(steps):
+                step_start = at_ms()
+                if "goto" in st:
+                    page.goto(st["goto"], wait_until="networkidle")
+                    rem_dur = max(1000, (start + target_ms) - at_ms())
+                    page.evaluate(SMOOTH_UI_JS, rem_dur)
+                if "click" in st:
+                    page.click(st["click"])
+                    page.wait_for_load_state("networkidle")
+                    rem_dur = max(1000, (start + target_ms) - at_ms())
+                    page.evaluate(SMOOTH_UI_JS, rem_dur)
+                if i == 0 and "goto" not in st and "click" not in st:
+                    page.evaluate(SMOOTH_UI_JS, target_ms)
 
-        def active_pace_to_end(
-            cur: dict, selectors: list[tuple[str, int]], pad_ms: int = 200
-        ):
-            num = cur["number"]
-            target_ms = audio_dur_ms.get(num, 22000) + pad_ms
-            step_idx = 0
-            while True:
-                elapsed = at_ms() - cur["start_ms"]
-                rem = target_ms - elapsed
-                if rem <= 0:
-                    break
-                sel, idx = selectors[step_idx % len(selectors)]
-                page.evaluate(CURSOR_JS)
                 page.evaluate(
-                    MOVE_JS,
+                    GLIDE_TO_JS,
                     {
-                        "sel": sel,
-                        "idx": idx,
-                        "x": 600 + (step_idx * 170) % 700,
-                        "y": 280 + (step_idx * 130) % 500,
+                        "sel": st.get("sel"),
+                        "idx": st.get("idx", 0),
+                        "x": st.get("x", 520),
+                        "y": st.get("y"),
+                        "scrollY": st.get("scrollY"),
                     },
                 )
-                step_idx += 1
-                page.wait_for_timeout(min(1300, max(250, rem)))
-            cur["end_ms"] = at_ms()
+                if i < step_count - 1:
+                    elapsed_step = at_ms() - step_start
+                    wait_ms = max(400, step_budget - elapsed_step)
+                    page.wait_for_timeout(wait_ms)
+                else:
+                    rem_total = (start + target_ms) - at_ms()
+                    if rem_total > 0:
+                        page.wait_for_timeout(rem_total)
+
+            end = at_ms()
+            scenes_out.append(
+                {"number": num, "title": title, "start_ms": start, "end_ms": end}
+            )
 
         page.goto(f"{portal_url}/chapters.html#why", wait_until="networkidle")
-        page.evaluate(CURSOR_JS)
-        page.wait_for_timeout(400)
+        page.wait_for_timeout(300)
 
-        s1 = mark(1, "Why Single-Player Chatbot Science Fails Governance")
-        page.click("#btn-why")
-        spotlight("#plate-challenges", 0)
-        spotlight("#why-row-1", 0)
-        spotlight("#why-row-2", 0)
-        spotlight("#why-row-3", 0)
-        spotlight("#why-row-4", 0)
-        spotlight("#plate-thumb", 0)
-        active_pace_to_end(
-            s1,
+        run_calm_scene(
+            1,
+            "Why Single-Player Chatbot Science Fails Governance",
             [
-                ("#why-row-1", 0),
-                ("#why-row-2", 0),
-                ("#why-row-3", 0),
-                ("#why-row-4", 0),
-                ("#plate-challenges", 0),
+                {"click": "#btn-why", "sel": "#plate-challenges", "idx": 0, "x": 520},
+                {"sel": "#why-row-1", "idx": 0, "x": 520},
+                {"sel": "#plate-thumb", "idx": 0, "x": 520},
             ],
         )
 
-        s2 = mark(2, "Scion + OASE Value Proposition & Multi-Model Projects")
-        page.click("#btn-scion")
-        spotlight("#plate-benefits", 0)
-        spotlight("#scion-card-1", 0)
-        spotlight("#scion-card-2", 0)
-        spotlight("#scion-card-3", 0)
-        spotlight(".kpi-card", 0)
-        active_pace_to_end(
-            s2,
+        run_calm_scene(
+            2,
+            "Scion + OASE Value Proposition & Multi-Model Projects",
             [
-                ("#scion-card-1", 0),
-                ("#scion-card-2", 0),
-                ("#scion-card-3", 0),
-                ("#plate-benefits", 0),
+                {"click": "#btn-scion", "sel": "#plate-benefits", "idx": 0, "x": 520},
+                {"sel": "#scion-card-1", "idx": 0, "x": 520},
+                {"sel": "#scion-card-3", "idx": 0, "x": 520},
             ],
         )
 
-        s3 = mark(3, "4-Tier Agent Roster, 9-State Work Orders & Two-Phase Latch")
-        spotlight("#plate-arch", 0)
-        spotlight("#scion-card-4", 0)
-        spotlight("#arch-row-1", 0)
-        spotlight("#arch-row-2", 0)
-        spotlight("#arch-row-3", 0)
-        active_pace_to_end(
-            s3,
+        run_calm_scene(
+            3,
+            "4-Tier Agent Roster, 9-State Work Orders & Two-Phase Latch",
             [
-                ("#plate-arch", 0),
-                ("#arch-row-1", 0),
-                ("#arch-row-2", 0),
-                ("#arch-row-3", 0),
-                ("#scion-card-4", 0),
+                {"sel": "#plate-arch", "idx": 0, "x": 520},
+                {"sel": "#arch-row-1", "idx": 0, "x": 520},
+                {"sel": "#scion-card-4", "idx": 0, "x": 520},
             ],
         )
 
-        s4 = mark(4, "Stages 0-1: Hypothesis Tournament & Human Genetics (WO-001..003)")
-        page.click("#btn-ch1")
-        spotlight("#panel-ch1 tr", 1)
-        spotlight("#panel-ch1 .terminal", 0)
-        page.click("#btn-ch2")
-        spotlight("#panel-ch2 tr", 1)
-        spotlight("#panel-ch2 tr", 2)
-        spotlight("#panel-ch2 .relay-box", 0)
-        page.click("a[href='finding_findings_computational-biology_WO-002_md.html']")
-        page.wait_for_load_state("networkidle")
-        active_pace_to_end(s4, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
-
-        s5 = mark(5, "Stages 2-4: Allosteric Co-Folding & Catching the hERG Trap (WO-004..007)")
-        page.goto(f"{portal_url}/chapters.html#ch3", wait_until="networkidle")
-        page.click("#btn-ch3")
-        spotlight("#panel-ch3 tr", 2)
-        spotlight("#panel-ch3 tr", 3)
-        page.click("#btn-ch4")
-        spotlight("#panel-ch4 tr", 1)
-        spotlight("#panel-ch4 tr", 2)
-        spotlight("#panel-ch4 .terminal", 0)
-        page.click("a[href='finding_findings_medicinal-chemistry_WO-006_md.html']")
-        page.wait_for_load_state("networkidle")
-        active_pace_to_end(s5, [("li, p", 1), ("li, p", 3), ("li, p", 5)])
-
-        s6 = mark(6, "Mechanical Governance Teeth: 4 Adversarial Tamper Drills")
-        page.goto(f"{portal_url}/chapters.html#ch5", wait_until="networkidle")
-        page.click("#btn-ch5")
-        spotlight("#panel-ch5 tr", 1)
-        spotlight("#panel-ch5 tr", 2)
-        spotlight("#panel-ch5 tr", 3)
-        spotlight("#panel-ch5 tr", 4)
-        spotlight("#panel-ch5 .terminal", 0)
-        page.click("a[href='workorder_WO-005_r1.html']")
-        page.wait_for_load_state("networkidle")
-        active_pace_to_end(s6, [("table tr, li, p", 1), ("table tr, li, p", 3), ("pre, code", 0)])
-
-        s7 = mark(7, "The Complete Picture & 31-Page Stage-Gate Dossier (WO-008)")
-        page.goto(f"{portal_url}/chapters.html#ch6", wait_until="networkidle")
-        page.click("#btn-ch6")
-        spotlight("#plate-complete", 0)
-        page.goto(f"{portal_url}/index.html", wait_until="networkidle")
-        spotlight("a, tr, li", 2, scroll_y=240)
-        page.goto(f"{portal_url}/finding_findings_regulatory_WO-008_md.html", wait_until="networkidle")
-        active_pace_to_end(s7, [("li, p", 1), ("li, p", 3), ("li, p", 5), ("table tr", 1)])
-
-        s8 = mark(8, "Architecture Scorecard & Field Takeaways")
-        page.goto(f"{portal_url}/chapters.html#ch6", wait_until="networkidle")
-        page.click("#btn-ch6")
-        spotlight("#score-row-1", 0)
-        spotlight("#score-row-2", 0)
-        spotlight("#score-row-3", 0)
-        spotlight("#score-row-4", 0)
-        spotlight("#plate-complete", 0)
-        active_pace_to_end(
-            s8,
+        run_calm_scene(
+            4,
+            "Stages 0-1: Hypothesis Tournament & Human Genetics (WO-001..003)",
             [
-                ("#score-row-1", 0),
-                ("#score-row-2", 0),
-                ("#score-row-3", 0),
-                ("#score-row-4", 0),
+                {"click": "#btn-ch1", "sel": "#panel-ch1 table", "idx": 0, "x": 520},
+                {"click": "#btn-ch2", "sel": "#panel-ch2 table", "idx": 0, "x": 520},
+                {
+                    "click": "a[href='finding_findings_computational-biology_WO-002_md.html']",
+                    "sel": "main, body",
+                    "idx": 0,
+                    "x": 520,
+                    "scrollY": 160,
+                },
+            ],
+        )
+
+        run_calm_scene(
+            5,
+            "Stages 2-4: Allosteric Co-Folding & Catching the hERG Trap (WO-004..007)",
+            [
+                {
+                    "goto": f"{portal_url}/chapters.html#ch3",
+                    "click": "#btn-ch3",
+                    "sel": "#panel-ch3 table",
+                    "idx": 0,
+                    "x": 520,
+                },
+                {"click": "#btn-ch4", "sel": "#panel-ch4 table", "idx": 0, "x": 520},
+                {
+                    "click": "a[href='finding_findings_medicinal-chemistry_WO-006_md.html']",
+                    "sel": "main, body",
+                    "idx": 0,
+                    "x": 520,
+                    "scrollY": 160,
+                },
+            ],
+        )
+
+        run_calm_scene(
+            6,
+            "Mechanical Governance Teeth: 4 Adversarial Tamper Drills",
+            [
+                {
+                    "goto": f"{portal_url}/chapters.html#ch5",
+                    "click": "#btn-ch5",
+                    "sel": "#panel-ch5 table",
+                    "idx": 0,
+                    "x": 520,
+                },
+                {"sel": "#panel-ch5 .terminal", "idx": 0, "x": 520},
+                {
+                    "click": "a[href='workorder_WO-005_r1.html']",
+                    "sel": "main, body",
+                    "idx": 0,
+                    "x": 520,
+                    "scrollY": 160,
+                },
+            ],
+        )
+
+        run_calm_scene(
+            7,
+            "The Complete Picture & 31-Page Stage-Gate Dossier (WO-008)",
+            [
+                {
+                    "goto": f"{portal_url}/chapters.html#ch6",
+                    "click": "#btn-ch6",
+                    "sel": "#plate-complete",
+                    "idx": 0,
+                    "x": 520,
+                },
+                {
+                    "goto": f"{portal_url}/index.html",
+                    "sel": "table, ul",
+                    "idx": 0,
+                    "x": 520,
+                    "scrollY": 140,
+                },
+                {
+                    "goto": f"{portal_url}/finding_findings_regulatory_WO-008_md.html",
+                    "sel": "main, body",
+                    "idx": 0,
+                    "x": 520,
+                    "scrollY": 160,
+                },
+            ],
+        )
+
+        run_calm_scene(
+            8,
+            "Architecture Scorecard & Field Takeaways",
+            [
+                {
+                    "goto": f"{portal_url}/chapters.html#ch6",
+                    "click": "#btn-ch6",
+                    "sel": "#score-row-1",
+                    "idx": 0,
+                    "x": 520,
+                },
+                {"sel": "#score-row-3", "idx": 0, "x": 520},
+                {"sel": "#plate-complete", "idx": 0, "x": 520},
             ],
         )
 
@@ -489,12 +497,17 @@ def main() -> int:
     parser.add_argument(
         "--quota-project",
         default=os.environ.get("GOOGLE_CLOUD_PROJECT", "gcp-oase-workshop"),
-        help="GCP project with Cloud Text-to-Speech API enabled",
+        help="GCP project with Vertex AI API enabled",
+    )
+    parser.add_argument(
+        "--voice",
+        default="Charon",
+        help="Gemini TTS prebuilt voice name (default: Charon)",
     )
     parser.add_argument(
         "--credentials",
         default=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"),
-        help="Optional service account JSON path for Cloud TTS",
+        help="Optional service account JSON path",
     )
     args = parser.parse_args()
 
@@ -504,11 +517,12 @@ def main() -> int:
     manifest_dst = work_dir / "scenes.json"
     shutil.copy2(repo_root / "docs" / "video-scenes.json", manifest_dst)
 
-    manifest = synthesize_ssml_scenes(
+    manifest = synthesize_gemini_tts_scenes(
         manifest_dst,
         work_dir / "audio",
         args.quota_project,
-        args.credentials,
+        voice_name=args.voice,
+        credentials_path=args.credentials,
     )
     times_path = record_portal_scenes(manifest, args.portal_url, work_dir)
     print(f"✓ Recorded scenes and timings to {times_path}")
