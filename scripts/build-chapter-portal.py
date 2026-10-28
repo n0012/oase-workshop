@@ -689,6 +689,8 @@ def main() -> int:
 
         def _fmt_inline(s: str) -> str:
             s = html_lib.escape(s)
+            s = re.sub(r"^\[x\]\s*", '<span class="pass-pill">✓</span> ', s)
+            s = re.sub(r"^\[\s*\]\s*", '<span class="warn-pill">☐</span> ', s)
             s = re.sub(r"`\[x\]\s*Complete`", '<span class="pass-pill">✓ Complete</span>', s)
             s = re.sub(r"`\[\s*\]\s*Next Up`", '<span class="stage-pill">→ Next Up</span>', s)
             s = re.sub(r"`\[\s*\]\s*In Progress`", '<span class="stage-pill">⟳ In Progress</span>', s)
@@ -928,6 +930,23 @@ def main() -> int:
         if changed:
             html_file.write_text(txt, encoding="utf-8")
             patched += 1
+
+    index_file = site_dir / "index.html"
+    if index_file.is_file():
+        idx_txt = index_file.read_text(encoding="utf-8")
+        if "pilot-top-banner" not in idx_txt and "</nav>" in idx_txt:
+            banner = (
+                '</nav>\n<div id="pilot-top-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#ffffff;padding:1.15rem 2rem;border-bottom:3px solid #22c55e;">'
+                '<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">'
+                '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot</strong>'
+                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · 6-Voice Gemini TTS Videos · Live Role Logins · &lt;2s Reset</div></div>'
+                '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
+                '<a href="plan.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Detailed Build Plan →</a>'
+                '<a href="chapters.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">Open Story Arc Walkthrough →</a>'
+                '</div></div></div>'
+            )
+            idx_txt = idx_txt.replace("</nav>", banner, 1)
+            index_file.write_text(idx_txt, encoding="utf-8")
 
     print(
         f"[ok] Wrote {chapters_path} (copied {copied_imgs} visual plates to {site_assets}) and linked from {patched} portal pages."

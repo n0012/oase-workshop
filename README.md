@@ -1,5 +1,10 @@
 # GCP-OASE Workshop: Oral PCSK9 Small-Molecule Discovery on Google Cloud
 
+> ### 🎯 Team-Based Human + Agent Pilot: Outcome Goal, Vision & Live Build Plan
+> - **Outcome Goal & Detailed Engineering Build Plan (Markdown):** [**`docs/PILOT_IMPLEMENTATION_PLAN.md`**](docs/PILOT_IMPLEMENTATION_PLAN.md)
+> - **Live Web Build Tracker & Outcome Goal (`plan.html`):** [**https://n0012.github.io/oase-workshop/plan.html**](https://n0012.github.io/oase-workshop/plan.html)
+> - **Interactive Story Arc & 30-Page Evidence Portal (`chapters.html`):** [**https://n0012.github.io/oase-workshop/chapters.html**](https://n0012.github.io/oase-workshop/chapters.html)
+
 Hands-on engineering workshop for the **Open Agentic Science Engine (`oase v0.3.0`)** running inside **Google Cloud Scion (`v0.1.50`)** multi-agent Groves.
 
 Participants take a single drug discovery campaign (**`pcsk9-oral`** — oral small-molecule inhibitors of the PCSK9–LDLR protein-protein interaction) through all four preclinical stages:
