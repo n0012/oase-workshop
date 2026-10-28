@@ -21,7 +21,12 @@
   "assessment": {
     "verdict": "druggable_allosteric_pocket_confirmed"
   },
-  "mandatory_relays": [],
+  "mandatory_relays": [
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "Pocket druggability (0.68) describes cavity geometry and hydrophobicity, not ligand binding affinity."
+    }
+  ],
   "written_by": "wo004-structural-biologist",
   "work_order_id": "WO-004"
 }

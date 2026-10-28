@@ -282,6 +282,23 @@ And whenever your platform engineering team wants to plug an internal Python pac
 
 ---
 
+## What We Learned Deploying OASE v0.3.0 Live in Argolis: 5 Field Engineering Discoveries
+
+Architecture diagrams look clean on paper; running `oase v0.3.0` end-to-end on a fresh Google Cloud Argolis project (`pcsk9-oral` across `WO-001`..`WO-008`) surfaced five real-world engineering lessons and epistemic boundaries that we codified into our repeatable workshop scripts (`scripts/provision-argolis-project.py`, `scripts/bootstrap-oase-env.sh`, `scripts/run-e2e-simulation.sh`, and `scripts/build-chapter-portal.py`):
+
+1. **Discovery 1 — 13 of 36 Default Threshold Schemas Ship With `UNRESOLVED` Sentinels (`oase/core/thresholds.py`):**
+   While the two-phase latch (`fetch` vs. offline `analyze`) works as designed across all 51 `analyze*` subcommands, 13 of the 36 built-in threshold sets (`gtex-expression@1.0`, `docking-scores@1.0`, `gnomad-constraint@1.0`, `pk-parameters@1.0`, etc.) intentionally set key cutoffs to `UNRESOLVED = object()`. Running `oase gtex analyze PCSK9` without a program-level `.oase/thresholds.yaml` immediately halts with `ThresholdError`. Furthermore, `.oase/thresholds.yaml` strictly rejects any key not present in `_DEFAULTS[name].values` (such as `version: "1.0"`). Pre-populating all 13 unresolved sets in `.oase/thresholds.yaml` across `checkpoints/ch0`..`ch4` gives workshop participants `36/36` resolved threshold schemas out of the box.
+2. **Discovery 2 — Inline KaTeX `$ ... $` Collides With Multiple JSONPath `{source: ... $.metrics.x}` Tags on the Same Line (`oase site build`):**
+   `oase validate check` requires scalar citations in `{source: <path> $.metrics.<field>}` format outside code backticks (within `±1%` relative tolerance of the JSON value). However, `oase site build`'s Markdown math preprocessor scans each line for pairs of `$` characters. If a single bullet contains two JSONPath citations, the text between the first `$.` and second `$.` is rendered as an inline LaTeX math block (`<span class="math">\(...\)</span>`). Formatting findings with at most one `{source: ... $...}` citation per bullet line eliminates the collision completely (`0` unintended math spans across all 30 HTML pages).
+3. **Discovery 3 — Modern Linux Host Friction in `install.sh`:**
+   Compiling the 7 scientific binaries (`vina`, `fpocket`, `rate4site`, `muscle`, `hypex`, `elo`, `prox`) on a modern Debian/GCC 14 workstation required four deterministic workarounds now automated in `scripts/bootstrap-oase-env.sh`: `uv venv --seed --python 3.11` when `python3-venv` (`ensurepip`) is absent, corporate PyPI mirror (Airlock) quarantine tolerance on `grpcio-status>=1.84.0`, `-Wno-error=incompatible-pointer-types` for `fpocket 4.2.2` (`src/fparams.c:296` under GCC 14), and SHA-256-verified `KaTeX v0.16.21` tarball extraction when `npm` is absent.
+4. **Discovery 4 — `_BASIC_NITROGEN_SMARTS` Over-Matches Neutral Amides in `oase/commands/admet.py:227`:**
+   When evaluating `PCSK9-A02` (`cLogP = 5.09`, 3 aromatic rings) vs. `PCSK9-A03` (`cLogP = 3.01`, `MW = 338.3 Da`, `TPSA = 101.0 Å²`), `oase admet` evaluates the Aronov (2005) hERG pharmacophore rule (`has_basic_nitrogen and logp > 3.7 and aromatic_rings >= 2`). Inspecting `oase/commands/admet.py:227` revealed that `_BASIC_NITROGEN_SMARTS = "[NH2,NH1,NH0;!$(N=*);!$(N#*)]"` excludes imines and nitriles but omits `!$(NC=O)`, causing neutral amide `-C(=O)NH-` groups to match `has_basic_nitrogen = True`. `PCSK9-A03` clears the hERG alert because lowering `cLogP` from `5.09` to `3.01` drops below the `LogP > 3.7` threshold—demonstrating why transparent rule attribution in `.analysis.json` is critical for auditing heuristic tools.
+5. **Discovery 5 — The Epistemic Boundary (Provenance Integrity vs. Wet-Lab Ground Truth):**
+   OASE does not turn *in silico* approximations into physical biology: `AutoDock Vina`'s `-9.4 kcal/mol` is still a rigid-receptor pose score, and `oase admet` is a 2D structural alert rather than a patch-clamp $IC_{50}$. What OASE *does* eliminate is **silent narrative rationalization**—making it mechanically impossible for an LLM agent to drop a mandatory caveat relay (`REL-001`), inflate a metric (`CIT-003`), or tamper with raw outputs (`PROV-002`).
+
+---
+
 ## The Complete Picture
 
 In five steps—which you can run hands-on in our **150-minute workshop** using `<2 second` campaign checkpoints (`ch0`–`ch4`)—we went from a single-line therapeutic directive to a multi-model tournament, live **AlphaGenome** & **AlphaFold 3** predictions on GCP, cirrhotic single-cell `.h5ad` slicing, wet-lab CRO re-ingestion, and a 28-page SHA-256-verified evidence portal:

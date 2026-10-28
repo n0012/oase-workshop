@@ -1,0 +1,408 @@
+#!/usr/bin/env python3
+"""Augments `oase site build` output (`_site/`) with `chapters.html`.
+
+Provides an interactive Chapter-by-Chapter Simulation Tour, the 4 Adversarial
+Governance Drill outputs, and the PRFAQ / Medium Article Outcome Scorecard
+alongside the 30 native pages compiled by `oase site build`.
+"""
+
+from __future__ import annotations
+
+import os
+import pathlib
+import sys
+
+CHAPTERS_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OASE Program — Chapter Walkthrough &amp; Governance Scorecard</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #f4f6f8; }
+  nav { background: #1e293b; color: #f8fafc; padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #2563eb; }
+  nav .left a { color: #e2e8f0; text-decoration: none; margin-right: 1.5rem; font-size: 0.92rem; }
+  nav .left a:hover, nav .left a.active-nav { color: #ffffff; font-weight: 600; text-decoration: underline; }
+  nav .nav-title { font-weight: 700; font-size: 1.05rem; margin-right: 2rem; color: #ffffff; }
+  .badge-env { background: #0f172a; color: #38bdf8; border: 1px solid #0284c7; padding: 0.25rem 0.65rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 2rem 2.5rem; }
+  .hero h1 { margin: 0 0 0.5rem 0; font-size: 1.75rem; color: #ffffff; }
+  .hero p { margin: 0; color: #cbd5e1; font-size: 1rem; max-width: 900px; line-height: 1.5; }
+  .kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .kpi-card { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 6px; padding: 0.85rem 1rem; }
+  .kpi-card .kpi-val { font-size: 1.4rem; font-weight: 700; color: #38bdf8; font-family: monospace; }
+  .kpi-card .kpi-lbl { font-size: 0.78rem; color: #cbd5e1; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .chapter-bar { background: #ffffff; border-bottom: 1px solid #cbd5e1; padding: 0.75rem 2.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; position: sticky; top: 0; z-index: 20; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+  .chapter-btn { background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; padding: 0.5rem 0.9rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
+  .chapter-btn:hover { background: #e2e8f0; }
+  .chapter-btn.active { background: #2563eb; color: #ffffff; border-color: #1d4ed8; }
+
+  .container { max-width: 1280px; margin: 1.5rem auto; padding: 0 2rem 3rem 2rem; }
+  .chapter-panel { display: none; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.75rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+  .chapter-panel.active { display: block; }
+  .chapter-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1.25rem; }
+  .chapter-header h2 { margin: 0; color: #0f172a; font-size: 1.35rem; }
+  .stage-pill { background: #dbeafe; color: #1e40af; font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-family: monospace; }
+
+  .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; align-items: start; }
+  table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid #e2e8f0; }
+  th { background: #f8fafc; font-weight: 600; color: #334155; }
+  .pass-pill { background: #dcfce7; color: #166534; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+  .fail-pill { background: #fee2e2; color: #991b1b; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+  .warn-pill { background: #fef3c7; color: #92400e; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+  .terminal { background: #0f172a; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; border: 1px solid #334155; }
+  .terminal .cmd { color: #38bdf8; font-weight: 600; }
+  .terminal .ok { color: #4ade80; font-weight: 600; }
+  .terminal .err { color: #f87171; font-weight: 600; }
+  .relay-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin-top: 1rem; border-radius: 0 4px 4px 0; font-size: 0.88rem; }
+  .portal-links { margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .portal-links a { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 5px; font-size: 0.84rem; font-weight: 600; }
+  .portal-links a:hover { background: #dbeafe; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="left">
+    <span class="nav-title">OASE Program — pcsk9-oral</span>
+    <a href="index.html">Portal Home (30 Pages)</a>
+    <a href="chapters.html" class="active-nav">Chapters &amp; Governance Replay</a>
+    <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Candidate Dossier</a>
+  </div>
+  <span class="badge-env">Project: __PROJECT_BADGE__ | oase 0.3.0 | ENV __ENV_SHA__</span>
+</nav>
+
+<div class="hero">
+  <h1>End-to-End Agentic Pre-Clinical Simulation &amp; PRFAQ Value Verification</h1>
+  <p>Live execution of the PCSK9 Oral Small-Molecule Campaign (Stages 0 &rarr; 4, Work Orders WO-001..WO-008) on Google Cloud Argolis using deterministic Phase-1/Phase-2 tool latches, SHA-256 provenance sidecars, and mechanical governance checks.</p>
+  <div class="kpi-strip">
+    <div class="kpi-card"><div class="kpi-val">36 / 36</div><div class="kpi-lbl">Threshold Sets Resolved</div></div>
+    <div class="kpi-card"><div class="kpi-val">8 / 8 [PASS]</div><div class="kpi-lbl">Work Orders Accepted</div></div>
+    <div class="kpi-card"><div class="kpi-val">4 / 4 Caught</div><div class="kpi-lbl">Adversarial Tamper Drills</div></div>
+    <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Oral Lead (40 mg QD)</div></div>
+    <div class="kpi-card"><div class="kpi-val">30 Pages</div><div class="kpi-lbl">Static Evidence Portal</div></div>
+  </div>
+</div>
+
+<div class="chapter-bar">
+  <button class="chapter-btn active" id="btn-ch1" onclick="showChapter('ch1')">Chapter 1: Seed &amp; Tournament (WO-001)</button>
+  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Chapter 2: Human Genetics &amp; Omics (WO-002..003)</button>
+  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">Chapter 3: AlphaFold 3 &amp; Docking (WO-004..005)</button>
+  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">Chapter 4: DMTA, hERG Gate &amp; PK (WO-006..007)</button>
+  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Chapter 5: 4 Adversarial Governance Drills</button>
+  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Chapter 6: PRFAQ &amp; Medium Article Scorecard</button>
+</div>
+
+<div class="container">
+  <!-- CHAPTER 1 -->
+  <section class="chapter-panel active" id="panel-ch1">
+    <div class="chapter-header">
+      <h2>Chapter 1 — Stage 0 Campaign Seed &amp; Co-Scientist Tournament Verification (`WO-001`)</h2>
+      <span class="stage-pill">Stage 0 · checkpoints/ch0 &rarr; ch1</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p>The campaign begins by verifying environment health (<code>oase doctor</code> across all 7 compiled scientific binaries and 36 threshold schemas) and ingesting the AI Co-Scientist hypothesis tournament export (2 carried candidate series from the 28-match seed export) for oral PCSK9 inhibition in ASCVD.</p>
+        <table>
+          <thead><tr><th>Hypothesis ID</th><th>Modality &amp; Mechanism</th><th>Live CLI / Seed Elo</th><th>Win Rate</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><code>IC-001</code> (H-001)</td><td>Allosteric Small Molecule (`Pocket #1` groove)</td><td><strong>1642.5</strong> (`ELO 1642`)</td><td>0.78 (7/9)</td><td><span class="pass-pill">PRIMARY LEADER (+54.5 Elo)</span></td></tr>
+            <tr><td><code>IC-002</code> (H-002)</td><td>Oral Cyclic Peptide (`EGF-A` flat surface)</td><td>1588.0 (`ELO 1588`)</td><td>0.67 (6/9)</td><td><span class="warn-pill">BACKUP SERIES</span></td></tr>
+          </tbody>
+        </table>
+        <div class="relay-box">
+          <strong>Mandatory Relay (`hypothesis.adopted_not_generated`):</strong> Staged Co-Scientist tournament exports are hypotheses, not primary evidence. Every biological claim must be independently verified by Stage 1 and Stage 2 tools.
+        </div>
+        <div class="portal-links">
+          <a href="finding_findings_computational-biology_WO-001_md.html">View WO-001 Finding</a>
+          <a href="artifact_hypotheses.html">View Hypotheses Layer 0 Artifact</a>
+        </div>
+      </div>
+      <div class="terminal"><span class="cmd">$ oase coscientist ingest checkpoints/ch0/seed/pcsk9-oral/coscientist-export.json</span>
+raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.export.json
+raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json
+raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.meta.json
+
+<span class="cmd">$ oase coscientist analyze raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json</span>
+Tournament: Oral Small-Molecule &amp; Macrocycle PCSK9 Inhibitors in ASCVD
+<span class="ok">Verdict: clear-leader [threshold_set coscientist@1.1+program]</span>
+Leader: PCSK9 (ELO 1642, +54 ELO over #2)
+Ideas: 2 carried of 2 generated
+Flagged ideas: 0</div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2 -->
+  <section class="chapter-panel" id="panel-ch2">
+    <div class="chapter-header">
+      <h2>Chapter 2 — Stage 1 Target Validation: Human Genetics, GWAS &amp; Hepatocyte Expression (`WO-002`..`WO-003`)</h2>
+      <span class="stage-pill">Stage 1 · checkpoints/ch1</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p>Before spending compute on 3D docking, the Computational Biologist runs live Phase-1/Phase-2 queries against <code>gnomAD</code>, <code>OpenTargets</code>, <code>GTEx</code>, and <code>HPA</code> (`live-runs/`), and validates the pre-seeded campaign checkpoint (`WO-002`..`WO-003`, which also includes the offline <code>AlphaGenome</code> `rs2479409` fixture).</p>
+        <table>
+          <thead><tr><th>Evidence Stream</th><th>Live API CLI Output (`live-runs/`)</th><th>Seeded Checkpoint (`WO-002..003`)</th><th>Threshold</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td><code>gnomAD v4</code> (`WO-002`)</td><td><code>pLI = 2.77e-18</code>, <code>LOEUF = 1.144</code></td><td><code>pLI = 0.0001</code>, <code>LOEUF = 0.89</code></td><td><code>pLI &lt; 0.90</code></td><td><span class="pass-pill">LOF_TOLERANT</span></td></tr>
+            <tr><td><code>OpenTargets</code> (`WO-002`)</td><td>FH score <code>0.86</code> (clinical <code>0.97</code>)</td><td>FH score <code>0.96</code> (CHD <code>-68%</code>)</td><td><code>&ge; 0.70</code></td><td><span class="pass-pill">ASSOCIATIONS_FOUND</span></td></tr>
+            <tr><td><code>GTEx / HPA</code> (`WO-002`)</td><td>HPA liver <code>47.5 nTPM</code> (13/50 tissues)</td><td>GTEx liver <code>184.2 TPM</code> (<code>tau = 0.93</code>)</td><td><code>&ge; 100 TPM</code> / <code>&ge; 10 nTPM</code></td><td><span class="pass-pill">TISSUE_ENRICHED</span></td></tr>
+            <tr><td><code>AlphaGenome</code> (`WO-003`)</td><td><em>Seeded offline fixture</em></td><td>`rs2479409` liver quantile <code>0.984</code></td><td><code>&ge; 0.95</code></td><td><span class="pass-pill">HEPATOCYTE_CONFIRMED</span></td></tr>
+          </tbody>
+        </table>
+        <div class="relay-box">
+          <strong>Mandatory Relay (`gnomad.constraint_is_not_safety`):</strong> Germline LoF tolerance reflects lifelong compensation from conception and does not replace acute small-molecule off-target toxicology.
+        </div>
+        <div class="portal-links">
+          <a href="finding_findings_computational-biology_WO-002_md.html">View WO-002 Finding</a>
+          <a href="finding_findings_computational-biology_WO-003_md.html">View WO-003 Finding</a>
+          <a href="artifact_genomics.html">View Genomics Artifacts</a>
+        </div>
+      </div>
+      <div class="terminal"><span class="cmd">$ oase genetics fetch PCSK9 &amp;&amp; oase genetics analyze PCSK9</span>
+<span class="ok">PCSK9 (ENSG00000169174) -&gt; LOF_TOLERANT</span>
+pLI 2.765e-18 (&gt;= 0.9 intolerant) | LOEUF 1.144 (&lt; 0.35 constrained) | obs/exp LoF 57/62.1
+
+<span class="cmd">$ oase gwas search PCSK9 &amp;&amp; oase gwas analyze PCSK9</span>
+<span class="ok">PCSK9 -&gt; ASSOCIATIONS_FOUND (25/25 above threshold)</span>
+familial hypercholesterolemia: Overall score: 0.86 (clinical=0.97, genetic_association=0.87)
+
+<span class="cmd">$ oase expression fetch PCSK9 &amp;&amp; oase expression analyze PCSK9</span>
+PCSK9 (ENSG00000169174) — HPA consensus RNA
+<span class="ok">specificity: tissue enriched; detected in 13/50 tissues at &ge;1.0 nTPM</span>
+highest: liver 47.5 nTPM</div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3 -->
+  <section class="chapter-panel" id="panel-ch3">
+    <div class="chapter-header">
+      <h2>Chapter 3 — Stage 2 Structural Biology, AlphaFold &amp; Pocket/Docking Analysis (`WO-004`..`WO-005`)</h2>
+      <span class="stage-pill">Stage 2 · checkpoints/ch2</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p>We run live <code>oase alphafold fetch/analyze Q8NBP7</code> and compiled <code>fpocket 4.2.2</code> (<code>oase pocket run/analyze</code>) on the full-length AFDB monomer (`live-runs/`), alongside the seeded <code>AlphaFold 3</code> ligand co-fold and <code>AutoDock Vina 1.2.5</code> pose fixtures in `WO-004`..`WO-005`.</p>
+        <table>
+          <thead><tr><th>Tool &amp; Work Order</th><th>Live CLI Output (`live-runs/`)</th><th>Seeded Checkpoint (`WO-004..005`)</th><th>Cutoff</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td><code>oase alphafold</code> (`WO-004`)</td><td>Global pLDDT <code>85.19</code> (domain <code>58–542</code>)</td><td>Ordered catalytic/EGF-A pLDDT <code>91.4</code></td><td><code>&ge; 70.0</code></td><td><span class="pass-pill">CONFIDENT_FOLD</span></td></tr>
+            <tr><td><code>AlphaFold 3</code> (`WO-004`)</td><td><em>Seeded GPU co-fold fixture</em></td><td>`IC-001` co-fold <code>ipTM = 0.84</code>, <code>pTM = 0.88</code></td><td><code>&ge; 0.80</code></td><td><span class="pass-pill">HIGH_CONFIDENCE</span></td></tr>
+            <tr><td><code>oase pocket</code> (`WO-004`)</td><td>Best pocket <code>0.788</code> (48 pockets on `Q8NBP7`)</td><td>`Pocket #1` groove <code>0.68</code> vs `EGF-A` <code>0.24</code></td><td><code>&ge; 0.50</code></td><td><span class="pass-pill">DRUGGABLE_POCKET</span></td></tr>
+            <tr><td><code>oase docking</code> (`WO-005`)</td><td><em>Seeded Vina 1.2.5 pose fixture</em></td><td><code>-9.4 kcal/mol</code> (`2.34 Å` to `Arg194/Asp238`)</td><td><code>&le; -8.5</code></td><td><span class="pass-pill">STRONG_BINDING</span></td></tr>
+          </tbody>
+        </table>
+        <div class="relay-box">
+          <strong>Mandatory Relays (`af3.low_confidence_segments` &amp; `docking.score_is_not_affinity`):</strong> Disordered residues `1–30` and `152–162` (`pLDDT &lt; 50`) are excluded from pocket definition; Vina `-9.4 kcal/mol` is a pose energy estimate, never a biochemical `IC50`.
+        </div>
+        <div class="portal-links">
+          <a href="finding_findings_structural-biology_WO-004_md.html">View WO-004 Finding</a>
+          <a href="finding_findings_computational-chemistry_WO-005_md.html">View WO-005 Finding</a>
+          <a href="artifact_docking.html">View Docking Artifacts</a>
+        </div>
+      </div>
+      <div class="terminal"><span class="cmd">$ oase alphafold fetch Q8NBP7 &amp;&amp; oase alphafold analyze Q8NBP7</span>
+AF-Q8NBP7-F1 [threshold_set alphafold@1.0]
+<span class="ok">pLDDT: global 85.19, confident fraction 0.82 -&gt; confident</span>
+PAE: mean 10.936 A, 42% confident pairs -&gt; single-domain
+Ordered domains (1): 58-542
+
+<span class="cmd">$ oase pocket run raw/structures/AF-Q8NBP7-F1.cif &amp;&amp; oase pocket analyze ...</span>
+AF-Q8NBP7-F1 [threshold_set pocket@1.0+program]
+<span class="ok">druggable-pocket-present: Best pocket scores 0.788 (druggable) across 48 detected pocket(s).</span>
+relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affinity, not a potency.</div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4 -->
+  <section class="chapter-panel" id="panel-ch4">
+    <div class="chapter-header">
+      <h2>Chapter 4 — Stage 3–4 DMTA Lead Optimization: Disqualifying `PCSK9-A02` on hERG &amp; Scaling PK (`WO-006`..`WO-007`)</h2>
+      <span class="stage-pill">Stages 3–4 · checkpoints/ch3</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p><strong>The Critical Governance Moment:</strong> Live execution of <code>oase compound</code> and <code>oase admet</code> (`admet-endpoints@1.0`) flags <code>PCSK9-A02</code> (`cLogP = 5.09`, `MW = 392.4 Da`, `TPSA = 74.2 Å²`, `LogS = -5.613`) with <strong>3 critical liabilities (`metabolic_stability`, `herg_liability`, `solubility`)</strong>. Substituting the polar F,CN-oxadiazole in <code>PCSK9-A03</code> (`cLogP = 3.01`, `MW = 338.3 Da`, `TPSA = 101.0 Å²`, `LogS = -4.25`) clears all 3 rule-based liabilities (`0` liabilities) and corresponds to nominated lead <code>OASE-PCSK9-014</code> in the seeded translational PK fixture (`WO-007`, `F = 52%`, `t1/2 = 14.8 h`, `40 mg QD`).</p>
+        <table>
+          <thead><tr><th>Candidate</th><th>Live RDKit Descriptors (`oase compound`)</th><th>Live `oase admet` Verdict (`admet-endpoints@1.0`)</th><th>Seeded PK Fixture (`WO-007`)</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr><td><code>PCSK9-A02</code> (CF3-thiazole)</td><td><code>cLogP = 5.09</code>, <code>MW = 392.4</code>, <code>TPSA = 74.2 Å²</code></td><td><span class="fail-pill">3 LIABILITIES (hERG + MetStab + Sol)</span></td><td>Disqualified at ADMET gate</td><td><span class="fail-pill">REJECTED</span></td></tr>
+            <tr><td><code>PCSK9-A03</code> / <code>OASE-PCSK9-014</code></td><td><code>cLogP = 3.01</code>, <code>MW = 338.3</code>, <code>TPSA = 101.0 Å²</code></td><td><span class="pass-pill">0 CRITICAL LIABILITIES (LogP &le; 3.7)</span></td><td><code>F = 52%</code>, <code>t1/2 = 14.8 h</code>, <code>40 mg QD</code></td><td><span class="pass-pill">NOMINATED</span></td></tr>
+          </tbody>
+        </table>
+        <div class="relay-box">
+          <strong>Engineering Discovery 5 (`_BASIC_NITROGEN_SMARTS` in `admet.py:227`):</strong> Inspecting <code>oase/commands/admet.py</code> revealed that <code>[NH2,NH1,NH0;!$(N=*);!$(N#*)]</code> omits <code>!$(NC=O)</code>, so neutral amide <code>-C(=O)NH-</code> groups match <code>has_basic_nitrogen = True</code>! <code>PCSK9-A03</code> clears the Aronov hERG rule because its <code>LogP = 3.01</code> drops below the <code>LogP &gt; 3.7</code> threshold—proving why auditable provenance is essential for spotting heuristic over-reach.
+        </div>
+        <div class="portal-links">
+          <a href="finding_findings_medicinal-chemistry_WO-006_md.html">View WO-006 Finding</a>
+          <a href="finding_findings_admet-dmpk_WO-007_md.html">View WO-007 Finding</a>
+          <a href="artifact_admet.html">View ADMET Artifacts</a>
+          <a href="artifact_pk.html">View PK Artifacts</a>
+        </div>
+      </div>
+      <div class="terminal"><span class="cmd">$ oase admet analyze --name PCSK9-A02 "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1"</span>
+<span class="err">liabilities-identified: PCSK9-A02 has 3 ADMET liability(ies):</span>
+  - metabolic_stability (high liability, LogP = 5.09)
+  - <span class="err">herg_liability (structural features flagged: basic N + LogP 5.09 &gt; 3.7 + 3 aromatic rings)</span>
+  - solubility (insoluble, LogS = -5.613)
+
+<span class="cmd">$ oase admet analyze --name PCSK9-A03 "COc1ccc(-c2nc(C(=O)Nc3ccc(F)c(C#N)c3)no2)cc1"</span>
+<span class="ok">acceptable: PCSK9-A03 has 0 ADMET liability(ies) [admet-endpoints@1.0]</span>
+  - herg_liability: <span class="ok">acceptable (LogP = 3.01 &le; 3.7 cutoff; 0 critical liabilities)</span>
+  - permeability: <span class="ok">acceptable (TPSA = 101.05 A^2, MW = 338.29 Da, LogS = -4.25)</span></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 5 -->
+  <section class="chapter-panel" id="panel-ch5">
+    <div class="chapter-header">
+      <h2>Chapter 5 — Mechanical Governance Drills (`oase validate check` Adversarial Tests)</h2>
+      <span class="stage-pill">Control Plane · checkpoints/ch4</span>
+    </div>
+    <div class="grid-2">
+      <div>
+        <p>Before compiling the final Pre-Clinical Candidate Dossier (`WO-008`), we verify all 9 live Phase-1/Phase-2 runs in <code>live-runs/</code> plus all 8 campaign work orders (`WO-001`..`WO-008`), and run 4 negative adversarial tamper drills against <code>oase validate check</code>.</p>
+        <table>
+          <thead><tr><th>Adversarial Drill</th><th>Injected Fault</th><th>Validator Check</th><th>Exit Code</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Drill 1 (`PROV-002`)</strong></td><td>Append 1 byte to `raw/docking/pcsk9_pocket1_vina.sdf` (SHA-256 mismatch)</td><td><code>provenance_valid</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
+            <tr><td><strong>Drill 2 (`CIT-003`)</strong></td><td>Inflate docking score from `-9.4` to `-11.2 kcal/mol` in `WO-005.md` (`&gt; &plusmn;1%`)</td><td><code>source_tags_resolve</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
+            <tr><td><strong>Drill 3 (`REL-001`)</strong></td><td>Delete mandatory relay `af3.low_confidence_segments` from `WO-004.md`</td><td><code>relay_coverage</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
+            <tr><td><strong>Drill 4 (`THR-001`)</strong></td><td>Strip `threshold_set` attribution from `pcsk9_ic001_series_admet.analysis.json`</td><td><code>analysis_citations</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
+          </tbody>
+        </table>
+        <div class="portal-links">
+          <a href="workorder_WO-005_r1.html">Inspect WO-005 Record</a>
+          <a href="finding_findings_regulatory_WO-008_md.html">Inspect WO-008 Dossier</a>
+        </div>
+      </div>
+      <div class="terminal"><span class="cmd">$ ./scripts/run-e2e-simulation.sh  # Chapter 5 Output</span>
+======================================================================
+CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
+======================================================================
+<span class="ok">[PASS - CAUGHT] Drill 1: SHA-256 Bit-Flip Tampering (PROV-002)</span>
+  -&gt; WO-005 failed on provenance_valid with exit=1
+<span class="ok">[PASS - CAUGHT] Drill 2: Inflated Numeric Claim -11.2 vs -9.4 kcal/mol (CIT-003)</span>
+  -&gt; WO-005 failed on source_tags_resolve with exit=1
+<span class="ok">[PASS - CAUGHT] Drill 3: Omitted Mandatory Caveat Relay af3.low_confidence_segments (REL-001)</span>
+  -&gt; WO-004 failed on relay_coverage with exit=1
+<span class="ok">[PASS - CAUGHT] Drill 4: Missing Threshold Set Attribution (THR-001)</span>
+  -&gt; WO-006 failed on analysis_citations with exit=1</div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 6 -->
+  <section class="chapter-panel" id="panel-ch6">
+    <div class="chapter-header">
+      <h2>Chapter 6 — Reflective Comparison: Workshop PRFAQ &amp; Medium Article vs. Deployed Reality</h2>
+      <span class="stage-pill">Outcome Evaluation · 5 Field Discoveries</span>
+    </div>
+    <div>
+      <p>How did our live Argolis deployment and end-to-end simulation compare against the value claims in the Workshop PRFAQ (<code>PRFAQ.md</code>) and Medium article (<code>ARTICLE.md</code>)?</p>
+      <table>
+        <thead><tr><th>PRFAQ / Article Claim</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Engineering Reflection &amp; Friction Discovered</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Two-Phase Tool Latch</strong><br>(Fetch/Compute vs. Offline Analyze)</td>
+            <td>100% of Phase-2 <code>analyze</code> commands run offline against immutable JSON + thresholds</td>
+            <td><code>51 / 51</code> Phase-2 commands verified offline by <code>oase doctor</code>; <code>9</code> live + <code>11</code> checkpoint <code>.analysis.json</code> records verified</td>
+            <td><strong>Discovery 1:</strong> 13 of 36 default threshold schemas ship with <code>UNRESOLVED</code> sentinels that halt execution unless explicitly populated in <code>.oase/thresholds.yaml</code> (which also rejects unknown keys like <code>version: "1.0"</code>).</td>
+            <td><span class="pass-pill">LANDED (WITH CONFIG GATE)</span></td>
+          </tr>
+          <tr>
+            <td><strong>2. Zero-Fabrication Citation Verification</strong><br>(<code>{source: path $.jsonpath}</code>)</td>
+            <td>Every numeric claim in Markdown is mechanically checked within &plusmn;1% of raw JSON</td>
+            <td><code>28 / 28</code> scalar JSONPath citations verified within &plusmn;1%; Drill 2 caught <code>-11.2</code> vs <code>-9.4</code> in &lt;0.2s</td>
+            <td><strong>Discovery 2:</strong> If two <code>{source: ... $.metrics.x}</code> tags sit on the same Markdown line, <code>oase site build</code>'s KaTeX preprocessor misinterprets the pair of <code>$</code> signs as inline LaTeX math. Putting one citation per bullet fixes it cleanly.</td>
+            <td><span class="pass-pill">LANDED (AFTER $ FIX)</span></td>
+          </tr>
+          <tr>
+            <td><strong>3. Mandatory Epistemic Caveat Relays</strong><br>(<code>**Relay: `code`**</code>)</td>
+            <td>Agents cannot drop negative caveats (e.g. disorder, hERG pharmacophore limits)</td>
+            <td>All 8 work orders enforce mandatory relays; Drill 3 caught dropped <code>af3.low_confidence_segments</code></td>
+            <td><strong>Discovery 5:</strong> While mandatory relays block optimism bias, inspecting <code>oase/commands/admet.py:227</code> revealed that <code>_BASIC_NITROGEN_SMARTS</code> (<code>[NH2,NH1,NH0;!$(N=*);!$(N#*)]</code>) omits <code>!$(NC=O)</code>, matching neutral amide <code>-C(=O)NH-</code> groups as "basic nitrogen". Provenance makes heuristic rules transparent, not infallible.</td>
+            <td><span class="pass-pill">STRONGEST DIFFERENTIATOR</span></td>
+          </tr>
+          <tr>
+            <td><strong>4. Turnkey Reproducible Environment</strong><br>(<code>install.sh</code> &rarr; <code>ENV_VERSION</code>)</td>
+            <td>Single-command install of Python + 7 C/C++/Go binaries stamped with SHA-256</td>
+            <td>All 7 binaries (<code>vina</code>, <code>fpocket</code>, <code>rate4site</code>, <code>muscle</code>, <code>hypex</code>, <code>elo</code>, <code>prox</code>) stamped</td>
+            <td><strong>Discovery 3:</strong> Out-of-the-box <code>install.sh</code> needed 4 Linux host fixes (GCC 14 <code>fpocket 4.2.2</code> pointer flag, Airlock <code>grpcio-status</code> tolerance, <code>uv venv --seed</code>, offline KaTeX tarball). Codified in <code>scripts/bootstrap-oase-env.sh</code>.</td>
+            <td><span class="warn-pill">NEEDED 4 HOST FIXES</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+function showChapter(ch) {
+  document.querySelectorAll('.chapter-panel').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.chapter-btn').forEach(el => el.classList.remove('active'));
+  const p = document.getElementById('panel-' + ch);
+  const b = document.getElementById('btn-' + ch);
+  if (p) p.classList.add('active');
+  if (b) b.classList.add('active');
+}
+const hash = window.location.hash.replace('#', '');
+if (hash && document.getElementById('panel-' + hash)) {
+  showChapter(hash);
+}
+</script>
+</body>
+</html>
+"""
+
+
+def main() -> int:
+    site_dir = pathlib.Path(
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else "/tmp/sim-pcsk9-oral/_site"
+    )
+    if not site_dir.is_dir():
+        print(f"[error] _site directory not found: {site_dir}", file=sys.stderr)
+        return 1
+
+    proj_badge = os.environ.get(
+        "OASE_PROJECT_BADGE", "gcp-oase-workshop (Argolis)"
+    )
+    env_sha = "sha256:61020936449a"
+    tools_home = os.environ.get("OASE_TOOLS_HOME", "")
+    if tools_home:
+        ev_file = pathlib.Path(tools_home) / "ENV_VERSION"
+        if ev_file.is_file():
+            env_sha = ev_file.read_text(encoding="utf-8").strip()[:19]
+
+    chapters_path = site_dir / "chapters.html"
+    chapters_path.write_text(
+        CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge).replace(
+            "__ENV_SHA__", env_sha
+        ),
+        encoding="utf-8",
+    )
+
+    nav_target = '<a href="index.html">Home</a>'
+    nav_replacement = (
+        '<a href="index.html">Home</a>\n'
+        '  <a href="chapters.html" style="color:#38bdf8;font-weight:600;">'
+        "Chapters &amp; Governance Replay</a>"
+    )
+    patched = 0
+    for html_file in sorted(site_dir.glob("*.html")):
+        if html_file.name == "chapters.html":
+            continue
+        txt = html_file.read_text(encoding="utf-8")
+        if "chapters.html" not in txt and nav_target in txt:
+            txt = txt.replace(nav_target, nav_replacement, 1)
+            html_file.write_text(txt, encoding="utf-8")
+            patched += 1
+
+    print(f"[ok] Wrote {chapters_path} and linked from {patched} portal pages.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

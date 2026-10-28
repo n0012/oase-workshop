@@ -24,7 +24,12 @@
     "verdict": "functional_hepatocyte_regulatory_variant",
     "direction": "downregulation_protective"
   },
-  "mandatory_relays": [],
+  "mandatory_relays": [
+    {
+      "code": "alphagenome.quantile_not_clinical_effect",
+      "message": "Quantile scores are ranked against common background variants; regulatory impact must be interpreted alongside primary human genetics and expression data."
+    }
+  ],
   "written_by": "wo003-computational-biologist",
   "work_order_id": "WO-003"
 }

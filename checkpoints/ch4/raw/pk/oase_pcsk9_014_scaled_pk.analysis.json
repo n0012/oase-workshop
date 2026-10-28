@@ -23,7 +23,12 @@
   "assessment": {
     "verdict": "qd_oral_dosing_supported"
   },
-  "mandatory_relays": [],
+  "mandatory_relays": [
+    {
+      "code": "pk.allometric_scaling_is_projection",
+      "message": "Allometric human PK parameters are two-species projections (rat/dog) and require clinical Phase 1 SAD/MAD verification."
+    }
+  ],
   "written_by": "wo007-admet-dmpk-scientist",
   "work_order_id": "WO-007"
 }

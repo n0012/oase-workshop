@@ -24,7 +24,12 @@
   "assessment": {
     "verdict": "high_confidence_cofold"
   },
-  "mandatory_relays": [],
+  "mandatory_relays": [
+    {
+      "code": "af3.low_confidence_segments",
+      "message": "Disordered N-terminal signal/propeptide segments (pLDDT < 50) are excluded from pocket boundary definition."
+    }
+  ],
   "written_by": "wo004-structural-biologist",
   "work_order_id": "WO-004"
 }

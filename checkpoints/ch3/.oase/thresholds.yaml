@@ -1,32 +1,114 @@
 # OASE Program Threshold Configuration (pcsk9-oral)
+# Every key maps to a declared threshold in oase.core.thresholds._DEFAULTS.
 coscientist:
-  version: "1.0"
   elo_decisive_gap: 50.0
   min_win_rate: 0.60
-genetics:
-  version: "1.0"
-  pli_intolerant: 0.90
-  loeuf_intolerant: 0.35
-gwas:
-  version: "1.0"
-  score_threshold: 0.70
-alphagenome:
-  version: "1.0"
+  max_contradicted_claims: 0
+  min_matches: 5
+
+gnomad-constraint:
+  lof_intolerant_pli: 0.90
+  pli_indeterminate_floor: 0.10
+  loeuf_constrained: 0.35
+  loeuf_unreliable_min_expected_lof: 10.0
+
+gtex-expression:
+  low_expression_tpm: 1.0
+  expressed_tpm: 10.0
+  high_expression_tpm: 100.0
+
+dice-expression:
+  low_expression_tpm: 1.0
+  expressed_tpm: 10.0
+  high_expression_tpm: 100.0
+
+expression:
+  low_confidence_ntpm: 0.5
+  expressed_ntpm: 1.0
+  enriched_fold: 4.0
+
+expression-single-cell:
+  low_confidence_ncpm: 0.5
+  expressed_ncpm: 1.0
+  enriched_fold: 4.0
+
+alphagenome-variant-effect:
   quantile_significance: 0.95
   raw_score_moderate: 0.10
+  raw_score_subtle: 0.05
+  raw_score_no_effect: 0.01
+  artifact_raw_ceiling: 0.10
+
+alphagenome-ism:
+  ism_noise_floor: 0.10
+  motif_significance: 0.50
+  position_importance: 0.25
+
 pocket:
-  version: "1.0"
-  druggability_threshold: 0.50
-docking:
-  version: "1.0"
-  strong_binding_kcal: -8.5
-  clash_distance_angstrom: 2.0
-admet:
-  version: "1.0"
-  max_mw: 500.0
-  max_clogp: 3.5
-  min_tpsa: 75.0
-  max_tpsa: 110.0
-pk:
-  version: "1.0"
-  min_oral_bioavailability_pct: 30.0
+  druggable_dscore: 0.50
+  borderline_dscore: 0.20
+  min_alpha_spheres: 15
+  contact_distance: 5.0
+  volume_estimate_tolerance: 0.05
+
+docking-scores:
+  strong_binding_energy: -8.5
+  moderate_binding_energy: -6.5
+  weak_binding_energy: -5.0
+
+compound-descriptors:
+  max_mw: 500
+  max_logp: 5
+  max_hbd: 5
+  max_hba: 10
+  max_tpsa: 140
+  max_rotatable_bonds: 10
+
+admet-endpoints:
+  herg_logp_min: 3.7
+  herg_min_aromatic_rings: 2
+  permeability_mw_max: 500.0
+  permeability_tpsa_high: 110.0
+  permeability_tpsa_low: 140.0
+
+selectivity-margins:
+  herg_margin: 30.0
+  herg_marginal: 10.0
+
+tox-safety-package:
+  herg_safety_margin: 30.0
+  herg_marginal: 10.0
+  ti_minimum: 10.0
+  noael_exposure_margin: 10.0
+
+pk-parameters:
+  therapeutic_exposure_adequacy: 1.0
+  auc_extrapolation_limit: 20.0
+  ddi_r_clinical_study: 2.0
+  ddi_r_possible_interaction: 1.25
+
+assay-activity:
+  activity_cutoff_inhibition: 50.0
+  activity_cutoff_fold_change: 2.0
+  hill_slope_min: 0.5
+  hill_slope_max: 2.0
+  r_squared_floor: 0.85
+
+citation-verification:
+  max_phantom_citations: 0
+  max_suspect_citations: 1
+  title_match_tolerance: 0.75
+  title_suspect_floor: 0.45
+
+hypex:
+  elo_decisive_gap: 50.0
+  max_phantom_citations: 0
+  max_suspect_citations: 1
+  min_matches: 5
+  min_safety_score: 0.80
+  min_win_rate: 0.50
+
+similar-search:
+  exact_match_cutoff: 1.0
+  tanimoto_similarity_cutoff: 0.85
+  novelty_threshold: 0.40

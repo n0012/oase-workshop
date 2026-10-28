@@ -1,10 +1,18 @@
 {
-  "campaign-seed.json": {
-    "sha256": "abf9e6ca737ab44a4d853fdb3a3e3de20a3e08e46a1ad467bdd42b1c454c0c4a",
-    "bytes": 4067
-  },
-  "coscientist-export.json": {
-    "sha256": "efb254b442e22d964f744f7d936c72afcd33d4a48c66013fa2343cb25c2806ee",
-    "bytes": 8521
+  "program": "pcsk9-oral",
+  "version": "1.0.0",
+  "files": {
+    "campaign-seed.json": {
+      "sha256": "abf9e6ca737ab44a4d853fdb3a3e3de20a3e08e46a1ad467bdd42b1c454c0c4a",
+      "bytes": 4067
+    },
+    "coscientist-export.json": {
+      "sha256": "efb254b442e22d964f744f7d936c72afcd33d4a48c66013fa2343cb25c2806ee",
+      "bytes": 8521
+    },
+    ".oase/thresholds.yaml": {
+      "sha256": "fd17c4d8f1380e64c77e7399dc46fbe6a1516326f4ca31d33b5d91b939f33bc1",
+      "bytes": 2418
+    }
   }
 }
