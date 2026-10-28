@@ -537,13 +537,22 @@ def main() -> int:
         if ev_file.is_file():
             env_sha = ev_file.read_text(encoding="utf-8").strip()[:19]
 
-    chapters_path = site_dir / "chapters.html"
-    chapters_path.write_text(
-        CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge).replace(
-            "__ENV_SHA__", env_sha
-        ),
-        encoding="utf-8",
+    html_out = CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge).replace(
+        "__ENV_SHA__", env_sha
     )
+    # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
+    import base64
+    for img_path in sorted(site_assets.iterdir()):
+        if img_path.suffix.lower() in (".jpg", ".jpeg", ".png"):
+            mime = "image/png" if img_path.suffix.lower() == ".png" else "image/jpeg"
+            b64 = base64.b64encode(img_path.read_bytes()).decode("ascii")
+            html_out = html_out.replace(
+                f'src="assets/{img_path.name}"',
+                f'src="data:{mime};base64,{b64}"',
+            )
+
+    chapters_path = site_dir / "chapters.html"
+    chapters_path.write_text(html_out, encoding="utf-8")
 
     nav_target = '<a href="index.html">Home</a>'
     nav_replacement = (
