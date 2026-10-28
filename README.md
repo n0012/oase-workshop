@@ -80,7 +80,7 @@ python3 scripts/record-demo-video.py \
 
 ### Reference Guides & Live Web Portal
 - **[Story Arc & Campaign Replay Website](https://n0012.github.io/oase-workshop/chapters.html)** | **[30-Page Evidence Portal](https://n0012.github.io/oase-workshop/index.html)** | **[Pilot Vision & Live Build Tracker](https://n0012.github.io/oase-workshop/plan.html)**
-- **[Multi-Persona Pilot Plan & Architecture (`docs/PILOT_IMPLEMENTATION_PLAN.md`)](docs/PILOT_IMPLEMENTATION_PLAN.md):** Goal, 5-scientist discovery pod + 6-voice Gemini TTS cast, `<2s` chapter reset architecture, and portable GCP deployment tracker.
+- **[Multi-Persona Pilot Plan & Architecture (`docs/PILOT_IMPLEMENTATION_PLAN.md`)](docs/PILOT_IMPLEMENTATION_PLAN.md):** Goal, 5-scientist discovery pod + `Gemini 3.8 Flash TTS` Extended Voice Library & `Gemini Omni 1.1` / `3.1 Image` avatar cast, `<2s` chapter reset architecture, and portable GCP deployment tracker.
 - **[Surface Connectivity Reference](docs/surface-connectivity-reference.md):** Connecting Gemini Enterprise (GA), Antigravity IDE (AGY), Gemini CLI, and Scion Web Console (`scion.hlscde.dev`) to the same OASE workspace.
 - **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh`), pacing, and live demo recovery.
 - **[Troubleshooting & Validator Reference](docs/07-troubleshooting.md):** Exact remediation steps for `PROV-001`..`002`, `CIT-001`..`003`, `REL-001`, and `THR-001`.

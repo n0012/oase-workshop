@@ -8,8 +8,9 @@ Usage:
     --quota-project my-oase-workshop
 
 Pronunciation & Pacing Rules Codified:
-  1. Uses native Vertex Gemini TTS (`gemini-2.5-flash-tts`, voice `Charon`) at 24kHz PCM,
-     transcoded to 44.1kHz stereo MP3.
+  1. Uses latest Google Cloud Gemini 3.8 Flash TTS (`gemini-3.8-flash-tts` on `global`, supporting
+     the Extended Voice Library `en-us-advisor-*` / `en-gb-tutor-*` / `en-in-tutor-*` and expressive
+     tags like `<short pause>`) at 24kHz PCM, transcoded to 44.1kHz stereo MP3.
   2. First mention of OASE is spoken as "O-A-S-E" and referred to as "the Science Engine" thereafter.
   3. Phonetic guidance in narration text ensures natural pronunciation of Elo ("Ee-low"),
      gnomAD ("Nomad"), ADMET ("AD-met"), and hERG ("hurg").
