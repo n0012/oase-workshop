@@ -49,9 +49,19 @@ CHAPTERS_HTML = """<!DOCTYPE html>
   .stage-pill { background: #dbeafe; color: #1e40af; font-weight: 700; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-family: monospace; }
 
   .grid-2 { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.5rem; align-items: start; }
-  .plate-box { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 0.6rem; text-align: center; margin-bottom: 1rem; }
-  .plate-box img { width: 100%; height: auto; border-radius: 5px; display: block; }
-  .plate-caption { color: #94a3b8; font-size: 0.78rem; margin-top: 0.45rem; font-family: monospace; }
+  .stack-full { display: flex; flex-direction: column; gap: 1.35rem; }
+  .plate-box { background: #ffffff; border: 2px solid #cbd5e1; border-radius: 10px; padding: 0.85rem; text-align: center; margin: 0.5rem 0; box-shadow: 0 2px 8px rgba(15,23,42,0.06); position: relative; }
+  .plate-box img { width: 100%; max-width: 1240px; height: auto; border-radius: 6px; display: block; margin: 0 auto; cursor: zoom-in; transition: transform 0.15s ease; }
+  .plate-box img:hover { opacity: 0.98; }
+  .plate-caption { color: #334155; font-size: 0.86rem; font-weight: 600; margin-top: 0.6rem; font-family: system-ui, -apple-system, sans-serif; display: flex; justify-content: space-between; align-items: center; padding: 0 0.25rem; }
+  .zoom-hint { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; border-radius: 999px; padding: 0.18rem 0.65rem; font-size: 0.76rem; font-weight: 600; cursor: pointer; }
+  .lightbox-backdrop { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.92); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; padding: 1.5rem; cursor: zoom-out; }
+  .lightbox-backdrop.open { display: flex; }
+  .lightbox-backdrop img { max-width: 96vw; max-height: 86vh; width: auto; height: auto; border-radius: 8px; background: #ffffff; padding: 0.5rem; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+  .lightbox-caption { color: #f8fafc; margin-top: 0.75rem; font-size: 0.95rem; font-weight: 600; text-align: center; }
+  .subpage-bar { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.65rem 1rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .subpage-back-btn { background: #2563eb; color: #ffffff; border: none; padding: 0.45rem 0.9rem; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+  .subpage-back-btn:hover { background: #1d4ed8; }
   .pillar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin: 0.85rem 0; }
   .pillar-card { background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #2563eb; border-radius: 6px; padding: 0.75rem 0.95rem; }
   .pillar-card h4 { margin: 0 0 0.3rem 0; color: #0f172a; font-size: 0.92rem; }
@@ -115,23 +125,24 @@ CHAPTERS_HTML = """<!DOCTYPE html>
       <h2>Act I (Part 1) — Why Agentic Drug Discovery Is Harder Than It Looks &amp; What You'll See in This Demo</h2>
       <span class="stage-pill">4 Challenges · 5 Artifact Layers · 6 Steps + Wet-Lab Gate</span>
     </div>
-    <div class="grid-2">
-      <div>
-        <div class="plate-box" id="plate-challenges">
-          <img src="assets/oase_challenges.jpg" alt="Agentic Drug Discovery Challenges">
-          <div class="plate-caption">Figure 1 — The 4 challenges in production pharmaceutical R&amp;D: Rigid Workflows, Chatbot Fabrication, Single-Model Echo Chambers, and Lack of Organizational Governance.</div>
-        </div>
-        <div class="plate-box" id="plate-thumb">
-          <img src="assets/oase_post_thumbnail.jpg" alt="GCP-OASE Platform Overview">
-          <div class="plate-caption">Figure 2 — Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud.</div>
-        </div>
-        <div class="plate-box" id="plate-stage-gate">
-          <img src="assets/oase_stage_gate_process.png" alt="GCP-OASE Stage-Gate Process">
-          <div class="plate-caption">Figure 3 — Stage-Gate Process: Human + AI Program Leads co-sign Stage Gates while specialists execute two-phase tool work orders.</div>
+    <div class="stack-full">
+      <div class="plate-box" id="plate-thumb">
+        <img src="assets/oase_post_thumbnail.jpg" alt="Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud" onclick="openLightbox(this.src, this.alt)">
+        <div class="plate-caption">
+          <span>Figure 1 — Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud (5-Role Human Pod + Mirrored Multi-Model Agent Team + 5 Artifact Layers).</span>
+          <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
+
       <div>
         <p>Building production-ready agentic science that a <strong>pharma portfolio review committee can sign off on</strong> requires addressing four core challenges:</p>
+        <div class="plate-box" id="plate-challenges">
+          <img src="assets/oase_challenges.jpg" alt="Agentic Drug Discovery Challenges" onclick="openLightbox(this.src, this.alt)">
+          <div class="plate-caption">
+            <span>Figure 2 — The 4 challenges in production pharmaceutical R&amp;D: Rigid Workflows, Chatbot Fabrication, Single-Model Echo Chambers, and Lack of Organizational Governance.</span>
+            <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
+          </div>
+        </div>
         <table>
           <thead><tr><th>Discovery Challenge</th><th>What Breaks in Standard Pipelines / Chatbots</th><th>How GCP-OASE Solves It</th></tr></thead>
           <tbody>
@@ -157,8 +168,18 @@ CHAPTERS_HTML = """<!DOCTYPE html>
             </tr>
           </tbody>
         </table>
-        <h4 style="margin: 1rem 0 0.4rem 0; color: #0f172a;">What You'll See in This Demo: Oral PCSK9 Campaign (<code>pcsk9-oral</code>)</h4>
-        <p style="font-size: 0.85rem; color: #334155; margin: 0 0 0.5rem 0;">A <strong>human pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, ADMET/DMPK Scientist) collaborates with a <strong>mirrored AI agent team</strong> across 6 steps and a physical wet-lab gate:</p>
+      </div>
+
+      <div>
+        <h3 style="margin: 0.5rem 0 0.4rem 0; color: #0f172a;">What You'll See in This Demo: Oral PCSK9 Campaign (<code>pcsk9-oral</code>)</h3>
+        <p style="font-size: 0.92rem; color: #334155; margin: 0 0 0.75rem 0;">A <strong>human pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, ADMET/DMPK Scientist) collaborates with a <strong>mirrored AI agent team</strong> across 6 steps and a physical wet-lab gate:</p>
+        <div class="plate-box" id="plate-stage-gate">
+          <img src="assets/oase_stage_gate_process.png" alt="GCP-OASE Stage-Gate Process" onclick="openLightbox(this.src, this.alt)">
+          <div class="plate-caption">
+            <span>Figure 3 — Stage-Gate Process: Human + AI Program Leads co-sign Stage Gates while specialists execute two-phase tool work orders.</span>
+            <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
+          </div>
+        </div>
         <table>
           <thead><tr><th>Step</th><th>Stage &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
           <tbody>
@@ -180,17 +201,23 @@ CHAPTERS_HTML = """<!DOCTYPE html>
       <h2>Act I (Part 2) — GCP-OASE Data and Control Architecture</h2>
       <span class="stage-pill">1. The Grove · 2. Work Orders &amp; Dual Validation · 3. Stage-Gate Review · 4. Two-Phase Tool Execution</span>
     </div>
-    <div class="grid-2">
-      <div>
-        <div class="plate-box" id="plate-benefits">
-          <img src="assets/oase_benefits.jpg" alt="GCP-OASE Value Proposition">
-          <div class="plate-caption">Figure 4 — Four core solutions: Dynamic Routing &amp; Lab Gates, Two-Phase Tool Execution, Multi-Model Agent Teams, and 5-Layer Separation of Powers.</div>
-        </div>
-        <div class="plate-box" id="plate-arch">
-          <img src="assets/oase_data_arch.jpg" alt="GCP-OASE Data and Control Architecture">
-          <div class="plate-caption">Figure 5 — The 4 Architectural Mechanisms: The Grove, Work Orders &amp; Dual Validation, Stage-Gate Review, and Two-Phase Tool Execution across 5 Artifact Layers.</div>
+    <div class="stack-full">
+      <div class="plate-box" id="plate-benefits">
+        <img src="assets/oase_benefits.jpg" alt="GCP-OASE Value Proposition" onclick="openLightbox(this.src, this.alt)">
+        <div class="plate-caption">
+          <span>Figure 4 — Four core solutions: Dynamic Routing &amp; Lab Gates, Two-Phase Tool Execution, Multi-Model Agent Teams, and 5-Layer Separation of Powers.</span>
+          <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
+
+      <div class="plate-box" id="plate-arch">
+        <img src="assets/oase_data_arch.jpg" alt="GCP-OASE Data and Control Architecture" onclick="openLightbox(this.src, this.alt)">
+        <div class="plate-caption">
+          <span>Figure 5 — The 4 Architectural Mechanisms: The Grove, Work Orders &amp; Dual Validation, Stage-Gate Review, and Two-Phase Tool Execution across 5 Artifact Layers.</span>
+          <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
+        </div>
+      </div>
+
       <div>
         <div class="pillar-grid">
           <div class="pillar-card" id="scion-card-1">
@@ -437,15 +464,12 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
       <h2>Act III (Chapter 6) — The Complete Picture, Stage-Gate Dossier &amp; Architecture Scorecard</h2>
       <span class="stage-pill">Enterprise Scale · 5 Field Discoveries</span>
     </div>
-    <div class="grid-2">
-      <div>
-        <div class="plate-box" id="plate-complete">
-          <img src="assets/oase_complete_picture.jpg" alt="GCP-OASE Complete Architecture Picture">
-          <div class="plate-caption">Figure 6 — The Complete Picture: 6 Steps + Wet-Lab Gate from Stage 0 Hypothesis Tournament to Stage 4 Candidate Nomination Dossier.</div>
-        </div>
-        <div class="portal-links">
-          <a href="index.html">Open 30-Page Evidence Portal Index</a>
-          <a href="finding_findings_regulatory_WO-008_md.html">Open WO-008 Candidate Nomination Dossier</a>
+    <div class="stack-full">
+      <div class="plate-box" id="plate-complete">
+        <img src="assets/oase_complete_picture.jpg" alt="GCP-OASE Complete Architecture Picture" onclick="openLightbox(this.src, this.alt)">
+        <div class="plate-caption">
+          <span>Figure 6 — The Complete Picture: 6 Steps + Wet-Lab Gate from Stage 0 Hypothesis Tournament to Stage 4 Candidate Nomination Dossier.</span>
+          <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
       <div>
@@ -483,20 +507,97 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
             </tr>
           </tbody>
         </table>
+        <div class="portal-links">
+          <a href="index.html">Open 30-Page Evidence Portal Index</a>
+          <a href="finding_findings_regulatory_WO-008_md.html">Open WO-008 Candidate Nomination Dossier</a>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- INLINE SUBPAGE VIEWER PANEL -->
+  <section class="chapter-panel" id="panel-subpage">
+    <div class="subpage-bar">
+      <div><strong id="subpage-title">Evidence Portal Document</strong></div>
+      <button class="subpage-back-btn" onclick="returnFromSubpage()">&larr; Back to Chapter Walkthrough</button>
+    </div>
+    <div id="subpage-content"></div>
+  </section>
+</div>
+
+<!-- FULL-SCREEN IMAGE LIGHTBOX -->
+<div class="lightbox-backdrop" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
 <script>
+const SUBPAGES = __SUBPAGES_JSON__;
+let lastChapter = 'why';
+
 function showChapter(ch) {
+  lastChapter = ch;
   document.querySelectorAll('.chapter-panel').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.chapter-btn').forEach(el => el.classList.remove('active'));
   const p = document.getElementById('panel-' + ch);
   const b = document.getElementById('btn-' + ch);
   if (p) p.classList.add('active');
   if (b) b.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function openLightbox(src, caption) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-caption').textContent = caption + ' (Click anywhere or press Esc to close)';
+  lb.classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+function openSubpage(filename) {
+  if (filename === 'chapters.html') {
+    showChapter(lastChapter || 'why');
+    return false;
+  }
+  const html = SUBPAGES[filename];
+  if (!html) return true;
+  document.querySelectorAll('.chapter-panel').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.chapter-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('subpage-title').textContent = filename;
+  const container = document.getElementById('subpage-content');
+  container.innerHTML = html;
+  bindSubpageLinks(container);
+  document.getElementById('panel-subpage').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+
+function returnFromSubpage() {
+  showChapter(lastChapter || 'why');
+}
+
+function bindSubpageLinks(root) {
+  root.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const clean = href.split('#')[0].split('?')[0];
+    if (clean === 'chapters.html' || SUBPAGES[clean]) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSubpage(clean);
+      });
+    }
+  });
+}
+
+bindSubpageLinks(document);
+
 const hash = window.location.hash.replace('#', '');
 if (hash && document.getElementById('panel-' + hash)) {
   showChapter(hash);
@@ -537,11 +638,27 @@ def main() -> int:
         if ev_file.is_file():
             env_sha = ev_file.read_text(encoding="utf-8").strip()[:19]
 
-    html_out = CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge).replace(
-        "__ENV_SHA__", env_sha
+    import base64
+    import json
+    import re
+
+    subpages = {}
+    for html_file in sorted(site_dir.glob("*.html")):
+        if html_file.name == "chapters.html":
+            continue
+        raw_html = html_file.read_text(encoding="utf-8")
+        m = re.search(r"<body[^>]*>(.*)</body>", raw_html, re.DOTALL | re.IGNORECASE)
+        body_inner = m.group(1) if m else raw_html
+        # Strip top <nav>...</nav> from subpage body since chapters.html already has top nav
+        body_inner = re.sub(r"<nav[^>]*>.*?</nav>", "", body_inner, count=1, flags=re.DOTALL | re.IGNORECASE)
+        subpages[html_file.name] = body_inner.strip()
+
+    html_out = (
+        CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge)
+        .replace("__ENV_SHA__", env_sha)
+        .replace("__SUBPAGES_JSON__", json.dumps(subpages))
     )
     # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
-    import base64
     for img_path in sorted(site_assets.iterdir()):
         if img_path.suffix.lower() in (".jpg", ".jpeg", ".png"):
             mime = "image/png" if img_path.suffix.lower() == ".png" else "image/jpeg"
