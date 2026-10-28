@@ -13,12 +13,24 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 if [[ "${1:-}" == "--check-hygiene" ]]; then
   echo "=== Running Public Repository Hygiene Gate ==="
   cd "${REPO_ROOT}"
-  FORBIDDEN_REGEX="Amgen|ARIA|Lili Peng|Mickey Makhija|Andres Plata|@amgen\.com|Thousand Oaks|pharma-oss-factory|826100493373|5713950e|\bRVP\b|\bVenter\b|Argolis|argolis"
-  if git grep -n -I -E "${FORBIDDEN_REGEX}" -- . ":(exclude)scripts/preflight.sh" ; then
-    echo "[FAIL] Customer-specific or internal identifiers detected in tracked files!" >&2
+  # Generic secret & token hygiene check (private customer/account blocklists stay outside VCS via --patterns-file)
+  GENERIC_FORBIDDEN_REGEX="(AIza""Sy[0-9A-Za-z_-]{20,}|sk-""ant-[0-9A-Za-z_-]{20,}|ghp_[0-9A-Za-z]{30,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE ""KEY-----)"
+  if git grep -n -I -E "${GENERIC_FORBIDDEN_REGEX}" -- . ":(exclude)scripts/preflight.sh" ; then
+    echo "[FAIL] Secret or credential pattern detected in tracked files!" >&2
     exit 1
   fi
-  echo "[PASS] Zero customer-specific or internal identifiers found in tracked files."
+  if [[ "${2:-}" == "--patterns-file" ]]; then
+    PATTERNS_FILE="${3:-}"
+    if [[ -z "${PATTERNS_FILE}" || ! -r "${PATTERNS_FILE}" || ! -s "${PATTERNS_FILE}" ]]; then
+      echo "[FAIL] --patterns-file missing, unreadable, or empty — fail-closed gate!" >&2
+      exit 1
+    fi
+    if git grep -n -I -E -f "${PATTERNS_FILE}" -- . ; then
+      echo "[FAIL] Private blocklist match detected in tracked files!" >&2
+      exit 1
+    fi
+  fi
+  echo "[PASS] Zero customer-specific, account, or secret identifiers found in tracked files."
   exit 0
 fi
 

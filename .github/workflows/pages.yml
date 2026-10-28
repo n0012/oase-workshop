@@ -1,0 +1,52 @@
+name: Deploy Story Arc & Evidence Portal to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Fail-Closed Repository Hygiene Gate
+        run: ./scripts/preflight.sh --check-hygiene
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build Story Arc, Evidence Portal & Pilot Build Tracker
+        run: |
+          mkdir -p _site_dist
+          cp -R site-template/. _site_dist/
+          python3 scripts/build-chapter-portal.py _site_dist
+          touch _site_dist/.nojekyll
+          test -f _site_dist/chapters.html
+          test -f _site_dist/plan.html
+          test -f _site_dist/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site_dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

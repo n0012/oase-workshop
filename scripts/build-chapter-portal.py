@@ -14,11 +14,13 @@ import pathlib
 import shutil
 import sys
 
-CHAPTERS_HTML = """<!DOCTYPE html>
+CHAPTERS_HTML = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
 <title>GCP-OASE &amp; Scion — Architecture, Value Proposition &amp; Campaign Walkthrough</title>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #f4f6f8; }
@@ -90,6 +92,7 @@ CHAPTERS_HTML = """<!DOCTYPE html>
     <a href="index.html">Portal Home (30 Pages)</a>
     <a href="chapters.html" class="active-nav">Architecture, Value Prop &amp; Campaign Replay</a>
     <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Candidate Dossier</a>
+    <a href="plan.html" style="color:#4ade80;font-weight:700;">Pilot Vision &amp; Build Tracker</a>
   </div>
   <span class="badge-env">Project: __PROJECT_BADGE__ | scion + oase 0.3.0 | ENV __ENV_SHA__</span>
 </nav>
@@ -672,8 +675,195 @@ def main() -> int:
             env_sha = ev_file.read_text(encoding="utf-8").strip()[:19]
 
     import base64
+    import html as html_lib
     import json
     import re
+
+    repo_root = pathlib.Path(__file__).resolve().parent.parent
+    plan_md_path = repo_root / "docs" / "PILOT_IMPLEMENTATION_PLAN.md"
+    if plan_md_path.is_file():
+        plan_md = plan_md_path.read_text(encoding="utf-8")
+        done_cnt = len(re.findall(r"`\[x\]\s*Complete`", plan_md))
+        total_cnt = len(re.findall(r"\|\s*\*\*M\d+\*\*\s*\|", plan_md)) or 6
+        pct = int(round((done_cnt / total_cnt) * 100))
+
+        def _fmt_inline(s: str) -> str:
+            s = html_lib.escape(s)
+            s = re.sub(r"`\[x\]\s*Complete`", '<span class="pass-pill">✓ Complete</span>', s)
+            s = re.sub(r"`\[\s*\]\s*Next Up`", '<span class="stage-pill">→ Next Up</span>', s)
+            s = re.sub(r"`\[\s*\]\s*In Progress`", '<span class="stage-pill">⟳ In Progress</span>', s)
+            s = re.sub(r"`\[\s*\]\s*Pending`", '<span class="warn-pill">Pending</span>', s)
+            s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+            s = re.sub(r"\*(.+?)\*", r"<em>\1</em>", s)
+            s = re.sub(r"`([^`]+)`", r"<code style='background:#f1f5f9;padding:0.12rem 0.35rem;border-radius:4px;font-size:0.84em;'>\1</code>", s)
+            return s
+
+        lines = plan_md.splitlines()
+        out_blocks: list[str] = []
+        in_code = False
+        code_buf: list[str] = []
+        in_table = False
+        table_rows: list[list[str]] = []
+        in_list = False
+        list_tag = "ul"
+
+        def _flush_table() -> None:
+            nonlocal in_table, table_rows
+            if not in_table or not table_rows:
+                in_table = False
+                table_rows = []
+                return
+            t_html = ["<table><thead><tr>"]
+            for cell in table_rows[0]:
+                t_html.append(f"<th>{_fmt_inline(cell)}</th>")
+            t_html.append("</tr></thead><tbody>")
+            for row in table_rows[1:]:
+                if all(set(c.strip()) <= set(":-") for c in row):
+                    continue
+                t_html.append("<tr>" + "".join(f"<td>{_fmt_inline(c)}</td>" for c in row) + "</tr>")
+            t_html.append("</tbody></table>")
+            out_blocks.append("".join(t_html))
+            in_table = False
+            table_rows = []
+
+        def _flush_list() -> None:
+            nonlocal in_list
+            if in_list:
+                out_blocks.append(f"</{list_tag}>")
+                in_list = False
+
+        for ln in lines:
+            if ln.startswith("```"):
+                _flush_table()
+                _flush_list()
+                if not in_code:
+                    in_code = True
+                    code_buf = []
+                else:
+                    in_code = False
+                    out_blocks.append("<pre class='terminal'>" + html_lib.escape("\n".join(code_buf)) + "</pre>")
+                continue
+            if in_code:
+                code_buf.append(ln)
+                continue
+            if ln.strip().startswith("|") and ln.strip().endswith("|"):
+                _flush_list()
+                in_table = True
+                cells = [c.strip() for c in ln.strip()[1:-1].split("|")]
+                table_rows.append(cells)
+                continue
+            else:
+                _flush_table()
+
+            stripped = ln.strip()
+            if not stripped:
+                _flush_list()
+                continue
+            if stripped == "---":
+                _flush_list()
+                out_blocks.append("<hr style='border:none;border-top:1px solid #e2e8f0;margin:1.5rem 0;'/>")
+                continue
+            if stripped.startswith("# "):
+                _flush_list()
+                continue  # rendered in hero
+            if stripped.startswith("## "):
+                _flush_list()
+                out_blocks.append(f"<h2 style='color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:0.45rem;margin-top:1.6rem;'>{_fmt_inline(stripped[3:])}</h2>")
+                continue
+            if stripped.startswith("### "):
+                _flush_list()
+                out_blocks.append(f"<h3 style='color:#1e3a8a;margin-top:1.2rem;'>{_fmt_inline(stripped[4:])}</h3>")
+                continue
+            if stripped.startswith("> "):
+                _flush_list()
+                out_blocks.append(f"<div class='relay-box' style='border-left-color:#2563eb;background:#eff6ff;'>{_fmt_inline(stripped[2:])}</div>")
+                continue
+            m_ul = re.match(r"^[-*]\s+(.*)$", stripped)
+            m_ol = re.match(r"^\d+\.\s+(.*)$", stripped)
+            if m_ul:
+                if not in_list or list_tag != "ul":
+                    _flush_list()
+                    in_list = True
+                    list_tag = "ul"
+                    out_blocks.append("<ul style='line-height:1.6;color:#334155;'>")
+                out_blocks.append(f"<li>{_fmt_inline(m_ul.group(1))}</li>")
+                continue
+            if m_ol:
+                if not in_list or list_tag != "ol":
+                    _flush_list()
+                    in_list = True
+                    list_tag = "ol"
+                    out_blocks.append("<ol style='line-height:1.6;color:#334155;'>")
+                out_blocks.append(f"<li>{_fmt_inline(m_ol.group(1))}</li>")
+                continue
+            _flush_list()
+            out_blocks.append(f"<p style='line-height:1.6;color:#334155;'>{_fmt_inline(stripped)}</p>")
+
+        _flush_table()
+        _flush_list()
+
+        plan_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
+<title>Pilot Vision, Architecture &amp; Live Build Tracker — GCP-OASE</title>
+<style>
+  body {{ font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #f4f6f8; }}
+  nav {{ background: #1e293b; color: #f8fafc; padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #2563eb; }}
+  nav .left a {{ color: #e2e8f0; text-decoration: none; margin-right: 1.5rem; font-size: 0.92rem; }}
+  nav .left a:hover {{ color: #ffffff; text-decoration: underline; }}
+  nav .nav-title {{ font-weight: 700; font-size: 1.05rem; margin-right: 2rem; color: #ffffff; }}
+  .badge-env {{ background: #0f172a; color: #38bdf8; border: 1px solid #0284c7; padding: 0.25rem 0.65rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }}
+  .hero {{ background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 1.75rem 2.5rem; }}
+  .hero h1 {{ margin: 0 0 0.45rem 0; font-size: 1.6rem; color: #ffffff; }}
+  .hero p {{ margin: 0; color: #cbd5e1; font-size: 0.96rem; max-width: 980px; line-height: 1.5; }}
+  .prog-wrap {{ margin-top: 1.1rem; max-width: 680px; }}
+  .prog-lbl {{ font-size: 0.84rem; font-weight: 700; color: #4ade80; margin-bottom: 0.35rem; font-family: monospace; }}
+  .prog-bar {{ height: 10px; background: rgba(255,255,255,0.16); border-radius: 999px; overflow: hidden; }}
+  .prog-fill {{ height: 100%; width: {pct}%; background: linear-gradient(90deg, #22c55e, #38bdf8); border-radius: 999px; }}
+  .container {{ max-width: 1280px; margin: 1.5rem auto; padding: 0 2rem 3rem 2rem; }}
+  .card {{ background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.75rem 2.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
+  table {{ border-collapse: collapse; width: 100%; margin: 0.85rem 0; font-size: 0.88rem; }}
+  th, td {{ text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }}
+  th {{ background: #f8fafc; font-weight: 600; color: #334155; }}
+  .pass-pill {{ background: #dcfce7; color: #166534; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 4px; font-family: monospace; font-size: 0.78rem; white-space: nowrap; }}
+  .stage-pill {{ background: #dbeafe; color: #1e40af; font-weight: 700; font-size: 0.78rem; padding: 0.18rem 0.55rem; border-radius: 4px; font-family: monospace; white-space: nowrap; }}
+  .warn-pill {{ background: #fef3c7; color: #92400e; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 4px; font-family: monospace; font-size: 0.78rem; white-space: nowrap; }}
+  .terminal {{ background: #0f172a; color: #e2e8f0; padding: 1rem 1.2rem; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.81rem; line-height: 1.48; overflow-x: auto; border: 1px solid #334155; }}
+  .relay-box {{ padding: 0.8rem 1rem; margin: 0.9rem 0; border-left: 4px solid #2563eb; border-radius: 0 4px 4px 0; font-size: 0.88rem; }}
+</style>
+</head>
+<body>
+<nav>
+  <div class="left">
+    <span class="nav-title">GCP-OASE &amp; Scion — pcsk9-oral</span>
+    <a href="index.html">Portal Home (30 Pages)</a>
+    <a href="chapters.html">Architecture, Value Prop &amp; Campaign Replay</a>
+    <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Candidate Dossier</a>
+    <a href="plan.html" style="color:#4ade80;font-weight:700;text-decoration:underline;">Pilot Vision &amp; Build Tracker</a>
+  </div>
+  <span class="badge-env">Project: {html_lib.escape(proj_badge)} | scion + oase 0.3.0 | ENV {html_lib.escape(env_sha)}</span>
+</nav>
+<div class="hero">
+  <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, Multi-Voice Gemini TTS Chapter Videos, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <div class="prog-wrap">
+    <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
+    <div class="prog-bar"><div class="prog-fill"></div></div>
+  </div>
+</div>
+<div class="container">
+  <div class="card">
+    {"".join(out_blocks)}
+  </div>
+</div>
+</body>
+</html>
+"""
+        (site_dir / "plan.html").write_text(plan_html, encoding="utf-8")
 
     subpages = {}
     for html_file in sorted(site_dir.glob("*.html")):
@@ -708,15 +898,34 @@ def main() -> int:
     nav_replacement = (
         '<a href="index.html">Home</a>\n'
         '  <a href="chapters.html" style="color:#38bdf8;font-weight:600;">'
-        "Architecture, Value Prop &amp; Campaign Replay</a>"
+        "Architecture, Value Prop &amp; Campaign Replay</a>\n"
+        '  <a href="plan.html" style="color:#4ade80;font-weight:700;">'
+        "Pilot Vision &amp; Build Tracker</a>"
     )
     patched = 0
     for html_file in sorted(site_dir.glob("*.html")):
-        if html_file.name == "chapters.html":
+        if html_file.name in ("chapters.html", "plan.html"):
             continue
         txt = html_file.read_text(encoding="utf-8")
+        changed = False
+        if 'name="robots"' not in txt and "<head>" in txt:
+            txt = txt.replace(
+                "<head>",
+                '<head>\n<meta name="robots" content="noindex, nofollow" />\n<meta name="googlebot" content="noindex, nofollow" />',
+                1,
+            )
+            changed = True
         if "chapters.html" not in txt and nav_target in txt:
             txt = txt.replace(nav_target, nav_replacement, 1)
+            changed = True
+        elif "plan.html" not in txt and "chapters.html" in txt:
+            txt = txt.replace(
+                "Architecture, Value Prop &amp; Campaign Replay</a>",
+                'Architecture, Value Prop &amp; Campaign Replay</a>\n  <a href="plan.html" style="color:#4ade80;font-weight:700;">Pilot Vision &amp; Build Tracker</a>',
+                1,
+            )
+            changed = True
+        if changed:
             html_file.write_text(txt, encoding="utf-8")
             patched += 1
 

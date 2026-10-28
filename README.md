@@ -73,7 +73,9 @@ python3 scripts/record-demo-video.py \
 | **[04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md)** | **Chapters 4–6** (`#ch4`–`#ch6`) | 1:15–1:55 | Stages 3–4 (`WO-006`..`WO-008`): ADMET hERG disqualification of `PCSK9-A02` (`cLogP = 5.09`, 3 liabilities) vs `PCSK9-A03` (`cLogP = 3.01`, 0 liabilities), oral PK (`40 mg QD`), 4 adversarial tamper drills, and `_site/` portal build | `ch4` |
 | **[05 — Build & Register Custom Tools](docs/05-extend-custom-tools.md)** | Extension | 1:55–2:30 | Write a two-phase tool adapter (`raw/` + `.meta.json` + `.analysis.json`) and verify it with `oase validate check` | — |
 
-### Reference Guides
+### Reference Guides & Live Web Portal
+- **[Story Arc & Campaign Replay Website](https://n0012.github.io/oase-workshop/chapters.html)** | **[30-Page Evidence Portal](https://n0012.github.io/oase-workshop/index.html)** | **[Pilot Vision & Live Build Tracker](https://n0012.github.io/oase-workshop/plan.html)**
+- **[Multi-Persona Pilot Plan & Architecture (`docs/PILOT_IMPLEMENTATION_PLAN.md`)](docs/PILOT_IMPLEMENTATION_PLAN.md):** Goal, 5-scientist discovery pod + 6-voice Gemini TTS cast, `<2s` chapter reset architecture, and portable GCP deployment tracker.
 - **[Surface Connectivity Reference](docs/surface-connectivity-reference.md):** Connecting Gemini Enterprise (GA), Antigravity IDE (AGY), Gemini CLI, and Scion Web Console (`scion.hlscde.dev`) to the same OASE workspace.
 - **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh`), pacing, and live demo recovery.
 - **[Troubleshooting & Validator Reference](docs/07-troubleshooting.md):** Exact remediation steps for `PROV-001`..`002`, `CIT-001`..`003`, `REL-001`, and `THR-001`.

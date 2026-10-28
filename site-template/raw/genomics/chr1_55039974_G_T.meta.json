@@ -1,0 +1,33 @@
+{
+  "tool": "alphagenome",
+  "subcommand": "score-variant",
+  "work_order_id": "WO-003",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "https://alphagenome.us-central1.prediction.vertexai.goog",
+  "parameters": {
+    "chrom": "chr1",
+    "pos": 55039974,
+    "ref": "G",
+    "alt": "T",
+    "window": 1048576,
+    "output_types": [
+      "RNA_SEQ",
+      "DNASE",
+      "CAGE"
+    ]
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "chr1_55039974_G_T.json",
+      "sha256": "1ddc3982b945a02b7f7f190ba4bfc1969a1c4b7143548937be7cf77965acb0dc",
+      "bytes": 129
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": []
+}

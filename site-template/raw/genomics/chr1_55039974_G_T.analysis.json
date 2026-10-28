@@ -1,0 +1,35 @@
+{
+  "record_type": "analysis",
+  "source": "raw/genomics/chr1_55039974_G_T.json",
+  "source_sha256": "1ddc3982b945a02b7f7f190ba4bfc1969a1c4b7143548937be7cf77965acb0dc",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "alphagenome@1.0",
+  "thresholds_applied": {
+    "quantile_significance": 0.95,
+    "raw_score_moderate": 0.1
+  },
+  "threshold_sources": {
+    "quantile_significance": "default",
+    "raw_score_moderate": "default"
+  },
+  "metrics": {
+    "liver_rna_seq_quantile": 0.984,
+    "liver_rna_seq_raw_lfc": -0.24,
+    "liver_dnase_quantile": 0.962
+  },
+  "assessment": {
+    "verdict": "functional_hepatocyte_regulatory_variant",
+    "direction": "downregulation_protective"
+  },
+  "mandatory_relays": [
+    {
+      "code": "alphagenome.quantile_not_clinical_effect",
+      "message": "Quantile scores are ranked against common background variants; regulatory impact must be interpreted alongside primary human genetics and expression data."
+    }
+  ],
+  "written_by": "wo003-computational-biologist",
+  "work_order_id": "WO-003"
+}

@@ -1,0 +1,26 @@
+{
+  "tool": "pk",
+  "subcommand": "scale",
+  "work_order_id": "WO-007",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "local://oase-pk-nca-allometry",
+  "parameters": {
+    "human_bw_kg": 70.0,
+    "target_auc": 12.5,
+    "target_cmax": 2.0
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "oase_pcsk9_014_scaled_pk.json",
+      "sha256": "1f28e323618e6348989d89d9a526b7cf31e907fb802cc65a539b03c519a9d06f",
+      "bytes": 143
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": []
+}
