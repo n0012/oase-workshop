@@ -157,7 +157,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <tr id="why-row-2">
               <td><strong>2. The Chatbot Fabrication Trap</strong></td>
               <td>Summarizes large tables in prompt context, invents plausible binding numbers, pads citations, or confuses <code>NA</code> with <code>0</code>.</td>
-              <td><strong>Two-phase tool execution &amp; verified citations:</strong> Raw tool outputs + SHA-256 receipts are scored offline; every number in prose is checked within <strong>&plusmn;1%</strong> (<code>CIT-003</code>).</td>
+              <td><strong>Two-Phase Tool Execution &amp; Dual Validation:</strong> <strong>Phase 1 (Data Acquisition):</strong> Primary scientific datasets are processed by deterministic scientific tools rather than passed through an LLM prompt, and raw results are written to disk alongside a cryptographic (SHA-256) provenance record. <strong>Phase 2 (Pre-Registered Threshold Evaluation):</strong> Executes offline to evaluate those primary outputs against human expert-defined program cutoffs. Before any finding is accepted, it must pass both automated data-integrity verification and an independent scientific peer review by the AI program lead.</td>
             </tr>
             <tr id="why-row-3">
               <td><strong>3. The Single-Model Echo Chamber</strong></td>
@@ -203,13 +203,13 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <section class="chapter-panel" id="panel-scion">
     <div class="chapter-header">
       <h2>Act I (Part 2) — GCP-OASE Data and Control Architecture</h2>
-      <span class="stage-pill">1. The Grove · 2. Work Orders &amp; Dual Validation · 3. Stage-Gate Review · 4. Two-Phase Tool Execution</span>
+      <span class="stage-pill">1. The Grove · 2. Work Orders &amp; Dual Validation · 3. Two-Phase Tool Execution · 4. Stage-Gate Review</span>
     </div>
     <div class="stack-full">
       <div class="plate-box" id="plate-benefits">
         <img src="assets/oase_benefits.jpg" alt="GCP-OASE Value Proposition" onclick="openLightbox(this.src, this.alt)">
         <div class="plate-caption">
-          <span>Figure 4 — Four core solutions: Dynamic Routing &amp; Lab Gates, Two-Phase Tool Execution, Multi-Model Agent Teams, and 5-Layer Separation of Powers.</span>
+          <span>Figure 4 — Four core solutions: Dynamic Routing &amp; Lab Gates, Two-Phase Tool Execution &amp; Dual Validation, Multi-Model Agent Teams, and 5-Layer Separation of Powers.</span>
           <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
@@ -217,7 +217,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
       <div class="plate-box" id="plate-arch">
         <img src="assets/oase_data_arch.jpg" alt="GCP-OASE Data and Control Architecture" onclick="openLightbox(this.src, this.alt)">
         <div class="plate-caption">
-          <span>Figure 5 — The 4 Architectural Mechanisms: The Grove, Work Orders &amp; Dual Validation, Stage-Gate Review, and Two-Phase Tool Execution across 5 Artifact Layers.</span>
+          <span>Figure 5 — The 4 Core Pillars: 1. The Grove, 2. Work Orders &amp; Dual Validation, 3. Two-Phase Tool Execution, and 4. Stage-Gate Review.</span>
           <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
@@ -230,15 +230,15 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
           </div>
           <div class="pillar-card" id="scion-card-2">
             <h4>2. Work Orders &amp; Dual Validation ("How is work checked?")</h4>
-            <p>Every assignment is a numbered Work Order (<code>WO-001</code>..<code>WO-008</code>). Before promotion, every finding must pass <strong>10 automated mechanical checks</strong> (<code>oase validate check</code>) plus an independent <strong>scientific review</strong>.</p>
+            <p>Every assignment is a numbered Work Order (<code>WO-001</code>..<code>WO-008</code>). Before closure, every finding must pass automated <strong>data-integrity verification</strong> (<code>oase validate check</code>) plus an independent <strong>scientific peer review</strong> by the AI Program Lead.</p>
           </div>
           <div class="pillar-card" id="scion-card-3">
-            <h4>3. Stage-Gate Review ("Who decides to move forward?")</h4>
-            <p>Work orders roll up into five logged gates: <strong>1. Target validation</strong> (AI + human sign), <strong>2. Hit ID</strong> (AI signs, logs liabilities), <strong>3. Lead opt</strong> (AI signs once resolved), <strong>4. Lab handoff</strong> (human signs; pauses on disk), and <strong>5. Candidate nomination</strong> (AI + human sign).</p>
+            <h4>3. Two-Phase Tool Execution ("Why trust the numbers?")</h4>
+            <p><strong>Phase 1 (Data Acquisition)</strong> processes primary datasets with deterministic tools and saves raw outputs + SHA-256 provenance records (<code>.meta.json</code>). <strong>Phase 2 (Threshold Evaluation)</strong> evaluates outputs offline against human expert-defined program cutoffs (<code>.analysis.json</code>) and attaches required caveats.</p>
           </div>
           <div class="pillar-card" id="scion-card-4">
-            <h4>4. Two-Phase Tool Execution ("Why trust the numbers?")</h4>
-            <p><strong>Phase 1 (Run/Fetch)</strong> writes raw tool outputs + SHA-256 receipts (<code>.meta.json</code>). <strong>Phase 2 (Analyze)</strong> scores outputs offline against 36 fixed threshold sets (<code>.analysis.json</code>) and emits mandatory <code>**Relay:**</code> caveats.</p>
+            <h4>4. Stage-Gate Review ("Who decides to move forward?")</h4>
+            <p>Work orders roll up into five logged gates: <strong>1. Target validation</strong> (AI + human sign), <strong>2. Hit ID</strong> (AI signs, logs liabilities), <strong>3. Lead opt</strong> (AI signs once resolved), <strong>4. Lab handoff</strong> (human signs; pauses on disk), and <strong>5. Candidate nomination</strong> (AI + human sign).</p>
           </div>
         </div>
         <h4 style="margin: 0.9rem 0 0.4rem 0; color: #0f172a;">Worked Example of Two-Phase Execution (Step 3 Pocket Analysis)</h4>
