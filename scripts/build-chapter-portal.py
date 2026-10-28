@@ -74,7 +74,7 @@ CHAPTERS_HTML = """<!DOCTYPE html>
 </nav>
 
 <div class="hero">
-  <h1>End-to-End Agentic Pre-Clinical Simulation &amp; PRFAQ Value Verification</h1>
+  <h1>End-to-End Agentic Pre-Clinical Simulation &amp; Governance Walkthrough</h1>
   <p>Live execution of the PCSK9 Oral Small-Molecule Campaign (Stages 0 &rarr; 4, Work Orders WO-001..WO-008) on Google Cloud Argolis using deterministic Phase-1/Phase-2 tool latches, SHA-256 provenance sidecars, and mechanical governance checks.</p>
   <div class="kpi-strip">
     <div class="kpi-card"><div class="kpi-val">36 / 36</div><div class="kpi-lbl">Threshold Sets Resolved</div></div>
@@ -91,7 +91,7 @@ CHAPTERS_HTML = """<!DOCTYPE html>
   <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">Chapter 3: AlphaFold 3 &amp; Docking (WO-004..005)</button>
   <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">Chapter 4: DMTA, hERG Gate &amp; PK (WO-006..007)</button>
   <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Chapter 5: 4 Adversarial Governance Drills</button>
-  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Chapter 6: PRFAQ &amp; Medium Article Scorecard</button>
+  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Chapter 6: Evidence Portal &amp; Architecture Scorecard</button>
 </div>
 
 <div class="container">
@@ -295,13 +295,13 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
   <!-- CHAPTER 6 -->
   <section class="chapter-panel" id="panel-ch6">
     <div class="chapter-header">
-      <h2>Chapter 6 — Reflective Comparison: Workshop PRFAQ &amp; Medium Article vs. Deployed Reality</h2>
+      <h2>Chapter 6 — Static Evidence Portal, Stage-Gate Dossier &amp; Architecture Scorecard</h2>
       <span class="stage-pill">Outcome Evaluation · 5 Field Discoveries</span>
     </div>
     <div>
-      <p>How did our live Argolis deployment and end-to-end simulation compare against the value claims in the Workshop PRFAQ (<code>PRFAQ.md</code>) and Medium article (<code>ARTICLE.md</code>)?</p>
+      <p>Summary of the compiled 31-page Static Evidence Portal (`WO-008` Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud Argolis execution:</p>
       <table>
-        <thead><tr><th>PRFAQ / Article Claim</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Engineering Reflection &amp; Friction Discovered</th><th>Verdict</th></tr></thead>
+        <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Engineering Reflection &amp; Field Discovery</th><th>Verdict</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>1. Two-Phase Tool Latch</strong><br>(Fetch/Compute vs. Offline Analyze)</td>
