@@ -98,24 +98,24 @@ CHAPTERS_HTML = """<!DOCTYPE html>
   <h1>Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p><strong>OASE (Open Agentic Science Engine)</strong> is a drug discovery solution on Google Cloud that traces AI model predictions, wet-lab measurements, computed results, and stage-gate decisions across five layers of artifacts. Built on top of the open-source, multi-agent, multi-user <strong>SCION</strong> agent platform, GCP-OASE pairs a 5-scientist human discovery pod with a mirrored multi-model AI agent team (Gemini, Claude, OpenAI).</p>
   <div class="kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">5 Human + 10 AI</div><div class="kpi-lbl">Team Roles in The Grove</div></div>
+    <div class="kpi-card"><div class="kpi-val">5 Human + 11 AI</div><div class="kpi-lbl">Pod &amp; Agent Roles in Grove</div></div>
     <div class="kpi-card"><div class="kpi-val">5 Artifact Layers</div><div class="kpi-lbl">Separation of Powers</div></div>
     <div class="kpi-card"><div class="kpi-val">36 / 36</div><div class="kpi-lbl">Threshold Sets Resolved</div></div>
     <div class="kpi-card"><div class="kpi-val">8 / 8 [PASS]</div><div class="kpi-lbl">Work Orders Accepted</div></div>
-    <div class="kpi-card"><div class="kpi-val">4 / 4 Caught</div><div class="kpi-lbl">Tamper Drills Blocked</div></div>
+    <div class="kpi-card"><div class="kpi-val">3 Blocked + 1 Logged</div><div class="kpi-lbl">Tamper &amp; Override Checks</div></div>
     <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Lead (40 mg QD)</div></div>
   </div>
 </div>
 
 <div class="chapter-bar">
-  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">1. Why Agentic Discovery Is Hard &amp; Demo Overview</button>
+  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">1. Challenges &amp; Demo Overview</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">2. Data &amp; Control Architecture (4 Pillars)</button>
-  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">3. Step 1: Stage 0 Tournament (WO-001)</button>
-  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">4. Step 2: Genetics &amp; Omics (WO-002..003)</button>
-  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">5. Step 3: AF3 &amp; Docking (WO-004..005)</button>
-  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Step 4 &amp; Lab Gate: DMTA &amp; PK (WO-006..007)</button>
-  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. Step 5: 4 Tamper Drills</button>
-  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Step 6: Complete Picture &amp; Dossier</button>
+  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">3. Step 1: Rank Hypotheses (WO-001)</button>
+  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">4. Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
+  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">5. Step 3: AF3, Pockets &amp; Gate 2 (WO-004..005)</button>
+  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
+  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. Step 5: Human PK, Dossier &amp; Gate 4 (WO-007..008)</button>
+  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Step 6: Validation &amp; Override Review</button>
 </div>
 
 <div class="container">
@@ -172,23 +172,24 @@ CHAPTERS_HTML = """<!DOCTYPE html>
 
       <div>
         <h3 style="margin: 0.5rem 0 0.4rem 0; color: #0f172a;">What You'll See in This Demo: Oral PCSK9 Campaign (<code>pcsk9-oral</code>)</h3>
-        <p style="font-size: 0.92rem; color: #334155; margin: 0 0 0.75rem 0;">A <strong>human pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, ADMET/DMPK Scientist) collaborates with a <strong>mirrored AI agent team</strong> across 6 steps and a physical wet-lab gate:</p>
+        <p style="font-size: 0.92rem; color: #334155; margin: 0 0 0.75rem 0;">A <strong>human discovery pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, DMPK &amp; Safety Lead) collaborates with a <strong>mirrored 11-agent AI team</strong> (AI Program Lead, 8 Domain Specialists, Independent Reviewer, and Validator) across 6 steps, 4 go/no-go stage gates, and 1 physical lab handoff:</p>
         <div class="plate-box" id="plate-stage-gate">
           <img src="assets/oase_stage_gate_process.png" alt="GCP-OASE Stage-Gate Process" onclick="openLightbox(this.src, this.alt)">
           <div class="plate-caption">
-            <span>Figure 3 — Stage-Gate Process: Human + AI Program Leads co-sign Stage Gates while specialists execute two-phase tool work orders.</span>
+            <span>Figure 3 — Stage-Gate Process: Six demo steps, four logged go/no-go gates, and one lab handoff.</span>
             <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
           </div>
         </div>
         <table>
-          <thead><tr><th>Step</th><th>Stage &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
+          <thead><tr><th>Step</th><th>Stage, Gate &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
           <tbody>
-            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td>Seed &amp; rank 28-match blind Elo tournament: small-molecule <code>Pocket #1</code> (<code>1642.5 Elo</code>) beats cyclic peptide (<code>1588.0 Elo</code>).</td></tr>
-            <tr><td><strong>Step 2</strong></td><td>Stage 1 (<code>WO-002..003</code>)</td><td>Validate PCSK9 in human genetics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). Human + AI co-sign Gate 1.</td></tr>
-            <tr><td><strong>Step 3</strong></td><td>Stage 2 (<code>WO-004..005</code>)</td><td>AlphaFold 3 co-fold (<code>pLDDT 91.4</code>, <code>ipTM 0.84</code>), <code>fpocket</code> (<code>0.68</code> vs <code>0.24</code>), and AutoDock Vina (<code>-9.4 kcal/mol</code>).</td></tr>
-            <tr><td><strong>Step 4</strong></td><td>Stage 3 (<code>WO-006</code>)</td><td>Catch the hERG trap: reject <code>PCSK9-A02</code> (<code>cLogP 5.09</code>, 3 liabilities); redesign polar oxadiazole <code>PCSK9-A03</code> / <code>OASE-PCSK9-014</code> (<code>0</code> liabilities).</td></tr>
-            <tr><td><strong>&#9208; Lab Gate</strong></td><td>Stage 3 &rarr; 4 Handoff (<code>WO-007</code>)</td><td>Campaign pauses on disk for physical SPR/FRET (<code>KD = 4.2 nM</code>, <code>IC50 = 11.8 nM</code>) and PK CSVs (<code>F = 52%</code>, <code>t1/2 = 14.8 h</code>, <code>40 mg QD</code>).</td></tr>
-            <tr><td><strong>Steps 5–6</strong></td><td>Stage 4 (<code>WO-008</code>)</td><td>Run 4 tamper drills (all 4 caught by validator) and compile the 31-page candidate nomination dossier.</td></tr>
+            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td>Ingest &amp; rank upstream AI Co-Scientist Elo tournament: allosteric small-molecule <code>IC-001</code> (<code>1642.5 Elo</code>) leads cyclic peptide <code>IC-002</code> (<code>1588.0 Elo</code>); logs caveat <code>hypothesis.adopted_not_generated</code>.</td></tr>
+            <tr><td><strong>Step 2</strong></td><td>Stage 1 &rarr; <strong>Gate 1</strong> (<code>WO-002..003</code>)</td><td>Validate PCSK9 in human genetics &amp; liver omics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). <strong>AI + Human Program Leads co-sign Gate 1 (Target Validation).</strong></td></tr>
+            <tr><td><strong>Step 3</strong></td><td>Stage 2 &rarr; <strong>Gate 2</strong> (<code>WO-004..005</code>)</td><td>AlphaFold 3 co-fold (<code>ipTM = 0.84</code>, <code>pTM = 0.88</code>), <code>fpocket</code> (<code>0.68</code> groove vs <code>0.24</code> flat surface), and AutoDock Vina (<code>-9.4 kcal/mol</code>). <strong>AI Program Lead signs Gate 2 (Hit Identification) &amp; logs liability <code>L-002</code>.</strong></td></tr>
+            <tr><td><strong>Step 4</strong></td><td>Stage 3 &rarr; <strong>Gate 3</strong> (<code>WO-006</code>)</td><td>Multiparameter chemistry &amp; ADMET filter flags high-lipophilicity cardiac (hERG) alert; optimizes polar heterocycle <code>OASE-PCSK9-014</code> (<code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>0</code> alerts, <code>4</code>-step synthesis). <strong>AI Program Lead signs Gate 3 (Lead Optimization).</strong></td></tr>
+            <tr><td><strong>&#9208; Lab Gate</strong></td><td>Lab Handoff (Seeded in Demo)</td><td><strong>Human Program Lead signs Lab Handoff</strong> for synthesis &amp; animal PK studies; agents pause cleanly on disk until measured rat (<code>54%</code>) and dog (<code>61%</code>) oral bioavailability files return.</td></tr>
+            <tr><td><strong>Step 5</strong></td><td>Stage 4 &rarr; <strong>Gate 4</strong> (<code>WO-007..008</code>)</td><td>Project human once-daily dose (<code>40 mg QD</code>, <code>F = 52%</code>, <code>t1/2 = 14.8 h</code>) and compile candidate dossier + HTML Evidence Portal. <strong>AI + Human Program Leads co-sign Gate 4 (Candidate Nomination).</strong></td></tr>
+            <tr><td><strong>Step 6</strong></td><td>Governance &amp; Override Checks</td><td>Run test cases against the 10-check validator: <strong>blocks</strong> missing caveats (<code>REL-001</code>), out-of-tolerance numbers (<code>CIT-003</code>), and altered raw hashes (<code>PROV-002</code>), while <strong>permitting &amp; logging</strong> an audited reviewer override.</td></tr>
           </tbody>
         </table>
       </div>
@@ -230,7 +231,7 @@ CHAPTERS_HTML = """<!DOCTYPE html>
           </div>
           <div class="pillar-card" id="scion-card-3">
             <h4>3. Stage-Gate Review ("Who decides to move forward?")</h4>
-            <p>The program is divided into Stage 0..4 go/no-go gates. The human Program Lead co-signs <strong>Gate 1 (target validation)</strong> and <strong>Gate 4 (candidate nomination)</strong>, and the <strong>Lab Handoff Gate</strong> pauses on disk until wet-lab CSVs return.</p>
+            <p>Work orders roll up into five logged gates: <strong>1. Target validation</strong> (AI + human sign), <strong>2. Hit ID</strong> (AI signs, logs liabilities), <strong>3. Lead opt</strong> (AI signs once resolved), <strong>4. Lab handoff</strong> (human signs; pauses on disk), and <strong>5. Candidate nomination</strong> (AI + human sign).</p>
           </div>
           <div class="pillar-card" id="scion-card-4">
             <h4>4. Two-Phase Tool Execution ("Why trust the numbers?")</h4>
@@ -381,30 +382,28 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
     </div>
   </section>
 
-  <!-- CHAPTER 4 -->
+  <!-- CHAPTER 4: STEP 4 & LAB GATE -->
   <section class="chapter-panel" id="panel-ch4">
     <div class="chapter-header">
-      <h2>Act II (Chapter 4) — Stages 3–4 DMTA Lead Optimization: Catching the hERG Trap (`WO-006`..`WO-007`)</h2>
-      <span class="stage-pill">Stages 3–4 · checkpoints/ch3</span>
+      <h2>Step 4 &amp; &#9208; Lab Gate — Multiparameter Chemistry, ADMET Filtering &amp; Wet-Lab Handoff (`WO-006`)</h2>
+      <span class="stage-pill">Stage 3 &rarr; Gate 3 &rarr; Lab Gate · checkpoints/ch3..ch4</span>
     </div>
     <div class="grid-2">
       <div>
-        <p><strong>The Critical Governance Moment:</strong> Live execution of <code>oase compound</code> and <code>oase admet</code> (`admet-endpoints@1.0`) flags <code>PCSK9-A02</code> (`cLogP = 5.09`, `MW = 378.4 Da`, `TPSA = 51.2 Å²`, `LogS = -5.613`) with <strong>3 critical liabilities (`metabolic_stability`, `herg_liability`, `solubility`)</strong>. Substituting the polar F,CN-oxadiazole in <code>PCSK9-A03</code> (`cLogP = 3.01`, `MW = 338.3 Da`, `TPSA = 101.0 Å²`, `LogS = -4.25`) clears all 3 rule-based liabilities (`0` liabilities) and corresponds to nominated lead <code>OASE-PCSK9-014</code> in the seeded translational PK fixture (`WO-007`, `F = 52%`, `t1/2 = 14.8 h`, `40 mg QD`).</p>
+        <p><strong>Step 4 (Multiparameter Lead Optimization):</strong> Using the Step 3 structures, the Medicinal Chemist runs <code>RDKit</code> descriptors, <code>BRICS</code> matched molecular pairs, <code>ASKCOS</code> retrosynthesis, and rule-based <code>ADMET</code> structural alerts (`WO-006`). High-lipophilicity dockers trigger cardiac-safety (Aronov hERG) and metabolic liabilities, whereas polar heterocycle analogs resolve all alerts and advance at <strong>Gate 3 (Lead Optimization)</strong>:</p>
         <table>
-          <thead><tr><th>Candidate</th><th>Live RDKit Descriptors (`oase compound`)</th><th>Live `oase admet` Verdict (`admet-endpoints@1.0`)</th><th>Seeded PK Fixture (`WO-007`)</th><th>Decision</th></tr></thead>
+          <thead><tr><th>Series / Run</th><th>Unoptimized High-Scoring Docker</th><th>Optimized Polar Lead (`OASE-PCSK9-014` / `PCSK9-A03`)</th><th>Gate 3 Verdict</th></tr></thead>
           <tbody>
-            <tr><td><code>PCSK9-A02</code> (CF3-thiazole)</td><td><code>cLogP = 5.09</code>, <code>MW = 378.4</code>, <code>TPSA = 51.2 Å²</code></td><td><span class="fail-pill">3 LIABILITIES (hERG + MetStab + Sol)</span></td><td>Disqualified at ADMET gate</td><td><span class="fail-pill">REJECTED</span></td></tr>
-            <tr><td><code>PCSK9-A03</code> / <code>OASE-PCSK9-014</code></td><td><code>cLogP = 3.01</code>, <code>MW = 338.3</code>, <code>TPSA = 101.0 Å²</code></td><td><span class="pass-pill">0 CRITICAL LIABILITIES (LogP &le; 3.7)</span></td><td><code>F = 52%</code>, <code>t1/2 = 14.8 h</code>, <code>40 mg QD</code></td><td><span class="pass-pill">NOMINATED</span></td></tr>
+            <tr><td><strong>Seeded Campaign (`WO-006`)</strong></td><td><code>pcsk9_analog_02</code>: <code>cLogP = 4.8</code> (&gt; <code>3.5</code> cutoff), basic-amine hERG liability <code>L-002</code></td><td><strong><code>OASE-PCSK9-014</code></strong>: <code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>MW = 462.5 Da</code>, <code>TPSA = 88.4 Å²</code>, <code>0</code> alerts, <code>4</code>-step synthesis (<code>0.87</code>)</td><td><span class="pass-pill">L-002 MITIGATED</span></td></tr>
+            <tr><td><strong>Live CLI Pair (`live-runs/`)</strong></td><td><code>PCSK9-A02</code>: <code>cLogP = 5.09</code>, <code>MW = 378.4 Da</code>, <strong>3 liabilities</strong> (hERG + MetStab + Sol)</td><td><strong><code>PCSK9-A03</code></strong>: <code>cLogP = 3.01</code>, <code>MW = 338.3 Da</code>, <code>TPSA = 101.0 Å²</code>, <strong>0 liabilities</strong></td><td><span class="pass-pill">0 ALERTS PASS</span></td></tr>
           </tbody>
         </table>
         <div class="relay-box">
-          <strong>Engineering Discovery (`_BASIC_NITROGEN_SMARTS` in `admet.py:227`):</strong> Inspecting <code>oase/commands/admet.py</code> revealed that <code>[NH2,NH1,NH0;!$(N=*);!$(N#*)]</code> omits <code>!$(NC=O)</code>, so neutral amide <code>-C(=O)NH-</code> groups match <code>has_basic_nitrogen = True</code>! <code>PCSK9-A03</code> clears the Aronov hERG rule because its <code>LogP = 3.01</code> drops below the <code>LogP &gt; 3.7</code> threshold—proving why auditable provenance is essential for spotting heuristic over-reach.
+          <strong>&#9208; Lab Gate (Stopping-Gate Handoff &amp; Assay Re-Ingestion):</strong> Steps 1–4 are entirely <em>in silico</em>. Before Step 5 can project human dosing, the Human Program Lead signs the Lab Handoff work order for synthesis and <em>in vivo</em> animal PK studies. Agents pause cleanly on disk until measured rat (<code>54%</code>) and dog (<code>61%</code>) oral bioavailability files return (pre-staged in the workshop).
         </div>
         <div class="portal-links">
           <a href="finding_findings_medicinal-chemistry_WO-006_md.html">View WO-006 Finding</a>
-          <a href="finding_findings_admet-dmpk_WO-007_md.html">View WO-007 Finding</a>
           <a href="artifact_admet.html">View ADMET Artifacts</a>
-          <a href="artifact_pk.html">View PK Artifacts</a>
         </div>
       </div>
       <div class="terminal"><span class="cmd">$ oase admet analyze --name PCSK9-A02 "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1"</span>
@@ -420,60 +419,94 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
     </div>
   </section>
 
-  <!-- CHAPTER 5 -->
+  <!-- CHAPTER 5: STEP 5 HUMAN DOSE, DOSSIER & GATE 4 + COMPLETE PICTURE -->
   <section class="chapter-panel" id="panel-ch5">
     <div class="chapter-header">
-      <h2>Act II (Chapter 5) — Mechanical Governance Drills (`oase validate check` Adversarial Tests)</h2>
-      <span class="stage-pill">Control Plane · checkpoints/ch4</span>
-    </div>
-    <div class="grid-2">
-      <div>
-        <p>Before compiling the final Pre-Clinical Candidate Dossier (`WO-008`), we verify all 9 live Phase-1/Phase-2 runs in <code>live-runs/</code> plus all 8 campaign work orders (`WO-001`..`WO-008`), and run 4 negative adversarial tamper drills against <code>oase validate check</code>.</p>
-        <table>
-          <thead><tr><th>Adversarial Drill</th><th>Injected Fault</th><th>Validator Check</th><th>Exit Code</th><th>Outcome</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Drill 1 (`PROV-002`)</strong></td><td>Append 1 byte to `raw/docking/pcsk9_pocket1_vina.sdf` (SHA-256 mismatch)</td><td><code>provenance_valid</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
-            <tr><td><strong>Drill 2 (`CIT-003`)</strong></td><td>Inflate docking score from `-9.4` to `-11.2 kcal/mol` in `WO-005.md` (`&gt; &plusmn;1%`)</td><td><code>source_tags_resolve</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
-            <tr><td><strong>Drill 3 (`REL-001`)</strong></td><td>Delete mandatory relay `af3.low_confidence_segments` from `WO-004.md`</td><td><code>relay_coverage</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
-            <tr><td><strong>Drill 4 (`THR-001`)</strong></td><td>Strip `threshold_set` attribution from `pcsk9_ic001_series_admet.analysis.json`</td><td><code>analysis_citations</code></td><td><code>exit=1</code></td><td><span class="pass-pill">CAUGHT &amp; BLOCKED</span></td></tr>
-          </tbody>
-        </table>
-        <div class="portal-links">
-          <a href="workorder_WO-005_r1.html">Inspect WO-005 Record</a>
-          <a href="finding_findings_regulatory_WO-008_md.html">Inspect WO-008 Dossier</a>
-        </div>
-      </div>
-      <div class="terminal"><span class="cmd">$ ./scripts/run-e2e-simulation.sh  # Chapter 5 Output</span>
-======================================================================
-CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
-======================================================================
-<span class="ok">[PASS - CAUGHT] Drill 1: SHA-256 Bit-Flip Tampering (PROV-002)</span>
-  -&gt; WO-005 failed on provenance_valid with exit=1
-<span class="ok">[PASS - CAUGHT] Drill 2: Inflated Numeric Claim -11.2 vs -9.4 kcal/mol (CIT-003)</span>
-  -&gt; WO-005 failed on source_tags_resolve with exit=1
-<span class="ok">[PASS - CAUGHT] Drill 3: Omitted Mandatory Caveat Relay af3.low_confidence_segments (REL-001)</span>
-  -&gt; WO-004 failed on relay_coverage with exit=1
-<span class="ok">[PASS - CAUGHT] Drill 4: Missing Threshold Set Attribution (THR-001)</span>
-  -&gt; WO-006 failed on analysis_citations with exit=1</div>
-    </div>
-  </section>
-
-  <!-- CHAPTER 6 -->
-  <section class="chapter-panel" id="panel-ch6">
-    <div class="chapter-header">
-      <h2>Act III (Chapter 6) — The Complete Picture, Stage-Gate Dossier &amp; Architecture Scorecard</h2>
-      <span class="stage-pill">Enterprise Scale · 5 Field Discoveries</span>
+      <h2>Step 5 — Human Oral Dose Projection, Candidate Dossier &amp; Gate 4 (`WO-007`..`WO-008`)</h2>
+      <span class="stage-pill">Stage 4 &rarr; Gate 4 (AI + Human Co-Sign) · checkpoints/ch4</span>
     </div>
     <div class="stack-full">
+      <div class="grid-2">
+        <div>
+          <p>Once measured rat (<code>54.0%</code>) and dog (<code>61.0%</code>) oral bioavailability files return from the Lab Gate, the DMPK and Regulatory specialists execute <code>WO-007</code> (two-species allometric PK scaling) and <code>WO-008</code> (ClinicalTrials.gov &amp; OpenFDA FAERS differentiation + candidate dossier compilation), culminating in <strong>Gate 4 (Candidate Nomination)</strong> co-signed by the AI Program Lead and Human Program Lead:</p>
+          <table>
+            <thead><tr><th>Work Order &amp; Metric</th><th>Verified Value (`WO-007` / `WO-008`)</th><th>Program Threshold</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Rat / Dog Oral Bioavailability (`WO-007`)</strong></td><td>Rat <code>F = 54.0%</code> · Dog <code>F = 61.0%</code> (NCA)</td><td><code>&ge; 30%</code> oral <code>F</code></td><td><span class="pass-pill">LAB DATA VERIFIED</span></td></tr>
+              <tr><td><strong>Projected 70 kg Human Oral PK (`WO-007`)</strong></td><td><strong><code>40.0 mg QD</code></strong> (<code>F = 52.0%</code>, <code>t1/2 = 14.8 h</code>)</td><td>Once-daily <code>&le; 100 mg QD</code></td><td><span class="pass-pill">QD ORAL FEASIBLE</span></td></tr>
+              <tr><td><strong>Clinical Landscape (`WO-008`)</strong></td><td><code>84</code> PCSK9 trials · <code>3</code> Phase 3/approved comparators · <strong><code>0</code> approved oral small molecules</strong></td><td>Differentiated oral profile</td><td><span class="pass-pill">WHITESPACE CONFIRMED</span></td></tr>
+              <tr><td><strong>Gate 4 — Candidate Nomination (`DEC-011/012`)</strong></td><td><strong><code>OASE-PCSK9-014</code></strong> nominated; HTML Evidence Portal compiled</td><td>8/8 WOs + Dual Validation</td><td><span class="pass-pill">AI + HUMAN CO-SIGNED</span></td></tr>
+            </tbody>
+          </table>
+          <div class="relay-box">
+            <strong>Mandatory Relays (`pk.allometric_scaling_is_projection` &amp; `trials.active_competitor_pipeline`):</strong> Two-species human PK projections require Phase 1 clinical SAD/MAD verification, and active Phase 3 oral macrocycle (`MK-0616`) / injectable mAb comparators require explicit food-effect and CoGS differentiation.
+          </div>
+          <div class="portal-links">
+            <a href="finding_findings_admet-dmpk_WO-007_md.html">View WO-007 PK Finding</a>
+            <a href="finding_findings_regulatory_WO-008_md.html">View WO-008 Candidate Dossier</a>
+            <a href="artifact_pk.html">View PK Layer 0 Artifacts</a>
+            <a href="index.html">Open Full Evidence Portal Index</a>
+          </div>
+        </div>
+        <div class="terminal"><span class="cmd">$ oase pk analyze raw/pk/oase_pcsk9_014_scaled_pk.json</span>
+oase_pcsk9_014_scaled_pk [threshold_set pk-parameters@1.0+program]
+<span class="ok">oral-qd-supported: Rat F=54.0%, Dog F=61.0% -&gt; Human F=52.0%, t1/2=14.8 h, Projected Dose=40.0 mg QD</span>
+relay pk.allometric_scaling_is_projection: Two-species projections require clinical verification.
+
+<span class="cmd">$ oase site validate &amp;&amp; oase site build &amp;&amp; oase site export</span>
+<span class="ok">[PASS] Validated 8/8 work orders (WO-001..WO-008), 28/28 inline JSONPath citations, and SHA-256 receipts</span>
+<span class="ok">[PASS] Built static HTML Evidence Portal (_site/index.html + _site/chapters.html)</span></div>
+      </div>
+
       <div class="plate-box" id="plate-complete">
         <img src="assets/oase_complete_picture.jpg" alt="GCP-OASE Complete Architecture Picture" onclick="openLightbox(this.src, this.alt)">
         <div class="plate-caption">
-          <span>Figure 6 — The Complete Picture: 6 Steps + Wet-Lab Gate from Stage 0 Hypothesis Tournament to Stage 4 Candidate Nomination Dossier.</span>
+          <span>Figure 6 — The Complete Picture: Six Steps, Four Logged Stage Gates, and One Lab Handoff from Hypothesis Tournament to Candidate Nomination.</span>
           <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 6: STEP 6 VALIDATION CHECKS & OVERRIDE REVIEW -->
+  <section class="chapter-panel" id="panel-ch6">
+    <div class="chapter-header">
+      <h2>Step 6 — Validation Checks, Override Review &amp; Architecture Scorecard</h2>
+      <span class="stage-pill">10-Check Validator · 3 Tamper Cases Blocked + 1 Override Logged</span>
+    </div>
+    <div class="stack-full">
+      <div class="grid-2">
+        <div>
+          <p>In <strong>Step 6</strong>, the Program Lead tests how OASE verifies that specialist reports match underlying data and tracks human or lead overrides. The deterministic validator (<code>oase validate check</code>) <strong>blocks work-order closure on tampering/fabrication cases</strong> while <code>oase workorder override</code> <strong>permits and logs an explicit scientific override</strong> with actor and rationale in <code>program-state/decision-log.md</code>:</p>
+          <table>
+            <thead><tr><th>Governance Test Case</th><th>Tested Condition</th><th>Mechanism / Check</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Case 1 — Missing Required Caveat</strong></td><td>Remove mandatory relay <code>af3.low_confidence_segments</code> from <code>WO-004.md</code></td><td><code>relay_coverage</code> (<code>REL-001</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
+              <tr><td><strong>Case 2 — Citation Drift &gt; &plusmn;1%</strong></td><td>Alter cited Vina score from <code>-9.4</code> to <code>-11.2 kcal/mol</code> in <code>WO-005.md</code></td><td><code>source_tags_resolve</code> (<code>CIT-003</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
+              <tr><td><strong>Case 3 — Altered Raw Data File</strong></td><td>Modify <code>raw/docking/pcsk9_pocket1_vina.sdf</code> so SHA-256 mismatches <code>.meta.json</code> (plus stripped <code>THR-001</code> check)</td><td><code>provenance_valid</code> (<code>PROV-002</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
+              <tr><td><strong>Case 4 — Audited Reviewer Override</strong></td><td>Valid Layer 0 data accepted, while reviewer overrides specialist's interpretation of a marginal <code>0.2 kcal/mol</code> difference</td><td><code>oase workorder override</code> &rarr; <code>decision-log.md</code></td><td><span class="pass-pill">PERMITTED &amp; LOGGED</span></td></tr>
+            </tbody>
+          </table>
+          <div class="portal-links">
+            <a href="workorder_WO-005_r1.html">Inspect WO-005 Validation Record</a>
+            <a href="finding_findings_regulatory_WO-008_md.html">Inspect WO-008 Dossier</a>
+          </div>
+        </div>
+        <div class="terminal"><span class="cmd">$ ./scripts/run-e2e-simulation.sh  # Validator Tamper &amp; Override Verification</span>
+<span class="ok">[BLOCKED AS EXPECTED] Case 1: Omitted Mandatory Caveat Relay af3.low_confidence_segments (REL-001)</span>
+  -&gt; WO-004 failed on relay_coverage with exit=1
+<span class="ok">[BLOCKED AS EXPECTED] Case 2: Altered Cited Number -11.2 vs -9.4 kcal/mol &gt; &plusmn;1% (CIT-003)</span>
+  -&gt; WO-005 failed on source_tags_resolve with exit=1
+<span class="ok">[BLOCKED AS EXPECTED] Case 3: Modified Raw Data File SHA-256 Mismatch (PROV-002 &amp; THR-001)</span>
+  -&gt; WO-005 failed on provenance_valid with exit=1
+
+<span class="cmd">$ oase workorder override WO-006 --actor science-program-lead \</span>
+<span class="cmd">    --reason "Accept valid Layer 0 docking/ADMET files; prioritize LipE 5.2 &amp; 0 alerts over 0.2 kcal/mol pose delta"</span>
+<span class="ok">[PERMITTED &amp; LOGGED] Recorded direction_override with actor + rationale in program-state/decision-log.md</span></div>
+      </div>
+
       <div>
-        <p>Summary of the compiled 31-page Static Evidence Portal (<code>WO-008</code> Pre-Clinical Candidate Dossier) and the architectural outcomes measured across our live Google Cloud execution:</p>
+        <h4 style="margin: 0.4rem 0 0.5rem 0; color: #0f172a;">Measured Architecture Scorecard &amp; Five Engineering Takeaways</h4>
         <table>
           <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Field Discovery &amp; Takeaway</th><th>Verdict</th></tr></thead>
           <tbody>
@@ -481,14 +514,14 @@ CHAPTER 5C: 4 Adversarial Governance Drills (Negative Tests)
               <td><strong>1. Two-Phase Tool Latch</strong><br>(Fetch/Compute vs. Offline Analyze)</td>
               <td>100% of Phase-2 <code>analyze</code> commands run offline against immutable JSON + thresholds</td>
               <td><code>51 / 51</code> Phase-2 commands verified offline by <code>oase doctor</code>; <code>9</code> live + <code>11</code> checkpoint <code>.analysis.json</code> records verified</td>
-              <td><strong>Discovery 1:</strong> 13 of 36 default threshold schemas ship with <code>UNRESOLVED</code> sentinels that halt execution unless populated in <code>.oase/thresholds.yaml</code>.</td>
+              <td><strong>Takeaway 1:</strong> 13 of 36 default threshold schemas ship with <code>UNRESOLVED</code> sentinels so each organization sets its own cutoffs in <code>.oase/thresholds.yaml</code>.</td>
               <td><span class="pass-pill">LANDED (36/36 RESOLVED)</span></td>
             </tr>
             <tr id="score-row-2">
               <td><strong>2. Zero-Fabrication Citations</strong><br>(<code>{source: path $.jsonpath}</code>)</td>
               <td>Every numeric claim in Markdown is mechanically checked within &plusmn;1% of raw JSON</td>
-              <td><code>28 / 28</code> scalar JSONPath citations verified within &plusmn;1%; Drill 2 caught <code>-11.2</code> vs <code>-9.4</code> in &lt;0.2s</td>
-              <td><strong>Discovery 2:</strong> Putting one <code>{source: ... $.metrics.x}</code> tag per Markdown line prevents KaTeX <code>$ ... $</code> math collisions in <code>oase site build</code>.</td>
+              <td><code>28 / 28</code> scalar JSONPath citations verified within &plusmn;1%; validator caught <code>-11.2</code> vs <code>-9.4</code> in &lt;0.2s</td>
+              <td><strong>Takeaway 2:</strong> Putting one <code>{source: ... $.metrics.x}</code> tag per Markdown line prevents KaTeX <code>$ ... $</code> math collisions in <code>oase site build</code>.</td>
               <td><span class="pass-pill">LANDED (ZERO DRIFT)</span></td>
             </tr>
             <tr id="score-row-3">

@@ -57,7 +57,7 @@ OASE organizes every discovery program around four core pillars: **The Grove**, 
 |---|---|---|
 | **1. The Grove** | *Who is doing the work?* | The grove is the shared workspace for one program, and it holds two teams. The **human team** is a discovery pod of five human scientists: a program lead, a computational biologist, a structural biologist, a medicinal chemist, and a DMPK and safety lead. The **agent team** mirrors those disciplines with one specialist AI agent per field, plus an AI program lead, an independent reviewer, and a validator. Agents are spread across different model families (Gemini, Claude, OpenAI) so that no model reviews its own output. Only the AI program lead may write official program decisions. |
 | **2. Work Orders and Dual Validation** | *How is each piece of work tracked and checked?* | Every scientific question the team asks becomes a work order. It is assigned to a specialist agent, produces raw data and a written finding, and cannot close until it passes two independent checks. The first is mechanical: ten automated tests confirm that every number in the finding traces to a data file, that no data file has been altered, and that every required caveat is present. The second is scientific: the AI program lead independently re-examines the evidence and records whether it accepts the conclusion. |
-| **3. Stage-Gate Review** | *Who decides whether the program moves forward?* | Work orders roll up into stages, and each stage ends with a formal go or no-go decision. Every gate decision is logged with the evidence it relied on, who made it, and what was approved. The program sets a policy for which gates need a human signature. In this demo the human program lead co-signs the gate after target validation and the gate that nominates the candidate. A lab handoff is a stage gate whose policy is to wait for outside results before continuing. |
+| **3. Stage-Gate Review** | *Who decides whether the program moves forward?* | Work orders roll up into five formal stage gates, each logged with its evidence, decision, and signer:<br>1. **Target validation (Gate 1):** AI program lead recommends; human program lead signs.<br>2. **Hit identification (Gate 2):** AI program lead advances if preset cutoffs pass and logs any liabilities.<br>3. **Lead optimization (Gate 3):** AI program lead advances once liabilities are resolved.<br>4. **Lab handoff (⏸ Lab Gate):** Human program lead signs; agents pause cleanly on disk until experimental assay files return.<br>5. **Candidate nomination (Gate 4):** AI program lead recommends; human program lead signs. |
 | **4. Two-Phase Tool Execution** | *Why can the numbers in the reports be trusted?* | Every tool runs in two separate steps. First the tool runs and its raw output is saved to disk with a receipt recording the version, the parameters, and a fingerprint of the output file. Second, with network access switched off, that saved output is scored against thresholds the program fixed in advance, and the verdict is written to an analysis file. A specialist's report may only quote numbers from the analysis file, and each quote must cite it. |
 
 ### Worked Example of Two-Phase Execution: The Pocket Check in Step 3
@@ -114,21 +114,21 @@ oase alphagenome score-variant \
   --pos 55039974 \
   --ref G \
   --alt T \
+  --window 1048576 \
   --output-type RNA_SEQ \
-  --scorer geneMask
+  --output-type DNASE \
+  --organism HOMO_SAPIENS
 
 # Phase 2 (Offline): Grade saved raw output against .oase/thresholds.yaml
 oase alphagenome analyze raw/genomics/chr1_55039974_G_T.json
 
-# Query and grade human loss-of-function genetics and hepatic tissue expression
-oase gnomad fetch PCSK9
-oase gnomad analyze raw/genomics/PCSK9_gnomad.json
-
-oase gtex fetch PCSK9
-oase gtex analyze raw/gtex/PCSK9.json
+# Query and grade human loss-of-function genetics, GWAS, and hepatic tissue expression
+oase genetics fetch PCSK9 && oase genetics analyze PCSK9
+oase gwas search PCSK9 --source opentargets && oase gwas analyze PCSK9 --source opentargets
+oase gtex fetch PCSK9 && oase gtex analyze PCSK9
 ```
 
-When Stage 1 completes, **Gate 1 (Target Validation)** is co-signed by the AI program lead and the human program lead before Stage 2 begins.
+When Stage 1 completes, **Gate 1 (Target Validation)** is co-signed by the AI program lead (`science-program-lead`) and the human program lead before Stage 2 begins.
 
 ---
 
@@ -137,45 +137,49 @@ When Stage 1 completes, **Gate 1 (Target Validation)** is co-signed by the AI pr
 Using the validated PCSK9 target (`Q8NBP7`) and the candidate scaffold series from Step 1, the Structural Biologist and Computational Chemist retrieve the monomer structure, evaluate the **AlphaFold 3** protein-ligand co-fold, scan surface cavities with `fpocket`, and dock five analogs with `AutoDock Vina`:
 
 ```bash
-# Phase 1 & Phase 2: Cavity druggability detection on PCSK9
-oase pocket fetch Q8NBP7
-oase pocket analyze raw/pocket/Q8NBP7_pockets.json
+# Phase 1 & Phase 2: AlphaFold monomer confidence + fpocket cavity druggability on PCSK9
+oase alphafold fetch Q8NBP7 && oase alphafold analyze Q8NBP7
+oase pocket run raw/structures/AF-Q8NBP7-F1.cif --strip-peptides
+oase pocket analyze raw/pocket/Q8NBP7_pockets.json --druggable 0.50
 
-# Phase 1 & Phase 2: 3D pose docking across the 5 candidate analogs
-oase docking run raw/pocket/Q8NBP7_pockets.json
-oase docking analyze raw/docking/pcsk9_pocket1_vina.json
+# Phase 1 & Phase 2: 3-phase pose docking across the 5 candidate analogs
+oase docking prepare raw/structures/Q8NBP7.cif raw/pocket/Q8NBP7_pockets.json --pocket-rank 1 --protein-only
+oase docking run raw/docking/Q8NBP7_receptor.pdbqt raw/docking/Q8NBP7_pocket1_gridbox.json raw/compounds/pcsk9_analog_0*.sdf
+oase docking analyze raw/docking/runs/pcsk9_analog_0*.dock.json
 ```
 
-`Pocket 1` scores `0.68` (passing the `0.50` druggability threshold), and analog `PCSK9-A02` achieves the strongest predicted docking score (`-9.4 kcal/mol`), accompanied by the required caveat `docking.score_is_not_affinity`. At **Gate 2 (Hit Identification)**, the AI program lead approves advancement to multiparameter chemistry optimization while logging the lipophilicity liability for investigation.
+`Pocket 1` scores `0.68` (passing the `0.50` druggability threshold, whereas the flat `EGF-A` surface scores `0.24`), and analog `pcsk9_analog_02` achieves the strongest predicted docking score (`-9.4 kcal/mol`, `2.34 Å` clearance), accompanied by the required caveat `docking.score_is_not_affinity`. At **Gate 2 (Hit Identification)**, the AI program lead approves advancement to multiparameter chemistry optimization while logging the lipophilicity and basic-amine cardiac safety liability (`L-002`) for investigation.
 
 ---
 
 ### Step 4 & Lab Gate: Multiparameter Chemistry, ADMET Filtering, and Lab Handoff (`WO-006`)
 
-In Step 4, the Medicinal Chemist runs `RDKit` descriptor profiling and rule-based ADMET structural alert screening across the docked analogs:
+In Step 4, the Medicinal Chemist runs `RDKit` descriptor profiling, `BRICS` matched-molecular-pair analysis, `ASKCOS` retrosynthesis, and rule-based ADMET structural alert screening across the docked analogs:
 
 ```bash
-# Evaluate physicochemical properties and ADMET structural alerts offline
-oase admet analyze raw/admet/pcsk9_ic001_series_admet.json
+# Evaluate physicochemical properties, matched molecular pairs, and ADMET structural alerts offline
+oase mmp analyze raw/mmp/pcsk9_ic001_series.mmp.json
+oase admet analyze raw/admet/pcsk9_ic001_series.admet.json
 ```
 
-The analysis file reveals a classic medicinal chemistry trade-off:
-- **`PCSK9-A02`** (the strongest docker at `-9.4 kcal/mol`) has high lipophilicity (`cLogP = 5.09`) and triggers three liabilities, including the Aronov (2005) **hERG potassium-channel cardiac safety alert** (`has_basic_nitrogen and logp > 3.7 and aromatic_rings >= 2`).
-- **`PCSK9-A03` (`OASE-PCSK9-014`)**, a polar oxadiazole bioisostere with a slightly weaker docking score (`-8.9 kcal/mol`), lowers `cLogP` to `3.01` (`MW = 338.3 Da`, `TPSA = 101.0 Å²`) and passes every physicochemical and ADMET filter with **zero critical liabilities**.
+The analysis files reveal a classic medicinal chemistry trade-off:
+- **Unoptimized high-scoring dockers** (`pcsk9_analog_02` at `cLogP = 4.8` in the seeded series, and `PCSK9-A02` at `cLogP = 5.09` in live single-compound CLI screening) exceed the lipophilicity cutoff (`max_clogp = 3.5`) and trigger cardiac-safety (**Aronov hERG**) and metabolic liabilities.
+- **Optimized polar heterocycle `OASE-PCSK9-014`** (2-methoxypyrimidine / polar oxadiazole bioisostere `PCSK9-A03`) lowers `cLogP` to `3.1` (`3.01` in live single-SMILES screening), raises lipophilic efficiency `LipE` to `5.2` (`MW = 462.5 Da`, `TPSA = 88.4 Å²`, `4`-step convergent synthesis), and passes every physicochemical and ADMET filter with **zero structural alerts**.
 
-At **Gate 3 (Lead Optimization)**, the AI program lead selects `PCSK9-A03` (`OASE-PCSK9-014`), marks the cardiac liability mitigated in `program-state/liability-tracker.md`, and triggers the **Lab Gate**—preparing the synthesis and *in vivo* pharmacokinetic handoff package while the agents pause cleanly on disk until experimental rat (`F = 54%`) and dog (`F = 61%`) bioavailability data return.
+At **Gate 3 (Lead Optimization)**, the AI program lead selects `OASE-PCSK9-014`, marks cardiac/lipophilicity liability `L-002` mitigated in `program-state/liability-tracker.md`, and advances to the **Lab Gate**—where the human program lead signs the synthesis and *in vivo* pharmacokinetic handoff work order, and the agents pause cleanly on disk until experimental rat (`F = 54%`) and dog (`F = 61%`) oral bioavailability files return.
 
 ---
 
 ### Steps 5 & 6: Human Dose Projection, Evidence Portal Compilation, and Validation Checks (`WO-007`–`WO-008`)
 
-Once the animal PK data files return from the lab gate, the DMPK and Regulatory leads project human oral dosing (`40 mg QD`, `F = 52%`, `t1/2 = 14.8 h`) and compile the candidate nomination dossier and 30-page static HTML evidence portal:
+Once the animal PK data files return from the lab gate, the DMPK and Regulatory leads project human oral dosing (`40 mg QD`, `F = 52%`, `t1/2 = 14.8 h`), benchmark `84` clinical trials (`0` approved oral non-peptide small molecules), and compile the candidate nomination dossier and static HTML evidence portal:
 
 ```bash
 # Grade returned PK data and project human once-daily oral dose
 oase pk analyze raw/pk/oase_pcsk9_014_scaled_pk.json
 
 # Run all 10 deterministic validation checks across WO-001..WO-008
+oase validate check WO-008
 oase doctor
 
 # Compile the static HTML Evidence Portal and interactive chapter replay
@@ -184,9 +188,9 @@ oase site build
 oase site export
 ```
 
-At **Gate 4 (Candidate Nomination)**, both the AI program lead and the human program lead co-sign the nomination of `OASE-PCSK9-014` (`PCSK9-A03`).
+At **Gate 4 (Candidate Nomination)**, both the AI program lead (`science-program-lead`) and the human program lead co-sign the nomination of `OASE-PCSK9-014`.
 
-Finally, in **Step 6**, the Program Lead runs the four validation test cases—verifying that `oase validate check` blocks work-order closure when a required caveat is removed (`REL-001`), when a cited number is altered beyond `±1%` (`CIT-003`), or when a raw data file is modified (`PROV-002`), while permitting an explicitly logged reviewer override with full actor and rationale attribution in `program-state/decision-log.md`.
+Finally, in **Step 6**, the Program Lead runs the four governance test cases—verifying that `oase validate check` blocks work-order closure when a required caveat is removed (`REL-001`), when a cited number is altered beyond `±1%` (`CIT-003`), or when a raw data file is modified (`PROV-002`), while permitting an explicitly logged reviewer override (`oase workorder override`) with full actor and rationale attribution in `program-state/decision-log.md`.
 
 ---
 
