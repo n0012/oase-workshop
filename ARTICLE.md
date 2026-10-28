@@ -2,20 +2,9 @@
 
 [Agentic AI in life sciences](https://cloud.google.com/life-sciences) is transforming how pre-clinical discovery teams evaluate therapeutic targets and design molecules. By connecting foundation models and computational biology tools across the drug discovery funnel, AI agents can now assist with everything from **human genetic target validation** that links population loss-of-function variants to disease, to **single-cell transcriptomics** that isolates disease-specific cell states, to **3D protein-ligand co-folding** and **multi-parameter lead optimization (DMTA)** that de-risk candidates before wet-lab synthesis.
 
-Yet building production-ready agentic science that a pharma governance board can actually trust remains challenging. We built **GCP-OASE (Open Agentic Science Engine)** on **Google Cloud Vertex AI** and **Scion** to change that—an open, code-first platform designed to replace isolated single-player chatbots and brittle bioinformatics scripts with **team-based, multi-model, provenance-locked discovery**.
+Yet building production-ready agentic science that a pharma governance board can actually trust remains challenging. We built **GCP-OASE (Open Agentic Science Engine)** on **Google Cloud (GCP)** and **Scion** to change that—an open, code-first platform designed to replace isolated single-player chatbots and brittle bioinformatics scripts with **team-based, multi-model, provenance-locked discovery**.
 
 ![GCP-OASE Intro](assets/oase_post_thumbnail.jpg)
-
----
-
-## Quick Navigation — 150-Minute Hands-On Workshop Kit
-
-| Role | Start Here | Deep-Dive Modules |
-|---|---|---|
-| **Computational Biologist / Discovery Scientist** | [01 — Tour the Grove](docs/01-tour-the-grove.md) | [02 — Launch a Team Campaign](docs/02-launch-campaign.md) · [03 — Evidence, Viewers & Refusals](docs/03-evidence-and-refusals.md) · [04 — Make It Yours & Wet-Lab Handoffs](docs/04-make-it-yours.md) |
-| **AI Platform / Bioinformatics Engineer** | [00 — GCP & Vertex Prerequisites](docs/00-prerequisites.md) | [01 — Tour the Grove](docs/01-tour-the-grove.md) · [05 — Extend Custom Tools (`oase h5ad`)](docs/05-extend-custom-tools.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
-| **Discovery Governance / R&D Leader** | [Working Backwards PRFAQ](PRFAQ.md) | [03 — Evidence & Refusals (`Pilot-9b`, `Pilot-10`, `Pilot-6`)](docs/03-evidence-and-refusals.md) · [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md) |
-| **Workshop Facilitator / Instructor** | [06 — Facilitator Run-of-Show Guide](docs/06-facilitator-guide.md) | [00 — GCP & Vertex Prerequisites](docs/00-prerequisites.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
 
 ---
 
@@ -43,12 +32,12 @@ The concept is simple: give AI agents access to biological databases and structu
 
 | Challenge | GCP-OASE Solution |
 |---|---|
-| **The rigid workflow problem** | **Team-Based Science & Subway-Map Routing (`Scion`)**: 5–10 human scientists share a live workspace ("Google Docs for R&D pods") to co-steer 22 T-shaped agent templates across 13 roles. Like a subway navigator, agents evaluate validated evidence at each stop (`DEC-001`..`DEC-N`) and dynamically route the next Work Order—or pause at configurable **Wet-Lab / CRO Stopping Gates** (`oase assay`, `oase selectivity`, `oase pk`). |
-| **The chatbot fabrication trap** | **Two-Phase Zero-Fabrication Funnel & 10-Check Validator**: Raw matrices never enter LLM context. **Phase 1 (`fetch`/`run`/`predict`)** writes raw bytes to `raw/` with a SHA-256 `.meta.json` sidecar. **Phase 2 (`analyze`)** is network-latched offline across all 51 analysis commands to apply `.oase/thresholds.yaml`. Before any finding closes, `oase validate check` enforces 10 mechanical checks verifying every `{source: raw/... $.jsonpath}` claim. |
-| **The single-model echo chamber** | **Model Diversity as a Scientific Control**: Scion decouples the **Agent Template** from the **Model Harness**. Run **Vertex AI Gemini 4** for 1M+ token orchestration, **Anthropic Claude** (on Vertex AI Partner Models) for adversarial `Scientific Reviewer` audits, and **Gemini 4 + Claude + OpenAI** in blind `Hypex` ELO debate tournaments so no single model ever grades its own homework. |
-| **The fragmented scientific tool stack** | **First-Party GCP Scientific AI + 62 CLI Tools + 3-Step Extensibility**: One unified `oase` CLI calls **Vertex AI AlphaFold 3** (monomer, PPI complex, and SMILES ligand co-folding), **Vertex AI AlphaGenome** (11 regulatory assays), and **BigQuery** (`pubmed-bq`) alongside 62 open-source CLI tool groups—plus a **3-Step Container Contract (`Tool → Skill → Template`)** to plug in custom internal tools without rebuilding agent images. |
+| **The rigid workflow problem** | **Team-Based Science & Subway-Map Routing (`GA ↔ Scion Contract`)**: The **Project Owner** initiates a shared, single-program workspace (`ONE_PROGRAM_PER_PROJECT`) from Gemini Agent (`create_project` / `bootstrap_campaign` via an interactive **A2UI Initiation Card**) and assigns R&D team members (`project-member`). Humans co-steer a **4-tier / 22-template** AI research team across a **9-state Work-Order lifecycle (`WO-001`..`WO-N`)** and configurable **Wet-Lab / CRO Stopping Gates**. |
+| **The chatbot fabrication trap** | **Two-Phase Zero-Fabrication Funnel & Dual Validation**: Raw matrices never enter LLM context. **Phase 1 (`fetch`/`run`/`predict`)** writes raw bytes to `raw/` with a SHA-256 `.meta.json` sidecar. **Phase 2 (`analyze`)** is network-latched offline across all 51 analysis commands to apply `.oase/thresholds.yaml`. Every Work Order must pass **Dual Validation**: **Validation 1** (`finding-validator` running the 10-check `oase validate check`) and **Validation 2** (`science-program-lead` independent Phase-2 review logging `DEC-NNN` / `scientifically_accepted`). |
+| **The single-model echo chamber** | **Model Diversity as a Scientific Control on GCP**: None of the 22 OASE templates hardcodes a model ID or CLI binary. Scion decouples `scion-agent.yaml` from the **Model Harness** (`gemini-cli`, `claude`, `antigravity`, `codex`) using portable size aliases (`small`, `medium`, `large`, `extra-large`)—running **Gemini 4** for orchestration, **Anthropic Claude** for adversarial `Scientific Reviewer` audits, and **Gemini 4 + Claude + OpenAI** in blind `Hypex` ELO debate tournaments on GCP so no single model ever grades its own homework. |
+| **The fragmented scientific tool stack** | **First-Party GCP Scientific AI + 62 CLI Tools + 3-Step Extensibility**: One unified `oase` CLI calls **AlphaFold 3** (monomer, PPI complex, and SMILES ligand co-folding on Dedicated GCP GPU Endpoints), **AlphaGenome** (11 regulatory assays on Dedicated GCP GPU Endpoints), and **BigQuery** (`pubmed-bq`) alongside 62 open-source CLI tool groups—plus a **3-Step Container Contract (`Tool → Skill → Template`)** to plug in custom internal tools without rebuilding agent images. |
 
-In the rest of this post, we'll walk through the [official GCP-OASE Hands-On Workshop](docs/01-tour-the-grove.md), which runs a cross-functional discovery campaign for **Hepatic Fibrosis (`Pilot-10`)** and audits real preclinical trap catches across **Hidradenitis Suppurativa (`Pilot-9b`)** and **NSCLC Degraders (`Pilot-6`)**.
+In the rest of this post, we'll walk through the [official GCP-OASE Hands-On Workshop](docs/01-tour-the-grove.md), which runs a cross-functional discovery campaign for **Hepatic Fibrosis (`Pilot-10`)**, offers a fast-progressing **Stage 0 → 4 Small-Molecule Track (`Oral Allosteric PCSK9`, `MTA-Cooperative PRMT5`, or `Oral NLRP3`)**, and audits real preclinical trap catches across **Hidradenitis Suppurativa (`Pilot-9b`)** and **NSCLC Degraders (`Pilot-6`)**.
 
 ---
 
@@ -56,7 +45,7 @@ In the rest of this post, we'll walk through the [official GCP-OASE Hands-On Wor
 
 Imagine your cross-functional discovery pod is investigating extracellular matrix remodeling targets—such as **MMP13**—for severe hepatic fibrosis (cirrhosis / MASH F3–F4). With a traditional static pipeline or a single-shot AI chatbot, the system queries healthy bulk liver RNA-seq in GTEx, sees `<0.5 TPM` median expression, and kills the target—completely missing the biological reality that scar-associated hepatic stellate and mesenchymal cells only expand inside *diseased cirrhotic tissue*. Or worse, the chatbot trusts a high volume of review papers, overlooks a mutated control cell line, and sends a flawed assay protocol to your CRO.
 
-Now imagine a different experience. Five scientists from your team—a computational biologist, a human geneticist, a structural biologist, a medicinal chemist, and a discovery governance lead—join the same live **Scion** grove. When bulk GTEx returns near-zero expression in healthy liver, the `Science Program Lead` doesn't blindly drop the target or invent a number. Instead, it logs Open Question `OQ-017`, dispatches a specialist to pull and sub-cluster raw cirrhotic human liver `.h5ad` count matrices (`GSE212046`, `PRJNA913603`), and proves the target is expressed in disease-activated fibroblasts—while **Vertex AI AlphaGenome** scores non-coding regulatory variants and **Vertex AI AlphaFold 3** co-folds the protein-ligand complex.
+Now imagine a different experience. Five scientists from your team—a computational biologist, a human geneticist, a structural biologist, a medicinal chemist, and a discovery governance lead—join the same live **Scion** grove initiated by the Project Owner. When bulk GTEx returns near-zero expression in healthy liver, the `Science Program Lead` doesn't blindly drop the target or invent a number. Instead, it logs Open Question `OQ-017`, dispatches a specialist to pull and sub-cluster raw cirrhotic human liver `.h5ad` count matrices (`GSE212046`, `PRJNA913603`), and proves the target is expressed in disease-activated fibroblasts—while **AlphaGenome on GCP** scores non-coding regulatory variants and **AlphaFold 3 on GCP** co-folds the protein-ligand complex.
 
 ### The Pre-Clinical R&D Challenges We'll Solve
 
@@ -67,7 +56,7 @@ Real discovery programs don't fail on textbook happy paths; they fail on subtle 
 | **Healthy Bulk Tissue Masks Disease Signal** (`Pilot-10` Hepatic Fibrosis, `WO-006`) | Sees `<0.5 TPM` in healthy GTEx bulk liver and drops `MMP13`—or hallucinates cell-type expression from abstract text. | Opened `OQ-017`, built and ran `oase h5ad` across 5 cirrhotic human liver single-cell samples (`DISCO` & `CELLxGENE`), distinguished provider-filtered genes (`searched_absent` = `NA`) from zero counts (`0`), and overturned the bulk GTEx null. |
 | **Padded Citations & Weak Stage 0 Seeds** (`Pilot-9b` Hidradenitis Suppurativa, `DEC-145`) | Rubber-stamps the "top 3" candidate targets from an initial literature seed list so the pipeline has something to advance. | Audited 8 candidate HS concepts across 153 logged decisions (`DEC-001`..`DEC-153`), caught upstream seed citation-padding via `oase litref resolve`, and **advanced 0 of 8 (`DEC-145`)** on human genetic/clinical counter-evidence. |
 | **Literature Bias & Mutant CRO Control Cells** (`Pilot-6` NSCLC PROTAC, `DEC-006` & `DEC-009`) | Trusts high publication count on `LAIR1` and approves standard `A549` cells as a wild-type CRO control line. | Refuted `LAIR1` using knockout mouse survival data (`DEC-006`), queried `cBioPortal`/DepMap to flag that `A549` carries confounding `STK11`/`KEAP1` mutations (`DEC-009`), and substituted a clean control line *before* CRO spend. |
-| **Unverified Degrader Ternary Complex** (`Pilot-6` NSCLC PROTAC, `DEC-032` & `DEC-034`) | Pushes a weak VHL warhead into synthesis without checking 3D ternary complex geometry. | Halted the VHL series after flagging a `1,000x` binding affinity loss (`DEC-032`) and ran **Vertex AI AlphaFold 3 co-folding** (`DEC-034`) to confirm `EED226-CRBN` ternary complex stability (`ipTM 0.88`). |
+| **Unverified Degrader Ternary Complex** (`Pilot-6` NSCLC PROTAC, `DEC-032` & `DEC-034`) | Pushes a weak VHL warhead into synthesis without checking 3D ternary complex geometry. | Halted the VHL series after flagging a `1,000x` binding affinity loss (`DEC-032`) and ran **AlphaFold 3 co-folding on GCP** (`DEC-034`) to confirm `EED226-CRBN` ternary complex stability (`ipTM 0.88`). |
 
 GCP-OASE handles all four scenarios with a single, provenance-locked architecture. The rest of this guide walks through how each piece fits together.
 
@@ -75,61 +64,68 @@ GCP-OASE handles all four scenarios with a single, provenance-locked architectur
 
 ## GCP-OASE Data and Control Architecture
 
-Before diving into commands, let's understand how GCP-OASE organizes your discovery program. The architecture centers on four key concepts: **Scion Groves**, **Work Orders (`WO`)**, **Two-Phase Artifacts (`Layer 0` & `Layer 1`)**, and the **3-Step Capability Contract (`Tool → Skill → Template`)**.
+Before diving into commands, let's understand how GCP-OASE organizes your discovery program. The architecture centers on four key concepts: **The Surface-to-OASE Contract (`GA/AGY ↔ Scion`)**, **4-Tier Agent Groves & 9-State Work Orders (`WO`)**, **Two-Phase Artifacts (`Layer 0` & `Layer 1`)**, and the **3-Step Capability Contract (`Tool → Skill → Template`)**.
 
 ![GCP-OASE Data and Control Architecture](assets/oase_data_arch.jpg)
 
-A **Scion Grove** is a shared multi-human, multi-agent project workspace backed by an on-disk `.oase/` control plane (`program.yaml`, `thresholds.yaml`, `control/work-orders/`, `control/events.ndjson`). **Work Orders (`WO-001`..`WO-N`)** are bounded scientific tasks dispatched dynamically by the `Science Program Lead` and `Research Operations Controller`—never a hardcoded DAG. **Two-Phase Artifacts** separate raw data acquisition (**Layer 0** under `raw/<class>/`, stamped with SHA-256 `.meta.json` sidecars and offline-latched `.analysis.json` verdicts) from specialist prose interpretations (**Layer 1** under `findings/`). Finally, the **3-Step Capability Contract** decouples deterministic CLI code (`tools/oase/commands/`) from specialist-neutral routing rules (`skills/`) and role permissions (`templates/`).
+1. **Surface-to-OASE Initiation & Single-Writer State Contract (`scion` MCP / `pharma-cli dde`):** The **Project Owner** provisions the project via `create_project` (4-step fail-closed atomic setup: create project → verify GCP Service Account & portable model aliases `small|medium|large|extra-large` + assign `project-member` teammates → mount `/scion-volumes/tools` → import & verify all 22 OASE templates with the `OASE_TEMPLATES_MISSING` guard) and launches via `bootstrap_campaign` (interactive **A2UI Initiation Card** + checksummed WebDAV seed staging + controller-only launch with the `CONTROLLER_TEMPLATE_MISMATCH` guard). Assigned team members read live program state directly over Hub WebDAV (`decision_log` in ~1.5s, `dav_read` with ETag caching) and write exclusively via bounded push messages (`< 10 KB` envelope via `request_work_order` / `send_message`).
+2. **4-Tier / 22-Template Roster & 9-State Work Orders (`WO-001`..`WO-N`):**
+   - **Authority & Governance Tier (2 templates):** `science-program-lead` (sole writer of Layer 2 `program-state/`, executes **Validation 2** scientific review) and `<slug>-head-of-discovery` (executive portfolio challenge & stage-gate governance).
+   - **Operations, Validation & Curation Tier (4 templates):** `research-operations-controller` (manages the 9-state lifecycle: `drafted → dispatched → in_progress → submitted → validating → validation_passed → under_scientific_review → scientifically_accepted → closed` in `.oase/control/events.ndjson`), `bootstrapper`, `finding-validator` (executes **Validation 1**: the 10-check `oase validate check`), and `project-curator` (compiles `oase site build && oase site export`).
+   - **Domain Specialists & Independent Review Tier (9 templates):** 8 ephemeral specialists (writing only to `findings/<domain>/` and `raw/`) + 1 `scientific-reviewer`.
+   - **HypEx Stage 0 Tournament Tier (7 templates):** `hypex-supervisor`, `hypex-generation`, `hypex-reflection`, `hypex-tournament`, `hypex-evolution`, `hypex-proximity`, `hypex-meta-review`. All OASE agents operate on a push-only message bus (`sciontool status blocked` until woken by `---BEGIN SCION MESSAGE---`) and never poll in loops.
+3. **Two-Phase Artifacts (`Layer 0` & `Layer 1`):** Separate raw data acquisition (**Layer 0** under `raw/<class>/`, stamped with SHA-256 `.meta.json` sidecars and offline-latched `.analysis.json` verdicts) from specialist prose interpretations (**Layer 1** under `findings/`).
 
 ---
 
 ## Running a Team-Based Discovery Campaign: Step by Step
 
-Now let's run a working discovery workflow. We'll bootstrap a multi-agent grove in one command, score regulatory variants and co-fold complexes on **Vertex AI**, slice single-cell `.h5ad` matrices offline, enforce the 10-check mechanical validator, and re-ingest wet-lab CRO data—all in five steps.
+Now let's run a working discovery workflow. We'll initiate a multi-agent grove via the Project Owner contract (or one CLI command), score regulatory variants and co-fold complexes on **GCP**, slice single-cell `.h5ad` matrices offline, enforce Dual Validation, and re-ingest wet-lab CRO data—all in five steps.
 
-### Step 1: Launch a Multi-Human, Multi-Model Grove in One Command
+### Step 1: Initiate a Multi-Human, Multi-Model Grove (via GA Surface or One CLI Command)
 
-Starting an OASE program from a clean environment requires **one command**. You pass your scientific directive (target scope, indication, modality, and stopping gate) to the `Research Operations Controller`:
+As Project Owner, you can initiate the project, assign your R&D teammates (`project-member`), confirm the interactive **A2UI Project & Campaign Initiation Card** (`seed_mode: hypex | sciarchitect | bring_your_own`), and launch `controller` directly from Gemini Agent / Antigravity (`create_project` + `bootstrap_campaign`), or run a single CLI command inside the grove:
 
 ```bash
 scion start controller --type research-operations-controller \
   "Program directive: Conduct Stage 0 portfolio triage and Stage 1 target validation for extracellular matrix remodeling and stellate-cell activation targets in Hepatic Fibrosis (cirrhosis / MASH F3-F4). Modality: small molecule. Stopping gate: pause after Stage 1 Target Validation Gate to export a wet-lab CRISPR/primary-stellate assay handoff package. Program directory: /workspace/live-sandbox"
 ```
 
-This single command triggers the automated ROC bootstrap sequence (`docs/quickstart-pilot.md` §3): the controller verifies `/scion-volumes/tools/env.sh`, runs `oase doctor --json`, syncs all 22 agent templates (`scion template sync --all`), initializes `/workspace/live-sandbox/.oase/`, and starts the `Science Program Lead`.
+This single action triggers the automated ROC bootstrap sequence (`docs/quickstart-pilot.md` §3): `controller` spawns `bootstrapper` (`oase init` + `oase doctor --json`), verifies all 22 agent templates (`OASE_TEMPLATES_MISSING` guard), starts `science-program-lead` (which writes `DEC-001` and `WO-001`), and starts `<slug>-head-of-discovery`.
 
-Within 60 seconds, your pod can inspect the live agent roster and message agents directly in shared Scion threads:
+Within 60 seconds, your pod can inspect the live agent roster (`scion list`), read `DEC-###` entries over WebDAV (`pharma-cli dde decision-log`), escalate decision-grade questions via `request_work_order`, and receive verbatim `[OASE_INBOUND_MESSAGE]` alerts:
 
 ```text
 $ scion list
-AGENT                           STATUS     ROLE                             HARNESS
-controller                      running    research-operations-controller   vertex/gemini-4-pro
-science-program-lead            running    science-program-lead             vertex/gemini-4-pro
-wo001-r3-hypex-supervisor       running    hypex-supervisor                 vertex/gemini-4-pro
-wo001-gen-1                     running    hypex-generation                 vertex/gemini-4-pro
-wo001-rank-1                    running    hypex-tournament                 vertex/claude-sonnet-4-6
-wo001-exam-1                    running    hypex-reflection                 openai/gpt-4.1
+AGENT                           STATUS     ROLE                             HARNESS (PORTABLE ALIAS)
+controller                      running    research-operations-controller   gemini-cli / large (gemini-4-pro)
+science-program-lead            running    science-program-lead             gemini-cli / extra-large (gemini-4-pro)
+live-sandbox-head-of-discovery  blocked    head-of-discovery                claude / large (claude-sonnet-4-6)
+wo001-r3-hypex-supervisor       running    hypex-supervisor                 gemini-cli / large (gemini-4-pro)
+wo001-gen-1                     running    hypex-generation                 gemini-cli / large (gemini-4-pro)
+wo001-rank-1                    running    hypex-tournament                 claude / large (claude-sonnet-4-6)
+wo001-exam-1                    running    hypex-reflection                 codex / large (openai/gpt-4.1)
 ```
 
 #### Why Model Diversity Matters as a Scientific Control
 
-Notice the `HARNESS` column in the output above: `gemini-4-pro`, `claude-sonnet-4-6` (on Vertex AI Partner Models), and `openai/gpt-4.1` are running side by side in the same grove. This isn't arbitrary—it's an epistemic control that turns your existing multi-vendor LLM investments into a falsification mechanism.
+Notice the `HARNESS` column in the output above: `gemini-4-pro`, `claude-sonnet-4-6`, and `openai/gpt-4.1` are running side by side on GCP in the same grove. None of the 22 OASE templates hardcodes a model ID or CLI binary; Scion resolves portable size aliases (`small`, `medium`, `large`, `extra-large`) against your project's harness configuration at spawn time.
 
-When a single model generates a hypothesis and also evaluates it, self-preference bias inflates confidence scores by 15–30%. Because Scion decouples the **Agent Template** (`templates/<role>/scion-agent.yaml`) from the **Model Harness**, OASE assigns **Vertex AI Gemini 4** to long-context orchestration (`science-program-lead`), **Anthropic Claude** on Vertex AI to adversarial peer review (`scientific-reviewer`, `finding-validator`), and a heterogeneous panel (**Gemini 4 + Claude + OpenAI**) to blind pairwise debates in `Hypex` ELO tournaments (`oase hypex ingest` / `oase hypex analyze`). No single model family ever grades its own homework.
+When a single model generates a hypothesis and also evaluates it, self-preference bias inflates confidence scores by 15–30%. Because Scion decouples the **Agent Template** (`templates/<role>/scion-agent.yaml`) from the **Model Harness**, OASE assigns **Gemini 4** to long-context orchestration (`science-program-lead`), **Anthropic Claude** on GCP to adversarial peer review (`scientific-reviewer`, `finding-validator`), and a heterogeneous panel (**Gemini 4 + Claude + OpenAI**) to blind pairwise debates in `Hypex` ELO tournaments (`oase hypex ingest` / `oase hypex analyze`). No single model family ever grades its own homework.
 
 ---
 
-### Step 2: Score Regulatory Variants & Co-Fold Complexes on Vertex AI (`AlphaGenome` & `AlphaFold 3`)
+### Step 2: Score Regulatory Variants & Co-Fold Complexes on GCP (`AlphaGenome` & `AlphaFold 3`)
 
-While any LLM can reason inside a Scion harness, **Google Cloud Vertex AI** is where agents execute first-party biological foundation models—**AlphaGenome** and **AlphaFold 3**—through the exact same `oase` CLI contract as open-source tools.
+While any frontier LLM can reason inside a Scion harness, **Google Cloud (GCP)** is where agents execute first-party biological foundation models—**AlphaGenome** and **AlphaFold 3** on Dedicated GCP GPU Endpoints—through the exact same `oase` CLI contract as open-source tools.
 
-Here is how the `Computational Biologist` and `Structural Biologist` invoke **Vertex AI AlphaGenome** (across 11 regulatory modalities) and **Vertex AI AlphaFold 3** (for monomer, protein-protein `--template complex`, or protein-ligand `--template ligand` co-folding):
+Here is how the `Computational Biologist` and `Structural Biologist` invoke **AlphaGenome on GCP** (across 11 regulatory modalities) and **AlphaFold 3 on GCP** (for monomer, protein-protein `--template complex`, or protein-ligand `--template ligand` co-folding):
 
 ```bash
 source /scion-volumes/tools/env.sh
 export OASE_PROJECT=/workspace/live-sandbox
 
-# 1. Phase 1 (Online — Vertex AI AlphaGenome Dedicated Endpoint via GCE ADC):
+# 1. Phase 1 (Online — Dedicated GCP AlphaGenome GPU Endpoint via GCE ADC):
 #    Score a regulatory variant across RNA_SEQ and ATAC tracks (~4 seconds)
 oase alphagenome score-variant \
   --chrom chr11 \
@@ -150,11 +146,11 @@ oase alphafold analyze P45452
 oase pocket run raw/structures/AF-P45452-F1.cif
 oase pocket analyze raw/structures/AF-P45452-F1.pockets.json
 
-# 4. Generate a Vertex AI AlphaFold 3 protein + SMILES ligand co-folding payload
+# 4. Generate an AlphaFold 3 protein + SMILES ligand co-folding payload on GCP
 oase alphafold predict --template ligand > raw/structures/af3-eed226-crbn.input.json
 ```
 
-Running `oase alphafold predict --template ligand` emits the canonical AlphaFold 3 co-folding schema, ready for single-flight submission (`oase alphafold predict --input ...`) to your Vertex AI AlphaFold 3 Dedicated Endpoint:
+Running `oase alphafold predict --template ligand` emits the canonical AlphaFold 3 co-folding schema, ready for single-flight submission (`oase alphafold predict --input ...`) to your Dedicated GCP AlphaFold 3 GPU Endpoint:
 
 ```json
 {
@@ -175,7 +171,7 @@ Notice that every tool above runs in two distinct commands: Phase 1 (`score-vari
 
 This two-phase split buys your team three concrete guarantees:
 1. **Zero-Cost Threshold Tuning:** Cold AlphaFold 3 co-folding takes 5–10 minutes on GPU; a `Hypex` tournament takes 30 minutes. Because Phase 2 reads stored `raw/` bytes offline, changing a cutoff in `.oase/thresholds.yaml` and re-running `oase <tool> analyze --overwrite` takes **`<0.2 seconds` at `$0` compute cost**.
-2. **Mechanical Peer Review:** The `Scientific Reviewer` (running on Claude) re-runs `analyze` against Layer 0 bytes on disk and diffs the output against the specialist's prose.
+2. **Mechanical Peer Review (Validation 1 & Validation 2):** Both `finding-validator` (Validation 1) and `science-program-lead` / `scientific-reviewer` (Validation 2) re-run `analyze` offline against Layer 0 bytes on disk and diff the output against the specialist's prose.
 3. **Mandatory Liability Relays:** Phase 2 stamps registered relay codes (19 codes inspectable via `oase relays`, such as `afdb.confidence_is_not_accuracy` and `afdb.model_is_not_docking_ready`) into `.analysis.json`. If a specialist omits a relay code in its report, `oase validate check` blocks the work order.
 
 ---
@@ -219,9 +215,13 @@ Two design rules in `oase h5ad` prevented a major scientific error here:
 
 ---
 
-### Step 4: Enforce the 10-Check Mechanical Gate & Pause for Wet-Lab / CRO Handoff
+### Step 4: Enforce Dual Validation (`Validation 1` + `Validation 2`) & Pause for Wet-Lab / CRO Handoff
 
-Before any Work Order can be accepted into a campaign's decision ledger, the `Research Operations Controller` runs `oase validate check`. In the workshop, you can jump straight to **Checkpoint 4 (`ch4-site-published`)** in `<2 seconds` and run the validator yourself:
+Before any Work Order can advance to `scientifically_accepted` in `.oase/control/events.ndjson`, it must clear **Dual Validation**:
+- **Validation 1 (Mechanical Gate by `finding-validator`):** Runs `oase validate check <WO>` across all 10 mechanical checks (`validation_passed`).
+- **Validation 2 (Scientific Gate by `science-program-lead`):** Conducts an independent Phase-2 reanalysis and scientific review before logging `DEC-NNN` and advancing the Work Order to `scientifically_accepted`.
+
+In the workshop, you can jump straight to **Checkpoint 4 (`ch4-site-published`)** in `<2 seconds` and run the mechanical validator yourself:
 
 ```bash
 cd /workspace/stage0-1-walkthrough
@@ -255,15 +255,16 @@ By standing rule (`docs/tool-design-guidance.md` §1.1), **a model prediction ne
 
 ### Step 5: Compile the 28-Page Evidence Portal & Extend with Custom Containers in 3 Steps
 
-Once Work Orders pass validation, `oase site build` compiles the entire campaign into a self-contained static HTML evidence portal—complete with **14 interactive scientific viewers** (`plddt-viewer`, `pae-viewer`, `constraint-viewer`, `expression-viewer`, `tournament-viewer`, `docking-viewer`, `admet-viewer`, `mpo-viewer`, `selectivity-viewer`, `pk-viewer`, `trials-viewer`, `faers-viewer`, `pathway-viewer`, and `dossier-viewer`):
+Once Work Orders pass Validation 1 and Validation 2 (`scientifically_accepted`), `project-curator` wakes and runs `oase site build && oase site export` (for unreviewed live-sandbox demo work orders, attendees can also run the workshop sandbox preview shortcut `oase workorder accept-all` to preview portal compilation). This compiles the workspace into a **28-page standalone HTML evidence portal** (`_site/index.html` + `<slug>-site.zip`) complete with **14 interactive scientific viewers** (`plddt-viewer`, `pae-viewer`, `constraint-viewer`, `expression-viewer`, `tournament-viewer`, `pockets-viewer`, `admet-viewer`, `docking-scores-viewer`, `sdf-viewer`, `structure-viewer`, `docking-viewer`, `brics-viewer`, `contacts-viewer`, and `json-viewer`):
 
 ```bash
-# Validate all internal links/citations and build the 28-page static HTML portal (<3 seconds, 100% offline)
+# Validate all internal links/citations and build + export the 28-page static HTML portal (<3 seconds, 100% offline)
 oase --project /workspace/stage0-1-walkthrough site validate
 oase --project /workspace/stage0-1-walkthrough site build
+oase --project /workspace/stage0-1-walkthrough site export
 ```
 
-And whenever your platform engineering team wants to plug an internal Python package, static C++ binary, sidecar Docker container, or custom Vertex AI / Cloud Run model endpoint into GCP-OASE, you never rebuild monolithic agent images. You follow the **3-Step Container Contract (`Tool → Skill → Template`)** detailed in [Module 05](docs/05-extend-custom-tools.md):
+And whenever your platform engineering team wants to plug an internal Python package, static C++ binary, sidecar Docker container, or custom GCP GPU / Cloud Run model endpoint into GCP-OASE, you never rebuild monolithic agent images. You follow the **3-Step Container Contract (`Tool → Skill → Template`)** detailed in [Module 05](docs/05-extend-custom-tools.md):
 1. **Tool (`tools/oase/commands/<name>.py`):** Implement Phase 1 (`fetch`/`run`) + Phase 2 (`analyze`, automatically offline-latched) and run `./install.sh --update` to stamp `/scion-volumes/tools/ENV_VERSION`.
 2. **Skill (`skills/<capability>/SKILL.md`):** Write a `<200-line` specialist-neutral Markdown routing contract with an explicit invocation table and anti-fabrication guard.
 3. **Template (`templates/<role>/scion-agent.yaml`):** Add the skill to the role's `skills:` grant and run `scion template sync --all`.
@@ -272,23 +273,23 @@ And whenever your platform engineering team wants to plug an internal Python pac
 
 ## The Complete Picture
 
-In just five steps—which you can run hands-on in our **150-minute workshop** using `<2 second` Git time-machine checkpoints (`ch0`–`ch4`)—we went from a single-line therapeutic directive to a multi-model tournament, live **Vertex AI AlphaGenome** & **AlphaFold 3** predictions, cirrhotic single-cell `.h5ad` slicing, wet-lab CRO re-ingestion, and a 28-page SHA-256-verified evidence portal:
+In just five steps—which you can run hands-on in our **150-minute workshop** using `<2 second` Git time-machine checkpoints (`ch0`–`ch4`)—we went from a single-line therapeutic directive to a multi-model tournament, live **AlphaGenome** & **AlphaFold 3** predictions on GCP, cirrhotic single-cell `.h5ad` slicing, wet-lab CRO re-ingestion, and a 28-page SHA-256-verified evidence portal:
 
 ![The Complete Picture](assets/oase_complete_picture.jpg)
 
-GCP-OASE eliminates the false choice between rigid bioinformatics pipelines that break when biology surprises you and isolated chatbots that hallucinate numbers you can't defend in governance review. Your discovery pods focus on the science; the platform handles multi-model routing, Vertex AI foundation model execution, and mechanical provenance.
+GCP-OASE eliminates the false choice between rigid bioinformatics pipelines that break when biology surprises you and isolated chatbots that hallucinate numbers you can't defend in governance review. Your discovery pods focus on the science; the platform handles multi-model routing, GCP foundation model execution, and mechanical provenance.
 
 ### Try It Yourself
 
 Ready to run your own team-based discovery campaign on Google Cloud? Start here:
 
-- **Hands-On Lab Walkthrough:** Start with [Module 00 — Prerequisites](docs/00-prerequisites.md) and [Module 01 — Tour the Grove](docs/01-tour-the-grove.md) to launch `live-sandbox`, `stage0-1-walkthrough` (`Pilot-10`), and `negative-gate-audit` (`Pilot-9b`).
+- **Hands-On Lab Walkthrough:** Start with [Module 00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) and [Module 01 — Tour the Grove](docs/01-tour-the-grove.md) to launch `live-sandbox`, `stage0-1-walkthrough` (`Pilot-10`), and `negative-gate-audit` (`Pilot-9b`).
 - **Why Enterprise Biopharma Teams Adopt OASE:** Read the [Working Backwards PRFAQ](PRFAQ.md) and [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md).
 - **Extend OASE with Your Internal Containers:** Jump to [Module 05 — Extend Custom Tools (`oase h5ad` + Patterns A–D)](docs/05-extend-custom-tools.md).
 - **Facilitator Guide (`150-Min Run of Show`):** See [Module 06 — Facilitator Guide](docs/06-facilitator-guide.md).
 
 ---
 
-Agentic drug discovery used to mean choosing between static DAGs that can't pivot on a biological surprise and single-player chat windows that invent assay numbers. GCP-OASE replaces both with team-based, multi-model, provenance-locked computation on Google Cloud Vertex AI.
+Agentic drug discovery used to mean choosing between static DAGs that can't pivot on a biological surprise and single-player chat windows that invent assay numbers. GCP-OASE replaces both with team-based, multi-model, provenance-locked computation on Google Cloud.
 
 The gap between *"we tried an AI co-pilot"* and *"our discovery pods trust it to gate wet-lab spend"* just got a lot smaller.
