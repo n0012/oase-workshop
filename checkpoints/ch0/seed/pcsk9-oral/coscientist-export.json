@@ -1,0 +1,74 @@
+{
+  "schema": "oase.coscientist-export.v1",
+  "source_run_id": "daedalis-20261028-pcsk9-oral",
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-001",
+      "rank": 1,
+      "elo_rating": 1642.5,
+      "title": "Allosteric C-terminal/catalytic-groove PCSK9 small-molecule inhibition disrupting LDLR EGF-A binding",
+      "statement": "Small-molecule engagement of the inter-domain allosteric groove between the PCSK9 catalytic and C-terminal Cys-His-rich domains allosterically destabilizes the LDLR EGF-A interface.",
+      "mechanism_of_action": {
+        "target_gene": "PCSK9",
+        "uniprot_id": "Q8NBP7",
+        "modality": "small_molecule_allosteric_inhibitor",
+        "biological_rationale": "Avoids the flat EGF-A PPI surface while preserving oral Rule-of-5 hepatocyte permeability."
+      },
+      "falsifiable_predictions": [
+        {
+          "prediction_id": "FP-001",
+          "test_description": "fpocket & AlphaFold 3 co-folding of PCSK9 (PDB 2P4E / Q8NBP7) identifies a cryptic allosteric pocket with druggability score >= 0.50 and ligand ipTM >= 0.70.",
+          "kill_criterion": "Druggability score < 0.30 or steric clash across all low-energy conformers."
+        }
+      ],
+      "cited_pmids": [
+        "12730697",
+        "16554528",
+        "37196161"
+      ]
+    },
+    {
+      "hypothesis_id": "H-002",
+      "rank": 2,
+      "elo_rating": 1588.0,
+      "title": "Oral tricyclic macrocycle PCSK9-LDLR PPI blockade benchmarked against MK-0616 (enlicitide)",
+      "statement": "Oral tricyclic peptidomimetic macrocycle directly occluding the PCSK9 EGF-A binding patch.",
+      "mechanism_of_action": {
+        "target_gene": "PCSK9",
+        "uniprot_id": "Q8NBP7",
+        "modality": "oral_macrocycle_ppi_inhibitor",
+        "biological_rationale": "Direct orthosteric competition with LDLR EGF-A domain."
+      },
+      "falsifiable_predictions": [
+        {
+          "prediction_id": "FP-002",
+          "test_description": "Interface contact mapping on EGF-A binding surface confirms salt-bridge and hydrophobic hot-spot coverage with projected human oral bioavailability.",
+          "kill_criterion": "Loss of EGF-A hot-spot engagement or unbound hepatic clearance incompatible with QD oral dosing."
+        }
+      ],
+      "cited_pmids": [
+        "17460039",
+        "36884306",
+        "37874921"
+      ]
+    }
+  ],
+  "concept_mapping": [
+    {
+      "concept_id": "IC-001",
+      "hypothesis_id": "H-001",
+      "target_gene": "PCSK9",
+      "modality": "small_molecule_allosteric_inhibitor",
+      "role": "primary",
+      "status": "active"
+    },
+    {
+      "concept_id": "IC-002",
+      "hypothesis_id": "H-002",
+      "target_gene": "PCSK9",
+      "modality": "oral_macrocycle_ppi_inhibitor",
+      "role": "backup",
+      "status": "active"
+    }
+  ]
+}

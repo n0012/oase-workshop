@@ -8,6 +8,17 @@ Yet building production-ready agentic science that a pharma governance board can
 
 ---
 
+## Quick Navigation — 150-Minute Hands-On Workshop Kit
+
+| Role | Start Here | Deep-Dive Modules |
+|---|---|---|
+| **Computational Biologist / Discovery Scientist** | [09 — End-to-End Stage 0→4 Curriculum (`pcsk9-oral`)](docs/09-end-to-end-pcsk9-curriculum.md) | [01 — Tour the Grove](docs/01-tour-the-grove.md) · [02 — Launch a Team Campaign](docs/02-launch-campaign.md) · [03 — Evidence, Viewers & Refusals](docs/03-evidence-and-refusals.md) · [04 — Make It Yours & Wet-Lab Handoffs](docs/04-make-it-yours.md) |
+| **AI Platform / Bioinformatics Engineer** | [08 — Surface Connectivity & Initiation Contract (`GA`/`AGY` ↔ `OASE`)](docs/08-surface-connectivity-contract.md) | [00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) · [05 — Extend Custom Tools (`oase h5ad`)](docs/05-extend-custom-tools.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
+| **Discovery Governance / R&D Leader** | [Working Backwards PRFAQ](PRFAQ.md) | [03 — Evidence & Refusals (`Pilot-9b`, `Pilot-10`, `Pilot-6`)](docs/03-evidence-and-refusals.md) · [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md) |
+| **Workshop Facilitator / Customer Field Team** | [06 — Facilitator Run-of-Show Guide](docs/06-facilitator-guide.md) | [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) · [09 — End-to-End `pcsk9-oral` Curriculum](docs/09-end-to-end-pcsk9-curriculum.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
+
+---
+
 ## Why Agentic Drug Discovery Is Harder Than It Looks
 
 The concept is simple: give AI agents access to biological databases and structure predictors to accelerate target triage and hit-to-lead. The implementation? That's where things get complicated.
@@ -283,10 +294,12 @@ GCP-OASE eliminates the false choice between rigid bioinformatics pipelines that
 
 Ready to run your own team-based discovery campaign on Google Cloud? Start here:
 
-- **Hands-On Lab Walkthrough:** Start with [Module 00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) and [Module 01 — Tour the Grove](docs/01-tour-the-grove.md) to launch `live-sandbox`, `stage0-1-walkthrough` (`Pilot-10`), and `negative-gate-audit` (`Pilot-9b`).
+- **End-to-End Stage 0 → 4 Operational Curriculum (`pcsk9-oral`):** Follow [Module 09 — End-to-End Stage 0→4 Training Curriculum (`pcsk9-oral` in ASCVD)](docs/09-end-to-end-pcsk9-curriculum.md) across `WO-001`..`WO-008`, `DEC-001`..`DEC-012`, `OASE-PCSK9-014` DMTA lead optimization, 4-step `oase pk` human QD oral projection, and the 4 Forensic Epistemic Governance Drills.
+- **Surface-to-OASE Formal Initiation & Seed Handoff Contract (`GA`/`AGY` ↔ `OASE`):** Read [Module 08 — Surface Connectivity & Initiation Contract](docs/08-surface-connectivity-contract.md) for the 3-Level Initiation Contract, 11-field `A2UI_INPUT_REQUIRED` card, 7-Part Zero-Truncation `/workspace/.seed/<slug>/` Seed Package (`oase.campaign-seed.v2`), and 7-Step Autonomous Bootstrap.
+- **Hands-On Lab Walkthrough (`Pilot-10`, `Pilot-9b`, `Pilot-6`):** Start with [Module 00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) and [Module 01 — Tour the Grove](docs/01-tour-the-grove.md) to launch `live-sandbox`, `stage0-1-walkthrough` (`Pilot-10`), and `negative-gate-audit` (`Pilot-9b`).
 - **Why Enterprise Biopharma Teams Adopt OASE:** Read the [Working Backwards PRFAQ](PRFAQ.md) and [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md).
 - **Extend OASE with Your Internal Containers:** Jump to [Module 05 — Extend Custom Tools (`oase h5ad` + Patterns A–D)](docs/05-extend-custom-tools.md).
-- **Facilitator Guide (`150-Min Run of Show`):** See [Module 06 — Facilitator Guide](docs/06-facilitator-guide.md).
+- **Facilitator Guide (`150-Min Run of Show`) & Customer Overlays:** See [Module 06 — Facilitator Guide](docs/06-facilitator-guide.md) and [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) (`./scripts/render-customer-overlay.sh`).
 
 ---
 

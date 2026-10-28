@@ -34,14 +34,43 @@ oase --project /workspace/live-sandbox doctor --json | jq .
 | Error Code / Symptom | Root Cause | Exact Remedy |
 |---|---|---|
 | `OaseHubNotConfigured` | Neither `SCION_HUB_URL` nor `~/.config/pharma_skills/config.toml` (`[oase] hub_url`) is set. | Add `[oase]\nhub_url = "https://..."` to `~/.config/pharma_skills/config.toml` or export `SCION_HUB_URL`. |
+| `GCP_SA_NOT_VERIFIED` | Project GCP Service Account failed verification on `POST /api/v1/projects/{id}/gcp-service-accounts/{saId}/verify`. | Verify the SA exists in the target GCP project and has IAM permissions, then re-run `create_project`. |
 | `OASE_TEMPLATES_MISSING` | Project was created via raw `scion project create` without importing the 22 OASE templates. | Run `create_project` (or `POST /api/v1/projects/{id}/import-templates`) and verify all 6 critical templates exist before starting `controller`. |
 | `CONTROLLER_TEMPLATE_MISMATCH` | `controller` started before template import completed and silently fell back to `template: default`. | `bootstrap_campaign` automatically deletes the mis-templated agent and fails closed; re-run after template import passes. |
+| `SEED_UPLOAD_CHECKSUM_MISMATCH` | WebDAV `PUT` was truncated (e.g., unsharded file `> 4 MB` hit proxy limit) or corrupted in transit. | Keep seed shards `<= 1.8 MB` and re-run `bootstrap_campaign` so read-back `GET` SHA-256 verification and `CHECKSUMS.json` succeed. |
 | `SESSION_PROJECT_LOCKED` | Current GA/AGY session is already bound to a different Scion project (1-project-per-session rule). | Start a new GA/AGY chat session for the second project, or pass `switch_project=true` if intentionally rebinding. |
+| `ONE_PROGRAM_PER_PROJECT` | Target Scion project already has `.oase-project-lock.json` bound to a different `program_slug`. | Create a new Scion project (`create_project`) for the new scientific program (1-program-per-project invariant). |
 | `ESCALATION_REQUIRED` (`Exit 3`) | `surface_install.py` was invoked inside GA's read-only `nsjail` sandbox. | Re-run `python3 scripts/surface_install.py` from GA with `permissions="require_escalated"` or from a host terminal. |
 
 ---
 
-## 3. Debugging Scion Agent Containers
+## 3. The 6 Golden Rules & Quick Command Cross-Reference
+
+### The 6 Golden Rules of `GA`/`AGY` ↔ OASE Operation
+1. **Project Owner Initiates & Assigns (`create_project` + `bootstrap_campaign`):** Always initiate new projects and campaigns from `GA` or `AGY` via `create_project` / `bootstrap_campaign` (never bare `scion project create`) so GCP SA verification, `tools` volume mounting, team `members` assignment, and 6-template verification happen atomically.
+2. **Respect the Latency & Provenance Boundary ("Gray Zone" Rule):**
+   - Need a 5-second answer for interactive discussion? Run it on the `GA` / `AGY` surface.
+   - Will the number or conclusion be cited in a `DEC-###` decision or Stage Gate? Escalate it via `request_work_order` so OASE executes Phase 1 (`.meta.json` SHA-256 sidecar) + Phase 2 (100% offline `.analysis.json`) + Dual Validation (`Validation 1` + `Validation 2`).
+3. **Read Direct via WebDAV (`decision_log`, `dav_read`), Write Only via Bounded Push Messages (`< 10 KB`):** Never write or edit files under `/workspace/<program-slug>/` directly from `GA`/`AGY`. Use `decision_log` (~1.5s) and `dav_read` (with ETag cache) for reads, and `request_work_order` / `send_message` (`< 10 KB`) for writes.
+4. **One Project Per Session (`SESSION_PROJECT_LOCKED`) & One Program Per Project (`ONE_PROGRAM_PER_PROJECT`):** Start a new `GA`/`AGY` chat session when switching to a different Scion project, and create a new Scion project for each distinct drug discovery program.
+5. **Never Use `oase hypothesis adopt` for SciArchitect Bundles:** Always stage the 7-part seed bundle to `/workspace/.seed/<slug>/` (`CHECKSUMS.json` last) and ingest via `oase coscientist ingest <export_file>` so zero fields, citations, or debate logs are lost.
+6. **Always Verify `oase validate check --preflight` Before Submitting a Work Order:** Checks SHA-256 sidecars, JSON schemas, threshold citations, mandatory `[relay:<code>]` tags, and `{source: raw/...}` JSONPath numerical claims in seconds.
+
+### Quick Command Cross-Reference (`scion` MCP vs. `pharma-cli dde` vs. Container `oase` CLI)
+
+| Task | From `GA` / `AGY` (`scion` MCP Tool) | From Workstation CLI (`pharma-cli dde`) | Inside OASE Agent Container (`oase` CLI) |
+|---|---|---|---|
+| **Create Project & Assign Team** | `scion:create_project` | `pharma-cli dde create-project --name ... --member ...` | *(Forbidden: requires `UserIdentity` token)* |
+| **Launch Campaign + Seed** | `scion:bootstrap_campaign` | `pharma-cli dde bootstrap-campaign ...` | `oase doctor` → `oase init /workspace/<slug>` |
+| **Read Latest Decisions (`DEC-###`)** | `scion:decision_log` (`limit: 10`) | `pharma-cli dde decision-log --limit 10` | Read `program-state/decision-log.md` |
+| **Read Workspace File (`L0–L4`)** | `scion:dav_read` (`path`, `head_lines`/`section`) | `pharma-cli dde dav-read <path>` | Read `/workspace/<slug>/<path>` |
+| **Request New Work Order (`WO-*`)** | `scion:request_work_order` | `pharma-cli dde request-work-order ...` | `oase workorder create --from wo.json --commit` |
+| **Validate Work Order (10 Checks)** | Read via `scion:dde_finding` | `pharma-cli dde finding --wo WO-004` | `oase validate check WO-004` |
+| **Build & Export 28-Page Portal** | Request `project-curator` via `send_message` | Download `_site/<slug>-site.zip` via WebDAV | `oase site build && oase site validate && oase site export` |
+
+---
+
+## 4. Debugging Scion Agent Containers
 
 ### Checking Agent Status and Recent Logs
 ```bash

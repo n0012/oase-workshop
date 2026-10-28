@@ -1,0 +1,14 @@
+# Local environment & credentials (never commit)
+.env
+*.local.env
+
+# Customer-specific workshop overlays (never commit to public repo)
+overlays/customers/
+overlays/*.local.env
+
+# Python / OS / Scratch artifacts
+__pycache__/
+*.py[cod]
+.DS_Store
+*.swp
+/tmp/
