@@ -1,0 +1,6 @@
+{
+  "variant": "chr1:55039974:G>T",
+  "rsid": "rs2479409",
+  "liver_rna_seq_quantile": 0.984,
+  "liver_rna_seq_raw_lfc": -0.24
+}

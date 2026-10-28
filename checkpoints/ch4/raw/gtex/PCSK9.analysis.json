@@ -1,0 +1,27 @@
+{
+  "record_type": "analysis",
+  "source": "raw/gtex/PCSK9.json",
+  "source_sha256": "267584379363564e7ee0a04ef6c61de680aae235de98ca0a3724e17267908311",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "gtex@1.0",
+  "thresholds_applied": {
+    "tau_specific": 0.8
+  },
+  "threshold_sources": {
+    "tau_specific": "default"
+  },
+  "metrics": {
+    "liver_median_tpm": 184.2,
+    "tau_specificity": 0.93,
+    "top_tissue_rank": 1
+  },
+  "assessment": {
+    "verdict": "tissue_selective_liver"
+  },
+  "mandatory_relays": [],
+  "written_by": "wo002-computational-biologist",
+  "work_order_id": "WO-002"
+}

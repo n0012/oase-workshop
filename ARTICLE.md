@@ -12,10 +12,10 @@ Yet building production-ready agentic science that a pharma governance board can
 
 | Role | Start Here | Deep-Dive Modules |
 |---|---|---|
-| **Computational Biologist / Discovery Scientist** | [09 — End-to-End Stage 0→4 Curriculum (`pcsk9-oral`)](docs/09-end-to-end-pcsk9-curriculum.md) | [01 — Tour the Grove](docs/01-tour-the-grove.md) · [02 — Launch a Team Campaign](docs/02-launch-campaign.md) · [03 — Evidence, Viewers & Refusals](docs/03-evidence-and-refusals.md) · [04 — Make It Yours & Wet-Lab Handoffs](docs/04-make-it-yours.md) |
-| **AI Platform / Bioinformatics Engineer** | [08 — Surface Connectivity & Initiation Contract (`GA`/`AGY` ↔ `OASE`)](docs/08-surface-connectivity-contract.md) | [00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) · [05 — Extend Custom Tools (`oase h5ad`)](docs/05-extend-custom-tools.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
-| **Discovery Governance / R&D Leader** | [Working Backwards PRFAQ](PRFAQ.md) | [03 — Evidence & Refusals (`Pilot-9b`, `Pilot-10`, `Pilot-6`)](docs/03-evidence-and-refusals.md) · [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md) |
-| **Workshop Facilitator / Customer Field Team** | [06 — Facilitator Run-of-Show Guide](docs/06-facilitator-guide.md) | [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) · [09 — End-to-End `pcsk9-oral` Curriculum](docs/09-end-to-end-pcsk9-curriculum.md) · [07 — Troubleshooting](docs/07-troubleshooting.md) |
+| **Computational Biologist / Discovery Scientist** | [01 — Tour the Grove (`pcsk9-oral`)](docs/01-tour-the-grove.md) | [02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md) · [03 — Structural Biology & Docking](docs/03-structure-docking-af3.md) · [04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md) |
+| **AI Platform / Bioinformatics Engineer** | [Surface Connectivity Reference (`GA`/`AGY` ↔ `OASE`)](docs/surface-connectivity-reference.md) | [00 — Prerequisites & Setup](docs/00-prerequisites.md) · [05 — Build & Register Custom Tools (`oase h5ad`)](docs/05-extend-custom-tools.md) · [07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md) |
+| **Discovery Governance / R&D Leader** | [Working Backwards PRFAQ](PRFAQ.md) | [04 — DMTA, PK & Dossier Portal (Validation Drills)](docs/04-dmta-pk-dossier-portal.md) · [Repository Overview (`README.md`)](README.md) |
+| **Workshop Facilitator / Field Team** | [06 — Facilitator Runbook](docs/06-facilitator-guide.md) | [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) · [07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md) |
 
 ---
 
@@ -43,8 +43,8 @@ The concept is simple: give AI agents access to biological databases and structu
 
 | Challenge | GCP-OASE Solution |
 |---|---|
-| **The rigid workflow problem** | **Team-Based Science & Subway-Map Routing (`GA ↔ Scion Contract`)**: The **Project Owner** initiates a shared, single-program workspace (`ONE_PROGRAM_PER_PROJECT`) from Gemini Agent (`create_project` / `bootstrap_campaign` via an interactive **A2UI Initiation Card**) and assigns R&D team members (`project-member`). Humans co-steer a **4-tier / 22-template** AI research team across a **9-state Work-Order lifecycle (`WO-001`..`WO-N`)** and configurable **Wet-Lab / CRO Stopping Gates**. |
-| **The chatbot fabrication trap** | **Two-Phase Zero-Fabrication Funnel & Dual Validation**: Raw matrices never enter LLM context. **Phase 1 (`fetch`/`run`/`predict`)** writes raw bytes to `raw/` with a SHA-256 `.meta.json` sidecar. **Phase 2 (`analyze`)** is network-latched offline across all 51 analysis commands to apply `.oase/thresholds.yaml`. Every Work Order must pass **Dual Validation**: **Validation 1** (`finding-validator` running the 10-check `oase validate check`) and **Validation 2** (`science-program-lead` independent Phase-2 review logging `DEC-NNN` / `scientifically_accepted`). |
+| **The rigid workflow problem** | **Team-Based Science & Dynamic Work-Order Routing (`GA ↔ Scion Contract`)**: The **Project Owner** initiates a shared, single-program workspace (`ONE_PROGRAM_PER_PROJECT`) from Gemini Agent (`create_project` / `bootstrap_campaign` via an interactive **A2UI Initiation Card**) and assigns R&D team members (`project-member`). Humans co-steer a **4-tier / 22-template** AI research team across a **9-state Work-Order lifecycle (`WO-001`..`WO-N`)** and configurable **Wet-Lab / CRO Stopping Gates**. |
+| **The chatbot fabrication trap** | **Two-Phase Tool Execution & Dual Validation**: Raw matrices never enter LLM context. **Phase 1 (`fetch`/`run`/`predict`)** writes raw bytes to `raw/` with a SHA-256 `.meta.json` sidecar. **Phase 2 (`analyze`)** is network-latched offline across all 51 analysis commands to apply `.oase/thresholds.yaml`. Every Work Order must pass **Dual Validation**: **Validation 1** (`finding-validator` running the 10-check `oase validate check`) and **Validation 2** (`science-program-lead` independent Phase-2 review logging `DEC-NNN` / `scientifically_accepted`). |
 | **The single-model echo chamber** | **Model Diversity as a Scientific Control on GCP**: None of the 22 OASE templates hardcodes a model ID or CLI binary. Scion decouples `scion-agent.yaml` from the **Model Harness** (`gemini-cli`, `claude`, `antigravity`, `codex`) using portable size aliases (`small`, `medium`, `large`, `extra-large`)—running **Gemini 4** for orchestration, **Anthropic Claude** for adversarial `Scientific Reviewer` audits, and **Gemini 4 + Claude + OpenAI** in blind `Hypex` ELO debate tournaments on GCP so no single model ever grades its own homework. |
 | **The fragmented scientific tool stack** | **First-Party GCP Scientific AI + 62 CLI Tools + 3-Step Extensibility**: One unified `oase` CLI calls **AlphaFold 3** (monomer, PPI complex, and SMILES ligand co-folding on Dedicated GCP GPU Endpoints), **AlphaGenome** (11 regulatory assays on Dedicated GCP GPU Endpoints), and **BigQuery** (`pubmed-bq`) alongside 62 open-source CLI tool groups—plus a **3-Step Container Contract (`Tool → Skill → Template`)** to plug in custom internal tools without rebuilding agent images. |
 
@@ -284,7 +284,7 @@ And whenever your platform engineering team wants to plug an internal Python pac
 
 ## The Complete Picture
 
-In just five steps—which you can run hands-on in our **150-minute workshop** using `<2 second` Git time-machine checkpoints (`ch0`–`ch4`)—we went from a single-line therapeutic directive to a multi-model tournament, live **AlphaGenome** & **AlphaFold 3** predictions on GCP, cirrhotic single-cell `.h5ad` slicing, wet-lab CRO re-ingestion, and a 28-page SHA-256-verified evidence portal:
+In five steps—which you can run hands-on in our **150-minute workshop** using `<2 second` campaign checkpoints (`ch0`–`ch4`)—we went from a single-line therapeutic directive to a multi-model tournament, live **AlphaGenome** & **AlphaFold 3** predictions on GCP, cirrhotic single-cell `.h5ad` slicing, wet-lab CRO re-ingestion, and a 28-page SHA-256-verified evidence portal:
 
 ![The Complete Picture](assets/oase_complete_picture.jpg)
 
@@ -294,12 +294,12 @@ GCP-OASE eliminates the false choice between rigid bioinformatics pipelines that
 
 Ready to run your own team-based discovery campaign on Google Cloud? Start here:
 
-- **End-to-End Stage 0 → 4 Operational Curriculum (`pcsk9-oral`):** Follow [Module 09 — End-to-End Stage 0→4 Training Curriculum (`pcsk9-oral` in ASCVD)](docs/09-end-to-end-pcsk9-curriculum.md) across `WO-001`..`WO-008`, `DEC-001`..`DEC-012`, `OASE-PCSK9-014` DMTA lead optimization, 4-step `oase pk` human QD oral projection, and the 4 Forensic Epistemic Governance Drills.
-- **Surface-to-OASE Formal Initiation & Seed Handoff Contract (`GA`/`AGY` ↔ `OASE`):** Read [Module 08 — Surface Connectivity & Initiation Contract](docs/08-surface-connectivity-contract.md) for the 3-Level Initiation Contract, 11-field `A2UI_INPUT_REQUIRED` card, 7-Part Zero-Truncation `/workspace/.seed/<slug>/` Seed Package (`oase.campaign-seed.v2`), and 7-Step Autonomous Bootstrap.
-- **Hands-On Lab Walkthrough (`Pilot-10`, `Pilot-9b`, `Pilot-6`):** Start with [Module 00 — GCP & Surface Prerequisites](docs/00-prerequisites.md) and [Module 01 — Tour the Grove](docs/01-tour-the-grove.md) to launch `live-sandbox`, `stage0-1-walkthrough` (`Pilot-10`), and `negative-gate-audit` (`Pilot-9b`).
-- **Why Enterprise Biopharma Teams Adopt OASE:** Read the [Working Backwards PRFAQ](PRFAQ.md) and [3-Pass Evaluation Log](.beagle/concepts/oase-workshop/eval-log.md).
-- **Extend OASE with Your Internal Containers:** Jump to [Module 05 — Extend Custom Tools (`oase h5ad` + Patterns A–D)](docs/05-extend-custom-tools.md).
-- **Facilitator Guide (`150-Min Run of Show`) & Customer Overlays:** See [Module 06 — Facilitator Guide](docs/06-facilitator-guide.md) and [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) (`./scripts/render-customer-overlay.sh`).
+- **End-to-End Stage 0 → 4 Operational Curriculum (`pcsk9-oral`):** Walk through [Module 01 — Tour the Grove](docs/01-tour-the-grove.md), [Module 02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md), [Module 03 — Structural Biology & Docking](docs/03-structure-docking-af3.md), and [Module 04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md) across `WO-001`..`WO-008`.
+- **Surface-to-OASE Initiation & Seed Handoff Contract (`GA`/`AGY` ↔ `OASE`):** Read the [Surface Connectivity Reference](docs/surface-connectivity-reference.md) for the 3-Level Initiation Contract, 11-field `A2UI_INPUT_REQUIRED` card, 7-Part `/workspace/.seed/<slug>/` Seed Package (`oase.campaign-seed.v2`), and 7-Step Autonomous Bootstrap.
+- **Prerequisites & Environment Setup:** Start with [Module 00 — Prerequisites & Setup](docs/00-prerequisites.md) and run `./scripts/preflight.sh`.
+- **Why Enterprise Biopharma Teams Adopt OASE:** Read the [Working Backwards PRFAQ](PRFAQ.md).
+- **Extend OASE with Your Internal Containers:** Jump to [Module 05 — Build & Register Custom Tools (`oase h5ad` + Patterns A–D)](docs/05-extend-custom-tools.md).
+- **Facilitator Runbook (`150-Min Run of Show`) & Customer Overlays:** See [Module 06 — Facilitator Runbook](docs/06-facilitator-guide.md), [Module 07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md), and [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) (`./scripts/render-customer-overlay.sh`).
 
 ---
 

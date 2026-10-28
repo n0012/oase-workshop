@@ -1,0 +1,33 @@
+{
+  "work_order_id": "WO-003",
+  "work_order_revision": 1,
+  "run_id": "RUN-003",
+  "verdict": "pass",
+  "checks": [
+    {
+      "name": "deliverables_exist",
+      "status": "pass"
+    },
+    {
+      "name": "sidecar_sha256_integrity",
+      "status": "pass"
+    },
+    {
+      "name": "analysis_source_sha256",
+      "status": "pass"
+    },
+    {
+      "name": "env_version_consistency",
+      "status": "pass"
+    },
+    {
+      "name": "relay_coverage",
+      "status": "pass"
+    },
+    {
+      "name": "source_tags_resolve",
+      "status": "pass"
+    }
+  ],
+  "created_at": "2026-10-28T00:25:00Z"
+}

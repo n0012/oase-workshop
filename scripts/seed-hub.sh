@@ -4,8 +4,8 @@
 #
 # Groves Provisioned:
 #   1. live-sandbox         — Clean root + staged /workspace/.seed/pcsk9-oral/
-#   2. stage0-1-walkthrough — Multi-checkpoint Time-Machine grove (ch0..ch4)
-#   3. negative-gate-audit  — Stage 0 Falsification & Citation Forensics audit
+#   2. stage0-1-walkthrough — Multi-checkpoint campaign grove (ch0..ch4)
+#   3. negative-gate-audit  — Stage 0 Falsification & Citation Audit grove
 # ==============================================================================
 set -euo pipefail
 
@@ -24,6 +24,12 @@ mkdir -p \
 if [[ -d "${REPO_ROOT}/checkpoints/ch0/seed/pcsk9-oral" ]]; then
   cp -R "${REPO_ROOT}/checkpoints/ch0/seed/pcsk9-oral/." "${WORKSPACE_ROOT}/.seed/pcsk9-oral/"
   echo "[OK] Staged pcsk9-oral seed package to ${WORKSPACE_ROOT}/.seed/pcsk9-oral/"
+fi
+
+# Initialize stage0-1-walkthrough to ch1 by default if empty
+if [[ -d "${REPO_ROOT}/checkpoints/ch1" ]]; then
+  cp -R "${REPO_ROOT}/checkpoints/ch1/." "${WORKSPACE_ROOT}/stage0-1-walkthrough/"
+  echo "[OK] Initialized ${WORKSPACE_ROOT}/stage0-1-walkthrough to ch1"
 fi
 
 # Take a golden SQLite snapshot of Scion Hub DB if running on the Scion Hub host

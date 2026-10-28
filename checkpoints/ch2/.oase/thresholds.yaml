@@ -1,0 +1,32 @@
+# OASE Program Threshold Configuration (pcsk9-oral)
+coscientist:
+  version: "1.0"
+  elo_decisive_gap: 50.0
+  min_win_rate: 0.60
+genetics:
+  version: "1.0"
+  pli_intolerant: 0.90
+  loeuf_intolerant: 0.35
+gwas:
+  version: "1.0"
+  score_threshold: 0.70
+alphagenome:
+  version: "1.0"
+  quantile_significance: 0.95
+  raw_score_moderate: 0.10
+pocket:
+  version: "1.0"
+  druggability_threshold: 0.50
+docking:
+  version: "1.0"
+  strong_binding_kcal: -8.5
+  clash_distance_angstrom: 2.0
+admet:
+  version: "1.0"
+  max_mw: 500.0
+  max_clogp: 3.5
+  min_tpsa: 75.0
+  max_tpsa: 110.0
+pk:
+  version: "1.0"
+  min_oral_bioavailability_pct: 30.0

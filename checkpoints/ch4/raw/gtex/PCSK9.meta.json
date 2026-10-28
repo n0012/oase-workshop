@@ -1,0 +1,24 @@
+{
+  "tool": "gtex",
+  "subcommand": "fetch",
+  "work_order_id": "WO-002",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "https://gtexportal.org/api/v2/expression/medianGeneExpression",
+  "parameters": {
+    "gene": "PCSK9"
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "PCSK9.json",
+      "sha256": "267584379363564e7ee0a04ef6c61de680aae235de98ca0a3724e17267908311",
+      "bytes": 91
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": []
+}

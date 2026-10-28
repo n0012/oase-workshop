@@ -1,0 +1,14 @@
+{
+  "pockets": [
+    {
+      "rank": 1,
+      "druggability_score": 0.68,
+      "volume_a3": 740.0
+    },
+    {
+      "rank": 2,
+      "druggability_score": 0.24,
+      "volume_a3": 310.0
+    }
+  ]
+}

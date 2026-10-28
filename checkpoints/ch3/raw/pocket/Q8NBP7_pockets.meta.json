@@ -1,0 +1,25 @@
+{
+  "tool": "pocket",
+  "subcommand": "run",
+  "work_order_id": "WO-004",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "local://fpocket-4.2.2",
+  "parameters": {
+    "strip_peptides": true,
+    "near": "A:153,A:194,A:238,A:374,A:378"
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "Q8NBP7_pockets.json",
+      "sha256": "312dea914e0b46224b99cfd09e36d40df9c4e3aa759ea2bdad5f237617bbab7a",
+      "bytes": 200
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": []
+}

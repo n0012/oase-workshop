@@ -26,7 +26,7 @@ cp overlays/customer-overlay.env.example overlays/acme-bio.local.env
 | Generic Public Default | Overlay Variable | Example Customer Value | Where It Is Substituted |
 |---|---|---|---|
 | `Translational R&D` | `WORKSHOP_ORG_NAME` | `Acme Bio R&D` | `README.md`, `ARTICLE.md`, `PRFAQ.md`, `docs/*.md` |
-| `Translational R&D — Oral PCSK9 ASCVD` | `WORKSHOP_PROJECT_NAME` | `Acme Bio — Oral PCSK9 ASCVD` | `docs/02-launch-campaign.md`, `docs/08-*.md`, `docs/09-*.md` |
+| `Translational R&D — Oral PCSK9 ASCVD` | `WORKSHOP_PROJECT_NAME` | `Acme Bio — Oral PCSK9 ASCVD` | `docs/01-tour-the-grove.md`, `docs/surface-connectivity-reference.md` |
 | `oral-pcsk9-ascvd` | `WORKSHOP_PROJECT_SLUG` | `acme-pcsk9-ascvd` | `create_project` & `bootstrap_campaign` MCP payloads |
 | `OASE-PCSK9-` / `oase_pcsk9_` | `WORKSHOP_COMPOUND_PREFIX` | `ACME-PCSK9-` / `acme_pcsk9_` | Stage 3 DMTA (`OASE-PCSK9-014`) & Stage 4 PK (`oase_pcsk9_014_*`) |
 | `compbio-lead@example-biopharma.com`, `medchem-lead@example-biopharma.com`, `dmpk-lead@example-biopharma.com` | `WORKSHOP_MEMBER_1`, `WORKSHOP_MEMBER_2`, `WORKSHOP_MEMBER_3` | Real customer participant emails | `create_project` `members` array & CLI flags |

@@ -12,3 +12,6 @@ __pycache__/
 .DS_Store
 *.swp
 /tmp/
+
+# Internal PRFAQ evaluation scratch
+.beagle/

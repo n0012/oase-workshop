@@ -1,0 +1,35 @@
+{
+  "record_type": "analysis",
+  "source": "raw/genomics/PCSK9_gnomad.json",
+  "source_sha256": "826e45341b7820a370f85f953d5b0b9cb434151708ee232df064eb2da12aac8d",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "genetics@1.0",
+  "thresholds_applied": {
+    "pli_intolerant": 0.9,
+    "loeuf_intolerant": 0.35
+  },
+  "threshold_sources": {
+    "pli_intolerant": "default",
+    "loeuf_intolerant": "default"
+  },
+  "metrics": {
+    "pLI": 0.0001,
+    "loeuf": 0.89,
+    "observed_lof": 24,
+    "expected_lof": 27.1
+  },
+  "assessment": {
+    "verdict": "loss-of-function-tolerant"
+  },
+  "mandatory_relays": [
+    {
+      "code": "gnomad.constraint_is_not_safety",
+      "message": "LoF intolerance describes complete loss from conception; do not carry bare into adult toxicology."
+    }
+  ],
+  "written_by": "wo002-computational-biologist",
+  "work_order_id": "WO-002"
+}

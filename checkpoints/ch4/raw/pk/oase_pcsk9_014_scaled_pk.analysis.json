@@ -1,0 +1,29 @@
+{
+  "record_type": "analysis",
+  "source": "raw/pk/oase_pcsk9_014_scaled_pk.json",
+  "source_sha256": "1f28e323618e6348989d89d9a526b7cf31e907fb802cc65a539b03c519a9d06f",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "pk@1.0",
+  "thresholds_applied": {
+    "min_oral_bioavailability_pct": 30.0
+  },
+  "threshold_sources": {
+    "min_oral_bioavailability_pct": "default"
+  },
+  "metrics": {
+    "rat_oral_f_pct": 54.0,
+    "dog_oral_f_pct": 61.0,
+    "projected_human_f_pct": 52.0,
+    "projected_human_half_life_h": 14.8,
+    "projected_qd_oral_dose_mg": 40.0
+  },
+  "assessment": {
+    "verdict": "qd_oral_dosing_supported"
+  },
+  "mandatory_relays": [],
+  "written_by": "wo007-admet-dmpk-scientist",
+  "work_order_id": "WO-007"
+}

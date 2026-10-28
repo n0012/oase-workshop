@@ -1,0 +1,31 @@
+{
+  "tool": "coscientist",
+  "subcommand": "ingest",
+  "work_order_id": "WO-001",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "local://.seed/pcsk9-oral/coscientist-export.json",
+  "parameters": {
+    "top": 10
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "pcsk9_seed.json",
+      "sha256": "c791b90ab4a5fb19ca3c90cb8e6086afabbe5e9c5d650c2e4cace9c2a627293d",
+      "bytes": 108
+    }
+  ],
+  "warnings": [
+    "The hypothesis set was attested by a human or external seed, not generated in-run."
+  ],
+  "mandatory_relays": [
+    {
+      "code": "hypothesis.adopted_not_generated",
+      "message": "The hypothesis set was attested by a human or external seed, not generated in-run."
+    }
+  ]
+}
