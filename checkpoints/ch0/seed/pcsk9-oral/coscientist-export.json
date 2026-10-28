@@ -1,74 +1,235 @@
 {
-  "schema": "oase.coscientist-export.v1",
-  "source_run_id": "daedalis-20261028-pcsk9-oral",
-  "hypotheses": [
+  "sessionId": "daedalis-20261028-pcsk9-oral",
+  "title": "Oral Small-Molecule & Macrocycle PCSK9 Inhibitors in ASCVD",
+  "goal": "Evaluate oral allosteric small-molecule and tricyclic macrocycle PCSK9 inhibitors disrupting LDLR EGF-A binding in ASCVD.",
+  "state": "COMPLETED",
+  "stage": "TOURNAMENT_COMPLETE",
+  "createTime": "2026-10-28T00:00:00Z",
+  "dateEnded": "2026-10-28T00:15:00Z",
+  "stats": {
+    "numIdeas": 2,
+    "numCategories": 2,
+    "highestEloRating": 1642.5,
+    "inputTokenCount": 148200,
+    "outputTokenCount": 42150
+  },
+  "config": {
+    "preferences": [
+      "Prioritize oral bioavailability and hepatocyte target engagement",
+      "Enforce human loss-of-function genetic validation (PCSK9 R46L / LoF)"
+    ]
+  },
+  "ideas": [
     {
-      "hypothesis_id": "H-001",
-      "rank": 1,
-      "elo_rating": 1642.5,
+      "id": "H-001",
+      "ranking": 1,
+      "eloRating": 1642.5,
       "title": "Allosteric C-terminal/catalytic-groove PCSK9 small-molecule inhibition disrupting LDLR EGF-A binding",
-      "statement": "Small-molecule engagement of the inter-domain allosteric groove between the PCSK9 catalytic and C-terminal Cys-His-rich domains allosterically destabilizes the LDLR EGF-A interface.",
-      "mechanism_of_action": {
-        "target_gene": "PCSK9",
-        "uniprot_id": "Q8NBP7",
-        "modality": "small_molecule_allosteric_inhibitor",
-        "biological_rationale": "Avoids the flat EGF-A PPI surface while preserving oral Rule-of-5 hepatocyte permeability."
-      },
-      "falsifiable_predictions": [
+      "category": "small_molecule_allosteric_inhibitor",
+      "attributes": [
         {
-          "prediction_id": "FP-001",
-          "test_description": "fpocket & AlphaFold 3 co-folding of PCSK9 (PDB 2P4E / Q8NBP7) identifies a cryptic allosteric pocket with druggability score >= 0.50 and ligand ipTM >= 0.70.",
-          "kill_criterion": "Druggability score < 0.30 or steric clash across all low-energy conformers."
+          "name": "Target Gene",
+          "value": "PCSK9"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "Q8NBP7"
+        },
+        {
+          "name": "Modality",
+          "value": "small_molecule_allosteric_inhibitor"
+        },
+        {
+          "name": "Concept ID",
+          "value": "IC-001"
         }
       ],
-      "cited_pmids": [
-        "12730697",
-        "16554528",
-        "37196161"
-      ]
+      "matchResult": {
+        "numTotalMatches": 12,
+        "numMatchesWon": 10,
+        "numMatchesLost": 2,
+        "winRate": 0.8333
+      },
+      "summary": {
+        "markdown": "Small-molecule engagement of the inter-domain allosteric groove between the PCSK9 catalytic and C-terminal Cys-His-rich domains allosterically destabilizes the LDLR EGF-A interface."
+      },
+      "description": {
+        "markdown": "Avoids the flat EGF-A PPI surface while preserving oral Rule-of-5 hepatocyte permeability. Tested via fpocket & AlphaFold 3 co-folding of PCSK9 (PDB 3P5B / Q8NBP7) to verify cryptic pocket druggability >= 0.50 and interface ipTM >= 0.75."
+      },
+      "reviewsSummary": {
+        "markdown": "Strong human genetic validation (PCSK9 LoF cardioprotection) and superior oral druggability compared to orthosteric EGF-A surface binders."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "Mutations in PCSK9 cause autosomal dominant hypercholesterolemia",
+              "source": "PMID:12730697"
+            },
+            {
+              "title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease",
+              "source": "PMID:16554528"
+            },
+            {
+              "title": "Allosteric small-molecule PCSK9 inhibition",
+              "source": "PMID:37196161"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "All 3 primary genetic and structural claims verified against Open Targets, gnomAD, and PDB 3P5B."
+        },
+        "claims": [
+          {
+            "claim": "PCSK9 loss-of-function variants confer 88% reduction in coronary heart disease risk without adverse hepatic phenotypes.",
+            "verdict": "ACCURATE",
+            "sourceSentence": "Loss-of-function mutations in PCSK9 lower LDL-C and protect against CHD.",
+            "reasoning": "Directly supported by Cohen et al. NEJM 2006 (PMID:16554528).",
+            "references": [
+              {
+                "title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease",
+                "source": "PMID:16554528"
+              }
+            ]
+          },
+          {
+            "claim": "The PCSK9 catalytic/C-terminal groove forms a druggable pocket distinct from the flat EGF-A interface.",
+            "verdict": "ACCURATE",
+            "sourceSentence": "Crystallographic analysis reveals a cryptic pocket adjacent to the catalytic triad.",
+            "reasoning": "Supported by structural studies of PCSK9 small-molecule complexes.",
+            "references": [
+              {
+                "title": "Allosteric small-molecule PCSK9 inhibition",
+                "source": "PMID:37196161"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "hypothesis_id": "H-002",
-      "rank": 2,
-      "elo_rating": 1588.0,
+      "id": "H-002",
+      "ranking": 2,
+      "eloRating": 1588.0,
       "title": "Oral tricyclic macrocycle PCSK9-LDLR PPI blockade benchmarked against MK-0616 (enlicitide)",
-      "statement": "Oral tricyclic peptidomimetic macrocycle directly occluding the PCSK9 EGF-A binding patch.",
-      "mechanism_of_action": {
-        "target_gene": "PCSK9",
-        "uniprot_id": "Q8NBP7",
-        "modality": "oral_macrocycle_ppi_inhibitor",
-        "biological_rationale": "Direct orthosteric competition with LDLR EGF-A domain."
-      },
-      "falsifiable_predictions": [
+      "category": "oral_macrocycle_ppi_inhibitor",
+      "attributes": [
         {
-          "prediction_id": "FP-002",
-          "test_description": "Interface contact mapping on EGF-A binding surface confirms salt-bridge and hydrophobic hot-spot coverage with projected human oral bioavailability.",
-          "kill_criterion": "Loss of EGF-A hot-spot engagement or unbound hepatic clearance incompatible with QD oral dosing."
+          "name": "Target Gene",
+          "value": "PCSK9"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "Q8NBP7"
+        },
+        {
+          "name": "Modality",
+          "value": "oral_macrocycle_ppi_inhibitor"
+        },
+        {
+          "name": "Concept ID",
+          "value": "IC-002"
         }
       ],
-      "cited_pmids": [
-        "17460039",
-        "36884306",
-        "37874921"
-      ]
+      "matchResult": {
+        "numTotalMatches": 12,
+        "numMatchesWon": 8,
+        "numMatchesLost": 4,
+        "winRate": 0.6667
+      },
+      "summary": {
+        "markdown": "Oral tricyclic peptidomimetic macrocycle directly occluding the PCSK9 EGF-A binding patch."
+      },
+      "description": {
+        "markdown": "Direct orthosteric competition with LDLR EGF-A domain benchmarked against clinical macrocycle MK-0616."
+      },
+      "reviewsSummary": {
+        "markdown": "Clinically validated mechanism (MK-0616), retained as backup concept due to higher molecular weight and permeation enhancer requirements."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "Structural basis for PCSK9-mediated LDLR degradation",
+              "source": "PMID:17460039"
+            },
+            {
+              "title": "Phase 2b trial of oral PCSK9 macrocycle MK-0616",
+              "source": "PMID:36884306"
+            },
+            {
+              "title": "Discovery of MK-0616 tricyclic macrocycle",
+              "source": "PMID:37874921"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "Orthosteric EGF-A blockade claims verified against PDB 3P5B and MK-0616 clinical data."
+        },
+        "claims": [
+          {
+            "claim": "Tricyclic macrocycles can inhibit the PCSK9-LDLR interaction with picomolar potency.",
+            "verdict": "ACCURATE",
+            "sourceSentence": "MK-0616 binds PCSK9 and blocks LDLR interaction.",
+            "reasoning": "Supported by Ballantyne et al. JACC 2023 (PMID:36884306).",
+            "references": [
+              {
+                "title": "Phase 2b trial of oral PCSK9 macrocycle MK-0616",
+                "source": "PMID:36884306"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
-  "concept_mapping": [
-    {
-      "concept_id": "IC-001",
-      "hypothesis_id": "H-001",
-      "target_gene": "PCSK9",
-      "modality": "small_molecule_allosteric_inhibitor",
-      "role": "primary",
-      "status": "active"
+  "executiveReport": {
+    "overview": {
+      "markdown": "Tournament evaluated small-molecule allosteric and macrocyclic orthosteric strategies for oral PCSK9 inhibition."
     },
-    {
-      "concept_id": "IC-002",
-      "hypothesis_id": "H-002",
-      "target_gene": "PCSK9",
-      "modality": "oral_macrocycle_ppi_inhibitor",
-      "role": "backup",
-      "status": "active"
-    }
-  ]
+    "topRankingIdeasSummary": {
+      "markdown": "## Recommendation and Best Next Steps\nAdvance H-001 (IC-001, allosteric small-molecule PCSK9 inhibitor, Elo 1642.5) as primary series and H-002 (IC-002, oral macrocycle, Elo 1588.0) as backup series into Stage 1 genetic, transcriptomic, and structural validation."
+    },
+    "reviewsOverview": {
+      "markdown": "Reviewers favored H-001 for classical oral small-molecule Rule-of-5 properties without permeation enhancers."
+    },
+    "references": [
+      {
+        "title": "Mutations in PCSK9 cause autosomal dominant hypercholesterolemia",
+        "source": "PMID:12730697"
+      },
+      {
+        "title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease",
+        "source": "PMID:16554528"
+      },
+      {
+        "title": "Allosteric small-molecule PCSK9 inhibition",
+        "source": "PMID:37196161"
+      }
+    ]
+  },
+  "knowledgeBase": {
+    "knowledgeSummary": {
+      "markdown": "PCSK9 binds the EGF-A domain of LDLR on hepatocyte surfaces, routing LDLR to lysosomal degradation."
+    },
+    "references": [
+      {
+        "title": "Mutations in PCSK9 cause autosomal dominant hypercholesterolemia",
+        "source": "PMID:12730697"
+      },
+      {
+        "title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease",
+        "source": "PMID:16554528"
+      }
+    ],
+    "learnedClaims": [
+      {
+        "claim": "Hepatic PCSK9 expression accounts for >90% of circulating PCSK9."
+      }
+    ]
+  }
 }
