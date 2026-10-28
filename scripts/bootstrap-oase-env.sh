@@ -43,29 +43,39 @@ else
   echo "==> Reusing existing virtual environment at $OASE_VENV"
 fi
 
-# 2. Install Python dependencies (with corporate PyPI mirror fallback)
+# 2. Install Python dependencies (try strict --require-hashes first; fall back to
+#    Airlock-compatible grpcio-status>=1.84.0 only when corporate mirror quarantines 1.84.1)
 if ! "$OASE_VENV/bin/python" -c "import oase, rdkit, Bio, meeko, gemmi" >/dev/null 2>&1; then
   echo "==> Installing OASE core, hypex, and science Python stacks..."
-  TMP_REQ_DIR="$(mktemp -d)"
-  for req in requirements.txt requirements-hypex.txt requirements-science.txt; do
-    sed -E 's/ --hash=sha256:[0-9a-f]+//g; s/\\$//g; s/grpcio-status==1\.84\.1/grpcio-status>=1.84.0/g' \
-      "$OASE_SOURCE_REPO/tools/$req" \
-      | grep -vE '^\s*--hash=' > "$TMP_REQ_DIR/$req"
-  done
+  if ! "$OASE_VENV/bin/pip" install --require-hashes \
+      -r "$OASE_SOURCE_REPO/tools/requirements.txt" \
+      -r "$OASE_SOURCE_REPO/tools/requirements-hypex.txt" \
+      -r "$OASE_SOURCE_REPO/tools/requirements-science.txt" 2>/dev/null; then
+    echo "    [info] Strict --require-hashes blocked by corporate mirror quarantine on grpcio-status==1.84.1; falling back to >=1.84.0..."
+    TMP_REQ_DIR="$(mktemp -d)"
+    for req in requirements.txt requirements-hypex.txt requirements-science.txt; do
+      sed -E 's/ --hash=sha256:[0-9a-f]+//g; s/\\$//g; s/grpcio-status==1\.84\.1/grpcio-status>=1.84.0/g' \
+        "$OASE_SOURCE_REPO/tools/$req" \
+        | grep -vE '^\s*--hash=' > "$TMP_REQ_DIR/$req"
+    done
+    if command -v uv >/dev/null 2>&1; then
+      uv pip install --python "$OASE_VENV/bin/python" \
+        -r "$TMP_REQ_DIR/requirements.txt" \
+        -r "$TMP_REQ_DIR/requirements-hypex.txt" \
+        -r "$TMP_REQ_DIR/requirements-science.txt"
+    else
+      "$OASE_VENV/bin/pip" install \
+        -r "$TMP_REQ_DIR/requirements.txt" \
+        -r "$TMP_REQ_DIR/requirements-hypex.txt" \
+        -r "$TMP_REQ_DIR/requirements-science.txt"
+    fi
+    rm -rf "$TMP_REQ_DIR"
+  fi
   if command -v uv >/dev/null 2>&1; then
-    uv pip install --python "$OASE_VENV/bin/python" \
-      -r "$TMP_REQ_DIR/requirements.txt" \
-      -r "$TMP_REQ_DIR/requirements-hypex.txt" \
-      -r "$TMP_REQ_DIR/requirements-science.txt"
     uv pip install --python "$OASE_VENV/bin/python" --no-deps -e "$OASE_SOURCE_REPO/tools"
   else
-    "$OASE_VENV/bin/pip" install \
-      -r "$TMP_REQ_DIR/requirements.txt" \
-      -r "$TMP_REQ_DIR/requirements-hypex.txt" \
-      -r "$TMP_REQ_DIR/requirements-science.txt"
     "$OASE_VENV/bin/pip" install --no-deps -e "$OASE_SOURCE_REPO/tools"
   fi
-  rm -rf "$TMP_REQ_DIR"
 else
   echo "==> Python dependencies already installed in $OASE_VENV"
 fi

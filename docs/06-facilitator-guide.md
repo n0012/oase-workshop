@@ -57,20 +57,20 @@ To keep a 150-minute workshop moving without waiting on 30-minute cold tournamen
 
 ### Block 2 (`0:20 – 0:45` · 25m): [Module 02 — Target Validation: Genetics & Omics](02-target-validation-genetics-omics.md) (`ch1 → ch2`)
 - **Hands-On:**
-  - Execute `WO-002` (Open Targets `ENSG00000169174`, `L2G = 0.89`, loss-of-function `p = 1.2e-84`) and `WO-003` (GTEx v8 liver `312.4 TPM`, kidney cortex `18.2 TPM`, small intestine `14.6 TPM`).
-  - Inspect how `.oase/thresholds.yaml` (`min_l2g_score: 0.70`, `min_liver_tpm: 50.0`) gates Stage 1 progression offline in `<0.2 seconds`.
+  - Execute `WO-002` (`gnomAD` `LOF_TOLERANT` with live `pLI = 2.77e-18` / `LOEUF = 1.144` and seeded `pLI = 0.0001` / `LOEUF = 0.89`; `OpenTargets` FH score `0.86` live / `0.96` seeded; `GTEx`/`HPA` hepatocyte enrichment at `47.5 nTPM` live / `184.2 TPM` seeded with `tau = 0.93`) and `WO-003` (seeded `AlphaGenome` `rs2479409` liver RNA-seq quantile `0.984`).
+  - Inspect how `.oase/thresholds.yaml` (`36/36` resolved threshold schemas, including the 13 sets that default to `UNRESOLVED` in `oase 0.3.0`) gates Stage 1 progression offline in `<0.2 seconds`.
 
 ### Block 3 (`0:45 – 1:15` · 30m): [Module 03 — Structural Biology & Docking](03-structure-docking-af3.md) (`ch2 → ch3`)
 - **Hands-On:**
-  - Inspect `WO-004` (`AlphaFold 3` catalytic-domain pLDDT `91.4`, PCSK9–LDLR interface `ipTM = 0.84` vs `0.75` cutoff, and `fpocket` Pocket 1 druggability `0.78`).
-  - Inspect `WO-005` (`AutoDock Vina` docking of `PCSK9-A01..A03`, where `PCSK9-A02` scores `-9.4 kcal/mol` and `PCSK9-A03` scores `-8.9 kcal/mol`).
-  - Point out the mandatory scientific caveats (`**Relay: \`structure.plddt_is_not_binding\`**` and `**Relay: \`docking.score_is_not_affinity\`**`) enforced by `oase validate check`.
+  - Inspect `WO-004` (live `AF-Q8NBP7-F1` monomer global `pLDDT = 85.19` across ordered domain `58–542`, seeded `AlphaFold 3` co-fold `ipTM = 0.84` / `pTM = 0.88`, and `fpocket 4.2.2` scoring `0.788` live across 48 pockets on `Q8NBP7` vs. seeded `Pocket #1` groove `0.68` and flat `EGF-A` surface `0.24`).
+  - Inspect `WO-005` (seeded `AutoDock Vina 1.2.5` docking across the `IC-001` series at `-9.4 kcal/mol`, `2.34 Å` to `Arg194/Asp238/Phe379`).
+  - Point out the mandatory scientific caveats (`**Relay: \`af3.low_confidence_segments\`**` and `**Relay: \`docking.score_is_not_affinity\`**`) enforced by `oase validate check`.
 
 ### Block 4 (`1:15 – 1:55` · 40m): [Module 04 — DMTA, PK & Dossier Portal](04-dmta-pk-dossier-portal.md) (`ch3 → ch4`)
 - **Hands-On:**
-  - Walk through the **Multi-Parameter Disqualification Moment (`WO-006`)**: `PCSK9-A02` had the best docking score (`-9.4 kcal/mol`) in Stage 2, but Chemprop ADMET flags a cardiotoxic hERG liability (`4.2 uM` vs `> 10.0 uM` cutoff). `PCSK9-A03` (`-8.9 kcal/mol`, hERG `28.4 uM`, Caco-2 `18.5 x 10^-6 cm/s`) is nominated as lead candidate.
-  - Review `WO-007` (`88.0%` 24h IC90 coverage at 30 mg/kg PO QD) and `WO-008` (`program-state/dossier.md` and `program-state/portal.html`).
-  - Run the **4 Epistemic Governance Drills** (corrupted SHA-256 sidecar `PROV-002`, inflated prose claim `CIT-003`, deleted caveat relay `REL-001`, and relaxed threshold override `THR-001`) so participants watch `oase validate check` reject each violation deterministically.
+  - Walk through the **Multi-Parameter Disqualification Moment (`WO-006`)**: `PCSK9-A02` (`COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1`, RDKit `MW = 378.4 Da`, `TPSA = 51.2 Å²`, `cLogP = 5.09`, `LogS = -5.613`) triggers **3 critical rule-based ADMET liabilities** in `oase admet` (`metabolic_stability`, Aronov 2005 `herg_liability`, and `solubility`) along with mandatory relay `admet.herg_structural_flag`. Replacing the lipophilic CF3-thiazole with a polar F,CN-oxadiazole yields `PCSK9-A03` / `OASE-PCSK9-014` (`MW = 338.3 Da`, `TPSA = 101.0 Å²`, `cLogP = 3.01`, `LogS = -4.25`), which clears all 3 liabilities (`0` critical liabilities).
+  - Review `WO-007` (seeded rodent-to-human PK fixture: `F = 52%`, `t1/2 = 14.8 h`, `40 mg QD` oral human dose) and `WO-008` (`findings/regulatory/WO-008.md` and 31-page `_site/index.html` + `_site/chapters.html`).
+  - Run the **4 Epistemic Governance Drills** (`./scripts/run-e2e-simulation.sh` Chapter 5C: corrupted SHA-256 sidecar `PROV-002`, inflated prose claim `CIT-003`, deleted caveat relay `REL-001`, and stripped `threshold_set` attribution `THR-001`) so participants watch `oase validate check` reject each violation deterministically (`exit=1`).
 
 ### Block 5 (`1:55 – 2:30` · 35m): [Module 05 — Build & Register Custom Tools](05-extend-custom-tools.md)
 - **Hands-On:**
