@@ -1,0 +1,39 @@
+{
+  "tool": "fpocket",
+  "subcommand": "run",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "structure": "AF-Q8NBP7-F1.cif",
+    "fpocket_defaults": true,
+    "peptide_threshold": 20
+  },
+  "timestamp": "2026-10-29T14:26:26Z",
+  "completed": "2026-10-29T14:26:29Z",
+  "outputs": [
+    {
+      "path": "AF-Q8NBP7-F1.pockets.json",
+      "sha256": "6395713b5fc993cbbd1a8ac9b5eb8f0186620149257b7af72891073ac9182c2c",
+      "bytes": 79836
+    }
+  ],
+  "warnings": [
+    "Pocket volume is a Monte Carlo estimate seeded from the clock; fpocket exposes no seed. Repeated runs on one input differ by a few percent, and two runs inside the same second are identical because the seed has one-second resolution. Do not read a volume difference below the declared tolerance as a change.",
+    "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+  ],
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    }
+  ],
+  "structure_sha256": "d9ab366370cf4cbc480b997dcf1bad1efb260422ebd7c553b00d0d12fe82d8ef",
+  "experimental_structure": false,
+  "structure_origin_evidence": "no EXPDTA/_exptl.method record",
+  "n_pockets": 48,
+  "fpocket_output_dir": "AF-Q8NBP7-F1_fpocket"
+}

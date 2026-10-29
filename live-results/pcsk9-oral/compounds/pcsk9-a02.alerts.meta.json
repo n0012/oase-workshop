@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "alerts",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1",
+    "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1"
+  },
+  "timestamp": "2026-10-29T14:27:04Z",
+  "completed": "2026-10-29T14:27:04Z",
+  "outputs": [
+    {
+      "path": "pcsk9-a02.alerts.json",
+      "sha256": "58e60b2d56845153a24bafa904af699443c268348111470ad2e07fdb52fd0a09",
+      "bytes": 222
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "PCSK9-A02"
+}

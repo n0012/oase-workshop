@@ -1,0 +1,304 @@
+{
+  "record_type": "analysis",
+  "source": "raw/genomics/pcsk9.gwas-opentargets.artifact.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:26:14Z",
+  "threshold_set": "gwas-opentargets",
+  "thresholds_applied": {
+    "significance_cutoff": 0.1
+  },
+  "metrics": {
+    "total_associations": 25,
+    "significant_associations": 25,
+    "threshold": 0.1,
+    "source": "opentargets",
+    "top_diseases": [
+      "familial hypercholesterolemia",
+      "Hypercholesterolemia",
+      "hypercholesterolemia, autosomal dominant, 3",
+      "cardiovascular disorder",
+      "coronary artery disorder",
+      "metabolic disease",
+      "inherited lipid metabolism disorder",
+      "hyperlipidemia",
+      "myocardial infarction",
+      "homozygous familial hypercholesterolemia"
+    ]
+  },
+  "assessment": {
+    "verdict": "associations_found",
+    "gene": "PCSK9",
+    "n_significant": 25,
+    "top_diseases": [
+      "familial hypercholesterolemia",
+      "Hypercholesterolemia",
+      "hypercholesterolemia, autosomal dominant, 3",
+      "cardiovascular disorder",
+      "coronary artery disorder",
+      "metabolic disease",
+      "inherited lipid metabolism disorder",
+      "hyperlipidemia",
+      "myocardial infarction",
+      "homozygous familial hypercholesterolemia"
+    ],
+    "score_details": [
+      {
+        "disease_name": "familial hypercholesterolemia",
+        "overall_score": 0.8556724930728551,
+        "genetic_association_score": 0.8659099026835784,
+        "datatype_scores": {
+          "genetic_literature": 0.8644396846868674,
+          "clinical": 0.9720064163993729,
+          "literature": 0.7753864063586905,
+          "genetic_association": 0.8659099026835784,
+          "animal_model": 0.5096848576541333
+        }
+      },
+      {
+        "disease_name": "Hypercholesterolemia",
+        "overall_score": 0.8256891915401418,
+        "genetic_association_score": 0.9535024673927428,
+        "datatype_scores": {
+          "literature": 0.8585433674250015,
+          "genetic_association": 0.9535024673927428,
+          "clinical": 0.9703876633510418,
+          "genetic_literature": 0.607930797611621
+        }
+      },
+      {
+        "disease_name": "hypercholesterolemia, autosomal dominant, 3",
+        "overall_score": 0.8157305499772042,
+        "genetic_association_score": 0.9390006737240213,
+        "datatype_scores": {
+          "genetic_literature": 0.8365213862795708,
+          "literature": 0.057753425773104,
+          "genetic_association": 0.9390006737240213,
+          "somatic_mutation": 0.030396539880581056,
+          "animal_model": 0.5096848576541333
+        }
+      },
+      {
+        "disease_name": "cardiovascular disorder",
+        "overall_score": 0.7315384731237146,
+        "genetic_association_score": 0.9044107693315864,
+        "datatype_scores": {
+          "literature": 0.8731951838198354,
+          "genetic_association": 0.9044107693315864,
+          "clinical": 0.9578182105520758
+        }
+      },
+      {
+        "disease_name": "coronary artery disorder",
+        "overall_score": 0.7315079875765159,
+        "genetic_association_score": 0.9486904990481829,
+        "datatype_scores": {
+          "literature": 0.9640447349886848,
+          "genetic_association": 0.9486904990481829,
+          "clinical": 0.9326455140465871
+        }
+      },
+      {
+        "disease_name": "metabolic disease",
+        "overall_score": 0.7237793044125468,
+        "genetic_association_score": 0.9492795553168077,
+        "datatype_scores": {
+          "literature": 0.17831487622759454,
+          "genetic_association": 0.9492795553168077
+        }
+      },
+      {
+        "disease_name": "inherited lipid metabolism disorder",
+        "overall_score": 0.7163372220962511,
+        "genetic_association_score": 0.858892726204329,
+        "datatype_scores": {
+          "literature": 0.4830828401241436,
+          "genetic_association": 0.858892726204329,
+          "clinical": 0.8622991755122835
+        }
+      },
+      {
+        "disease_name": "hyperlipidemia",
+        "overall_score": 0.6832765307267045,
+        "genetic_association_score": 0.9483866503017697,
+        "datatype_scores": {
+          "literature": 0.6308386411024879,
+          "genetic_association": 0.9483866503017697,
+          "clinical": 0.6461308918735151
+        }
+      },
+      {
+        "disease_name": "myocardial infarction",
+        "overall_score": 0.6769996018186368,
+        "genetic_association_score": 0.9147393701796236,
+        "datatype_scores": {
+          "literature": 0.8967162143058103,
+          "genetic_association": 0.9147393701796236,
+          "clinical": 0.7157861645912229
+        }
+      },
+      {
+        "disease_name": "homozygous familial hypercholesterolemia",
+        "overall_score": 0.6517714349059506,
+        "genetic_association_score": 0.7197900643721594,
+        "datatype_scores": {
+          "literature": 0.14327376736137132,
+          "animal_model": 0.6144381812306242,
+          "genetic_association": 0.7197900643721594,
+          "clinical": 0.8088012653224608
+        }
+      },
+      {
+        "disease_name": "hypercholesterolemia, familial, 1",
+        "overall_score": 0.5698733337823485,
+        "genetic_association_score": 0.9204948459945291,
+        "datatype_scores": {
+          "animal_model": 0.3380703165518225,
+          "genetic_association": 0.9204948459945291
+        }
+      },
+      {
+        "disease_name": "coronary atherosclerosis",
+        "overall_score": 0.566420088850227,
+        "genetic_association_score": 0.8966786379967667,
+        "datatype_scores": {
+          "literature": 0.2089286211164113,
+          "genetic_association": 0.8966786379967667,
+          "clinical": 0.12158615952232422
+        }
+      },
+      {
+        "disease_name": "atherosclerosis",
+        "overall_score": 0.5651398595854628,
+        "genetic_association_score": 0.5910823775301561,
+        "datatype_scores": {
+          "literature": 0.893673512550718,
+          "genetic_association": 0.5910823775301561,
+          "clinical": 0.7619821504230659
+        }
+      },
+      {
+        "disease_name": "myocardial ischemia",
+        "overall_score": 0.5533315032466505,
+        "genetic_association_score": 0.8921755042241125,
+        "datatype_scores": {
+          "literature": 0.36025604878571554,
+          "genetic_association": 0.8921755042241125
+        }
+      },
+      {
+        "disease_name": "familial hyperlipidemia",
+        "overall_score": 0.5415674238165321,
+        "genetic_association_score": 0.8882286711454683,
+        "datatype_scores": {
+          "literature": 0.05217236276851294,
+          "genetic_association": 0.8882286711454683
+        }
+      },
+      {
+        "disease_name": "response to statin",
+        "overall_score": 0.5364539070882661,
+        "genetic_association_score": 0.8824259425510825,
+        "datatype_scores": {
+          "genetic_association": 0.8824259425510825
+        }
+      },
+      {
+        "disease_name": "angina pectoris",
+        "overall_score": 0.527187681437143,
+        "genetic_association_score": 0.8601363228927753,
+        "datatype_scores": {
+          "literature": 0.1409476415093,
+          "genetic_association": 0.8601363228927753
+        }
+      },
+      {
+        "disease_name": "heart disorder",
+        "overall_score": 0.5129476036261094,
+        "genetic_association_score": 0.8351521333938409,
+        "datatype_scores": {
+          "literature": 0.17215449737053123,
+          "genetic_association": 0.8351521333938409
+        }
+      },
+      {
+        "disease_name": "aortic stenosis",
+        "overall_score": 0.4954260645911051,
+        "genetic_association_score": 0.773823450618775,
+        "datatype_scores": {
+          "literature": 0.8222961279163375,
+          "genetic_association": 0.773823450618775
+        }
+      },
+      {
+        "disease_name": "metabolic syndrome",
+        "overall_score": 0.4945056505098416,
+        "genetic_association_score": 0.7796682306068823,
+        "datatype_scores": {
+          "literature": 0.5224238474873312,
+          "animal_model": 0.34356702418022755,
+          "genetic_association": 0.7796682306068823
+        }
+      },
+      {
+        "disease_name": "Abnormality of the cardiovascular system",
+        "overall_score": 0.48523141780496964,
+        "genetic_association_score": 0.7981688371625508,
+        "datatype_scores": {
+          "genetic_association": 0.7981688371625508
+        }
+      },
+      {
+        "disease_name": "Hypocholesterolemia",
+        "overall_score": 0.47783029637675517,
+        "genetic_association_score": 0.7789113344398895,
+        "datatype_scores": {
+          "literature": 0.1416643992671021,
+          "genetic_association": 0.7789113344398895
+        }
+      },
+      {
+        "disease_name": "stroke disorder",
+        "overall_score": 0.45729958399587717,
+        "genetic_association_score": 0.0,
+        "datatype_scores": {
+          "literature": 0.7445785127941001,
+          "clinical": 0.7149941658576676
+        }
+      },
+      {
+        "disease_name": "familial lipoprotein lipase deficiency",
+        "overall_score": 0.450007366542776,
+        "genetic_association_score": 0.7181125602700219,
+        "datatype_scores": {
+          "literature": 0.08342161500559467,
+          "animal_model": 0.4052314714179663,
+          "genetic_association": 0.7181125602700219
+        }
+      },
+      {
+        "disease_name": "abdominal aortic aneurysm",
+        "overall_score": 0.4420858665714863,
+        "genetic_association_score": 0.7106541893437729,
+        "datatype_scores": {
+          "literature": 0.26332197790331063,
+          "genetic_association": 0.7106541893437729,
+          "clinical": 0.030396539880581056
+        }
+      }
+    ]
+  },
+  "mandatory_relays": [
+    {
+      "code": "gwas.association_not_causation",
+      "message": "PCSK9 has 25 GWAS association(s) above the significance threshold; these are statistical correlations between genetic variants and disease phenotypes, not evidence of causation or therapeutic mechanism"
+    },
+    {
+      "code": "opentargets.composite_not_genetic",
+      "message": "PCSK9 passes the composite score threshold (0.1) for one or more diseases but fails on genetic_association alone; the composite score is boosted by literature, expression, or other non-genetic data types"
+    }
+  ],
+  "written_by": "unattributed",
+  "work_order_id": null
+}

@@ -1,0 +1,38 @@
+{
+  "tool": "co-scientist",
+  "subcommand": "ingest",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "export_file": "/tmp/sim-pcsk9-oral/live-runs/seed/coscientist-export.json",
+    "top": null
+  },
+  "timestamp": "2026-10-29T14:26:11Z",
+  "completed": "2026-10-29T14:26:11Z",
+  "outputs": [
+    {
+      "path": "cs-daedalis-20261028-pcsk9-oral.export.json",
+      "sha256": "efb254b442e22d964f744f7d936c72afcd33d4a48c66013fa2343cb25c2806ee",
+      "bytes": 8521
+    },
+    {
+      "path": "cs-daedalis-20261028-pcsk9-oral.tournament.json",
+      "sha256": "2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b",
+      "bytes": 7962
+    }
+  ],
+  "warnings": [
+    "Idea list resolved structurally from minified key 'ideas'; these key names are not stable across Co-Scientist builds."
+  ],
+  "mandatory_relays": [],
+  "resolved_keys": {
+    "ideas": "ideas",
+    "report": "executiveReport",
+    "report_references": "references"
+  },
+  "source_sha256": "efb254b442e22d964f744f7d936c72afcd33d4a48c66013fa2343cb25c2806ee"
+}

@@ -1,0 +1,37 @@
+{
+  "tool": "gtex",
+  "subcommand": "fetch",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": "https://gtexportal.org",
+  "parameters": {
+    "query": "PCSK9",
+    "resolved_gencode_id": "ENSG00000169174.10",
+    "resolved_symbol": "PCSK9",
+    "resolved_by": "symbol",
+    "tissue": "Whole_Blood",
+    "dataset": "gtex_v8"
+  },
+  "timestamp": "2026-10-29T14:26:15Z",
+  "completed": "2026-10-29T14:26:16Z",
+  "outputs": [
+    {
+      "path": "ENSG00000169174.10.gtex.json",
+      "sha256": "05ffbee9c1ebc453782c617359811cb0699d1420752e4964fc9294a75b1df0ae",
+      "bytes": 272
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source": "GTEx Portal (Genotype-Tissue Expression project)",
+  "licence": "dbGaP (public summary data, no access restriction)",
+  "gtex_dataset": "gtex_v8",
+  "gencode_version": "v26",
+  "genome_build": "GRCh38/hg38",
+  "whole_blood_data": "present",
+  "median_tpm": 0.245957,
+  "unit": "TPM"
+}

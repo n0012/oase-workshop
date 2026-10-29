@@ -1,0 +1,507 @@
+{
+  "data": {
+    "target": {
+      "associatedDiseases": {
+        "rows": [
+          {
+            "disease": {
+              "id": "MONDO_0005439",
+              "name": "familial hypercholesterolemia"
+            },
+            "score": 0.8556724930728551,
+            "datatypeScores": [
+              {
+                "id": "genetic_literature",
+                "score": 0.8644396846868674
+              },
+              {
+                "id": "clinical",
+                "score": 0.9720064163993729
+              },
+              {
+                "id": "literature",
+                "score": 0.7753864063586905
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8659099026835784
+              },
+              {
+                "id": "animal_model",
+                "score": 0.5096848576541333
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "HP_0003124",
+              "name": "Hypercholesterolemia"
+            },
+            "score": 0.8256891915401418,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.8585433674250015
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9535024673927428
+              },
+              {
+                "id": "clinical",
+                "score": 0.9703876633510418
+              },
+              {
+                "id": "genetic_literature",
+                "score": 0.607930797611621
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0011369",
+              "name": "hypercholesterolemia, autosomal dominant, 3"
+            },
+            "score": 0.8157305499772042,
+            "datatypeScores": [
+              {
+                "id": "genetic_literature",
+                "score": 0.8365213862795708
+              },
+              {
+                "id": "literature",
+                "score": 0.057753425773104
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9390006737240213
+              },
+              {
+                "id": "somatic_mutation",
+                "score": 0.030396539880581056
+              },
+              {
+                "id": "animal_model",
+                "score": 0.5096848576541333
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0004995",
+              "name": "cardiovascular disorder"
+            },
+            "score": 0.7315384731237146,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.8731951838198354
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9044107693315864
+              },
+              {
+                "id": "clinical",
+                "score": 0.9578182105520758
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005010",
+              "name": "coronary artery disorder"
+            },
+            "score": 0.7315079875765159,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.9640447349886848
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9486904990481829
+              },
+              {
+                "id": "clinical",
+                "score": 0.9326455140465871
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005066",
+              "name": "metabolic disease"
+            },
+            "score": 0.7237793044125468,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.17831487622759454
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9492795553168077
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0002525",
+              "name": "inherited lipid metabolism disorder"
+            },
+            "score": 0.7163372220962511,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.4830828401241436
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.858892726204329
+              },
+              {
+                "id": "clinical",
+                "score": 0.8622991755122835
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0021187",
+              "name": "hyperlipidemia"
+            },
+            "score": 0.6832765307267045,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.6308386411024879
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9483866503017697
+              },
+              {
+                "id": "clinical",
+                "score": 0.6461308918735151
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005068",
+              "name": "myocardial infarction"
+            },
+            "score": 0.6769996018186368,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.8967162143058103
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9147393701796236
+              },
+              {
+                "id": "clinical",
+                "score": 0.7157861645912229
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0018328",
+              "name": "homozygous familial hypercholesterolemia"
+            },
+            "score": 0.6517714349059506,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.14327376736137132
+              },
+              {
+                "id": "animal_model",
+                "score": 0.6144381812306242
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.7197900643721594
+              },
+              {
+                "id": "clinical",
+                "score": 0.8088012653224608
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0007750",
+              "name": "hypercholesterolemia, familial, 1"
+            },
+            "score": 0.5698733337823485,
+            "datatypeScores": [
+              {
+                "id": "animal_model",
+                "score": 0.3380703165518225
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.9204948459945291
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0021661",
+              "name": "coronary atherosclerosis"
+            },
+            "score": 0.566420088850227,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.2089286211164113
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8966786379967667
+              },
+              {
+                "id": "clinical",
+                "score": 0.12158615952232422
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005311",
+              "name": "atherosclerosis"
+            },
+            "score": 0.5651398595854628,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.893673512550718
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.5910823775301561
+              },
+              {
+                "id": "clinical",
+                "score": 0.7619821504230659
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0024644",
+              "name": "myocardial ischemia"
+            },
+            "score": 0.5533315032466505,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.36025604878571554
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8921755042241125
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0001336",
+              "name": "familial hyperlipidemia"
+            },
+            "score": 0.5415674238165321,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.05217236276851294
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8882286711454683
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "GO_0036273",
+              "name": "response to statin"
+            },
+            "score": 0.5364539070882661,
+            "datatypeScores": [
+              {
+                "id": "genetic_association",
+                "score": 0.8824259425510825
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "EFO_0003913",
+              "name": "angina pectoris"
+            },
+            "score": 0.527187681437143,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.1409476415093
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8601363228927753
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005267",
+              "name": "heart disorder"
+            },
+            "score": 0.5129476036261094,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.17215449737053123
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.8351521333938409
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "EFO_0000266",
+              "name": "aortic stenosis"
+            },
+            "score": 0.4954260645911051,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.8222961279163375
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.773823450618775
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "EFO_0000195",
+              "name": "metabolic syndrome"
+            },
+            "score": 0.4945056505098416,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.5224238474873312
+              },
+              {
+                "id": "animal_model",
+                "score": 0.34356702418022755
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.7796682306068823
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "HP_0001626",
+              "name": "Abnormality of the cardiovascular system"
+            },
+            "score": 0.48523141780496964,
+            "datatypeScores": [
+              {
+                "id": "genetic_association",
+                "score": 0.7981688371625508
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "HP_0003146",
+              "name": "Hypocholesterolemia"
+            },
+            "score": 0.47783029637675517,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.1416643992671021
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.7789113344398895
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005098",
+              "name": "stroke disorder"
+            },
+            "score": 0.45729958399587717,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.7445785127941001
+              },
+              {
+                "id": "clinical",
+                "score": 0.7149941658576676
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0009387",
+              "name": "familial lipoprotein lipase deficiency"
+            },
+            "score": 0.450007366542776,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.08342161500559467
+              },
+              {
+                "id": "animal_model",
+                "score": 0.4052314714179663
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.7181125602700219
+              }
+            ]
+          },
+          {
+            "disease": {
+              "id": "MONDO_0005350",
+              "name": "abdominal aortic aneurysm"
+            },
+            "score": 0.4420858665714863,
+            "datatypeScores": [
+              {
+                "id": "literature",
+                "score": 0.26332197790331063
+              },
+              {
+                "id": "genetic_association",
+                "score": 0.7106541893437729
+              },
+              {
+                "id": "clinical",
+                "score": 0.030396539880581056
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

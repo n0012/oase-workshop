@@ -1,0 +1,112 @@
+{
+  "record_type": "analysis",
+  "source": "raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:26:11Z",
+  "threshold_set": "coscientist@1.1+program",
+  "thresholds_applied": {
+    "elo_decisive_gap": 50.0,
+    "min_win_rate": 0.6,
+    "max_contradicted_claims": 0,
+    "min_matches": 5
+  },
+  "metrics": {
+    "n_ideas": 2,
+    "n_ideas_generated": 2,
+    "elo_range": [
+      1588.0,
+      1642.5
+    ],
+    "claim_verdicts": {
+      "ACCURATE": 3
+    },
+    "n_claims_reported_total": 3,
+    "claim_denominator": "deepVerification lists only claims the verifier disputed; in all exports observed to date every listed claim carried an inaccurate verdict. Read n_contradicted_claims as an absolute count of flagged claims, NOT as a share of the idea's claims. The idea's total claim count is not present in the export and cannot be inferred."
+  },
+  "assessment": {
+    "verdict": "clear-leader",
+    "leader": {
+      "gene": "PCSK9",
+      "ranking": 1,
+      "elo_rating": 1642.5
+    },
+    "elo_gap_to_runner_up": 54.5,
+    "leader_gap_is_decisive": true,
+    "n_ideas_flagged": 0,
+    "ideas": [
+      {
+        "ranking": 1,
+        "gene": "PCSK9",
+        "title": "Allosteric C-terminal/catalytic-groove PCSK9 small-molecule inhibition disrupting LDLR EGF-A binding",
+        "elo_rating": 1642.5,
+        "win_rate": 0.8333,
+        "n_matches": 12,
+        "n_claims_reported": 2,
+        "n_contradicted_claims": 0,
+        "advisories": []
+      },
+      {
+        "ranking": 2,
+        "gene": "PCSK9",
+        "title": "Oral tricyclic macrocycle PCSK9-LDLR PPI blockade benchmarked against MK-0616 (enlicitide)",
+        "elo_rating": 1588.0,
+        "win_rate": 0.6667,
+        "n_matches": 12,
+        "n_claims_reported": 1,
+        "n_contradicted_claims": 0,
+        "advisories": []
+      }
+    ],
+    "recommendation": {
+      "section": "## Recommendation and Best Next Steps\nAdvance H-001 (IC-001, allosteric small-molecule PCSK9 inhibitor, Elo 1642.5) as primary series and H-002 (IC-002, oral macrocycle, Elo 1588.0) as backup series into Stage 1 genetic, transcriptomic, and structural validation.",
+      "reviews_overview_available": true,
+      "top_ideas_summary_available": true
+    },
+    "assessment_core": {
+      "schema": "oase.hypothesis-assessment.v1",
+      "strategy": "co-scientist",
+      "source_artifact": "raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json",
+      "source_sha256": "2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b",
+      "candidates": [
+        {
+          "candidate_id": "H-001",
+          "statement": "Allosteric C-terminal/catalytic-groove PCSK9 small-molecule inhibition disrupting LDLR EGF-A binding",
+          "rank": 1,
+          "score": {
+            "value": 1642.5,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-002",
+          "statement": "Oral tricyclic macrocycle PCSK9-LDLR PPI blockade benchmarked against MK-0616 (enlicitide)",
+          "rank": 2,
+          "score": {
+            "value": 1588.0,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        }
+      ]
+    }
+  },
+  "mandatory_relays": [
+    {
+      "code": "coscientist.review_recommendation_available",
+      "message": "Co-scientist tournament produced a review recommendation. Address it before proceeding with target selection."
+    }
+  ],
+  "threshold_sources": {
+    "elo_decisive_gap": "program",
+    "min_win_rate": "program",
+    "max_contradicted_claims": "program",
+    "min_matches": "program"
+  },
+  "threshold_provenance": "structural defaults for reading an ELO tournament; no external source claims these cutoffs",
+  "written_by": "unattributed",
+  "work_order_id": null,
+  "source_sha256": "2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b"
+}

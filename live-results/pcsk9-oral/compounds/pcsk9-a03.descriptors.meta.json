@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "descriptors",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(F)c(C#N)c3)no2)cc1",
+    "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(F)c(C#N)c3)no2)cc1"
+  },
+  "timestamp": "2026-10-29T14:27:07Z",
+  "completed": "2026-10-29T14:27:07Z",
+  "outputs": [
+    {
+      "path": "pcsk9-a03.descriptors.json",
+      "sha256": "87a1648cf6e5b553f16be4b83242d7451310aa66d0069fbce6ffa7b25619a18b",
+      "bytes": 325
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "PCSK9-A03"
+}

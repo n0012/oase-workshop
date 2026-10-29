@@ -1,0 +1,33 @@
+{
+  "tool": "gwas",
+  "subcommand": "search",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": "https://api.platform.opentargets.org/api/v4/graphql",
+  "parameters": {
+    "query_gene": "PCSK9",
+    "resolved_gene": "PCSK9",
+    "source": "opentargets"
+  },
+  "timestamp": "2026-10-29T14:26:14Z",
+  "completed": "2026-10-29T14:26:14Z",
+  "outputs": [
+    {
+      "path": "pcsk9.gwas-opentargets.json",
+      "sha256": "991a03caa08105ce331b50f1b4e1c1f9126f3e5cf9c2ab3770d9e6b32c072bda",
+      "bytes": 13933
+    },
+    {
+      "path": "pcsk9.gwas-opentargets.artifact.json",
+      "sha256": "b283c60f44b09f93e7bb527e996e58ff38e3d145fe6f599833ac53e44b2e7cf9",
+      "bytes": 9245
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source_db": "opentargets",
+  "n_associations": 25
+}

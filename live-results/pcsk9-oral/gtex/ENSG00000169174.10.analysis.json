@@ -1,0 +1,44 @@
+{
+  "record_type": "analysis",
+  "source": "raw/gtex/ENSG00000169174.10.gtex.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:26:16Z",
+  "threshold_set": "gtex-expression@1.0+program",
+  "thresholds_applied": {
+    "expressed_tpm": 10.0,
+    "high_expression_tpm": 100.0,
+    "low_expression_tpm": 1.0
+  },
+  "metrics": {
+    "gencode_id": "ENSG00000169174.10",
+    "gene_symbol": "PCSK9",
+    "dataset": "gtex_v8",
+    "tissue": "Whole_Blood",
+    "median_tpm": 0.245957,
+    "unit": "TPM",
+    "ontology_id": "UBERON:0013756"
+  },
+  "assessment": {
+    "whole_blood_expression": "measured",
+    "median_tpm": 0.245957,
+    "unit": "TPM",
+    "gene_symbol": "PCSK9",
+    "classification": "not_expressed"
+  },
+  "mandatory_relays": [
+    {
+      "code": "gtex.whole_blood_is_not_peripheral_blood",
+      "message": "GTEx whole blood is drawn from femoral/subclavian veins and measured by bulk RNA-seq (755 samples, median TPM). Report this as 'GTEx whole-blood RNA-seq expression', not as 'peripheral blood expression'. It is a partial proxy, not an equivalent measurement."
+    }
+  ],
+  "threshold_sources": {
+    "expressed_tpm": "program",
+    "high_expression_tpm": "program",
+    "low_expression_tpm": "program"
+  },
+  "threshold_provenance": "GTEx Portal (gtexportal.org), dataset gtex_v8. GTEx publishes median TPM from bulk RNA-seq but defines no expression-level cutoffs. No peer-reviewed source establishes universal TPM thresholds for classifying GTEx whole-blood expression. The Human Protein Atlas (HPA) uses nTPM with its own cutoffs (nTPM >= 1 for 'detected'), but nTPM and TPM are not directly comparable \u2014 different normalization, different tissue sets, different pipelines. All values are UNRESOLVED.",
+  "written_by": "unattributed",
+  "work_order_id": null
+}

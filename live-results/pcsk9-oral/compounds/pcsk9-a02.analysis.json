@@ -1,0 +1,84 @@
+{
+  "record_type": "analysis",
+  "source": "raw/compounds/pcsk9-a02.descriptors.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:27:05Z",
+  "threshold_set": "compound-descriptors@1.0+program+compound-alerts@1.0+compound-sa-score@1.0",
+  "thresholds_applied": {
+    "max_mw": 500,
+    "max_logp": 5,
+    "max_hbd": 5,
+    "max_hba": 10,
+    "max_rotatable_bonds": 10,
+    "max_tpsa": 140,
+    "max_pains_hits": 0,
+    "max_brenk_hits": 2,
+    "max_aggregator_hits": 0,
+    "max_sa_score": 6.0
+  },
+  "metrics": {
+    "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1",
+    "descriptors": {
+      "molecular_weight": 378.38,
+      "logp": 5.09,
+      "tpsa": 51.22,
+      "hba": 4,
+      "hbd": 1,
+      "rotatable_bonds": 4,
+      "aromatic_rings": 3,
+      "heavy_atom_count": 26
+    },
+    "n_lipinski_violations": 1,
+    "n_veber_violations": 0,
+    "n_alert_violations": 0,
+    "lipinski_violations": [
+      {
+        "rule": "LogP",
+        "value": 5.09,
+        "limit": 5,
+        "source": "Lipinski et al., Adv Drug Deliv Rev 2001"
+      }
+    ],
+    "veber_violations": [],
+    "alert_violations": [],
+    "pains_hits": 0,
+    "brenk_hits": 0,
+    "aggregator_hits": 0,
+    "sa_score": 1.93,
+    "sa_score_violation": null
+  },
+  "assessment": {
+    "verdict": "drug-like",
+    "statement": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1 passes all drug-likeness criteria and has no structural alerts above threshold.",
+    "advisories": [
+      "One Lipinski violation (LogP = 5.09, limit 5).  The Rule of Five allows one violation \u2014 this compound is marginal by that criterion."
+    ]
+  },
+  "mandatory_relays": [
+    {
+      "code": "compound.alerts_not_toxicology",
+      "message": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1 has no PAINS/Brenk/aggregator hits, but absence of these alerts is not evidence of safety \u2014 these filters detect known interference patterns, not toxicity mechanisms."
+    },
+    {
+      "code": "compound.sa_score_is_estimate",
+      "message": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1 SA-score (1.93) is below the accessibility threshold, but a low SA-score does not confirm synthetic feasibility \u2014 it reflects fragment frequency, not a synthesis route."
+    }
+  ],
+  "threshold_sources": {
+    "max_mw": "program",
+    "max_logp": "program",
+    "max_hbd": "program",
+    "max_hba": "program",
+    "max_rotatable_bonds": "program",
+    "max_tpsa": "program",
+    "max_pains_hits": "default",
+    "max_brenk_hits": "default",
+    "max_aggregator_hits": "default",
+    "max_sa_score": "default"
+  },
+  "threshold_provenance": "Lipinski et al., Adv Drug Deliv Rev 2001;46:3-26 (MW, LogP, HBD, HBA); Veber et al., J Med Chem 2002;45:2615-23 (rotatable bonds, TPSA); operational defaults for alert classification; PAINS weighting from Baell & Holloway, J Med Chem 2010;53:2719-40; Brenk tolerance from Brenk et al., ChemMedChem 2008;3:435-44; Ertl & Schuffenhauer, J Cheminformatics 2009;1:8 (score definition and distribution analysis). The <= 6 accessibility cutoff is a widely used community convention in virtual screening literature, not a single-paper citation.",
+  "written_by": "unattributed",
+  "work_order_id": null
+}

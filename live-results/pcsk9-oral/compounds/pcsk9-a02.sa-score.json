@@ -1,0 +1,7 @@
+{
+  "tool": "compound",
+  "subcommand": "sa-score",
+  "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1",
+  "sa_score": 1.93,
+  "rdkit_version": "2026.03.6"
+}

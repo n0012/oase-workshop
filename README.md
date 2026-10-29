@@ -2,6 +2,8 @@
 
 > ### 🎯 Team-Based Human + Agent Pilot: Outcome Goal, Vision & Live Build Plan
 > - **Outcome Goal & Detailed Engineering Build Plan (Markdown):** [**`docs/PILOT_IMPLEMENTATION_PLAN.md`**](docs/PILOT_IMPLEMENTATION_PLAN.md)
+> - **Turnkey 4-Tier Deploy & Test Runbook:** [**`docs/DEPLOY_AND_TEST.md`**](docs/DEPLOY_AND_TEST.md)
+> - **Live vs. Seeded Data Provenance & Real Outputs:** [**`docs/DATA_PROVENANCE.md`**](docs/DATA_PROVENANCE.md) · [**`live-results/pcsk9-oral/`**](live-results/pcsk9-oral/) · [**`prompts/`**](prompts/)
 > - **Live Web Build Tracker & Outcome Goal (`plan.html`):** [**https://n0012.github.io/oase-workshop/plan.html**](https://n0012.github.io/oase-workshop/plan.html)
 > - **Interactive Story Arc & 30-Page Evidence Portal (`chapters.html`):** [**https://n0012.github.io/oase-workshop/chapters.html**](https://n0012.github.io/oase-workshop/chapters.html)
 
@@ -41,31 +43,31 @@ cp .env.example .env
 
 ---
 
-## Reproduce End-to-End (Automated Provisioning, Bootstrap & 6-Chapter Simulation)
+## Reproduce End-to-End (Automated Provisioning, Bootstrap & 7-Chapter Simulation)
 
-To provision a net-new Google Cloud GCP project, compile the 7 scientific binaries (`vina`, `fpocket`, `rate4site`, `muscle`, `hypex`, `elo`, `prox`) + Python 3.11 environment, and execute the full 6-chapter simulation (`live-runs/` + `WO-001`..`WO-008` validation + 4 adversarial tamper drills + 31-page Evidence Portal):
+See [**`docs/DEPLOY_AND_TEST.md`**](docs/DEPLOY_AND_TEST.md) for the complete 4-tier deployment and verification guide, and [**`docs/DATA_PROVENANCE.md`**](docs/DATA_PROVENANCE.md) for the artifact-by-artifact breakdown of live CPU/API outputs ([`live-results/pcsk9-oral/`](live-results/pcsk9-oral/)) vs. seeded GPU/wet-lab fixtures (`AlphaFold 3`, `AlphaGenome`, rodent/dog PK).
+
+To provision a net-new Google Cloud project, compile the 7 scientific binaries (`vina`, `fpocket`, `rate4site`, `muscle`, `hypex`, `elo`, `prox`) + Python 3.11 environment, and execute the full 7-chapter simulation (11 live CLI tools including 3D `AutoDock Vina 1.2.5` + `WO-001`..`WO-008` validation + 4 adversarial tamper drills + 32-page Evidence Portal):
 
 ```bash
 # 1. (Optional) Provision an isolated Google Cloud GCP project + scion-default-agent SA
-python3 scripts/provision-google-cloud-project.py \
+python3 scripts/provision-gcp-project.py \
   --project-id my-oase-workshop \
   --org-id 123456789012
 
 # 2. Bootstrap OASE v0.3.0 tools home (Python 3.11 venv + 7 binaries + offline KaTeX)
 OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/bootstrap-oase-env.sh
 
-# 3. Run the complete 6-chapter end-to-end simulation + 4 negative drills + portal build
+# 3. Run the complete 7-chapter end-to-end simulation + live Vina docking + 4 tamper drills + portal build
+#    (Add --run-gpu-endpoints when OASE_AF3_* and OASE_AG_* / ALPHAGENOME_API_KEY are configured)
 OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral
 
-# 4. Serve the 31-page Evidence Portal & Interactive Chapter Replay locally
+# 4. Serve the 32-page Evidence Portal & Interactive Chapter Replay locally
 python3 -m http.server 8765 --bind 127.0.0.1 --directory /tmp/sim-pcsk9-oral/_site
 # Open http://127.0.0.1:8765/chapters.html and http://127.0.0.1:8765/index.html
 
-# 5. (Optional) Re-synthesize SSML voiceover & re-record the 6-chapter demo video
-python3 scripts/record-demo-video.py \
-  --portal-url http://127.0.0.1:8765 \
-  --work-dir /tmp/oase-video-build \
-  --quota-project my-oase-workshop
+# 5. (Optional) Synthesize Gemini 3.8 Live Avatars + AI Wingmen & remaster all 7 Squadron 1080p videos
+./scripts/remaster-pilot-videos.sh
 ```
 
 ---
@@ -100,19 +102,29 @@ oase-workshop/
 ├── PRFAQ.md                                  # Working-Backwards design document
 ├── EVALUATION.md                             # Reflective comparison of PRFAQ/Article vs. deployed reality
 ├── .env.example                              # Generic environment template
-├── docs/                                     # Workshop modules (00–07), PILOT_IMPLEMENTATION_PLAN.md, connectivity ref
+├── docs/                                     # Modules 00–07, PILOT_IMPLEMENTATION_PLAN.md, DEPLOY_AND_TEST.md, DATA_PROVENANCE.md
+├── inputs/
+│   └── pcsk9_ic001_af3_ligand.json           # Canonical AlphaFold 3 PCSK9 (Q8NBP7) + OASE-PCSK9-014 co-fold input
+├── live-results/
+│   └── pcsk9-oral/                           # Real un-mocked Phase-1/Phase-2 outputs (gnomAD, OpenTargets, GTEx, HPA, fpocket, Vina, ADMET)
+├── prompts/                                  # Complete prompt registry (Gemini 3.8 Live Avatar, 11 Grove agents, 28 turns, visuals)
 ├── services/
 │   ├── state-controller/                     # FastAPI <2s Git + SQLite snapshot reset daemon (:8780)
 │   └── story-arc/                            # Cloud Run IAP Presenter Cockpit, HTTP 206 video streamer & role switcher
 ├── scripts/
 │   ├── deploy-pilot-stack.sh                 # Turnkey 4-var .env deployer (8-checkpoint Hub + Cockpit + IAP)
+│   ├── verify-pilot-stack.py                 # Playwright E2E verifier for HTTP 206 streaming, 8 checkpoints & <2s reset
+│   ├── render-live-avatars.py                # Native gemini-3.8-live (BidiGenerateContent) + gemini-3.8-flash-tts synthesizer
+│   ├── sync-persona-portraits.py             # Crops 512px/40px presenter portraits & syncs Scion Hub SQLite avatars
+│   ├── remaster-pilot-videos.sh              # End-to-end 7-chapter live Scion capture, HUD mastering & GCS upload pipeline
+│   ├── build-checkpoints.py                  # Deterministic builder for cumulative checkpoints ch0..ch7
 │   ├── provision-personas-iam.py             # Binds 5 oase-* scientist accounts + facilitator admin@ on Cloud Run IAP
 │   ├── seed-pilot-chapters.py                # Provisions ch0..ch7 Scion Hub projects & live specialist containers
 │   ├── record-team-pilot.py                  # Records & masters 7 Squadron 1080p chapters (Gemini 3.8 Live + TTS)
 │   ├── pilot_chapters_spec.json              # 7-chapter, 28-turn Squadron script, voices, callsigns & HUD spec
-│   ├── provision-google-cloud-project.py     # Repeatable Google Cloud GCP project & SA provisioner
+│   ├── provision-gcp-project.py              # Repeatable Google Cloud GCP project & SA provisioner
 │   ├── bootstrap-oase-env.sh                 # Builds Python 3.11 venv + 7 scientific binaries + offline KaTeX
-│   ├── run-e2e-simulation.sh                 # Runs CLI simulation, 8 WO validations, 4 negative drills & portal build
+│   ├── run-e2e-simulation.sh                 # Runs 11 live CLI tools (incl. Vina & Trials), 8 WO checks, 4 tamper drills & portal build
 │   ├── build-chapter-portal.py               # Generates chapters.html + plan.html & links all 30 portal pages
 │   ├── record-demo-video.py                  # Standalone Cloud TTS SSML + Playwright 1080p portal video recorder
 │   ├── preflight.sh                          # Checks tools, auth, and repo hygiene (--check-hygiene)

@@ -1,0 +1,67 @@
+{
+  "tool": "docking",
+  "subcommand": "run",
+  "receptor": "AF-Q8NBP7-F1.receptor.pdbqt",
+  "receptor_id": "AF-Q8NBP7-F1",
+  "ligand": "pcsk9_a02.sdf",
+  "docking_mode": "rigid",
+  "n_poses": 9,
+  "exhaustiveness": 8,
+  "poses": [
+    {
+      "rank": 1,
+      "affinity_kcalmol": -6.587,
+      "rmsd_lb": 0.0,
+      "rmsd_ub": 0.0
+    },
+    {
+      "rank": 2,
+      "affinity_kcalmol": -6.41,
+      "rmsd_lb": 7.207,
+      "rmsd_ub": 11.133
+    },
+    {
+      "rank": 3,
+      "affinity_kcalmol": -6.214,
+      "rmsd_lb": 11.143,
+      "rmsd_ub": 13.527
+    },
+    {
+      "rank": 4,
+      "affinity_kcalmol": -6.184,
+      "rmsd_lb": 10.479,
+      "rmsd_ub": 13.482
+    },
+    {
+      "rank": 5,
+      "affinity_kcalmol": -6.165,
+      "rmsd_lb": 10.155,
+      "rmsd_ub": 13.399
+    },
+    {
+      "rank": 6,
+      "affinity_kcalmol": -6.149,
+      "rmsd_lb": 21.689,
+      "rmsd_ub": 23.979
+    },
+    {
+      "rank": 7,
+      "affinity_kcalmol": -6.062,
+      "rmsd_lb": 19.627,
+      "rmsd_ub": 22.455
+    },
+    {
+      "rank": 8,
+      "affinity_kcalmol": -6.023,
+      "rmsd_lb": 3.833,
+      "rmsd_ub": 4.458
+    },
+    {
+      "rank": 9,
+      "affinity_kcalmol": -5.968,
+      "rmsd_lb": 8.266,
+      "rmsd_ub": 11.644
+    }
+  ],
+  "best_score": -6.587
+}

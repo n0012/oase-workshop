@@ -1,0 +1,15 @@
+{
+  "center": [
+    3.866,
+    -6.202,
+    -34.109
+  ],
+  "size": [
+    33.952,
+    43.608,
+    45.197
+  ],
+  "pocket_rank": 1,
+  "pocket_source": "/tmp/sim-pcsk9-oral/live-runs/raw/structures/AF-Q8NBP7-F1.pockets.json",
+  "padding_angstrom": 10.0
+}

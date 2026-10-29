@@ -1,0 +1,407 @@
+{
+  "campaign": "pcsk9-oral",
+  "generator": "./scripts/run-e2e-simulation.sh",
+  "oase_version": "0.3.0",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "committed_files": 58,
+  "total_live_artifacts_indexed": 65,
+  "artifacts": [
+    {
+      "path": "admet/pcsk9-a02.analysis.json",
+      "bytes": 4375,
+      "sha256": "sha256:fc8743ea73d776e216adbc61e46059bbab7fe1275ea02005ec5d3e9f40eb2f23",
+      "committed_in_git": true
+    },
+    {
+      "path": "admet/pcsk9-a02.predict.json",
+      "bytes": 3854,
+      "sha256": "sha256:2e321c6479d7b499320d18298d91b0664cec04e3b37a56a9790de0dcf2f0528f",
+      "committed_in_git": true
+    },
+    {
+      "path": "admet/pcsk9-a02.predict.meta.json",
+      "bytes": 772,
+      "sha256": "sha256:8904db5c67215207b855898ebe654beaca5aa7b0889d94b807d7f4fa7cb82d6d",
+      "committed_in_git": true
+    },
+    {
+      "path": "admet/pcsk9-a03.analysis.json",
+      "bytes": 3524,
+      "sha256": "sha256:ae2c2c2e2df95fae36d12d1bd6b9402a13f01baeff2d67632b829eabb791413d",
+      "committed_in_git": true
+    },
+    {
+      "path": "admet/pcsk9-a03.predict.json",
+      "bytes": 3602,
+      "sha256": "sha256:dd9bfe87b33d0febff093067ec17a263b14813fb39090bea587a32db2455544f",
+      "committed_in_git": true
+    },
+    {
+      "path": "admet/pcsk9-a03.predict.meta.json",
+      "bytes": 768,
+      "sha256": "sha256:62cb05b480eed7874c9dc2f1174358c21fbe588931bdc8afa5c0aea6ae3a0581",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.alerts.json",
+      "bytes": 222,
+      "sha256": "sha256:58e60b2d56845153a24bafa904af699443c268348111470ad2e07fdb52fd0a09",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.alerts.meta.json",
+      "bytes": 772,
+      "sha256": "sha256:b767000abf81296dcf9af308325e169912d28f6bdb9436bff57a0cddbc2ea3fc",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.analysis.json",
+      "bytes": 3348,
+      "sha256": "sha256:e53db6fde310c45ec99ebf0bd651b9c30cdea289066f73148a8019b6fbcc9bba",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.descriptors.json",
+      "bytes": 327,
+      "sha256": "sha256:c175748abc509b967b01a7747095eb2f3248394def6c91d29cc12cfec518bf76",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.descriptors.meta.json",
+      "bytes": 782,
+      "sha256": "sha256:707e1faf7070e536043efd1b83f97290e051daef88fd1018753399af07c29577",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.sa-score.json",
+      "bytes": 177,
+      "sha256": "sha256:a1432b9491d0ba20539451c84683663fda430b85cdcc6814bacfa74c79d9582c",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.sa-score.meta.json",
+      "bytes": 892,
+      "sha256": "sha256:ff87393de3a6b136510288ce13d41f183cd1aa051217aa38e57139ef27606335",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.validate.json",
+      "bytes": 260,
+      "sha256": "sha256:2d7f8dffdd44f273e9beea446d8cb7f9a8f4cde58c00c5fdcb18df321f67666e",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a02.validate.meta.json",
+      "bytes": 776,
+      "sha256": "sha256:e395a672be3e707dabdc51bd68f9c1ba58fc96ff42569d9e618bdacadbf541d7",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.alerts.json",
+      "bytes": 220,
+      "sha256": "sha256:2eb8109d808dc55767a3b3d933d220c8577912969590dc43db333ceeaa873bca",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.alerts.meta.json",
+      "bytes": 768,
+      "sha256": "sha256:1392cfdff024416dd35af63567f90f13691e4a42fa54793fa83fb80eb9aebb26",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.analysis.json",
+      "bytes": 3040,
+      "sha256": "sha256:9f279f255041ca4ad7d35e73a2e15c81578c46696fac4da9a9aec2e72f1987b7",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.descriptors.json",
+      "bytes": 325,
+      "sha256": "sha256:87a1648cf6e5b553f16be4b83242d7451310aa66d0069fbce6ffa7b25619a18b",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.descriptors.meta.json",
+      "bytes": 778,
+      "sha256": "sha256:1656cef5c2f61db5a23e4cc90d24300440ec6570d8c00ca2cd3846b1346b858f",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.sa-score.json",
+      "bytes": 175,
+      "sha256": "sha256:9ba5b1b05d9bc5232919adede6f96152713e717812e29821914cf20a5d612b21",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.sa-score.meta.json",
+      "bytes": 888,
+      "sha256": "sha256:d5fe1fadf85b4312c3b6d00b0eb7f384d66d292950aacee698db82e9de666259",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.validate.json",
+      "bytes": 256,
+      "sha256": "sha256:7241665bdfab5ef4cc18879c174c1d05d82dbba5ca7660824083eeaf8deb7248",
+      "committed_in_git": true
+    },
+    {
+      "path": "compounds/pcsk9-a03.validate.meta.json",
+      "bytes": 772,
+      "sha256": "sha256:03b84f25fc831dc67b2b8680681455c698b4cbce5a5d16783a4eeddf8b8cfcc4",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/AF-Q8NBP7-F1.gridbox.json",
+      "bytes": 250,
+      "sha256": "sha256:41f064cf87036fe8f5d1002746fc030f138d0a31c2725fc229dbc16d0e867a8e",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/AF-Q8NBP7-F1.prepare.meta.json",
+      "bytes": 2149,
+      "sha256": "sha256:8cbcbdef6d2916a23c5e72763222ee72ae43c6f0418b6e33eafb9e54a3469502",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/AF-Q8NBP7-F1.receptor.pdbqt",
+      "bytes": 509680,
+      "sha256": "sha256:b15ec6a16343ff988241d966f303aaa699f74b8e7aaa5c88ffa3b2082ae59f7e",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "docking/pcsk9_a02_AF-Q8NBP7-F1.docking.analysis.json",
+      "bytes": 3797,
+      "sha256": "sha256:945b89712554dcb9ce427410c841d61614612dfa4e1e569eb98da9bf3789075e",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a02_AF-Q8NBP7-F1.docking.meta.json",
+      "bytes": 1612,
+      "sha256": "sha256:6ba706834b0c0430acf3ba010f48f6ca7c8149512731168153a7254aa57f3b1a",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a02_AF-Q8NBP7-F1.docking_result.json",
+      "bytes": 1267,
+      "sha256": "sha256:8684699469187110ed1920beaf98d686e94273fe898061fc1c7a861b5309d4a5",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a02_AF-Q8NBP7-F1.poses.pdbqt",
+      "bytes": 25578,
+      "sha256": "sha256:78873e4827e121d0c236bbe58f7dcdebcec32cb0ebd3a1fc8ef52535eb13ecdb",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a03_AF-Q8NBP7-F1.docking.analysis.json",
+      "bytes": 3823,
+      "sha256": "sha256:91a3429e47b380c96f5d0d61070032828bb8943af91cc5db941e8b311d362eb1",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a03_AF-Q8NBP7-F1.docking.meta.json",
+      "bytes": 1612,
+      "sha256": "sha256:ff89dd8e5e73090035228fc81df5b792caa3ff1f010aae2be4b6cbd9d68ffcab",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a03_AF-Q8NBP7-F1.docking_result.json",
+      "bytes": 1263,
+      "sha256": "sha256:90e0580599d8e2d87113b5c7cebedad48a751bf4c00d93f392bdef2be8a83427",
+      "committed_in_git": true
+    },
+    {
+      "path": "docking/pcsk9_a03_AF-Q8NBP7-F1.poses.pdbqt",
+      "bytes": 24489,
+      "sha256": "sha256:aec1099e0e2467c4c8c43245dd932270465a7dd8e6a2a3c2e71286875033b0f6",
+      "committed_in_git": true
+    },
+    {
+      "path": "expression/ENSG00000169174.analysis.json",
+      "bytes": 4990,
+      "sha256": "sha256:fde617816d4ae7f96481fa3d96b2b3b7c9984a42652b18f85355b29d59c5d508",
+      "committed_in_git": true
+    },
+    {
+      "path": "expression/ENSG00000169174.hpa.json",
+      "bytes": 8590,
+      "sha256": "sha256:c655e4a3edb4d04976f81685373abf8f0e0871fa4d28446eb0987e25e278aafe",
+      "committed_in_git": true
+    },
+    {
+      "path": "expression/ENSG00000169174.meta.json",
+      "bytes": 1255,
+      "sha256": "sha256:966cd4d46c2751d4f0a49e53405543749af10315be0fe59c0d0af1937b1738f9",
+      "committed_in_git": true
+    },
+    {
+      "path": "expression/ENSG00000169174.tissue.json",
+      "bytes": 2041,
+      "sha256": "sha256:8f363289e2d9ef2914acf3f34ce1ed3950f66fa49cebf3ae7052d14bce2d6e76",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/PCSK9.gnomad-constraint.analysis.json",
+      "bytes": 1608,
+      "sha256": "sha256:a56644c38c5b8993f7d4a8ef516a9473931e0a0cd570b4bf79ef60dab64f765c",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/PCSK9.gnomad-constraint.json",
+      "bytes": 693,
+      "sha256": "sha256:e86f2c5c55429749cd0decc47f82ff68a7f958b0de756bf352db2c39e4a4211d",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/PCSK9.gnomad-constraint.meta.json",
+      "bytes": 1040,
+      "sha256": "sha256:0e9d8ceb5f2a22265ec988e88f79fdd90928c5950808b82f15abee5f551226c3",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/pcsk9.gwas-opentargets.analysis.json",
+      "bytes": 10533,
+      "sha256": "sha256:5a744caa3704fd7ab1d1b943d8a20a93e8c09669e2582117691e5c41e5b83a1f",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/pcsk9.gwas-opentargets.artifact.json",
+      "bytes": 9245,
+      "sha256": "sha256:b283c60f44b09f93e7bb527e996e58ff38e3d145fe6f599833ac53e44b2e7cf9",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/pcsk9.gwas-opentargets.json",
+      "bytes": 13933,
+      "sha256": "sha256:991a03caa08105ce331b50f1b4e1c1f9126f3e5cf9c2ab3770d9e6b32c072bda",
+      "committed_in_git": true
+    },
+    {
+      "path": "genomics/pcsk9.gwas-opentargets.meta.json",
+      "bytes": 960,
+      "sha256": "sha256:bae40f7185b9119b1ce9ec9d4d88d763302f6ba4cf40586d9d26355bc73ad50e",
+      "committed_in_git": true
+    },
+    {
+      "path": "gtex/ENSG00000169174.10.analysis.json",
+      "bytes": 1921,
+      "sha256": "sha256:4f90ba249a3fbe572ded6b5f40d92dc34e821516185296e0da980518abecac54",
+      "committed_in_git": true
+    },
+    {
+      "path": "gtex/ENSG00000169174.10.gtex.json",
+      "bytes": 272,
+      "sha256": "sha256:05ffbee9c1ebc453782c617359811cb0699d1420752e4964fc9294a75b1df0ae",
+      "committed_in_git": true
+    },
+    {
+      "path": "gtex/ENSG00000169174.10.meta.json",
+      "bytes": 1102,
+      "sha256": "sha256:6a370dda9d3cd45dea4dc694dd90d4ac11cfc5a49d6770348c448a89914baaab",
+      "committed_in_git": true
+    },
+    {
+      "path": "hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json",
+      "bytes": 4078,
+      "sha256": "sha256:3a31ed335d9710ae33c0345be90302b4ac9ef86295f4a778f41e7c9cab77e297",
+      "committed_in_git": true
+    },
+    {
+      "path": "hypotheses/cs-daedalis-20261028-pcsk9-oral.export.json",
+      "bytes": 8521,
+      "sha256": "sha256:efb254b442e22d964f744f7d936c72afcd33d4a48c66013fa2343cb25c2806ee",
+      "committed_in_git": true
+    },
+    {
+      "path": "hypotheses/cs-daedalis-20261028-pcsk9-oral.meta.json",
+      "bytes": 1236,
+      "sha256": "sha256:bedd3862847ad87d9ca88e7c32882fabd7fe66b8c463aa9d103d99ec3575bf69",
+      "committed_in_git": true
+    },
+    {
+      "path": "hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json",
+      "bytes": 7962,
+      "sha256": "sha256:2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b",
+      "committed_in_git": true
+    },
+    {
+      "path": "pipeline/pcsk9-hypercholesterolemia.trials-clinicaltrials.analysis.json",
+      "bytes": 2956,
+      "sha256": "sha256:634a38e9d7ecab9def4180f03d00b6d2915bc04afe3d72b9b08bbb8544455ee5",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "pipeline/pcsk9-hypercholesterolemia.trials-clinicaltrials.artifact.json",
+      "bytes": 156693,
+      "sha256": "sha256:c17a243c3c4a2fc65cdfbe5d1fe4cb19073634d3dce128f29942433c7cc8af3c",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "pipeline/pcsk9-hypercholesterolemia.trials-clinicaltrials.json",
+      "bytes": 26571505,
+      "sha256": "sha256:725218de15749db1b99ec97669a225e9324d85cec00b2dcda7b8fa2d9bb25a53",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "pipeline/pcsk9-hypercholesterolemia.trials-clinicaltrials.meta.json",
+      "bytes": 1006,
+      "sha256": "sha256:4a81831bd5579ba806a8de46d79fd631b3bb9d2e5dbd7c4824a19b888b3342c5",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.afdb.json",
+      "bytes": 3324,
+      "sha256": "sha256:794d59435f8f9442f65a24e293c332d0720a14c4ec6e3f2e3b3b956392a7ce15",
+      "committed_in_git": true
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.alphafold.analysis.json",
+      "bytes": 2548,
+      "sha256": "sha256:b3f892be2d0d322eaeac72e1f33d3993d521cb1373be2831d77aabe123054275",
+      "committed_in_git": true
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.cif",
+      "bytes": 612206,
+      "sha256": "sha256:d9ab366370cf4cbc480b997dcf1bad1efb260422ebd7c553b00d0d12fe82d8ef",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.meta.json",
+      "bytes": 1129,
+      "sha256": "sha256:e59b44b7f86d148bac60f2dd26d5dbc8baee6da889c86aeab1d91b23adae9076",
+      "committed_in_git": true
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.pae.json",
+      "bytes": 1133169,
+      "sha256": "sha256:b3d76d7eaf4d34e1af4eb7dc4b4b76b2de20a5baf18556e832b96c808be9496c",
+      "committed_in_git": false,
+      "reproduce_command": "OASE_TOOLS_HOME=/tmp/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral"
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.pocket.analysis.json",
+      "bytes": 3280,
+      "sha256": "sha256:464be7f4ba0637201cd6575382dfa9cb2cf9ccf7da2bb9afbdda7a473656c100",
+      "committed_in_git": true
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.pockets.json",
+      "bytes": 79836,
+      "sha256": "sha256:6395713b5fc993cbbd1a8ac9b5eb8f0186620149257b7af72891073ac9182c2c",
+      "committed_in_git": true
+    },
+    {
+      "path": "structures/AF-Q8NBP7-F1.pockets.meta.json",
+      "bytes": 1925,
+      "sha256": "sha256:a24c6003a36e98ac895792efd834771fdbe19fa04033e91dbf2ee43e26e54be6",
+      "committed_in_git": true
+    }
+  ]
+}

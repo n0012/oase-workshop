@@ -1,0 +1,114 @@
+{
+  "record_type": "analysis",
+  "source": "raw/docking/pcsk9_a03_AF-Q8NBP7-F1.docking_result.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:27:03Z",
+  "threshold_set": "docking-scores@1.0+program",
+  "thresholds_applied": {
+    "strong_binding_energy": -8.5,
+    "moderate_binding_energy": -6.5,
+    "weak_binding_energy": -5.0
+  },
+  "metrics": {
+    "ligand": "pcsk9_a03.sdf",
+    "receptor": "AF-Q8NBP7-F1.receptor.pdbqt",
+    "docking_mode": "rigid",
+    "n_poses": 9,
+    "best_score": -9.509,
+    "poses": [
+      {
+        "rank": 1,
+        "affinity_kcalmol": -9.509,
+        "rmsd_lb": 0.0,
+        "rmsd_ub": 0.0,
+        "band": "strong"
+      },
+      {
+        "rank": 2,
+        "affinity_kcalmol": -9.078,
+        "rmsd_lb": 4.789,
+        "rmsd_ub": 10.849,
+        "band": "strong"
+      },
+      {
+        "rank": 3,
+        "affinity_kcalmol": -8.982,
+        "rmsd_lb": 4.732,
+        "rmsd_ub": 10.475,
+        "band": "strong"
+      },
+      {
+        "rank": 4,
+        "affinity_kcalmol": -8.482,
+        "rmsd_lb": 5.742,
+        "rmsd_ub": 10.871,
+        "band": "moderate"
+      },
+      {
+        "rank": 5,
+        "affinity_kcalmol": -8.304,
+        "rmsd_lb": 4.954,
+        "rmsd_ub": 10.978,
+        "band": "moderate"
+      },
+      {
+        "rank": 6,
+        "affinity_kcalmol": -8.099,
+        "rmsd_lb": 6.026,
+        "rmsd_ub": 12.078,
+        "band": "moderate"
+      },
+      {
+        "rank": 7,
+        "affinity_kcalmol": -7.584,
+        "rmsd_lb": 7.078,
+        "rmsd_ub": 13.403,
+        "band": "moderate"
+      },
+      {
+        "rank": 8,
+        "affinity_kcalmol": -7.159,
+        "rmsd_lb": 4.671,
+        "rmsd_ub": 7.914,
+        "band": "moderate"
+      },
+      {
+        "rank": 9,
+        "affinity_kcalmol": -7.154,
+        "rmsd_lb": 6.811,
+        "rmsd_ub": 13.044,
+        "band": "moderate"
+      }
+    ]
+  },
+  "assessment": {
+    "verdict": "strong-binders-found",
+    "statement": "At least one pose scores -9.5 kcal/mol, in the strong predicted binding band (\u2264 -8.5 kcal/mol).",
+    "advisories": []
+  },
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.788 is cavity shape in AF-Q8NBP7-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    },
+    {
+      "code": "docking.score_is_not_affinity",
+      "message": "Best Vina score -9.5 kcal/mol for pcsk9_a03.sdf; this is a computed interaction energy, not a measured affinity."
+    }
+  ],
+  "threshold_sources": {
+    "strong_binding_energy": "program",
+    "moderate_binding_energy": "program",
+    "weak_binding_energy": "program"
+  },
+  "threshold_provenance": "AutoDock Vina binding energy interpretation: values are predicted binding free energies in kcal/mol (more negative = stronger predicted binding). No universally accepted cutoffs exist for classifying Vina scores; the values here are from commonly cited benchmarking studies. Eberhardt et al., J Chem Inf Model 2021;61:3891-3898 (Vina 1.2.x). Quiroga & Villarreal, PLoS ONE 2016;11:e0155183 report that scores below -6.0 kcal/mol correspond to low-micromolar predicted affinity in their benchmark set.",
+  "written_by": "unattributed",
+  "work_order_id": null,
+  "source_sha256": "90e0580599d8e2d87113b5c7cebedad48a751bf4c00d93f392bdef2be8a83427"
+}

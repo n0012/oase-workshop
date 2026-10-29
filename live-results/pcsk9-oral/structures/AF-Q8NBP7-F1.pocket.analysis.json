@@ -1,0 +1,62 @@
+{
+  "record_type": "analysis",
+  "source": "raw/structures/AF-Q8NBP7-F1.pockets.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "timestamp": "2026-10-29T14:26:29Z",
+  "threshold_set": "pocket@1.0+program",
+  "thresholds_applied": {
+    "druggable_dscore": 0.5,
+    "borderline_dscore": 0.2,
+    "min_alpha_spheres": 15,
+    "contact_distance": 5.0,
+    "volume_estimate_tolerance": 0.05
+  },
+  "metrics": {
+    "n_pockets": 48,
+    "best_pocket": {
+      "rank": 3,
+      "druggability_score": 0.788,
+      "score": 0.083,
+      "volume": 313.836,
+      "n_alpha_spheres": 55.0,
+      "centre_of_mass_max_sphere_distance": 11.203
+    },
+    "site": null,
+    "volume_estimate_tolerance": 0.05
+  },
+  "assessment": {
+    "verdict": "druggable-pocket-present",
+    "statement": "Best pocket scores 0.788 (druggable) across 48 detected pocket(s).",
+    "advisories": [
+      "Scores were computed on a structure not established as experimental. Druggability is conformation-dependent; a low score here constrains this model, not the target.",
+      "Volumes are Monte Carlo estimates; differences under 5% between runs are noise, not change."
+    ],
+    "relayed_run_warnings": [
+      "Pocket volume is a Monte Carlo estimate seeded from the clock; fpocket exposes no seed. Repeated runs on one input differ by a few percent, and two runs inside the same second are identical because the seed has one-second resolution. Do not read a volume difference below the declared tolerance as a change.",
+      "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    ]
+  },
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.788 is cavity shape in AF-Q8NBP7-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    }
+  ],
+  "threshold_sources": {
+    "druggable_dscore": "program",
+    "borderline_dscore": "program",
+    "min_alpha_spheres": "program",
+    "contact_distance": "program",
+    "volume_estimate_tolerance": "program"
+  },
+  "threshold_provenance": "Schmidtke & Barril, J Med Chem 2010;53(15):5858-67, 'Understanding and predicting druggability: a high-throughput method for detection of drug binding sites' \u2014 the fpocket drug score and its 0.5 decision boundary. min_alpha_spheres is fpocket 4.2.2's own detection default (-i). borderline_dscore and volume_estimate_tolerance are local: see the module comment above for how each was arrived at.",
+  "written_by": "unattributed",
+  "work_order_id": null,
+  "source_sha256": "6395713b5fc993cbbd1a8ac9b5eb8f0186620149257b7af72891073ac9182c2c"
+}

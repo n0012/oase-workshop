@@ -1,0 +1,26 @@
+{
+  "tool": "admet",
+  "subcommand": "predict",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1",
+    "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)cc1"
+  },
+  "timestamp": "2026-10-29T14:27:06Z",
+  "completed": "2026-10-29T14:27:06Z",
+  "outputs": [
+    {
+      "path": "pcsk9-a02.predict.json",
+      "sha256": "2e321c6479d7b499320d18298d91b0664cec04e3b37a56a9790de0dcf2f0528f",
+      "bytes": 3854
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "PCSK9-A02"
+}

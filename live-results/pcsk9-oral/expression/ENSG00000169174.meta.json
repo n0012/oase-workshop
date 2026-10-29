@@ -1,0 +1,45 @@
+{
+  "tool": "expression",
+  "subcommand": "fetch",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:61020936449a63528e5b0a705cab47573c4f2c90c8a88bef7f6af9e3df4d72e0",
+  "interpreter": "py3.11-x86_64",
+  "endpoint": "https://www.proteinatlas.org",
+  "parameters": {
+    "query": "PCSK9",
+    "resolved_ensembl": "ENSG00000169174",
+    "resolved_symbol": "PCSK9",
+    "resolved_by": "symbol",
+    "tissues_requested": 50,
+    "gene_resolution": {
+      "input": "PCSK9",
+      "resolved": true,
+      "canonical_symbol": "PCSK9",
+      "hgnc_id": "HGNC:20001",
+      "ensembl_id": null,
+      "source": "official"
+    }
+  },
+  "timestamp": "2026-10-29T14:26:19Z",
+  "completed": "2026-10-29T14:26:20Z",
+  "outputs": [
+    {
+      "path": "ENSG00000169174.hpa.json",
+      "sha256": "c655e4a3edb4d04976f81685373abf8f0e0871fa4d28446eb0987e25e278aafe",
+      "bytes": 8590
+    },
+    {
+      "path": "ENSG00000169174.tissue.json",
+      "sha256": "8f363289e2d9ef2914acf3f34ce1ed3950f66fa49cebf3ae7052d14bce2d6e76",
+      "bytes": 2041
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source": "Human Protein Atlas",
+  "licence": "CC BY 4.0",
+  "hpa_release": "25.1",
+  "tissues_returned": 50
+}

@@ -1,7 +1,7 @@
 # Team-Based Human + Agent Drug Discovery Pilot: Outcome Goal & Detailed Build Plan
 
 > **Canonical Source of Truth:** `docs/PILOT_IMPLEMENTATION_PLAN.md` (rendered live at `/plan.html` and embedded in `/chapters.html`)  
-> **Live Build Status:** All Milestones `M0`–`M5` Complete (`6 / 6` milestones complete — `100%` Ready for Live Workshop & Team Review)
+> **Live Build Status:** All 7 Milestones (`M0`–`M6`) `[x] Complete` (`100%` Git Prompt/Script Provenance, Live Vina/Trials Compute & 4-Tier Turnkey Runbook Verified)
 
 ---
 
@@ -110,7 +110,14 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
 
 ### Milestone `M5` — End-to-End Rehearsal, Portability Audit & Final Sign-Off (`[x] Complete`)
 - **Step 5.1 (Full Rehearsal on Cloudtop):** Walk through the deployed `oase-story-arc` Cloud Run URL on the Cloudtop desktop: play `Ch 1–7` squadron videos, click **"Join Live As Dr. Elena Rostova"** in `Ch 3` and **"Join Live As Dr. Raj Patel"** in `Ch 4`, send live follow-up prompts to the agents, click **`↺ Reset CH4`** (`161.6 ms`), **`↺ Reset CH7`** (`214.1 ms`), and **`↺ Reset Entire Demo (t=0)`** (`282.2 ms`), and verify `<2s` restoration to golden state with zero session disruption.
-- **Step 5.2 (Team Handoff & Portability Check):** Verify `./scripts/deploy-pilot-stack.sh --dry-run` on a clean config (`0` errors), update `EVALUATION.md` and `README.md`, and mark `M0`–`M5` `[x] Complete` (`6 / 6` = `100%`) on both Cloud Run and the GitHub Website.
+- **Step 5.2 (Team Handoff & Portability Check):** Verify `./scripts/deploy-pilot-stack.sh --dry-run` on a clean config (`0` errors), update `EVALUATION.md` and `README.md`, and mark `M0`–`M5` `[x] Complete` on both Cloud Run and the GitHub Website.
+
+### Milestone `M6` — Full Git Prompt/Script Provenance, Live Compute Upgrade & Turnkey Runbook (`[x] Complete`)
+- **Unit `M6.1` — Ground-Truth Provenance Audit (`docs/DATA_PROVENANCE.md` + `inputs/pcsk9_ic001_af3_ligand.json`):** Document with 100% transparency which `pcsk9-oral` artifacts ran live (`CPU / Public APIs`) vs. which checkpoint files (`checkpoints/ch1..ch7`) are pre-staged fixtures (`AlphaFold 3` co-fold, `AlphaGenome` `rs2479409`, `Co-Scientist` seed, and `rat/dog` Wet-Lab PK), and check in the exact `AlphaFold 3` ligand co-fold input spec + Vertex AI Dedicated GPU Endpoint commands (`OASE_AF3_*`, `OASE_AG_*`, `ALPHAGENOME_API_KEY`).
+- **Unit `M6.2` — Live 3D `AutoDock Vina 1.2.5` + `ClinicalTrials.gov` Execution & Committed `live-results/` Reference Bundle:** Upgrade `scripts/run-e2e-simulation.sh` to generate 3D RDKit conformers (`.sdf`), run real `oase docking prepare/run/analyze` (`AutoDock Vina 1.2.5`) on `AF-Q8NBP7-F1.cif` + `fpocket` Pocket #1, run real `oase trials search/analyze`, add `--run-gpu-endpoints` for optional live AF3/AlphaGenome runs, and persist real un-mocked outputs into `live-results/pcsk9-oral/` in git for direct inspection.
+- **Unit `M6.3` — Commit All Prompts (`prompts/`) & Parameterized Build/Verification Scripts (`scripts/`):** Version-control 100% of prompts (`prompts/README.md`, `prompts/avatar-live-system-prompt.md`, `prompts/grove-agent-personas.md`, `prompts/visual-infographic-prompts.md`) and port all remaining build/remaster/verification scripts out of scratch into git (`scripts/render-live-avatars.py`, `scripts/sync-persona-portraits.py`, `scripts/remaster-pilot-videos.sh`, `scripts/build-checkpoints.py`, `scripts/verify-pilot-stack.py`) with zero hardcoded internal IDs.
+- **Unit `M6.4` — Turnkey Deployment & Test Guide (`docs/DEPLOY_AND_TEST.md`) + `README.md` / `EVALUATION.md` Sync:** Fix stale script names (`provision-gcp-project.py`) and 6-vs-7 chapter references in `README.md` and `EVALUATION.md`, author `docs/DEPLOY_AND_TEST.md` covering all 4 execution tiers (Local CPU CLI, Full Cloud Run + Scion Hub Stack, Live Vertex GPU Endpoints, and Video Remastering), and regenerate static portal templates.
+- **Unit `M6.5` — Final Hygiene Gate, Git Push & Live Verification:** Run `secure-checkin` + `./scripts/preflight.sh --check-hygiene`, push to `origin/main`, and verify live on GitHub Pages.
 
 ---
 
@@ -123,4 +130,5 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
 | **M2** | **8-Checkpoint State Engine (`ch0`..`ch7`), `<2s` Reset API & Portable Deployer** | `checkpoints/ch0..ch7`, `scripts/seed-pilot-chapters.py`, `services/state-controller/app.py` (`~57–214ms` reset), `scripts/deploy-pilot-stack.sh` | `[x] Complete` |
 | **M3** | **7-Chapter Squadron Videos (`5` Live Avatars + `6` AI Wingmen + Comms FX)** | `scripts/record-team-pilot.py`, `scripts/pilot_chapters_spec.json`, `chapter-01..07.mp4` + `full-pilot-walkthrough.mp4` (`<1ms` sync delta) | `[x] Complete` |
 | **M4** | **Standalone Story Arc Cloud Run App (`Ch 1–7`), Video Streamer & Role Switcher** | `services/story-arc/app.py`, `oase-story-arc` Cloud Run + IAP service (`HTTP 206`), `8 Chapters Ready` Facilitator Reset UI | `[x] Complete` |
-| **M5** | **End-to-End Live Rehearsal, `<2s` Reset Proof & Team Handoff Package** | Verified E2E rehearsal (`161.6–214.1ms` chapter / `282.2ms` global HTTP reset), `--dry-run` portability check, `6 / 6` milestones complete | `[x] Complete` |
+| **M5** | **End-to-End Live Rehearsal, `<2s` Reset Proof & Team Handoff Package** | Verified E2E rehearsal (`161.6–214.1ms` chapter / `282.2ms` global HTTP reset), `--dry-run` portability check | `[x] Complete` |
+| **M6** | **Full Git Prompt/Script Provenance, Live Compute Bundle & Turnkey Runbook** | `docs/DATA_PROVENANCE.md`, `docs/DEPLOY_AND_TEST.md`, `prompts/*`, `live-results/pcsk9-oral/*`, `scripts/render-live-avatars.py`, `scripts/verify-pilot-stack.py` | `[x] Complete` |
