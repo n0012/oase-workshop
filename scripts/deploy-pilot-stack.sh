@@ -87,6 +87,7 @@ if [[ "${DRY_RUN}" == "true" ]]; then
     --workshop-domain "${WORKSHOP_DOMAIN}" \
     --iap-service "${SCION_IAP_SERVICE}" \
     --iap-service "${STORY_ARC_SERVICE}" \
+    --cockpit-service "${STORY_ARC_SERVICE}" \
     --dry-run
 
   echo "[Dry-Run 2/5] Validating 7-chapter Scion State Engine seeding plan..."
@@ -235,7 +236,8 @@ if [[ "${SKIP_STORY_ARC}" == "false" && -f "${REPO_ROOT}/services/story-arc/app.
     --region "${REGION}" \
     --workshop-domain "${WORKSHOP_DOMAIN}" \
     --iap-service "${SCION_IAP_SERVICE}" \
-    --iap-service "${STORY_ARC_SERVICE}"
+    --iap-service "${STORY_ARC_SERVICE}" \
+    --cockpit-service "${STORY_ARC_SERVICE}"
 else
   python3 "${REPO_ROOT}/scripts/provision-personas-iam.py" \
     --project-id "${GCP_PROJECT_ID}" \

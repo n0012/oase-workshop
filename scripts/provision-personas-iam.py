@@ -65,6 +65,17 @@ def main() -> int:
         help="Account prefix before scientist given name (default: oase-).",
     )
     parser.add_argument(
+        "--cockpit-service",
+        action="append",
+        dest="cockpit_services",
+        help="Stateless presenter cockpit IAP service(s) that also allow admin@<workshop-domain>.",
+    )
+    parser.add_argument(
+        "--admin-localpart",
+        default=os.environ.get("WORKSHOP_ADMIN_LOCALPART", "admin"),
+        help="Domain admin local-part granted presenter cockpit IAP access (default: admin).",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print gcloud IAM binding commands without executing them.",
@@ -75,6 +86,7 @@ def main() -> int:
         parser.error("--project-id and --workshop-domain are required (or set GCP_PROJECT_ID and WORKSHOP_DOMAIN).")
 
     services = args.iap_services or [os.environ.get("SCION_IAP_SERVICE", "scion-hub-iap-proxy")]
+    cockpit_services = args.cockpit_services or []
 
     for svc in services:
         for base_slug, display_name, role_title in PERSONAS:
@@ -92,6 +104,26 @@ def main() -> int:
                 f"--region={args.region}",
                 f"--project={args.project_id}",
                 f"--member=user:{email}",
+                "--role=roles/iap.httpsResourceAccessor",
+                "--quiet",
+            ]
+            run_cmd(cmd, args.dry_run)
+
+    for svc in cockpit_services:
+        if args.admin_localpart:
+            admin_email = f"{args.admin_localpart}@{args.workshop_domain}"
+            print(f"[iam] Binding Facilitator Admin -> user:{admin_email} on {svc}")
+            cmd = [
+                "gcloud",
+                "alpha",
+                "iap",
+                "web",
+                "add-iam-policy-binding",
+                "--resource-type=cloud-run",
+                f"--service={svc}",
+                f"--region={args.region}",
+                f"--project={args.project_id}",
+                f"--member=user:{admin_email}",
                 "--role=roles/iap.httpsResourceAccessor",
                 "--quiet",
             ]
