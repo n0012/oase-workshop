@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
-"""Multi-Human + Multi-Agent Scion Hub GUI Recorder & Lip-Synced 1080p Video Masterer (M3).
+"""Multi-Human + Multi-Agent Scion Hub GUI Recorder & Native Gemini 3.8 Live Avatar Masterer (M3).
 
 Key Synchronization Guarantees:
 1. Frame-Exact DOM Turn Beacons (`0.000s` clock skew):
    - Injects a 4x4 top-left RGB state beacon inside the 4px top progress bar for each
      active turn (`turnIndex = 1..4`, `0` during off-camera agent thinking gaps).
    - Converts raw Playwright WebM once to a keyframe-indexed 30.00 fps CFR intermediate
-     and detects the exact start frame `f_start` of every turn directly from pixel `(2, 2)`.
+     and detects the exact start frame `f_start` of every turn directly from pixel `(3, 2)`.
    - Excises 100% of off-camera agent waiting spinners (`turnIndex = 0`) and slices exact
      `1.0x` real-time frames (`F_k = round(slot_dur_s * 30)`) so chat messages land on
      screen within ~0.5–1.4s of voice onset with zero `setpts` time-warping.
-2. Phoneme-Accurate 30fps Talking-Head Lip Sync + Silence Gating:
-   - Drives each human scientist's closed-mouth Veo 3.1 + Gemini 3.1 Flash Image studio
-     plate (`{speaker}_clean_idle.mp4`) with `wav2lip_gan.onnx` conditioned directly on
-     the turn's `gemini-3.8-flash-tts` Extended Voice WAV track, with smooth RMS silence
-     gating so lips stay naturally closed during `<short pause>` and breath gaps.
+2. Joint Native Audio + Video Avatar Synthesis (`gemini-3.8-live`):
+   - Synthesizes all 18 human scientist turns directly via `gemini-3.8-live`
+     (`BidiGenerateContent` with `response_modalities=[VIDEO]` and `AvatarConfig` prebuilt
+     presenters `Ingrid`/`Leda`, `Sam`/`Sadaltager`, `Kira`/`Kore`, `Jay`/`Alnilam`,
+     `Vera`/`Pulcherrima`), jointly generating speech audio, visemes, jaw motion, and gaze
+     in a single phase-locked stream.
 3. Zero Cumulative A/V Drift:
    - Every turn's video (`F_k` frames @ 30.00 fps) and audio (`F_k * 1600` samples @
-     48,000 Hz stereo) are locked to the exact integer sample count and muxed cleanly.
+     48,000 Hz stereo) come from the exact same `gemini-3.8-live` clip and are locked to
+     the exact integer sample count.
 """
 
 from __future__ import annotations
@@ -470,7 +472,7 @@ def record_live_chapters(
                                 flush=True,
                             )
                             break
-                        if not nudged and (time.perf_counter() - wait_t0) > 28.0:
+                        if not nudged and (time.perf_counter() - wait_t0) > 42.0:
                             nudged = True
                             target_ag = ch["turns"][0].get("target_agent", "science-program-lead")
                             print(f"  [{tid}] Sending gentle Webchat shell reminder to @{target_ag}...", flush=True)
@@ -677,33 +679,33 @@ def concatenate_wavs_sample_exact(wav_files: list[Path], out_wav: Path) -> None:
 
 
 def build_pip_overlay_clip(
+    tid: str,
     speaker: str,
     speaker_name: str,
     speaker_role: str,
+    avatar_name: str,
     voice_id: str,
     wav_48k_path: Path,
     slot_frames: int,
     talking_heads_dir: Path,
     out_pip_mp4: Path,
-    lipsync_python: str | None = None,
-    lipsync_script: Path | None = None,
-    lipsync_models_dir: Path | None = None,
 ) -> None:
-    """Create an exact `slot_frames`-frame 388x222 @ 30fps PiP speaker card MP4."""
+    """Create an exact `slot_frames`-frame 296x360 @ 30fps 1:1 Portrait-Square PiP card MP4."""
     slot_dur_s = slot_frames / float(FPS)
-    label_top = escape_drawtext(f"{speaker_name}  ·  {speaker_role}")
-    label_sub = escape_drawtext(f"Gemini 3.8 TTS ({voice_id})")
+    line1 = escape_drawtext(speaker_name)
+    line2 = escape_drawtext(speaker_role)
 
     if speaker == "grove":
-        border_hex = "0x38bdf8"
+        line3 = escape_drawtext(f"Gemini 3.8 TTS ({voice_id}) | Grove AI")
         fc = (
-            f"color=c=0x0f172a:s=380x214:r={FPS}:d={slot_dur_s:.4f}[bg];"
-            f"[0:a]showwaves=s=340x110:mode=cline:rate={FPS}:colors=0x38bdf8|0x818cf8[wv];"
-            f"[bg][wv]overlay=20:32:shortest=1,"
-            f"drawbox=x=0:y=160:w=380:h=54:color=0x020617@0.86:t=fill,"
-            f"drawtext=fontfile={FONT_BOLD}:text='{label_top}':fontcolor=white:fontsize=13:x=14:y=170,"
-            f"drawtext=fontfile={FONT_REG}:text='{label_sub} · Multi-Model Grove':fontcolor=0x94a3b8:fontsize=11:x=14:y=191,"
-            f"pad=388:222:4:4:{border_hex}[vout]"
+            f"color=c=0x0f172a:s=288x288:r={FPS}:d={slot_dur_s:.4f}[bg];"
+            f"[0:a]showwaves=s=256x140:mode=cline:rate={FPS}:colors=0x38bdf8|0x818cf8[wv];"
+            f"[bg][wv]overlay=16:74:shortest=1,"
+            f"pad=288:352:0:0:0x020617,"
+            f"drawtext=fontfile={FONT_BOLD}:text='{line1}':fontcolor=white:fontsize=13:x=12:y=295,"
+            f"drawtext=fontfile={FONT_REG}:text='{line2}':fontcolor=0xcbd5e1:fontsize=11:x=12:y=313,"
+            f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor=0x38bdf8:fontsize=10:x=12:y=331,"
+            f"pad=296:360:4:4:0x38bdf8[vout]"
         )
         subprocess.run(
             [
@@ -724,7 +726,7 @@ def build_pip_overlay_clip(
                 "-preset",
                 "fast",
                 "-crf",
-                "19",
+                "18",
                 "-pix_fmt",
                 "yuv420p",
                 "-an",
@@ -735,60 +737,28 @@ def build_pip_overlay_clip(
         )
         return
 
-    clean_idle = talking_heads_dir / f"{speaker}_clean_idle.mp4"
-    fallback_clip = talking_heads_dir / f"{speaker}_a.mp4"
-    base_src = clean_idle if clean_idle.exists() else fallback_clip
-    if not base_src.exists():
-        raise FileNotFoundError(f"Missing scientist base studio video: {base_src}")
-
-    lipsync_raw = out_pip_mp4.with_suffix(".raw_lipsync.mp4")
-    used_lipsync = False
-    if (
-        lipsync_python
-        and Path(lipsync_python).exists()
-        and lipsync_script
-        and lipsync_script.exists()
-        and lipsync_models_dir
-        and (lipsync_models_dir / "wav2lip_gan.onnx").exists()
-    ):
-        subprocess.run(
-            [
-                lipsync_python,
-                str(lipsync_script),
-                "--listen-video",
-                str(base_src),
-                "--wav",
-                str(wav_48k_path),
-                "--slot-dur",
-                f"{slot_dur_s:.4f}",
-                "--out",
-                str(lipsync_raw),
-                "--onnx",
-                str(lipsync_models_dir / "wav2lip_gan.onnx"),
-                "--yunet",
-                str(lipsync_models_dir / "yunet.onnx"),
-            ],
-            check=True,
+    live_turn_mp4 = talking_heads_dir / "live_turns" / f"{tid}_live30.mp4"
+    if not live_turn_mp4.exists():
+        raise FileNotFoundError(
+            f"Missing native Gemini 3.8 Live Avatar clip for {tid}: {live_turn_mp4}"
         )
-        used_lipsync = True
 
-    src_for_card = lipsync_raw if used_lipsync else base_src
-    loop_args = [] if used_lipsync else ["-stream_loop", "-1"]
-
+    line3 = escape_drawtext(f"Gemini 3.8 Live Avatar | {avatar_name} ({voice_id})")
+    # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream
     fc_human = (
-        f"[0:v]scale=380:214,fps={FPS},"
-        f"drawbox=x=0:y=160:w=380:h=54:color=0x0f172a@0.85:t=fill,"
-        f"drawtext=fontfile={FONT_BOLD}:text='{label_top}':fontcolor=white:fontsize=13:x=14:y=170,"
-        f"drawtext=fontfile={FONT_REG}:text='{label_sub} · Lip-Synced Studio Avatar':fontcolor=0x6ee7b7:fontsize=10.5:x=14:y=191,"
-        f"pad=388:222:4:4:0x10b981[vout]"
+        f"[0:v]crop=iw*0.94:iw*0.94:iw*0.03:ih*0.121,scale=288:288,setsar=1,fps={FPS},"
+        f"pad=288:352:0:0:0x0f172a,"
+        f"drawtext=fontfile={FONT_BOLD}:text='{line1}':fontcolor=white:fontsize=13:x=12:y=295,"
+        f"drawtext=fontfile={FONT_REG}:text='{line2}':fontcolor=0xcbd5e1:fontsize=11:x=12:y=313,"
+        f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor=0x6ee7b7:fontsize=10:x=12:y=331,"
+        f"pad=296:360:4:4:0x10b981[vout]"
     )
     subprocess.run(
         [
             "ffmpeg",
             "-y",
-            *loop_args,
             "-i",
-            str(src_for_card),
+            str(live_turn_mp4),
             "-filter_complex",
             fc_human,
             "-map",
@@ -802,7 +772,7 @@ def build_pip_overlay_clip(
             "-preset",
             "fast",
             "-crf",
-            "19",
+            "18",
             "-pix_fmt",
             "yuv420p",
             "-an",
@@ -811,7 +781,6 @@ def build_pip_overlay_clip(
         check=True,
         capture_output=True,
     )
-    lipsync_raw.unlink(missing_ok=True)
 
 
 def master_chapter_videos(
@@ -897,20 +866,19 @@ def master_chapter_videos(
             build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k)
             aseg_files.append(wav_48k)
 
-            # Build exact `slot_frames`-frame lip-synced PiP card
+            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar PiP card
             pip_mp4 = seg_tmp_dir / f"{tid}_pip.mp4"
             build_pip_overlay_clip(
+                tid=tid,
                 speaker=speaker,
                 speaker_name=vmeta["display_name"],
                 speaker_role=vmeta["role"],
+                avatar_name=vmeta.get("avatar_name", ""),
                 voice_id=vmeta["voice_id"],
                 wav_48k_path=wav_48k,
                 slot_frames=slot_frames,
                 talking_heads_dir=talking_heads_dir,
                 out_pip_mp4=pip_mp4,
-                lipsync_python=lipsync_python,
-                lipsync_script=lipsync_script,
-                lipsync_models_dir=lipsync_models_dir,
             )
 
             # Slice exact 1.0x real-time frames starting at `f_start` (paint over the 8x4 beacon pixel cleanly!)
@@ -924,7 +892,7 @@ def master_chapter_videos(
             fc = (
                 f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
                 f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
-                f"[base][1:v]overlay=1504:772[vout]"
+                f"[base][1:v]overlay=1608:700[vout]"
             )
             subprocess.run(
                 [
@@ -1036,8 +1004,8 @@ def master_chapter_videos(
             "video_filename": ch["video_filename"],
             "duration_s": round(actual_dur, 2),
             "resolution": "1920x1080",
-            "tts_model": "gemini-3.8-flash-tts",
-            "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+            "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+            "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
             "markers": scrub_markers,
         }
         print(
@@ -1047,29 +1015,71 @@ def master_chapter_videos(
 
     # Concatenate full-pilot-walkthrough.mp4 if all 6 chapters exist
     all_six = [out_videos_dir / c["video_filename"] for c in spec["chapters"]]
+    all_vsegs = [seg_tmp_dir / f"{t['turn_id']}_vseg.mp4" for c in spec["chapters"] for t in c["turns"]]
+    all_six_wavs = [seg_tmp_dir / f"{c['chapter']}_master_48k.wav" for c in spec["chapters"]]
     if all(p.exists() for p in all_six):
-        full_concat = seg_tmp_dir / "full_pilot_concat.txt"
-        full_concat.write_text("\n".join(f"file '{p.resolve()}'" for p in all_six) + "\n", encoding="utf-8")
         full_mp4 = out_videos_dir / "full-pilot-walkthrough.mp4"
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-y",
-                "-f",
-                "concat",
-                "-safe",
-                "0",
-                "-i",
-                str(full_concat),
-                "-c",
-                "copy",
-                "-movflags",
-                "+faststart",
-                str(full_mp4),
-            ],
-            check=True,
-            capture_output=True,
-        )
+        if all(v.exists() for v in all_vsegs) and all(w.exists() for w in all_six_wavs):
+            full_vconcat = seg_tmp_dir / "full_pilot_vsegs_concat.txt"
+            full_vconcat.write_text("\n".join(f"file '{p.resolve()}'" for p in all_vsegs) + "\n", encoding="utf-8")
+            full_wav = seg_tmp_dir / "full_master_48k.wav"
+            concatenate_wavs_sample_exact(all_six_wavs, full_wav)
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-f",
+                    "concat",
+                    "-safe",
+                    "0",
+                    "-i",
+                    str(full_vconcat),
+                    "-i",
+                    str(full_wav),
+                    "-map",
+                    "0:v:0",
+                    "-map",
+                    "1:a:0",
+                    "-c:v",
+                    "copy",
+                    "-c:a",
+                    "aac",
+                    "-b:a",
+                    "192k",
+                    "-ar",
+                    str(AUDIO_SR),
+                    "-ac",
+                    "2",
+                    "-movflags",
+                    "+faststart",
+                    "-shortest",
+                    str(full_mp4),
+                ],
+                check=True,
+                capture_output=True,
+            )
+        else:
+            full_concat = seg_tmp_dir / "full_pilot_concat.txt"
+            full_concat.write_text("\n".join(f"file '{p.resolve()}'" for p in all_six) + "\n", encoding="utf-8")
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-f",
+                    "concat",
+                    "-safe",
+                    "0",
+                    "-i",
+                    str(full_concat),
+                    "-c",
+                    "copy",
+                    "-movflags",
+                    "+faststart",
+                    str(full_mp4),
+                ],
+                check=True,
+                capture_output=True,
+            )
         existing_manifest["full_walkthrough"] = {
             "video_filename": "full-pilot-walkthrough.mp4",
             "duration_s": round(ffprobe_duration(full_mp4), 2),
@@ -1097,7 +1107,7 @@ def upload_videos_to_gcs(out_videos_dir: Path, bucket: str, gcloud_config: str |
         env["CLOUDSDK_ACTIVE_CONFIG_NAME"] = gcloud_config
     print(f"\n=== Uploading {len(mp4s)} MP4s to {dst} ===", flush=True)
     subprocess.run(
-        ["gcloud", "storage", "cp", *[str(p) for p in mp4s], dst],
+        ["gcloud", "storage", "cp", "--cache-control=no-cache, max-age=0", *[str(p) for p in mp4s], dst],
         env=env,
         check=True,
     )

@@ -851,7 +851,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, <code>Gemini 3.8 Flash TTS</code> Extended Persona Voices, <code>Gemini 3.1 Image</code> + <code>Veo 3.1</code> Lip-Synced Scientist Avatars, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Joint Audio+Video Scientist Presenters + <code>Gemini 3.8 Flash TTS</code>, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>
@@ -939,7 +939,7 @@ def main() -> int:
                 '</nav>\n<div id="pilot-top-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#ffffff;padding:1.15rem 2rem;border-bottom:3px solid #22c55e;">'
                 '<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">'
                 '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot</strong>'
-                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · Gemini 3.8 TTS Extended Voices + Veo 3.1 Lip-Synced Avatars · Live Role Logins · &lt;2s Reset</div></div>'
+                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · Native Gemini 3.8 Live Avatars + Gemini 3.8 Flash TTS · Live Role Logins · &lt;2s Reset</div></div>'
                 '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
                 '<a href="plan.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Detailed Build Plan →</a>'
                 '<a href="chapters.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">Open Story Arc Walkthrough →</a>'

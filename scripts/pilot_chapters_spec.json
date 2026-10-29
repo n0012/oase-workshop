@@ -3,36 +3,42 @@
     "sarah": {
       "display_name": "Dr. Sarah Chen",
       "role": "Program Lead",
-      "voice_id": "en-us-advisor-10",
-      "accent_label": "West Coast Female · Authoritative Advisor"
+      "avatar_name": "Ingrid",
+      "voice_id": "Leda",
+      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
       "role": "Computational Biologist",
-      "voice_id": "en-us-advisor-8",
-      "accent_label": "Midwest Male · Authoritative Advisor"
+      "avatar_name": "Sam",
+      "voice_id": "Sadaltager",
+      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
       "role": "Structural Biologist",
-      "voice_id": "en-gb-tutor-17",
-      "accent_label": "UK English Female · Educational Tutor"
+      "avatar_name": "Kira",
+      "voice_id": "Kore",
+      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
       "role": "Medicinal Chemist",
-      "voice_id": "en-in-tutor-12",
-      "accent_label": "Indian English Male · Educational Tutor"
+      "avatar_name": "Jay",
+      "voice_id": "Alnilam",
+      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
       "role": "DMPK & Safety Lead",
-      "voice_id": "en-ie-advisor-4",
-      "accent_label": "Dublin English Female · Authoritative Advisor"
+      "avatar_name": "Vera",
+      "voice_id": "Pulcherrima",
+      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)"
     },
     "grove": {
       "display_name": "AI Program Lead",
       "role": "Scion Grove Coordinator",
+      "avatar_name": "",
       "voice_id": "en-us-techagent-3",
       "accent_label": "Northwest Male · Tech Advisor"
     }
@@ -53,7 +59,7 @@
           "action": "human_chat",
           "target_agent": "computational-biologist",
           "chat_text": "@computational-biologist Please verify our 24-match Stage 0 Co-Scientist tournament in WO-001 (IC-001 Elo 1642.5 vs IC-002 Elo 1588.0) and post a concise 2-bullet audit back to this Webchat thread using scion message conv:<conversation.id>.",
-          "tts_text": "Welcome team. We are opening the oral PCSK9 discovery campaign at Step 1. <short pause> Computational Biologist, please verify our twenty-four-match Co-Scientist tournament in Work Order zero-zero-one and confirm why allosteric groove hypothesis I C zero-zero-one outranked the flat EGF-A comparator."
+          "tts_text": "Welcome team. We are opening the oral PCSK9 discovery campaign at Step 1. Computational Biologist, please verify our twenty-four-match Co-Scientist tournament in Work Order 001, and confirm why allosteric groove hypothesis IC-001 outranked the flat EGF-A comparator."
         },
         {
           "turn_id": "ch1_t2",
@@ -71,7 +77,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "Reviewed raw/hypotheses/pcsk9_seed.analysis.json and VAL-WO-001.json: SHA-256 checksums match CHECKSUMS.json, oase validate check WO-001 passed, and risk relay hypothesis.adopted_not_generated is preserved for empirical Step 2 testing.",
-          "tts_text": "I have inspected the raw tournament JSON and deterministic validator receipt. <short pause> All S H A two-fifty-six checksums match our Stage zero seed bundle, and the adopted-not-generated risk relay is cleanly carried forward so we test PCSK9 empirically in Step 2."
+          "tts_text": "I have inspected the raw tournament JSON and deterministic validator receipt. All SHA-256 checksums match our Stage zero seed bundle, and the adopted-not-generated risk relay is cleanly carried forward so we test PCSK9 empirically in Step 2."
         },
         {
           "turn_id": "ch1_t4",
@@ -81,7 +87,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Step 1 Sign-Off — Approved] Adopting IC-001 as primary small-molecule series and retaining IC-002 as backup comparator. Advancing pod to Step 2 Human Genetics & AlphaGenome (WO-002, WO-003).",
-          "tts_text": "Agreed. Step 1 is approved. <short pause> We adopt I C zero-zero-one as our primary oral small-molecule hypothesis and advance the pod into Step 2 human genetics and AlphaGenome validation."
+          "tts_text": "Agreed. Step 1 is approved. We adopt IC-001 as our primary oral small-molecule hypothesis, and advance the pod into Step 2 human genetics and AlphaGenome validation."
         }
       ]
     },
@@ -100,7 +106,7 @@
           "action": "human_chat",
           "target_agent": "computational-biologist",
           "chat_text": "@computational-biologist Summarize our WO-002 OpenTargets/gnomAD/GTEx genetics package and WO-003 AlphaGenome hepatocyte regulatory score for rs2479409 in 2 concise bullets, posting back via scion message conv:<conversation.id>.",
-          "tts_text": "In Chapter 2, we pressure-test PCSK9 against real human genetics and liver transcriptomics before committing structural compute. <short pause> Computational Biologist, please summarize our OpenTargets, gnomAD, G-TEx, and AlphaGenome evidence across Work Orders two and three."
+          "tts_text": "In Chapter 2, we pressure-test PCSK9 against real human genetics and liver transcriptomics before committing structural compute. Computational Biologist, please summarize our OpenTargets, gnomAD, GTEx, and AlphaGenome evidence across Work Orders two and three."
         },
         {
           "turn_id": "ch2_t2",
@@ -118,7 +124,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "DMPK & Safety check on WO-002/WO-003: Homozygous human LOF tolerance (pLI = 0.00) and liver-restricted expression (brain < 0.8 TPM) strongly de-risk systemic on-target toxicity. Risk relay alphagenome.quantile_not_clinical_effect is properly retained.",
-          "tts_text": "From a translational safety standpoint, human homozygous loss-of-function viability and near-zero brain expression give us an exceptional therapeutic index. <short pause> The validator also confirmed that our AlphaGenome quantile caveat remains intact."
+          "tts_text": "From a translational safety standpoint, human homozygous loss-of-function viability and near-zero brain expression give us an exceptional therapeutic index. The validator also confirmed that our AlphaGenome quantile caveat remains intact."
         },
         {
           "turn_id": "ch2_t4",
@@ -128,7 +134,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 1 Co-Signed — PASS] Human genetic causal evidence and hepatocyte expression criteria met (WO-002, WO-003 scientifically_accepted). Unlocking Step 3 Structural Biology & Docking.",
-          "tts_text": "With human causal genetics, liver selectivity, and both validator gates green, Marcus and I co-sign Stage Gate 1. <short pause> Dr. Elena Rostova, you are cleared for Step 3 structural folding and pocket docking."
+          "tts_text": "With human causal genetics, liver selectivity, and both validator gates green, Marcus and I co-sign Stage Gate 1. Dr. Elena Rostova, you are cleared for Step 3 structural folding and pocket docking."
         }
       ]
     },
@@ -147,7 +153,7 @@
           "action": "human_chat",
           "target_agent": "structural-biologist",
           "chat_text": "@structural-biologist Report our WO-004 AlphaFold 3 + fpocket druggability metrics for cryptic Pocket #1 vs flat EGF-A, plus the WO-005 AutoDock Vina poses for PCSK9-A02 and PCSK9-A03 in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Thank you Sarah. In Chapter 3 we ask whether PCSK9 actually presents a small-molecule-tractable cavity adjacent to the E G F-A interface. <short pause> Structural Biologist, report our AlphaFold 3 confidence, fpocket druggability, and AutoDock Vina docking scores."
+          "tts_text": "Thank you Sarah. In Chapter 3 we ask whether PCSK9 actually presents a small-molecule-tractable cavity adjacent to the EGF-A interface. Structural Biologist, report our AlphaFold 3 confidence, fpocket druggability, and AutoDock Vina docking scores."
         },
         {
           "turn_id": "ch3_t2",
@@ -165,7 +171,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "Med Chem inspection of WO-005: Both poses engage Asp374/Phe379/Ser381 cleanly, and docking.score_not_affinity is relayed. However, top-scoring PCSK9-A02 carries a lipophilic basic amine (cLogP = 5.09) — logging L-002 for hERG and oxadiazole MMP testing in Step 4.",
-          "tts_text": "Both ligands engage Asp three-seventy-four and Phe three-seventy-nine cleanly, and the docking-score-is-not-affinity relay is logged. <short pause> However, notice that top-scoring A-zero-two carries a lipophilic basic amine at c-Log-P five-point-zero-nine. I am flagging cardiac hERG liability L zero-zero-two for Step 4."
+          "tts_text": "Both ligands engage Asp 374 and Phe 379 cleanly, and the docking-score-is-not-affinity relay is logged. However, notice that top-scoring A-02 carries a lipophilic basic amine at cLogP 5.09. I am flagging cardiac hERG liability L-002 for Step 4."
         },
         {
           "turn_id": "ch3_t4",
@@ -175,7 +181,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 2 Co-Signed — PASS] Cryptic Pocket #1 druggability (0.68 >= 0.50) and Vina pose thresholds cleared (WO-004, WO-005 accepted). Advancing PCSK9-A02 and PCSK9-A03 to Step 4 ADMET & hERG gating.",
-          "tts_text": "Good catch, Raj. <short pause> Cryptic Pocket one clears every structural gate criterion, so I am signing Stage Gate 2 and advancing both A-zero-two and polar analog A-zero-three into Step 4 A D M E T and hERG triage."
+          "tts_text": "Good catch, Raj. Cryptic Pocket one clears every structural gate criterion, so I am signing Stage Gate 2 and advancing both A-02 and polar analog A-03 into Step 4 ADMET and hERG triage."
         }
       ]
     },
@@ -194,7 +200,7 @@
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
           "chat_text": "@medicinal-chemist Summarize our WO-006 matched-molecular-pair ADMET comparison between PCSK9-A02 and neutral 1,2,4-oxadiazole OASE-PCSK9-014 (PCSK9-A03) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Here in Chapter 4 is where disciplined drug hunting earns its keep. <short pause> Medicinal Chemist, compare raw docking winner A-zero-two against our neutral one-two-four oxadiazole bioisostere, O A S E P C S K nine zero-one-four, across Lipinski, Q E D, and cardiac hERG."
+          "tts_text": "Here in Chapter 4 is where disciplined drug hunting earns its keep. Medicinal Chemist, compare raw docking winner A-02 against our neutral one-two-four oxadiazole bioisostere, PCSK9-014, across Lipinski, QED, and cardiac hERG."
         },
         {
           "turn_id": "ch4_t2",
@@ -212,7 +218,7 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "chat_text": "DMPK Safety Gate enforced: PCSK9-A02 is formally ELIMINATED in liability-tracker.md. Before unlocking human PK in Step 5, OASE-PCSK9-014 enters our Explicit Wet-Lab / CRO Assay Handoff (SPR KD, manual patch-clamp hERG > 30 uM, and rat/dog cassette PK).",
-          "tts_text": "I am enforcing the cardiac safety gate: A-zero-two is formally eliminated despite its slightly stronger Vina score. <short pause> Crucially, in silico stops pretending here—zero-one-four now pauses at our explicit Wet-Lab and C R O assay handoff for S P R binding, patch-clamp hERG, and rat and dog P K."
+          "tts_text": "I am enforcing the cardiac safety gate. Analog A-02 is formally eliminated despite its slightly stronger Vina score. Crucially, computation pauses here as candidate 014 enters our explicit Wet-Lab and CRO assay handoff for SPR binding, patch-clamp hERG, and rat and dog PK."
         },
         {
           "turn_id": "ch4_t4",
@@ -222,7 +228,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Co-Signed — PAUSED FOR EXPERIMENTAL READOUT] OASE-PCSK9-014 dispatched for synthesis and CRO wet-lab package (gates/GATE-03-wetlab-handoff.md).",
-          "tts_text": "Stage Gate 3 is co-signed. <short pause> O A S E P C S K nine zero-one-four is queued for five-step synthesis and wet-lab C R O readout before Step 5 clinical P K unlocks."
+          "tts_text": "Stage Gate 3 is co-signed. Candidate PCSK9-014 is queued for five-step synthesis and wet-lab CRO readout before Step 5 clinical PK unlocks."
         }
       ]
     },
@@ -241,7 +247,7 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "chat_text": "@admet-dmpk-scientist With rat (F=54%) and dog (F=61%) PK plus patch-clamp hERG (>30 uM) back from the wet-lab bridge, summarize our WO-007 human oral QD dose projection and WO-008 clinical benchmark in 2 bullets via scion message conv:<conversation.id>.",
-          "tts_text": "In Chapter 5, experimental wet-lab readouts have returned confirming nanomolar S P R binding, clean patch-clamp hERG above thirty micromolar, and strong rat and dog oral bioavailability. <short pause> A D M E T Scientist, report our human once-daily dose projection and clinical landscape positioning."
+          "tts_text": "In Chapter 5, experimental wet-lab readouts have returned confirming nanomolar SPR binding, clean patch-clamp hERG above thirty micromolar, and strong rat and dog oral bioavailability. ADMET Scientist, report our human once-daily dose projection and clinical landscape positioning."
         },
         {
           "turn_id": "ch5_t2",
@@ -259,7 +265,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "End-to-end lineage check complete: All 8/8 Work Orders (WO-001 through WO-008) hold deterministic VAL-WO PASS receipts, zero unresolved blockers remain in open-questions.md, and executive/CANDIDATE-SUMMARY.md is fully provenance-linked.",
-          "tts_text": "I have audited the full evidence chain from Stage zero through Work Order eight. <short pause> All eight work orders hold deterministic validator pass receipts, every risk relay is accounted for, and the executive candidate dossier is provenance-complete."
+          "tts_text": "I have audited the full evidence chain from Stage zero through Work Order eight. All eight work orders hold deterministic validator pass receipts, every risk relay is accounted for, and the executive candidate dossier is provenance-complete."
         },
         {
           "turn_id": "ch5_t4",
@@ -269,7 +275,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 4 Candidate Nomination — APPROVED] Nominating OASE-PCSK9-014 (40.0 mg oral QD tablet, conventional excipient formulation) for IND-enabling GLP toxicology.",
-          "tts_text": "On behalf of the entire discovery pod, Stage Gate 4 is approved. <short pause> We formally nominate O A S E P C S K nine zero-one-four at forty milligrams oral once daily for I N D-enabling development."
+          "tts_text": "On behalf of the entire discovery pod, Stage Gate 4 is approved. We formally nominate candidate PCSK9-014 at forty milligrams oral once daily for IND-enabling development."
         }
       ]
     },
@@ -288,7 +294,7 @@
           "action": "human_chat",
           "target_agent": "finding-validator",
           "chat_text": "@finding-validator Summarize the mechanical outcomes of our 3 adversarial governance tamper drills (fabricated metric, dropped docking risk relay, and raw JSON SHA-256 tamper) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Finally, in Chapter 6, we prove that our governance controls are mechanical, not honor-system prose. <short pause> Finding Validator, report what happened when we injected a fabricated affinity metric, deleted a required risk relay, and tampered with a raw JSON file."
+          "tts_text": "Finally, in Chapter 6, we prove that our governance controls are mechanical, not honor-system prose. Finding Validator, report what happened when we injected a fabricated affinity metric, deleted a required risk relay, and tampered with a raw JSON file."
         },
         {
           "turn_id": "ch6_t2",
@@ -306,7 +312,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "Submitting transparent backup exception request for exploratory scaffold PCSK9-B07 (MW = 512 Da > 500 Da soft Lipinski limit, QED = 0.61, 0 hERG alerts) via oase workorder override rather than editing .oase/thresholds.yaml.",
-          "tts_text": "And when real science warrants a nuanced exception—like keeping backup scaffold B-zero-seven at five hundred twelve Daltons—we never weaken thresholds dot yaml. <short pause> Instead, I submit an explicit override request with scientific rationale."
+          "tts_text": "And when real science warrants a nuanced exception, like keeping backup scaffold B-07 at five hundred twelve Daltons, we never weaken thresholds dot yaml. Instead, I submit an explicit override request with scientific rationale."
         },
         {
           "turn_id": "ch6_t4",
@@ -316,7 +322,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Governance Audit Complete — Override Co-Signed] Appended workorder.overridden record to .oase/control/events.ndjson with named human justification while preserving .oase/thresholds.yaml immutable.",
-          "tts_text": "I have co-signed Raj's backup exception into the append-only events ledger, keeping our global thresholds untouched. <short pause> Every claim is grounded, every gate is human-owned, and every chapter is live for your team to explore."
+          "tts_text": "I have co-signed Raj's backup exception into the append-only events ledger, keeping our global thresholds untouched. Every claim is grounded, every gate is human-owned, and every chapter is live for your team to explore."
         }
       ]
     }

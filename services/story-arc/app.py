@@ -221,7 +221,7 @@ def stream_video(filename: str, request: Request) -> Response:
                 "Content-Range": f"bytes {start}-{end}/{total_size}",
                 "Accept-Ranges": "bytes",
                 "Content-Length": str(len(chunk)),
-                "Cache-Control": "public, max-age=3600",
+                "Cache-Control": "no-cache, max-age=0, must-revalidate",
             },
         )
 
@@ -235,7 +235,7 @@ def stream_video(filename: str, request: Request) -> Response:
             headers={
                 "Accept-Ranges": "bytes",
                 "Content-Length": str(len(full_bytes)),
-                "Cache-Control": "public, max-age=3600",
+                "Cache-Control": "no-cache, max-age=0, must-revalidate",
             },
         )
     end = 2 * 1024 * 1024 - 1
@@ -553,10 +553,10 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
         fwCard.innerHTML = `
           <details>
             <summary style="cursor:pointer;font-weight:700;color:#38bdf8;font-size:0.98rem;">
-              🎬 Watch Continuous 6-Chapter Full Pilot Walkthrough (${durMin} · 1080p · 5 Personas + 11 AI Agents) — or select Chapters 1–6 above
+              🎬 Watch Continuous 6-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 11 AI Agents) — or select Chapters 1–6 above
             </summary>
             <div class="cockpit-video-wrap" style="margin-top:0.8rem;">
-              <video id="video-full" controls preload="none" src="/api/videos/${fullVideo.video_filename || 'full-pilot-walkthrough.mp4'}"></video>
+              <video id="video-full" controls preload="none" src="/api/videos/${fullVideo.video_filename || 'full-pilot-walkthrough.mp4'}?v=${fullVideo.duration_s || '38'}"></video>
             </div>
           </details>
         `;
@@ -623,11 +623,12 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
         : '';
 
       const videoFilename = vmeta ? vmeta.video_filename : `chapter-0${chId.slice(2)}.mp4`;
+      const videoVer = vmeta && vmeta.duration_s ? vmeta.duration_s : '38';
 
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
           <div>
-            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Gemini 3.8 TTS + Veo 3.1 Lip-Synced Avatars)</strong>
+            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini 3.8 Live Avatars + Multi-Model Grove)</strong>
             <div id="cockpit-state-badge-${chId}" style="font-size:0.77rem;color:#94a3b8;font-family:monospace;margin-top:0.15rem;">
               ${cstate.slug ? `Live Project: ${cstate.slug} · Git ${cstate.git_commit} · ${cstate.message_count} Webchat msgs · ${(cstate.running_agents || []).length} live containers` : 'Pre-staged Scion Grove checkpoint'}
             </div>
@@ -635,7 +636,7 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
           <button class="cockpit-btn" onclick="oaseResetChapter('${chId}')">↺ Reset ${chId.toUpperCase()} (&lt;2s)</button>
         </div>
         <div class="cockpit-video-wrap">
-          <video id="video-${chId}" controls preload="metadata" src="/api/videos/${videoFilename}"></video>
+          <video id="video-${chId}" controls preload="metadata" src="/api/videos/${videoFilename}?v=${videoVer}"></video>
         </div>
         <div class="scrub-bar">${markersHtml}</div>
         ${wetlabHtml}

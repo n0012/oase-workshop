@@ -432,9 +432,7 @@ def ensure_personas_and_purge_admin(db_path: Path, domain: str, avatars_dir: Pat
             )
         else:
             uid = row["id"]
-            avatar_url = row["avatar_url"] or ""
-            if compact_uri and (not avatar_url or len(avatar_url) > 2000):
-                avatar_url = compact_uri
+            avatar_url = compact_uri if compact_uri else (row["avatar_url"] or "")
             cur.execute(
                 "UPDATE users SET display_name = ?, role = ?, avatar_url = ? WHERE id = ?",
                 (display_name, sys_role, avatar_url, uid),
