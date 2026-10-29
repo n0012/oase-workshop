@@ -1275,6 +1275,16 @@ def main() -> int:
         if not timings_path.exists():
             raise SystemExit(f"ERROR: {timings_path} not found for --master-only.")
         all_timings = json.loads(timings_path.read_text(encoding="utf-8"))
+        # Sync updated audio_durations.json slot_frames when a single turn clip is re-synthesized
+        for ch_id, ch_rec in all_timings.items():
+            for t_rec in ch_rec.get("turns", []):
+                tid = t_rec.get("turn_id", "")
+                if tid in durations and durations[tid].get("slot_frames"):
+                    new_sf = int(durations[tid]["slot_frames"])
+                    old_sf = int(t_rec.get("slot_frames") or new_sf)
+                    if new_sf <= old_sf:
+                        t_rec["slot_frames"] = new_sf
+                        t_rec["target_slot_s"] = round(new_sf / float(FPS), 4)
 
     if not args.record_only:
         master_chapter_videos(

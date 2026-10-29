@@ -148,7 +148,7 @@ def detect_speech_bounds(path: Path) -> tuple[float, float, float]:
             str(path),
             "-vn",
             "-af",
-            "silencedetect=noise=-42dB:d=0.18",
+            "silencedetect=noise=-38dB:d=0.18",
             "-f",
             "null",
             "-",
@@ -315,6 +315,40 @@ async def synthesize_live_chunk(
                 raise RuntimeError(
                     f"Audio quality gate failed (mean_db={mean_db:.1f} dB, spoken_span={spoken_span:.2f}s, full={full_dur:.2f}s)"
                 )
+            # Multimodal prosody gate via Gemini 3.1 Pro: block robotic vowel stretches, stutters, or repetitions
+            qa_wav = out_mp4.with_suffix(".qa.wav")
+            subprocess.run(
+                ["ffmpeg", "-y", "-loglevel", "error", "-i", str(out_mp4), "-vn", "-ac", "1", "-ar", "16000", str(qa_wav)],
+                check=True,
+            )
+            qa_client = genai.Client(
+                vertexai=True,
+                project=gcp_project,
+                location="global",
+                credentials=GcloudTokenCredentials(gcloud_config),
+            )
+            qa_resp = qa_client.models.generate_content(
+                model="gemini-3.1-pro-preview",
+                contents=[
+                    types.Part.from_bytes(data=qa_wav.read_bytes(), mime_type="audio/wav"),
+                    (
+                        f"Listen carefully to this voice clip. Expected script: {chunk_text!r}. "
+                        "Return JSON with keys: verbatim_transcript (string), delivery_issues "
+                        "('none' if natural and clean, otherwise describe any robotic glitch, elongated word, "
+                        "false start, stutter, repetition, or cutoff), rating_1_to_10 (int)."
+                    ),
+                ],
+                config=types.GenerateContentConfig(temperature=0.0, response_mime_type="application/json"),
+            )
+            qa_wav.unlink(missing_ok=True)
+            qa_data = json.loads((qa_resp.text or "{}").strip())
+            qa_rating = int(qa_data.get("rating_1_to_10", 0))
+            qa_issues = str(qa_data.get("delivery_issues", "")).strip()
+            if qa_rating < 9 or (qa_issues and qa_issues.lower() != "none"):
+                raise RuntimeError(
+                    f"Prosody QA gate rejected clip (rating={qa_rating}/10, issues={qa_issues!r}, heard={qa_data.get('verbatim_transcript')!r})"
+                )
+            print(f"  [PROSODY QA PASS {qa_rating}/10] {avatar_name}/{voice_id}: {qa_data.get('verbatim_transcript')}", flush=True)
             return out_mp4
         except Exception as exc:
             last_err = exc

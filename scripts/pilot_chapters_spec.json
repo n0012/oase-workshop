@@ -169,7 +169,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "@science-program-lead Locking Clause 3: unenhanced Rule-of-5 oral chemistry (cLogP <= 3.5, MW <= 500, 0 Aronov hERG alerts, no permeation enhancers). Verify our 24-match Stage 0 Co-Scientist tournament in WO-001 (IC-001 Elo 1642.5 vs IC-002 Elo 1588.0) and post a concise 2-bullet audit via scion message conv:<conversation.id>.",
-          "tts_text": "And lock Rule of Five chemistry, no absorption boosters and zero heart rhythm traps! Grove One, launch the Co-Scientist tournament!"
+          "tts_text": "Locking Clause Three on chemistry: clean oral tablet sizing, zero absorption boosters, and zero heart-rhythm traps! Grove One, launch Co-Scientist!"
         },
         {
           "turn_id": "ch1_t5",
@@ -442,7 +442,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Governance Audit Complete — Override Co-Signed] Appended workorder.overridden record to .oase/control/events.ndjson with named human justification while preserving .oase/thresholds.yaml immutable.",
-          "tts_text": "Co-signed in the flight log! Guardrails held strong. Now let's rally with Grove One for our final mission debrief!"
+          "tts_text": "Signed into the flight log! Guardrails held strong. Now let's rally with Grove One for our final mission debrief!"
         }
       ]
     },
