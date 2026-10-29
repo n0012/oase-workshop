@@ -555,9 +555,20 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
         fwCard.className = 'cockpit-stage-card';
         const durMin = fullVideo.duration_s ? (fullVideo.duration_s / 60).toFixed(1) + ' min' : '7 Chapters';
         fwCard.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.55rem;">
+            <div>
+              <strong style="color:#38bdf8;font-size:0.98rem;">🎬 Interactive 7-Chapter Squadron Walkthrough (${durMin} Total · 1080p)</strong>
+              <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
+                Upbeat 100/200-level tactical pod comms (~37s/step) keep the story moving while verbatim metrics, JSONPath citations, and SHA-256 receipts appear live in Scion Webchat and below each video.
+              </div>
+            </div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <button class="cockpit-btn primary" onclick="showChapter('ch1')">▶ Jump to Step 1 Video →</button>
+            </div>
+          </div>
           <details>
-            <summary style="cursor:pointer;font-weight:700;color:#38bdf8;font-size:0.98rem;">
-              🎬 Watch Continuous 7-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 6 AI Wingmen) — or select Chapters 1–7 above
+            <summary style="cursor:pointer;font-weight:700;color:#93c5fd;font-size:0.88rem;">
+              ▶ Or expand continuous ${durMin} full-campaign video reel right here (Steps 1–7 back-to-back)
             </summary>
             <div class="cockpit-video-wrap" style="margin-top:0.8rem;">
               <video id="video-full" controls preload="none" src="/api/videos/${fullVideo.video_filename || 'full-pilot-walkthrough.mp4'}?v=${fullVideo.duration_s || '38'}"></video>

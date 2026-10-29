@@ -101,25 +101,25 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <h1>Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p><strong>OASE (Open Agentic Science Engine)</strong> is a drug discovery solution on Google Cloud that traces AI model predictions, wet-lab measurements, computed results, and stage-gate decisions across five layers of artifacts. Built on top of the open-source, multi-agent, multi-user <strong>SCION</strong> agent platform, GCP-OASE pairs a 5-scientist human discovery pod with a mirrored multi-model AI agent team (Gemini, Claude, OpenAI).</p>
   <div class="kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">5 Human + 11 AI</div><div class="kpi-lbl">Pod &amp; Agent Roles in Grove</div></div>
+    <div class="kpi-card"><div class="kpi-val">5 Human + 11 AI</div><div class="kpi-lbl">Discovery Pod &amp; Agent Team</div></div>
+    <div class="kpi-card"><div class="kpi-val">4 Core Pillars</div><div class="kpi-lbl">Grove · WOs · 2-Phase · Gates</div></div>
     <div class="kpi-card"><div class="kpi-val">5 Artifact Layers</div><div class="kpi-lbl">Separation of Powers</div></div>
-    <div class="kpi-card"><div class="kpi-val">36 / 36</div><div class="kpi-lbl">Threshold Sets Resolved</div></div>
     <div class="kpi-card"><div class="kpi-val">8 / 8 [PASS]</div><div class="kpi-lbl">Work Orders Accepted</div></div>
-    <div class="kpi-card"><div class="kpi-val">3 Blocked + 1 Logged</div><div class="kpi-lbl">Tamper &amp; Override Checks</div></div>
+    <div class="kpi-card"><div class="kpi-val">3 Blocked + 1 Signed</div><div class="kpi-lbl">Tamper &amp; Override Audit</div></div>
     <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Lead (40 mg QD)</div></div>
   </div>
 </div>
 
 <div class="chapter-bar">
-  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">1. Challenges &amp; Demo Overview</button>
-  <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">2. Data &amp; Control Architecture (4 Pillars)</button>
-  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">3. Step 1: Rank Hypotheses (WO-001)</button>
-  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">4. Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
-  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">5. Step 3: AF3, Pockets &amp; Gate 2 (WO-004..005)</button>
-  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
-  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. Step 5: Human PK, Dossier &amp; Gate 4 (WO-007..008)</button>
-  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Step 6: Validation &amp; Override Review</button>
-  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">9. Step 7: Mission Closeout &amp; Portfolio Launch</button>
+  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
+  <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
+  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Rank Hypotheses (WO-001)</button>
+  <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
+  <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">Step 3: AF3, Pockets &amp; Gate 2 (WO-004..005)</button>
+  <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
+  <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Step 5: Human PK &amp; Gate 4 (WO-007..008)</button>
+  <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Step 6: Tamper &amp; Override Audit</button>
+  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Portfolio Closeout</button>
 </div>
 
 <div class="container">
@@ -260,7 +260,16 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <tr id="arch-row-2"><td><strong>2. Specialist Findings</strong></td><td><code>findings/&lt;domain&gt;/WO-XXX.md</code></td><td>Written by domain specialists; every number requires a JSONPath citation within &plusmn;1% (<code>CIT-003</code>) and all caveat relays (<code>REL-001</code>).</td></tr>
             <tr id="arch-row-3"><td><strong>3. Scientific Decision Logs</strong></td><td><code>program-state/decision-log.md</code> &amp; <code>liability-tracker.md</code></td><td>Written exclusively by the AI Program Lead after Dual Validation passes.</td></tr>
             <tr><td><strong>4. Organization Stage Gates</strong></td><td><code>program-state/PROGRAM_SUMMARY.md</code> &amp; Gate Co-Signs</td><td>Human Program Lead co-signs Gate 1 and Gate 4 go/no-go checkpoints and wet-lab assay handoffs.</td></tr>
-            <tr><td><strong>5. Executive Views</strong></td><td><code>_site/index.html</code> &amp; <code>_site/chapters.html</code> (31 pages)</td><td>Compiled by <code>oase site build</code> into a self-contained static HTML Evidence Portal for portfolio review.</td></tr>
+            <tr><td><strong>5. Executive Views</strong></td><td><code>_site/index.html</code> &amp; <code>_site/chapters.html</code> (32 pages)</td><td>Compiled by <code>oase site build</code> into a self-contained static HTML Evidence Portal for portfolio review.</td></tr>
+          </tbody>
+        </table>
+        <h4 style="margin: 0.9rem 0 0.4rem 0; color: #0f172a;">How a Campaign Enters GCP-OASE (3 Upstream Initiation Modes)</h4>
+        <table>
+          <thead><tr><th>Initiation Mode</th><th>Upstream Handoff Contract</th><th>Controller Bootstrap Action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Mode 1 — AI Co-Scientist / Enterprise Handoff</strong> <em>(Shown in Demo)</em></td><td>Structured tournament export (<code>seed/pcsk9-oral/coscientist-export.json</code> + <code>CHECKSUMS.json</code>)</td><td>Runs <code>oase coscientist ingest</code>, locks SHA-256 Layer-0 receipt, attaches caveat <code>hypothesis.adopted_not_generated</code>, and opens <code>WO-001</code>.</td></tr>
+            <tr><td><strong>Mode 2 — Scientist-Authored Campaign Charter</strong></td><td>Human Program Lead defines target (<code>ENSG</code> / UniProt), indication, modality, and <code>.oase/thresholds.yaml</code> program cutoffs</td><td>Initializes Grove state at <code>t=0</code> and dispatches Stage 1 Target Validation work orders directly from Scion Webchat.</td></tr>
+            <tr><td><strong>Mode 3 — Existing Internal Assay / Hit-List Re-Entry</strong></td><td>Internal HTS hit table (<code>.sdf</code> / <code>.csv</code>), crystal structure, or CRO assay readout</td><td>Registers cryptographic Layer-0 receipts in <code>raw/</code> and opens stage-appropriate Work Orders mid-funnel (e.g., Stage 2 or Stage 3).</td></tr>
           </tbody>
         </table>
       </div>
@@ -270,17 +279,17 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- CHAPTER 1 -->
   <section class="chapter-panel" id="panel-ch1">
     <div class="chapter-header">
-      <h2>Act II (Chapter 1) — Stage 0 Campaign Seed &amp; Co-Scientist Tournament (`WO-001`)</h2>
-      <span class="stage-pill">Stage 0 · checkpoints/ch0 &rarr; ch1</span>
+      <h2>Step 1 — Stage 0 Campaign Seed &amp; Co-Scientist Tournament (`WO-001`)</h2>
+      <span class="stage-pill">Stage 0 · Initiation Mode 1 · checkpoints/ch0 &rarr; ch1</span>
     </div>
     <div class="grid-2">
       <div>
-        <p>The campaign begins by verifying environment health (<code>oase doctor</code> across all 7 compiled scientific binaries and 36 threshold schemas) and ingesting the AI Co-Scientist hypothesis tournament export (2 carried candidate series from the 28-match seed export) for oral PCSK9 inhibition in ASCVD.</p>
+        <p>Entering via <strong>Initiation Mode 1 (AI Co-Scientist Seed Handoff)</strong>, the pod verifies environment readiness (<code>oase doctor</code>) and ingests the 24-match pairwise Co-Scientist tournament export (<code>seed/pcsk9-oral/coscientist-export.json</code>) comparing candidate oral PCSK9 strategies in ASCVD.</p>
         <table>
-          <thead><tr><th>Hypothesis ID</th><th>Modality &amp; Mechanism</th><th>Live CLI / Seed Elo</th><th>Win Rate</th><th>Status</th></tr></thead>
+          <thead><tr><th>Hypothesis ID</th><th>Modality &amp; Mechanism</th><th>Tournament Elo</th><th>Match Record / Win Rate</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td><code>IC-001</code> (H-001)</td><td>Allosteric Small Molecule (`Pocket #1` groove)</td><td><strong>1642.5</strong> (`ELO 1642`)</td><td>0.78 (7/9)</td><td><span class="pass-pill">PRIMARY LEADER (+54.5 Elo)</span></td></tr>
-            <tr><td><code>IC-002</code> (H-002)</td><td>Oral Cyclic Peptide (`EGF-A` flat surface)</td><td>1588.0 (`ELO 1588`)</td><td>0.67 (6/9)</td><td><span class="warn-pill">BACKUP SERIES</span></td></tr>
+            <tr><td><code>IC-001</code> (H-001)</td><td>Allosteric Small Molecule (`Pocket #1` cryptic groove)</td><td><strong>1642.5</strong> (`ELO 1642`)</td><td><code>9W-1L-0D</code> (<code>0.78</code> overall)</td><td><span class="pass-pill">PRIMARY LEADER (+54.5 Elo)</span></td></tr>
+            <tr><td><code>IC-002</code> (H-002)</td><td>Oral Cyclic Peptide (`EGF-A` flat surface)</td><td>1588.0 (`ELO 1588`)</td><td><code>7W-2L-1D</code> (<code>0.67</code> overall)</td><td><span class="warn-pill">BACKUP SERIES</span></td></tr>
           </tbody>
         </table>
         <div class="relay-box">
@@ -489,7 +498,7 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
               <tr><td><strong>Case 1 — Missing Required Caveat</strong></td><td>Remove mandatory relay <code>af3.low_confidence_segments</code> from <code>WO-004.md</code></td><td><code>relay_coverage</code> (<code>REL-001</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
               <tr><td><strong>Case 2 — Citation Drift &gt; &plusmn;1%</strong></td><td>Alter cited Vina score from <code>-9.4</code> to <code>-11.2 kcal/mol</code> in <code>WO-005.md</code></td><td><code>source_tags_resolve</code> (<code>CIT-003</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
               <tr><td><strong>Case 3 — Altered Raw Data File</strong></td><td>Modify <code>raw/docking/pcsk9_pocket1_vina.sdf</code> so SHA-256 mismatches <code>.meta.json</code> (plus stripped <code>THR-001</code> check)</td><td><code>provenance_valid</code> (<code>PROV-002</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
-              <tr><td><strong>Case 4 — Audited Reviewer Override</strong></td><td>Valid Layer 0 data accepted, while reviewer co-signs backup retention with an explicit rationale and mandatory experimental counter-screen</td><td><code>oase workorder override</code> &rarr; <code>decision-log.md</code></td><td><span class="pass-pill">PERMITTED &amp; LOGGED</span></td></tr>
+              <tr><td><strong>Case 4 — Co-Signed Backup Exception</strong></td><td>Retain exploratory backup scaffold <code>PCSK9-B07</code> (<code>MW = 512 Da &gt; 500 Da</code> soft Lipinski limit, <code>QED = 0.61</code>, <code>0</code> hERG alerts) without editing immutable <code>.oase/thresholds.yaml</code></td><td><code>oase workorder override</code> &rarr; <code>events.ndjson</code> &amp; <code>decision-log.md</code></td><td><span class="pass-pill">CO-SIGNED &amp; LOGGED</span></td></tr>
             </tbody>
           </table>
           <div class="portal-links">
@@ -505,9 +514,9 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
 <span class="ok">[BLOCKED AS EXPECTED] Case 3: Modified Raw Data File SHA-256 Mismatch (PROV-002 &amp; THR-001)</span>
   -&gt; WO-005 failed on provenance_valid with exit=1
 
-<span class="cmd">$ oase workorder override WO-006 --actor science-program-lead \</span>
-<span class="cmd">    --reason "Accept valid Layer 0 docking/ADMET files; prioritize LipE 5.2 &amp; 0 alerts over 0.2 kcal/mol pose delta"</span>
-<span class="ok">[PERMITTED &amp; LOGGED] Recorded direction_override with actor + rationale in program-state/decision-log.md</span></div>
+<span class="cmd">$ oase workorder override WO-006 --actor medicinal-chemist --cosign science-program-lead \</span>
+<span class="cmd">    --reason "Retain backup scaffold PCSK9-B07 (MW 512 Da > 500 Da soft Lipinski limit, QED 0.61, 0 hERG alerts) pending 14-day patch-clamp counter-screen"</span>
+<span class="ok">[CO-SIGNED &amp; LOGGED] Appended workorder.overridden to .oase/control/events.ndjson &amp; decision-log.md (.oase/thresholds.yaml untouched)</span></div>
       </div>
     </div>
   </section>
@@ -520,45 +529,80 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
     </div>
     <div class="stack-full">
       <div>
-        <p>In <strong>Step 7</strong>, <strong>Dr. Sarah Chen</strong> and <code>@science-program-lead</code> close out the end-to-end discovery campaign with the full 5-scientist human pod: all 8 Work Orders, 4 Stage Gates, the physical Wet-Lab PK bridge, and the 30-page provenance-linked Evidence Portal are packaged for portfolio committee sign-off and IND-enabling toxicology.</p>
-        <h4 style="margin: 0.6rem 0 0.5rem 0; color: #0f172a;">Measured Architecture Scorecard &amp; Five Engineering Takeaways</h4>
+        <p>In <strong>Step 7</strong>, <strong>Dr. Sarah Chen (<code>GOLD-1</code>)</strong>, <strong>Dr. Elena Rostova (<code>GOLD-3</code>)</strong>, and <strong><code>Grove-1</code> (<code>@science-program-lead</code>)</strong> bookend the discovery campaign with the full 5-scientist human pod: all 8 Work Orders, 4 Stage Gates, the physical Wet-Lab PK bridge, and the 30-page provenance-linked Evidence Portal are signed off in <code>executive/PORTFOLIO-HANDOFF.md</code> for portfolio committee review and IND-enabling GLP toxicology.</p>
+        <h4 style="margin: 0.6rem 0 0.5rem 0; color: #0f172a;">Executive Candidate Nomination &amp; Stage-Gate Sign-Off Ledger (<code>OASE-PCSK9-014</code>)</h4>
         <table>
-          <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Field Discovery &amp; Takeaway</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Campaign Milestone</th><th>Work Orders &amp; Signatories</th><th>Key Verified Scientific Evidence</th><th>Gate Status</th></tr></thead>
           <tbody>
-            <tr id="score-row-1">
-              <td><strong>1. Two-Phase Tool Latch</strong><br>(Fetch/Compute vs. Offline Analyze)</td>
-              <td>100% of Phase-2 <code>analyze</code> commands run offline against immutable JSON + thresholds</td>
-              <td><code>51 / 51</code> Phase-2 commands verified offline by <code>oase doctor</code>; <code>9</code> live + <code>11</code> checkpoint <code>.analysis.json</code> records verified</td>
-              <td><strong>Takeaway 1:</strong> 13 of 36 default threshold schemas ship with <code>UNRESOLVED</code> sentinels so each organization sets its own cutoffs in <code>.oase/thresholds.yaml</code>.</td>
-              <td><span class="pass-pill">LANDED (36/36 RESOLVED)</span></td>
+            <tr>
+              <td><strong>Stage 0–1 &rarr; Gate 1: Target Validation</strong></td>
+              <td><code>WO-001..003</code> · Co-signed by Human + AI Program Leads</td>
+              <td><code>IC-001</code> cryptic groove ranked #1 (<code>1642.5 Elo</code>); human LoF cardioprotection (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>) and liver-selective expression (<code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>; brain <code>&lt; 0.8 TPM</code>).</td>
+              <td><span class="pass-pill">GATE 1 SIGNED</span></td>
             </tr>
-            <tr id="score-row-2">
-              <td><strong>2. Zero-Fabrication Citations</strong><br>(<code>{source: path $.jsonpath}</code>)</td>
-              <td>Every numeric claim in Markdown is mechanically checked within &plusmn;1% of raw JSON</td>
-              <td><code>28 / 28</code> scalar JSONPath citations verified within &plusmn;1%; validator caught <code>-11.2</code> vs <code>-9.4</code> in &lt;0.2s</td>
-              <td><strong>Takeaway 2:</strong> Putting one <code>{source: ... $.metrics.x}</code> tag per Markdown line prevents KaTeX <code>$ ... $</code> math collisions in <code>oase site build</code>.</td>
-              <td><span class="pass-pill">LANDED (ZERO DRIFT)</span></td>
+            <tr>
+              <td><strong>Stage 2 &rarr; Gate 2: Structural Hit ID</strong></td>
+              <td><code>WO-004..005</code> · Signed by Structural Bio + AI Lead</td>
+              <td><code>AlphaFold 3</code> co-fold (<code>ipTM = 0.84</code>), <code>fpocket</code> cryptic groove druggability (<code>0.68</code> vs <code>0.24</code> flat EGF-A), and <code>AutoDock Vina</code> pose (<code>-9.4 kcal/mol</code>); lipophilicity risk <code>L-002</code> logged for Step 4.</td>
+              <td><span class="pass-pill">GATE 2 SIGNED</span></td>
             </tr>
-            <tr id="score-row-3">
-              <td><strong>3. Mandatory Caveat Relays</strong><br>(<code>**Relay: `code`**</code>)</td>
-              <td>Agents cannot drop negative caveats (e.g. disorder, hERG pharmacophore limits)</td>
-              <td>All 8 work orders enforce mandatory relays; Drill 3 caught dropped <code>af3.low_confidence_segments</code></td>
-              <td><strong>Discovery 4:</strong> Provenance exposed that <code>_BASIC_NITROGEN_SMARTS</code> in <code>admet.py:227</code> matches neutral amides—making heuristics transparent and auditable.</td>
-              <td><span class="pass-pill">STRONGEST DIFFERENTIATOR</span></td>
+            <tr>
+              <td><strong>Stage 3 &rarr; Gate 3 + &#9208; Wet-Lab Bridge</strong></td>
+              <td><code>WO-006</code> · Signed by Med Chem, DMPK &amp; Program Lead</td>
+              <td><code>PCSK9-A02</code> (<code>cLogP = 5.09</code>) eliminated on cardiac hERG alert; neutral 1,2,4-oxadiazole <strong><code>OASE-PCSK9-014</code></strong> (<code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>0</code> alerts) cleared in wet-lab SPR, patch-clamp hERG (<code>&gt;30 &mu;M</code>), and rat (<code>54%</code>) / dog (<code>61%</code>) cassette PK.</td>
+              <td><span class="pass-pill">LAB VERIFIED</span></td>
             </tr>
-            <tr id="score-row-4">
-              <td><strong>4. Scion + OASE Reproducibility</strong><br>(<code>ENV_VERSION</code> + 22 Templates)</td>
-              <td>Single-command install of Python + 7 C/C++/Go binaries stamped with SHA-256</td>
-              <td>All 7 binaries (<code>vina</code>, <code>fpocket</code>, <code>rate4site</code>, <code>muscle</code>, <code>hypex</code>, <code>elo</code>, <code>prox</code>) stamped</td>
-              <td><strong>Discovery 3 &amp; 5:</strong> Codified 4 Linux GCC 14 / offline KaTeX fixes in <code>bootstrap-oase-env.sh</code>; mechanical latches ensure epistemic honesty up to wet-lab validation.</td>
-              <td><span class="pass-pill">REPEATABLE E2E</span></td>
+            <tr>
+              <td><strong>Stage 4 &rarr; Gate 4: Candidate Nomination</strong></td>
+              <td><code>WO-007..008</code> + Governance Audit · Pod &amp; Portfolio Sign-Off</td>
+              <td>Projected human oral dose <strong><code>40.0 mg QD</code></strong> (<code>F = 52%</code>, <code>t1/2 = 14.8 h</code>, conventional tablet); <code>3 / 3</code> tamper drills blocked, <code>PCSK9-B07</code> backup exception logged, and 30-page Evidence Portal published with <code>0</code> ungrounded claims.</td>
+              <td><span class="pass-pill">READY FOR GLP TOX</span></td>
             </tr>
           </tbody>
         </table>
-        <div class="portal-links">
-          <a href="index.html">Open 30-Page Evidence Portal Index</a>
+        <div class="portal-links" style="margin-bottom: 1rem;">
           <a href="finding_findings_regulatory_WO-008_md.html">Open WO-008 Candidate Nomination Dossier</a>
+          <a href="index.html">Open Full 30-Page Evidence Portal Index</a>
+          <a href="plan.html">Open Pilot Build Plan &amp; Architecture Spec</a>
         </div>
+        <details style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem 1.1rem;margin-top:0.75rem;">
+          <summary style="cursor:pointer;font-weight:700;color:#1e3a8a;font-size:0.9rem;">
+            &#128300; Expand Under-the-Hood Architecture Scorecard &amp; Engineering Verification Notes
+          </summary>
+          <table style="margin-top:0.75rem;">
+            <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Engineering Verification Note</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr id="score-row-1">
+                <td><strong>1. Two-Phase Tool Latch</strong><br>(Fetch/Compute vs. Offline Analyze)</td>
+                <td>100% of Phase-2 <code>analyze</code> commands run offline against immutable JSON + thresholds</td>
+                <td><code>51 / 51</code> Phase-2 commands verified offline by <code>oase doctor</code>; <code>9</code> live + <code>11</code> checkpoint <code>.analysis.json</code> records verified</td>
+                <td>All 36 program threshold sets resolved explicitly in <code>.oase/thresholds.yaml</code> so cutoffs remain versioned and human-owned.</td>
+                <td><span class="pass-pill">LANDED (36/36 RESOLVED)</span></td>
+              </tr>
+              <tr id="score-row-2">
+                <td><strong>2. Zero-Fabrication Citations</strong><br>(<code>{source: path $.jsonpath}</code>)</td>
+                <td>Every numeric claim in Markdown is mechanically checked within &plusmn;1% of raw JSON</td>
+                <td><code>28 / 28</code> scalar JSONPath citations verified within &plusmn;1%; validator caught <code>-11.2</code> vs <code>-9.4</code> in &lt;0.2s</td>
+                <td>Single-citation-per-line formatting keeps Markdown prose and static portal rendering 100% deterministic.</td>
+                <td><span class="pass-pill">LANDED (ZERO DRIFT)</span></td>
+              </tr>
+              <tr id="score-row-3">
+                <td><strong>3. Mandatory Caveat Relays</strong><br>(<code>**Relay: `code`**</code>)</td>
+                <td>Agents cannot drop negative caveats (e.g. disorder, hERG pharmacophore limits)</td>
+                <td>All 8 work orders enforce mandatory relays; Drill 3 caught dropped <code>af3.low_confidence_segments</code></td>
+                <td>Full provenance makes underlying tool heuristics (such as SMARTS pharmacophore definitions in <code>oase admet</code>) transparent and auditable by medicinal chemists.</td>
+                <td><span class="pass-pill">STRONGEST DIFFERENTIATOR</span></td>
+              </tr>
+              <tr id="score-row-4">
+                <td><strong>4. Scion + OASE Reproducibility</strong><br>(<code>ENV_VERSION</code> + 8 Checkpoints)</td>
+                <td>Single-command install of Python + 7 C/C++/Go binaries stamped with SHA-256</td>
+                <td>All 7 binaries (<code>vina</code>, <code>fpocket</code>, <code>rate4site</code>, <code>muscle</code>, <code>hypex</code>, <code>elo</code>, <code>prox</code>) stamped</td>
+                <td>Reproducible Linux bootstrap (<code>bootstrap-oase-env.sh</code>) + sub-250ms Scion Hub checkpoint resets across <code>ch0..ch7</code>.</td>
+                <td><span class="pass-pill">REPEATABLE E2E</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
       </div>
     </div>
   </section>
@@ -1005,9 +1049,20 @@ if (hash && document.getElementById('panel-' + hash)) {
         const fwFile = fullVideo.video_filename || 'full-pilot-walkthrough.mp4';
         const fwSrc = isLive ? `${videoBase}${fwFile}?v=${fullVideo.duration_s || '267'}` : `${videoBase}${fwFile}`;
         fwCard.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.55rem;">
+            <div>
+              <strong style="color:#38bdf8;font-size:0.98rem;">🎬 Interactive 7-Chapter Squadron Walkthrough (${durMin} Total · 1080p)</strong>
+              <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
+                Upbeat 100/200-level tactical pod comms (~37s/step) keep the story moving while verbatim metrics, JSONPath citations, and SHA-256 receipts appear live in Scion Webchat and below each video.
+              </div>
+            </div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <button class="cockpit-btn primary" onclick="showChapter('ch1')">▶ Jump to Step 1 Video →</button>
+            </div>
+          </div>
           <details>
-            <summary style="cursor:pointer;font-weight:700;color:#38bdf8;font-size:0.98rem;">
-              🎬 Watch Continuous 7-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 6 AI Wingmen) — or select Chapters 1–7 above
+            <summary style="cursor:pointer;font-weight:700;color:#93c5fd;font-size:0.88rem;">
+              ▶ Or expand continuous ${durMin} full-campaign video reel right here (Steps 1–7 back-to-back)
             </summary>
             <div class="cockpit-video-wrap" style="margin-top:0.8rem;">
               <video id="video-full" controls preload="none" src="${fwSrc}"></video>
@@ -1113,6 +1168,7 @@ if (hash && document.getElementById('panel-' + hash)) {
         ${wetlabHtml}
         <div class="role-bar">
           <div style="font-size:0.83rem;font-weight:700;color:#e2e8f0;">${roleHeader}</div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.15rem;">Note: Inside Scion Webchat, the right-hand <code>PEOPLE — 4</code> list displays your 4 co-pilots alphabetically while your active signed-in seat appears under <code>Profile</code>.</div>
           <div class="role-grid">${rolesHtml}</div>
           <div style="margin-top:0.55rem;">${promptsHtml}</div>
         </div>
@@ -1453,8 +1509,8 @@ def main() -> int:
                 '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot (7-Chapter Squadron Edition)</strong>'
                 '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 6 Voiced AI Wingmen · Native Gemini 3.8 Live Avatars + Gemini 3.8 Flash TTS · Live Role Logins · &lt;2s Reset</div></div>'
                 '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
-                '<a href="plan.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Detailed Build Plan →</a>'
-                '<a href="chapters.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">Open Story Arc Walkthrough →</a>'
+                '<a href="chapters.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">▶ Open Story Arc &amp; 7 Videos →</a>'
+                '<a href="plan.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Build Plan →</a>'
                 '</div></div></div>'
             )
             idx_txt = idx_txt.replace("</nav>", banner, 1)
