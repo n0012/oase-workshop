@@ -1,0 +1,303 @@
+{
+  "chapters": {
+    "ch1": {
+      "chapter": "ch1",
+      "number": 1,
+      "slug": "01-pcsk9-coscientist",
+      "title": "Step 1 \u2014 Co-Scientist Hypothesis Ranking (WO-001)",
+      "video_filename": "chapter-01.mp4",
+      "duration_s": 85.07,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 23.57,
+          "timecode": "0:24",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 49.27,
+          "timecode": "0:49",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Computational Biologist",
+          "voice_id": "en-us-advisor-8"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 69.1,
+          "timecode": "1:09",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        }
+      ]
+    },
+    "ch2": {
+      "chapter": "ch2",
+      "number": 2,
+      "slug": "02-pcsk9-genetics-gate1",
+      "title": "Step 2 \u2014 Human Genetics, Multi-Omics & Stage Gate 1 (WO-002..003)",
+      "video_filename": "chapter-02.mp4",
+      "duration_s": 79.93,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Computational Biologist",
+          "voice_id": "en-us-advisor-8"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 17.73,
+          "timecode": "0:18",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 47.53,
+          "timecode": "0:48",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety Lead",
+          "voice_id": "en-ie-advisor-4"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 64.6,
+          "timecode": "1:05",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        }
+      ]
+    },
+    "ch3": {
+      "chapter": "ch3",
+      "number": 3,
+      "slug": "03-pcsk9-structure-gate2",
+      "title": "Step 3 \u2014 AlphaFold 3, Cryptic Pocket & Vina Docking (WO-004..005)",
+      "video_filename": "chapter-03.mp4",
+      "duration_s": 86.4,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Biologist",
+          "voice_id": "en-gb-tutor-17"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 17.97,
+          "timecode": "0:18",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 48.4,
+          "timecode": "0:48",
+          "speaker": "Dr. Raj Patel",
+          "role": "Medicinal Chemist",
+          "voice_id": "en-in-tutor-12"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 70.8,
+          "timecode": "1:11",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Biologist",
+          "voice_id": "en-gb-tutor-17"
+        }
+      ]
+    },
+    "ch4": {
+      "chapter": "ch4",
+      "number": 4,
+      "slug": "04-pcsk9-admet-wetlab-gate3",
+      "title": "Step 4 \u2014 hERG Disqualification, Gate 3 & Wet-Lab Handoff (WO-006)",
+      "video_filename": "chapter-04.mp4",
+      "duration_s": 92.9,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Raj Patel",
+          "role": "Medicinal Chemist",
+          "voice_id": "en-in-tutor-12"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 18.8,
+          "timecode": "0:19",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 56.77,
+          "timecode": "0:57",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety Lead",
+          "voice_id": "en-ie-advisor-4"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 79.2,
+          "timecode": "1:19",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        }
+      ]
+    },
+    "ch5": {
+      "chapter": "ch5",
+      "number": 5,
+      "slug": "05-pcsk9-oral-pk-gate4",
+      "title": "Step 5 \u2014 Human Oral PK (40 mg QD), Dossier & Gate 4 (WO-007..008)",
+      "video_filename": "chapter-05.mp4",
+      "duration_s": 77.43,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety Lead",
+          "voice_id": "en-ie-advisor-4"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 21.23,
+          "timecode": "0:21",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 47.03,
+          "timecode": "0:47",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Computational Biologist",
+          "voice_id": "en-us-advisor-8"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 61.47,
+          "timecode": "1:01",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        }
+      ]
+    },
+    "ch6": {
+      "chapter": "ch6",
+      "number": 6,
+      "slug": "06-pcsk9-governance-audit",
+      "title": "Step 6 \u2014 Adversarial Tamper Drills & Audited Human Override",
+      "video_filename": "chapter-06.mp4",
+      "duration_s": 74.13,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.1-flash-image + veo-3.1-fast-generate-001 + wav2lip_gan_30fps",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "Jump to Human Prompt",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "Jump to Agent Analysis",
+          "time_s": 19.13,
+          "timecode": "0:19",
+          "speaker": "AI Program Lead",
+          "role": "Scion Grove Coordinator",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "Jump to Validator Verdict",
+          "time_s": 41.9,
+          "timecode": "0:42",
+          "speaker": "Dr. Raj Patel",
+          "role": "Medicinal Chemist",
+          "voice_id": "en-in-tutor-12"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "Jump to Stage-Gate Sign-Off",
+          "time_s": 58.2,
+          "timecode": "0:58",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead",
+          "voice_id": "en-us-advisor-10"
+        }
+      ]
+    }
+  },
+  "full_walkthrough": {
+    "video_filename": "full-pilot-walkthrough.mp4",
+    "duration_s": 495.89,
+    "resolution": "1920x1080"
+  }
+}

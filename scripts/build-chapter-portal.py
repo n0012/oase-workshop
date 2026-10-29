@@ -307,7 +307,7 @@ Flagged ideas: 0</div>
   <section class="chapter-panel" id="panel-ch2">
     <div class="chapter-header">
       <h2>Act II (Chapter 2) — Stage 1 Target Validation: Human Genetics, GWAS &amp; Expression (`WO-002`..`WO-003`)</h2>
-      <span class="stage-pill">Stage 1 · checkpoints/ch1</span>
+      <span class="stage-pill">Stage 1 &rarr; Gate 1 · checkpoints/ch2</span>
     </div>
     <div class="grid-2">
       <div>
@@ -349,7 +349,7 @@ highest: liver 47.5 nTPM</div>
   <section class="chapter-panel" id="panel-ch3">
     <div class="chapter-header">
       <h2>Act II (Chapter 3) — Stage 2 Structural Biology, AlphaFold &amp; Pocket/Docking Analysis (`WO-004`..`WO-005`)</h2>
-      <span class="stage-pill">Stage 2 · checkpoints/ch2</span>
+      <span class="stage-pill">Stage 2 &rarr; Gate 2 · checkpoints/ch3</span>
     </div>
     <div class="grid-2">
       <div>
@@ -389,7 +389,7 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
   <section class="chapter-panel" id="panel-ch4">
     <div class="chapter-header">
       <h2>Step 4 &amp; &#9208; Lab Gate — Multiparameter Chemistry, ADMET Filtering &amp; Wet-Lab Handoff (`WO-006`)</h2>
-      <span class="stage-pill">Stage 3 &rarr; Gate 3 &rarr; Lab Gate · checkpoints/ch3..ch4</span>
+      <span class="stage-pill">Stage 3 &rarr; Gate 3 &rarr; Lab Gate · checkpoints/ch4</span>
     </div>
     <div class="grid-2">
       <div>
@@ -426,7 +426,7 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
   <section class="chapter-panel" id="panel-ch5">
     <div class="chapter-header">
       <h2>Step 5 — Human Oral Dose Projection, Candidate Dossier &amp; Gate 4 (`WO-007`..`WO-008`)</h2>
-      <span class="stage-pill">Stage 4 &rarr; Gate 4 (AI + Human Co-Sign) · checkpoints/ch4</span>
+      <span class="stage-pill">Stage 4 &rarr; Gate 4 (AI + Human Co-Sign) · checkpoints/ch5</span>
     </div>
     <div class="stack-full">
       <div class="grid-2">
@@ -475,7 +475,7 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
   <section class="chapter-panel" id="panel-ch6">
     <div class="chapter-header">
       <h2>Step 6 — Validation Checks, Override Review &amp; Architecture Scorecard</h2>
-      <span class="stage-pill">10-Check Validator · 3 Tamper Cases Blocked + 1 Override Logged</span>
+      <span class="stage-pill">10-Check Validator · 3 Tamper Cases Blocked + 1 Override Logged · checkpoints/ch6</span>
     </div>
     <div class="stack-full">
       <div class="grid-2">
@@ -851,7 +851,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, <code>Gemini 3.8 Flash TTS</code> Extended Persona Voices, <code>Gemini Omni 1.1</code> + <code>Gemini 3.1 Image</code> Scientist Avatars, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, <code>Gemini 3.8 Flash TTS</code> Extended Persona Voices, <code>Gemini 3.1 Image</code> + <code>Veo 3.1</code> Lip-Synced Scientist Avatars, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>
@@ -939,7 +939,7 @@ def main() -> int:
                 '</nav>\n<div id="pilot-top-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#ffffff;padding:1.15rem 2rem;border-bottom:3px solid #22c55e;">'
                 '<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">'
                 '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot</strong>'
-                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · Gemini 3.8 TTS Extended Voices + Omni 1.1 Avatars · Live Role Logins · &lt;2s Reset</div></div>'
+                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · Gemini 3.8 TTS Extended Voices + Veo 3.1 Lip-Synced Avatars · Live Role Logins · &lt;2s Reset</div></div>'
                 '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
                 '<a href="plan.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Detailed Build Plan →</a>'
                 '<a href="chapters.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">Open Story Arc Walkthrough →</a>'

@@ -502,6 +502,16 @@ def ensure_personas_and_purge_admin(db_path: Path, domain: str, avatars_dir: Pat
         f"UPDATE agents SET owner_id = ?, created_by = ? WHERE owner_id IS NULL OR owner_id NOT IN ({placeholders})",
         (sarah_id, sarah_id, *valid_uids),
     )
+    # Remove persona sidebar clutter from legacy source project if present
+    cur.execute("SELECT id FROM projects WHERE slug = 'open-agentic-science-engine'")
+    legacy_row = cur.fetchone()
+    if legacy_row:
+        lpid = legacy_row["id"]
+        cur.execute("DELETE FROM role_bindings WHERE scope_type = 'project' AND scope_id = ?", (lpid,))
+        cur.execute(
+            "DELETE FROM group_memberships WHERE group_id IN (SELECT id FROM groups WHERE project_id = ?)",
+            (lpid,),
+        )
 
     conn.commit()
     conn.close()
@@ -685,6 +695,18 @@ def clone_templates_and_skills(
                         continue
                     if fname == "scion-agent.yaml":
                         data = rewrite_scion_agent_yaml(fpath.read_text(encoding="utf-8")).encode("utf-8")
+                    elif fname == "agents.md":
+                        base_md = fpath.read_text(encoding="utf-8")
+                        if "MANDATORY WEBCHAT REPLY RULE" not in base_md:
+                            base_md += (
+                                "\n\n## MANDATORY WEBCHAT REPLY RULE (CRITICAL — ZERO EXCEPTIONS)\n"
+                                "Whenever an incoming message contains `\"channel\": \"web\"` or `\"conversation\": { \"id\": \"<UUID>\" }` "
+                                "inside `---BEGIN SCION MESSAGE---`:\n"
+                                "1. **Humans in Scion Webchat CANNOT see your terminal stdout!**\n"
+                                "2. You MUST ALWAYS execute `scion message \"conv:<conversation.id>\" - <<'MSG' ... MSG` "
+                                "followed by `sciontool status ask_user` so your grounded 2–3 bullet response renders live in Webchat.\n"
+                            )
+                        data = base_md.encode("utf-8")
                     else:
                         data = fpath.read_bytes()
                     fhex = hashlib.sha256(data).hexdigest()

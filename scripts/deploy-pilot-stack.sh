@@ -127,8 +127,7 @@ if ! gcloud compute firewall-rules describe "${SCION_VM_NAME}-allow-state-contro
     --direction=INGRESS \
     --action=ALLOW \
     --rules=tcp:8780 \
-    --source-ranges=10.128.0.0/20 \
-    --target-tags="${SCION_VM_NAME}" \
+    --source-ranges=10.128.0.0/20,35.235.240.0/20 \
     --quiet
 fi
 
@@ -177,17 +176,59 @@ if [[ "${SKIP_STORY_ARC}" == "false" && -f "${REPO_ROOT}/services/story-arc/app.
   SCION_PROXY_URL="$(gcloud run services describe "${SCION_IAP_SERVICE}" \
     --region="${REGION}" --project="${GCP_PROJECT_ID}" \
     --format='value(status.url)')"
+  PROJECT_NUM="$(gcloud projects describe "${GCP_PROJECT_ID}" --format='value(projectNumber)')"
+  COMPUTE_SA="${PROJECT_NUM}-compute@developer.gserviceaccount.com"
+  GIT_SHA="$(git -C "${REPO_ROOT}" rev-parse --short HEAD)"
+  AR_REPO="cloud-run-source-deploy"
+  IMAGE_URI="${REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${AR_REPO}/${STORY_ARC_SERVICE}:${GIT_SHA}"
+
+  gcloud artifacts repositories create "${AR_REPO}" \
+    --project="${GCP_PROJECT_ID}" \
+    --repository-format=docker \
+    --location="${REGION}" 2>/dev/null || true
+
+  for cb_role in roles/cloudbuild.builds.builder roles/logging.logWriter roles/artifactregistry.writer roles/storage.objectViewer; do
+    gcloud projects add-iam-policy-binding "${GCP_PROJECT_ID}" \
+      --member="serviceAccount:${COMPUTE_SA}" \
+      --role="${cb_role}" \
+      --condition=None \
+      --quiet >/dev/null
+  done
+
+  gcloud storage buckets add-iam-policy-binding "gs://${GCS_BUNDLE_BUCKET}" \
+    --member="serviceAccount:${COMPUTE_SA}" \
+    --role="roles/storage.objectViewer" \
+    --project="${GCP_PROJECT_ID}" >/dev/null
+
+  STORY_BUILD_DIR="$(mktemp -d /tmp/oase-story-arc-build-XXXXXX)"
+  cp -a "${REPO_ROOT}/services/story-arc/." "${STORY_BUILD_DIR}/"
+  mkdir -p "${STORY_BUILD_DIR}/static"
+  cp -a "${REPO_ROOT}/site-template/." "${STORY_BUILD_DIR}/static/"
+  python3 "${REPO_ROOT}/scripts/build-chapter-portal.py" "${STORY_BUILD_DIR}/static"
+
+  gcloud builds submit "${STORY_BUILD_DIR}" \
+    --project="${GCP_PROJECT_ID}" \
+    --region="${REGION}" \
+    --tag="${IMAGE_URI}" \
+    --quiet
 
   gcloud run deploy "${STORY_ARC_SERVICE}" \
-    --source="${REPO_ROOT}/services/story-arc" \
+    --image="${IMAGE_URI}" \
     --project="${GCP_PROJECT_ID}" \
     --region="${REGION}" \
     --iap \
     --no-allow-unauthenticated \
+    --port=8080 \
+    --memory=1Gi \
+    --cpu=1 \
+    --min-instances=0 \
+    --max-instances=5 \
     --network=default \
     --subnet=default \
     --vpc-egress=all-traffic \
-    --set-env-vars="GCP_PROJECT_ID=${GCP_PROJECT_ID},WORKSHOP_DOMAIN=${WORKSHOP_DOMAIN},GCS_BUNDLE_BUCKET=${GCS_BUNDLE_BUCKET},SCION_HUB_URL=${SCION_PROXY_URL},STATE_CONTROLLER_URL=http://${VM_INTERNAL_IP}:8780"
+    --set-env-vars="GCP_PROJECT_ID=${GCP_PROJECT_ID},WORKSHOP_DOMAIN=${WORKSHOP_DOMAIN},GCS_BUNDLE_BUCKET=${GCS_BUNDLE_BUCKET},SCION_HUB_URL=${SCION_PROXY_URL},STATE_CONTROLLER_URL=http://${VM_INTERNAL_IP}:8780" \
+    --quiet
+  rm -rf "${STORY_BUILD_DIR}"
 
   python3 "${REPO_ROOT}/scripts/provision-personas-iam.py" \
     --project-id "${GCP_PROJECT_ID}" \
