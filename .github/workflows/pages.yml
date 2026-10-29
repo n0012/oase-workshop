@@ -21,8 +21,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (LFS pointers first for cache lookup)
         uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Cache Git LFS objects
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-videos-${{ hashFiles('site-template/assets/videos/*.mp4') }}
+
+      - name: Pull & materialize Git LFS videos
+        run: |
+          git lfs install --local
+          git lfs pull
+          git lfs checkout
 
       - name: Run Fail-Closed Repository Hygiene Gate
         run: ./scripts/preflight.sh --check-hygiene
@@ -41,6 +55,9 @@ jobs:
           test -f _site_dist/chapters.html
           test -f _site_dist/plan.html
           test -f _site_dist/index.html
+          test $(wc -c < _site_dist/assets/videos/chapter-01.mp4) -gt 1000000
+          test $(wc -c < _site_dist/assets/videos/chapter-07.mp4) -gt 1000000
+          test $(wc -c < _site_dist/assets/videos/full-pilot-walkthrough.mp4) -gt 1000000
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

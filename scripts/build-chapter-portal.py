@@ -651,6 +651,496 @@ if (hash && document.getElementById('panel-' + hash)) {
   showChapter(hash);
 }
 </script>
+
+<style id="oase-cockpit-style">
+  .cockpit-ControlBar {
+    background: #0f172a;
+    color: #f8fafc;
+    border-bottom: 2px solid #10b981;
+    padding: 0.55rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.84rem;
+  }
+  .cockpit-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(16, 185, 129, 0.14);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .cockpit-btn {
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #475569;
+    padding: 0.38rem 0.78rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cockpit-btn:hover { background: #334155; border-color: #94a3b8; }
+  .cockpit-btn.danger { background: #7f1d1d; border-color: #ef4444; color: #fecaca; }
+  .cockpit-btn.danger:hover { background: #991b1b; }
+  .cockpit-btn.primary { background: #059669; border-color: #10b981; color: #ffffff; }
+  .cockpit-btn.primary:hover { background: #047857; }
+  .cockpit-drawer {
+    display: none;
+    background: #020617;
+    color: #e2e8f0;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #334155;
+  }
+  .cockpit-drawer.open { display: block; }
+  .cockpit-drawer table th { background: #0f172a; color: #94a3b8; border-bottom: 1px solid #1e293b; }
+  .cockpit-drawer table td { border-bottom: 1px solid #1e293b; color: #e2e8f0; font-size: 0.82rem; }
+  .cockpit-stage-card {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 1.35rem;
+    border: 1px solid #334155;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.16);
+  }
+  .cockpit-video-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #475569;
+    background: #000;
+  }
+  .cockpit-video-wrap video {
+    width: 100%;
+    max-height: 600px;
+    display: block;
+    background: #000;
+  }
+  .scrub-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+  .scrub-pill {
+    background: rgba(37, 99, 235, 0.22);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    border-radius: 999px;
+    padding: 0.32rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .scrub-pill:hover { background: #2563eb; color: #ffffff; }
+  .role-bar {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+  }
+  .role-grid {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .role-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1e293b;
+    color: #f8fafc;
+    text-decoration: none;
+    padding: 0.38rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  a.role-link:hover { background: #2563eb; border-color: #60a5fa; color: #fff; }
+  .role-link.lead { border-color: #10b981; background: rgba(16, 185, 129, 0.18); }
+  .role-link img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1.5px solid #38bdf8; }
+  .prompt-chip {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px dashed #475569;
+    color: #cbd5e1;
+    padding: 0.42rem 0.7rem;
+    border-radius: 6px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.76rem;
+    cursor: pointer;
+    margin-top: 0.45rem;
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+  .prompt-chip:hover { border-color: #38bdf8; color: #ffffff; }
+  .wetlab-callout {
+    margin-top: 0.9rem;
+    background: rgba(245, 158, 11, 0.14);
+    border-left: 4px solid #f59e0b;
+    padding: 0.7rem 0.95rem;
+    border-radius: 0 6px 6px 0;
+    color: #fde68a;
+    font-size: 0.83rem;
+  }
+  #cockpit-toast {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: #059669;
+    color: #ffffff;
+    padding: 0.7rem 1.1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    display: none;
+    z-index: 99999;
+  }
+</style>
+<div id="cockpit-toast"></div>
+<script id="oase-cockpit-script">
+(function() {
+  const STATIC_VIDEO_MANIFEST = __VIDEO_MANIFEST_JSON__;
+  const DEFAULT_PERSONAS = [
+    {"key": "sarah", "prefix": "oase-sarah", "name": "Dr. Sarah Chen", "role": "Program Lead", "avatar": "assets/avatars/sarah.jpg"},
+    {"key": "marcus", "prefix": "oase-marcus", "name": "Dr. Marcus Vance", "role": "Comp Bio", "avatar": "assets/avatars/marcus.jpg"},
+    {"key": "elena", "prefix": "oase-elena", "name": "Dr. Elena Rostova", "role": "Structural Bio", "avatar": "assets/avatars/elena.jpg"},
+    {"key": "raj", "prefix": "oase-raj", "name": "Dr. Raj Patel", "role": "Med Chem", "avatar": "assets/avatars/raj.jpg"},
+    {"key": "claire", "prefix": "oase-claire", "name": "Dr. Claire Moreau", "role": "DMPK & Safety", "avatar": "assets/avatars/claire.jpg"}
+  ];
+  const DEFAULT_LEADS = { ch1: "sarah", ch2: "marcus", ch3: "elena", ch4: "raj", ch5: "claire", ch6: "elena", ch7: "sarah" };
+  const DEFAULT_PROMPTS = {
+    ch1: [
+      "@computational-biologist What specific structural liability caused IC-002 to trail IC-001 by 54.5 Elo points in WO-001?",
+      "@science-program-lead Summarize which Stage 0 risk relays remain open as we enter Step 2 human genetics."
+    ],
+    ch2: [
+      "@computational-biologist Compare our PCSK9 hepatocyte TPM in GTEx against extrahepatic CNS tissues in WO-002.",
+      "@science-program-lead Why must alphagenome.quantile_not_clinical_effect stay attached after Stage Gate 1?"
+    ],
+    ch3: [
+      "@structural-biologist Compare cryptic Pocket #1 druggability (0.68) against the flat EGF-A PPI surface (0.24) in WO-004.",
+      "@science-program-lead Which chemical liability on PCSK9-A02 (-9.4 kcal/mol) requires MMP triage in Step 4?"
+    ],
+    ch4: [
+      "@medicinal-chemist Explain how the 1,2,4-oxadiazole swap in OASE-PCSK9-014 resolved the Aronov hERG alert from PCSK9-A02.",
+      "@admet-dmpk-scientist List the exact experimental CRO assays required at the Gate 3 Wet-Lab handoff before Step 5 unlocks."
+    ],
+    ch5: [
+      "@admet-dmpk-scientist How does OASE-PCSK9-014 (40 mg QD oral tablet, F=52%) compare against macrocyclic PCSK9 comparators?",
+      "@science-program-lead Confirm all 8 Work Orders and risk relays verified in executive/CANDIDATE-SUMMARY.md."
+    ],
+    ch6: [
+      "@finding-validator Which exact rule blocked Drill 2 when docking.score_not_affinity was omitted from the finding?",
+      "@science-program-lead Show the audit record for the PCSK9-B07 Lipinski MW override in .oase/control/events.ndjson."
+    ],
+    ch7: [
+      "@science-program-lead Summarize our complete 8-Work-Order portfolio handoff package for OASE-PCSK9-014 (40 mg oral QD) in executive/PORTFOLIO-HANDOFF.md.",
+      "@project-curator List the key executive dossier and stage-gate receipts published in the 30-page Evidence Portal."
+    ]
+  };
+
+  function showToast(msg, isErr) {
+    const t = document.getElementById('cockpit-toast');
+    if (!t) return;
+    t.style.background = isErr ? '#dc2626' : '#059669';
+    t.textContent = msg;
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 4200);
+  }
+
+  window.oaseSeekVideo = function(chId, sec) {
+    const v = document.getElementById('video-' + chId);
+    if (!v) return;
+    v.currentTime = sec;
+    v.play().catch(() => {});
+  };
+
+  window.oaseCopyPrompt = function(txt) {
+    navigator.clipboard.writeText(txt).then(() => {
+      showToast('Copied follow-up prompt to clipboard!');
+    });
+  };
+
+  window.oaseResetChapter = async function(chId) {
+    showToast('Resetting ' + chId.toUpperCase() + ' Grove + Scion SQLite...');
+    try {
+      const r = await fetch('/api/state/chapters/' + chId + '/reset', { method: 'POST' });
+      const d = await r.json();
+      if (!r.ok || !d.ok) throw new Error(d.detail || 'Reset failed');
+      showToast('Reset ' + chId.toUpperCase() + ' complete in ' + d.duration_ms + ' ms (commit ' + d.git_commit + ')!');
+      await refreshCockpit();
+    } catch (e) {
+      showToast('Reset error: ' + e.message, true);
+    }
+  };
+
+  window.oaseResetAll = async function() {
+    showToast('Resetting all 8 chapters (ch0..ch7) to Golden Snapshot...');
+    try {
+      const r = await fetch('/api/state/reset-all', { method: 'POST' });
+      const d = await r.json();
+      if (!r.ok || !d.ok) throw new Error(d.detail || 'Reset-all failed');
+      showToast('Reset all ' + d.chapters_reset + ' chapters to t=0 / Golden State in ' + d.duration_ms + ' ms!');
+      await refreshCockpit();
+    } catch (e) {
+      showToast('Reset-all error: ' + e.message, true);
+    }
+  };
+
+  window.oaseToggleDrawer = function() {
+    const dr = document.getElementById('oase-facilitator-drawer');
+    if (dr) dr.classList.toggle('open');
+  };
+
+  function buildTopBar(cfg, isLive) {
+    let bar = document.getElementById('oase-cockpit-topbar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'oase-cockpit-topbar';
+      bar.className = 'cockpit-ControlBar';
+      const dr = document.createElement('div');
+      dr.id = 'oase-facilitator-drawer';
+      dr.className = 'cockpit-drawer';
+      const nav = document.querySelector('nav');
+      if (nav && nav.parentNode) {
+        nav.parentNode.insertBefore(dr, nav.nextSibling);
+        nav.parentNode.insertBefore(bar, dr);
+      }
+    }
+    if (!isLive) {
+      bar.innerHTML = `
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+          <span class="cockpit-status-pill">● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)</span>
+          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
+          <span style="color:#94a3b8;font-size:0.78rem;">Live 5-Persona Scion Grove &amp; &lt;2s Reset Active on Cloud Run Cockpit</span>
+        </div>
+      `;
+      return;
+    }
+
+    const st = cfg.state || {};
+    const chCount = Object.keys(st.chapters || {}).length;
+    const statusText = st.ok
+      ? `● Live Grove Connected · ${chCount} Chapters Ready · Admin Leaks: ${st.admin_rows_count ?? 0}`
+      : `● Static Replay Mode (State Controller unreachable)`;
+
+    const ch0 = (st.chapters || {}).ch0;
+    const ch0Url = (cfg.scion_hub_url && ch0 && cfg.workshop_domain)
+      ? `${cfg.scion_hub_url}/chat/${ch0.slug}/${ch0.general_topic_id}?authuser=oase-sarah@${cfg.workshop_domain}`
+      : '#';
+
+    bar.innerHTML = `
+      <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+        <span class="cockpit-status-pill">${statusText}</span>
+        ${cfg.signed_in_user ? `<span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">Signed in: <strong style="color:#fff;">${cfg.signed_in_user}</strong></span>` : ''}
+      </div>
+      <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
+        ${ch0Url !== '#' ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">🧪 Launch Fresh Sandbox (ch0 · t=0) ↗</a>` : ''}
+        <button class="cockpit-btn" onclick="oaseToggleDrawer()">⚙ Facilitator Reset Drawer</button>
+        <button class="cockpit-btn danger" onclick="oaseResetAll()">↺ Reset Entire Demo (t=0)</button>
+      </div>
+    `;
+
+    const dr = document.getElementById('oase-facilitator-drawer');
+    if (dr && st.chapters) {
+      const rows = Object.values(st.chapters).map(c => `
+        <tr>
+          <td><strong>${c.chapter.toUpperCase()}</strong></td>
+          <td><code>${c.slug}</code></td>
+          <td><code>${c.active_git_tag}</code> (<code>${c.git_commit}</code>)</td>
+          <td>${c.message_count} msgs · ${c.artifact_count} artifacts</td>
+          <td><code>${(c.running_agents || []).join(', ')}</code></td>
+          <td>${c.last_reset_duration_ms ? c.last_reset_duration_ms + ' ms' : 'Golden'}</td>
+          <td><button class="cockpit-btn" onclick="oaseResetChapter('${c.chapter}')">↺ Reset ${c.chapter.toUpperCase()}</button></td>
+        </tr>
+      `).join('');
+      dr.innerHTML = `
+        <div style="max-width:1320px;margin:0 auto;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+            <strong>Facilitator Live Chapter &amp; SQLite Snapshot Controller (Sub-2s Non-Disruptive Reset)</strong>
+            <span style="color:#94a3b8;font-size:0.78rem;">Golden Snapshot: ${st.golden_snapshot_updated_at || 'Active'} · Preserves all 5 Chrome sessions</span>
+          </div>
+          <table>
+            <thead><tr><th>Stage</th><th>Scion Project</th><th>Git Tag</th><th>Hub DB State</th><th>Live Specialist Containers</th><th>Last Reset</th><th>Action</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      `;
+    }
+  }
+
+  function injectChapterCards(cfg, isLive) {
+    const manifest = (cfg && cfg.videos) || STATIC_VIDEO_MANIFEST || {};
+    const videos = manifest.chapters || {};
+    const fullVideo = manifest.full_walkthrough;
+    const stChapters = (cfg && cfg.state && cfg.state.chapters) || {};
+    const personas = (cfg && cfg.personas) || DEFAULT_PERSONAS;
+    const promptsMap = (cfg && cfg.followup_prompts) || DEFAULT_PROMPTS;
+    const videoBase = isLive ? '/api/videos/' : 'assets/videos/';
+
+    if (fullVideo && !document.getElementById('cockpit-full-walkthrough-card')) {
+      const whyPanel = document.getElementById('panel-why');
+      if (whyPanel) {
+        const fwCard = document.createElement('div');
+        fwCard.id = 'cockpit-full-walkthrough-card';
+        fwCard.className = 'cockpit-stage-card';
+        const durMin = fullVideo.duration_s ? (fullVideo.duration_s / 60).toFixed(1) + ' min' : '7 Chapters';
+        const fwFile = fullVideo.video_filename || 'full-pilot-walkthrough.mp4';
+        const fwSrc = isLive ? `${videoBase}${fwFile}?v=${fullVideo.duration_s || '267'}` : `${videoBase}${fwFile}`;
+        fwCard.innerHTML = `
+          <details>
+            <summary style="cursor:pointer;font-weight:700;color:#38bdf8;font-size:0.98rem;">
+              🎬 Watch Continuous 7-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 6 AI Wingmen) — or select Chapters 1–7 above
+            </summary>
+            <div class="cockpit-video-wrap" style="margin-top:0.8rem;">
+              <video id="video-full" controls preload="none" src="${fwSrc}"></video>
+            </div>
+          </details>
+        `;
+        const hdr = whyPanel.querySelector('.chapter-header');
+        if (hdr && hdr.nextSibling) {
+          whyPanel.insertBefore(fwCard, hdr.nextSibling);
+        }
+      }
+    }
+
+    ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
+      const panel = document.getElementById('panel-' + chId);
+      if (!panel) return;
+      const vmeta = videos[chId];
+      const cstate = stChapters[chId] || {};
+      const leadKey = cstate.lead_human || DEFAULT_LEADS[chId] || 'sarah';
+      let card = document.getElementById('cockpit-card-' + chId);
+      const isNew = !card;
+      if (isNew) {
+        card = document.createElement('div');
+        card.id = 'cockpit-card-' + chId;
+        card.className = 'cockpit-stage-card';
+        const hdr = panel.querySelector('.chapter-header');
+        if (hdr && hdr.nextSibling) {
+          panel.insertBefore(card, hdr.nextSibling);
+        } else {
+          panel.prepend(card);
+        }
+      } else {
+        const badge = document.getElementById('cockpit-state-badge-' + chId);
+        if (badge && cstate.git_commit) {
+          badge.textContent = `Live Project: ${cstate.slug} · Git ${cstate.git_commit} · ${cstate.message_count} Webchat msgs · ${(cstate.running_agents || []).length} live containers`;
+        }
+        return;
+      }
+
+      const markersHtml = vmeta && vmeta.markers
+        ? vmeta.markers.map(m =>
+            `<button class="scrub-pill" onclick="oaseSeekVideo('${chId}', ${m.time_s})">▶ ${m.label} (${m.timecode}) · ${m.speaker}</button>`
+          ).join('')
+        : '';
+
+      const rolesHtml = personas.map(p => {
+        const isLead = p.key === leadKey;
+        if (isLive) {
+          const email = cfg.workshop_domain ? `${p.prefix}@${cfg.workshop_domain}` : '';
+          const liveHref = (cfg.scion_hub_url && cstate.slug && cstate.general_topic_id && email)
+            ? `${cfg.scion_hub_url}/chat/${cstate.slug}/${cstate.general_topic_id}?authuser=${encodeURIComponent(email)}`
+            : (cfg.scion_hub_url ? `${cfg.scion_hub_url}/chat` : '#');
+          return `
+            <a class="role-link ${isLead ? 'lead' : ''}" href="${liveHref}" target="_blank" rel="noopener">
+              <img src="${p.avatar}" alt="${p.name}">
+              <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · LEAD' : ''})</small></span>
+            </a>
+          `;
+        }
+        return `
+          <span class="role-link ${isLead ? 'lead' : ''}" title="Deploy or open the Cloud Run Story Arc Cockpit to jump live into Scion Hub as ${p.name}">
+            <img src="${p.avatar}" alt="${p.name}">
+            <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · LEAD' : ''})</small></span>
+          </span>
+        `;
+      }).join('');
+
+      const promptsHtml = (promptsMap[chId] || []).map(pr =>
+        `<button class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(pr)})'>📋 Copy Live Follow-Up Prompt: "${pr}"</button>`
+      ).join('');
+
+      const wetlabHtml = chId === 'ch4'
+        ? `<div class="wetlab-callout"><strong>⏸ Explicit Future-State Wet-Lab / CRO Assay Handoff Slot:</strong> Campaign pauses on disk at <code>WO-006</code> (<code>gates/GATE-03-wetlab-handoff.md</code>) after disqualifying <code>PCSK9-A02</code> on cardiac hERG—awaiting experimental SPR <code>K<sub>D</sub></code>, manual patch-clamp hERG (<code>&gt;30 µM</code>), and rat/dog cassette PK before <code>WO-007</code> unlocks.</div>`
+        : '';
+
+      const videoFilename = vmeta ? vmeta.video_filename : `chapter-0${chId.slice(2)}.mp4`;
+      const videoVer = vmeta && vmeta.duration_s ? vmeta.duration_s : '38';
+      const videoSrc = isLive ? `${videoBase}${videoFilename}?v=${videoVer}` : `${videoBase}${videoFilename}`;
+      const subBadge = isLive && cstate.slug
+        ? `Live Project: ${cstate.slug} · Git ${cstate.git_commit} · ${cstate.message_count} Webchat msgs · ${(cstate.running_agents || []).length} live containers`
+        : `Scion Grove Checkpoint: ${(vmeta && vmeta.slug) || chId} · ${vmeta && vmeta.duration_s ? vmeta.duration_s + 's' : '1080p'} · 5 Live Avatars + 6 AI Wingmen`;
+      const resetBtnHtml = isLive
+        ? `<button class="cockpit-btn" onclick="oaseResetChapter('${chId}')">↺ Reset ${chId.toUpperCase()} (&lt;2s)</button>`
+        : '';
+      const roleHeader = isLive
+        ? `🚀 Join Live at This Stage As Any of the 5 Discovery Pod Scientists (Zero Admin Noise):`
+        : `👩‍🔬 5-Scientist Human Discovery Pod Roster &amp; Follow-Up Q&amp;A Prompts (Live Webchat Active on Cloud Run):`;
+
+      card.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+          <div>
+            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini 3.8 Live Avatars + Multi-Model Grove)</strong>
+            <div id="cockpit-state-badge-${chId}" style="font-size:0.77rem;color:#94a3b8;font-family:monospace;margin-top:0.15rem;">
+              ${subBadge}
+            </div>
+          </div>
+          ${resetBtnHtml}
+        </div>
+        <div class="cockpit-video-wrap">
+          <video id="video-${chId}" controls preload="metadata" src="${videoSrc}"></video>
+        </div>
+        <div class="scrub-bar">${markersHtml}</div>
+        ${wetlabHtml}
+        <div class="role-bar">
+          <div style="font-size:0.83rem;font-weight:700;color:#e2e8f0;">${roleHeader}</div>
+          <div class="role-grid">${rolesHtml}</div>
+          <div style="margin-top:0.55rem;">${promptsHtml}</div>
+        </div>
+      `;
+    });
+  }
+
+  async function refreshCockpit() {
+    try {
+      const r = await fetch('/api/cockpit/config', { cache: 'no-store' });
+      if (r.ok) {
+        const cfg = await r.json();
+        buildTopBar(cfg, true);
+        injectChapterCards(cfg, true);
+        return;
+      }
+    } catch (_) {}
+    buildTopBar(null, false);
+    injectChapterCards(null, false);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', refreshCockpit);
+  } else {
+    refreshCockpit();
+  }
+})();
+</script>
 </body>
 </html>
 """
@@ -890,10 +1380,20 @@ def main() -> int:
         body_inner = re.sub(r"<nav[^>]*>.*?</nav>", "", body_inner, count=1, flags=re.DOTALL | re.IGNORECASE)
         subpages[html_file.name] = body_inner.strip()
 
+    vmanifest_path = site_dir / "assets" / "video-chapters-manifest.json"
+    if not vmanifest_path.is_file():
+        vmanifest_path = repo_root / "site-template" / "assets" / "video-chapters-manifest.json"
+    vmanifest_data = (
+        json.loads(vmanifest_path.read_text(encoding="utf-8"))
+        if vmanifest_path.is_file()
+        else {"chapters": {}}
+    )
+
     html_out = (
         CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge)
         .replace("__ENV_SHA__", env_sha)
         .replace("__SUBPAGES_JSON__", json.dumps(subpages))
+        .replace("__VIDEO_MANIFEST_JSON__", json.dumps(vmanifest_data))
     )
     # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
     for img_path in sorted(site_assets.iterdir()):

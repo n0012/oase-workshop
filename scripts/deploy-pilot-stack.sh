@@ -205,6 +205,7 @@ if [[ "${SKIP_STORY_ARC}" == "false" && -f "${REPO_ROOT}/services/story-arc/app.
   cp -a "${REPO_ROOT}/services/story-arc/." "${STORY_BUILD_DIR}/"
   mkdir -p "${STORY_BUILD_DIR}/static"
   cp -a "${REPO_ROOT}/site-template/." "${STORY_BUILD_DIR}/static/"
+  rm -rf "${STORY_BUILD_DIR}/static/assets/videos"
   python3 "${REPO_ROOT}/scripts/build-chapter-portal.py" "${STORY_BUILD_DIR}/static"
 
   gcloud builds submit "${STORY_BUILD_DIR}" \
