@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Augments `oase site build` output (`_site/`) with `chapters.html` and article visual plates.
+"""Augments `oase site build` output (`_site/`) with `chapters.html`, `plan.html`, and visual plates.
 
 Provides an interactive 3-Act Walkthrough covering:
   - Act I: Why Chatbot Science Fails & How Scion + OASE Solves It (`#why`, `#scion`)
-  - Act II: Live PCSK9 Campaign Simulation & 4 Adversarial Governance Drills (`#ch1`..`#ch5`)
-  - Act III: The Complete Picture, 31-Page Portal & Architecture Scorecard (`#ch6`)
+  - Act II: Live PCSK9 Campaign Simulation & Adversarial Governance Drills (`#ch1`..`#ch6`)
+  - Act III: Executive Portfolio Closeout (`Grove-1`), 30-Page Portal & Architecture Scorecard (`#ch7`)
 """
 
 from __future__ import annotations
@@ -127,7 +127,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <section class="chapter-panel active" id="panel-why">
     <div class="chapter-header">
       <h2>Act I (Part 1) — Why Agentic Drug Discovery Is Harder Than It Looks &amp; What You'll See in This Demo</h2>
-      <span class="stage-pill">4 Challenges · 5 Artifact Layers · 6 Steps + Wet-Lab Gate</span>
+      <span class="stage-pill">4 Challenges · 5 Artifact Layers · 7 Steps + Wet-Lab Gate</span>
     </div>
     <div class="stack-full">
       <div class="plate-box" id="plate-thumb">
@@ -176,24 +176,25 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 
       <div>
         <h3 style="margin: 0.5rem 0 0.4rem 0; color: #0f172a;">What You'll See in This Demo: Oral PCSK9 Campaign (<code>pcsk9-oral</code>)</h3>
-        <p style="font-size: 0.92rem; color: #334155; margin: 0 0 0.75rem 0;">A <strong>human discovery pod of 5</strong> (Program Lead, Computational Biologist, Structural Biologist, Medicinal Chemist, DMPK &amp; Safety Lead) collaborates with a <strong>mirrored 11-agent AI team</strong> (AI Program Lead, 8 Domain Specialists, Independent Reviewer, and Validator) across 6 steps, 4 go/no-go stage gates, and 1 physical lab handoff:</p>
+        <p style="font-size: 0.92rem; color: #334155; margin: 0 0 0.75rem 0;">A <strong>human discovery pod of 5</strong> (Program Lead <code>GOLD-1</code>, Computational Biologist <code>GOLD-2</code>, Structural Biologist <code>GOLD-3</code>, Medicinal Chemist <code>GOLD-4</code>, DMPK &amp; Safety Lead <code>GOLD-5</code>) collaborates with a <strong>mirrored 11-agent AI team</strong> (including 6 voiced specialist wingmen: <code>Grove-1</code>, <code>Helix-2</code>, <code>Fold-3</code>, <code>Spark-4</code>, <code>Shield-5</code>, and <code>Aegis-6</code>) across 7 steps, 4 go/no-go stage gates, and 1 physical lab handoff:</p>
         <div class="plate-box" id="plate-stage-gate">
           <img src="assets/oase_stage_gate_process.png" alt="GCP-OASE Stage-Gate Process" onclick="openLightbox(this.src, this.alt)">
           <div class="plate-caption">
-            <span>Figure 3 — Stage-Gate Process: Six demo steps, four logged go/no-go gates, and one lab handoff.</span>
+            <span>Figure 3 — Stage-Gate Process: Campaign stages, four logged go/no-go gates, and one wet-lab handoff.</span>
             <span class="zoom-hint" onclick="openLightbox(this.parentElement.previousElementSibling.src, this.parentElement.previousElementSibling.alt)">&#128269; Click to enlarge</span>
           </div>
         </div>
         <table>
           <thead><tr><th>Step</th><th>Stage, Gate &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
           <tbody>
-            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td>Ingest &amp; rank upstream AI Co-Scientist Elo tournament: allosteric small-molecule <code>IC-001</code> (<code>1642.5 Elo</code>) leads cyclic peptide <code>IC-002</code> (<code>1588.0 Elo</code>); logs caveat <code>hypothesis.adopted_not_generated</code>.</td></tr>
-            <tr><td><strong>Step 2</strong></td><td>Stage 1 &rarr; <strong>Gate 1</strong> (<code>WO-002..003</code>)</td><td>Validate PCSK9 in human genetics &amp; liver omics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). <strong>AI + Human Program Leads co-sign Gate 1 (Target Validation).</strong></td></tr>
-            <tr><td><strong>Step 3</strong></td><td>Stage 2 &rarr; <strong>Gate 2</strong> (<code>WO-004..005</code>)</td><td>AlphaFold 3 co-fold (<code>ipTM = 0.84</code>, <code>pTM = 0.88</code>), <code>fpocket</code> (<code>0.68</code> groove vs <code>0.24</code> flat surface), and AutoDock Vina (<code>-9.4 kcal/mol</code>). <strong>AI Program Lead signs Gate 2 (Hit Identification) &amp; logs liability <code>L-002</code>.</strong></td></tr>
-            <tr><td><strong>Step 4</strong></td><td>Stage 3 &rarr; <strong>Gate 3</strong> (<code>WO-006</code>)</td><td>Multiparameter chemistry &amp; ADMET filter flags high-lipophilicity cardiac (hERG) alert; optimizes polar heterocycle <code>OASE-PCSK9-014</code> (<code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>0</code> alerts, <code>4</code>-step synthesis). <strong>AI Program Lead signs Gate 3 (Lead Optimization).</strong></td></tr>
+            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td><strong><code>Grove-1</code> (<code>@science-program-lead</code>)</strong> opens the campaign: ingest &amp; rank upstream AI Co-Scientist Elo tournament where allosteric small-molecule <code>IC-001</code> (<code>1642.5 Elo</code>) leads cyclic peptide <code>IC-002</code> (<code>1588.0 Elo</code>); logs caveat <code>hypothesis.adopted_not_generated</code>.</td></tr>
+            <tr><td><strong>Step 2</strong></td><td>Stage 1 &rarr; <strong>Gate 1</strong> (<code>WO-002..003</code>)</td><td><strong><code>Helix-2</code> (<code>@computational-biologist</code>)</strong> validates PCSK9 in human genetics &amp; liver omics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). <strong>AI + Human Program Leads co-sign Gate 1 (Target Validation).</strong></td></tr>
+            <tr><td><strong>Step 3</strong></td><td>Stage 2 &rarr; <strong>Gate 2</strong> (<code>WO-004..005</code>)</td><td><strong><code>Fold-3</code> (<code>@structural-biologist</code>)</strong> runs AlphaFold 3 co-fold (<code>ipTM = 0.84</code>, <code>pTM = 0.88</code>), <code>fpocket</code> (<code>0.68</code> groove vs <code>0.24</code> flat surface), and AutoDock Vina (<code>-9.4 kcal/mol</code>). <strong>AI Program Lead signs Gate 2 (Hit Identification) &amp; logs liability <code>L-002</code>.</strong></td></tr>
+            <tr><td><strong>Step 4</strong></td><td>Stage 3 &rarr; <strong>Gate 3</strong> (<code>WO-006</code>)</td><td><strong><code>Spark-4</code> (<code>@medicinal-chemist</code>)</strong> flags high-lipophilicity cardiac (hERG) alert on <code>PCSK9-A02</code> and optimizes polar heterocycle <code>OASE-PCSK9-014</code> (<code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>0</code> alerts, <code>4</code>-step synthesis). <strong>AI Program Lead signs Gate 3 (Lead Optimization).</strong></td></tr>
             <tr><td><strong>&#9208; Lab Gate</strong></td><td>Lab Handoff (Seeded in Demo)</td><td><strong>Human Program Lead signs Lab Handoff</strong> for synthesis &amp; animal PK studies; agents pause cleanly on disk until measured rat (<code>54%</code>) and dog (<code>61%</code>) oral bioavailability files return.</td></tr>
-            <tr><td><strong>Step 5</strong></td><td>Stage 4 &rarr; <strong>Gate 4</strong> (<code>WO-007..008</code>)</td><td>Project human once-daily dose (<code>40 mg QD</code>, <code>F = 52%</code>, <code>t1/2 = 14.8 h</code>) and compile candidate dossier + HTML Evidence Portal. <strong>AI + Human Program Leads co-sign Gate 4 (Candidate Nomination).</strong></td></tr>
-            <tr><td><strong>Step 6</strong></td><td>Governance &amp; Override Checks</td><td>Run test cases against the 10-check validator: <strong>blocks</strong> missing caveats (<code>REL-001</code>), out-of-tolerance numbers (<code>CIT-003</code>), and altered raw hashes (<code>PROV-002</code>), while <strong>permitting &amp; logging</strong> an audited reviewer override.</td></tr>
+            <tr><td><strong>Step 5</strong></td><td>Stage 4 &rarr; <strong>Gate 4</strong> (<code>WO-007..008</code>)</td><td><strong><code>Shield-5</code> (<code>@admet-dmpk-scientist</code>)</strong> projects human once-daily dose (<code>40 mg QD</code>, <code>F = 52%</code>, <code>t1/2 = 14.8 h</code>) and compiles the candidate dossier. <strong>AI + Human Program Leads co-sign Gate 4 (Candidate Nomination).</strong></td></tr>
+            <tr><td><strong>Step 6</strong></td><td>Governance &amp; Override Checks</td><td><strong><code>Aegis-6</code> (<code>@finding-validator</code>)</strong> stress-tests the 10-check validator: <strong>blocks</strong> missing caveats (<code>REL-001</code>), out-of-tolerance numbers (<code>CIT-003</code>), and altered raw hashes (<code>PROV-002</code>), while <strong>permitting &amp; logging</strong> an audited reviewer override.</td></tr>
+            <tr><td><strong>Step 7</strong></td><td>Mission Closeout &amp; Portfolio Launch</td><td><strong><code>Grove-1</code> (<code>@science-program-lead</code>) + Dr. Sarah Chen &amp; Dr. Elena Rostova</strong> bookend the campaign: sign off <code>executive/PORTFOLIO-HANDOFF.md</code> + the 30-page Evidence Portal for IND-enabling GLP tox and invite attendees into the 5 live Scion Grove seats.</td></tr>
           </tbody>
         </table>
       </div>
@@ -862,7 +863,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod + 11-Agent Multi-Model Grove, Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Joint Audio+Video Scientist Presenters + <code>Gemini 3.8 Flash TTS</code>, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 11-Agent Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 3.8 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>
@@ -949,8 +950,8 @@ def main() -> int:
             banner = (
                 '</nav>\n<div id="pilot-top-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#ffffff;padding:1.15rem 2rem;border-bottom:3px solid #22c55e;">'
                 '<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">'
-                '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot</strong>'
-                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 11-Agent Grove · Native Gemini 3.8 Live Avatars + Gemini 3.8 Flash TTS · Live Role Logins · &lt;2s Reset</div></div>'
+                '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot (7-Chapter Squadron Edition)</strong>'
+                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 6 Voiced AI Wingmen · Native Gemini 3.8 Live Avatars + Gemini 3.8 Flash TTS · Live Role Logins · &lt;2s Reset</div></div>'
                 '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
                 '<a href="plan.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Detailed Build Plan →</a>'
                 '<a href="chapters.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">Open Story Arc Walkthrough →</a>'

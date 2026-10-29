@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# deploy-pilot-stack.sh — Turnkey 5-Persona + 7-Chapter OASE Pilot Deployer
+# deploy-pilot-stack.sh — Turnkey 5-Persona + 8-Checkpoint OASE Pilot Deployer
 #
 # Deploys or updates the complete Team-Based Human + Agent Drug Discovery Pilot
 # in any Google Cloud project from four .env variables:
@@ -148,7 +148,7 @@ gcloud compute ssh "${SCION_VM_NAME}" --zone="${ZONE}" --project="${GCP_PROJECT_
   sudo -u scion tar -xzf /tmp/oase-pilot-sync.tar.gz -C /home/scion/oase-workshop
   rm -f /tmp/oase-pilot-sync.tar.gz
 
-  # Seed 7 chapters (ch0..ch6) + live agent containers
+  # Seed 8 checkpoints (ch0..ch7) + live agent containers
   sudo -u scion python3 /home/scion/oase-workshop/scripts/seed-pilot-chapters.py \
     --gcp-project '${GCP_PROJECT_ID}' \
     --workshop-domain '${WORKSHOP_DOMAIN}' \

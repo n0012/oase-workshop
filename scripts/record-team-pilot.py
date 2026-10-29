@@ -10,12 +10,13 @@ Key Synchronization Guarantees:
    - Excises 100% of off-camera agent waiting spinners (`turnIndex = 0`) and slices exact
      `1.0x` real-time frames (`F_k = round(slot_dur_s * 30)`) so chat messages land on
      screen within ~0.5–1.4s of voice onset with zero `setpts` time-warping.
-2. Joint Native Audio + Video Avatar Synthesis (`gemini-3.8-live`):
-   - Synthesizes all 18 human scientist turns directly via `gemini-3.8-live`
+2. Joint Native Audio + Video Avatar Synthesis (`gemini-3.8-live`) + 6 Specialist AI Wingmen:
+   - Synthesizes all 21 human scientist turns (`Ch 1–7`) directly via `gemini-3.8-live`
      (`BidiGenerateContent` with `response_modalities=[VIDEO]` and `AvatarConfig` prebuilt
      presenters `Ingrid`/`Leda`, `Sam`/`Sadaltager`, `Kira`/`Kore`, `Jay`/`Alnilam`,
-     `Vera`/`Pulcherrima`), jointly generating speech audio, visemes, jaw motion, and gaze
-     in a single phase-locked stream.
+     `Vera`/`Pulcherrima`), paired with 6 specialist `gemini-3.8-flash-tts` AI wingman
+     voices (`Grove-1`, `Helix-2`, `Fold-3`, `Spark-4`, `Shield-5`, `Aegis-6`) and Star Fox
+     tactical comms pips (`mix_comms_chirps_inplace`).
 3. Zero Cumulative A/V Drift:
    - Every turn's video (`F_k` frames @ 30.00 fps) and audio (`F_k * 1600` samples @
      48,000 Hz stereo) come from the exact same `gemini-3.8-live` clip and are locked to
@@ -1092,7 +1093,7 @@ def master_chapter_videos(
             flush=True,
         )
 
-    # Concatenate full-pilot-walkthrough.mp4 if all 6 chapters exist
+    # Concatenate full-pilot-walkthrough.mp4 if all 7 chapters exist
     all_six = [out_videos_dir / c["video_filename"] for c in spec["chapters"]]
     all_vsegs = [seg_tmp_dir / f"{t['turn_id']}_vseg.mp4" for c in spec["chapters"] for t in c["turns"]]
     all_six_wavs = [seg_tmp_dir / f"{c['chapter']}_master_48k.wav" for c in spec["chapters"]]

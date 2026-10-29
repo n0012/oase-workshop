@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Provision and seed the 7-Chapter OASE Team Discovery Pilot on Scion Hub.
+"""Provision and seed the 8-Checkpoint OASE Team Discovery Pilot on Scion Hub.
 
-Creates 7 parallel Scion Hub projects (ch0..ch6), binds the 5 dedicated
+Creates 8 parallel Scion Hub projects (ch0..ch7), binds the 5 dedicated
 workshop scientist accounts (zero admin@ presence), shares the prebuilt OASE
-v0.3.0 scientific toolchain, initializes Git checkpoint tags (ch0..ch6) in
+v0.3.0 scientific toolchain, initializes Git checkpoint tags (ch0..ch7) in
 each Grove workspace, publishes chapter-scoped artifacts, and launches live
 specialist agent containers ready for multi-human Webchat collaboration.
 
@@ -1379,14 +1379,14 @@ def main() -> int:
         share_tools_volume(hub_dir, src_pid, slug, pid)
         clone_templates_and_skills(db_path, hub_dir, src_pid, hub_id, pid, sarah["id"], args.hub_api, token)
 
-        # Initialize Git tags ch0..ch6 in /home/scion/.scion/projects/{slug} checked out at {ch}
+        # Initialize Git tags ch0..ch7 in /home/scion/.scion/projects/{slug} checked out at {ch}
         ws_dir = hub_dir / "projects" / slug
         ws_dir.mkdir(parents=True, exist_ok=True)
         (ws_dir / ".oase-repo").touch()
         if src_skills_dir.exists() and not (ws_dir / "skills").exists():
             subprocess.run(["cp", "-al", str(src_skills_dir), str(ws_dir / "skills")], check=True)
         subprocess.run([str(checkpoint_sh), "init-git-tags", str(ws_dir), ch], check=True)
-        print(f"  [Git] Initialized ch0..ch6 tags in {ws_dir} (HEAD -> {ch})")
+        print(f"  [Git] Initialized ch0..ch7 tags in {ws_dir} (HEAD -> {ch})")
 
         # Launch live specialist agent containers for this chapter
         live_agent_ids: dict[str, str] = {}

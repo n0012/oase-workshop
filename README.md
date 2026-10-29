@@ -22,7 +22,7 @@ Every finding written by an agent is verified by `oase validate check` against 1
 
 ---
 
-## Quickstart (Interactive Checkpoints)
+## Quickstart (Interactive Checkpoints & Turnkey Pilot Stack)
 
 ```bash
 # 1. Configure your environment
@@ -31,9 +31,12 @@ cp .env.example .env
 # 2. Verify CLI prerequisites and repository hygiene
 ./scripts/preflight.sh --check-hygiene
 
-# 3. Inspect or load a verified campaign checkpoint (ch0..ch4)
+# 3. Inspect or load a verified campaign checkpoint (ch0..ch7)
 ./scripts/checkpoint.sh list
 ./scripts/checkpoint.sh jump ch2
+
+# 4. (Optional) Validate or deploy the 5-Persona + 8-Checkpoint Live Pilot Stack
+./scripts/deploy-pilot-stack.sh --dry-run
 ```
 
 ---
@@ -67,22 +70,22 @@ python3 scripts/record-demo-video.py \
 
 ---
 
-## 150-Minute Workshop Curriculum (Modules `00`–`05` ↔ Simulation Chapters `1`–`6`)
+## 150-Minute Workshop Curriculum (Modules `00`–`05` ↔ Pilot Chapters `1`–`7`)
 
-| Curriculum Module | Simulation Chapter | Time | Stage & Work Orders | Checkpoint |
+| Curriculum Module | Story Arc Chapter | Time | Stage & Work Orders | Checkpoint |
 | :--- | :--- | :--- | :--- | :--- |
-| **[00 — Prerequisites & Setup](docs/00-prerequisites.md)** | Prep | T-15m | CLI preflight, Google Cloud project & Scion Hub auth, and surface selection | `ch0` |
-| **[01 — Tour the Grove](docs/01-tour-the-grove.md)** | **Chapter 1** (`#ch1`) | 0:00–0:20 | Stage 0 (`WO-001`): `oase doctor`, Co-Scientist tournament ingest/analyze (`IC-001` Elo `1642.5` vs `IC-002` `1588.0`), and `hypothesis.adopted_not_generated` relay | `ch1` |
-| **[02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md)** | **Chapter 2** (`#ch2`) | 0:20–0:45 | Stage 1 (`WO-002`, `WO-003`): `gnomAD` (`LOF_TOLERANT`), `OpenTargets` (`0.86` live / `0.96` seeded), `GTEx`/`HPA` (`184.2 TPM` / `47.5 nTPM`), and `AlphaGenome` (`0.984`) | `ch2` |
-| **[03 — Structural Biology & Docking](docs/03-structure-docking-af3.md)** | **Chapter 3** (`#ch3`) | 0:45–1:15 | Stage 2 (`WO-004`, `WO-005`): AFDB `Q8NBP7` (`pLDDT = 85.19`), seeded AF3 co-fold (`ipTM = 0.84`), `fpocket` (`0.788` live / `0.68` groove vs `0.24` surface), and AutoDock Vina (`-9.4 kcal/mol`) | `ch3` |
-| **[04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md)** | **Chapters 4–6** (`#ch4`–`#ch6`) | 1:15–1:55 | Stages 3–4 (`WO-006`..`WO-008`): ADMET hERG disqualification of `PCSK9-A02` (`cLogP = 5.09`, 3 liabilities) vs `PCSK9-A03` (`cLogP = 3.01`, 0 liabilities), oral PK (`40 mg QD`), 4 adversarial tamper drills, and `_site/` portal build | `ch4` |
+| **[00 — Prerequisites & Setup](docs/00-prerequisites.md)** | Prep / Sandbox (`t=0`) | T-15m | CLI preflight, Google Cloud project & Scion Hub auth, and surface selection | `ch0` |
+| **[01 — Tour the Grove](docs/01-tour-the-grove.md)** | **Chapter 1** (`#ch1`) | 0:00–0:20 | Stage 0 (`WO-001`): `oase doctor`, Co-Scientist tournament ingest/analyze (`IC-001` Elo `1642.5` vs `IC-002` `1588.0`), `Grove-1` kickoff & `hypothesis.adopted_not_generated` relay | `ch1` |
+| **[02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md)** | **Chapter 2** (`#ch2`) | 0:20–0:45 | Stage 1 (`WO-002`, `WO-003`): `gnomAD` (`LOF_TOLERANT`), `OpenTargets` (`0.86` live / `0.96` seeded), `GTEx`/`HPA` (`184.2 TPM` / `47.5 nTPM`), `AlphaGenome` (`0.984`) & Gate 1 | `ch2` |
+| **[03 — Structural Biology & Docking](docs/03-structure-docking-af3.md)** | **Chapter 3** (`#ch3`) | 0:45–1:15 | Stage 2 (`WO-004`, `WO-005`): AFDB `Q8NBP7` (`pLDDT = 85.19`), seeded AF3 co-fold (`ipTM = 0.84`), `fpocket` (`0.788` live / `0.68` groove vs `0.24` surface), AutoDock Vina (`-9.4 kcal/mol`) & Gate 2 | `ch3` |
+| **[04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md)** | **Chapters 4–7** (`#ch4`–`#ch7`) | 1:15–1:55 | Stages 3–4 (`WO-006`..`WO-008`): ADMET hERG disqualification + Wet-Lab handoff (`ch4`), oral PK `40 mg QD` + Gate 4 (`ch5`), 3 blocked tamper drills + signed override (`ch6`), and `Grove-1` portfolio closeout + 30-page portal (`ch7`) | `ch4`..`ch7` |
 | **[05 — Build & Register Custom Tools](docs/05-extend-custom-tools.md)** | Extension | 1:55–2:30 | Write a two-phase tool adapter (`raw/` + `.meta.json` + `.analysis.json`) and verify it with `oase validate check` | — |
 
 ### Reference Guides & Live Web Portal
 - **[Story Arc & Campaign Replay Website](https://n0012.github.io/oase-workshop/chapters.html)** | **[30-Page Evidence Portal](https://n0012.github.io/oase-workshop/index.html)** | **[Pilot Vision & Live Build Tracker](https://n0012.github.io/oase-workshop/plan.html)**
-- **[Multi-Persona Pilot Plan & Architecture (`docs/PILOT_IMPLEMENTATION_PLAN.md`)](docs/PILOT_IMPLEMENTATION_PLAN.md):** Goal, 5-scientist discovery pod + `Gemini 3.8 Flash TTS` Extended Voice Library & `Gemini Omni 1.1` / `3.1 Image` avatar cast, `<2s` chapter reset architecture, and portable GCP deployment tracker.
+- **[Multi-Persona Pilot Plan & Architecture (`docs/PILOT_IMPLEMENTATION_PLAN.md`)](docs/PILOT_IMPLEMENTATION_PLAN.md):** Goal, 7-chapter Squadron walkthrough with 5 native `Gemini 3.8 Live Avatar` human scientist presenters (`GOLD-1..5`), 6 specialist AI wingmen on `Gemini 3.8 Flash TTS` (`Grove-1`..`Aegis-6`), Star Fox tactical comms HUD, `<2s` chapter reset architecture, and portable GCP deployment tracker.
 - **[Surface Connectivity Reference](docs/surface-connectivity-reference.md):** Connecting Gemini Enterprise (GA), Antigravity IDE (AGY), Gemini CLI, and Scion Web Console (`scion.hlscde.dev`) to the same OASE workspace.
-- **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh`), pacing, and live demo recovery.
+- **[Facilitator Runbook](docs/06-facilitator-guide.md):** Hub seeding (`./scripts/seed-hub.sh` / `./scripts/deploy-pilot-stack.sh`), Story Arc Cockpit pacing, and `<2s` live demo recovery.
 - **[Troubleshooting & Validator Reference](docs/07-troubleshooting.md):** Exact remediation steps for `PROV-001`..`002`, `CIT-001`..`003`, `REL-001`, and `THR-001`.
 - **[Technical Article](ARTICLE.md), [Design PRFAQ](PRFAQ.md) & [Field Evaluation Scorecard](EVALUATION.md):** Background narrative, Working-Backwards rationale, and our 5 field engineering discoveries from deploying OASE v0.3.0 in Google Cloud.
 
@@ -97,30 +100,41 @@ oase-workshop/
 ├── PRFAQ.md                                  # Working-Backwards design document
 ├── EVALUATION.md                             # Reflective comparison of PRFAQ/Article vs. deployed reality
 ├── .env.example                              # Generic environment template
-├── docs/                                     # Step-by-step workshop modules (00–07, video-scenes.json, connectivity ref)
+├── docs/                                     # Workshop modules (00–07), PILOT_IMPLEMENTATION_PLAN.md, connectivity ref
+├── services/
+│   ├── state-controller/                     # FastAPI <2s Git + SQLite snapshot reset daemon (:8780)
+│   └── story-arc/                            # Cloud Run IAP Presenter Cockpit, HTTP 206 video streamer & role switcher
 ├── scripts/
-│   ├── provision-google-cloud-project.py          # Repeatable Google Cloud GCP project & SA provisioner
+│   ├── deploy-pilot-stack.sh                 # Turnkey 4-var .env deployer (8-checkpoint Hub + Cockpit + IAP)
+│   ├── provision-personas-iam.py             # Binds 5 oase-* scientist accounts + facilitator admin@ on Cloud Run IAP
+│   ├── seed-pilot-chapters.py                # Provisions ch0..ch7 Scion Hub projects & live specialist containers
+│   ├── record-team-pilot.py                  # Records & masters 7 Squadron 1080p chapters (Gemini 3.8 Live + TTS)
+│   ├── pilot_chapters_spec.json              # 7-chapter, 28-turn Squadron script, voices, callsigns & HUD spec
+│   ├── provision-google-cloud-project.py     # Repeatable Google Cloud GCP project & SA provisioner
 │   ├── bootstrap-oase-env.sh                 # Builds Python 3.11 venv + 7 scientific binaries + offline KaTeX
-│   ├── run-e2e-simulation.sh                 # Runs Chapters 1–6, 8 WO validations, 4 negative drills & portal build
-│   ├── build-chapter-portal.py               # Generates _site/chapters.html replay & links all 30 portal pages
-│   ├── record-demo-video.py                  # Repeatable Cloud TTS SSML + Playwright 1080p demo video recorder
+│   ├── run-e2e-simulation.sh                 # Runs CLI simulation, 8 WO validations, 4 negative drills & portal build
+│   ├── build-chapter-portal.py               # Generates chapters.html + plan.html & links all 30 portal pages
+│   ├── record-demo-video.py                  # Standalone Cloud TTS SSML + Playwright 1080p portal video recorder
 │   ├── preflight.sh                          # Checks tools, auth, and repo hygiene (--check-hygiene)
-│   ├── seed-hub.sh                           # Provisions the 7-part pcsk9-oral seed on a Scion Hub
-│   ├── checkpoint.sh                         # Restores verified campaign states (ch0..ch4)
+│   ├── seed-hub.sh                           # Provisions the pcsk9-oral seed on a Scion Hub
+│   ├── checkpoint.sh                         # Restores verified campaign states (ch0..ch7)
 │   ├── reset-workshop.sh                     # Resets local workspace to ch0
 │   └── render-customer-overlay.sh            # Generates gitignored customer-specific workshop bundles
 ├── overlays/
 │   ├── README.md                             # Customer overlay guide
 │   └── customer-overlay.env.example          # Template for customer-specific parameters
 └── checkpoints/
-    ├── ch0/                                  # Clean pre-campaign seed (campaign-seed.json, coscientist-export.json)
-    ├── ch1/                                  # WO-001 completed (Co-Scientist seed ingested & validated)
-    ├── ch2/                                  # Stage 1 completed (WO-001..003: Genetics, GTEx & AlphaGenome validated)
-    ├── ch3/                                  # Stage 2 completed (WO-001..005: AF3, fpocket & Vina validated)
-    └── ch4/                                  # Stages 3–4 completed (WO-001..008: ADMET, PK & Dossier validated)
+    ├── ch0/                                  # Clean pre-campaign seed (t=0, campaign-seed.json, 0 WOs closed)
+    ├── ch1/                                  # Step 1: WO-001 Co-Scientist Elo ranking validated
+    ├── ch2/                                  # Step 2 + Gate 1: WO-001..003 Genetics, GTEx & AlphaGenome validated
+    ├── ch3/                                  # Step 3 + Gate 2: WO-001..005 AF3, fpocket & Vina validated
+    ├── ch4/                                  # Step 4 + Gate 3 + Wet-Lab Handoff: WO-001..006 ADMET hERG gate
+    ├── ch5/                                  # Step 5 + Gate 4: WO-001..008 Oral PK (40 mg QD) & Candidate Dossier
+    ├── ch6/                                  # Step 6: 3 blocked tamper drills + 1 co-signed override (DEC-OVERRIDE-001)
+    └── ch7/                                  # Step 7: Executive portfolio sign-off, 30-page portal & GLP tox handoff
 ```
 
-Each checkpoint directory (`checkpoints/ch1`..`ch4`) is a complete, schema-valid OASE workspace containing `.oase/thresholds.yaml` (all 36 threshold schemas resolved), `.oase/control/work-orders/WO-*.json`, `raw/<class>/*` artifacts, `<artifact>.meta.json` SHA-256 sidecars, `<stem>.analysis.json` metric records, `findings/**/*.md` synthesis reports, and `VAL-WO-*.json` validation receipts.
+Each checkpoint directory (`checkpoints/ch1`..`ch7`) is a complete, schema-valid OASE workspace containing `.oase/thresholds.yaml` (all 36 threshold schemas resolved), `.oase/control/work-orders/WO-*.json`, `raw/<class>/*` artifacts, `<artifact>.meta.json` SHA-256 sidecars, `<stem>.analysis.json` metric records, `findings/**/*.md` synthesis reports, and `VAL-WO-*.json` validation receipts.
 
 ---
 

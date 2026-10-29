@@ -18,27 +18,30 @@ source .env
 ./scripts/preflight.sh
 ./scripts/preflight.sh --check-hygiene
 
-# 3. Seed the Scion Hub workspaces and verify checkpoints ch0..ch4
-./scripts/seed-hub.sh
+# 3. Seed or reconcile the 8 Scion Hub checkpoints (ch0..ch7) + Story Arc Cockpit
+./scripts/deploy-pilot-stack.sh --dry-run
 ./scripts/checkpoint.sh list
 ```
 
 ---
 
-## 2. Live Execution vs. Checkpoint Pacing Matrix
+## 2. Live Execution vs. Checkpoint Pacing Matrix (`ch0`..`ch7`)
 
 To keep a 150-minute workshop moving without waiting on 30-minute cold tournament or GPU runs:
+- **Story Arc Presenter Cockpit (`oase-story-arc`):** Stream the 7 recorded 1080p Squadron chapters (`Ch 1`–`Ch 7`, ~36–43s each, accessible 100/200-level spoken synthesis + 6 specialist AI wingmen), then click **"Join Live at This Stage As..."** (`oase-sarah`..`oase-claire`) to drop straight into that chapter's live Scion Webchat thread. Facilitators signed in as `admin@<workshop-domain>` also have view/reset access on the Cockpit without adding `admin@` rows to Scion Hub.
 - **Sub-15-second commands** run 100% live (`oase doctor`, `oase validate check`, Phase-2 `analyze`, `pytest`).
-- **Multi-minute jobs** (`Hypex` 103-match tournament, cold `AlphaFold 3` co-folding) are launched live for 60 seconds so attendees inspect the request payload and active container logs, then advanced via `./scripts/checkpoint.sh jump <ch1..ch4>` in `<2 seconds`.
+- **Multi-minute jobs** (`Hypex` tournament, cold `AlphaFold 3` co-folding, wet-lab CRO assays) are advanced via `./scripts/checkpoint.sh jump <ch1..ch7>` or the Cockpit's **`↺ Reset CHN (<2s)`** button.
 
 | Operation | Real Wall-Clock Latency | Workshop Execution Mode | Command / Checkpoint |
 | :--- | :--- | :--- | :--- |
-| `oase doctor` / `oase tools list` / `oase relays` | `1–2 sec` | **100% Live** | `oase doctor` |
+| `oase doctor` / `oase tools list` / `oase relays` | `1–2 sec` | **100% Live** | `oase doctor` (`ch0`) |
 | `create_project` + `bootstrap_campaign` (`pcsk9-oral` seed) | `45–60 sec` | **100% Live** | `./scripts/checkpoint.sh jump ch1` |
 | `oase genetics fetch/analyze` + `oase gtex fetch/analyze` (`WO-002..003`) | `4–8 sec` | **100% Live** | `./scripts/checkpoint.sh jump ch2` |
 | `oase alphafold predict` + `fpocket` + `AutoDock Vina` (`WO-004..005`) | `5–10 min` (AF3) / `6 sec` (Vina) | **Submit AF3 & Run Phase-2 Live → Jump to `ch3`** | `./scripts/checkpoint.sh jump ch3` |
-| `oase admet` + `oase pk` + `oase dossier` (`WO-006..008`) | `3–5 sec` | **100% Live** | `./scripts/checkpoint.sh jump ch4` |
-| `oase validate check` (8 Work Orders, 11 SHA-256 sidecars, JSONPath claims) | `1–2 sec` | **100% Live** on `ch4` | `oase validate check WO-005` |
+| `oase admet` hERG gate + Wet-Lab CRO assay handoff (`WO-006`) | `3–5 sec` | **100% Live → Pause at Wet-Lab Slot** | `./scripts/checkpoint.sh jump ch4` |
+| `oase pk` (`40 mg QD`) + `oase dossier` (`WO-007..008`, Gate 4) | `3–5 sec` | **100% Live** | `./scripts/checkpoint.sh jump ch5` |
+| `oase validate check` (3 tamper blocks + `oase workorder override`) | `1–2 sec` | **100% Live** on `ch6` | `./scripts/checkpoint.sh jump ch6` |
+| Portfolio closeout (`Grove-1` bookend + 30-page Evidence Portal) | `1–2 sec` | **100% Live** on `ch7` | `./scripts/checkpoint.sh jump ch7` |
 | `pytest tests/test_h5ad.py` (49 unit tests for custom tool) | `2–3 sec` | **100% Live** | `pytest /workspace/tests/test_h5ad.py -v` |
 
 ---
@@ -79,17 +82,22 @@ To keep a 150-minute workshop moving without waiting on 30-minute cold tournamen
 
 ---
 
-## 4. Recovery & Reset Commands
+## 4. Recovery & `<2s` Non-Disruptive Reset Commands
 
-If a participant modifies or deletes files inside their active workspace during the governance drills:
+During live sessions on the Story Arc Presenter Cockpit (`oase-story-arc`), open **`⚙ Facilitator Reset Drawer`** in the top control bar to reset any single chapter (`↺ Reset CH1`..`↺ Reset CH7`) or click **`↺ Reset Entire Demo (t=0)`** to restore all 8 Scion Hub checkpoints (`ch0`..`ch7`) in `<2 seconds` without logging out any of the 5 scientist Chrome sessions.
+
+For local CLI workspaces:
 
 ```bash
 # Restore any individual checkpoint in <2 seconds:
-./scripts/checkpoint.sh jump ch1   # Stage 0 Seed Ingested (WO-001)
-./scripts/checkpoint.sh jump ch2   # Stage 1 Genetics & Omics (WO-001..003)
-./scripts/checkpoint.sh jump ch3   # Stage 2 AF3, fpocket & Vina (WO-001..005)
-./scripts/checkpoint.sh jump ch4   # Stages 3–4 ADMET, PK & Dossier (WO-001..008)
+./scripts/checkpoint.sh jump ch1   # Step 1: Co-Scientist Seed Ingested (WO-001)
+./scripts/checkpoint.sh jump ch2   # Step 2 + Gate 1: Genetics & Omics (WO-001..003)
+./scripts/checkpoint.sh jump ch3   # Step 3 + Gate 2: AF3, fpocket & Vina (WO-001..005)
+./scripts/checkpoint.sh jump ch4   # Step 4 + Gate 3 + Wet-Lab Handoff (WO-001..006)
+./scripts/checkpoint.sh jump ch5   # Step 5 + Gate 4: Oral PK 40 mg QD & Dossier (WO-001..008)
+./scripts/checkpoint.sh jump ch6   # Step 6: 3 Blocked Tamper Drills + Signed Override
+./scripts/checkpoint.sh jump ch7   # Step 7: Portfolio Closeout & 30-Page Evidence Portal
 
-# Full workshop reset back to ch0:
+# Full workshop reset back to ch0 (t=0):
 ./scripts/reset-workshop.sh
 ```

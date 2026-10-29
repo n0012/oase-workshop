@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# checkpoint.sh — Campaign State Manager for GCP-OASE Workshops (ch0..ch6)
+# checkpoint.sh — Campaign State Manager for GCP-OASE Workshops (ch0..ch7)
 #
 # Usage:
 #   ./scripts/checkpoint.sh status
 #   ./scripts/checkpoint.sh list
-#   ./scripts/checkpoint.sh jump <ch0|ch1|ch2|ch3|ch4|ch5|ch6> [target-workspace-dir]
-#   ./scripts/checkpoint.sh goto <ch0|ch1|ch2|ch3|ch4|ch5|ch6> [target-workspace-dir]
+#   ./scripts/checkpoint.sh jump <ch0|ch1|ch2|ch3|ch4|ch5|ch6|ch7> [target-workspace-dir]
+#   ./scripts/checkpoint.sh goto <ch0|ch1|ch2|ch3|ch4|ch5|ch6|ch7> [target-workspace-dir]
 #   ./scripts/checkpoint.sh init-git-tags <target-workspace-dir>
 #   ./scripts/checkpoint.sh diff <chA> <chB> [target-workspace-dir]
 # ==============================================================================
@@ -44,7 +44,7 @@ sync_cp_into_dir() {
 
 case "${ACTION}" in
   list|status)
-    echo "=== GCP-OASE Workshop Campaign Checkpoints (ch0..ch6) ==="
+    echo "=== GCP-OASE Workshop Campaign Checkpoints (ch0..ch7) ==="
     for cp in "${ALL_CPS[@]}"; do
       echo "  ${cp} : ${CP_DESC[$cp]}"
     done
@@ -104,7 +104,7 @@ GITIGNORE
     done
     git -C "${TARGET_WS}" checkout -q -f "${FINAL_CP}"
     git -C "${TARGET_WS}" clean -fd -q -e .scion -e .scion-volumes -e .agents -e skills -e templates
-    echo "[OK] Initialized Git tags ch0..ch6 in ${TARGET_WS} (active tag: ${FINAL_CP})"
+    echo "[OK] Initialized Git tags ch0..ch7 in ${TARGET_WS} (active tag: ${FINAL_CP})"
     ;;
 
   diff)
@@ -120,7 +120,7 @@ GITIGNORE
     ;;
 
   *)
-    echo "Usage: $0 {status|list|jump <ch0..ch6>|goto <ch0..ch6>|init-git-tags <dir> [active-cp]|diff <chA> <chB>}" >&2
+    echo "Usage: $0 {status|list|jump <ch0..ch7>|goto <ch0..ch7>|init-git-tags <dir> [active-cp]|diff <chA> <chB>}" >&2
     exit 1
     ;;
 esac

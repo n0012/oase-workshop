@@ -3,7 +3,7 @@
 
 Cloud Run FastAPI application deployed behind Google Cloud Identity-Aware Proxy
 (IAP) with Direct VPC Egress to `oase-state-controller` (:8780):
-  1. Top Story Arc Navigation (`Overview & 4 Pillars` -> `Ch 1`..`Ch 6` + `Build Plan`)
+  1. Top Story Arc Navigation (`Overview & 4 Pillars` -> `Ch 1`..`Ch 7` + `Build Plan`)
   2. Embedded 1080p HTTP `Range` (`206 Partial Content`) video streaming from GCS
      (`gs://$GCS_BUNDLE_BUCKET/videos/*.mp4`) with clickable scrub timestamp pills
   3. "Join Live at This Stage As..." 5-scientist role switcher (`?authuser=oase-<role>@...`)

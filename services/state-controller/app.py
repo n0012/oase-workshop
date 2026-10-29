@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FastAPI State Controller for the 7-Chapter OASE Team Discovery Pilot.
+"""FastAPI State Controller for the 8-Checkpoint (ch0..ch7) OASE Team Discovery Pilot.
 
 Provides <2-second non-disruptive chapter and full-environment resets on the
 Scion Hub host without logging out any of the 5 authenticated Chrome scientist
