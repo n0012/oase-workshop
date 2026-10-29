@@ -77,10 +77,18 @@ cp .env.example .env
 #    systemd oase-state-controller :8780, Cloud Run oase-story-arc, and 5-persona IAP bindings)
 ./scripts/deploy-pilot-stack.sh
 
-# 5. (Optional) Sync matched 512px & compact 40px Gemini 3.8 portraits into Scion Hub SQLite
+# 5. Enable Vertex AI partner models (Claude Opus 5.5) and reconcile Scion multi-model runtime
+#    (Gemini 4 Argon + Claude Opus 5.5 + Gemini 3.8 Flash + portable oase v0.3.0 + live-v2 grove)
+#    See docs/SCION_RUNTIME_AND_MODELS.md for full details.
+python3 scripts/enable-vertex-models.py --project "$GCP_PROJECT_ID"
+gcloud compute scp scripts/reconcile-scion-runtime.py scion-hub-oase:/tmp/reconcile-scion-runtime.py --project="$GCP_PROJECT_ID" --zone=us-central1-c
+gcloud compute ssh scion-hub-oase --project="$GCP_PROJECT_ID" --zone=us-central1-c \
+  --command="sudo python3 /tmp/reconcile-scion-runtime.py --gcp-project '$GCP_PROJECT_ID' --enable-claude --provision-live-grove pcsk9-oral-live-v2"
+
+# 6. (Optional) Sync matched 512px & compact 40px Gemini 3.8 portraits into Scion Hub SQLite
 python3 scripts/sync-persona-portraits.py --update-hub-db
 
-# 6. Run automated Playwright E2E verification against the deployed Cloud Run Cockpit
+# 7. Run automated Playwright E2E verification against the deployed Cloud Run Cockpit
 python3 scripts/verify-pilot-stack.py \
   --cockpit-url "https://<YOUR_STORY_ARC_CLOUD_RUN_URL>" \
   --profile-dir /path/to/authenticated-chrome-profile

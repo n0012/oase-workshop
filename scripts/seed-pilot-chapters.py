@@ -1382,7 +1382,7 @@ def main() -> int:
         # Initialize Git tags ch0..ch7 in /home/scion/.scion/projects/{slug} checked out at {ch}
         ws_dir = hub_dir / "projects" / slug
         ws_dir.mkdir(parents=True, exist_ok=True)
-        (ws_dir / ".oase-repo").touch()
+        (ws_dir / ".oase-repo").unlink(missing_ok=True)
         if src_skills_dir.exists() and not (ws_dir / "skills").exists():
             subprocess.run(["cp", "-al", str(src_skills_dir), str(ws_dir / "skills")], check=True)
         subprocess.run([str(checkpoint_sh), "init-git-tags", str(ws_dir), ch], check=True)
