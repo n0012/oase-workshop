@@ -42,6 +42,27 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   .chapter-btn:hover { background: #e2e8f0; }
   .chapter-btn.active { background: #2563eb; color: #ffffff; border-color: #1d4ed8; }
   .chapter-btn.act1 { border-left: 3px solid #0284c7; }
+  .chapter-btn.lab-btn { border-left: 3px solid #10b981; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+  .chapter-btn.lab-btn:hover { background: #d1fae5; }
+  .chapter-btn.lab-btn.active { background: #059669; color: #ffffff; border-color: #047857; border-left: 3px solid #34d399; }
+
+  .whatif-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; border-radius: 10px; padding: 1.25rem 1.4rem; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12); }
+  .whatif-banner h3 { margin: 0 0 0.35rem 0; font-size: 1.08rem; color: #38bdf8; }
+  .whatif-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin-top: 0.85rem; }
+  .whatif-card { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(148, 163, 184, 0.25); border-top: 3px solid #38bdf8; border-radius: 8px; padding: 0.9rem 1rem; }
+  .whatif-card .wi-num { font-family: monospace; font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .whatif-card .wi-q { font-size: 0.95rem; font-weight: 700; color: #ffffff; line-height: 1.4; margin: 0.35rem 0 0.45rem 0; }
+  .whatif-card .wi-a { font-size: 0.81rem; color: #cbd5e1; line-height: 1.42; margin: 0; }
+  .whatif-pivot { margin-top: 0.95rem; padding-top: 0.85rem; border-top: 1px solid rgba(148, 163, 184, 0.22); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; color: #e2e8f0; }
+  .whatif-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .whatif-cta { background: #059669; color: #ffffff; border: 1px solid #10b981; border-radius: 6px; padding: 0.45rem 0.9rem; font-weight: 700; font-size: 0.82rem; cursor: pointer; }
+  .whatif-cta:hover { background: #047857; }
+  .whatif-cta.secondary { background: #2563eb; border-color: #3b82f6; }
+  .whatif-cta.secondary:hover { background: #1d4ed8; }
+  .lab-block { background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #059669; border-radius: 8px; padding: 1.05rem 1.25rem; margin-bottom: 1rem; }
+  .lab-block-hdr { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .lab-block-hdr h4 { margin: 0; color: #0f172a; font-size: 1rem; }
+  @media (max-width: 960px) { .whatif-grid { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
 
   .container { max-width: 1360px; margin: 1.25rem auto; padding: 0 2rem 3rem 2rem; }
   .chapter-panel { display: none; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.5rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
@@ -113,6 +134,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="chapter-bar">
   <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
+  <button class="chapter-btn lab-btn" id="btn-lab" onclick="showChapter('lab')">2.5-Hr Lab Guide</button>
   <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Rank Hypotheses (WO-001)</button>
   <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
   <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">Step 3: AF3, Pockets &amp; Gate 2 (WO-004..005)</button>
@@ -126,10 +148,38 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- PANEL WHY: THE PROBLEM, 4 CHALLENGES & WHAT YOU'LL SEE IN THIS DEMO -->
   <section class="chapter-panel active" id="panel-why">
     <div class="chapter-header">
-      <h2>Act I (Part 1) — Why Agentic Drug Discovery Is Harder Than It Looks &amp; What You'll See in This Demo</h2>
-      <span class="stage-pill">4 Challenges · 5 Artifact Layers · 7 Steps + Wet-Lab Gate</span>
+      <h2>Act I (Part 1) — Start With Three "What If" Questions &amp; What You'll See in This Demo</h2>
+      <span class="stage-pill">3 "What Ifs" · 4 Challenges · 5 Artifact Layers · 7 Steps + Wet-Lab Gate</span>
     </div>
     <div class="stack-full">
+      <div class="whatif-banner" id="whatif-hero">
+        <h3>Start Here: Three "What If" Questions for Agentic Biopharma R&amp;D</h3>
+        <div class="whatif-grid">
+          <div class="whatif-card">
+            <div class="wi-num">What If #1 · Multiplayer Science</div>
+            <div class="wi-q">"What if we had an agentic AI surface all of our scientists could use together at the same time?"</div>
+            <p class="wi-a">Instead of 5 isolated single-player chat tabs, our 5-scientist discovery pod shares one live <strong>Scion Grove</strong> alongside 11 specialist AI agents.</p>
+          </div>
+          <div class="whatif-card">
+            <div class="wi-num">What If #2 · Model Optionality</div>
+            <div class="wi-q">"What if we had optionality in the frontier models we use—not locking our science into one vendor or one model's blind spots?"</div>
+            <p class="wi-a"><strong>Gemini</strong>, <strong>Anthropic Claude</strong>, and <strong>OpenAI</strong> run side-by-side via portable model tiers so no model family ever peer-reviews its own output.</p>
+          </div>
+          <div class="whatif-card">
+            <div class="wi-num">What If #3 · Verified Stage Gates</div>
+            <div class="wi-q">"What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data?"</div>
+            <p class="wi-a">Deterministic Phase-1/Phase-2 tools lock <code>raw/</code> SHA-256 receipts and <code>oase validate check</code> blocks any unverified metric (&plusmn;1%) or dropped caveat.</p>
+          </div>
+        </div>
+        <div class="whatif-pivot">
+          <div><strong style="color:#4ade80;font-size:1.02rem;">Well &mdash; we built it.</strong> Explore the 7-step oral PCSK9 discovery walkthrough or follow the 2.5-hour (150-minute) hands-on lab guide:</div>
+          <div class="whatif-actions">
+            <button class="whatif-cta" onclick="showChapter('lab')">Open 2.5-Hr Guided Lab &rarr;</button>
+            <button class="whatif-cta secondary" onclick="showChapter('ch1')">Start Step 1 Walkthrough &rarr;</button>
+          </div>
+        </div>
+      </div>
+
       <div class="plate-box" id="plate-thumb">
         <img src="assets/oase_post_thumbnail.jpg" alt="Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud" onclick="openLightbox(this.src, this.alt)">
         <div class="plate-caption">
@@ -607,6 +657,129 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
     </div>
   </section>
 
+  <!-- 2.5-HOUR (150-MINUTE) GUIDED WORKSHOP & HANDS-ON LAB PANEL -->
+  <section class="chapter-panel" id="panel-lab">
+    <div class="chapter-header">
+      <h2>2.5-Hour (150-Minute) Guided Workshop &amp; Hands-On Lab Playbook (`pcsk9-oral`)</h2>
+      <span class="stage-pill">0:00&ndash;2:30 · 3 "What Ifs" · 5 Scientist Seats · 6 Hands-On Blocks</span>
+    </div>
+    <div class="stack-full">
+      <div class="whatif-banner">
+        <h3>Part 0 (`0:00&ndash;0:15` &middot; 15 min) &mdash; Open With Three "What If" Provocations, Then Pivot: <em>"Well &mdash; We Built It."</em></h3>
+        <p style="margin:0.2rem 0 0.7rem 0;font-size:0.86rem;color:#cbd5e1;">Before opening a terminal or architecture diagram, put these three questions to the discovery scientists and platform leads in the room and debate where today's chatbots and static DAGs break:</p>
+        <div class="whatif-grid">
+          <div class="whatif-card">
+            <div class="wi-num">Slide / Question 1 &middot; Multiplayer Grove</div>
+            <div class="wi-q">"What if we had an agentic AI surface all of our scientists could use together at the same time?"</div>
+            <p class="wi-a">Demonstrate 2+ human scientists typing simultaneously inside one shared Scion Grove alongside 11 specialist AI agents.</p>
+          </div>
+          <div class="whatif-card">
+            <div class="wi-num">Slide / Question 2 &middot; Zero Vendor Lock-In</div>
+            <div class="wi-q">"What if we had optionality in the frontier models we use—not locking our science into one vendor or one model's blind spots?"</div>
+            <p class="wi-a">Show <strong>Gemini</strong>, <strong>Anthropic Claude</strong>, and <strong>OpenAI</strong> collaborating via portable tiers so no model family ever reviews its own work.</p>
+          </div>
+          <div class="whatif-card">
+            <div class="wi-num">Slide / Question 3 &middot; Verified Governance</div>
+            <div class="wi-q">"What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data?"</div>
+            <p class="wi-a">Let participants actively tamper with raw files and findings in Block 4&mdash;and watch <code>oase validate check</code> block every violation in &lt;1s.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin:0.2rem 0 0.45rem 0;color:#0f172a;">Assign the 5 Discovery Pod Seats (Individual or 2&ndash;4 Person Breakout Pods)</h3>
+        <p style="margin:0 0 0.65rem 0;font-size:0.88rem;color:#334155;">Each chapter video is <strong>36&ndash;43 seconds</strong> long to establish crisp context; spend the remaining 15&ndash;25 minutes of each block in live Scion Webchat Q&amp;A, CLI inspection, and scientific debate across the 5 roles:</p>
+        <table>
+          <thead><tr><th>Pod Seat</th><th>Scientist Persona</th><th>Login Handle</th><th>Stages Led in Workshop</th><th>Paired AI Wingmen</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Seat 1 (<code>GOLD-1</code>)</strong></td><td><strong>Dr. Sarah Chen</strong> &mdash; Program Lead</td><td><code>oase-sarah</code></td><td>Step 1 Kickoff, Gate 1 &amp; Gate 4 Co-Sign, Step 7 Portfolio Handoff</td><td><code>@science-program-lead</code> (<code>Grove-1</code>) &middot; <code>@project-curator</code></td></tr>
+            <tr><td><strong>Seat 2 (<code>GOLD-2</code>)</strong></td><td><strong>Dr. Marcus Vance</strong> &mdash; Comp Biologist</td><td><code>oase-marcus</code></td><td>Step 1 (<code>WO-001</code> Elo) &amp; Step 2 (<code>WO-002..003</code> Genetics, GTEx, AlphaGenome)</td><td><code>@computational-biologist</code> (<code>Helix-2</code>)</td></tr>
+            <tr><td><strong>Seat 3 (<code>GOLD-3</code>)</strong></td><td><strong>Dr. Elena Rostova</strong> &mdash; Structural Biologist</td><td><code>oase-elena</code></td><td>Step 3 (<code>WO-004..005</code> AF3, <code>fpocket</code>, Vina) &amp; Step 6 Governance Audit</td><td><code>@structural-biologist</code> (<code>Fold-3</code>) &middot; <code>@finding-validator</code> (<code>Aegis-6</code>)</td></tr>
+            <tr><td><strong>Seat 4 (<code>GOLD-4</code>)</strong></td><td><strong>Dr. Raj Patel</strong> &mdash; Medicinal Chemist</td><td><code>oase-raj</code></td><td>Step 4 (<code>WO-006</code> RDKit, ADMET hERG Takedown, BRICS MMP &amp; Synthesis)</td><td><code>@medicinal-chemist</code> (<code>Spark-4</code>)</td></tr>
+            <tr><td><strong>Seat 5 (<code>GOLD-5</code>)</strong></td><td><strong>Dr. Claire Moreau</strong> &mdash; DMPK &amp; Safety Lead</td><td><code>oase-claire</code></td><td>&#9208; Lab Gate &amp; Step 5 (<code>WO-007..008</code> Oral PK <code>40 mg QD</code> &amp; Dossier)</td><td><code>@admet-dmpk-scientist</code> (<code>Shield-5</code>) &middot; <code>@regulatory-scientist</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3 style="margin:0.2rem 0 0.65rem 0;color:#0f172a;">Minute-by-Minute 2.5-Hour (`150m`) Guided Lab Walkthrough</h3>
+
+        <div class="lab-block">
+          <div class="lab-block-hdr">
+            <h4>Block 1 (`0:15&ndash;0:40` &middot; 25 min) &mdash; Multiplayer Grove Kickoff &amp; Human Genetic Target Validation (`Steps 1&ndash;2` &middot; `WO-001..003` &middot; Gate 1)</h4>
+            <div>
+              <button class="subpage-back-btn" onclick="showChapter('ch1')">Jump to Step 1 &rarr;</button>
+              <button class="subpage-back-btn" onclick="showChapter('ch2')">Jump to Step 2 &rarr;</button>
+            </div>
+          </div>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Prove <strong>What If #1 (Multiplayer)</strong> &amp; <strong>What If #2 (Multi-Model)</strong>. Watch the Step 1 &amp; Step 2 clips (~75s total), have <code>oase-sarah</code> and <code>oase-marcus</code> join the same Scion Grove thread simultaneously, inspect <code>.oase/thresholds.yaml</code> (36 locked schemas), and co-sign <strong>Gate 1</strong>.</p>
+          <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@computational-biologist Why did allosteric small-molecule hypothesis IC-001 (1642.5 Elo) outperform cyclic peptide IC-002 (1588.0 Elo) in WO-001, and what caveat must travel forward?')">&#128203; Click to copy Scion prompt: @computational-biologist Why did allosteric small-molecule hypothesis IC-001 (1642.5 Elo) outperform cyclic peptide IC-002 (1588.0 Elo) in WO-001, and what caveat must travel forward?</button>
+          <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@computational-biologist Compare PCSK9 hepatocyte expression in GTEx against extrahepatic CNS tissues in WO-002, and explain how gnomAD LoF tolerance supports chronic inhibition safety.')">&#128203; Click to copy Scion prompt: @computational-biologist Compare PCSK9 hepatocyte expression in GTEx against extrahepatic CNS tissues in WO-002, and explain how gnomAD LoF tolerance supports chronic inhibition safety.</button>
+        </div>
+
+        <div class="lab-block">
+          <div class="lab-block-hdr">
+            <h4>Block 2 (`0:40&ndash;1:10` &middot; 30 min) &mdash; 3D Co-Folding, Cryptic Pockets &amp; Ligand Docking (`Step 3` &middot; `WO-004..005` &middot; Gate 2)</h4>
+            <button class="subpage-back-btn" onclick="showChapter('ch3')">Jump to Step 3 &rarr;</button>
+          </div>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Pair GPU structure prediction (<code>AlphaFold 3</code> co-fold <code>ipTM = 0.84</code>) with deterministic cavity &amp; pose tools (<code>fpocket 4.2.2</code> scoring <code>0.68</code> co-fold / <code>0.788</code> live apo vs <code>0.24</code> flat EGF-A; <code>AutoDock Vina 1.2.5</code> at <code>-9.4 kcal/mol</code> seeded / <code>-9.6 kcal/mol</code> live <code>PCSK9-A03</code>). Sign <strong>Gate 2</strong> while logging lipophilicity liability <code>L-002</code> and mandatory caveat <code>docking.score_is_not_affinity</code>.</p>
+          <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@structural-biologist Compare cryptic Pocket #1 druggability (0.68 in co-fold / 0.788 apo) against the flat EGF-A PPI interface (0.24) in WO-004. Which residues anchor the groove?')">&#128203; Click to copy Scion prompt: @structural-biologist Compare cryptic Pocket #1 druggability (0.68 in co-fold / 0.788 apo) against the flat EGF-A PPI interface (0.24) in WO-004. Which residues anchor the groove?</button>
+        </div>
+
+        <div class="lab-block">
+          <div class="lab-block-hdr">
+            <h4>Block 3 (`1:10&ndash;1:45` &middot; 35 min, incl. 5m break) &mdash; ADMET Takedown, &#9208; Wet-Lab Stopping Gate &amp; Oral PK (`Steps 4&ndash;5` &middot; `WO-006..008`)</h4>
+            <div>
+              <button class="subpage-back-btn" onclick="showChapter('ch4')">Jump to Step 4 &rarr;</button>
+              <button class="subpage-back-btn" onclick="showChapter('ch5')">Jump to Step 5 &rarr;</button>
+            </div>
+          </div>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Walk through the classic med-chem trade-off: top docker <code>PCSK9-A02</code> (<code>cLogP = 5.09</code>, Aronov <code>herg_liability</code>) is disqualified while polar oxadiazole <code>OASE-PCSK9-014</code> (<code>cLogP = 3.01</code>, <code>0</code> critical alerts) clears <strong>Gate 3</strong>. Show how agents hibernate cleanly on disk across the <strong>&#9208; Wet-Lab CRO Stopping Gate</strong> until measured rat (<code>54%</code>) &amp; dog (<code>61%</code>) PK return to project <code>40 mg QD</code> human oral dosing at <strong>Gate 4</strong>.</p>
+          <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@medicinal-chemist Walk through the exact RDKit descriptors (cLogP, TPSA, basic amine count) that triggered the Aronov hERG alert on PCSK9-A02 and how OASE-PCSK9-014 resolved L-002.')">&#128203; Click to copy Scion prompt: @medicinal-chemist Walk through the exact RDKit descriptors (cLogP, TPSA, basic amine count) that triggered the Aronov hERG alert on PCSK9-A02 and how OASE-PCSK9-014 resolved L-002.</button>
+        </div>
+
+        <div class="lab-block">
+          <div class="lab-block-hdr">
+            <h4>Block 4 (`1:45&ndash;2:10` &middot; 25 min) &mdash; Red-Team the Validator: Break the Science &amp; Test Overrides (`Step 6`)</h4>
+            <button class="subpage-back-btn" onclick="showChapter('ch6')">Jump to Step 6 &rarr;</button>
+          </div>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Deliver the <strong>What If #3 (Cryptographic Governance)</strong> lightbulb moment. Challenge attendees to tamper with raw files, inflate prose metrics, or strip caveats&mdash;and watch <code>oase validate check</code> reject all three before testing an audited human override (<code>DEC-OVERRIDE-001</code>) and <code>&lt;2s</code> chapter reset:</p>
+          <div class="terminal"><span class="cmd">$ cp -r checkpoints/ch5 /tmp/redteam-lab &amp;&amp; cd /tmp/redteam-lab</span>
+<span class="cmd">$ sed -i 's/-9.4/-9.9/' raw/docking/pcsk9_pocket1_vina.json &amp;&amp; oase validate check WO-005</span>
+<span class="err">[FAIL] PROV-002: SHA-256 digest mismatch against pcsk9_pocket1_vina.meta.json (exit=1)</span>
+
+<span class="cmd">$ cp "$OLDPWD/checkpoints/ch5/raw/docking/pcsk9_pocket1_vina.json" raw/docking/pcsk9_pocket1_vina.json</span>
+<span class="cmd">$ sed -i 's/-9.4/-11.2/' findings/computational-chemistry/WO-005.md &amp;&amp; oase validate check WO-005</span>
+<span class="err">[FAIL] CIT-003: Cited value -11.2 exceeds &plusmn;1% tolerance of $.metrics.pcsk9_analog_02_kcal (-9.4) (exit=1)</span>
+
+<span class="cmd">$ cp "$OLDPWD/checkpoints/ch5/findings/computational-chemistry/WO-005.md" findings/computational-chemistry/WO-005.md</span>
+<span class="cmd">$ sed -i '/docking.score_is_not_affinity/d' findings/computational-chemistry/WO-005.md &amp;&amp; oase validate check WO-005</span>
+<span class="err">[FAIL] REL-001: Mandatory caveat relay `docking.score_is_not_affinity` omitted from finding (exit=1)</span></div>
+        </div>
+
+        <div class="lab-block">
+          <div class="lab-block-hdr">
+            <h4>Block 5 (`2:10&ndash;2:30` &middot; 20 min) &mdash; Portfolio Closeout, Custom Internal Tools &amp; Deploying in Your Own GCP Environment (`Step 7`)</h4>
+            <button class="subpage-back-btn" onclick="showChapter('ch7')">Jump to Step 7 &rarr;</button>
+          </div>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Tour the compiled 30-page static HTML Evidence Portal (<code>WO-008</code>), review the ~100-line two-phase adapter pattern for internal assays/LIMS tools (<code>oase h5ad</code>), and map a concrete 2-week pilot in the organization's own Google Cloud environment:</p>
+          <div class="terminal"><span class="cmd"># 1. Provision isolated GCP project + least-privilege service account</span>
+$ python3 scripts/provision-gcp-project.py --project-id &lt;your-pilot-project&gt; --org-id &lt;your-org-id&gt;
+
+<span class="cmd"># 2. Bootstrap OASE v0.3.0 scientific binaries + run full 7-chapter verification</span>
+$ OASE_TOOLS_HOME=/scion-volumes/tools ./scripts/bootstrap-oase-env.sh
+$ OASE_TOOLS_HOME=/scion-volumes/tools ./scripts/run-e2e-simulation.sh /tmp/sim-pcsk9-oral
+
+<span class="cmd"># 3. Deploy the multi-user Scion Hub + 5-seat Story Arc Cockpit behind Cloud Run IAP</span>
+$ ./scripts/deploy-pilot-stack.sh</div>
+          <div class="relay-box" style="border-left-color:#10b981;background:#ecfdf5;">
+            <strong>Closeout Alignment Questions for the Room:</strong> (1) Which <strong>internal target or hit series</strong> makes the sharpest 2-week validation pilot? (2) Which <strong>1&ndash;2 internal assays or tools</strong> (e.g., scRNA-seq <code>.h5ad</code> atlas, proprietary docking/FEP, or CRO PK sheet) should we wrap first? (3) Who are the <strong>5 discovery pod counterparts</strong> to seat in your pilot Grove?
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- INLINE SUBPAGE VIEWER PANEL -->
   <section class="chapter-panel" id="panel-subpage">
     <div class="subpage-bar">
@@ -635,6 +808,7 @@ function showChapter(ch) {
   const b = document.getElementById('btn-' + ch);
   if (p) p.classList.add('active');
   if (b) b.classList.add('active');
+  if (history.replaceState) history.replaceState(null, '', '#' + ch);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

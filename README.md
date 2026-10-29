@@ -1,11 +1,12 @@
 # GCP-OASE Workshop: Oral PCSK9 Small-Molecule Discovery on Google Cloud
 
 > ### 🎯 Team-Based Human + Agent Pilot: Outcome Goal, Vision & Live Build Plan
+> - **2.5-Hour (150m) Guided Workshop & Lab Playbook:** [**`docs/LAB_GUIDE_150M.md`**](docs/LAB_GUIDE_150M.md) *(3 "What If" Opening Provocations → 5 Pod Seats → Red-Team Tamper Lab)*
 > - **Outcome Goal & Detailed Engineering Build Plan (Markdown):** [**`docs/PILOT_IMPLEMENTATION_PLAN.md`**](docs/PILOT_IMPLEMENTATION_PLAN.md)
 > - **Turnkey 4-Tier Deploy & Test Runbook:** [**`docs/DEPLOY_AND_TEST.md`**](docs/DEPLOY_AND_TEST.md)
 > - **Live vs. Seeded Data Provenance & Real Outputs:** [**`docs/DATA_PROVENANCE.md`**](docs/DATA_PROVENANCE.md) · [**`live-results/pcsk9-oral/`**](live-results/pcsk9-oral/) · [**`prompts/`**](prompts/)
 > - **Live Web Build Tracker & Outcome Goal (`plan.html`):** [**https://n0012.github.io/oase-workshop/plan.html**](https://n0012.github.io/oase-workshop/plan.html)
-> - **Interactive Story Arc & 30-Page Evidence Portal (`chapters.html`):** [**https://n0012.github.io/oase-workshop/chapters.html**](https://n0012.github.io/oase-workshop/chapters.html)
+> - **Interactive Story Arc, 2.5-Hr Lab Guide & 30-Page Evidence Portal (`chapters.html`):** [**https://n0012.github.io/oase-workshop/chapters.html**](https://n0012.github.io/oase-workshop/chapters.html)
 
 Hands-on engineering workshop for the **Open Agentic Science Engine (`oase v0.3.0`)** running inside **Google Cloud Scion (`v0.1.50`)** multi-agent Groves.
 

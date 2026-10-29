@@ -8,13 +8,29 @@ Yet building production-ready agentic science that a pharma portfolio review com
 
 ---
 
+## Start With Three "What If" Questions
+
+When discovery scientists and R&D platform leads sit down to evaluate agentic AI for therapeutic programs, three questions frame what separates an experimental chatbot demo from a system a portfolio review committee can actually trust:
+
+1. **What if we had an agentic AI surface all of our scientists could use together at the same time?**  
+   Instead of five scientists working in five isolated single-player chat tabs—copying and pasting summaries across computational biology, structural biology, medicinal chemistry, and DMPK—the entire human discovery pod shares a single live workspace (**The Grove**) alongside a mirrored team of specialist AI agents.
+2. **What if we had optionality in the frontier models we use—not locking our science into one vendor or one model's blind spots?**  
+   Instead of betting an entire R&D pipeline on a single model family that generates hypotheses and grades its own homework, **Gemini**, **Anthropic Claude**, and **OpenAI** run side-by-side on Google Cloud through portable model tiers so no model family ever peer-reviews its own output.
+3. **What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data—so a portfolio review committee could audit and trust the dossier?**  
+   Instead of summarizing raw tables inside an LLM prompt where numbers can be fabricated or caveats dropped, deterministic tools lock primary outputs on disk with **SHA-256 provenance receipts**, offline rules evaluate human-defined program cutoffs, and a 10-check validator blocks any unverified metric (`±1%`) or missing scientific limitation before a stage gate can close.
+
+**Well — we built it.** Below is how **GCP-OASE** works, how it drives an end-to-end oral small-molecule PCSK9 campaign (`pcsk9-oral`), and how to run the **2.5-hour (150-minute) hands-on lab** with your own discovery pod.
+
+---
+
 ## Quick Navigation — 150-Minute Hands-On Workshop Kit
 
 | Role | Start Here | Deep-Dive Modules |
 |---|---|---|
+| **All Attendees & Facilitators (2.5-Hr Live Session)** | [**2.5-Hour Guided Lab Playbook (`docs/LAB_GUIDE_150M.md`)**](docs/LAB_GUIDE_150M.md) | [Interactive Story Arc & Lab Portal (`chapters.html`)](https://n0012.github.io/oase-workshop/chapters.html#lab) · [4-Tier Deploy & Test Guide (`docs/DEPLOY_AND_TEST.md`)](docs/DEPLOY_AND_TEST.md) |
 | **Computational Biologist / Discovery Scientist** | [01 — Tour the Grove (`pcsk9-oral`)](docs/01-tour-the-grove.md) | [02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md) · [03 — Structural Biology & Docking](docs/03-structure-docking-af3.md) · [04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md) |
 | **AI Platform / Bioinformatics Engineer** | [Surface Connectivity Reference](docs/surface-connectivity-reference.md) | [00 — Prerequisites & Setup](docs/00-prerequisites.md) · [05 — Build & Register Custom Tools](docs/05-extend-custom-tools.md) · [07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md) |
-| **Discovery Governance / Portfolio Review Lead** | [Working Backwards PRFAQ](PRFAQ.md) | [04 — DMTA, PK & Dossier Portal (Validation Drills)](docs/04-dmta-pk-dossier-portal.md) · [Repository Overview (`README.md`)](README.md) |
+| **Discovery Governance / Portfolio Review Lead** | [Working Backwards PRFAQ](PRFAQ.md) | [04 — DMTA, PK & Dossier Portal (Validation Drills)](docs/04-dmta-pk-dossier-portal.md) · [Data Provenance (`docs/DATA_PROVENANCE.md`)](docs/DATA_PROVENANCE.md) |
 | **Workshop Facilitator / Field Team** | [06 — Facilitator Runbook](docs/06-facilitator-guide.md) | [Customer-Specific Workshop Overlays (`overlays/`)](overlays/README.md) · [07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md) |
 
 ---
@@ -217,9 +233,25 @@ Across six steps, four logged go/no-go stage gates, and one lab handoff, the hum
 
 ![The Complete Picture](assets/oase_complete_picture.jpg)
 
+---
+
+## How to Guide the 2.5-Hour (150-Minute) Hands-On Lab
+
+To run GCP-OASE as a live **2.5-hour (`150-minute`) interactive session** for discovery scientists and platform engineers, start with the **Three "What If" Questions** above, pivot into the live Story Arc Cockpit (*"Well — we built it"*), and seat participants across the **five Discovery Pod roles** (`Dr. Sarah Chen` Program Lead, `Dr. Marcus Vance` Comp Bio, `Dr. Elena Rostova` Structural Bio, `Dr. Raj Patel` Med Chem, and `Dr. Claire Moreau` DMPK & Safety). Full step-by-step facilitator and participant instructions—with copyable `@mention` prompts, CLI commands, and red-team tamper exercises—live in [**`docs/LAB_GUIDE_150M.md`**](docs/LAB_GUIDE_150M.md) and the [**`2.5-Hr Lab Guide` tab of `chapters.html`**](https://n0012.github.io/oase-workshop/chapters.html#lab):
+
+| Time | Duration | Lab Block | Active Pod Seats & Checkpoints | Hands-On Exercise & Lightbulb Moment |
+|---|---|---|---|---|
+| **`0:00–0:15`** | `15 min` | **Block 0 — Three "What Ifs" → *"Well, We Built It"*** | All 5 Seats (`ch0`) | Debate the 3 "What If" provocations, reveal `chapters.html`, tour the 5 artifact layers, and claim the 5 scientist logins (`oase-sarah`..`oase-claire`). |
+| **`0:15–0:40`** | `25 min` | **Block 1 — Multiplayer Grove & Target Validation** | `Sarah` + `Marcus` (`ch1 → ch2`) | Join the same Scion Grove thread simultaneously (multiplayer + multi-model), interrogate `WO-001` Elo + `gnomAD` / `GTEx` / `AlphaGenome`, inspect `.oase/thresholds.yaml`, and co-sign **Gate 1**. |
+| **`0:40–1:10`** | `30 min` | **Block 2 — 3D Co-Folding, Cryptic Pockets & Docking** | `Elena` + `Raj` (`ch2 → ch3`) | Compare `AlphaFold 3` co-fold + `fpocket` cryptic groove (`0.68` / `0.788` live apo) vs flat `EGF-A` (`0.24`), inspect `AutoDock Vina` poses (`-9.4 kcal/mol`), verify `docking.score_is_not_affinity`, and sign **Gate 2** with liability `L-002`. |
+| **`1:10–1:45`** | `35 min` | **Block 3 — ADMET Takedown, Wet-Lab Gate & Oral PK** *(incl. 5m break)* | `Raj` + `Claire` (`ch3 → ch5`) | Disqualify top docker `PCSK9-A02` (`cLogP = 5.09`, Aronov `herg_liability`), advance polar oxadiazole `OASE-PCSK9-014` (`cLogP = 3.01`, `0` alerts), walk through the **⏸ Wet-Lab CRO Stopping Gate**, verify `40 mg QD` oral PK (`F = 52%`), and co-sign **Gate 4**. |
+| **`1:45–2:10`** | `25 min` | **Block 4 — Red-Team the Validator (Break the Science)** | `Elena` + All Seats (`ch6`) | **Hands-on tamper challenge:** alter a byte in `raw/` (`PROV-002`), inflate `-9.4` to `-11.2 kcal/mol` (`CIT-003`), delete a caveat relay (`REL-001`), watch `oase validate check` block all three (`exit=1`), execute an audited human override (`DEC-OVERRIDE-001`), and test `<2s` **`↺ Reset CH6`**. |
+| **`2:10–2:30`** | `20 min` | **Block 5 — Portfolio Readout, Custom Tools & Own-GCP Pilot** | `Sarah` + Platform Leads (`ch7`) | Tour the 30-page static Evidence Portal (`WO-008`), inspect the two-phase custom tool adapter (`oase h5ad`), and scope a 2-week pilot in your own GCP project ([`docs/DEPLOY_AND_TEST.md`](docs/DEPLOY_AND_TEST.md)). |
+
 ### Try It Yourself
 
+- **2.5-Hour Guided Lab Playbook (`0:00–2:30`):** Follow [**`docs/LAB_GUIDE_150M.md`**](docs/LAB_GUIDE_150M.md) or open the interactive [**`2.5-Hr Lab Guide`**](https://n0012.github.io/oase-workshop/chapters.html#lab).
 - **End-to-End Stage 0 → 4 Operational Curriculum (`pcsk9-oral`):** Walk through [Module 01 — Tour the Grove](docs/01-tour-the-grove.md), [Module 02 — Target Validation: Genetics & Omics](docs/02-target-validation-genetics-omics.md), [Module 03 — Structural Biology & Docking](docs/03-structure-docking-af3.md), and [Module 04 — DMTA, PK & Dossier Portal](docs/04-dmta-pk-dossier-portal.md) across `WO-001`..`WO-008`.
-- **Prerequisites & Environment Setup:** Start with [Module 00 — Prerequisites & Setup](docs/00-prerequisites.md) and run `./scripts/preflight.sh`.
+- **Prerequisites & Turnkey GCP Deployment:** Start with [Module 00 — Prerequisites & Setup](docs/00-prerequisites.md), run `./scripts/preflight.sh`, and see [4-Tier Deploy & Test Runbook (`docs/DEPLOY_AND_TEST.md`)](docs/DEPLOY_AND_TEST.md).
 - **Extend OASE with Custom Tools:** See [Module 05 — Build & Register Custom Tools](docs/05-extend-custom-tools.md).
 - **Facilitator Runbook & Troubleshooting:** See [Module 06 — Facilitator Runbook](docs/06-facilitator-guide.md) and [Module 07 — Troubleshooting & Validator Reference](docs/07-troubleshooting.md).

@@ -3,6 +3,19 @@
 > **Event:** GCP-OASE Hands-On Engineering & Pre-Clinical Discovery Workshop (`pcsk9-oral`)  
 > **Duration:** 150 Minutes (2.5 Hours)  
 > **Target Audience:** Biopharma Discovery Scientists, Computational Biologists, and AI Platform Engineers  
+> **Guided Lab Playbook (Start Here for Live Sessions):** [**`docs/LAB_GUIDE_150M.md`**](LAB_GUIDE_150M.md) *(3 "What If" Opening Questions → "Well, We Built It" Pivot → 5 Pod Seats → 6 Hands-On Blocks)*
+
+---
+
+## 0. Opening the Conversation: The Three "What If" Questions (`0:00–0:15`)
+
+Open the workshop with three provocative questions before touching a slide deck or terminal:
+
+1. **Multiplayer Science Surface:** *"What if we had an agentic AI surface all of our scientists could use together at the same time?"*
+2. **Frontier Model Optionality:** *"What if we had optionality in the frontier models we use—not locking our science into one vendor or one model's blind spots?"*
+3. **Audit-Ready Stage-Gate Governance:** *"What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data—so a portfolio review committee could audit and trust the dossier?"*
+
+Then open [**`chapters.html`**](https://n0012.github.io/oase-workshop/chapters.html) (or your live Cloud Run Story Arc Cockpit) with the pivot: ***"Well — we built it."*** See [**`docs/LAB_GUIDE_150M.md`**](LAB_GUIDE_150M.md) for the complete facilitator and participant lab playbook, copyable `@mention` prompts, and red-team tamper exercises.
 
 ---
 
