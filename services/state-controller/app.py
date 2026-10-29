@@ -16,6 +16,7 @@ from __future__ import annotations
 import datetime
 import json
 import os
+import re
 import shutil
 import sqlite3
 import subprocess
@@ -24,7 +25,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, Query
 
 HUB_DIR = Path(os.environ.get("SCION_HUB_DIR", "/home/scion/.scion")).resolve()
 DB_PATH = HUB_DIR / "hub.db"
@@ -34,14 +35,16 @@ SNAPSHOT_DIR = Path(
 ).resolve()
 GOLDEN_DB_PATH = SNAPSHOT_DIR / "golden-hub.db"
 STATE_TOKEN = os.environ.get("OASE_STATE_TOKEN", "").strip()
+DEFAULT_CAMPAIGN = "pcsk9-pilot-v1"
+CAMPAIGN_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 
 VALID_CHAPTERS = ("ch0", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7")
 CLEAN_EXCLUDES = ("-e", ".scion", "-e", ".scion-volumes", "-e", ".agents", "-e", "skills", "-e", "templates")
 
 app = FastAPI(
     title="OASE Pilot State Controller",
-    version="1.0.0",
-    description="Atomic <2s Grove Git + Scion SQLite chapter reset daemon.",
+    version="1.1.0",
+    description="Atomic <2s Multi-Campaign Grove Git + Scion SQLite chapter reset daemon.",
 )
 
 _reset_lock = threading.Lock()
@@ -53,10 +56,21 @@ def _check_auth(x_oase_state_token: str | None) -> None:
         raise HTTPException(status_code=401, detail="Invalid or missing X-OASE-State-Token")
 
 
-def _load_manifest() -> dict[str, Any]:
-    if not MANIFEST_PATH.exists():
-        raise HTTPException(status_code=503, detail=f"Chapter manifest not found at {MANIFEST_PATH}")
-    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+def _campaign_paths(campaign: str | None = None) -> tuple[str, Path, Path, Path]:
+    cid = (campaign or DEFAULT_CAMPAIGN).strip() or DEFAULT_CAMPAIGN
+    if not CAMPAIGN_RE.fullmatch(cid):
+        raise HTTPException(status_code=400, detail=f"Invalid campaign identifier '{cid}'")
+    if cid == DEFAULT_CAMPAIGN:
+        return cid, MANIFEST_PATH, SNAPSHOT_DIR, GOLDEN_DB_PATH
+    c_manifest = (HUB_DIR / "campaigns" / cid / "pilot-chapters-manifest.json").resolve()
+    c_snap_dir = (HUB_DIR / "snapshots" / cid).resolve()
+    return cid, c_manifest, c_snap_dir, c_snap_dir / "golden-hub.db"
+
+
+def _load_manifest(manifest_path: Path = MANIFEST_PATH) -> dict[str, Any]:
+    if not manifest_path.exists():
+        raise HTTPException(status_code=503, detail=f"Chapter manifest not found at {manifest_path}")
+    return json.loads(manifest_path.read_text(encoding="utf-8"))
 
 
 def _shared_columns(cur: sqlite3.Cursor, table: str) -> str:
@@ -107,9 +121,11 @@ def _git_inspect_workspace(ws_path: Path) -> dict[str, Any]:
     }
 
 
-def _restore_projects_from_golden(project_ids: list[str]) -> dict[str, dict[str, int]]:
-    if not GOLDEN_DB_PATH.exists():
-        raise HTTPException(status_code=503, detail=f"Golden snapshot DB missing at {GOLDEN_DB_PATH}")
+def _restore_projects_from_golden(
+    project_ids: list[str], golden_db_path: Path = GOLDEN_DB_PATH
+) -> dict[str, dict[str, int]]:
+    if not golden_db_path.exists():
+        raise HTTPException(status_code=503, detail=f"Golden snapshot DB missing at {golden_db_path}")
 
     conn = sqlite3.connect(str(DB_PATH), timeout=30.0, isolation_level=None)
     stats: dict[str, dict[str, int]] = {}
@@ -117,7 +133,7 @@ def _restore_projects_from_golden(project_ids: list[str]) -> dict[str, dict[str,
         cur = conn.cursor()
         cur.execute("PRAGMA busy_timeout = 30000;")
         cur.execute("PRAGMA foreign_keys = OFF;")
-        cur.execute(f"ATTACH DATABASE '{GOLDEN_DB_PATH}' AS golden;")
+        cur.execute(f"ATTACH DATABASE '{golden_db_path}' AS golden;")
         cur.execute("BEGIN IMMEDIATE;")
 
         conv_cols = _shared_columns(cur, "conversations")
@@ -272,9 +288,25 @@ def healthz() -> dict[str, Any]:
 
 
 @app.get("/api/state/status")
-def get_state_status(x_oase_state_token: str | None = Header(default=None)) -> dict[str, Any]:
+def get_state_status(
+    campaign: str | None = Query(default=None),
+    x_oase_state_token: str | None = Header(default=None),
+) -> dict[str, Any]:
     _check_auth(x_oase_state_token)
-    manifest = _load_manifest()
+    cid, manifest_path, _, golden_db = _campaign_paths(campaign)
+    if cid != DEFAULT_CAMPAIGN and not manifest_path.exists():
+        return {
+            "ok": False,
+            "campaign": cid,
+            "status": "staging",
+            "golden_snapshot_exists": golden_db.exists(),
+            "golden_snapshot_updated_at": None,
+            "admin_rows_count": 0,
+            "personas": {},
+            "chapters": {},
+        }
+
+    manifest = _load_manifest(manifest_path)
     chapters_meta = manifest.get("chapters", {})
 
     conn = sqlite3.connect(str(DB_PATH), timeout=15.0)
@@ -304,7 +336,7 @@ def get_state_status(x_oase_state_token: str | None = Header(default=None)) -> d
                 "SELECT slug FROM agents WHERE project_id = ? AND phase = 'running' ORDER BY slug", (pid,)
             ).fetchall()
         ]
-        hist = _reset_history.get(ch, {})
+        hist = _reset_history.get(f"{cid}:{ch}", _reset_history.get(ch, {}))
         chapters_out[ch] = {
             **cinfo,
             **git_state,
@@ -318,14 +350,15 @@ def get_state_status(x_oase_state_token: str | None = Header(default=None)) -> d
     conn.close()
 
     golden_mtime = None
-    if GOLDEN_DB_PATH.exists():
+    if golden_db.exists():
         golden_mtime = datetime.datetime.fromtimestamp(
-            GOLDEN_DB_PATH.stat().st_mtime, tz=datetime.timezone.utc
+            golden_db.stat().st_mtime, tz=datetime.timezone.utc
         ).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     return {
         "ok": True,
-        "golden_snapshot_exists": GOLDEN_DB_PATH.exists(),
+        "campaign": cid,
+        "golden_snapshot_exists": golden_db.exists(),
         "golden_snapshot_updated_at": golden_mtime,
         "admin_rows_count": admin_rows,
         "personas": manifest.get("personas", {}),
@@ -334,12 +367,16 @@ def get_state_status(x_oase_state_token: str | None = Header(default=None)) -> d
 
 
 @app.post("/api/state/snapshot")
-def freeze_golden_snapshot(x_oase_state_token: str | None = Header(default=None)) -> dict[str, Any]:
+def freeze_golden_snapshot(
+    campaign: str | None = Query(default=None),
+    x_oase_state_token: str | None = Header(default=None),
+) -> dict[str, Any]:
     _check_auth(x_oase_state_token)
+    cid, manifest_path, snap_dir, golden_db = _campaign_paths(campaign)
     t0 = time.perf_counter()
     with _reset_lock:
-        SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
-        tmp_db = SNAPSHOT_DIR / "golden-hub.db.tmp"
+        snap_dir.mkdir(parents=True, exist_ok=True)
+        tmp_db = snap_dir / "golden-hub.db.tmp"
         if tmp_db.exists():
             tmp_db.unlink()
         src_conn = sqlite3.connect(str(DB_PATH), timeout=30.0)
@@ -347,13 +384,14 @@ def freeze_golden_snapshot(x_oase_state_token: str | None = Header(default=None)
         src_conn.backup(dst_conn)
         dst_conn.close()
         src_conn.close()
-        tmp_db.replace(GOLDEN_DB_PATH)
-        if MANIFEST_PATH.exists():
-            shutil.copy2(MANIFEST_PATH, SNAPSHOT_DIR / "pilot-chapters-manifest.json")
+        tmp_db.replace(golden_db)
+        if manifest_path.exists():
+            shutil.copy2(manifest_path, snap_dir / "pilot-chapters-manifest.json")
     elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 1)
     return {
         "ok": True,
-        "golden_db": str(GOLDEN_DB_PATH),
+        "campaign": cid,
+        "golden_db": str(golden_db),
         "duration_ms": elapsed_ms,
         "frozen_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
@@ -362,13 +400,15 @@ def freeze_golden_snapshot(x_oase_state_token: str | None = Header(default=None)
 @app.post("/api/state/chapters/{chapter}/reset")
 def reset_single_chapter(
     chapter: str,
+    campaign: str | None = Query(default=None),
     x_oase_state_token: str | None = Header(default=None),
 ) -> dict[str, Any]:
     _check_auth(x_oase_state_token)
     if chapter not in VALID_CHAPTERS:
         raise HTTPException(status_code=400, detail=f"Invalid chapter '{chapter}'. Expected ch0..ch7.")
 
-    manifest = _load_manifest()
+    cid, manifest_path, _, golden_db = _campaign_paths(campaign)
+    manifest = _load_manifest(manifest_path)
     cinfo = manifest.get("chapters", {}).get(chapter)
     if not cinfo:
         raise HTTPException(status_code=404, detail=f"Chapter '{chapter}' missing from manifest.")
@@ -378,16 +418,17 @@ def reset_single_chapter(
         pid = cinfo["project_id"]
         ws_path = Path(cinfo["workspace_path"])
         git_res = _git_reset_workspace(ws_path, chapter)
-        db_stats = _restore_projects_from_golden([pid])[pid]
+        db_stats = _restore_projects_from_golden([pid], golden_db)[pid]
         elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 1)
         now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        _reset_history[chapter] = {
+        _reset_history[f"{cid}:{chapter}"] = {
             "last_reset_at": now_iso,
             "last_reset_duration_ms": elapsed_ms,
         }
 
     return {
         "ok": True,
+        "campaign": cid,
         "chapter": chapter,
         "project_id": pid,
         "slug": cinfo["slug"],
@@ -399,9 +440,13 @@ def reset_single_chapter(
 
 
 @app.post("/api/state/reset-all")
-def reset_all_chapters(x_oase_state_token: str | None = Header(default=None)) -> dict[str, Any]:
+def reset_all_chapters(
+    campaign: str | None = Query(default=None),
+    x_oase_state_token: str | None = Header(default=None),
+) -> dict[str, Any]:
     _check_auth(x_oase_state_token)
-    manifest = _load_manifest()
+    cid, manifest_path, _, golden_db = _campaign_paths(campaign)
+    manifest = _load_manifest(manifest_path)
     chapters_meta = manifest.get("chapters", {})
 
     t0 = time.perf_counter()
@@ -415,7 +460,7 @@ def reset_all_chapters(x_oase_state_token: str | None = Header(default=None)) ->
             pids.append(cinfo["project_id"])
             git_results[ch] = _git_reset_workspace(Path(cinfo["workspace_path"]), ch)
 
-        db_stats = _restore_projects_from_golden(pids)
+        db_stats = _restore_projects_from_golden(pids, golden_db)
         elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 1)
         now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         per_chapter = {}
@@ -424,7 +469,7 @@ def reset_all_chapters(x_oase_state_token: str | None = Header(default=None)) ->
             if not cinfo:
                 continue
             pid = cinfo["project_id"]
-            _reset_history[ch] = {
+            _reset_history[f"{cid}:{ch}"] = {
                 "last_reset_at": now_iso,
                 "last_reset_duration_ms": elapsed_ms,
             }
@@ -437,6 +482,7 @@ def reset_all_chapters(x_oase_state_token: str | None = Header(default=None)) ->
 
     return {
         "ok": True,
+        "campaign": cid,
         "chapters_reset": len(per_chapter),
         "duration_ms": elapsed_ms,
         "reset_at": now_iso,

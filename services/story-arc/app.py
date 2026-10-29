@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import httpx
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from google.cloud import storage
 
@@ -80,8 +80,10 @@ FOLLOWUP_PROMPTS = {
     ],
 }
 
-app = FastAPI(title="OASE Story Arc Presenter Cockpit", version="1.0.0")
+app = FastAPI(title="OASE Story Arc Presenter Cockpit", version="1.1.0")
 _gcs_client: storage.Client | None = None
+DEFAULT_CAMPAIGN = "pcsk9-pilot-v1"
+CAMPAIGN_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 
 
 def _get_gcs_client() -> storage.Client:
@@ -95,15 +97,49 @@ def _state_headers() -> dict[str, str]:
     return {"X-OASE-State-Token": STATE_TOKEN} if STATE_TOKEN else {}
 
 
-def _load_video_manifest() -> dict[str, Any]:
-    mpath = STATIC_DIR / "assets" / "video-chapters-manifest.json"
-    if mpath.exists():
+def _load_campaigns_registry() -> dict[str, Any]:
+    rpath = STATIC_DIR / "assets" / "campaigns-registry.json"
+    if rpath.exists():
+        return json.loads(rpath.read_text(encoding="utf-8"))
+    return {
+        "default_campaign": DEFAULT_CAMPAIGN,
+        "campaigns": [
+            {
+                "id": DEFAULT_CAMPAIGN,
+                "short_label": "PCSK9 Oral · Reference Pilot (v1)",
+                "status": "ready",
+                "gcs_video_prefix": "videos",
+                "video_manifest": "assets/video-chapters-manifest.json",
+            }
+        ],
+    }
+
+
+def _resolve_campaign(campaign: str | None) -> tuple[str, dict[str, Any], dict[str, Any]]:
+    reg = _load_campaigns_registry()
+    default_cid = reg.get("default_campaign") or DEFAULT_CAMPAIGN
+    cid = (campaign or default_cid).strip() or default_cid
+    if not CAMPAIGN_RE.fullmatch(cid):
+        raise HTTPException(status_code=400, detail=f"Invalid campaign identifier '{cid}'")
+    campaigns = reg.get("campaigns", [])
+    entry = next((c for c in campaigns if c.get("id") == cid), None)
+    if entry is None:
+        entry = next((c for c in campaigns if c.get("id") == default_cid), {"id": default_cid, "status": "ready", "gcs_video_prefix": "videos", "video_manifest": "assets/video-chapters-manifest.json"})
+        cid = entry.get("id", default_cid)
+    return cid, entry, reg
+
+
+def _load_video_manifest(campaign_entry: dict[str, Any] | None = None) -> dict[str, Any]:
+    rel = (campaign_entry or {}).get("video_manifest") or "assets/video-chapters-manifest.json"
+    mpath = (STATIC_DIR / rel).resolve()
+    if str(mpath).startswith(str(STATIC_DIR)) and mpath.is_file():
         return json.loads(mpath.read_text(encoding="utf-8"))
     return {"chapters": {}}
 
 
 @app.get("/healthz")
 def healthz() -> dict[str, Any]:
+    reg = _load_campaigns_registry()
     return {
         "ok": True,
         "service": "oase-story-arc",
@@ -111,64 +147,88 @@ def healthz() -> dict[str, Any]:
         "gcs_bucket": GCS_BUNDLE_BUCKET,
         "scion_hub_url": SCION_HUB_URL,
         "state_controller_url": STATE_CONTROLLER_URL,
+        "campaigns_count": len(reg.get("campaigns", [])),
     }
 
 
 @app.get("/api/cockpit/config")
-async def cockpit_config(request: Request) -> JSONResponse:
+async def cockpit_config(request: Request, campaign: str | None = Query(default=None)) -> JSONResponse:
     iap_email = request.headers.get("x-goog-authenticated-user-email", "").removeprefix("accounts.google.com:")
-    state_data: dict[str, Any] = {"ok": False, "chapters": {}}
+    cid, camp_entry, reg = _resolve_campaign(campaign)
+    state_data: dict[str, Any] = {"ok": False, "campaign": cid, "chapters": {}}
     try:
         async with httpx.AsyncClient(timeout=4.0) as client:
-            r = await client.get(f"{STATE_CONTROLLER_URL}/api/state/status", headers=_state_headers())
+            r = await client.get(
+                f"{STATE_CONTROLLER_URL}/api/state/status",
+                params={"campaign": cid},
+                headers=_state_headers(),
+            )
             if r.status_code == 200:
                 state_data = r.json()
     except Exception as exc:
-        state_data = {"ok": False, "error": str(exc), "chapters": {}}
+        state_data = {"ok": False, "campaign": cid, "error": str(exc), "chapters": {}}
 
     return JSONResponse(
         {
             "signed_in_user": iap_email,
             "workshop_domain": WORKSHOP_DOMAIN,
             "scion_hub_url": SCION_HUB_URL,
+            "active_campaign": cid,
+            "campaigns": reg.get("campaigns", []),
+            "campaigns_registry": reg,
             "personas": PERSONAS,
             "followup_prompts": FOLLOWUP_PROMPTS,
-            "videos": _load_video_manifest(),
+            "videos": _load_video_manifest(camp_entry),
             "state": state_data,
         }
     )
 
 
 @app.get("/api/state/status")
-async def proxy_state_status() -> JSONResponse:
+async def proxy_state_status(campaign: str | None = Query(default=None)) -> JSONResponse:
+    cid, _, _ = _resolve_campaign(campaign)
     async with httpx.AsyncClient(timeout=8.0) as client:
-        r = await client.get(f"{STATE_CONTROLLER_URL}/api/state/status", headers=_state_headers())
+        r = await client.get(
+            f"{STATE_CONTROLLER_URL}/api/state/status",
+            params={"campaign": cid},
+            headers=_state_headers(),
+        )
         return JSONResponse(status_code=r.status_code, content=r.json())
 
 
 @app.post("/api/state/chapters/{chapter}/reset")
-async def proxy_reset_chapter(chapter: str) -> JSONResponse:
+async def proxy_reset_chapter(chapter: str, campaign: str | None = Query(default=None)) -> JSONResponse:
     if not re.fullmatch(r"ch[0-7]", chapter):
         raise HTTPException(status_code=400, detail="Invalid chapter ID")
+    cid, _, _ = _resolve_campaign(campaign)
     async with httpx.AsyncClient(timeout=15.0) as client:
-        r = await client.post(f"{STATE_CONTROLLER_URL}/api/state/chapters/{chapter}/reset", headers=_state_headers())
+        r = await client.post(
+            f"{STATE_CONTROLLER_URL}/api/state/chapters/{chapter}/reset",
+            params={"campaign": cid},
+            headers=_state_headers(),
+        )
         return JSONResponse(status_code=r.status_code, content=r.json())
 
 
 @app.post("/api/state/reset-all")
-async def proxy_reset_all() -> JSONResponse:
+async def proxy_reset_all(campaign: str | None = Query(default=None)) -> JSONResponse:
+    cid, _, _ = _resolve_campaign(campaign)
     async with httpx.AsyncClient(timeout=20.0) as client:
-        r = await client.post(f"{STATE_CONTROLLER_URL}/api/state/reset-all", headers=_state_headers())
+        r = await client.post(
+            f"{STATE_CONTROLLER_URL}/api/state/reset-all",
+            params={"campaign": cid},
+            headers=_state_headers(),
+        )
         return JSONResponse(status_code=r.status_code, content=r.json())
 
 
-@app.get("/api/videos/{filename}")
-def stream_video(filename: str, request: Request) -> Response:
+def _stream_video_impl(filename: str, request: Request, gcs_prefix: str = "videos", local_subdir: str = "") -> Response:
     if not re.fullmatch(r"[A-Za-z0-9._-]+\.mp4", filename):
         raise HTTPException(status_code=400, detail="Invalid video filename")
 
     range_header = request.headers.get("range")
-    local_file = LOCAL_VIDEOS_DIR / filename
+    local_base = (LOCAL_VIDEOS_DIR / local_subdir).resolve() if local_subdir else LOCAL_VIDEOS_DIR
+    local_file = local_base / filename
     if local_file.exists():
         total_size = local_file.stat().st_size
         if not range_header:
@@ -200,7 +260,10 @@ def stream_video(filename: str, request: Request) -> Response:
         raise HTTPException(status_code=404, detail="GCS_BUNDLE_BUCKET not configured and local video absent")
 
     bucket = _get_gcs_client().bucket(GCS_BUNDLE_BUCKET)
-    blob = bucket.blob(f"videos/{filename}")
+    clean_prefix = gcs_prefix.strip("/")
+    blob = bucket.blob(f"{clean_prefix}/{filename}")
+    if not blob.exists():
+        raise HTTPException(status_code=404, detail=f"Video {clean_prefix}/{filename} not found in GCS")
     blob.reload()
     total_size = int(blob.size or 0)
     if total_size <= 0:
@@ -254,6 +317,19 @@ def stream_video(filename: str, request: Request) -> Response:
             "Content-Length": str(len(chunk)),
         },
     )
+
+
+@app.get("/api/videos/{campaign}/{filename}")
+def stream_campaign_video(campaign: str, filename: str, request: Request) -> Response:
+    cid, camp_entry, _ = _resolve_campaign(campaign)
+    gcs_prefix = camp_entry.get("gcs_video_prefix") or ("videos" if cid == DEFAULT_CAMPAIGN else f"campaigns/{cid}/videos")
+    local_sub = "" if cid == DEFAULT_CAMPAIGN else cid
+    return _stream_video_impl(filename, request, gcs_prefix=gcs_prefix, local_subdir=local_sub)
+
+
+@app.get("/api/videos/{filename}")
+def stream_video(filename: str, request: Request) -> Response:
+    return _stream_video_impl(filename, request, gcs_prefix="videos", local_subdir="")
 
 
 COCKPIT_ENHANCEMENT_SNIPPET = r"""

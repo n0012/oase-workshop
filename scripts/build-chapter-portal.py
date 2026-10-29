@@ -24,15 +24,30 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <title>GCP-OASE &amp; Scion — Architecture, Value Proposition &amp; Campaign Walkthrough</title>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #f4f6f8; }
-  nav { background: #1e293b; color: #f8fafc; padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #2563eb; }
-  nav .left a { color: #e2e8f0; text-decoration: none; margin-right: 1.5rem; font-size: 0.92rem; }
+  nav { background: #1e293b; color: #f8fafc; padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 3px solid #2563eb; position: relative; z-index: 40; }
+  nav .left { display: flex; align-items: center; gap: 1.15rem; flex-wrap: wrap; }
+  nav .left a { color: #e2e8f0; text-decoration: none; font-size: 0.9rem; }
   nav .left a:hover, nav .left a.active-nav { color: #ffffff; font-weight: 600; text-decoration: underline; }
-  nav .nav-title { font-weight: 700; font-size: 1.05rem; margin-right: 2rem; color: #ffffff; }
+  nav .nav-title { font-weight: 700; font-size: 1.05rem; color: #ffffff; margin-right: 0.25rem; }
+  .pilot-switcher-wrap { position: relative; display: inline-block; }
+  .pilot-switcher-btn { background: #0f172a; color: #f8fafc; border: 1px solid #38bdf8; border-radius: 7px; padding: 0.36rem 0.75rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: all 0.15s; }
+  .pilot-switcher-btn:hover { background: #1e293b; border-color: #7dd3fc; }
+  .pilot-badge-pill { font-family: ui-monospace, monospace; font-size: 0.7rem; font-weight: 700; padding: 0.12rem 0.45rem; border-radius: 999px; }
+  .pilot-badge-pill.ready { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pilot-badge-pill.staging { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.45); }
+  .pilot-menu { display: none; position: absolute; top: calc(100% + 0.45rem); left: 0; min-width: 440px; max-width: 92vw; background: #0f172a; border: 1px solid #38bdf8; border-radius: 10px; box-shadow: 0 14px 36px rgba(2, 6, 23, 0.65); padding: 0.55rem; z-index: 999; }
+  .pilot-menu.open { display: block; }
+  .pilot-menu-hdr { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; padding: 0.3rem 0.55rem 0.45rem; border-bottom: 1px solid #1e293b; font-weight: 700; }
+  .pilot-menu-item { display: block; width: 100%; text-align: left; background: transparent; border: 1px solid transparent; color: #f8fafc; padding: 0.65rem 0.75rem; border-radius: 7px; cursor: pointer; margin-top: 0.3rem; transition: all 0.12s; }
+  .pilot-menu-item:hover { background: #1e293b; border-color: #334155; }
+  .pilot-menu-item.active { background: rgba(37, 99, 235, 0.22); border-color: #3b82f6; }
+  .pilot-menu-ftr { font-size: 0.73rem; color: #94a3b8; padding: 0.45rem 0.55rem 0.25rem; border-top: 1px solid #1e293b; margin-top: 0.35rem; font-family: ui-monospace, monospace; }
   .badge-env { background: #0f172a; color: #38bdf8; border: 1px solid #0284c7; padding: 0.25rem 0.65rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
-  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 1.75rem 2.5rem; }
-  .hero h1 { margin: 0 0 0.45rem 0; font-size: 1.68rem; color: #ffffff; }
-  .hero p { margin: 0; color: #cbd5e1; font-size: 0.98rem; max-width: 980px; line-height: 1.5; }
-  .kpi-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.85rem; margin-top: 1.25rem; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 1.45rem 2.5rem; }
+  .hero h1 { margin: 0 0 0.35rem 0; font-size: 1.58rem; color: #ffffff; }
+  .hero p { margin: 0; color: #cbd5e1; font-size: 0.95rem; max-width: 960px; line-height: 1.45; }
+  .hero-pilot-tag { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.65rem; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 999px; padding: 0.24rem 0.75rem; font-size: 0.78rem; color: #e2e8f0; font-family: ui-monospace, monospace; }
+  .kpi-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.85rem; margin-top: 1rem; }
   .kpi-card { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 6px; padding: 0.75rem 0.9rem; }
   .kpi-card .kpi-val { font-size: 1.25rem; font-weight: 700; color: #38bdf8; font-family: monospace; }
   .kpi-card .kpi-lbl { font-size: 0.74rem; color: #cbd5e1; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -120,19 +135,29 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <body>
 <nav>
   <div class="left">
-    <span class="nav-title">GCP-OASE &amp; Scion — pcsk9-oral</span>
+    <span class="nav-title">GCP-OASE &amp; Scion</span>
+    <div class="pilot-switcher-wrap" id="oase-campaign-switcher">
+      <button type="button" class="pilot-switcher-btn" id="oase-campaign-btn" onclick="oaseToggleCampaignMenu(event)">
+        <span>&#128450; Pilot:</span>
+        <strong id="oase-campaign-btn-label">PCSK9 Oral · Reference Pilot (v1)</strong>
+        <span class="pilot-badge-pill ready" id="oase-campaign-btn-badge">LIVE · 8 GROVES</span>
+        <span style="opacity:0.75;">&#9662;</span>
+      </button>
+      <div class="pilot-menu" id="oase-campaign-menu"></div>
+    </div>
     <a href="index.html">Portal Home (30 Pages)</a>
-    <a href="chapters.html" class="active-nav">Architecture, Value Prop &amp; Campaign Replay</a>
-    <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Candidate Dossier</a>
-    <a href="plan.html" style="color:#4ade80;font-weight:700;">Pilot Vision &amp; Build Tracker</a>
+    <a href="chapters.html" class="active-nav">Story Arc &amp; Replay</a>
+    <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Dossier</a>
+    <a href="plan.html" style="color:#4ade80;font-weight:700;">Build Tracker</a>
   </div>
   <span class="badge-env">Project: __PROJECT_BADGE__ | scion + oase 0.3.0 | ENV __ENV_SHA__</span>
 </nav>
 
 <div class="hero">
-  <h1>Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
-  <p><strong>OASE (Open Agentic Science Engine)</strong> is a drug discovery solution on Google Cloud that traces AI model predictions, wet-lab measurements, computed results, and stage-gate decisions across five layers of artifacts. Built on top of the open-source, multi-agent, multi-user <strong>SCION</strong> agent platform, GCP-OASE pairs a 5-scientist human discovery pod with a mirrored multi-model AI agent team (Gemini, Claude, OpenAI).</p>
-  <div class="kpi-strip">
+  <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
+  <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral · Reference Pilot (v1) — PCSK9 (Q8NBP7) · Oral Rule-of-5 Small Molecule</div>
+  <div class="kpi-strip" id="hero-kpi-strip">
     <div class="kpi-card"><div class="kpi-val">5 Human + 11 AI</div><div class="kpi-lbl">Discovery Pod &amp; Agent Team</div></div>
     <div class="kpi-card"><div class="kpi-val">4 Core Pillars</div><div class="kpi-lbl">Grove · WOs · 2-Phase · Gates</div></div>
     <div class="kpi-card"><div class="kpi-val">5 Artifact Layers</div><div class="kpi-lbl">Separation of Powers</div></div>
@@ -159,41 +184,37 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- PANEL WHY: THE PROBLEM, 4 CHALLENGES & WHAT YOU'LL SEE IN THIS DEMO -->
   <section class="chapter-panel active" id="panel-why">
     <div class="chapter-header">
-      <h2>Act I (Part 1) — Start With Three "What If" Questions &amp; What Is GCP-OASE?</h2>
-      <span class="stage-pill">3 "What Ifs" · Subway-Map Routing · Customer VPC (Apache 2.0) · 7 Steps + Wet-Lab Gate</span>
+      <h2>Three "What Ifs" Behind GCP-OASE</h2>
+      <span class="stage-pill">Apache 2.0 ($0/Seat) · Sovereign Customer VPC · Subway-Map Routing</span>
     </div>
     <div class="stack-full">
       <div class="whatif-banner" id="whatif-hero">
-        <h3>Start Here: Three "What If" Questions for Agentic Biopharma R&amp;D</h3>
+        <h3>Three "What Ifs" for Biopharma R&amp;D</h3>
         <div class="whatif-grid">
           <div class="whatif-card">
-            <div class="wi-num">What If #1 · Multiplayer Science</div>
-            <div class="wi-q">"What if we had an agentic AI surface all of our scientists could use together at the same time?"</div>
-            <p class="wi-a">Instead of 5 isolated single-player chat tabs, our 5-scientist discovery pod shares one live <strong>Scion Grove</strong> alongside 11 specialist AI agents.</p>
+            <div class="wi-num">1 · Multiplayer Science</div>
+            <div class="wi-q">"What if your whole pod shared one AI workspace?"</div>
+            <p class="wi-a">5 scientists + 11 AI wingmen in one live <strong>Scion Grove</strong>—not isolated chat tabs.</p>
           </div>
           <div class="whatif-card">
-            <div class="wi-num">What If #2 · Model Optionality</div>
-            <div class="wi-q">"What if we had optionality in the frontier models we use—not locking our science into one vendor or one model's blind spots?"</div>
-            <p class="wi-a"><strong>Gemini</strong>, <strong>Anthropic Claude</strong>, and <strong>OpenAI</strong> run side-by-side via portable model tiers so no model family ever peer-reviews its own output.</p>
+            <div class="wi-num">2 · Model Optionality</div>
+            <div class="wi-q">"What if frontier models challenged each other?"</div>
+            <p class="wi-a"><strong>Gemini</strong>, <strong>Claude</strong> &amp; <strong>OpenAI</strong> + 1P <strong>AlphaGenome</strong> &amp; <strong>AlphaFold 3</strong> inside your VPC.</p>
           </div>
           <div class="whatif-card">
-            <div class="wi-num">What If #3 · Verified Stage Gates</div>
-            <div class="wi-q">"What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data?"</div>
-            <p class="wi-a">Deterministic Phase-1/Phase-2 tools lock <code>raw/</code> SHA-256 receipts and <code>oase validate check</code> blocks any unverified metric (&plusmn;1%) or dropped caveat.</p>
+            <div class="wi-num">3 · Verified Stage Gates</div>
+            <div class="wi-q">"What if every AI claim carried a SHA-256 receipt?"</div>
+            <p class="wi-a">Two-phase tools verify numbers (&plusmn;1%) and caveats before any gate closes.</p>
           </div>
         </div>
-        <div class="whatif-pivot" style="align-items:flex-start;flex-direction:column;gap:0.75rem;">
-          <div style="line-height:1.5;">
-            <strong style="color:#4ade80;font-size:1.05rem;">Well &mdash; we built it.</strong>
-            <strong>GCP-OASE</strong> is an open-source (<code>Apache 2.0</code>, $0 seat fees) agentic orchestration layer on Scion inside your own Google Cloud VPC. <strong>Like a subway navigator rather than a fixed Nextflow pipeline</strong>, you set your therapeutic destination and cutoffs up front; at each stop, T-shaped specialist agents evaluate primary tool evidence, filter out 500-agent chat noise through a SHA-256 governance shield, and dispatch the next Work Order across built-in and custom containers&mdash;adapting when biology surprises you and pausing cleanly at wet-lab CRO handoffs.
+        <div class="whatif-pivot">
+          <div>
+            <strong style="color:#4ade80;">We built it:</strong> Open-source (<code>Apache 2.0</code>) subway-map routing in your VPC with wet-lab CRO gates.
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:0.75rem;">
-            <div style="font-size:0.82rem;color:#94a3b8;font-family:monospace;">Subway-Map Routing &middot; Signal Funnel (Zero Swarm Noise) &middot; Bring Your Own Containers in Customer VPC</div>
-            <div class="whatif-actions">
-              <button class="whatif-cta" onclick="showChapter('lab')">Open 2.5-Hr Guided Lab &rarr;</button>
-              <button class="whatif-cta secondary" onclick="showChapter('ch1')">Start Step 1 Walkthrough &rarr;</button>
-              <button class="whatif-cta" style="background:#334155;border-color:#64748b;" onclick="jumpToRecapMap()">See Campaign Route Recap (Step 7) &rarr;</button>
-            </div>
+          <div class="whatif-actions">
+            <button class="whatif-cta secondary" onclick="showChapter('ch1')">&#9654; Start Step 1 &rarr;</button>
+            <button class="whatif-cta" onclick="showChapter('lab')">2.5-Hr Lab &rarr;</button>
+            <button class="whatif-cta" style="background:#334155;border-color:#64748b;" onclick="jumpToRecapMap()">Route Recap &rarr;</button>
           </div>
         </div>
       </div>
@@ -226,7 +247,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <tr id="why-row-2">
               <td><strong>2. The Chatbot Fabrication Trap</strong></td>
               <td>Summarizes large tables in prompt context, invents plausible binding numbers, pads citations, or confuses <code>NA</code> with <code>0</code>.</td>
-              <td><strong>Two-Phase Tool Execution &amp; Dual Validation:</strong> <strong>Phase 1 (Data Acquisition):</strong> Primary scientific datasets are processed by deterministic scientific tools rather than passed through an LLM prompt, and raw results are written to disk alongside a cryptographic (SHA-256) provenance record. <strong>Phase 2 (Pre-Registered Threshold Evaluation):</strong> Executes offline to evaluate those primary outputs against human expert-defined program cutoffs. Before any finding is accepted, it must pass both automated data-integrity verification and an independent scientific peer review by the AI program lead.</td>
+              <td><strong>Two-phase execution &amp; dual validation:</strong> Deterministic Phase-1/2 tools write raw SHA-256 receipts and check human-defined cutoffs offline before AI Program Lead peer review.</td>
             </tr>
             <tr id="why-row-3">
               <td><strong>3. The Single-Model Echo Chamber</strong></td>
@@ -998,7 +1019,7 @@ function showChapter(ch) {
   const b = document.getElementById('btn-' + ch);
   if (p) p.classList.add('active');
   if (b) b.classList.add('active');
-  if (history.replaceState) history.replaceState(null, '', '#' + ch);
+  if (history.replaceState) history.replaceState(null, '', window.location.pathname + window.location.search + '#' + ch);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1261,6 +1282,49 @@ selectStation('s3');
     transition: all 0.15s;
   }
   .scrub-pill:hover { background: #2563eb; color: #ffffff; }
+  .pause-prove-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-top: 0.65rem;
+    padding: 0.5rem 0.7rem;
+    background: rgba(15, 23, 42, 0.68);
+    border: 1px solid rgba(56, 189, 248, 0.32);
+    border-radius: 8px;
+  }
+  .pause-prove-lbl {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #7dd3fc;
+    font-family: ui-monospace, monospace;
+    margin-right: 0.2rem;
+  }
+  .pause-pill {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 0.26rem 0.62rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.14s;
+  }
+  .pause-pill:hover { background: #0284c7; border-color: #7dd3fc; color: #ffffff; }
+  .staging-pilot-banner {
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    border: 1.5px solid #f59e0b;
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 1.15rem;
+    color: #f8fafc;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
+  }
   .role-bar {
     margin-top: 1rem;
     padding-top: 0.9rem;
@@ -1332,6 +1396,7 @@ selectStation('s3');
 <script id="oase-cockpit-script">
 (function() {
   const STATIC_VIDEO_MANIFEST = __VIDEO_MANIFEST_JSON__;
+  const STATIC_CAMPAIGNS_REGISTRY = __CAMPAIGNS_REGISTRY_JSON__;
   const DEFAULT_PERSONAS = [
     {"key": "sarah", "prefix": "oase-sarah", "name": "Dr. Sarah Chen", "role": "Program Lead", "avatar": "assets/avatars/sarah.jpg"},
     {"key": "marcus", "prefix": "oase-marcus", "name": "Dr. Marcus Vance", "role": "Comp Bio", "avatar": "assets/avatars/marcus.jpg"},
@@ -1371,6 +1436,21 @@ selectStation('s3');
     ]
   };
 
+  function resolveInitialCampaign() {
+    const q = new URLSearchParams(window.location.search).get('campaign');
+    const list = (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.campaigns) || [];
+    if (q && list.some(c => c.id === q)) return q;
+    return (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.default_campaign) || 'pcsk9-pilot-v1';
+  }
+
+  let activeCampaignId = resolveInitialCampaign();
+
+  function getCampaignObj(registry, cid) {
+    const reg = registry || STATIC_CAMPAIGNS_REGISTRY || {};
+    const list = reg.campaigns || [];
+    return list.find(c => c.id === cid) || list[0] || { id: 'pcsk9-pilot-v1', short_label: 'PCSK9 Oral · Reference Pilot (v1)', status: 'ready', badge: 'LIVE · 8 GROVES' };
+  }
+
   function showToast(msg, isErr) {
     const t = document.getElementById('cockpit-toast');
     if (!t) return;
@@ -1378,6 +1458,106 @@ selectStation('s3');
     t.textContent = msg;
     t.style.display = 'block';
     setTimeout(() => { t.style.display = 'none'; }, 4200);
+  }
+
+  window.oaseToggleCampaignMenu = function(ev) {
+    if (ev) ev.stopPropagation();
+    const m = document.getElementById('oase-campaign-menu');
+    if (m) m.classList.toggle('open');
+  };
+
+  document.addEventListener('click', (ev) => {
+    const wrap = document.getElementById('oase-campaign-switcher');
+    const menu = document.getElementById('oase-campaign-menu');
+    if (menu && wrap && !wrap.contains(ev.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  window.oaseSelectCampaign = async function(cid) {
+    activeCampaignId = cid;
+    const menu = document.getElementById('oase-campaign-menu');
+    if (menu) menu.classList.remove('open');
+    if (history.replaceState) {
+      const u = new URL(window.location.href);
+      u.searchParams.set('campaign', cid);
+      history.replaceState(null, '', u.pathname + u.search + u.hash);
+    }
+    // Pause any playing video and clear dynamic stage cards before re-rendering for the selected pilot
+    document.querySelectorAll('video').forEach(v => { try { v.pause(); } catch (_) {} });
+    const fw = document.getElementById('cockpit-full-walkthrough-card');
+    if (fw) fw.remove();
+    const sb = document.getElementById('oase-staging-banner');
+    if (sb) sb.remove();
+    ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
+      const c = document.getElementById('cockpit-card-' + chId);
+      if (c) c.remove();
+    });
+    await refreshCockpit();
+    const camp = getCampaignObj(null, cid);
+    showToast('Switched Scion Pilot to: ' + camp.short_label);
+  };
+
+  window.oasePauseVideoOnly = function(chId) {
+    const v = document.getElementById('video-' + chId);
+    if (v) { try { v.pause(); } catch (_) {} }
+  };
+
+  window.oasePauseAndInspect = function(chId, href, mode) {
+    window.oasePauseVideoOnly(chId);
+    if (mode === 'subpage' && typeof openSubpage === 'function') {
+      openSubpage(href);
+      showToast('Video paused · Inspecting ' + href);
+    } else if (href) {
+      window.open(href, '_blank', 'noopener');
+    }
+  };
+
+  function renderCampaignChrome(registry, cid) {
+    const reg = registry || STATIC_CAMPAIGNS_REGISTRY || {};
+    const list = reg.campaigns || [];
+    const active = getCampaignObj(reg, cid);
+
+    const lbl = document.getElementById('oase-campaign-btn-label');
+    if (lbl) lbl.textContent = active.short_label || active.id;
+    const bdg = document.getElementById('oase-campaign-btn-badge');
+    if (bdg) {
+      bdg.textContent = active.badge || (active.status === 'ready' ? 'READY' : 'STAGING');
+      bdg.className = 'pilot-badge-pill ' + (active.status === 'ready' ? 'ready' : 'staging');
+    }
+    const heroTag = document.getElementById('hero-active-pilot-line');
+    if (heroTag) {
+      heroTag.textContent = `Active Scion Pilot: ${active.short_label} — ${active.target || ''}`;
+    }
+    const kpiStrip = document.getElementById('hero-kpi-strip');
+    if (kpiStrip && Array.isArray(active.kpis) && active.kpis.length > 0) {
+      kpiStrip.innerHTML = active.kpis.map(k =>
+        `<div class="kpi-card"><div class="kpi-val">${k.val}</div><div class="kpi-lbl">${k.lbl}</div></div>`
+      ).join('');
+    }
+    const menu = document.getElementById('oase-campaign-menu');
+    if (menu) {
+      const itemsHtml = list.map(c => {
+        const isAct = c.id === active.id;
+        const bCls = c.status === 'ready' ? 'ready' : 'staging';
+        return `
+          <button type="button" class="pilot-menu-item ${isAct ? 'active' : ''}" onclick="oaseSelectCampaign('${c.id}')">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+              <strong style="font-size:0.86rem;color:#ffffff;">${isAct ? '✓ ' : ''}${c.short_label}</strong>
+              <span class="pilot-badge-pill ${bCls}">${c.badge || c.status.toUpperCase()}</span>
+            </div>
+            <div style="font-size:0.77rem;color:#93c5fd;margin-top:0.2rem;">${c.target || ''}</div>
+            <div style="font-size:0.74rem;color:#cbd5e1;margin-top:0.15rem;line-height:1.35;">${c.stack_summary || ''}</div>
+          </button>
+        `;
+      }).join('');
+      menu.innerHTML = `
+        <div class="pilot-menu-hdr">Scion Campaign / Pilot Workspaces (${list.length})</div>
+        ${itemsHtml}
+        <div class="pilot-menu-ftr">Isolated Grove DBs, Git tags, 1080p reels &amp; SHA-256 receipts (?campaign=&lt;id&gt;)</div>
+      `;
+    }
+    return active;
   }
 
   window.oaseSeekVideo = function(chId, sec) {
@@ -1394,9 +1574,9 @@ selectStation('s3');
   };
 
   window.oaseResetChapter = async function(chId) {
-    showToast('Resetting ' + chId.toUpperCase() + ' Grove + Scion SQLite...');
+    showToast('Resetting ' + chId.toUpperCase() + ' Grove + Scion SQLite (' + activeCampaignId + ')...');
     try {
-      const r = await fetch('/api/state/chapters/' + chId + '/reset', { method: 'POST' });
+      const r = await fetch('/api/state/chapters/' + chId + '/reset?campaign=' + encodeURIComponent(activeCampaignId), { method: 'POST' });
       const d = await r.json();
       if (!r.ok || !d.ok) throw new Error(d.detail || 'Reset failed');
       showToast('Reset ' + chId.toUpperCase() + ' complete in ' + d.duration_ms + ' ms (commit ' + d.git_commit + ')!');
@@ -1407,9 +1587,9 @@ selectStation('s3');
   };
 
   window.oaseResetAll = async function() {
-    showToast('Resetting all 8 chapters (ch0..ch7) to Golden Snapshot...');
+    showToast('Resetting all chapters to Golden Snapshot (' + activeCampaignId + ')...');
     try {
-      const r = await fetch('/api/state/reset-all', { method: 'POST' });
+      const r = await fetch('/api/state/reset-all?campaign=' + encodeURIComponent(activeCampaignId), { method: 'POST' });
       const d = await r.json();
       if (!r.ok || !d.ok) throw new Error(d.detail || 'Reset-all failed');
       showToast('Reset all ' + d.chapters_reset + ' chapters to t=0 / Golden State in ' + d.duration_ms + ' ms!');
@@ -1424,7 +1604,7 @@ selectStation('s3');
     if (dr) dr.classList.toggle('open');
   };
 
-  function buildTopBar(cfg, isLive) {
+  function buildTopBar(cfg, isLive, activeCamp) {
     let bar = document.getElementById('oase-cockpit-topbar');
     if (!bar) {
       bar = document.createElement('div');
@@ -1439,14 +1619,15 @@ selectStation('s3');
         nav.parentNode.insertBefore(bar, dr);
       }
     }
+    const isStaging = activeCamp && activeCamp.status !== 'ready';
     if (!isLive) {
       bar.innerHTML = `
         <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-          <span class="cockpit-status-pill">● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)</span>
-          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen</span>
+          <span class="cockpit-status-pill">${isStaging ? '⚡ Staging Pilot Workspace · Queued for Live Sovereign GPU Run' : '● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)'}</span>
+          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen'}</span>
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-          <span style="color:#94a3b8;font-size:0.78rem;">Live 5-Persona Scion Grove &amp; &lt;2s Reset Active on Cloud Run Cockpit</span>
+          ${isStaging ? `<button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Switch to Reference Pilot (v1 · Ready)</button>` : `<span style="color:#94a3b8;font-size:0.78rem;">Live 5-Persona Scion Grove &amp; &lt;2s Reset Active on Cloud Run Cockpit</span>`}
         </div>
       `;
       return;
@@ -1454,9 +1635,11 @@ selectStation('s3');
 
     const st = cfg.state || {};
     const chCount = Object.keys(st.chapters || {}).length;
-    const statusText = st.ok
-      ? `● Live Grove Connected · ${chCount} Chapters Ready · Admin Leaks: ${st.admin_rows_count ?? 0}`
-      : `● Static Replay Mode (State Controller unreachable)`;
+    const statusText = isStaging
+      ? `⚡ Staging Pilot (${activeCamp.nav_slug || activeCamp.id}) · Provisioned & Ready for Live Run`
+      : (st.ok
+          ? `● Live Grove Connected (${activeCamp.nav_slug || activeCamp.id}) · ${chCount} Chapters Ready · Admin Leaks: ${st.admin_rows_count ?? 0}`
+          : `● Static Replay Mode (State Controller unreachable)`);
 
     const ch0 = (st.chapters || {}).ch0;
     const ch0Url = (cfg.scion_hub_url && ch0 && cfg.workshop_domain)
@@ -1469,14 +1652,15 @@ selectStation('s3');
         ${cfg.signed_in_user ? `<span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">Signed in: <strong style="color:#fff;">${cfg.signed_in_user}</strong></span>` : ''}
       </div>
       <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-        ${ch0Url !== '#' ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">🧪 Launch Fresh Sandbox (ch0 · t=0) ↗</a>` : ''}
-        <button class="cockpit-btn" onclick="oaseToggleDrawer()">⚙ Facilitator Reset Drawer</button>
-        <button class="cockpit-btn danger" onclick="oaseResetAll()">↺ Reset Entire Demo (t=0)</button>
+        ${isStaging ? `<button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Return to Reference Pilot (v1)</button>` : ''}
+        ${(!isStaging && ch0Url !== '#') ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">🧪 Launch Fresh Sandbox (ch0 · t=0) ↗</a>` : ''}
+        ${!isStaging ? `<button class="cockpit-btn" onclick="oaseToggleDrawer()">⚙ Facilitator Reset Drawer</button>` : ''}
+        ${!isStaging ? `<button class="cockpit-btn danger" onclick="oaseResetAll()">↺ Reset Entire Demo (t=0)</button>` : ''}
       </div>
     `;
 
     const dr = document.getElementById('oase-facilitator-drawer');
-    if (dr && st.chapters) {
+    if (dr && st.chapters && !isStaging) {
       const rows = Object.values(st.chapters).map(c => `
         <tr>
           <td><strong>${c.chapter.toUpperCase()}</strong></td>
@@ -1500,20 +1684,93 @@ selectStation('s3');
           </table>
         </div>
       `;
+    } else if (dr) {
+      dr.classList.remove('open');
     }
   }
 
-  function injectChapterCards(cfg, isLive) {
+  function renderPauseLinksHtml(activeCamp, chId) {
+    const links = (activeCamp && activeCamp.pause_links && activeCamp.pause_links[chId]) || [];
+    if (!links.length) return '';
+    const pills = links.map(lnk => {
+      if (lnk.mode === 'subpage') {
+        return `<button type="button" class="pause-pill" onclick="oasePauseAndInspect('${chId}', '${lnk.href}', 'subpage')">${lnk.label}</button>`;
+      }
+      return `<a class="pause-pill" href="${lnk.href}" target="_blank" rel="noopener" onclick="oasePauseVideoOnly('${chId}')">${lnk.label} ↗</a>`;
+    }).join('');
+    return `
+      <div class="pause-prove-bar">
+        <span class="pause-prove-lbl">⏸ Pause &amp; Inspect Same Artifacts:</span>
+        ${pills}
+      </div>
+    `;
+  }
+
+  function injectChapterCards(cfg, isLive, activeCamp) {
+    const isStaging = activeCamp && activeCamp.status !== 'ready';
+    const whyPanel = document.getElementById('panel-why');
+
+    if (isStaging) {
+      if (whyPanel && !document.getElementById('oase-staging-banner')) {
+        const sb = document.createElement('div');
+        sb.id = 'oase-staging-banner';
+        sb.className = 'staging-pilot-banner';
+        const surfaces = (activeCamp.planned_surfaces || []).map(s => `<li style="margin-bottom:0.28rem;">${s}</li>`).join('');
+        sb.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <span class="pilot-badge-pill staging" style="margin-bottom:0.4rem;display:inline-block;">⚡ STAGING PILOT WORKSPACE · NEXT LIVE EXECUTION</span>
+              <h3 style="margin:0.2rem 0 0.35rem 0;color:#ffffff;font-size:1.08rem;">${activeCamp.title}</h3>
+              <p style="margin:0;color:#cbd5e1;font-size:0.85rem;">${activeCamp.stack_summary || ''}</p>
+            </div>
+            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← View Completed Reference Pilot (v1) →</button>
+          </div>
+          <ul style="margin:0.75rem 0 0 1.2rem;padding:0;font-size:0.82rem;color:#e2e8f0;line-height:1.45;">${surfaces}</ul>
+        `;
+        const whatifHero = document.getElementById('whatif-hero');
+        if (whatifHero && whatifHero.parentNode) {
+          whatifHero.parentNode.insertBefore(sb, whatifHero);
+        }
+      }
+      ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
+        const panel = document.getElementById('panel-' + chId);
+        if (!panel || document.getElementById('cockpit-card-' + chId)) return;
+        const card = document.createElement('div');
+        card.id = 'cockpit-card-' + chId;
+        card.className = 'cockpit-stage-card';
+        card.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <div>
+              <span class="pilot-badge-pill staging">⚡ STAGING · ${chId.toUpperCase()}</span>
+              <strong style="font-size:0.98rem;color:#fcd34d;margin-left:0.45rem;">${activeCamp.short_label} — Live Run Slot Ready</strong>
+              <div style="font-size:0.81rem;color:#cbd5e1;margin-top:0.3rem;">
+                This isolated campaign slot will capture unscripted Scion Grove messages, dedicated Vertex AI GPU telemetry, interactive 3D/genomics viewers, and Flight-Recorder logs during the live run.
+              </div>
+            </div>
+            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Open Reference Pilot (v1) Video &amp; Grove</button>
+          </div>
+          ${renderPauseLinksHtml(activeCamp, chId)}
+        `;
+        const hdr = panel.querySelector('.chapter-header');
+        if (hdr && hdr.nextSibling) panel.insertBefore(card, hdr.nextSibling);
+        else panel.prepend(card);
+      });
+      return;
+    }
+
     const manifest = (cfg && cfg.videos) || STATIC_VIDEO_MANIFEST || {};
     const videos = manifest.chapters || {};
     const fullVideo = manifest.full_walkthrough;
     const stChapters = (cfg && cfg.state && cfg.state.chapters) || {};
     const personas = (cfg && cfg.personas) || DEFAULT_PERSONAS;
     const promptsMap = (cfg && cfg.followup_prompts) || DEFAULT_PROMPTS;
-    const videoBase = isLive ? '/api/videos/' : 'assets/videos/';
+    const cid = (activeCamp && activeCamp.id) || 'pcsk9-pilot-v1';
+    const staticPrefix = ((activeCamp && activeCamp.static_video_prefix) || 'assets/videos').replace(/\/?$/, '/');
+    const videoBase = isLive
+      ? (cid === 'pcsk9-pilot-v1' ? '/api/videos/' : `/api/videos/${encodeURIComponent(cid)}/`)
+      : staticPrefix;
 
     if (fullVideo && !document.getElementById('cockpit-full-walkthrough-card')) {
-      const whyPanel = document.getElementById('panel-why');
       if (whyPanel) {
         const fwCard = document.createElement('div');
         fwCard.id = 'cockpit-full-walkthrough-card';
@@ -1526,7 +1783,7 @@ selectStation('s3');
             <div>
               <strong style="color:#38bdf8;font-size:0.98rem;">🎬 Interactive 7-Chapter Squadron Walkthrough (${durMin} Total · 1080p)</strong>
               <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
-                Bookended by a full-pod <strong>Step 1 Pre-Mission Brief</strong> (Co-Scientist prompt co-design + Doctor &harr; Wingman pairings) and <strong>Step 7 Post-Mission Debrief</strong>, with crisp tactical comms across Steps 2&ndash;6 while verbatim metrics, JSONPath citations, and SHA-256 receipts appear live in Scion Webchat.
+                Bookended by a full-pod <strong>Step 1 Pre-Mission Brief</strong> (Co-Scientist prompt co-design + Doctor &harr; Wingman pairings) and <strong>Step 7 Post-Mission Debrief</strong>, with live SHA-256 artifacts below every step.
               </div>
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
@@ -1584,6 +1841,8 @@ selectStation('s3');
           ).join('')
         : '';
 
+      const pauseBarHtml = renderPauseLinksHtml(activeCamp, chId);
+
       const rolesHtml = personas.map(p => {
         const isLead = p.key === leadKey;
         if (isLive) {
@@ -1592,7 +1851,7 @@ selectStation('s3');
             ? `${cfg.scion_hub_url}/chat/${cstate.slug}/${cstate.general_topic_id}?authuser=${encodeURIComponent(email)}`
             : (cfg.scion_hub_url ? `${cfg.scion_hub_url}/chat` : '#');
           return `
-            <a class="role-link ${isLead ? 'lead' : ''}" href="${liveHref}" target="_blank" rel="noopener">
+            <a class="role-link ${isLead ? 'lead' : ''}" href="${liveHref}" target="_blank" rel="noopener" onclick="oasePauseVideoOnly('${chId}')">
               <img src="${p.avatar}" alt="${p.name}">
               <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · LEAD' : ''})</small></span>
             </a>
@@ -1624,7 +1883,7 @@ selectStation('s3');
         ? `<button class="cockpit-btn" onclick="oaseResetChapter('${chId}')">↺ Reset ${chId.toUpperCase()} (&lt;2s)</button>`
         : '';
       const roleHeader = isLive
-        ? `🚀 Join Live at This Stage As Any of the 5 Discovery Pod Scientists (Zero Admin Noise):`
+        ? `🚀 Pause &amp; Join Live Scion Grove As Any of the 5 Discovery Pod Scientists (Zero Admin Noise):`
         : `👩‍🔬 5-Scientist Human Discovery Pod Roster &amp; Follow-Up Q&amp;A Prompts (Live Webchat Active on Cloud Run):`;
 
       card.innerHTML = `
@@ -1641,6 +1900,7 @@ selectStation('s3');
           <video id="video-${chId}" controls preload="metadata" src="${videoSrc}"></video>
         </div>
         <div class="scrub-bar">${markersHtml}</div>
+        ${pauseBarHtml}
         ${wetlabHtml}
         <div class="role-bar">
           <div style="font-size:0.83rem;font-weight:700;color:#e2e8f0;">${roleHeader}</div>
@@ -1654,16 +1914,18 @@ selectStation('s3');
 
   async function refreshCockpit() {
     try {
-      const r = await fetch('/api/cockpit/config', { cache: 'no-store' });
+      const r = await fetch('/api/cockpit/config?campaign=' + encodeURIComponent(activeCampaignId), { cache: 'no-store' });
       if (r.ok) {
         const cfg = await r.json();
-        buildTopBar(cfg, true);
-        injectChapterCards(cfg, true);
+        const activeCamp = renderCampaignChrome(cfg.campaigns_registry || STATIC_CAMPAIGNS_REGISTRY, cfg.active_campaign || activeCampaignId);
+        buildTopBar(cfg, true, activeCamp);
+        injectChapterCards(cfg, true, activeCamp);
         return;
       }
     } catch (_) {}
-    buildTopBar(null, false);
-    injectChapterCards(null, false);
+    const activeCamp = renderCampaignChrome(STATIC_CAMPAIGNS_REGISTRY, activeCampaignId);
+    buildTopBar(null, false, activeCamp);
+    injectChapterCards(null, false, activeCamp);
   }
 
   if (document.readyState === 'loading') {
@@ -1921,11 +2183,24 @@ def main() -> int:
         else {"chapters": {}}
     )
 
+    cregistry_path = site_dir / "assets" / "campaigns-registry.json"
+    if not cregistry_path.is_file():
+        src_creg = repo_root / "site-template" / "assets" / "campaigns-registry.json"
+        if src_creg.is_file():
+            shutil.copy2(src_creg, cregistry_path)
+            cregistry_path = src_creg
+    cregistry_data = (
+        json.loads(cregistry_path.read_text(encoding="utf-8"))
+        if cregistry_path.is_file()
+        else {"default_campaign": "pcsk9-pilot-v1", "campaigns": []}
+    )
+
     html_out = (
         CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge)
         .replace("__ENV_SHA__", env_sha)
         .replace("__SUBPAGES_JSON__", json.dumps(subpages))
         .replace("__VIDEO_MANIFEST_JSON__", json.dumps(vmanifest_data))
+        .replace("__CAMPAIGNS_REGISTRY_JSON__", json.dumps(cregistry_data))
     )
     # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
     for img_path in sorted(site_assets.iterdir()):
