@@ -1,0 +1,48 @@
+{
+  "record_type": "analysis",
+  "source": "raw/admet/pcsk9_ic001_series_admet.json",
+  "source_sha256": "6cf2f3fd913033708859ebf6fb03bf24202d61c1135d1e2f8ffff186e9a4c3ea",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "admet@1.0",
+  "thresholds_applied": {
+    "max_mw": 500.0,
+    "max_clogp": 3.5,
+    "min_tpsa": 75.0,
+    "max_tpsa": 110.0
+  },
+  "threshold_sources": {
+    "max_mw": "default",
+    "max_clogp": "default",
+    "min_tpsa": "default",
+    "max_tpsa": "default"
+  },
+  "metrics": {
+    "parent_clogp": 4.8,
+    "lead_clogp": 3.1,
+    "lead_lipe": 5.2,
+    "lead_mw": 462.5,
+    "lead_tpsa": 88.4,
+    "structural_alerts_count": 0,
+    "retro_step_count": 4,
+    "retro_plausibility": 0.87
+  },
+  "assessment": {
+    "verdict": "oral_lead_candidate_qualified",
+    "lead_compound": "OASE-PCSK9-014"
+  },
+  "mandatory_relays": [
+    {
+      "code": "compound.alerts_not_toxicology",
+      "message": "Absence of PAINS/Brenk/ChEMBL structural alerts does not prove absence of biological toxicity."
+    },
+    {
+      "code": "compound.sa_score_is_estimate",
+      "message": "Computational synthetic accessibility and retrosynthetic scores are estimates, not experimental yields."
+    }
+  ],
+  "written_by": "wo006-medicinal-chemist",
+  "work_order_id": "WO-006"
+}

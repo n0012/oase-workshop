@@ -25,8 +25,10 @@ Key Synchronization Guarantees:
 from __future__ import annotations
 
 import argparse
+import array
 import base64
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -183,7 +185,7 @@ def ensure_tts_audio(
 
 
 HUD_INJECT_JS = """
-({chapterTitle, speakerName, speakerRole, progressPct, beaconCss}) => {
+({chapterTitle, speakerName, speakerRole, progressPct, beaconCss, dotHex}) => {
   if (!document.getElementById('oase-pilot-hud-style')) {
     const st = document.createElement('style');
     st.id = 'oase-pilot-hud-style';
@@ -208,7 +210,7 @@ HUD_INJECT_JS = """
       #oase-pilot-banner {
         position: fixed;
         top: 10px; left: 268px;
-        background: rgba(15, 23, 42, 0.88);
+        background: rgba(15, 23, 42, 0.90);
         color: #f8fafc;
         padding: 6px 14px;
         border-radius: 999px;
@@ -216,8 +218,8 @@ HUD_INJECT_JS = """
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 0.01em;
-        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
-        border: 1px solid rgba(56, 189, 248, 0.35);
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22);
+        border: 1px solid rgba(56, 189, 248, 0.40);
         z-index: 999998;
         pointer-events: none;
         display: flex;
@@ -249,10 +251,14 @@ HUD_INJECT_JS = """
     b.innerHTML = '<span id="oase-pilot-dot"></span><span id="oase-pilot-banner-txt"></span>';
     document.body.appendChild(b);
   }
+  const activeColor = dotHex || '#10b981';
+  const dotEl = document.getElementById('oase-pilot-dot');
+  dotEl.style.background = activeColor;
+  dotEl.style.boxShadow = `0 0 8px ${activeColor}`;
   document.getElementById('oase-pilot-sync-beacon').style.background = beaconCss;
   document.getElementById('oase-pilot-topbar-fill').style.width = `${progressPct}%`;
   document.getElementById('oase-pilot-banner-txt').textContent =
-    `${chapterTitle}  ·  Speaking: ${speakerName} (${speakerRole})`;
+    `${chapterTitle}  ·  COMMS: ${speakerName} (${speakerRole})`;
 }
 """
 
@@ -325,7 +331,9 @@ def record_live_chapters(
             shutil.rmtree(ch_video_tmp)
         ch_video_tmp.mkdir(parents=True, exist_ok=True)
 
-        human_speakers = sorted({t["speaker"] for t in ch["turns"] if t["speaker"] != "grove"} | {lead_human})
+        human_speakers = sorted(
+            {t["speaker"] for t in ch["turns"] if not voices[t["speaker"]].get("is_agent", False)} | {lead_human}
+        )
 
         with sync_playwright() as p:
             contexts: dict[str, Any] = {}
@@ -367,6 +375,7 @@ def record_live_chapters(
             lead_page.goto(chat_url, wait_until="domcontentloaded", timeout=35000)
             lead_page.wait_for_timeout(2600)
             lead_page.evaluate(SCROLL_CHAT_BOTTOM_JS)
+            lead_dot_hex = "#" + voices[lead_human].get("accent_hex", "0x10b981").removeprefix("0x")
             lead_page.evaluate(
                 HUD_INJECT_JS,
                 {
@@ -375,6 +384,7 @@ def record_live_chapters(
                     "speakerRole": voices[lead_human]["role"],
                     "progressPct": 5,
                     "beaconCss": _beacon_css(0),
+                    "dotHex": lead_dot_hex,
                 },
             )
             lead_page.wait_for_timeout(600)
@@ -387,6 +397,7 @@ def record_live_chapters(
                 tid = turn["turn_id"]
                 speaker = turn["speaker"]
                 vmeta = voices[speaker]
+                dot_hex = "#" + vmeta.get("accent_hex", "0x10b981").removeprefix("0x")
                 tts_dur = float(durations[tid]["duration_s"])
                 slot_frames = int(round((tts_dur + BREATH_GAP_S) * FPS))
                 target_slot_s = slot_frames / float(FPS)
@@ -413,6 +424,7 @@ def record_live_chapters(
                             "speakerRole": vmeta["role"],
                             "progressPct": progress_pct,
                             "beaconCss": _beacon_css(turn_num),
+                            "dotHex": dot_hex,
                         },
                     )
                     t_start = time.perf_counter()
@@ -452,6 +464,7 @@ def record_live_chapters(
                             "speakerRole": vmeta["role"],
                             "progressPct": progress_pct - 12,
                             "beaconCss": _beacon_css(0),
+                            "dotHex": dot_hex,
                         },
                     )
                     print(f"  [{tid}] Off-camera wait for live specialist container reply in {slug}...", flush=True)
@@ -500,6 +513,7 @@ def record_live_chapters(
                             "speakerRole": vmeta["role"],
                             "progressPct": progress_pct,
                             "beaconCss": _beacon_css(turn_num),
+                            "dotHex": dot_hex,
                         },
                     )
                     t_start = time.perf_counter()
@@ -519,6 +533,7 @@ def record_live_chapters(
                         "speakerRole": vmeta["role"],
                         "progressPct": progress_pct,
                         "beaconCss": _beacon_css(0),
+                        "dotHex": dot_hex,
                     },
                 )
                 lead_page.wait_for_timeout(150)
@@ -622,27 +637,61 @@ def detect_beacon_start_frames(cfr_mp4: Path, perf_turns: list[dict[str, Any]], 
     return detected
 
 
-def build_exact_48k_stereo_wav(src_wav: Path, slot_frames: int, dst_wav: Path) -> None:
+def _overlay_pip_tone(
+    samples: array.array,
+    total_frames: int,
+    start_s: float,
+    dur_s: float,
+    freq_hz: float,
+    amp: float,
+) -> None:
+    f0 = max(0, int(round(start_s * AUDIO_SR)))
+    n = int(round(dur_s * AUDIO_SR))
+    f1 = min(total_frames, f0 + n)
+    ramp = max(1, int(round(0.004 * AUDIO_SR)))
+    for k in range(f1 - f0):
+        env = 1.0
+        if k < ramp:
+            env = 0.5 * (1.0 - math.cos(math.pi * k / ramp))
+        elif (n - 1 - k) < ramp:
+            env = 0.5 * (1.0 - math.cos(math.pi * (n - 1 - k) / ramp))
+        val = int(round(amp * 32767.0 * env * math.sin(2.0 * math.pi * freq_hz * (k / float(AUDIO_SR)))))
+        idx = (f0 + k) * 2
+        s_l = samples[idx] + val
+        s_r = samples[idx + 1] + val
+        samples[idx] = 32767 if s_l > 32767 else (-32768 if s_l < -32768 else s_l)
+        samples[idx + 1] = 32767 if s_r > 32767 else (-32768 if s_r < -32768 else s_r)
+
+
+def mix_comms_chirps_inplace(raw_pcm: bytes, is_agent: bool = False) -> bytes:
+    """Mix subtle Star Fox / Squadron comm-link lock-on and key-off pips in-place (zero sample shift)."""
+    samples = array.array("h")
+    samples.frombytes(raw_pcm)
+    total_frames = len(samples) // 2
+    end_s = total_frames / float(AUDIO_SR)
+
+    amp_in = 0.068 if is_agent else 0.050
+    _overlay_pip_tone(samples, total_frames, 0.006, 0.024, 880.00, amp_in)
+    _overlay_pip_tone(samples, total_frames, 0.036, 0.028, 1318.51, amp_in)
+
+    if end_s > 0.60:
+        amp_out = 0.042 if is_agent else 0.032
+        _overlay_pip_tone(samples, total_frames, end_s - 0.145, 0.020, 987.77, amp_out)
+        _overlay_pip_tone(samples, total_frames, end_s - 0.118, 0.022, 659.25, amp_out)
+
+    return samples.tobytes()
+
+
+def build_exact_48k_stereo_wav(src_wav: Path, slot_frames: int, dst_wav: Path, is_agent: bool = False) -> None:
     """Convert turn WAV to exact `slot_frames * 1600` stereo 16-bit PCM samples at 48,000 Hz."""
     target_samples = slot_frames * SAMPLES_PER_FRAME
     tmp_wav = dst_wav.with_suffix(".tmp48.wav")
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-i",
-            str(src_wav),
-            "-ar",
-            str(AUDIO_SR),
-            "-ac",
-            "2",
-            "-c:a",
-            "pcm_s16le",
-            str(tmp_wav),
-        ],
-        check=True,
-        capture_output=True,
-    )
+    cmd = ["ffmpeg", "-y", "-i", str(src_wav)]
+    if is_agent:
+        # Subtle zero-latency tactical squadron comms presence EQ for AI wingmen
+        cmd.extend(["-af", "highpass=f=190,lowpass=f=6400,equalizer=f=2400:t=q:w=1.4:g=2.5"])
+    cmd.extend(["-ar", str(AUDIO_SR), "-ac", "2", "-c:a", "pcm_s16le", str(tmp_wav)])
+    subprocess.run(cmd, check=True, capture_output=True)
     with wave.open(str(tmp_wav), "rb") as wr:
         n_ch = wr.getnchannels()
         sampwidth = wr.getsampwidth()
@@ -657,6 +706,8 @@ def build_exact_48k_stereo_wav(src_wav: Path, slot_frames: int, dst_wav: Path) -
         raw_pcm = raw_pcm + (b"\x00" * (target_bytes - len(raw_pcm)))
     else:
         raw_pcm = raw_pcm[:target_bytes]
+
+    raw_pcm = mix_comms_chirps_inplace(raw_pcm, is_agent=is_agent)
 
     with wave.open(str(dst_wav), "wb") as ww:
         ww.setnchannels(2)
@@ -681,31 +732,54 @@ def concatenate_wavs_sample_exact(wav_files: list[Path], out_wav: Path) -> None:
 def build_pip_overlay_clip(
     tid: str,
     speaker: str,
-    speaker_name: str,
-    speaker_role: str,
-    avatar_name: str,
-    voice_id: str,
+    vmeta: dict[str, Any],
     wav_48k_path: Path,
     slot_frames: int,
     talking_heads_dir: Path,
     out_pip_mp4: Path,
 ) -> None:
-    """Create an exact `slot_frames`-frame 296x360 @ 30fps 1:1 Portrait-Square PiP card MP4."""
+    """Create an exact `slot_frames`-frame 296x360 @ 30fps Squadron Tactical Comms PiP card MP4."""
     slot_dur_s = slot_frames / float(FPS)
+    is_agent = bool(vmeta.get("is_agent", False))
+    speaker_name = vmeta["display_name"]
+    speaker_role = vmeta["role"]
+    voice_id = vmeta["voice_id"]
+    avatar_name = vmeta.get("avatar_name", "")
+    callsign = escape_drawtext(vmeta.get("callsign", speaker.upper()))
+    badge_code = escape_drawtext(vmeta.get("badge_code", "AI"))
+    accent_hex = vmeta.get("accent_hex", "0x38bdf8" if is_agent else "0x10b981")
+    wave_colors = vmeta.get("wave_colors", "0x38bdf8|0x818cf8")
+
     line1 = escape_drawtext(speaker_name)
     line2 = escape_drawtext(speaker_role)
 
-    if speaker == "grove":
-        line3 = escape_drawtext(f"Gemini 3.8 TTS ({voice_id}) | Grove AI")
+    if is_agent:
+        hdr_txt = escape_drawtext(f"COMMS // {vmeta.get('callsign', 'AI')} · AI WINGMAN")
+        line3 = escape_drawtext(f"Gemini 3.8 TTS ({voice_id}) | [{vmeta.get('badge_code', 'AI')}]")
         fc = (
-            f"color=c=0x0f172a:s=288x288:r={FPS}:d={slot_dur_s:.4f}[bg];"
-            f"[0:a]showwaves=s=256x140:mode=cline:rate={FPS}:colors=0x38bdf8|0x818cf8[wv];"
-            f"[bg][wv]overlay=16:74:shortest=1,"
+            f"color=c=0x050b1a:s=288x288:r={FPS}:d={slot_dur_s:.4f},"
+            f"drawgrid=w=36:h=36:t=1:c=0x1e293b@0.55,"
+            f"drawbox=x=0:y=0:w=288:h=24:color=0x0f172a@0.92:t=fill,"
+            f"drawbox=x=0:y=24:w=288:h=1:color={accent_hex}@0.75:t=fill,"
+            f"drawtext=fontfile={FONT_BOLD}:text='{hdr_txt}':fontcolor={accent_hex}:fontsize=10:x=10:y=7,"
+            f"drawbox=x=114:y=36:w=60:h=38:color={accent_hex}@0.22:t=fill,"
+            f"drawbox=x=114:y=36:w=60:h=38:color={accent_hex}@0.90:t=2,"
+            f"drawtext=fontfile={FONT_BOLD}:text='{badge_code}':fontcolor=white:fontsize=18:x=(w-text_w)/2:y=46,"
+            f"drawbox=x=8:y=32:w=14:h=2:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=8:y=32:w=2:h=14:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=266:y=32:w=14:h=2:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=278:y=32:w=2:h=14:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=8:y=276:w=14:h=2:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=8:y=264:w=2:h=14:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=266:y=276:w=14:h=2:color={accent_hex}@0.80:t=fill,"
+            f"drawbox=x=278:y=264:w=2:h=14:color={accent_hex}@0.80:t=fill[bg];"
+            f"[0:a]showwaves=s=256x156:mode=cline:rate={FPS}:colors={wave_colors}[wv];"
+            f"[bg][wv]overlay=16:92:shortest=1,"
             f"pad=288:352:0:0:0x020617,"
             f"drawtext=fontfile={FONT_BOLD}:text='{line1}':fontcolor=white:fontsize=13:x=12:y=295,"
             f"drawtext=fontfile={FONT_REG}:text='{line2}':fontcolor=0xcbd5e1:fontsize=11:x=12:y=313,"
-            f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor=0x38bdf8:fontsize=10:x=12:y=331,"
-            f"pad=296:360:4:4:0x38bdf8[vout]"
+            f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor={accent_hex}:fontsize=10:x=12:y=331,"
+            f"pad=296:360:4:4:{accent_hex}[vout]"
         )
         subprocess.run(
             [
@@ -743,15 +817,23 @@ def build_pip_overlay_clip(
             f"Missing native Gemini 3.8 Live Avatar clip for {tid}: {live_turn_mp4}"
         )
 
+    hdr_human = escape_drawtext(f"LIVE COMMS // {vmeta.get('callsign', speaker.upper())}")
     line3 = escape_drawtext(f"Gemini 3.8 Live Avatar | {avatar_name} ({voice_id})")
-    # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream
+    # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream + Squadron Comms HUD
     fc_human = (
         f"[0:v]crop=iw*0.94:iw*0.94:iw*0.03:ih*0.121,scale=288:288,setsar=1,fps={FPS},"
+        f"drawbox=x=0:y=0:w=288:h=22:color=0x020617@0.68:t=fill,"
+        f"drawbox=x=0:y=22:w=288:h=1:color={accent_hex}@0.70:t=fill,"
+        f"drawtext=fontfile={FONT_BOLD}:text='{hdr_human}':fontcolor={accent_hex}:fontsize=10:x=10:y=6,"
+        f"drawbox=x=8:y=278:w=12:h=2:color={accent_hex}@0.80:t=fill,"
+        f"drawbox=x=8:y=268:w=2:h=12:color={accent_hex}@0.80:t=fill,"
+        f"drawbox=x=268:y=278:w=12:h=2:color={accent_hex}@0.80:t=fill,"
+        f"drawbox=x=278:y=268:w=2:h=12:color={accent_hex}@0.80:t=fill,"
         f"pad=288:352:0:0:0x0f172a,"
         f"drawtext=fontfile={FONT_BOLD}:text='{line1}':fontcolor=white:fontsize=13:x=12:y=295,"
         f"drawtext=fontfile={FONT_REG}:text='{line2}':fontcolor=0xcbd5e1:fontsize=11:x=12:y=313,"
-        f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor=0x6ee7b7:fontsize=10:x=12:y=331,"
-        f"pad=296:360:4:4:0x10b981[vout]"
+        f"drawtext=fontfile={FONT_REG}:text='{line3}':fontcolor={accent_hex}:fontsize=10:x=12:y=331,"
+        f"pad=296:360:4:4:{accent_hex}[vout]"
     )
     subprocess.run(
         [
@@ -861,20 +943,17 @@ def master_chapter_videos(
             slot_frames = int(tinfo.get("slot_frames") or round(float(tinfo["target_slot_s"]) * FPS))
             slot_dur_s = slot_frames / float(FPS)
 
-            # Build exact `slot_frames * 1600` sample 48kHz stereo WAV
+            # Build exact `slot_frames * 1600` sample 48kHz stereo WAV (+ Squadron Comms pips & AI EQ)
             wav_48k = seg_tmp_dir / f"{tid}_48k.wav"
-            build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k)
+            build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=bool(vmeta.get("is_agent", False)))
             aseg_files.append(wav_48k)
 
-            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar PiP card
+            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar / AI Hologram PiP card
             pip_mp4 = seg_tmp_dir / f"{tid}_pip.mp4"
             build_pip_overlay_clip(
                 tid=tid,
                 speaker=speaker,
-                speaker_name=vmeta["display_name"],
-                speaker_role=vmeta["role"],
-                avatar_name=vmeta.get("avatar_name", ""),
-                voice_id=vmeta["voice_id"],
+                vmeta=vmeta,
                 wav_48k_path=wav_48k,
                 slot_frames=slot_frames,
                 talking_heads_dir=talking_heads_dir,
@@ -1115,7 +1194,7 @@ def upload_videos_to_gcs(out_videos_dir: Path, bucket: str, gcloud_config: str |
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Record & master the 6-Chapter OASE Multi-Human + Multi-Agent Pilot.")
+    ap = argparse.ArgumentParser(description="Record & master the 7-Chapter OASE Multi-Human + Multi-Agent Pilot.")
     ap.add_argument("--spec", type=Path, default=DEFAULT_SPEC)
     ap.add_argument("--scion-hub-url", default=os.environ.get("SCION_HUB_URL", ""))
     ap.add_argument("--state-url", default=os.environ.get("STATE_CONTROLLER_URL", "http://127.0.0.1:8780"))
@@ -1129,7 +1208,7 @@ def main() -> int:
     ap.add_argument("--lipsync-python", default=os.environ.get("LIPSYNC_PYTHON", ""))
     ap.add_argument("--lipsync-script", type=Path, default=Path(os.environ.get("LIPSYNC_SCRIPT", "")))
     ap.add_argument("--lipsync-models-dir", type=Path, default=Path(os.environ.get("LIPSYNC_MODELS_DIR", "")))
-    ap.add_argument("--chapters", default="ch1,ch2,ch3,ch4,ch5,ch6")
+    ap.add_argument("--chapters", default="ch1,ch2,ch3,ch4,ch5,ch6,ch7")
     ap.add_argument("--record-only", action="store_true")
     ap.add_argument("--master-only", action="store_true")
     ap.add_argument("--freeze-snapshot", action="store_true", default=True)

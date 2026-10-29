@@ -90,16 +90,16 @@ if [[ "${DRY_RUN}" == "true" ]]; then
     --cockpit-service "${STORY_ARC_SERVICE}" \
     --dry-run
 
-  echo "[Dry-Run 2/5] Validating 7-chapter Scion State Engine seeding plan..."
+  echo "[Dry-Run 2/5] Validating 8-state (ch0..ch7) Scion State Engine seeding plan..."
   python3 "${REPO_ROOT}/scripts/seed-pilot-chapters.py" \
     --gcp-project "${GCP_PROJECT_ID}" \
     --workshop-domain "${WORKSHOP_DOMAIN}" \
     --repo-root "${REPO_ROOT}" \
     --dry-run
 
-  echo "[Dry-Run 3/5] Validating checkpoint manager (ch0..ch6)..."
+  echo "[Dry-Run 3/5] Validating checkpoint manager (ch0..ch7)..."
   "${REPO_ROOT}/scripts/checkpoint.sh" list >/dev/null
-  echo "  [OK] Checkpoints ch0..ch6 verified."
+  echo "  [OK] Checkpoints ch0..ch7 verified."
 
   echo "[Dry-Run 4/5] Validating State Controller service definition..."
   test -f "${REPO_ROOT}/services/state-controller/app.py"

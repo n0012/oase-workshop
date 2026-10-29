@@ -35,7 +35,7 @@ SNAPSHOT_DIR = Path(
 GOLDEN_DB_PATH = SNAPSHOT_DIR / "golden-hub.db"
 STATE_TOKEN = os.environ.get("OASE_STATE_TOKEN", "").strip()
 
-VALID_CHAPTERS = ("ch0", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6")
+VALID_CHAPTERS = ("ch0", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7")
 CLEAN_EXCLUDES = ("-e", ".scion", "-e", ".scion-volumes", "-e", ".agents", "-e", "skills", "-e", "templates")
 
 app = FastAPI(
@@ -366,7 +366,7 @@ def reset_single_chapter(
 ) -> dict[str, Any]:
     _check_auth(x_oase_state_token)
     if chapter not in VALID_CHAPTERS:
-        raise HTTPException(status_code=400, detail=f"Invalid chapter '{chapter}'. Expected ch0..ch6.")
+        raise HTTPException(status_code=400, detail=f"Invalid chapter '{chapter}'. Expected ch0..ch7.")
 
     manifest = _load_manifest()
     cinfo = manifest.get("chapters", {}).get(chapter)

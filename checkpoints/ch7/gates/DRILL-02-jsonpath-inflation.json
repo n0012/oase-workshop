@@ -1,0 +1,10 @@
+{
+  "drill_id": "DRILL-02",
+  "work_order": "WO-005",
+  "mutation": "Inflated cited Vina binding score in findings/computational-chemistry/WO-005.md from -9.4 to -11.2 kcal/mol",
+  "command": "oase validate check --dry-run WO-005",
+  "exit_code": 1,
+  "failed_check": "source_tags_resolve",
+  "verdict": "BLOCKED",
+  "message": "Numeric citation -11.2 exceeds +/-1.0% relative tolerance against raw/docking/pcsk9_pocket1_vina.analysis.json (-9.4)"
+}

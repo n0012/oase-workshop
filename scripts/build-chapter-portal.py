@@ -119,6 +119,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">6. Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
   <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">7. Step 5: Human PK, Dossier &amp; Gate 4 (WO-007..008)</button>
   <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">8. Step 6: Validation &amp; Override Review</button>
+  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">9. Step 7: Mission Closeout &amp; Portfolio Launch</button>
 </div>
 
 <div class="container">
@@ -474,20 +475,20 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
   <!-- CHAPTER 6: STEP 6 VALIDATION CHECKS & OVERRIDE REVIEW -->
   <section class="chapter-panel" id="panel-ch6">
     <div class="chapter-header">
-      <h2>Step 6 — Validation Checks, Override Review &amp; Architecture Scorecard</h2>
+      <h2>Step 6 — Adversarial Tamper Drills &amp; Co-Signed Human Override</h2>
       <span class="stage-pill">10-Check Validator · 3 Tamper Cases Blocked + 1 Override Logged · checkpoints/ch6</span>
     </div>
     <div class="stack-full">
       <div class="grid-2">
         <div>
-          <p>In <strong>Step 6</strong>, the Program Lead tests how OASE verifies that specialist reports match underlying data and tracks human or lead overrides. The deterministic validator (<code>oase validate check</code>) <strong>blocks work-order closure on tampering/fabrication cases</strong> while <code>oase workorder override</code> <strong>permits and logs an explicit scientific override</strong> with actor and rationale in <code>program-state/decision-log.md</code>:</p>
+          <p>In <strong>Step 6</strong>, the pod stress-tests how OASE verifies that specialist reports match underlying data and tracks human overrides. The deterministic validator (<code>oase validate check</code>) <strong>blocks work-order closure on tampering/fabrication cases</strong> while <code>oase workorder override</code> <strong>permits and logs an explicit co-signed scientific override</strong> with actor and rationale in <code>program-state/decision-log.md</code>:</p>
           <table>
             <thead><tr><th>Governance Test Case</th><th>Tested Condition</th><th>Mechanism / Check</th><th>Result</th></tr></thead>
             <tbody>
               <tr><td><strong>Case 1 — Missing Required Caveat</strong></td><td>Remove mandatory relay <code>af3.low_confidence_segments</code> from <code>WO-004.md</code></td><td><code>relay_coverage</code> (<code>REL-001</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
               <tr><td><strong>Case 2 — Citation Drift &gt; &plusmn;1%</strong></td><td>Alter cited Vina score from <code>-9.4</code> to <code>-11.2 kcal/mol</code> in <code>WO-005.md</code></td><td><code>source_tags_resolve</code> (<code>CIT-003</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
               <tr><td><strong>Case 3 — Altered Raw Data File</strong></td><td>Modify <code>raw/docking/pcsk9_pocket1_vina.sdf</code> so SHA-256 mismatches <code>.meta.json</code> (plus stripped <code>THR-001</code> check)</td><td><code>provenance_valid</code> (<code>PROV-002</code>)</td><td><span class="fail-pill">BLOCKED (exit=1)</span></td></tr>
-              <tr><td><strong>Case 4 — Audited Reviewer Override</strong></td><td>Valid Layer 0 data accepted, while reviewer overrides specialist's interpretation of a marginal <code>0.2 kcal/mol</code> difference</td><td><code>oase workorder override</code> &rarr; <code>decision-log.md</code></td><td><span class="pass-pill">PERMITTED &amp; LOGGED</span></td></tr>
+              <tr><td><strong>Case 4 — Audited Reviewer Override</strong></td><td>Valid Layer 0 data accepted, while reviewer co-signs backup retention with an explicit rationale and mandatory experimental counter-screen</td><td><code>oase workorder override</code> &rarr; <code>decision-log.md</code></td><td><span class="pass-pill">PERMITTED &amp; LOGGED</span></td></tr>
             </tbody>
           </table>
           <div class="portal-links">
@@ -507,9 +508,19 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
 <span class="cmd">    --reason "Accept valid Layer 0 docking/ADMET files; prioritize LipE 5.2 &amp; 0 alerts over 0.2 kcal/mol pose delta"</span>
 <span class="ok">[PERMITTED &amp; LOGGED] Recorded direction_override with actor + rationale in program-state/decision-log.md</span></div>
       </div>
+    </div>
+  </section>
 
+  <!-- CHAPTER 7: STEP 7 MISSION CLOSEOUT, PORTFOLIO SIGN-OFF & SCORECARD -->
+  <section class="chapter-panel" id="panel-ch7">
+    <div class="chapter-header">
+      <h2>Step 7 — Executive Portfolio Sign-Off, 30-Page Evidence Portal &amp; Squadron Closeout</h2>
+      <span class="stage-pill">8/8 WOs Verified · 4 Stage Gates + Wet-Lab Bridge · OASE-PCSK9-014 (40 mg QD) · checkpoints/ch7</span>
+    </div>
+    <div class="stack-full">
       <div>
-        <h4 style="margin: 0.4rem 0 0.5rem 0; color: #0f172a;">Measured Architecture Scorecard &amp; Five Engineering Takeaways</h4>
+        <p>In <strong>Step 7</strong>, <strong>Dr. Sarah Chen</strong> and <code>@science-program-lead</code> close out the end-to-end discovery campaign with the full 5-scientist human pod: all 8 Work Orders, 4 Stage Gates, the physical Wet-Lab PK bridge, and the 30-page provenance-linked Evidence Portal are packaged for portfolio committee sign-off and IND-enabling toxicology.</p>
+        <h4 style="margin: 0.6rem 0 0.5rem 0; color: #0f172a;">Measured Architecture Scorecard &amp; Five Engineering Takeaways</h4>
         <table>
           <thead><tr><th>Architecture Pillar</th><th>Target Outcome</th><th>Measured Simulation Result</th><th>Field Discovery &amp; Takeaway</th><th>Verdict</th></tr></thead>
           <tbody>

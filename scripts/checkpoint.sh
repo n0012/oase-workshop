@@ -21,7 +21,7 @@ if [[ ! -d "/workspace" && ! -w "/" ]]; then
 fi
 WORKSPACE_DIR="${3:-${OASE_WALKTHROUGH_DIR:-${DEFAULT_WS}}}"
 
-ALL_CPS=(ch0 ch1 ch2 ch3 ch4 ch5 ch6)
+ALL_CPS=(ch0 ch1 ch2 ch3 ch4 ch5 ch6 ch7)
 
 declare -A CP_DESC=(
   ["ch0"]="Initial Seed (t=0) — Pre-Campaign Seed Staged (seed/pcsk9-oral/ with campaign-seed.json & CHECKSUMS.json, 0 WOs closed)"
@@ -31,6 +31,7 @@ declare -A CP_DESC=(
   ["ch4"]="Step 4 + Gate 3 + Wet-Lab Handoff Slot — ADMET Disqualifies PCSK9-A02 (hERG); OASE-PCSK9-014 Queued for Wet-Lab Assays (WO-001..006)"
   ["ch5"]="Step 5 + Gate 4 Complete — Human Oral PK (40.0 mg QD, F=52%, t1/2=14.8 h) & Candidate Nomination Dossier (WO-001..008)"
   ["ch6"]="Step 6 Governance Audit Complete — 3 Blocked Adversarial Tamper Drills + 1 Co-Signed Human Override (DEC-OVERRIDE-001)"
+  ["ch7"]="Step 7 Mission Closeout & Portfolio Sign-Off — Executive Dossier, 30-Page Evidence Portal & GLP Tox Handoff"
 )
 
 sync_cp_into_dir() {
@@ -60,7 +61,7 @@ case "${ACTION}" in
 
   jump|goto)
     if [[ -z "${TARGET_CP}" || -z "${CP_DESC[${TARGET_CP}]:-}" ]]; then
-      echo "ERROR: Specify a valid checkpoint: ch0, ch1, ch2, ch3, ch4, ch5, or ch6" >&2
+      echo "ERROR: Specify a valid checkpoint: ch0, ch1, ch2, ch3, ch4, ch5, ch6, or ch7" >&2
       exit 1
     fi
     echo "=== Restoring ${TARGET_CP}: ${CP_DESC[${TARGET_CP}]} ==="

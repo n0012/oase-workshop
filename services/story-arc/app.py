@@ -74,6 +74,10 @@ FOLLOWUP_PROMPTS = {
         "@finding-validator Which exact rule blocked Drill 2 when docking.score_not_affinity was omitted from the finding?",
         "@science-program-lead Show the audit record for the PCSK9-B07 Lipinski MW override in .oase/control/events.ndjson.",
     ],
+    "ch7": [
+        "@science-program-lead Summarize our complete 8-Work-Order portfolio handoff package for OASE-PCSK9-014 (40 mg oral QD) in executive/PORTFOLIO-HANDOFF.md.",
+        "@project-curator List the key executive dossier and stage-gate receipts published in the 30-page Evidence Portal.",
+    ],
 }
 
 app = FastAPI(title="OASE Story Arc Presenter Cockpit", version="1.0.0")
@@ -144,7 +148,7 @@ async def proxy_state_status() -> JSONResponse:
 
 @app.post("/api/state/chapters/{chapter}/reset")
 async def proxy_reset_chapter(chapter: str) -> JSONResponse:
-    if not re.fullmatch(r"ch[0-6]", chapter):
+    if not re.fullmatch(r"ch[0-7]", chapter):
         raise HTTPException(status_code=400, detail="Invalid chapter ID")
     async with httpx.AsyncClient(timeout=15.0) as client:
         r = await client.post(f"{STATE_CONTROLLER_URL}/api/state/chapters/{chapter}/reset", headers=_state_headers())
@@ -453,7 +457,7 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
   };
 
   window.oaseResetAll = async function() {
-    showToast('Resetting all 7 chapters (ch0..ch6) to Golden Snapshot...');
+    showToast('Resetting all 8 chapters (ch0..ch7) to Golden Snapshot...');
     try {
       const r = await fetch('/api/state/reset-all', { method: 'POST' });
       const d = await r.json();
@@ -549,11 +553,11 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
         const fwCard = document.createElement('div');
         fwCard.id = 'cockpit-full-walkthrough-card';
         fwCard.className = 'cockpit-stage-card';
-        const durMin = fullVideo.duration_s ? (fullVideo.duration_s / 60).toFixed(1) + ' min' : '6 Chapters';
+        const durMin = fullVideo.duration_s ? (fullVideo.duration_s / 60).toFixed(1) + ' min' : '7 Chapters';
         fwCard.innerHTML = `
           <details>
             <summary style="cursor:pointer;font-weight:700;color:#38bdf8;font-size:0.98rem;">
-              🎬 Watch Continuous 6-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 11 AI Agents) — or select Chapters 1–6 above
+              🎬 Watch Continuous 7-Chapter Full Pilot Walkthrough (${durMin} · 1080p · Native Gemini 3.8 Live Avatars + 6 AI Wingmen) — or select Chapters 1–7 above
             </summary>
             <div class="cockpit-video-wrap" style="margin-top:0.8rem;">
               <video id="video-full" controls preload="none" src="/api/videos/${fullVideo.video_filename || 'full-pilot-walkthrough.mp4'}?v=${fullVideo.duration_s || '38'}"></video>
@@ -567,7 +571,7 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
       }
     }
 
-    ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6'].forEach(chId => {
+    ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
       const panel = document.getElementById('panel-' + chId);
       if (!panel) return;
       const vmeta = videos[chId];

@@ -306,6 +306,48 @@ CHAPTER_SPECS = [
             ),
         ],
     },
+    {
+        "chapter": "ch7",
+        "slug": "07-pcsk9-mission-closeout",
+        "name": "07-pcsk9-mission-closeout",
+        "description": "Step 7 — Executive Portfolio Sign-Off, 30-Page Evidence Portal & Squadron Mission Closeout",
+        "lead_human": "sarah",
+        "live_agents": ["science-program-lead", "project-curator"],
+        "artifact_keys": [
+            "wo-001-finding",
+            "wo-002-finding",
+            "wo-003-finding",
+            "wo-004-finding",
+            "wo-005-finding",
+            "wo-006-finding",
+            "wo-007-finding",
+            "wo-008-finding",
+            "liability-tracker",
+            "active-series",
+            "decision-log",
+            "program-summary",
+            "pcsk9-evidence-portal",
+        ],
+        "topic_slug": "step-7-portfolio-closeout-dossier",
+        "topic_agent": "science-program-lead",
+        "seed_messages": [
+            (
+                "human:sarah",
+                "**[Chapter 7 Mission Closeout — Executive Portfolio Sign-Off & 30-Page Evidence Portal]**\n"
+                "`@science-program-lead` — All 6 discovery & governance stages are complete (`WO-001`..`WO-008`, `GATE-01`..`GATE-04`, Wet-Lab PK bridge, and `STEP-06` tamper audit). Please verify final portfolio readiness for **`OASE-PCSK9-014` (`40.0 mg QD`)** in `gates/STEP-07-portfolio-closeout.md` and `executive/PORTFOLIO-HANDOFF.md`.",
+                ["program-summary", "pcsk9-evidence-portal"],
+                False,
+            ),
+            (
+                "agent:science-program-lead",
+                "**[Step 7 Portfolio Sign-Off Complete — `OASE-PCSK9-014` Ready for IND-Enabling GLP Tox]**\n"
+                "- **End-to-End Provenance**: `8 / 8` Work Orders (`WO-001`..`WO-008`), `4 / 4` Stage Gates, Wet-Lab rat/dog PK bridge, and `3 / 3` tamper blocks verified with `0` ungrounded claims.\n"
+                "- **Executive Deliverable**: `OASE-PCSK9-014` (`40.0 mg` oral QD tablet, `F = 52%`, `0` hERG alerts) and 30-page static Evidence Portal published for portfolio review and live team Q&A.",
+                ["program-summary", "decision-log", "pcsk9-evidence-portal"],
+                True,
+            ),
+        ],
+    },
 ]
 
 
