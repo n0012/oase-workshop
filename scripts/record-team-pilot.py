@@ -60,6 +60,12 @@ TURN_BEACON_RGB: dict[int, tuple[int, int, int]] = {
     2: (16, 215, 95),    # Turn 2 active (after specialist reply rendered!)
     3: (245, 158, 11),   # Turn 3 active
     4: (14, 165, 233),   # Turn 4 active
+    5: (168, 85, 247),   # Turn 5 active
+    6: (240, 240, 245),  # Turn 6 active
+    7: (20, 240, 220),   # Turn 7 active
+    8: (245, 235, 20),   # Turn 8 active
+    9: (255, 95, 20),    # Turn 9 active
+    10: (132, 204, 22),  # Turn 10 active
 }
 
 
@@ -488,7 +494,9 @@ def record_live_chapters(
                             break
                         if not nudged and (time.perf_counter() - wait_t0) > 42.0:
                             nudged = True
-                            target_ag = ch["turns"][0].get("target_agent", "science-program-lead")
+                            target_ag = turn.get("target_agent") or ch["turns"][max(0, idx - 1)].get(
+                                "target_agent", "science-program-lead"
+                            )
                             print(f"  [{tid}] Sending gentle Webchat shell reminder to @{target_ag}...", flush=True)
                             lbox = lead_page.locator("textarea[placeholder='Send a message...']").first
                             lbox.fill(

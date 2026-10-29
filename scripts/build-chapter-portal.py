@@ -146,13 +146,13 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
   <button class="chapter-btn lab-btn" id="btn-lab" onclick="showChapter('lab')">2.5-Hr Lab Guide</button>
-  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Rank Hypotheses (WO-001)</button>
+  <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Pre-Brief &amp; Co-Scientist (WO-001)</button>
   <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
   <button class="chapter-btn" id="btn-ch3" onclick="showChapter('ch3')">Step 3: AF3, Pockets &amp; Gate 2 (WO-004..005)</button>
   <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
   <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Step 5: Human PK &amp; Gate 4 (WO-007..008)</button>
   <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Step 6: Tamper &amp; Override Audit</button>
-  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Recap &amp; Closeout</button>
+  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Post-Debrief &amp; Route Recap</button>
 </div>
 
 <div class="container">
@@ -255,14 +255,14 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
         <table>
           <thead><tr><th>Step</th><th>Stage, Gate &amp; Work Orders</th><th>What Happens &amp; Key Outcome</th></tr></thead>
           <tbody>
-            <tr><td><strong>Step 1</strong></td><td>Stage 0 (<code>WO-001</code>)</td><td><strong><code>Grove-1</code> (<code>@science-program-lead</code>)</strong> opens the campaign: ingest &amp; rank upstream AI Co-Scientist Elo tournament where allosteric small-molecule <code>IC-001</code> (<code>1642.5 Elo</code>) leads cyclic peptide <code>IC-002</code> (<code>1588.0 Elo</code>); logs caveat <code>hypothesis.adopted_not_generated</code>.</td></tr>
+            <tr><td><strong>Step 1</strong></td><td>Pre-Mission Brief &amp; Stage 0 (<code>WO-001</code>)</td><td><strong>All 5 Doctors + <code>Grove-1</code> &amp; <code>Helix-2</code></strong> co-author the Co-Scientist input prompt &amp; TPP, audit the 24-match Elo tournament (cryptic groove <code>IC-001</code> <code>1642.5 Elo</code> vs parked macrocycle <code>IC-002</code> <code>1588.0 Elo</code>), arm the Subway Map, and lock the <strong>5 Doctor &harr; AI Wingman mission pairings</strong>.</td></tr>
             <tr><td><strong>Step 2</strong></td><td>Stage 1 &rarr; <strong>Gate 1</strong> (<code>WO-002..003</code>)</td><td><strong><code>Helix-2</code> (<code>@computational-biologist</code>)</strong> validates PCSK9 in human genetics &amp; liver omics (<code>gnomAD pLI = 0.0001</code>, <code>OpenTargets 0.96</code>, <code>GTEx 184.2 TPM</code>, <code>AlphaGenome 0.984</code>). <strong>AI + Human Program Leads co-sign Gate 1 (Target Validation).</strong></td></tr>
             <tr><td><strong>Step 3</strong></td><td>Stage 2 &rarr; <strong>Gate 2</strong> (<code>WO-004..005</code>)</td><td><strong><code>Fold-3</code> (<code>@structural-biologist</code>)</strong> runs AlphaFold 3 co-fold (<code>ipTM = 0.84</code>, <code>pTM = 0.88</code>), <code>fpocket</code> (<code>0.68</code> groove vs <code>0.24</code> flat surface), and AutoDock Vina (<code>-9.4 kcal/mol</code>). <strong>AI Program Lead signs Gate 2 (Hit Identification) &amp; logs liability <code>L-002</code>.</strong></td></tr>
             <tr><td><strong>Step 4</strong></td><td>Stage 3 &rarr; <strong>Gate 3</strong> (<code>WO-006</code>)</td><td><strong><code>Spark-4</code> (<code>@medicinal-chemist</code>)</strong> flags high-lipophilicity cardiac (hERG) alert on <code>PCSK9-A02</code> and optimizes polar heterocycle <code>OASE-PCSK9-014</code> (<code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>0</code> alerts, <code>4</code>-step synthesis). <strong>AI Program Lead signs Gate 3 (Lead Optimization).</strong></td></tr>
             <tr><td><strong>&#9208; Lab Gate</strong></td><td>Lab Handoff (Seeded in Demo)</td><td><strong>Human Program Lead signs Lab Handoff</strong> for synthesis &amp; animal PK studies; agents pause cleanly on disk until measured rat (<code>54%</code>) and dog (<code>61%</code>) oral bioavailability files return.</td></tr>
             <tr><td><strong>Step 5</strong></td><td>Stage 4 &rarr; <strong>Gate 4</strong> (<code>WO-007..008</code>)</td><td><strong><code>Shield-5</code> (<code>@admet-dmpk-scientist</code>)</strong> projects human once-daily dose (<code>40 mg QD</code>, <code>F = 52%</code>, <code>t1/2 = 14.8 h</code>) and compiles the candidate dossier. <strong>AI + Human Program Leads co-sign Gate 4 (Candidate Nomination).</strong></td></tr>
             <tr><td><strong>Step 6</strong></td><td>Governance &amp; Override Checks</td><td><strong><code>Aegis-6</code> (<code>@finding-validator</code>)</strong> stress-tests the 10-check validator: <strong>blocks</strong> missing caveats (<code>REL-001</code>), out-of-tolerance numbers (<code>CIT-003</code>), and altered raw hashes (<code>PROV-002</code>), while <strong>permitting &amp; logging</strong> an audited reviewer override.</td></tr>
-            <tr><td><strong>Step 7</strong></td><td>Mission Closeout &amp; Portfolio Launch</td><td><strong><code>Grove-1</code> (<code>@science-program-lead</code>) + Dr. Sarah Chen &amp; Dr. Elena Rostova</strong> bookend the campaign: sign off <code>executive/PORTFOLIO-HANDOFF.md</code> + the 30-page Evidence Portal for IND-enabling GLP tox and invite attendees into the 5 live Scion Grove seats.</td></tr>
+            <tr><td><strong>Step 7</strong></td><td>Post-Mission Debrief &amp; Portfolio Launch</td><td><strong>All 5 Doctors + <code>Grove-1</code> (<code>@science-program-lead</code>)</strong> reunite for a pair-by-pair Post-Mission Debrief against the Step 1 Research Brief, walk the traversed Subway Map, co-sign <code>executive/PORTFOLIO-HANDOFF.md</code> + the 30-page Evidence Portal, and invite attendees into the 5 live Grove seats.</td></tr>
           </tbody>
         </table>
       </div>
@@ -347,38 +347,40 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- CHAPTER 1 -->
   <section class="chapter-panel" id="panel-ch1">
     <div class="chapter-header">
-      <h2>Step 1 — Stage 0 Campaign Seed, Co-Scientist Input Prompt &amp; Tournament (`WO-001`)</h2>
-      <span class="stage-pill">Stage 0 · Initiation Mode 1 · checkpoints/ch0 &rarr; ch1</span>
+      <h2>Step 1 — Pre-Mission Brief, Co-Scientist Prompt Co-Design &amp; Wingman Roster (`WO-001`)</h2>
+      <span class="stage-pill">Pre-Mission Brief · 8-Turn Squadron Outset · checkpoints/ch0 &rarr; ch1</span>
     </div>
     <div class="stack-full">
       <div class="lab-block" style="border-left-color:#2563eb;background:#f8fafc;margin-bottom:0.25rem;">
         <div class="lab-block-hdr">
-          <h4>How the Upstream Co-Scientist Input Prompt Was Defined &mdash; Setting the Destination &amp; Rules</h4>
-          <button class="subpage-back-btn" style="background:#d97706;" onclick="jumpToRecapMap()">See Route Map in Step 7 Recap &rarr;</button>
+          <h4>Pre-Mission Huddle: Co-Authoring the Co-Scientist Input Prompt &amp; Locking Doctor &harr; AI Wingman Pairings</h4>
+          <button class="subpage-back-btn" style="background:#d97706;" onclick="jumpToRecapMap()">See Route Map in Step 7 Debrief &rarr;</button>
         </div>
-        <p style="margin:0 0 0.65rem 0;font-size:0.87rem;color:#334155;">In Initiation Mode 1, the human Program Lead defines a structured <strong>Research Brief &amp; Target Product Profile (TPP)</strong> (<code>checkpoints/ch0/seed/pcsk9-oral/campaign-seed.json</code> &amp; <code>coscientist-export.json</code>). Every preference and pre-registered kill criterion in this upstream prompt cascades directly into <code>.oase/thresholds.yaml</code> and determines which parallel modality tracks open:</p>
+        <p style="margin:0 0 0.65rem 0;font-size:0.87rem;color:#334155;">Before a single GPU or chemistry work order runs, all <strong>5 human scientists</strong> huddle inside the Grove to co-design the <strong>Co-Scientist Research Brief &amp; Target Product Profile</strong> (<code>gates/STEP-01-pre-mission-brief.md</code> &amp; <code>seed/pcsk9-oral/campaign-seed.json</code>), debate the 24-match Elo tournament split, and assign each Doctor an AI specialist Wingman:</p>
         <div class="grid-2" style="gap:1rem;">
-          <div class="terminal" style="margin:0;font-size:0.78rem;"><span class="cmd"># Upstream Co-Scientist Research Brief (daedalis-20261028-pcsk9-oral)</span>
+          <div class="terminal" style="margin:0;font-size:0.78rem;"><span class="cmd"># Co-Authored Co-Scientist Research Brief (daedalis-20261028-pcsk9-oral)</span>
 <span class="ok">goal:</span> "Evaluate oral allosteric small-molecule and tricyclic macrocycle
   PCSK9 inhibitors disrupting LDLR EGF-A binding in ASCVD as a room-temp,
   once-daily alternative to injectable mAbs."
-<span class="ok">preferences:</span>
+<span class="ok">preferences (authored by Marcus, Elena, Raj &amp; Claire):</span>
+  - "Enforce human LoF cardioprotection (PCSK9 R46L / gnomAD) + hepatocyte
+     selectivity (GTEx &ge; 100 TPM &amp; 1P AlphaGenome 1 Mb scoring)"
   - "Prioritize classical Rule-of-5 oral hepatocyte bioavailability
-     (no dietary permeation enhancers)"
-  - "Enforce human LoF genetic cardioprotection (PCSK9 R46L / gnomAD)"
+     (cLogP &le; 3.5, MW &le; 500, 0 Aronov hERG alerts, no permeation enhancers)"
 <span class="ok">falsifiable_predictions:</span>
-  - <span class="cmd">FP-001 (IC-001 Allosteric SM):</span> fpocket druggability &ge; 0.50 &amp; AF3
+  - <span class="cmd">FP-001 (IC-001 Allosteric SM):</span> fpocket druggability &ge; 0.50 &amp; 1P AF3
     ligand ipTM &ge; 0.70 | <span class="err">KILL if druggability &lt; 0.30 or steric clash</span>
   - <span class="cmd">FP-002 (IC-002 Macrocycle):</span> EGF-A hot-spot coverage vs MK-0616 |
-    <span class="err">PARK as backup if permeation enhancer required for QD oral dosing</span></div>
+    <span class="err">PARK on Amber Backup Line behind Gate 3 CRO wet-lab hold</span></div>
           <div>
             <table style="margin:0;font-size:0.82rem;">
-              <thead><tr><th>Prompt Clause</th><th>Downstream Campaign Effect</th></tr></thead>
+              <thead><tr><th>Human Scientist</th><th>Paired AI Wingman</th><th>Assigned Mission Scope</th></tr></thead>
               <tbody>
-                <tr><td><strong>Unenhanced Oral Ro5 Preference</strong></td><td>Ranks allosteric SM <code>IC-001</code> <code>#1</code> (<code>+54.5 Elo</code>), parks macrocycle <code>IC-002</code> on <strong>Backup Line</strong>, and locks <code>cLogP &le; 3.5</code> / <code>MW &le; 500</code> (which later disqualifies <code>PCSK9-A02</code> in Step 4 and triggers the <code>PCSK9-B07</code> macrocycle override test in Step 6).</td></tr>
-                <tr><td><strong>Human LoF + Hepatic Selectivity</strong></td><td>Spawns Stage 1 <code>WO-002..003</code> before GPU spend; if bulk <code>GTEx &lt; 5 TPM</code>, triggers a dynamic <code>oase h5ad</code> single-cell detour instead of dropping the gene.</td></tr>
-                <tr><td><strong><code>FP-001</code> Kill Criterion (<code>&lt;0.30</code>)</strong></td><td>Turns prose into Stage 2 gate rules: flat <code>EGF-A</code> (<code>0.24</code>) terminates the Ro5 orthosteric spur while cryptic <code>Pocket #1</code> (<code>0.68</code>) advances.</td></tr>
-                <tr><td><strong>Manual Gate Policy + Adopted Seed</strong></td><td>Locks SHA-256 receipt and attaches <code>hypothesis.adopted_not_generated</code> so every literature claim must be re-verified by primary tools.</td></tr>
+                <tr><td><strong>Dr. Sarah Chen</strong> (<code>GOLD-1</code>)</td><td><strong><code>Grove-1</code></strong> (<code>@science-program-lead</code>) + <strong><code>Aegis-6</code></strong></td><td>Charter, Gate 1 &amp; Gate 4 co-sign, Step 6 tamper audit &amp; Step 7 portfolio handoff</td></tr>
+                <tr><td><strong>Dr. Marcus Vance</strong> (<code>GOLD-2</code>)</td><td><strong><code>Helix-2</code></strong> (<code>@computational-biologist</code>)</td><td><code>WO-001</code> Co-Scientist Elo audit + <code>WO-002..003</code> gnomAD, GTEx &amp; 1P <code>AlphaGenome</code></td></tr>
+                <tr><td><strong>Dr. Elena Rostova</strong> (<code>GOLD-3</code>)</td><td><strong><code>Fold-3</code></strong> (<code>@structural-biologist</code>)</td><td><code>WO-004..005</code> 1P <code>AlphaFold 3</code> co-folding, <code>fpocket</code> groove check &amp; 3-phase Vina</td></tr>
+                <tr><td><strong>Dr. Raj Patel</strong> (<code>GOLD-4</code>)</td><td><strong><code>Spark-4</code></strong> (<code>@medicinal-chemist</code>)</td><td><code>WO-006</code> Aronov hERG triage, <code>BRICS</code> oxadiazole rescue &amp; signed backup override</td></tr>
+                <tr><td><strong>Dr. Claire Moreau</strong> (<code>GOLD-5</code>)</td><td><strong><code>Shield-5</code></strong> (<code>@admet-dmpk-scientist</code>)</td><td>Gate 3 CRO wet-lab hold, <code>WO-007..008</code> rat/dog &rarr; <code>40 mg QD</code> human PK &amp; dossier</td></tr>
               </tbody>
             </table>
           </div>
@@ -628,13 +630,24 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
   <!-- CHAPTER 7: STEP 7 MISSION CLOSEOUT, ROUTE RECAP, PORTFOLIO SIGN-OFF & SCORECARD -->
   <section class="chapter-panel" id="panel-ch7">
     <div class="chapter-header">
-      <h2>Step 7 — Campaign Route Recap, Executive Sign-Off &amp; 30-Page Evidence Portal</h2>
-      <span class="stage-pill">8/8 WOs Verified · 4 Stage Gates + Wet-Lab Bridge · OASE-PCSK9-014 (40 mg QD) · checkpoints/ch7</span>
+      <h2>Step 7 — Post-Mission Debrief, Subway Map Recap &amp; Portfolio Sign-Off</h2>
+      <span class="stage-pill">7-Turn Squadron Debrief · 8/8 WOs · OASE-PCSK9-014 (40 mg QD) · checkpoints/ch7</span>
     </div>
     <div class="stack-full">
       <div>
-        <p>In <strong>Step 7</strong>, <strong>Dr. Sarah Chen (<code>GOLD-1</code>)</strong>, <strong>Dr. Elena Rostova (<code>GOLD-3</code>)</strong>, and <strong><code>Grove-1</code> (<code>@science-program-lead</code>)</strong> bookend the discovery campaign with the full 5-scientist human pod: all 8 Work Orders, 4 Stage Gates, the physical Wet-Lab PK bridge, and the 30-page provenance-linked Evidence Portal are signed off in <code>executive/PORTFOLIO-HANDOFF.md</code> for portfolio committee review and IND-enabling GLP toxicology.</p>
-        <h4 style="margin: 0.6rem 0 0.5rem 0; color: #0f172a;">Executive Candidate Nomination &amp; Stage-Gate Sign-Off Ledger (<code>OASE-PCSK9-014</code>)</h4>
+        <p>In <strong>Step 7</strong>, all <strong>5 human scientists</strong> (<code>Sarah</code>, <code>Marcus</code>, <code>Elena</code>, <code>Raj</code>, <code>Claire</code>) and <strong><code>Grove-1</code> (<code>@science-program-lead</code>)</strong> reunite for a structured <strong>Post-Mission Debrief</strong> against their Step 1 Co-Scientist Research Brief (`gates/STEP-01-pre-mission-brief.md` &rarr; `gates/STEP-07-portfolio-closeout.md`), reporting what each Doctor + AI Wingman pair proved, where biology forced a dynamic reroute, and co-signing <code>executive/PORTFOLIO-HANDOFF.md</code> for IND-enabling GLP toxicology:</p>
+        <h4 style="margin: 0.6rem 0 0.5rem 0; color: #0f172a;">Squadron Pair-by-Pair Post-Mission Debrief (<code>gates/STEP-07-portfolio-closeout.md</code>)</h4>
+        <table>
+          <thead><tr><th>Doctor &harr; AI Wingman Pair</th><th>Step 1 Outset Hypothesis / Rule</th><th>What Happened in Execution</th><th>Verified Outcome</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Dr. Marcus Vance + <code>Helix-2</code></strong></td><td>Require human LoF safety &amp; liver-restricted regulation</td><td><code>WO-002..003</code> cleared gnomAD <code>pLI = 0.0001</code>, GTEx <code>184.2 TPM</code> (brain <code>&lt;0.8 TPM</code>), and 1P <code>AlphaGenome rs2479409 = 0.984</code></td><td><span class="pass-pill">CNS RISK CLEARED</span></td></tr>
+            <tr><td><strong>Dr. Elena Rostova + <code>Fold-3</code></strong></td><td><code>FP-001</code>: Prove cryptic groove (&ge;0.50) or kill small molecule</td><td>1P <code>AlphaFold 3</code> co-fold (<code>ipTM = 0.84</code>) + <code>fpocket</code> (<code>0.68</code> groove vs <code>0.24</code> flat EGF-A) + Vina (<code>-9.4 kcal/mol</code>)</td><td><span class="pass-pill">FLAT SPUR KILLED</span></td></tr>
+            <tr><td><strong>Dr. Raj Patel + <code>Spark-4</code></strong></td><td>Classical Rule-of-5 oral chemistry + <code>0</code> Aronov hERG alerts</td><td>Top docker <code>PCSK9-A02</code> tripped hERG (<code>cLogP 5.09</code>) &rarr; <code>BRICS</code> reroute rescued <strong><code>OASE-PCSK9-014</code></strong> (<code>cLogP 3.01</code>, <code>0</code> alerts) + signed override on <code>PCSK9-B07</code></td><td><span class="pass-pill">BRICS RESCUED</span></td></tr>
+            <tr><td><strong>Dr. Claire Moreau + <code>Shield-5</code></strong></td><td>Enforce Gate 3 CRO wet-lab hold &amp; <code>&le;100 mg QD</code> unenhanced tablet</td><td>Ingested patch-clamp hERG (<code>&gt;30 &mu;M</code>) + rat (<code>54%</code>) / dog (<code>61%</code>) PK &rarr; projected <strong><code>40.0 mg QD</code></strong> human oral tablet (<code>F = 52%</code>)</td><td><span class="pass-pill">40 MG QD LOCKED</span></td></tr>
+            <tr><td><strong>Dr. Sarah Chen + <code>Grove-1</code> / <code>Aegis-6</code></strong></td><td>Zero-fabrication provenance across all 5 artifact layers</td><td><code>8/8</code> Work Orders accepted, <code>4/4</code> Stage Gates signed, <code>3/3</code> tamper drills blocked, 30-page Evidence Portal published</td><td><span class="pass-pill">PORTFOLIO SIGNED</span></td></tr>
+          </tbody>
+        </table>
+        <h4 style="margin: 0.9rem 0 0.5rem 0; color: #0f172a;">Executive Candidate Nomination &amp; Stage-Gate Sign-Off Ledger (<code>OASE-PCSK9-014</code>)</h4>
         <table>
           <thead><tr><th>Campaign Milestone</th><th>Work Orders &amp; Signatories</th><th>Key Verified Scientific Evidence</th><th>Gate Status</th></tr></thead>
           <tbody>
@@ -1329,8 +1342,8 @@ selectStation('s3');
   const DEFAULT_LEADS = { ch1: "sarah", ch2: "marcus", ch3: "elena", ch4: "raj", ch5: "claire", ch6: "elena", ch7: "sarah" };
   const DEFAULT_PROMPTS = {
     ch1: [
-      "@computational-biologist What specific structural liability caused IC-002 to trail IC-001 by 54.5 Elo points in WO-001?",
-      "@science-program-lead Summarize which Stage 0 risk relays remain open as we enter Step 2 human genetics."
+      "@science-program-lead Summarize how our 3 Co-Scientist input prompt clauses in gates/STEP-01-pre-mission-brief.md map into .oase/thresholds.yaml and our 5 Doctor-to-AI Wingman pairings.",
+      "@computational-biologist What specific structural liability caused IC-002 to trail IC-001 by 54.5 Elo points in WO-001, and why keep IC-002 parked on the Amber backup line?"
     ],
     ch2: [
       "@computational-biologist Compare our PCSK9 hepatocyte TPM in GTEx against extrahepatic CNS tissues in WO-002.",
@@ -1353,8 +1366,8 @@ selectStation('s3');
       "@science-program-lead Show the audit record for the PCSK9-B07 Lipinski MW override in .oase/control/events.ndjson."
     ],
     ch7: [
-      "@science-program-lead Summarize our complete 8-Work-Order portfolio handoff package for OASE-PCSK9-014 (40 mg oral QD) in executive/PORTFOLIO-HANDOFF.md.",
-      "@project-curator List the key executive dossier and stage-gate receipts published in the 30-page Evidence Portal."
+      "@science-program-lead Walk through our 5 Doctor-to-AI Wingman post-mission debrief outcomes in gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md.",
+      "@project-curator Which dynamic Subway Map detours and CRO wet-lab receipts were decisive in nominating OASE-PCSK9-014 (40 mg oral QD)?"
     ]
   };
 
@@ -1513,7 +1526,7 @@ selectStation('s3');
             <div>
               <strong style="color:#38bdf8;font-size:0.98rem;">🎬 Interactive 7-Chapter Squadron Walkthrough (${durMin} Total · 1080p)</strong>
               <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
-                Upbeat 100/200-level tactical pod comms (~37s/step) keep the story moving while verbatim metrics, JSONPath citations, and SHA-256 receipts appear live in Scion Webchat and below each video.
+                Bookended by a full-pod <strong>Step 1 Pre-Mission Brief</strong> (Co-Scientist prompt co-design + Doctor &harr; Wingman pairings) and <strong>Step 7 Post-Mission Debrief</strong>, with crisp tactical comms across Steps 2&ndash;6 while verbatim metrics, JSONPath citations, and SHA-256 receipts appear live in Scion Webchat.
               </div>
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">

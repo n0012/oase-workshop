@@ -128,46 +128,86 @@
       "chapter": "ch1",
       "number": 1,
       "slug": "01-pcsk9-coscientist",
-      "title": "Step 1 — Co-Scientist Hypothesis Ranking (WO-001)",
+      "title": "Step 1 — Pre-Mission Brief, Co-Scientist Prompt & Wingman Roster (WO-001)",
       "video_filename": "chapter-01.mp4",
       "turns": [
         {
           "turn_id": "ch1_t1",
-          "scrub_key": "human_prompt",
-          "scrub_label": "Jump to Human Prompt",
+          "scrub_key": "brief_kickoff",
+          "scrub_label": "1. Pre-Mission Kickoff",
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "@science-program-lead Please verify our 24-match Stage 0 Co-Scientist tournament in WO-001 (IC-001 Elo 1642.5 vs IC-002 Elo 1588.0) and post a concise 2-bullet audit back to this Webchat thread using scion message conv:<conversation.id>.",
-          "tts_text": "All wings report in! Today's mission is a daily cholesterol pill. Grove One, run the head-to-head debate and find our best shot!"
+          "chat_text": "[Pre-Mission Brief — Campaign Outset] Gold Squadron, before we run Co-Scientist on oral PCSK9 (ENSG00000169174 / Q8NBP7), let's co-author our Research Brief and Target Product Profile together—then lock our AI wingman pairings.",
+          "tts_text": "Gold Squadron, welcome to the pre-mission brief! Before we launch Co-Scientist on our daily cholesterol pill, let's build the prompt together!"
         },
         {
           "turn_id": "ch1_t2",
-          "scrub_key": "agent_analysis",
-          "scrub_label": "Jump to Agent Analysis",
-          "speaker": "ai_lead",
-          "action": "wait_agent_reply",
-          "tts_text": "Copy that, Sarah! Twenty-four rounds complete. Aiming for a hidden groove on the protein beat the flat surface clean, way more grip for a pill!"
-        },
-        {
-          "turn_id": "ch1_t3",
-          "scrub_key": "validator_verdict",
-          "scrub_label": "Jump to Validator Verdict",
+          "scrub_key": "prompt_genetics",
+          "scrub_label": "2. Genetics & AlphaGenome Rule",
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "Reviewed raw/hypotheses/pcsk9_seed.analysis.json and VAL-WO-001.json: SHA-256 checksums match CHECKSUMS.json, oase validate check WO-001 passed, and risk relay hypothesis.adopted_not_generated is preserved for empirical Step 2 testing.",
-          "tts_text": "Smart call, landing a pill on a flat protein is like landing on ice! Plus, the system locked our early-stage warning right onto it."
+          "chat_text": "[Co-Scientist Prompt Clause 1 — Comp Bio] Locking human loss-of-function genetic cardioprotection (PCSK9 R46L / gnomAD pLI < 0.90) and hepatocyte-selective regulation (GTEx >= 100 TPM + 1P AlphaGenome 1 Mb scoring) so we avoid extrahepatic toxicity.",
+          "tts_text": "First rule for the prompt: demand human genetic proof and strict liver targeting, so AlphaGenome keeps us clear of brain side effects."
+        },
+        {
+          "turn_id": "ch1_t3",
+          "scrub_key": "prompt_structure",
+          "scrub_label": "3. AF3 & Pocket Kill Rule",
+          "speaker": "elena",
+          "action": "human_chat",
+          "target_agent": "structural-biologist",
+          "chat_text": "[Co-Scientist Prompt Clause 2 — Structural Bio] Pre-registering falsifiable kill criterion FP-001: require an allosteric groove with fpocket druggability >= 0.50 and 1P AlphaFold 3 ligand ipTM >= 0.70 (KILL small molecule if < 0.30), plus tricyclic macrocycle comparator FP-002.",
+          "tts_text": "Adding my structural kill switch! Flat protein surfaces trap pills, so AlphaFold Three must confirm a deep pocket, with macrocycles as backup."
         },
         {
           "turn_id": "ch1_t4",
-          "scrub_key": "gate_signoff",
-          "scrub_label": "Jump to Stage-Gate Sign-Off",
+          "scrub_key": "coscientist_launch",
+          "scrub_label": "4. Oral Ro5 & Launch Co-Scientist",
+          "speaker": "raj",
+          "action": "human_chat",
+          "target_agent": "science-program-lead",
+          "chat_text": "@science-program-lead Locking Clause 3: unenhanced Rule-of-5 oral chemistry (cLogP <= 3.5, MW <= 500, 0 Aronov hERG alerts, no permeation enhancers). Verify our 24-match Stage 0 Co-Scientist tournament in WO-001 (IC-001 Elo 1642.5 vs IC-002 Elo 1588.0) and post a concise 2-bullet audit via scion message conv:<conversation.id>.",
+          "tts_text": "And lock Rule of Five chemistry, no absorption boosters and zero heart rhythm traps! Grove One, launch the Co-Scientist tournament!"
+        },
+        {
+          "turn_id": "ch1_t5",
+          "scrub_key": "tournament_readout",
+          "scrub_label": "5. Co-Scientist Elo Readout",
+          "speaker": "ai_lead",
+          "action": "wait_agent_reply",
+          "target_agent": "science-program-lead",
+          "tts_text": "Copy, team! Twenty-four Co-Scientist matches complete. Cryptic groove small molecule I-C-zero-zero-one leads by fifty-four Elo points over the flat-surface macrocycle, with caveats locked."
+        },
+        {
+          "turn_id": "ch1_t6",
+          "scrub_key": "subway_routing",
+          "scrub_label": "6. Subway Map & Wingman Pairings",
+          "speaker": "claire",
+          "action": "human_chat",
+          "target_agent": "computational-biologist",
+          "chat_text": "@computational-biologist Strong Co-Scientist split: route IC-001 down our Primary Green Line, park macrocycle IC-002 on our Amber Backup Line behind a hard CRO wet-lab gate, and confirm our 5 Doctor-to-AI Wingman pairings in 2 concise bullets via scion message conv:<conversation.id>.",
+          "tts_text": "Love that split! Put the small molecule on our primary track, park the macrocycle as backup, and pair each doctor with a wingman."
+        },
+        {
+          "turn_id": "ch1_t7",
+          "scrub_key": "wingman_roster",
+          "scrub_label": "7. AI Wingman Roster Locked",
+          "speaker": "ai_compbio",
+          "action": "wait_agent_reply",
+          "target_agent": "computational-biologist",
+          "tts_text": "Wingman roster locked, Claire! Helix Two with Marcus, Fold Three with Elena, Spark Four with Raj, Shield Five with you, and Grove One commanding!"
+        },
+        {
+          "turn_id": "ch1_t8",
+          "scrub_key": "mission_launch",
+          "scrub_label": "8. Outset Sign-Off & Launch",
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Step 1 Sign-Off — Approved] Adopting IC-001 as primary small-molecule series and retaining IC-002 as backup comparator. Advancing pod to Step 2 Human Genetics & AlphaGenome (WO-002, WO-003).",
-          "tts_text": "Target locked! Hidden groove takes point, backup stays on our wing. Marcus, punch it into Step 2 human genetics!"
+          "chat_text": "[Step 1 Pre-Mission Brief Signed — LAUNCH] Co-Scientist prompt, .oase/thresholds.yaml (36/36 schemas), Subway Map (IC-001 primary / IC-002 backup), and 5 Human-AI Wingman pairs locked in gates/STEP-01-pre-mission-brief.md. Marcus + Helix-2, take point on Step 2!",
+          "tts_text": "Pre-mission brief signed, Gold Squadron! Primary and backup tracks armed, wingmen paired—Marcus and Helix Two, punch it into Step Two!"
         }
       ]
     },
@@ -410,46 +450,77 @@
       "chapter": "ch7",
       "number": 7,
       "slug": "07-pcsk9-mission-closeout",
-      "title": "Step 7 — Executive Portfolio Sign-Off & Squadron Mission Closeout",
+      "title": "Step 7 — Post-Mission Debrief, Subway Map Recap & Portfolio Sign-Off",
       "video_filename": "chapter-07.mp4",
       "turns": [
         {
           "turn_id": "ch7_t1",
-          "scrub_key": "human_prompt",
-          "scrub_label": "Jump to Human Prompt",
+          "scrub_key": "debrief_open",
+          "scrub_label": "1. Convene Post-Mission Debrief",
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "@science-program-lead Run our final Step 7 portfolio sign-off readout across WO-001 through WO-008, the 4 Stage Gates, the Wet-Lab PK bridge, and the 30-page Evidence Portal, posting a concise 2-bullet executive summary via scion message conv:<conversation.id>.",
-          "tts_text": "All wings on final approach! Grove One, bring us home and give the portfolio board our complete mission readout!"
+          "chat_text": "@science-program-lead Welcome back for our Step 7 Post-Mission Debrief, Gold Squadron! Before each Doctor + AI Wingman pair reports out against our Step 1 Co-Scientist brief, post our 2-bullet campaign verification ledger via scion message conv:<conversation.id>.",
+          "tts_text": "All wings back on deck for post-mission debrief! Grove One, pull up the master flight log against our opening plan!"
         },
         {
           "turn_id": "ch7_t2",
-          "scrub_key": "agent_analysis",
-          "scrub_label": "Jump to Agent Analysis",
+          "scrub_key": "ledger_readout",
+          "scrub_label": "2. Grove-1 Ledger Readout",
           "speaker": "ai_lead",
           "action": "wait_agent_reply",
-          "tts_text": "Mission accomplished, Gold Leader! Eight work orders green, four gates cleared, lab verified, and your thirty-page dossier is ready for launch!"
+          "target_agent": "science-program-lead",
+          "tts_text": "Welcome home, Gold Squadron! Eight work orders passed, four gates signed, three tamper drills blocked, and your thirty-page dossier is verified."
         },
         {
           "turn_id": "ch7_t3",
-          "scrub_key": "validator_verdict",
-          "scrub_label": "Jump to Pod Debrief",
-          "speaker": "elena",
+          "scrub_key": "debrief_compbio",
+          "scrub_label": "3. Genetics & AlphaGenome Debrief",
+          "speaker": "marcus",
           "action": "human_chat",
-          "target_agent": "science-program-lead",
-          "chat_text": "Discovery Pod sign-off logged in gates/STEP-07-portfolio-closeout.md: 5 human scientists and 11 AI specialists traced every prediction from Stage 0 tournament through wet-lab verification with zero ungrounded claims.",
-          "tts_text": "Five scientists, eleven AI wingmen, and zero made-up numbers! Honestly, best co-pilots I have ever flown a discovery campaign with."
+          "target_agent": "computational-biologist",
+          "chat_text": "[Post-Mission Debrief — Comp Bio + Helix-2] Pairing on WO-002..WO-003 validated human LoF cardioprotection (pLI = 0.0001) and liver-selective expression (184.2 TPM + 1P AlphaGenome rs2479409 = 0.984) up front, keeping CNS exposure risk off the board.",
+          "tts_text": "Helix Two and I cleared human genetics and AlphaGenome liver scoring right at the gate—saving weeks of wasted chemistry downstream."
         },
         {
           "turn_id": "ch7_t4",
-          "scrub_key": "gate_signoff",
-          "scrub_label": "Jump to Live Controls Handoff",
+          "scrub_key": "debrief_structbio",
+          "scrub_label": "4. AlphaFold 3 & Pocket Debrief",
+          "speaker": "elena",
+          "action": "human_chat",
+          "target_agent": "structural-biologist",
+          "chat_text": "[Post-Mission Debrief — Structural Bio + Fold-3] Pairing on WO-004..WO-005 proved our Co-Scientist's cryptic groove hypothesis via 1P AlphaFold 3 co-folding (ipTM = 0.84) and fpocket (0.68 vs 0.24 flat EGF-A), terminating the flat surface spur cleanly.",
+          "tts_text": "Fold Three and I proved that hidden groove hypothesis with AlphaFold Three, and shut down the flat surface trap right on schedule!"
+        },
+        {
+          "turn_id": "ch7_t5",
+          "scrub_key": "debrief_medchem",
+          "scrub_label": "5. hERG Reroute & Backup Debrief",
+          "speaker": "raj",
+          "action": "human_chat",
+          "target_agent": "medicinal-chemist",
+          "chat_text": "[Post-Mission Debrief — Med Chem + Spark-4] When top docker PCSK9-A02 tripped our Aronov hERG red signal (cLogP = 5.09), Spark-4 and I took the BRICS reroute loop to OASE-PCSK9-014 (cLogP = 3.01, 0 alerts) and logged backup PCSK9-B07 via signed override.",
+          "tts_text": "When our greasy top scorer tripped the heart-rhythm alarm, Spark Four and I rerouted to a clean oxadiazole without losing grip!"
+        },
+        {
+          "turn_id": "ch7_t6",
+          "scrub_key": "debrief_dmpk",
+          "scrub_label": "6. Wet-Lab & 40 mg QD Debrief",
+          "speaker": "claire",
+          "action": "human_chat",
+          "target_agent": "admet-dmpk-scientist",
+          "chat_text": "[Post-Mission Debrief — DMPK + Shield-5] Enforcing the Gate 3 CRO wet-lab pause confirmed patch-clamp hERG > 30 uM and rat (54%) / dog (61%) bioavailability—delivering our 40.0 mg once-daily unenhanced tablet right on our Step 1 TPP.",
+          "tts_text": "And pausing for real wet-lab data paid off! Shield Five locked a simple forty-milligram daily tablet—nailing our Day One target profile."
+        },
+        {
+          "turn_id": "ch7_t7",
+          "scrub_key": "portfolio_handoff",
+          "scrub_label": "7. Portfolio Sign-Off & Live Seats",
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Campaign Complete — Portfolio Hand-Off Ready] OASE-PCSK9-014 (40 mg oral QD) dossier published at executive/PORTFOLIO-HANDOFF.md. Live Grove checkpoints ch0..ch7 are armed for interactive Q&A.",
-          "tts_text": "Touchdown, Gold Squadron! Now it's your turn, pick any scientist seat right below this video and fly the workspace live!"
+          "chat_text": "[Post-Mission Debrief Complete — Portfolio Hand-Off Co-Signed] All 5 Doctor + AI Wingman pairs have signed gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md for OASE-PCSK9-014 (40 mg QD). Inspect our traversed Subway Map below or jump into any live Grove seat!",
+          "tts_text": "Debrief complete and dossier co-signed, squad! Check out the dynamic route map below, then grab a scientist seat and fly live!"
         }
       ]
     }

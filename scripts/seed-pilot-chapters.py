@@ -86,8 +86,8 @@ CHAPTER_SPECS = [
         "chapter": "ch1",
         "slug": "01-pcsk9-coscientist",
         "name": "01-pcsk9-coscientist",
-        "description": "Step 1 — Co-Scientist Hypothesis Generation & Elo Tournament Ranking (WO-001: IC-001 Elo 1642.5)",
-        "lead_human": "marcus",
+        "description": "Step 1 — Pre-Mission Brief, Co-Scientist Prompt & Wingman Roster (WO-001: IC-001 Elo 1642.5)",
+        "lead_human": "sarah",
         "live_agents": ["science-program-lead", "computational-biologist"],
         "artifact_keys": ["wo-001-finding", "pcsk9-evidence-portal"],
         "topic_slug": "step-1-coscientist-elo-ranking",
@@ -95,18 +95,18 @@ CHAPTER_SPECS = [
         "seed_messages": [
             (
                 "human:sarah",
-                "**[Chapter 1 Kickoff — Step 1 Co-Scientist Hypothesis Ranking (`WO-001`)]**\n"
-                "`@science-program-lead` `@computational-biologist` — `Dr. Marcus Vance` and I are reviewing the 24-match Stage 0 Co-Scientist tournament in `seed/pcsk9-oral/`. Please verify Elo convergence and SHA-256 lineage for `IC-001` vs `IC-002`.",
+                "**[Step 1 Pre-Mission Brief — Co-Scientist Prompt & Wingman Roster (`WO-001`)]**\n"
+                "`@science-program-lead` `@computational-biologist` — All 5 scientists have co-authored our Co-Scientist Research Brief & TPP in `gates/STEP-01-pre-mission-brief.md` (LoF + `AlphaGenome` liver selectivity, `AlphaFold 3` + `FP-001` pocket kill rule, unenhanced Rule-of-5 + `0` hERG alerts). Verify our 24-match Stage 0 tournament (`IC-001` vs `IC-002`) and 5 Doctor-to-AI Wingman pairings.",
                 ["wo-001-finding"],
                 False,
             ),
             (
-                "agent:computational-biologist",
-                "**[WO-001 Verified — `IC-001` Ranked #1 (`Elo = 1642.5`)]**\n"
-                "Completed deterministic audit of `seed/pcsk9-oral/CHECKSUMS.json` and all 24 pairwise debate matches:\n"
-                "- **#1 Primary Hypothesis (`IC-001`)**: Cryptic EGF-A Groove Allosteric Pocket (`Asp374`/`Phe379`/`Ser381`) — **`Elo = 1642.5`** (`9W-1L-0D`)\n"
-                "- **#2 Backup Comparator (`IC-002`)**: C-Terminal Domain Hinge Modulator — **`Elo = 1588.0`** (`7W-2L-1D`)\n"
-                "- **`oase validate check WO-001`**: **`PASS`** (`scientifically_accepted`). Ready for human pod follow-up or progression to Step 2.",
+                "agent:science-program-lead",
+                "**[Pre-Mission Brief Locked & `WO-001` Verified — `IC-001` Ranked #1 (`Elo = 1642.5`)]**\n"
+                "Verified `gates/STEP-01-pre-mission-brief.md`, `.oase/thresholds.yaml` (`36/36` schemas), and all 24 Co-Scientist matches:\n"
+                "- **Primary Green Line (`IC-001`)**: Cryptic EGF-A Groove Small Molecule (`Asp374`/`Phe379`/`Ser381`) — **`Elo = 1642.5`** (`+54.5 Elo`)\n"
+                "- **Amber Backup Line (`IC-002`)**: Oral Tricyclic Macrocycle — **`Elo = 1588.0`** (parked behind CRO wet-lab gate)\n"
+                "- **5 Doctor <-> AI Wingman Pairs Locked**: `Sarah + Grove-1`, `Marcus + Helix-2`, `Elena + Fold-3`, `Raj + Spark-4`, `Claire + Shield-5` (plus `Aegis-6` audit).",
                 ["wo-001-finding", "pcsk9-evidence-portal"],
                 True,
             ),
@@ -310,7 +310,7 @@ CHAPTER_SPECS = [
         "chapter": "ch7",
         "slug": "07-pcsk9-mission-closeout",
         "name": "07-pcsk9-mission-closeout",
-        "description": "Step 7 — Executive Portfolio Sign-Off, 30-Page Evidence Portal & Squadron Mission Closeout",
+        "description": "Step 7 — Post-Mission Debrief, Subway Map Recap & Portfolio Sign-Off",
         "lead_human": "sarah",
         "live_agents": ["science-program-lead", "project-curator"],
         "artifact_keys": [
@@ -333,16 +333,16 @@ CHAPTER_SPECS = [
         "seed_messages": [
             (
                 "human:sarah",
-                "**[Chapter 7 Mission Closeout — Executive Portfolio Sign-Off & 30-Page Evidence Portal]**\n"
-                "`@science-program-lead` — All 6 discovery & governance stages are complete (`WO-001`..`WO-008`, `GATE-01`..`GATE-04`, Wet-Lab PK bridge, and `STEP-06` tamper audit). Please verify final portfolio readiness for **`OASE-PCSK9-014` (`40.0 mg QD`)** in `gates/STEP-07-portfolio-closeout.md` and `executive/PORTFOLIO-HANDOFF.md`.",
+                "**[Step 7 Post-Mission Debrief — Squadron Route Recap & Portfolio Sign-Off]**\n"
+                "`@science-program-lead` — All 5 Doctor + AI Wingman pairs are reconvened to debrief against our Step 1 Co-Scientist Research Brief (`WO-001`..`WO-008`, `GATE-01`..`GATE-04`, Wet-Lab PK bridge, and `STEP-06` tamper audit). Verify our campaign ledger and `gates/STEP-07-portfolio-closeout.md` for **`OASE-PCSK9-014` (`40.0 mg QD`)**.",
                 ["program-summary", "pcsk9-evidence-portal"],
                 False,
             ),
             (
                 "agent:science-program-lead",
-                "**[Step 7 Portfolio Sign-Off Complete — `OASE-PCSK9-014` Ready for IND-Enabling GLP Tox]**\n"
-                "- **End-to-End Provenance**: `8 / 8` Work Orders (`WO-001`..`WO-008`), `4 / 4` Stage Gates, Wet-Lab rat/dog PK bridge, and `3 / 3` tamper blocks verified with `0` ungrounded claims.\n"
-                "- **Executive Deliverable**: `OASE-PCSK9-014` (`40.0 mg` oral QD tablet, `F = 52%`, `0` hERG alerts) and 30-page static Evidence Portal published for portfolio review and live team Q&A.",
+                "**[Post-Mission Debrief & Portfolio Sign-Off Complete — `OASE-PCSK9-014` Ready for GLP Tox]**\n"
+                "- **Squadron Pair Debrief (`gates/STEP-07-portfolio-closeout.md`)**: `Marcus+Helix-2` (`AlphaGenome 0.984`), `Elena+Fold-3` (`AF3 ipTM 0.84` / `fpocket 0.68`), `Raj+Spark-4` (`BRICS` hERG rescue + `PCSK9-B07` override), `Claire+Shield-5` (rat `54%` / dog `61%` -> human **`40.0 mg QD`**), and `Sarah+Grove-1/Aegis-6` (`8/8` WOs, `4/4` gates, `3/3` tamper drills blocked).\n"
+                "- **Executive Deliverable**: `executive/PORTFOLIO-HANDOFF.md` and 30-page static Evidence Portal co-signed with `0` ungrounded claims.",
                 ["program-summary", "decision-log", "pcsk9-evidence-portal"],
                 True,
             ),

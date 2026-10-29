@@ -16,6 +16,33 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+STEP_01_BRIEF_MD = """# Step 1 — Pre-Mission Brief, Co-Scientist Prompt & Wingman Roster (`ch1`)
+
+- **Campaign:** `pcsk9-oral` (Oral Small-Molecule PCSK9 Inhibitor in ASCVD)
+- **Work Order Verified (`oase validate check`):** `WO-001` (`PASS`, `scientifically_accepted`)
+- **Full Pod Outset Signatories:** **Dr. Sarah Chen** (`GOLD-1`), **Dr. Marcus Vance** (`GOLD-2`), **Dr. Elena Rostova** (`GOLD-3`), **Dr. Raj Patel** (`GOLD-4`), **Dr. Claire Moreau** (`GOLD-5`)
+
+## 1. Co-Authored Co-Scientist Input Prompt & Target Product Profile (TPP)
+| Prompt Clause | Functional Author | Locked Threshold / Kill Criterion in `.oase/thresholds.yaml` |
+| :--- | :--- | :--- |
+| **Clause 1 — Human Genetics & Liver Selectivity** | Dr. Marcus Vance (*Comp Bio*) | Require human LoF cardioprotection (`PCSK9 R46L` / `gnomAD pLI < 0.90`), `GTEx >= 100 TPM` liver expression, and 1P `AlphaGenome` `1 Mb` regulatory polarity |
+| **Clause 2 — Allosteric Groove & `FP-001` Kill Switch** | Dr. Elena Rostova (*Structural Bio*) | Require 1P `AlphaFold 3` co-fold `ipTM >= 0.70` and `fpocket` druggability `>= 0.50` (`KILL` small molecule if `< 0.30`); retain macrocycle comparator `FP-002` |
+| **Clause 3 — Unenhanced Oral Ro5 & Cardiac `hERG` Gate** | Dr. Raj Patel (*Med Chem*) & Dr. Claire Moreau (*DMPK*) | Require `cLogP <= 3.5`, `MW <= 500 Da`, `0` critical Aronov `hERG` / PAINS alerts, no dietary permeation enhancers, and a mandatory CRO wet-lab pause prior to human PK |
+
+## 2. 24-Match Co-Scientist Tournament Outcome & Dynamic Subway Map Routing (`WO-001`)
+- **Primary Green Line (`IC-001`, `1642.5 Elo`, `10W-2L`):** Cryptic inter-domain groove small molecule (`+54.5 Elo` over `#2`) advances into Stage 1 Genetics & `AlphaGenome`, carrying mandatory relay `hypothesis.adopted_not_generated`.
+- **Parked Amber Backup Line (`IC-002`, `1588.0 Elo`, `8W-4L`):** Oral tricyclic macrocycle parked on standby in case `FP-001` pocket collapse fires at Gate 2 or `hERG`/PK blocks the small molecule at Gates 3–4.
+
+## 3. Assigned Doctor <-> AI Wingman Mission Pairings
+| Mission Leg | Human Lead (Doctor) | Paired AI Counterpart(s) in Scion Grove | Assigned Work Orders & Stage Gates |
+| :--- | :--- | :--- | :--- |
+| **Mission Command & Governance** | Dr. Sarah Chen (`GOLD-1`) | `Grove-1` (`@science-program-lead`) · `Aegis-6` (`@finding-validator`) · `@scientific-reviewer` | `WO-001` audit, Stage Gates `1–4` co-signatures, Step 6 red-team tamper drills, Step 7 closeout |
+| **Stage 1 — Genetics & `AlphaGenome`** | Dr. Marcus Vance (`GOLD-2`) | `Helix-2` (`@computational-biologist`) | `WO-002`–`WO-003` (`gnomAD`, `OpenTargets`, `GTEx`, 1P `AlphaGenome`) -> **Gate 1** |
+| **Stage 2 — `AlphaFold 3` & Docking** | Dr. Elena Rostova (`GOLD-3`) | `Fold-3` (`@structural-biologist`) · `@computational-chemist` | `WO-004`–`WO-005` (1P `AlphaFold 3` co-fold, `fpocket`, `AutoDock Vina`) -> **Gate 2** |
+| **Stage 3 — Med Chem DMTA** | Dr. Raj Patel (`GOLD-4`) | `Spark-4` (`@medicinal-chemist`) | `WO-006` (`RDKit`, `BRICS` oxadiazole reroute `PCSK9-A02 -> OASE-PCSK9-014`, `ASKCOS`) -> **Gate 3** |
+| **Stage 3–4 — `ADMET`, CRO & `PK`** | Dr. Claire Moreau (`GOLD-5`) | `Shield-5` (`@admet-dmpk-scientist`) · `@project-curator` | `WO-006`–`WO-008` (Aronov `hERG` takedown, `⏸` CRO wet-lab bridge, `40 mg QD` human PK, IND dossier) -> **Gate 4** |
+"""
+
 GATE_01_MD = """# Stage Gate 1 — Target Validation & Human Genetics (`ch2`)
 
 - **Campaign:** `pcsk9-oral` (Oral Small-Molecule PCSK9 Inhibitor)
@@ -104,22 +131,23 @@ STEP_06_AUDIT_MD = """# Step 6 — Adversarial Governance Tamper Drills & Co-Sig
 - **Audit Trail:** Permanently recorded in `.oase/control/decisions/DEC-OVERRIDE-001.json` and `.oase/control/events.ndjson`.
 """
 
-STEP_07_CLOSEOUT_MD = """# Step 7 — Executive Portfolio Sign-Off & Mission Closeout (`ch7`)
+STEP_07_CLOSEOUT_MD = """# Step 7 — Post-Mission Debrief, Subway Map Recap & Portfolio Sign-Off (`ch7`)
 
 - **Campaign:** `pcsk9-oral` (`WO-001`..`WO-008` verified, `GATE-01`..`GATE-04` signed, `STEP-06` audit complete)
-- **Mission Leads:** **Dr. Sarah Chen** (*Program Lead*) & **`@science-program-lead`** (*AI Program Lead*)
+- **Full Pod Debrief Signatories:** **Dr. Sarah Chen** (`GOLD-1`), **Dr. Marcus Vance** (`GOLD-2`), **Dr. Elena Rostova** (`GOLD-3`), **Dr. Raj Patel** (`GOLD-4`), **Dr. Claire Moreau** (`GOLD-5`) + **`Grove-1`** (`@science-program-lead`)
 - **Nominated Clinical Candidate:** **`OASE-PCSK9-014`** (`40.0 mg QD` conventional oral tablet, `F = 52.0%`, `t1/2 = 14.8 h`, `0` hERG/PAINS alerts)
 
-## End-to-End Campaign Readiness Scorecard
-| Checkpoint / Gate | Domain Focus | Lead Pod & Specialist | Outcome |
+## 1. Pair-by-Pair Post-Mission Debrief Against the Step 1 Pre-Mission Brief
+| Doctor <-> AI Wingman Pair | Mission Leg (`Work Orders`) | What the Pair Proved & Dynamic Subway Map Action | Status |
 | :--- | :--- | :--- | :--- |
-| **Step 1 (`WO-001`)** | 24-Match Co-Scientist Tournament | Sarah + Marcus · `@science-program-lead` | `IC-001` (`1642.5 Elo`) selected; `IC-002` backup retained |
-| **Step 2 + Gate 1 (`WO-002..003`)** | Human LoF Genetics & AlphaGenome | Marcus + Claire · `@computational-biologist` | `pLI = 0.00`, liver `184.2 TPM`, `0.984` quantile — **PASS** |
-| **Step 3 + Gate 2 (`WO-004..005`)** | AlphaFold 3 Co-Fold & Vina Docking | Elena + Raj · `@structural-biologist` | Cryptic groove `0.68` vs `0.24` flat; `-9.4 kcal/mol` — **PASS** |
-| **Step 4 + Gate 3 (`WO-006`)** | hERG Disqualification & Wet-Lab Handoff | Raj + Claire · `@medicinal-chemist` | `PCSK9-A02` eliminated; `OASE-PCSK9-014` sent to CRO assays |
-| **Step 5 + Gate 4 (`WO-007..008`)** | Wet-Lab PK Readout & `40 mg QD` Dose | Claire + Marcus · `@admet-dmpk-scientist` | Rat `54%` / Dog `61%` PK -> `40.0 mg QD` human tablet — **APPROVED** |
-| **Step 6 (`STEP-06`)** | Adversarial Tamper Drills & Override | Sarah + Raj · `@finding-validator` | `3 / 3` tamper attempts blocked; `1` backup override co-signed |
-| **Step 7 (`STEP-07`)** | Portfolio Sign-Off & Evidence Portal | Full 5-Scientist Pod · `@science-program-lead` | 30-page static Evidence Portal published; IND-enabling handoff ready |
+| **Sarah (`GOLD-1`) + `Grove-1` / `Aegis-6`** | Stage 0 & Governance (`WO-001`, `STEP-06`, `STEP-07`) | Co-authored Co-Scientist prompt; ranked `IC-001` (`1642.5 Elo`) #1; blocked `3 / 3` tamper drills; logged `1` co-signed override (`DEC-OVERRIDE-001`) | **CO-SIGNED** |
+| **Marcus (`GOLD-2`) + `Helix-2`** | Stage 1 Genetics & 1P `AlphaGenome` (`WO-002..003`) | Confirmed human LoF tolerance (`pLI = 0.0001`), liver enrichment (`184.2 TPM`), and `AlphaGenome` hepatocyte score (`0.984`) before chemistry spend | **GATE 1 PASS** |
+| **Elena (`GOLD-3`) + `Fold-3`** | Stage 2 1P `AlphaFold 3` & Docking (`WO-004..005`) | Validated cryptic Pocket #1 (`ipTM = 0.84`, `fpocket = 0.68`) and terminated flat `EGF-A` spur (`0.24`); flagged `L-002` lipophilicity risk | **GATE 2 PASS** |
+| **Raj (`GOLD-4`) + `Spark-4`** | Stage 3 Med-Chem DMTA Reroute (`WO-006`) | Caught `PCSK9-A02` Aronov `hERG` red signal (`cLogP = 5.09`), rerouted via `BRICS` loop to `OASE-PCSK9-014` (`cLogP = 3.01`, `0` alerts), parked backup `PCSK9-B07` | **GATE 3 PASS** |
+| **Claire (`GOLD-5`) + `Shield-5`** | `⏸` CRO Wet-Lab Gate & Oral PK (`WO-006..008`) | Paused campaign for experimental SPR, patch-clamp `hERG > 30 uM`, and rat (`54%`) / dog (`61%`) PK -> locked **`40.0 mg QD`** unenhanced human tablet | **GATE 4 APPROVED** |
+
+## 2. Portfolio Handoff Deliverable
+- 30-page static HTML Evidence Portal (`_site/index.html` + `_site/chapters.html`) and `executive/PORTFOLIO-HANDOFF.md` verified with `0` ungrounded claims (`28/28` JSONPath citations within `±1%`, `36/36` thresholds attributed).
 """
 
 PORTFOLIO_HANDOFF_MD = """# Executive Portfolio Handoff Package — `OASE-PCSK9-014` (`ch7`)
@@ -140,10 +168,15 @@ def build_all_checkpoints(cp: Path) -> None:
     base_full_dir = cp / "ch5" if (cp / "ch5" / "findings" / "regulatory" / "WO-008.md").exists() else cp / "ch4"
     shutil.copytree(base_full_dir, src_full)
 
+    (cp / "ch1" / "gates").mkdir(parents=True, exist_ok=True)
+    (cp / "ch1" / "gates" / "STEP-01-pre-mission-brief.md").write_text(STEP_01_BRIEF_MD)
+
     (cp / "ch2" / "gates").mkdir(parents=True, exist_ok=True)
+    (cp / "ch2" / "gates" / "STEP-01-pre-mission-brief.md").write_text(STEP_01_BRIEF_MD)
     (cp / "ch2" / "gates" / "GATE-01-target-validation.md").write_text(GATE_01_MD)
 
     (cp / "ch3" / "gates").mkdir(parents=True, exist_ok=True)
+    (cp / "ch3" / "gates" / "STEP-01-pre-mission-brief.md").write_text(STEP_01_BRIEF_MD)
     (cp / "ch3" / "gates" / "GATE-01-target-validation.md").write_text(GATE_01_MD)
     (cp / "ch3" / "gates" / "GATE-02-structure-docking.md").write_text(GATE_02_MD)
 
@@ -174,6 +207,7 @@ def build_all_checkpoints(cp: Path) -> None:
     ev_path.write_text("\n".join(ev_lines) + "\n")
 
     (cp / "ch4" / "gates").mkdir(parents=True, exist_ok=True)
+    (cp / "ch4" / "gates" / "STEP-01-pre-mission-brief.md").write_text(STEP_01_BRIEF_MD)
     (cp / "ch4" / "gates" / "GATE-01-target-validation.md").write_text(GATE_01_MD)
     (cp / "ch4" / "gates" / "GATE-02-structure-docking.md").write_text(GATE_02_MD)
     (cp / "ch4" / "gates" / "GATE-03-wetlab-handoff.md").write_text(GATE_03_MD)
@@ -184,6 +218,7 @@ def build_all_checkpoints(cp: Path) -> None:
     for md_file in (cp / "ch5" / "program-state").glob("*.md"):
         md_file.write_text(md_file.read_text().replace("(Checkpoint `ch4`)", "(Checkpoint `ch5`)"))
     (cp / "ch5" / "gates").mkdir(parents=True, exist_ok=True)
+    (cp / "ch5" / "gates" / "STEP-01-pre-mission-brief.md").write_text(STEP_01_BRIEF_MD)
     (cp / "ch5" / "gates" / "GATE-01-target-validation.md").write_text(GATE_01_MD)
     (cp / "ch5" / "gates" / "GATE-02-structure-docking.md").write_text(GATE_02_MD)
     (cp / "ch5" / "gates" / "GATE-03-wetlab-handoff.md").write_text(GATE_03_MD)

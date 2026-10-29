@@ -51,8 +51,8 @@ PERSONAS = [
 
 FOLLOWUP_PROMPTS = {
     "ch1": [
-        "@computational-biologist What specific structural liability caused IC-002 to trail IC-001 by 54.5 Elo points in WO-001?",
-        "@science-program-lead Summarize which Stage 0 risk relays remain open as we enter Step 2 human genetics.",
+        "@science-program-lead Summarize how our 3 Co-Scientist input prompt clauses in gates/STEP-01-pre-mission-brief.md map into .oase/thresholds.yaml and our 5 Doctor-to-AI Wingman pairings.",
+        "@computational-biologist What specific structural liability caused IC-002 to trail IC-001 by 54.5 Elo points in WO-001, and why keep IC-002 parked on the Amber backup line?",
     ],
     "ch2": [
         "@computational-biologist Compare our PCSK9 hepatocyte TPM in GTEx against extrahepatic CNS tissues in WO-002.",
@@ -75,8 +75,8 @@ FOLLOWUP_PROMPTS = {
         "@science-program-lead Show the audit record for the PCSK9-B07 Lipinski MW override in .oase/control/events.ndjson.",
     ],
     "ch7": [
-        "@science-program-lead Summarize our complete 8-Work-Order portfolio handoff package for OASE-PCSK9-014 (40 mg oral QD) in executive/PORTFOLIO-HANDOFF.md.",
-        "@project-curator List the key executive dossier and stage-gate receipts published in the 30-page Evidence Portal.",
+        "@science-program-lead Walk through our 5 Doctor-to-AI Wingman post-mission debrief outcomes in gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md.",
+        "@project-curator Which dynamic Subway Map detours and CRO wet-lab receipts were decisive in nominating OASE-PCSK9-014 (40 mg oral QD)?",
     ],
 }
 

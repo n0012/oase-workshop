@@ -249,36 +249,79 @@ async def synthesize_live_chunk(
         ),
     )
     prompt = f"Read this slide script verbatim:\n<script>{chunk_text}</script>"
-    last_word = re.sub(r"[^a-z0-9]", "", chunk_text.split()[-1].lower())
-    video_buf = bytearray()
-    transcripts: list[str] = []
+    expected_words = re.findall(r"[a-z0-9]+", chunk_text.lower())
+    tail_phrase = (
+        " ".join(expected_words[-2:])
+        if len(expected_words) >= 2
+        else (expected_words[-1] if expected_words else "")
+    )
 
-    async with client.aio.live.connect(model="gemini-3.8-live", config=config) as session:
-        await session.send_realtime_input(text=prompt)
-        speech_done_at: float | None = None
-        async for msg in session.receive():
-            sc = getattr(msg, "server_content", None)
-            if not sc:
-                continue
-            turn = getattr(sc, "model_turn", None)
-            for part in getattr(turn, "parts", None) or []:
-                inline = getattr(part, "inline_data", None)
-                if inline and inline.data and "video/mp4" in (inline.mime_type or ""):
-                    video_buf.extend(inline.data)
-            tr = getattr(sc, "output_transcription", None)
-            if tr and getattr(tr, "text", None):
-                transcripts.append(tr.text)
-                if last_word and last_word in "".join(transcripts).lower() and speech_done_at is None:
-                    speech_done_at = time.monotonic()
-            if getattr(sc, "turn_complete", False):
-                break
-            if speech_done_at and (time.monotonic() - speech_done_at) > 1.8:
-                break
+    last_err: Exception | None = None
+    for attempt in range(1, 5):
+        video_buf = bytearray()
+        transcripts: list[str] = []
+        try:
+            async with client.aio.live.connect(model="gemini-3.8-live", config=config) as session:
+                await session.send_realtime_input(text=prompt)
+                speech_done_at: float | None = None
+                async for msg in session.receive():
+                    sc = getattr(msg, "server_content", None)
+                    if not sc:
+                        continue
+                    turn = getattr(sc, "model_turn", None)
+                    for part in getattr(turn, "parts", None) or []:
+                        inline = getattr(part, "inline_data", None)
+                        if inline and inline.data and "video/mp4" in (inline.mime_type or ""):
+                            video_buf.extend(inline.data)
+                    tr = getattr(sc, "output_transcription", None)
+                    if tr and getattr(tr, "text", None):
+                        transcripts.append(tr.text)
+                        spoken_words = re.findall(r"[a-z0-9]+", "".join(transcripts).lower())
+                        spoken_norm = " ".join(spoken_words)
+                        if (
+                            tail_phrase
+                            and len(spoken_words) >= max(1, len(expected_words) - 3)
+                            and tail_phrase in spoken_norm
+                            and speech_done_at is None
+                        ):
+                            speech_done_at = time.monotonic()
+                    if getattr(sc, "turn_complete", False):
+                        break
+                    if speech_done_at and (time.monotonic() - speech_done_at) > 2.0:
+                        break
 
-    if not video_buf:
-        raise RuntimeError(f"Empty video stream returned for {avatar_name}/{voice_id}")
-    out_mp4.write_bytes(bytes(video_buf))
-    return out_mp4
+            if not video_buf:
+                raise RuntimeError(f"Empty video stream returned for {avatar_name}/{voice_id}")
+            out_mp4.write_bytes(bytes(video_buf))
+
+            spoken_words = re.findall(r"[a-z0-9]+", "".join(transcripts).lower())
+            min_words = max(4, int(len(expected_words) * 0.72))
+            max_words = max(len(expected_words) + 6, int(len(expected_words) * 1.40))
+            if len(spoken_words) < min_words or len(spoken_words) > max_words:
+                raise RuntimeError(
+                    f"Transcript word-count mismatch ({len(spoken_words)} vs expected {len(expected_words)}): {' '.join(spoken_words)}"
+                )
+            s_start, s_end, full_dur = detect_speech_bounds(out_mp4)
+            spoken_span = s_end - s_start
+            vproc = subprocess.run(
+                ["ffmpeg", "-hide_banner", "-nostats", "-i", str(out_mp4), "-vn", "-af", "volumedetect", "-f", "null", "-"],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            m_mean = MEAN_VOL_RE.search(vproc.stderr or "")
+            mean_db = float(m_mean.group(1)) if m_mean else -91.0
+            if mean_db < -34.0 or spoken_span < 4.5 or spoken_span > 16.5:
+                raise RuntimeError(
+                    f"Audio quality gate failed (mean_db={mean_db:.1f} dB, spoken_span={spoken_span:.2f}s, full={full_dur:.2f}s)"
+                )
+            return out_mp4
+        except Exception as exc:
+            last_err = exc
+            print(f"  [RETRY {attempt}/4] {avatar_name}/{voice_id}: {exc}", flush=True)
+            await asyncio.sleep(1.5 * attempt)
+
+    raise RuntimeError(f"Failed live avatar synthesis after 4 attempts: {last_err}")
 
 
 def stitch_chunks(part_paths: list[Path], stitched_out: Path) -> Path:

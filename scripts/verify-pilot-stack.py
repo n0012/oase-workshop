@@ -85,6 +85,11 @@ def main() -> int:
             r_plan = ctx.request.get(f"{story_url}/plan.html")
             r_chapters = ctx.request.get(f"{story_url}/chapters.html")
 
+            page.wait_for_selector("#btn-ch1", timeout=15000)
+            page.click("#btn-ch1")
+            page.wait_for_selector("#panel-ch1 #video-ch1", state="visible", timeout=15000)
+            pills_ch1 = page.locator("#panel-ch1 .scrub-pill").all_inner_texts()
+
             page.wait_for_selector("#btn-ch7", timeout=15000)
             page.click("#btn-ch7")
             page.wait_for_selector("#panel-ch7 #video-ch7", state="visible", timeout=15000)
@@ -132,6 +137,7 @@ def main() -> int:
                 "chapter_keys": sorted(list(cfg.get("state", {}).get("chapters", {}).keys())),
                 "topbar_text": " ".join(topbar_text.split()),
                 "range_206_statuses": range_statuses,
+                "ch1_scrub_pills": pills_ch1,
                 "ch7_scrub_pills": pills_ch7,
                 "ch7_role_links_count": roles_ch7,
                 "ch7_reset_status": reset_status,
@@ -145,7 +151,8 @@ def main() -> int:
             assert summary["admin_rows_count"] == 0
             assert summary["chapter_keys"] == ["ch0", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7"]
             assert all(s == 206 for s in range_statuses.values())
-            assert len(pills_ch7) == 4
+            assert len(pills_ch1) == 8
+            assert len(pills_ch7) == 7
             if not args.skip_reset_check:
                 assert reset_status == 200 and reset_ok is True
             return 0
