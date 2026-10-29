@@ -1,0 +1,10 @@
+{
+  "drill_id": "DRILL-01",
+  "work_order": "WO-005",
+  "mutation": "Appended unrecorded trailing whitespace byte to raw/docking/pcsk9_pocket1_vina.sdf without regenerating Phase-1 sidecar",
+  "command": "oase validate check --dry-run WO-005",
+  "exit_code": 1,
+  "failed_check": "provenance_valid",
+  "verdict": "BLOCKED",
+  "message": "SHA-256 digest mismatch between raw/docking/pcsk9_pocket1_vina.sdf on disk and pcsk9_pocket1_vina.meta.json"
+}

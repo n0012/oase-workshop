@@ -1,0 +1,18 @@
+[Unit]
+Description=OASE 7-Chapter Workshop State Controller (FastAPI <2s Reset Daemon)
+After=network-online.target scion-hub.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=scion
+Group=scion
+WorkingDirectory=/home/scion/oase-workshop/services/state-controller
+Environment="SCION_HUB_DIR=/home/scion/.scion"
+Environment="OASE_GOLDEN_SNAPSHOT_DIR=/home/scion/.scion/snapshots/golden-pilot"
+ExecStart=/home/scion/.oase-state-venv/bin/uvicorn app:app --host 0.0.0.0 --port 8780 --workers 1
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

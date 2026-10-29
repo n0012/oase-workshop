@@ -1,0 +1,38 @@
+{
+  "tool": "docking",
+  "subcommand": "run",
+  "work_order_id": "WO-005",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "local://vina-1.2.5",
+  "parameters": {
+    "exhaustiveness": 8,
+    "n_poses": 9,
+    "pocket_rank": 1
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "pcsk9_pocket1_vina.json",
+      "sha256": "51b1a1515c20a31bebbd54c7fc0815f882d99fc423880fc9f0ab6bf1be163ec8",
+      "bytes": 160
+    }
+  ],
+  "warnings": [
+    "Report Vina score as a predicted binding energy estimate, never as a measured affinity or potency.",
+    "Contacts represent geometric proximity in a static pose, not confirmed binding interactions."
+  ],
+  "mandatory_relays": [
+    {
+      "code": "docking.score_is_not_affinity",
+      "message": "Report Vina score as a predicted binding energy estimate, never as a measured affinity or potency."
+    },
+    {
+      "code": "docking.contact_is_not_binding_event",
+      "message": "Contacts represent geometric proximity in a static pose, not confirmed binding interactions."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "drill_id": "DRILL-03",
+  "work_order": "WO-004",
+  "mutation": "Deleted mandatory epistemic caveat relay **Relay: `af3.low_confidence_segments`** from findings/structural-biology/WO-004.md",
+  "command": "oase validate check --dry-run WO-004",
+  "exit_code": 1,
+  "failed_check": "relay_coverage",
+  "verdict": "BLOCKED",
+  "message": "Required caveat relay 'af3.low_confidence_segments' from pcsk9_ic001_af3_ligand_summary.analysis.json missing in synthesis markdown"
+}

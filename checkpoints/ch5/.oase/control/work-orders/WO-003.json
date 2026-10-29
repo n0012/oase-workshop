@@ -1,0 +1,41 @@
+{
+  "id": "WO-003",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Score PCSK9 5' regulatory variant chr1:55039974:G>T (rs2479409) using AlphaGenome on GCP across RNA_SEQ, DNASE, and CAGE in human liver.",
+  "requested_role": "computational-biologist",
+  "stage": "stage1",
+  "cycle": 1,
+  "context": {
+    "program_slug": "pcsk9-oral",
+    "target_gene": "PCSK9",
+    "uniprot_id": "Q8NBP7"
+  },
+  "dependencies": [
+    "WO-002"
+  ],
+  "capabilities": [
+    "genomics"
+  ],
+  "deliverables": {
+    "required_classes": [
+      "genomics"
+    ],
+    "layer_1": [
+      "findings/computational-biology/WO-003.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "All Phase-1 artifacts carry valid .meta.json SHA-256 sidecars.",
+    "All Phase-2 .analysis.json records pass offline threshold checks.",
+    "Layer 1 finding cites exact JSONPath values and propagates all mandatory relays."
+  ],
+  "alert_policy": {
+    "on_validation_failure": "science-program-lead",
+    "on_completion": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-28T00:18:00Z"
+}

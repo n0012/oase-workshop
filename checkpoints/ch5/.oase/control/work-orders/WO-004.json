@@ -1,0 +1,43 @@
+{
+  "id": "WO-004",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Evaluate PCSK9 (Q8NBP7) 3D domain confidence, run live AlphaFold 3 ligand co-folding on GCP, and compare fpocket druggability of the IC-001 allosteric groove vs. the IC-002 EGF-A surface.",
+  "requested_role": "structural-biologist",
+  "stage": "stage2",
+  "cycle": 1,
+  "context": {
+    "program_slug": "pcsk9-oral",
+    "target_gene": "PCSK9",
+    "uniprot_id": "Q8NBP7"
+  },
+  "dependencies": [
+    "WO-003"
+  ],
+  "capabilities": [
+    "structures",
+    "pocket"
+  ],
+  "deliverables": {
+    "required_classes": [
+      "structures",
+      "pocket"
+    ],
+    "layer_1": [
+      "findings/structural-biology/WO-004.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "All Phase-1 artifacts carry valid .meta.json SHA-256 sidecars.",
+    "All Phase-2 .analysis.json records pass offline threshold checks.",
+    "Layer 1 finding cites exact JSONPath values and propagates all mandatory relays."
+  ],
+  "alert_policy": {
+    "on_validation_failure": "science-program-lead",
+    "on_completion": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-28T00:18:00Z"
+}

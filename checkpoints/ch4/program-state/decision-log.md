@@ -25,17 +25,7 @@
 - **Evidence:** `WO-005` (`raw/docking/pcsk9_pocket1_vina.analysis.json`)
 - **Decision:** Advance `pcsk9_analog_02` (`-9.4 kcal/mol` predicted Vina score, zero clashes) to Stage 3 DMTA medicinal chemistry optimization; log Liability `L-002` (`cLogP = 4.8` and basic-amine hERG risk on parent quinoline ring) for MMP bioisosteric replacement.
 
-## DEC-008 & DEC-009 (Stage 3 Lead Optimization Gate — LIABILITY L-002 MITIGATED)
-- **Actor:** `science-program-lead`
+## DEC-008 & DEC-009 (Stage 3 Lead Optimization Gate & Wet-Lab Handoff — LIABILITY L-002 MITIGATED)
+- **Actors:** Dr. Raj Patel (`medicinal-chemist`), Dr. Claire Moreau (`admet-dmpk-scientist`), Dr. Sarah Chen (`science-program-lead`)
 - **Evidence:** `WO-006` (`raw/admet/pcsk9_ic001_series_admet.analysis.json`)
-- **Decision:** Nominate `OASE-PCSK9-014` (`cLogP = 3.1`, `LipE = 5.2`, `TPSA = 88.4 Å²`, `4` synthetic steps) for Stage 4 PK scaling and preclinical IND dossier assembly.
-
-## DEC-010 (Stage 4 Human PK Projection — ACCEPTED)
-- **Actor:** `science-program-lead`
-- **Evidence:** `WO-007` (`raw/pk/oase_pcsk9_014_scaled_pk.analysis.json`)
-- **Decision:** Confirmed projected `40.0 mg QD` oral dosing feasibility (`F = 52.0%`, `t1/2 = 14.8 h`).
-
-## DEC-011 & DEC-012 (Stage 4 Candidate Nomination Gate — SCIENTIFICALLY ACCEPTED)
-- **Actor:** `science-program-lead` + Project Owner
-- **Evidence:** `WO-001`..`WO-008`
-- **Decision:** Nominate `OASE-PCSK9-014` for preclinical IND-enabling package and authorize `project-curator` to export the 28-page static evidence portal (`pcsk9-oral-site.zip`).
+- **Decision:** Disqualify `PCSK9-A02` (`cLogP = 5.09`, hERG alert); advance clean oxadiazole/methoxypyrimidine lead `OASE-PCSK9-014` (`cLogP = 3.1`, `LipE = 5.2`, `0` critical liabilities) into the Wet-Lab / CRO experimental confirmation slot (`SPR`, `HepG2`, patch-clamp `hERG`, rat/dog PK) prior to Stage 4 human oral PK scaling.

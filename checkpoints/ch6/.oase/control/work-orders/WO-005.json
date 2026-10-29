@@ -1,0 +1,41 @@
+{
+  "id": "WO-005",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Execute 3-phase AutoDock Vina + Meeko docking and atomic contact analysis across 5 PCSK9 allosteric analogs in Pocket #1.",
+  "requested_role": "computational-chemist",
+  "stage": "stage2",
+  "cycle": 1,
+  "context": {
+    "program_slug": "pcsk9-oral",
+    "target_gene": "PCSK9",
+    "uniprot_id": "Q8NBP7"
+  },
+  "dependencies": [
+    "WO-004"
+  ],
+  "capabilities": [
+    "docking"
+  ],
+  "deliverables": {
+    "required_classes": [
+      "docking"
+    ],
+    "layer_1": [
+      "findings/computational-chemistry/WO-005.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "All Phase-1 artifacts carry valid .meta.json SHA-256 sidecars.",
+    "All Phase-2 .analysis.json records pass offline threshold checks.",
+    "Layer 1 finding cites exact JSONPath values and propagates all mandatory relays."
+  ],
+  "alert_policy": {
+    "on_validation_failure": "science-program-lead",
+    "on_completion": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-28T00:18:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "gene": "PCSK9",
+  "top_trait": "hypercholesterolemia",
+  "overall_score": 0.96,
+  "protective_variants": [
+    "rs11591147 (R46L)",
+    "Y142X"
+  ]
+}

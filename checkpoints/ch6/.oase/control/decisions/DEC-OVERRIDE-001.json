@@ -1,0 +1,21 @@
+{
+  "override_id": "OVERRIDE-001",
+  "decision_id": "DEC-OVERRIDE-001",
+  "timestamp": "2026-10-28T23:55:00Z",
+  "work_order": "WO-006",
+  "command": "oase workorder override WO-006 --series PCSK9-A02-desCF3 --reason 'Exploratory backup scaffold retained for manual patch-clamp hERG counter-screen only'",
+  "requested_by": {
+    "name": "Dr. Raj Patel",
+    "role": "Medicinal Chemist",
+    "account_slug": "oase-raj"
+  },
+  "co_signed_by": {
+    "name": "Dr. Sarah Chen",
+    "role": "Program Lead",
+    "account_slug": "oase-sarah"
+  },
+  "primary_candidate_unchanged": "OASE-PCSK9-014",
+  "override_scope": "secondary_exploratory_backup_only",
+  "rationale": "Retains des-CF3 analog PCSK9-A02-desCF3 (cLogP = 3.95) in secondary CRO patch-clamp counter-screen queue to preserve scaffold diversity while OASE-PCSK9-014 advances as sole primary candidate.",
+  "audit_status": "CO_SIGNED_AND_LOGGED"
+}

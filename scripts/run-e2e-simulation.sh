@@ -42,9 +42,9 @@ source "$OASE_TOOLS_HOME/env.sh"
 
 echo "==> Preparing clean simulation workspace at: $SIM_DIR"
 rm -rf "$SIM_DIR"
-cp -r "$REPO_ROOT/checkpoints/ch4" "$SIM_DIR"
+cp -r "$REPO_ROOT/checkpoints/ch5" "$SIM_DIR"
 mkdir -p "$SIM_DIR/live-runs/.oase" "$SIM_DIR/logs"
-cp "$REPO_ROOT/checkpoints/ch4/.oase/thresholds.yaml" "$SIM_DIR/live-runs/.oase/thresholds.yaml"
+cp "$REPO_ROOT/checkpoints/ch5/.oase/thresholds.yaml" "$SIM_DIR/live-runs/.oase/thresholds.yaml"
 
 LOG_FILE="$SIM_DIR/logs/e2e-simulation.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
@@ -170,7 +170,7 @@ run_negative_drill() {
   local mutate_fn="$4"
 
   rm -rf "$DRILL_SANDBOX"
-  cp -r "$REPO_ROOT/checkpoints/ch4" "$DRILL_SANDBOX"
+  cp -r "$REPO_ROOT/checkpoints/ch5" "$DRILL_SANDBOX"
   "$mutate_fn"
   set +e
   local out

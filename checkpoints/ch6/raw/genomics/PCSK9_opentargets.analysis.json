@@ -1,0 +1,26 @@
+{
+  "record_type": "analysis",
+  "source": "raw/genomics/PCSK9_opentargets.json",
+  "source_sha256": "8a9d0f5e228492e774695094ce21bf08f58895e4b61d65cfac00166d111303b0",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "timestamp": "2026-10-28T00:20:05Z",
+  "threshold_set": "gwas@1.0",
+  "thresholds_applied": {
+    "score_threshold": 0.7
+  },
+  "threshold_sources": {
+    "score_threshold": "default"
+  },
+  "metrics": {
+    "overall_association_score": 0.96,
+    "chd_risk_reduction_pct": 68.0
+  },
+  "assessment": {
+    "verdict": "strong_human_genetic_support"
+  },
+  "mandatory_relays": [],
+  "written_by": "wo002-computational-biologist",
+  "work_order_id": "WO-002"
+}

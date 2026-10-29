@@ -1,7 +1,7 @@
 # Team-Based Human + Agent Drug Discovery Pilot: Outcome Goal & Detailed Build Plan
 
 > **Canonical Source of Truth:** `docs/PILOT_IMPLEMENTATION_PLAN.md` (rendered live at `/plan.html` and embedded in `/chapters.html`)  
-> **Live Build Status:** Milestone `M0` & `M1` Complete (`2 / 6` milestones complete — `M2` Next Up)
+> **Live Build Status:** Milestones `M0`, `M1` & `M2` Complete (`3 / 6` milestones complete — `M3` Next Up)
 
 ---
 
@@ -31,7 +31,7 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
 
 ### Measurable Acceptance Criteria (Definition of Done)
 - [x] **AC-1 (Admin-Free 5-Persona Auth):** All 5 dedicated `<workshop-domain>` scientist accounts authenticate via Cloud Run IAP into Scion Hub with `gemini-3.1-flash-image` profile portraits; `0` messages, artifacts, or contributor bindings belong to `admin@`.
-- [ ] **AC-2 (7 Pre-Staged Live Chapters):** Scion Hub hosts `ch0-initial-seed` (`t=0`) plus `ch1`..`ch6`, each backed by its verified `.oase/` checkpoint and live specialist containers that answer live Webchat prompts in context.
+- [x] **AC-2 (7 Pre-Staged Live Chapters):** Scion Hub hosts `ch0-initial-seed` (`t=0`) plus `ch1`..`ch6`, each backed by its verified `.oase/` checkpoint and live specialist containers that answer live Webchat prompts in context.
 - [ ] **AC-3 (6 Latest-Gen Avatar + Multi-Voice 1080p Videos):** Chapters 1–6 each have a recorded 1080p MP4 combining real multi-persona Scion Hub GUI chat, photoreal `gemini-omni-1.1-flash-preview` talking-head scientist PiP plates (seeded from `gemini-3.1-flash-image`), and 6 distinct `gemini-3.8-flash-tts` Extended Voice Library personas with chapter scrub markers.
 - [ ] **AC-4 (`<2s` Non-Disruptive Reset):** Triggering chapter or global reset from the Story Arc Website restores SQLite + Grove state in `<2.0s` (`HTTP 200`) while keeping all 5 Chrome sessions authenticated.
 - [ ] **AC-5 (Turnkey Redeployability & Hygiene):** `./scripts/deploy-pilot-stack.sh --dry-run` validates end-to-end parameterization from `.env`, and `./scripts/preflight.sh --check-hygiene` confirms zero customer, org, or account leaks in GitHub.
@@ -73,7 +73,7 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
 - **Step 1.3 (IAP & Scion Hub Roster Binding):** Grant `roles/iap.httpsResourceAccessor` on the Cloud Run IAP service to the 5 scientist accounts (`scripts/provision-personas-iam.py`); log each persona into Scion Hub Web UI once to register their `users` row and `avatar_url` in `hub.db`; purge `admin@` from `project_contributors`, `messages`, and `artifact` ownership.
 - **Deliverables:** `scripts/provision-personas-iam.py`, `gemini-3.1-flash-image` avatar seeds for all 5 scientists, 5 verified Chrome persona profiles on Cloudtop, screenshot proof of all 5 personas authenticated inside Scion Hub with zero `admin@` presence, and private internal team credential card (outside GitHub) so 5 teammates can each log in as 1 role.
 
-### Milestone `M2` — 7-Chapter Scion State Engine, FastAPI Reset Daemon & Portable Deployer (`[ ] Next Up`)
+### Milestone `M2` — 7-Chapter Scion State Engine, FastAPI Reset Daemon & Portable Deployer (`[x] Complete`)
 - **Step 2.1 (Expand Checkpoints `ch0`..`ch6`):** Extend `checkpoints/` and `scripts/checkpoint.sh` from `ch0..ch4` to cover all 7 states cleanly:
   - `ch0`: Clean initial seed (`t=0`, only `seed/pcsk9-oral/` staged, 0 work orders closed)
   - `ch1`: Step 1 complete (`WO-001` Co-Scientist Elo ranking validated)
@@ -89,7 +89,7 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
   - `POST /api/state/reset-all` → restores `ch0` (`t=0`) and all `ch1`..`ch6` projects atomically in `<2s`.
 - **Step 2.4 (Turnkey GCP Portability Script):** Create `scripts/deploy-pilot-stack.sh` reading `.env` (`GCP_PROJECT_ID`, `WORKSHOP_DOMAIN`, `REGION`, `GCS_BUNDLE_BUCKET`) to execute project provisioning, VM/Hub bootstrap, 7-chapter seeding, State Controller installation, and Cloud Run deployment in one repeatable command.
 
-### Milestone `M3` — Cloudtop GUI Multi-Human + Multi-Agent Pilot, `Gemini Omni 1.1` Avatars & `Gemini 3.8 TTS` Videos (`[ ] Pending`)
+### Milestone `M3` — Cloudtop GUI Multi-Human + Multi-Agent Pilot, `Gemini Omni 1.1` Avatars & `Gemini 3.8 TTS` Videos (`[ ] Next Up`)
 - **Step 3.1 (Live Multi-Persona Chat Execution on Cloudtop Desktop):** Use `desktopctl` + Playwright/CDP choreography (`scripts/record-team-pilot.py`) on the Cloudtop desktop to switch between the 5 scientist Chrome windows (`Sarah`, `Marcus`, `Elena`, `Raj`, `Claire`), type real prompts in Scion Webchat (`#general` and stage-gate threads), trigger live responses from the AI Program Lead, Domain Specialists, Reviewer, and Validator, inspect published Evidence Portal artifacts, and co-sign Stage Gates 1–4 + the Step 6 override.
 - **Step 3.2 (Freeze Authentic Golden Snapshots):** Immediately after verifying all 6 chapters' real human + agent threads in `hub.db`, snapshot `/home/scion/.scion/hub.db` and workspace directories into `/home/scion/.scion/snapshots/golden-pilot/` so every future reset restores these exact authentic conversations.
 - **Step 3.3 (`Gemini 3.8 Flash TTS` Extended Voices + `Gemini Omni 1.1` Talking-Head PiP Mastering):** Synthesize each turn's dialogue on `global` via **`gemini-3.8-flash-tts`** using the 6 Extended Voice Library IDs (`en-us-advisor-10`, `en-us-advisor-8`, `en-gb-tutor-17`, `en-in-tutor-12`, `en-ie-advisor-4`, `en-us-techagent-3`) with inline vocal acting tags (`<short pause>`), render photoreal talking-head PiP speaker clips from each scientist's `gemini-3.1-flash-image` portrait seed via **`gemini-omni-1.1-flash-preview`**, composite over the 1080p Scion desktop footage with FFmpeg, and upload `chapter-01.mp4`..`chapter-06.mp4` + `full-pilot-walkthrough.mp4` to `gs://$GCS_BUNDLE_BUCKET/videos/`.
@@ -113,7 +113,7 @@ When a workshop presenter or any of the **5 co-presenting teammates** opens this
 | :--- | :--- | :--- | :--- |
 | **M0** | **Outcome Goal, Detailed Build Plan & Live GitHub Website Tracker** | `docs/PILOT_IMPLEMENTATION_PLAN.md`, `scripts/build-chapter-portal.py` (`plan.html` + `#plan`), `.github/workflows/pages.yml` | `[x] Complete` |
 | **M1** | **5 Dedicated Scientist Personas & `Gemini 3.1` Avatars (Cloudtop GUI)** | `scripts/provision-personas-iam.py`, 5 Cloud Identity accounts, `gemini-3.1-flash-image` seeds, 5 Chrome profiles, clean `hub.db` | `[x] Complete` |
-| **M2** | **7-Chapter State Engine (`ch0`..`ch6`), `<2s` Reset API & Portable Deployer** | `checkpoints/ch0..ch6`, `scripts/seed-pilot-chapters.py`, `services/state-controller/app.py`, `scripts/deploy-pilot-stack.sh` | `[ ] Next Up` |
-| **M3** | **GUI Multi-Human Pilot, `Gemini Omni 1.1` Avatars & `Gemini 3.8 TTS` Videos** | `scripts/record-team-pilot.py`, `/home/scion/.scion/snapshots/golden-pilot/`, `chapter-01..06.mp4` (`gemini-3.8-flash-tts` + `gemini-omni-1.1-flash-preview`) | `[ ] Pending` |
+| **M2** | **7-Chapter State Engine (`ch0`..`ch6`), `<2s` Reset API & Portable Deployer** | `checkpoints/ch0..ch6`, `scripts/seed-pilot-chapters.py`, `services/state-controller/app.py` (`167ms` chapter / `208ms` full reset), `scripts/deploy-pilot-stack.sh` | `[x] Complete` |
+| **M3** | **GUI Multi-Human Pilot, `Gemini Omni 1.1` Avatars & `Gemini 3.8 TTS` Videos** | `scripts/record-team-pilot.py`, `/home/scion/.scion/snapshots/golden-pilot/`, `chapter-01..06.mp4` (`gemini-3.8-flash-tts` + `gemini-omni-1.1-flash-preview`) | `[ ] Next Up` |
 | **M4** | **Standalone Story Arc Cloud Run App, Video Streamer & Role Switcher** | `services/story-arc/app.py`, `oase-story-arc` Cloud Run + IAP service, Facilitator Reset UI | `[ ] Pending` |
 | **M5** | **End-to-End Live Rehearsal, `<2s` Reset Proof & Team Handoff Package** | Verified E2E rehearsal recording, portability audit, `6 / 6` milestones complete | `[ ] Pending` |
