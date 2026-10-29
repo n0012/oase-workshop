@@ -45,6 +45,17 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   .chapter-btn.lab-btn { border-left: 3px solid #10b981; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
   .chapter-btn.lab-btn:hover { background: #d1fae5; }
   .chapter-btn.lab-btn.active { background: #059669; color: #ffffff; border-color: #047857; border-left: 3px solid #34d399; }
+  .chapter-btn.subway-btn { border-left: 3px solid #f59e0b; background: #fffbeb; color: #92400e; border-color: #fde68a; }
+  .chapter-btn.subway-btn:hover { background: #fef3c7; }
+  .chapter-btn.subway-btn.active { background: #d97706; color: #ffffff; border-color: #b45309; border-left: 3px solid #fbbf24; }
+  .subway-board { background: #0f172a; border-radius: 10px; padding: 1.15rem 1.25rem; border: 1px solid #334155; color: #f8fafc; }
+  .subway-legend { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.79rem; color: #cbd5e1; margin-bottom: 0.65rem; }
+  .subway-station-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.85rem; }
+  .stn-pill { background: #1e293b; color: #cbd5e1; border: 1px solid #475569; padding: 0.4rem 0.78rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .stn-pill:hover { border-color: #38bdf8; color: #ffffff; }
+  .stn-pill.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .stn-node { cursor: pointer; transition: transform 0.15s; }
+  .stn-node:hover circle { stroke-width: 4.5px; }
 
   .whatif-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; border-radius: 10px; padding: 1.25rem 1.4rem; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12); }
   .whatif-banner h3 { margin: 0 0 0.35rem 0; font-size: 1.08rem; color: #38bdf8; }
@@ -134,6 +145,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="chapter-bar">
   <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
+  <button class="chapter-btn subway-btn" id="btn-subway" onclick="showChapter('subway')">Dynamic Subway Map</button>
   <button class="chapter-btn lab-btn" id="btn-lab" onclick="showChapter('lab')">2.5-Hr Lab Guide</button>
   <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Rank Hypotheses (WO-001)</button>
   <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
@@ -174,6 +186,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
         <div class="whatif-pivot">
           <div><strong style="color:#4ade80;font-size:1.02rem;">Well &mdash; we built it.</strong> Explore the 7-step oral PCSK9 discovery walkthrough or follow the 2.5-hour (150-minute) hands-on lab guide:</div>
           <div class="whatif-actions">
+            <button class="whatif-cta" style="background:#d97706;border-color:#f59e0b;" onclick="showChapter('subway')">Explore Dynamic Subway Map &rarr;</button>
             <button class="whatif-cta" onclick="showChapter('lab')">Open 2.5-Hr Guided Lab &rarr;</button>
             <button class="whatif-cta secondary" onclick="showChapter('ch1')">Start Step 1 Walkthrough &rarr;</button>
           </div>
@@ -329,28 +342,63 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- CHAPTER 1 -->
   <section class="chapter-panel" id="panel-ch1">
     <div class="chapter-header">
-      <h2>Step 1 — Stage 0 Campaign Seed &amp; Co-Scientist Tournament (`WO-001`)</h2>
+      <h2>Step 1 — Stage 0 Campaign Seed, Co-Scientist Input Prompt &amp; Tournament (`WO-001`)</h2>
       <span class="stage-pill">Stage 0 · Initiation Mode 1 · checkpoints/ch0 &rarr; ch1</span>
     </div>
-    <div class="grid-2">
-      <div>
-        <p>Entering via <strong>Initiation Mode 1 (AI Co-Scientist Seed Handoff)</strong>, the pod verifies environment readiness (<code>oase doctor</code>) and ingests the 24-match pairwise Co-Scientist tournament export (<code>seed/pcsk9-oral/coscientist-export.json</code>) comparing candidate oral PCSK9 strategies in ASCVD.</p>
-        <table>
-          <thead><tr><th>Hypothesis ID</th><th>Modality &amp; Mechanism</th><th>Tournament Elo</th><th>Match Record / Win Rate</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td><code>IC-001</code> (H-001)</td><td>Allosteric Small Molecule (`Pocket #1` cryptic groove)</td><td><strong>1642.5</strong> (`ELO 1642`)</td><td><code>9W-1L-0D</code> (<code>0.78</code> overall)</td><td><span class="pass-pill">PRIMARY LEADER (+54.5 Elo)</span></td></tr>
-            <tr><td><code>IC-002</code> (H-002)</td><td>Oral Cyclic Peptide (`EGF-A` flat surface)</td><td>1588.0 (`ELO 1588`)</td><td><code>7W-2L-1D</code> (<code>0.67</code> overall)</td><td><span class="warn-pill">BACKUP SERIES</span></td></tr>
-          </tbody>
-        </table>
-        <div class="relay-box">
-          <strong>Mandatory Relay (`hypothesis.adopted_not_generated`):</strong> Staged Co-Scientist tournament exports are hypotheses, not primary evidence. Every biological claim must be independently verified by Stage 1 and Stage 2 tools.
+    <div class="stack-full">
+      <div class="lab-block" style="border-left-color:#2563eb;background:#f8fafc;margin-bottom:0.25rem;">
+        <div class="lab-block-hdr">
+          <h4>How the Upstream Co-Scientist Input Prompt Was Defined &mdash; And Why It Shapes the Entire Campaign</h4>
+          <button class="subpage-back-btn" style="background:#d97706;" onclick="showChapter('subway')">View Dynamic Subway Map &rarr;</button>
         </div>
-        <div class="portal-links">
-          <a href="finding_findings_computational-biology_WO-001_md.html">View WO-001 Finding</a>
-          <a href="artifact_hypotheses.html">View Hypotheses Layer 0 Artifact</a>
+        <p style="margin:0 0 0.65rem 0;font-size:0.87rem;color:#334155;">In Initiation Mode 1, the human Program Lead defines a structured <strong>Research Brief &amp; Target Product Profile (TPP)</strong> (<code>checkpoints/ch0/seed/pcsk9-oral/campaign-seed.json</code> &amp; <code>coscientist-export.json</code>). Every preference and pre-registered kill criterion in this upstream prompt cascades directly into <code>.oase/thresholds.yaml</code> and determines which parallel modality tracks open:</p>
+        <div class="grid-2" style="gap:1rem;">
+          <div class="terminal" style="margin:0;font-size:0.78rem;"><span class="cmd"># Upstream Co-Scientist Research Brief (daedalis-20261028-pcsk9-oral)</span>
+<span class="ok">goal:</span> "Evaluate oral allosteric small-molecule and tricyclic macrocycle
+  PCSK9 inhibitors disrupting LDLR EGF-A binding in ASCVD as a room-temp,
+  once-daily alternative to injectable mAbs."
+<span class="ok">preferences:</span>
+  - "Prioritize classical Rule-of-5 oral hepatocyte bioavailability
+     (no dietary permeation enhancers)"
+  - "Enforce human LoF genetic cardioprotection (PCSK9 R46L / gnomAD)"
+<span class="ok">falsifiable_predictions:</span>
+  - <span class="cmd">FP-001 (IC-001 Allosteric SM):</span> fpocket druggability &ge; 0.50 &amp; AF3
+    ligand ipTM &ge; 0.70 | <span class="err">KILL if druggability &lt; 0.30 or steric clash</span>
+  - <span class="cmd">FP-002 (IC-002 Macrocycle):</span> EGF-A hot-spot coverage vs MK-0616 |
+    <span class="err">PARK as backup if permeation enhancer required for QD oral dosing</span></div>
+          <div>
+            <table style="margin:0;font-size:0.82rem;">
+              <thead><tr><th>Prompt Clause</th><th>Downstream Campaign Effect</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Unenhanced Oral Ro5 Preference</strong></td><td>Ranks allosteric SM <code>IC-001</code> <code>#1</code> (<code>+54.5 Elo</code>), parks macrocycle <code>IC-002</code> on <strong>Backup Line</strong>, and locks <code>cLogP &le; 3.5</code> / <code>MW &le; 500</code> (which later disqualifies <code>PCSK9-A02</code> in Step 4 and triggers the <code>PCSK9-B07</code> macrocycle override test in Step 6).</td></tr>
+                <tr><td><strong>Human LoF + Hepatic Selectivity</strong></td><td>Spawns Stage 1 <code>WO-002..003</code> before GPU spend; if bulk <code>GTEx &lt; 5 TPM</code>, triggers a dynamic <code>oase h5ad</code> single-cell detour instead of dropping the gene.</td></tr>
+                <tr><td><strong><code>FP-001</code> Kill Criterion (<code>&lt;0.30</code>)</strong></td><td>Turns prose into Stage 2 gate rules: flat <code>EGF-A</code> (<code>0.24</code>) terminates the Ro5 orthosteric spur while cryptic <code>Pocket #1</code> (<code>0.68</code>) advances.</td></tr>
+                <tr><td><strong>Manual Gate Policy + Adopted Seed</strong></td><td>Locks SHA-256 receipt and attaches <code>hypothesis.adopted_not_generated</code> so every literature claim must be re-verified by primary tools.</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="terminal"><span class="cmd">$ oase coscientist ingest checkpoints/ch0/seed/pcsk9-oral/coscientist-export.json</span>
+
+      <div class="grid-2">
+        <div>
+          <p>Entering via <strong>Initiation Mode 1 (AI Co-Scientist Seed Handoff)</strong>, the pod verifies environment readiness (<code>oase doctor</code>) and ingests the 24-match pairwise Co-Scientist tournament export (<code>seed/pcsk9-oral/coscientist-export.json</code>) comparing candidate oral PCSK9 strategies in ASCVD.</p>
+          <table>
+            <thead><tr><th>Hypothesis ID</th><th>Modality &amp; Mechanism</th><th>Tournament Elo</th><th>Match Record / Win Rate</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><code>IC-001</code> (H-001)</td><td>Allosteric Small Molecule (`Pocket #1` cryptic groove)</td><td><strong>1642.5</strong> (`ELO 1642`)</td><td><code>10W-2L</code> (<code>0.83</code> win rate)</td><td><span class="pass-pill">PRIMARY LINE (+54.5 Elo)</span></td></tr>
+              <tr><td><code>IC-002</code> (H-002)</td><td>Oral Tricyclic Macrocycle (`EGF-A` flat surface)</td><td>1588.0 (`ELO 1588`)</td><td><code>8W-4L</code> (<code>0.67</code> win rate)</td><td><span class="warn-pill">PARALLEL BACKUP LINE</span></td></tr>
+            </tbody>
+          </table>
+          <div class="relay-box">
+            <strong>Mandatory Relay (`hypothesis.adopted_not_generated`):</strong> Staged Co-Scientist tournament exports are hypotheses, not primary evidence. Every biological claim must be independently verified by Stage 1 and Stage 2 tools.
+          </div>
+          <div class="portal-links">
+            <a href="finding_findings_computational-biology_WO-001_md.html">View WO-001 Finding</a>
+            <a href="artifact_hypotheses.html">View Hypotheses Layer 0 Artifact</a>
+          </div>
+        </div>
+        <div class="terminal"><span class="cmd">$ oase coscientist ingest checkpoints/ch0/seed/pcsk9-oral/coscientist-export.json</span>
 raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.export.json
 raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json
 raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.meta.json
@@ -361,6 +409,7 @@ Tournament: Oral Small-Molecule &amp; Macrocycle PCSK9 Inhibitors in ASCVD
 Leader: PCSK9 (ELO 1642, +54 ELO over #2)
 Ideas: 2 carried of 2 generated
 Flagged ideas: 0</div>
+      </div>
     </div>
   </section>
 
@@ -715,6 +764,7 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
           <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Prove <strong>What If #1 (Multiplayer)</strong> &amp; <strong>What If #2 (Multi-Model)</strong>. Watch the Step 1 &amp; Step 2 clips (~75s total), have <code>oase-sarah</code> and <code>oase-marcus</code> join the same Scion Grove thread simultaneously, inspect <code>.oase/thresholds.yaml</code> (36 locked schemas), and co-sign <strong>Gate 1</strong>.</p>
           <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@computational-biologist Why did allosteric small-molecule hypothesis IC-001 (1642.5 Elo) outperform cyclic peptide IC-002 (1588.0 Elo) in WO-001, and what caveat must travel forward?')">&#128203; Click to copy Scion prompt: @computational-biologist Why did allosteric small-molecule hypothesis IC-001 (1642.5 Elo) outperform cyclic peptide IC-002 (1588.0 Elo) in WO-001, and what caveat must travel forward?</button>
           <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;" onclick="oaseCopyPrompt('@computational-biologist Compare PCSK9 hepatocyte expression in GTEx against extrahepatic CNS tissues in WO-002, and explain how gnomAD LoF tolerance supports chronic inhibition safety.')">&#128203; Click to copy Scion prompt: @computational-biologist Compare PCSK9 hepatocyte expression in GTEx against extrahepatic CNS tissues in WO-002, and explain how gnomAD LoF tolerance supports chronic inhibition safety.</button>
+          <button class="prompt-chip" style="background:#1e3a8a;color:#e0f2fe;border-color:#38bdf8;" onclick="oaseCopyPrompt('@science-program-lead SUBWAY ROUTING DRILL: Suppose bulk GTEx liver expression had returned 0.4 TPM instead of 184.2 TPM. How would you dynamically re-route the Grove using oase h5ad single-cell data rather than killing the target?')">&harr; Click to copy Dynamic Track-Switch Drill: @science-program-lead Suppose bulk GTEx liver returned 0.4 TPM—how would you dynamically re-route via oase h5ad?</button>
         </div>
 
         <div class="lab-block">
@@ -776,6 +826,127 @@ $ ./scripts/deploy-pilot-stack.sh</div>
             <strong>Closeout Alignment Questions for the Room:</strong> (1) Which <strong>internal target or hit series</strong> makes the sharpest 2-week validation pilot? (2) Which <strong>1&ndash;2 internal assays or tools</strong> (e.g., scRNA-seq <code>.h5ad</code> atlas, proprietary docking/FEP, or CRO PK sheet) should we wrap first? (3) Who are the <strong>5 discovery pod counterparts</strong> to seat in your pilot Grove?
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DYNAMIC DISCOVERY SUBWAY MAP PANEL -->
+  <section class="chapter-panel" id="panel-subway">
+    <div class="chapter-header">
+      <h2>Dynamic Discovery Subway Map vs. Rigid Pipeline (`pcsk9-oral` Topology)</h2>
+      <span class="stage-pill">Click Any Transfer Station (`S0`..`S5`) to Inspect Track Switching</span>
+    </div>
+    <div class="stack-full">
+      <p style="margin:0;font-size:0.93rem;color:#334155;line-height:1.5;">
+        Watching a single completed replay (<code>Steps 1&ndash;7</code>) makes a campaign look like a straight line&mdash;just like tracing one commuter's trip makes a city subway look like a single track. Underneath, <strong>GCP-OASE routes Work Orders dynamically based on what each tool returns</strong>: the upstream <strong>Co-Scientist Research Brief</strong> opens two parallel modality lines (<strong>Green: <code>IC-001</code> Small Molecule</strong> &amp; <strong>Amber: <code>IC-002</code> Macrocycle Backup</strong>), Step 3 terminates flat <code>EGF-A</code> (<code>0.24</code>) for Rule-of-5 chemistry, and <strong>even our recorded Step 4 run hits a Red Signal on top docker <code>PCSK9-A02</code> (<code>hERG</code> / <code>cLogP 5.09</code>) and takes the <code>BRICS</code> Reroute Loop to rescue <code>OASE-PCSK9-014</code></strong>. Click any station below to compare the recorded trace against alternate branches:
+      </p>
+
+      <div class="subway-board">
+        <div class="subway-legend">
+          <span><strong style="color:#10b981;">&#9644;&#9644; Green Line:</strong> Primary Allosteric Small Molecule (<code>IC-001</code> &rarr; <code>OASE-PCSK9-014</code>)</span>
+          <span><strong style="color:#f59e0b;">&#9644;&#9644; Amber Line:</strong> Parallel Tricyclic Macrocycle Backup (<code>IC-002</code> / <code>PCSK9-B07</code> Override)</span>
+          <span><strong style="color:#38bdf8;">&#9644;&#9644; Blue Loops:</strong> Data-Driven Detours (<code>scRNA-seq .h5ad</code> &amp; <code>BRICS</code> Med-Chem Rescue)</span>
+          <span><strong style="color:#ef4444;">&#10005; Red Spurs:</strong> Disqualified by Phase-2 Cutoffs</span>
+        </div>
+
+        <svg viewBox="0 0 1160 330" style="width:100%;height:auto;display:block;background:#020617;border-radius:8px;border:1px solid #1e293b;">
+          <!-- S1 Single-cell h5ad detour loop (dashed blue) -->
+          <path d="M 275 155 C 295 55, 435 55, 465 155" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-dasharray="7,5"/>
+          <rect x="295" y="28" width="150" height="24" rx="5" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1"/>
+          <text x="370" y="44" fill="#e0f2fe" font-size="11" font-family="monospace" text-anchor="middle">Bulk &lt;5 TPM &rarr; scRNA h5ad</text>
+
+          <!-- S3 BRICS Med-Chem Active Reroute Loop (solid cyan/green: ACTUALLY TAKEN!) -->
+          <path d="M 655 155 C 680 55, 815 55, 850 155" fill="none" stroke="#10b981" stroke-width="5.5"/>
+          <rect x="662" y="24" width="186" height="26" rx="5" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
+          <text x="755" y="41" fill="#ecfdf5" font-size="11.5" font-weight="bold" font-family="monospace" text-anchor="middle">&#8618; BRICS Loop: OASE-PCSK9-014</text>
+
+          <!-- Amber Backup Line (IC-002 Macrocycle) -->
+          <path d="M 95 165 C 145 270, 200 270, 275 270 L 850 270 C 930 270, 995 235, 1055 155" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,5"/>
+          <text x="545" y="294" fill="#fbbf24" font-size="11.5" font-family="monospace" text-anchor="middle">Amber Backup Line: IC-002 Oral Macrocycle (Parked at S0 &middot; Reopened via S5 Override if S4 Fails)</text>
+
+          <!-- Vertical transfer connectors -->
+          <line x1="465" y1="155" x2="465" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
+          <line x1="850" y1="155" x2="850" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
+
+          <!-- Red Dead-End Spurs -->
+          <!-- S2 EGF-A 0.24 & Clash spur -->
+          <path d="M 465 155 L 548 212" fill="none" stroke="#ef4444" stroke-width="4"/>
+          <text x="556" y="220" fill="#fca5a5" font-size="11" font-weight="bold" font-family="monospace">&#10005; EGF-A 0.24 / Clash 1.72&Aring;</text>
+
+          <!-- S3 PCSK9-A02 hERG Red Signal spur -->
+          <path d="M 655 155 L 748 155" fill="none" stroke="#ef4444" stroke-width="5"/>
+          <text x="756" y="159" fill="#fca5a5" font-size="11.5" font-weight="bold" font-family="monospace">&#10005; A02 (hERG cLogP 5.09)</text>
+
+          <!-- Green Main Line segments -->
+          <line x1="95" y1="155" x2="655" y2="155" stroke="#10b981" stroke-width="6"/>
+          <line x1="850" y1="155" x2="1055" y2="155" stroke="#10b981" stroke-width="6"/>
+
+          <!-- Clickable Transfer Stations -->
+          <g class="stn-node" onclick="selectStation('s0')">
+            <circle id="svg-stn-s0" cx="95" cy="155" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+            <text x="95" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S0</text>
+            <text x="95" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Co-Scientist</text>
+            <text x="95" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">WO-001 Seed</text>
+          </g>
+
+          <g class="stn-node" onclick="selectStation('s1')">
+            <circle id="svg-stn-s1" cx="275" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+            <text x="275" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S1</text>
+            <text x="275" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Genetics &amp; GTEx</text>
+            <text x="275" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 1 (WO-002..3)</text>
+          </g>
+
+          <g class="stn-node" onclick="selectStation('s2')">
+            <circle id="svg-stn-s2" cx="465" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+            <text x="465" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S2</text>
+            <text x="465" y="128" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">AF3 &amp; Pockets</text>
+            <text x="465" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 2 (WO-004..5)</text>
+          </g>
+
+          <g class="stn-node" onclick="selectStation('s3')">
+            <circle id="svg-stn-s3" cx="655" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+            <text x="655" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S3</text>
+            <text x="655" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">ADMET Reroute</text>
+            <text x="655" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 3 (WO-006)</text>
+          </g>
+
+          <g class="stn-node" onclick="selectStation('s4')">
+            <circle id="svg-stn-s4" cx="850" cy="155" r="15" fill="#0f172a" stroke="#f59e0b" stroke-width="3.5"/>
+            <text x="850" y="159" fill="#fde68a" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">&#9208;</text>
+            <text x="850" y="192" fill="#fde68a" font-size="12" font-weight="bold" text-anchor="middle">Wet-Lab &amp; PK</text>
+            <text x="850" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">CRO Hold + WO-007</text>
+          </g>
+
+          <g class="stn-node" onclick="selectStation('s5')">
+            <circle id="svg-stn-s5" cx="1055" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+            <text x="1055" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S5</text>
+            <text x="1055" y="128" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Gate 4 &amp; Audit</text>
+            <text x="1055" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">40 mg QD (WO-008)</text>
+          </g>
+        </svg>
+
+        <div class="subway-station-pills">
+          <button class="stn-pill active" id="pill-s0" onclick="selectStation('s0')">S0: Co-Scientist Prompt &amp; Split</button>
+          <button class="stn-pill" id="pill-s1" onclick="selectStation('s1')">S1: Genetics / scRNA-seq Switch</button>
+          <button class="stn-pill" id="pill-s2" onclick="selectStation('s2')">S2: Cryptic Groove vs EGF-A</button>
+          <button class="stn-pill" id="pill-s3" onclick="selectStation('s3')">S3: hERG Block &rarr; BRICS Loop</button>
+          <button class="stn-pill" id="pill-s4" onclick="selectStation('s4')">S4: &#9208; Wet-Lab Hold &amp; Oral PK</button>
+          <button class="stn-pill" id="pill-s5" onclick="selectStation('s5')">S5: Gate 4 &amp; Macrocycle Override</button>
+        </div>
+      </div>
+
+      <div id="subway-inspector" class="grid-2"></div>
+
+      <div>
+        <h3 style="margin:0.2rem 0 0.45rem 0;color:#0f172a;">Design Trade-Off: Dynamic Subway Map vs. Linear 7-Step Story Arc</h3>
+        <table>
+          <thead><tr><th>Dimension</th><th>Linear 7-Step Replay Spine (<code>Step 1 &rarr; Step 7</code>)</th><th>Dynamic Subway Map (<code>.oase/control/</code> State Machine)</th><th>How This Workshop Uses Both Together</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Primary Strength</strong></td><td>Easy for 20 scientists and executives to follow in 4.5 minutes of recorded video without getting lost across 16 combinatoric branches.</td><td>Proves OASE is <strong>not</strong> a rigid Nextflow DAG: tool outputs dynamically spawn detours, pause for wet-lab CRO assays, or switch chemotype lines.</td><td>The <strong>7 chapters</strong> record one complete winning journey (including the Step 4 <code>hERG</code> reroute), while the <strong>Subway Map + Live Scion Prompts</strong> let you test alternate branches on demand.</td></tr>
+            <tr><td><strong>Role of Upstream Prompt</strong></td><td>Hidden if you start at <code>WO-001</code> output.</td><td><strong>Draws the map:</strong> TPP preferences (unenhanced oral Ro5, LoF safety, <code>FP-001</code> kill criteria) set <code>.oase/thresholds.yaml</code> and park <code>IC-002</code> as backup.</td><td><code>Step 1</code> surfaces the full Co-Scientist brief and traces every downstream threshold back to that initial prompt.</td></tr>
+            <tr><td><strong>Workshop Reset Safety</strong></td><td>Deterministic <code>ch0..ch7</code> Git + SQLite snapshots reset in <code>&lt;2s</code>.</td><td>Live Scion Webchat lets attendees ask <code>@science-program-lead</code> to branch mid-workshop.</td><td>Experiment with dynamic track switches live in Scion Webchat, then click <strong><code>&#8634; Reset CHN (&lt;2s)</code></strong> to snap back cleanly.</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -868,6 +1039,105 @@ const hash = window.location.hash.replace('#', '');
 if (hash && document.getElementById('panel-' + hash)) {
   showChapter(hash);
 }
+
+const SUBWAY_STATIONS = {
+  s0: {
+    title: "Station S0 — Co-Scientist Input Prompt & Modality Split (WO-001)",
+    step: "ch1",
+    stepLabel: "Open Step 1 Replay & Seed Brief →",
+    seedRule: "TPP Preference: Unenhanced oral Rule-of-5 hepatocyte bioavailability + human LoF cardioprotection (coscientist@1.1+program).",
+    actual: "Allosteric small molecule IC-001 wins 1642.5 Elo (+54.5 over tricyclic macrocycle IC-002 at 1588.0). Opens Green Line (IC-001) as primary and parks Amber Line (IC-002) as live backup—attaching mandatory relay hypothesis.adopted_not_generated.",
+    altTrigger: "What if the input prompt allowed permeation enhancers, or Elo returned a statistical tie (<25 ΔElo)?",
+    altAction: "@science-program-lead dispatches parallel Stage 2 structural work orders on BOTH Green (allosteric groove) and Amber (EGF-A macrocycle) lines simultaneously instead of parking IC-002.",
+    prompt: "@science-program-lead SUBWAY DRILL: Suppose our Target Product Profile allowed sodium caprate permeation enhancers and IC-001 vs IC-002 tied within 12 Elo points. Which parallel Stage 2 Work Orders would you open?"
+  },
+  s1: {
+    title: "Station S1 — Human Genetics & Tissue Expression Switch (WO-002..003 · Gate 1)",
+    step: "ch2",
+    stepLabel: "Open Step 2 Genetics Replay →",
+    seedRule: "Require human germline LoF tolerance (gnomAD pLI < 0.90) + hepatic expression enrichment (GTEx >= 100 TPM) + AlphaGenome regulatory polarity.",
+    actual: "PCSK9 passes Express Track: gnomAD LOF_TOLERANT (pLI = 2.77e-18 live / 0.0001 seeded), GTEx liver = 184.2 TPM (tau = 0.93), and AlphaGenome rs2479409 quantile = 0.984. AI + Human Program Leads co-sign Gate 1.",
+    altTrigger: "What if bulk tissue RNA-seq returned near-zero (<5 TPM) because only a rare disease-activated cell state expresses the target?",
+    altAction: "A rigid Nextflow DAG drops the gene. OASE switches onto the Blue Single-Cell Detour Loop—spawning an oase h5ad work order to check cell-type-specific expression (distinguishing measured 0 from searched_absent NA) before Gate 1.",
+    prompt: "@science-program-lead SUBWAY DRILL: Suppose bulk GTEx liver expression returned 0.4 TPM instead of 184.2 TPM. Show the exact oase h5ad single-cell Work Order you would dispatch before killing the target."
+  },
+  s2: {
+    title: "Station S2 — 3D Co-Folding, Cryptic Groove vs. Flat EGF-A (WO-004..005 · Gate 2)",
+    step: "ch3",
+    stepLabel: "Open Step 3 Structure & Docking Replay →",
+    seedRule: "Pre-registered FP-001: cryptic pocket druggability >= 0.50 & AF3 ipTM >= 0.70; KILL Line A if druggability < 0.30.",
+    actual: "Cryptic inter-domain Pocket #1 scores 0.68 (0.788 live apo fpocket; AF3 ipTM = 0.84), while the flat EGF-A PPI patch scores 0.24 (terminating the Ro5 orthosteric spur) and Analog-05 clashes at 1.72 Å (terminated). Green Line advances to Gate 2 carrying liability L-002.",
+    altTrigger: "What if cryptic Pocket #1 had collapsed (<0.30 druggability) across all AlphaFold 3 conformers?",
+    altAction: "FP-001 kill criterion fires mechanically at Gate 2: OASE terminates Green Line (small molecule) before wasting med-chem synthesis spend and transfers the pod onto Amber Backup Line IC-002 (tricyclic macrocycle / biologic).",
+    prompt: "@structural-biologist SUBWAY DRILL: If Pocket #1 had scored 0.22 in fpocket (<0.30 kill criterion FP-001), how would Gate 2 transition the campaign onto backup macrocycle concept IC-002?"
+  },
+  s3: {
+    title: "Station S3 — Active Med-Chem Reroute Around hERG Red Signal (WO-006 · Gate 3)",
+    step: "ch4",
+    stepLabel: "Open Step 4 ADMET Reroute Replay →",
+    seedRule: "Oral Ro5 brief locks max_clogp <= 3.5, TPSA <= 120 Å², and 0 critical PAINS/Brenk/Aronov hERG alerts.",
+    actual: "ACTUAL REROUTE IN DEMO: Straight-line top docker PCSK9-A02 (-9.4 kcal/mol) hits a RED SIGNAL (cLogP = 5.09, 3 critical alerts incl. Aronov hERG) and is terminated! Spark-4 routes onto the BRICS Bioisostere Loop, swapping in a polar oxadiazole to rescue OASE-PCSK9-014 (cLogP = 3.01, -9.6 kcal/mol live Vina, 0 alerts).",
+    altTrigger: "What if every polar bioisostere lost >2.5 kcal/mol of Pocket #1 binding energy?",
+    altAction: "Gate 3 blocks CRO synthesis of the thiazole/oxadiazole series and loops back to Station S2 for an alternate scaffold hop—or escalates to Amber Backup Line IC-002.",
+    prompt: "@medicinal-chemist Explain why a naive docking pipeline would have advanced toxic hit PCSK9-A02 (-9.4 kcal/mol) into animal studies, and how the Stage 3 BRICS loop rescued OASE-PCSK9-014."
+  },
+  s4: {
+    title: "Station S4 — ⏸ Wet-Lab CRO Stopping Gate & Human Oral PK (WO-007)",
+    step: "ch5",
+    stepLabel: "Open Step 5 Oral PK Replay →",
+    seedRule: "Manual Wet-Lab Handoff Policy: hibernate Grove on disk until experimental SPR, patch-clamp hERG, and 2-species PK files return.",
+    actual: "Agents pause cleanly on disk (zero idle GPU/LLM spend) while CRO-SYN-014 runs. Returned rat (F = 54%) & dog (F = 61%) PK files unlock WO-007, projecting a 40 mg QD human oral tablet (F = 52%, t1/2 = 14.8 h).",
+    altTrigger: "What if wet-lab SPR returned KD > 25 µM (docking false positive) or rat oral bioavailability returned F = 3%?",
+    altAction: "Phase-2 pk/assay analyze flags FAIL against .oase/thresholds.yaml, blocking Gate 4 nomination and transferring the pod either to a back-up prodrug cycle or onto Amber Line macrocycle PCSK9-B07.",
+    prompt: "@admet-dmpk-scientist SUBWAY DRILL: Suppose returned rat oral bioavailability for OASE-PCSK9-014 came back at F = 4% due to first-pass CYP3A4 clearance. What dynamic Work Orders trigger next?"
+  },
+  s5: {
+    title: "Station S5 — Gate 4 Nomination & Audited Macrocycle Override (WO-008 · Steps 6–7)",
+    step: "ch6",
+    stepLabel: "Open Step 6 Tamper & Override Replay →",
+    seedRule: "10-check deterministic validator (PROV, CIT ±1%, REL, THR) + human-co-signed governance overrides (oase workorder override).",
+    actual: "OASE-PCSK9-014 passes all 8/8 Work Orders and 28/28 citations for Gate 4 co-sign. In Step 6, Aegis-6 blocks 3 tamper drills while demonstrating how Amber Backup macrocycle PCSK9-B07 (failing default Ro5 MW <= 500) can be promoted ONLY via an explicit, human-signed override (DEC-OVERRIDE-001).",
+    altTrigger: "What if a specialist agent tried to silently relax MW <= 500 or drop a caveat without human co-sign?",
+    altAction: "oase validate check immediately blocks Work Order closure with THR-001 / REL-001 (exit=1)—preventing silent scope drift against the original Co-Scientist brief.",
+    prompt: "@finding-validator Show how DEC-OVERRIDE-001 permits an intentional human beyond-Rule-of-5 exception on backup macrocycle PCSK9-B07 while blocking any unsigned threshold edit."
+  }
+};
+
+window.selectStation = function(stId) {
+  const d = SUBWAY_STATIONS[stId] || SUBWAY_STATIONS.s0;
+  document.querySelectorAll('.stn-pill').forEach(el => el.classList.remove('active'));
+  const pill = document.getElementById('pill-' + stId);
+  if (pill) pill.classList.add('active');
+  ['s0','s1','s2','s3','s4','s5'].forEach(k => {
+    const c = document.getElementById('svg-stn-' + k);
+    if (c) {
+      c.setAttribute('r', k === stId ? '18' : '15');
+      c.setAttribute('stroke', k === stId ? '#38bdf8' : (k === 's4' ? '#f59e0b' : '#10b981'));
+      c.setAttribute('stroke-width', k === stId ? '4.5' : '3.5');
+    }
+  });
+  const box = document.getElementById('subway-inspector');
+  if (!box) return;
+  const safePrompt = d.prompt.replace(/'/g, "\\'");
+  box.innerHTML = `
+    <div class="lab-block" style="margin:0;border-left-color:#10b981;">
+      <div class="lab-block-hdr">
+        <h4 style="color:#065f46;">&#128994; Recorded Trace in <code>pcsk9-oral</code>: ${d.title}</h4>
+        <button class="subpage-back-btn" style="background:#059669;" onclick="showChapter('${d.step}')">${d.stepLabel}</button>
+      </div>
+      <p style="margin:0 0 0.45rem 0;font-size:0.83rem;color:#475569;"><strong>Upstream Seed Rule:</strong> ${d.seedRule}</p>
+      <p style="margin:0;font-size:0.87rem;color:#1e293b;line-height:1.48;">${d.actual}</p>
+    </div>
+    <div class="lab-block" style="margin:0;border-left-color:#2563eb;background:#eff6ff;">
+      <div class="lab-block-hdr">
+        <h4 style="color:#1e3a8a;">&#128256; Dynamic Subway Switch &mdash; ${d.altTrigger}</h4>
+      </div>
+      <p style="margin:0 0 0.55rem 0;font-size:0.87rem;color:#1e293b;line-height:1.48;">${d.altAction}</p>
+      <button class="prompt-chip" style="background:#0f172a;color:#e2e8f0;margin-top:0.35rem;" onclick="oaseCopyPrompt('${safePrompt}')">&#128203; Test This Branch Live in Scion (Click to Copy): ${d.prompt}</button>
+    </div>
+  `;
+};
+selectStation('s3');
 </script>
 
 <style id="oase-cockpit-style">
@@ -1243,8 +1513,11 @@ if (hash && document.getElementById('panel-' + hash)) {
             </div>
           </details>
         `;
+        const whatifHero = document.getElementById('whatif-hero');
         const hdr = whyPanel.querySelector('.chapter-header');
-        if (hdr && hdr.nextSibling) {
+        if (whatifHero && whatifHero.parentNode) {
+          whatifHero.parentNode.insertBefore(fwCard, whatifHero.nextSibling);
+        } else if (hdr && hdr.nextSibling) {
           whyPanel.insertBefore(fwCard, hdr.nextSibling);
         }
       }

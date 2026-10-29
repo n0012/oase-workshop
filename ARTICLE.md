@@ -1,16 +1,8 @@
 # Introducing GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud
 
-[Agentic AI in life sciences](https://cloud.google.com/life-sciences) is transforming how pre-clinical discovery teams evaluate therapeutic targets and design molecules. By connecting foundation models and computational biology tools across the drug discovery funnel, AI agents can now assist with everything from **human genetic target validation** that links population loss-of-function variants to disease, to **single-cell transcriptomics** that isolates disease-specific cell states, to **3D protein-ligand co-folding** and **multi-parameter lead optimization (DMTA)** that de-risk candidates before wet-lab synthesis.
-
-Yet building production-ready agentic science that a pharma portfolio review committee can sign off on remains challenging. We built **GCP-OASE (Open Agentic Science Engine)** on **Google Cloud (GCP)** to change that. OASE is a drug discovery solution that traces AI model predictions, wet-lab measurements, computed results, and stage gate decisions. It does this on top of the SCION agent platform that is open-source, multi-agent and multi-user, to fit the dynamic needs of large drug discovery organizations.
-
-![GCP-OASE Intro](assets/oase_post_thumbnail.jpg)
-
----
-
 ## Start With Three "What If" Questions
 
-When discovery scientists and R&D platform leads sit down to evaluate agentic AI for therapeutic programs, three questions frame what separates an experimental chatbot demo from a system a portfolio review committee can actually trust:
+When discovery scientists and R&D platform leads sit down to evaluate agentic AI for therapeutic programs, three questions separate an experimental chatbot demo from a system a portfolio review committee can actually trust:
 
 1. **What if we had an agentic AI surface all of our scientists could use together at the same time?**  
    Instead of five scientists working in five isolated single-player chat tabs—copying and pasting summaries across computational biology, structural biology, medicinal chemistry, and DMPK—the entire human discovery pod shares a single live workspace (**The Grove**) alongside a mirrored team of specialist AI agents.
@@ -19,7 +11,13 @@ When discovery scientists and R&D platform leads sit down to evaluate agentic AI
 3. **What if every AI-assisted claim, threshold check, and stage-gate decision was cryptographically verified against raw data—so a portfolio review committee could audit and trust the dossier?**  
    Instead of summarizing raw tables inside an LLM prompt where numbers can be fabricated or caveats dropped, deterministic tools lock primary outputs on disk with **SHA-256 provenance receipts**, offline rules evaluate human-defined program cutoffs, and a 10-check validator blocks any unverified metric (`±1%`) or missing scientific limitation before a stage gate can close.
 
-**Well — we built it.** Below is how **GCP-OASE** works, how it drives an end-to-end oral small-molecule PCSK9 campaign (`pcsk9-oral`), and how to run the **2.5-hour (150-minute) hands-on lab** with your own discovery pod.
+**Well — we built it.**
+
+[Agentic AI in life sciences](https://cloud.google.com/life-sciences) is transforming how pre-clinical discovery teams evaluate therapeutic targets and design molecules. By connecting foundation models and computational biology tools across the drug discovery funnel, AI agents can now assist with everything from **human genetic target validation** that links population loss-of-function variants to disease, to **single-cell transcriptomics** that isolates disease-specific cell states, to **3D protein-ligand co-folding** and **multi-parameter lead optimization (DMTA)** that de-risk candidates before wet-lab synthesis.
+
+Yet building production-ready agentic science that a pharma portfolio review committee can sign off on remains challenging. We built **GCP-OASE (Open Agentic Science Engine)** on **Google Cloud (GCP)** to change that. OASE is a drug discovery solution that traces AI model predictions, wet-lab measurements, computed results, and stage gate decisions. It does this on top of the SCION agent platform that is open-source, multi-agent and multi-user, to fit the dynamic needs of large drug discovery organizations.
+
+![GCP-OASE Intro](assets/oase_post_thumbnail.jpg)
 
 ---
 
@@ -107,6 +105,23 @@ The agents execute the tools and draft the reports; the humans commission work o
 | **⏸ Lab gate** *(required before Step 5; seeded in demo)* | What is needed to test the selected compound experimentally and bring the results back? | Steps 1–4 are entirely *in silico* and produce a proposed chemical structure. Step 5 requires measured rat and dog oral bioavailability (`54%` and `61%`), which in practice requires chemical synthesis and *in vivo* pharmacokinetic studies. In a live project, OASE prepares a **lab handoff work order** here, **agents pause cleanly on disk until files return** from the lab or CRO, and OASE ingests the returned data files. For the 150-minute workshop, these returned PK measurements are provided as a pre-staged dataset. | **Stopping-Gate Handoff & Assay Re-Ingestion** (`oase retro` route spec, `.oase/thresholds.yaml` pass/fail criteria, `oase assay ingest`, `oase selectivity compare`, `oase pk ingest`) | **Medicinal Chemist, Experimental Biologist & DMPK Lead** |
 | **5. Project human dosing and compile the dossier** *(in silico on lab-gate data)* | Do the animal PK results support once-daily human oral dosing, and is the full evidence package complete? | The rat and dog bioavailability figures are checked against the program's oral PK threshold to project a human once-daily dose (`40 mg QD`, `F = 52%`, `t1/2 = 14.8 h`), accompanied by a required caveat that two-species projections require clinical verification. Findings across all eight work orders are then compiled into a candidate dossier and a static HTML evidence portal where each number links to its underlying data file. | **Non-Compartmental Analysis & Two-Species Allometric PK Scaling** (`oase pk`), **ClinicalTrials.gov & OpenFDA FAERS** (`oase trials`/`faers`), **Dossier & Static Portal Compiler** (`oase dossier`/`site`) | **DMPK, Safety & Regulatory Lead** |
 | **6. Run validation checks and review overrides** *(in silico)* | How does the system verify that reports match the underlying data and track human or lead overrides? | Four test cases are run against the validator: removing a required caveat from a report, altering a cited number beyond the `±1%` tolerance, modifying a raw data file so its hash no longer matches, and recording a reviewer override of a specialist's interpretation. The validator blocks work-order closure on the first three cases and permits the fourth while recording the override, actor, and rationale in the decision log. | **Deterministic 10-Check Governance Validator** (`oase validate check`: SHA-256 provenance, `±1%` JSONPath citation verification, mandatory relay checks) & **Audited Override** (`oase workorder override`) | **Program Lead / Discovery Governance Lead** |
+
+### How the Co-Scientist Input Prompt Defines the Subway Map (Not a Rigid Pipeline)
+
+A single recorded campaign replay (`Steps 1–6` above) looks linear after the fact—just like tracing one rider's trip across a city makes a transit network look like a single track. Underneath, **GCP-OASE operates like a dynamic subway map**: the upstream **AI Co-Scientist Research Brief** ([`prompts/coscientist-research-brief.md`](prompts/coscientist-research-brief.md) / [`campaign-seed.json`](checkpoints/ch0/seed/pcsk9-oral/campaign-seed.json)) sets the destination, parallel lines, and pre-registered kill criteria, while **what each deterministic tool actually returns** switches the active track at every transfer station:
+
+- **Research Goal & Modality Preferences (`coscientist-export.json`):** *Evaluate oral allosteric small-molecule and tricyclic macrocycle PCSK9 inhibitors disrupting LDLR EGF-A binding in ASCVD—prioritizing classical Rule-of-5 oral hepatocyte bioavailability (without dietary permeation enhancers) and human loss-of-function genetic cardioprotection (`PCSK9 R46L` / `gnomAD LoF`).*
+- **Pre-Registered Falsifiable Kill Criteria (`campaign-seed.json`):**
+  - **`FP-001` (Primary Line `IC-001` — Allosteric Small Molecule):** Requires cryptic inter-domain pocket `druggability >= 0.50` (`fpocket`) and `AlphaFold 3` ligand `ipTM >= 0.70`; **kill criterion:** `druggability < 0.30` or steric clash across all conformers.
+  - **`FP-002` (Backup Line `IC-002` — Tricyclic Macrocycle):** Benchmarked against clinical macrocycle `MK-0616` on the flat `EGF-A` patch; retained on a parallel backup line because of higher `MW` and permeation-enhancer requirements.
+
+| Transfer Station | Upstream Seed Rule | What Returned in `pcsk9-oral` (Active Track) | Dynamic Track Switch If Data Came Back Differently |
+|---|---|---|---|
+| **Station 0 — Co-Scientist Seed (`WO-001`)** | Unenhanced oral Ro5 preference (`coscientist@1.1+program`) | `IC-001` leads by **`+54.5 Elo`** (`1642.5` vs `1588.0`) → opens **Green Line (`IC-001`)** & parks **Amber Backup Line (`IC-002`)**. | **Tied Elo (`<25 ΔElo`):** `@science-program-lead` dispatches parallel Stage 2 pocket & PPI work orders on both lines simultaneously. |
+| **Station 1 — Genetics & Omics (`WO-002..003`)** | Hepatic selectivity + human LoF tolerance (`pLI < 0.90`) | Bulk `GTEx` liver = **`184.2 TPM`** (`tau = 0.93`) + `AlphaGenome` `0.984` → **Express Track to Gate 1**. | **Low Bulk Expression (`<5 TPM`):** Instead of dropping the gene like a static DAG, switches onto the **`oase h5ad` Single-Cell Transcriptomics Detour** to check disease-activated subpopulations. |
+| **Station 2 — 3D Pocket & Docking (`WO-004..005`)** | `FP-001`: `druggability >= 0.50`, kill `< 0.30` | Cryptic `Pocket #1` scores **`0.68`** (`0.788` live apo) while flat `EGF-A` scores **`0.24`** (`Analog-05` clashes at `1.72 Å` ✗) → **Green Line advances; Ro5 orthosteric spur terminates**. | **Cryptic Pocket `< 0.30` (`FP-001` Kill Triggered):** Terminates `Line A` small-molecule campaign at Gate 2 and transfers pod onto **Amber Backup Line `IC-002` (Macrocycle / Biologic)**. |
+| **Station 3 — Med-Chem DMTA (`WO-006`)** | Ro5 oral brief locks `max_clogp <= 3.5`, `0` critical alerts | Top docker `PCSK9-A02` (`-9.4 kcal/mol`) hits a **Red Signal** (`cLogP = 5.09`, Aronov `hERG` alert ✗) → **Med-Chem `BRICS` Reroute Loop** rescues polar oxadiazole **`OASE-PCSK9-014`** (`cLogP = 3.01`, `0` alerts ✓). | **Clean Top Docker:** Advances straight to **⏸ Wet-Lab Gate** without an MMP redesign cycle. **Unresolvable Series Liability:** Loops back to Station 2 alternate chemotype. |
+| **Station 4 — ⏸ Wet-Lab Gate & PK (`WO-007..008`)** | Manual CRO stopping gate + human QD oral PK (`F >= 30%`) | Rat (`54%`) & dog (`61%`) oral `F` return → **`40 mg QD` human oral tablet** nominated at **Gate 4**. | **Failed Wet-Lab `SPR` or `F < 10%`:** Reopens **Amber Backup Line (`PCSK9-B07` macrocycle)** via audited human governance override (`oase workorder override`, demonstrated in Step 6). |
 
 ---
 

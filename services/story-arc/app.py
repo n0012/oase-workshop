@@ -575,8 +575,11 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
             </div>
           </details>
         `;
+        const whatifHero = document.getElementById('whatif-hero');
         const hdr = whyPanel.querySelector('.chapter-header');
-        if (hdr && hdr.nextSibling) {
+        if (whatifHero && whatifHero.parentNode) {
+          whatifHero.parentNode.insertBefore(fwCard, whatifHero.nextSibling);
+        } else if (hdr && hdr.nextSibling) {
           whyPanel.insertBefore(fwCard, hdr.nextSibling);
         }
       }

@@ -74,10 +74,10 @@ Divide attendees into **5 functional roles** (individuals or small 2–4 person 
 
 **Objective:** Experience **What If #1 (Multiplayer Surface)** and **What If #2 (Multi-Model Optionality)** firsthand while taking `pcsk9-oral` through **Gate 1 (Target Validation)**.
 
-1. **Watch Context (`3 min`):** Play the **Step 1** (`WO-001` Co-Scientist Elo Tournament) and **Step 2** (`WO-002..003` Human Genetics & Omics) Squadron clips in `chapters.html` (`#ch1` and `#ch2`).
-2. **Multiplayer Scion Exercise (`10 min`):**
+1. **Watch Context (`3 min`):** Play the **Step 1** (`WO-001` Co-Scientist Elo Tournament) and **Step 2** (`WO-002..003` Human Genetics & Omics) Squadron clips in `chapters.html` (`#ch1` and `#ch2`), and inspect the **Upstream Co-Scientist Research Brief** ([`prompts/coscientist-research-brief.md`](../prompts/coscientist-research-brief.md)) plus the **`Dynamic Subway Map`** tab (`#subway`)—pointing out how the initial prompt's unenhanced oral Rule-of-5 preference and `FP-001` kill criteria open both **Green Line (`IC-001`)** and **Amber Backup Line (`IC-002`)** and lock `.oase/thresholds.yaml`.
+2. **Multiplayer Scion & Dynamic Subway Routing Exercise (`10 min`):**
    - **Seat 1 (`oase-sarah`)** and **Seat 2 (`oase-marcus`)** both click **"Join Live at This Stage"** on `Step 2` so the room sees multiple scientists typing in the same shared Grove conversation simultaneously.
-   - Paste or adapt these live `@mention` prompts in Scion Webchat:
+   - Paste or adapt these live `@mention` prompts in Scion Webchat (including a live **Subway Track-Switch Drill** showing how OASE dynamically routes to single-cell `.h5ad` if bulk RNA-seq comes back low):
      ```text
      @computational-biologist Why did allosteric small-molecule hypothesis IC-001 (1642.5 Elo) outperform cyclic peptide IC-002 (1588.0 Elo) in WO-001, and what caveat must travel forward?
      ```
@@ -85,7 +85,7 @@ Divide attendees into **5 functional roles** (individuals or small 2–4 person 
      @computational-biologist Compare PCSK9 hepatocyte expression in GTEx against extrahepatic CNS tissues in WO-002, and explain how gnomAD LoF tolerance supports chronic inhibition safety.
      ```
      ```text
-     @science-program-lead Why must alphagenome.quantile_not_clinical_effect stay attached to rs2479409 (0.984) after we co-sign Gate 1?
+     @science-program-lead SUBWAY ROUTING DRILL: Suppose bulk GTEx liver expression had returned 0.4 TPM instead of 184.2 TPM. Show the exact oase h5ad single-cell Work Order you would dispatch rather than dropping the target.
      ```
 3. **CLI / Artifact Verification (`8 min`):** Inspect the Phase-1 + Phase-2 artifacts and run live target-validation grading:
    ```bash
