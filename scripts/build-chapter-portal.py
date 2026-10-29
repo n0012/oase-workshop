@@ -145,7 +145,6 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="chapter-bar">
   <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
-  <button class="chapter-btn subway-btn" id="btn-subway" onclick="showChapter('subway')">Dynamic Subway Map</button>
   <button class="chapter-btn lab-btn" id="btn-lab" onclick="showChapter('lab')">2.5-Hr Lab Guide</button>
   <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Rank Hypotheses (WO-001)</button>
   <button class="chapter-btn" id="btn-ch2" onclick="showChapter('ch2')">Step 2: Genetics &amp; Gate 1 (WO-002..003)</button>
@@ -153,15 +152,15 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <button class="chapter-btn" id="btn-ch4" onclick="showChapter('ch4')">Step 4 &amp; Lab Gate: ADMET &amp; Gate 3 (WO-006)</button>
   <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Step 5: Human PK &amp; Gate 4 (WO-007..008)</button>
   <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Step 6: Tamper &amp; Override Audit</button>
-  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Portfolio Closeout</button>
+  <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Recap &amp; Closeout</button>
 </div>
 
 <div class="container">
   <!-- PANEL WHY: THE PROBLEM, 4 CHALLENGES & WHAT YOU'LL SEE IN THIS DEMO -->
   <section class="chapter-panel active" id="panel-why">
     <div class="chapter-header">
-      <h2>Act I (Part 1) — Start With Three "What If" Questions &amp; What You'll See in This Demo</h2>
-      <span class="stage-pill">3 "What Ifs" · 4 Challenges · 5 Artifact Layers · 7 Steps + Wet-Lab Gate</span>
+      <h2>Act I (Part 1) — Start With Three "What If" Questions &amp; What Is GCP-OASE?</h2>
+      <span class="stage-pill">3 "What Ifs" · Subway-Map Routing · Customer VPC (Apache 2.0) · 7 Steps + Wet-Lab Gate</span>
     </div>
     <div class="stack-full">
       <div class="whatif-banner" id="whatif-hero">
@@ -183,12 +182,18 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <p class="wi-a">Deterministic Phase-1/Phase-2 tools lock <code>raw/</code> SHA-256 receipts and <code>oase validate check</code> blocks any unverified metric (&plusmn;1%) or dropped caveat.</p>
           </div>
         </div>
-        <div class="whatif-pivot">
-          <div><strong style="color:#4ade80;font-size:1.02rem;">Well &mdash; we built it.</strong> Explore the 7-step oral PCSK9 discovery walkthrough or follow the 2.5-hour (150-minute) hands-on lab guide:</div>
-          <div class="whatif-actions">
-            <button class="whatif-cta" style="background:#d97706;border-color:#f59e0b;" onclick="showChapter('subway')">Explore Dynamic Subway Map &rarr;</button>
-            <button class="whatif-cta" onclick="showChapter('lab')">Open 2.5-Hr Guided Lab &rarr;</button>
-            <button class="whatif-cta secondary" onclick="showChapter('ch1')">Start Step 1 Walkthrough &rarr;</button>
+        <div class="whatif-pivot" style="align-items:flex-start;flex-direction:column;gap:0.75rem;">
+          <div style="line-height:1.5;">
+            <strong style="color:#4ade80;font-size:1.05rem;">Well &mdash; we built it.</strong>
+            <strong>GCP-OASE</strong> is an open-source (<code>Apache 2.0</code>, $0 seat fees) agentic orchestration layer on Scion inside your own Google Cloud VPC. <strong>Like a subway navigator rather than a fixed Nextflow pipeline</strong>, you set your therapeutic destination and cutoffs up front; at each stop, T-shaped specialist agents evaluate primary tool evidence, filter out 500-agent chat noise through a SHA-256 governance shield, and dispatch the next Work Order across built-in and custom containers&mdash;adapting when biology surprises you and pausing cleanly at wet-lab CRO handoffs.
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:0.75rem;">
+            <div style="font-size:0.82rem;color:#94a3b8;font-family:monospace;">Subway-Map Routing &middot; Signal Funnel (Zero Swarm Noise) &middot; Bring Your Own Containers in Customer VPC</div>
+            <div class="whatif-actions">
+              <button class="whatif-cta" onclick="showChapter('lab')">Open 2.5-Hr Guided Lab &rarr;</button>
+              <button class="whatif-cta secondary" onclick="showChapter('ch1')">Start Step 1 Walkthrough &rarr;</button>
+              <button class="whatif-cta" style="background:#334155;border-color:#64748b;" onclick="jumpToRecapMap()">See Campaign Route Recap (Step 7) &rarr;</button>
+            </div>
           </div>
         </div>
       </div>
@@ -348,8 +353,8 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
     <div class="stack-full">
       <div class="lab-block" style="border-left-color:#2563eb;background:#f8fafc;margin-bottom:0.25rem;">
         <div class="lab-block-hdr">
-          <h4>How the Upstream Co-Scientist Input Prompt Was Defined &mdash; And Why It Shapes the Entire Campaign</h4>
-          <button class="subpage-back-btn" style="background:#d97706;" onclick="showChapter('subway')">View Dynamic Subway Map &rarr;</button>
+          <h4>How the Upstream Co-Scientist Input Prompt Was Defined &mdash; Setting the Destination &amp; Rules</h4>
+          <button class="subpage-back-btn" style="background:#d97706;" onclick="jumpToRecapMap()">See Route Map in Step 7 Recap &rarr;</button>
         </div>
         <p style="margin:0 0 0.65rem 0;font-size:0.87rem;color:#334155;">In Initiation Mode 1, the human Program Lead defines a structured <strong>Research Brief &amp; Target Product Profile (TPP)</strong> (<code>checkpoints/ch0/seed/pcsk9-oral/campaign-seed.json</code> &amp; <code>coscientist-export.json</code>). Every preference and pre-registered kill criterion in this upstream prompt cascades directly into <code>.oase/thresholds.yaml</code> and determines which parallel modality tracks open:</p>
         <div class="grid-2" style="gap:1rem;">
@@ -620,10 +625,10 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
     </div>
   </section>
 
-  <!-- CHAPTER 7: STEP 7 MISSION CLOSEOUT, PORTFOLIO SIGN-OFF & SCORECARD -->
+  <!-- CHAPTER 7: STEP 7 MISSION CLOSEOUT, ROUTE RECAP, PORTFOLIO SIGN-OFF & SCORECARD -->
   <section class="chapter-panel" id="panel-ch7">
     <div class="chapter-header">
-      <h2>Step 7 — Executive Portfolio Sign-Off, 30-Page Evidence Portal &amp; Squadron Closeout</h2>
+      <h2>Step 7 — Campaign Route Recap, Executive Sign-Off &amp; 30-Page Evidence Portal</h2>
       <span class="stage-pill">8/8 WOs Verified · 4 Stage Gates + Wet-Lab Bridge · OASE-PCSK9-014 (40 mg QD) · checkpoints/ch7</span>
     </div>
     <div class="stack-full">
@@ -659,11 +664,133 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
             </tr>
           </tbody>
         </table>
-        <div class="portal-links" style="margin-bottom: 1rem;">
+        <div class="portal-links" style="margin-bottom: 1.15rem;">
           <a href="finding_findings_regulatory_WO-008_md.html">Open WO-008 Candidate Nomination Dossier</a>
           <a href="index.html">Open Full 30-Page Evidence Portal Index</a>
           <a href="plan.html">Open Pilot Build Plan &amp; Architecture Spec</a>
         </div>
+
+        <!-- CAMPAIGN ROUTE RECAP: INTERACTIVE SUBWAY MAP -->
+        <div id="recap-subway-section" style="margin: 1.25rem 0 1.15rem 0; padding-top: 1rem; border-top: 2px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.45rem;">
+            <h3 style="margin:0;color:#0f172a;font-size:1.12rem;">Recap: Map of What We Ran &mdash; How the Campaign Dynamically Routed Across 6 Stations</h3>
+            <span class="stage-pill">Click Any Station (`S0`..`S5`) to Inspect Track Switches</span>
+          </div>
+          <p style="margin:0 0 0.8rem 0;font-size:0.9rem;color:#334155;line-height:1.5;">
+            Looking back across <code>Steps 1&ndash;6</code>, watching one completed replay can look linear&mdash;just like tracing one commuter's trip makes a city subway look like a single track. Here is the actual map of what happened under the hood: the Step 1 <strong>Co-Scientist Research Brief</strong> split two modality lines (<strong>Green: <code>IC-001</code> Small Molecule</strong> &amp; <strong>Amber: <code>IC-002</code> Macrocycle Backup</strong>), Step 3 terminated the flat <code>EGF-A</code> orthosteric spur (<code>0.24</code>) and clashing <code>Analog-05</code> (<code>1.72 &Aring;</code>), Step 4 hit a <strong>Red Signal on top docker <code>PCSK9-A02</code> (<code>hERG</code> / <code>cLogP 5.09</code>) and dynamically took the <code>BRICS</code> Reroute Loop to rescue <code>OASE-PCSK9-014</code></strong>, and Step 5 paused cleanly on disk across the CRO wet-lab PK hold. Click any station to inspect what happened&mdash;and copy a live Scion prompt to test what OASE does when data comes back differently:
+          </p>
+
+          <div class="subway-board" style="margin-bottom:0.85rem;">
+            <div class="subway-legend">
+              <span><strong style="color:#10b981;">&#9644;&#9644; Green Line:</strong> Primary Allosteric Small Molecule (<code>IC-001</code> &rarr; <code>OASE-PCSK9-014</code>)</span>
+              <span><strong style="color:#f59e0b;">&#9644;&#9644; Amber Line:</strong> Parallel Tricyclic Macrocycle Backup (<code>IC-002</code> / <code>PCSK9-B07</code> Override)</span>
+              <span><strong style="color:#38bdf8;">&#9644;&#9644; Blue Loops:</strong> Data-Driven Detours (<code>scRNA-seq .h5ad</code> &amp; <code>BRICS</code> Med-Chem Rescue)</span>
+              <span><strong style="color:#ef4444;">&#10005; Red Spurs:</strong> Disqualified by Phase-2 Cutoffs</span>
+            </div>
+
+            <svg viewBox="0 0 1160 330" style="width:100%;height:auto;display:block;background:#020617;border-radius:8px;border:1px solid #1e293b;">
+              <!-- S1 Single-cell h5ad detour loop (dashed blue) -->
+              <path d="M 275 155 C 295 55, 435 55, 465 155" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-dasharray="7,5"/>
+              <rect x="295" y="28" width="150" height="24" rx="5" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1"/>
+              <text x="370" y="44" fill="#e0f2fe" font-size="11" font-family="monospace" text-anchor="middle">Bulk &lt;5 TPM &rarr; scRNA h5ad</text>
+
+              <!-- S3 BRICS Med-Chem Active Reroute Loop (solid cyan/green: ACTUALLY TAKEN!) -->
+              <path d="M 655 155 C 680 55, 815 55, 850 155" fill="none" stroke="#10b981" stroke-width="5.5"/>
+              <rect x="662" y="24" width="186" height="26" rx="5" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
+              <text x="755" y="41" fill="#ecfdf5" font-size="11.5" font-weight="bold" font-family="monospace" text-anchor="middle">&#8618; BRICS Loop: OASE-PCSK9-014</text>
+
+              <!-- Amber Backup Line (IC-002 Macrocycle) -->
+              <path d="M 95 165 C 145 270, 200 270, 275 270 L 850 270 C 930 270, 995 235, 1055 155" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,5"/>
+              <text x="545" y="294" fill="#fbbf24" font-size="11.5" font-family="monospace" text-anchor="middle">Amber Backup Line: IC-002 Oral Macrocycle (Parked at S0 &middot; Reopened via S5 Override if S4 Fails)</text>
+
+              <!-- Vertical transfer connectors -->
+              <line x1="465" y1="155" x2="465" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
+              <line x1="850" y1="155" x2="850" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
+
+              <!-- Red Dead-End Spurs -->
+              <!-- S2 EGF-A 0.24 & Clash spur -->
+              <path d="M 465 155 L 548 212" fill="none" stroke="#ef4444" stroke-width="4"/>
+              <text x="556" y="220" fill="#fca5a5" font-size="11" font-weight="bold" font-family="monospace">&#10005; EGF-A 0.24 / Clash 1.72&Aring;</text>
+
+              <!-- S3 PCSK9-A02 hERG Red Signal spur -->
+              <path d="M 655 155 L 748 155" fill="none" stroke="#ef4444" stroke-width="5"/>
+              <text x="756" y="159" fill="#fca5a5" font-size="11.5" font-weight="bold" font-family="monospace">&#10005; A02 (hERG cLogP 5.09)</text>
+
+              <!-- Green Main Line segments -->
+              <line x1="95" y1="155" x2="655" y2="155" stroke="#10b981" stroke-width="6"/>
+              <line x1="850" y1="155" x2="1055" y2="155" stroke="#10b981" stroke-width="6"/>
+
+              <!-- Clickable Transfer Stations -->
+              <g class="stn-node" onclick="selectStation('s0')">
+                <circle id="svg-stn-s0" cx="95" cy="155" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+                <text x="95" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S0</text>
+                <text x="95" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Co-Scientist</text>
+                <text x="95" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">WO-001 Seed</text>
+              </g>
+
+              <g class="stn-node" onclick="selectStation('s1')">
+                <circle id="svg-stn-s1" cx="275" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+                <text x="275" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S1</text>
+                <text x="275" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Genetics &amp; GTEx</text>
+                <text x="275" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 1 (WO-002..3)</text>
+              </g>
+
+              <g class="stn-node" onclick="selectStation('s2')">
+                <circle id="svg-stn-s2" cx="465" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+                <text x="465" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S2</text>
+                <text x="465" y="128" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">AF3 &amp; Pockets</text>
+                <text x="465" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 2 (WO-004..5)</text>
+              </g>
+
+              <g class="stn-node" onclick="selectStation('s3')">
+                <circle id="svg-stn-s3" cx="655" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+                <text x="655" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S3</text>
+                <text x="655" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">ADMET Reroute</text>
+                <text x="655" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 3 (WO-006)</text>
+              </g>
+
+              <g class="stn-node" onclick="selectStation('s4')">
+                <circle id="svg-stn-s4" cx="850" cy="155" r="15" fill="#0f172a" stroke="#f59e0b" stroke-width="3.5"/>
+                <text x="850" y="159" fill="#fde68a" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">&#9208;</text>
+                <text x="850" y="192" fill="#fde68a" font-size="12" font-weight="bold" text-anchor="middle">Wet-Lab &amp; PK</text>
+                <text x="850" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">CRO Hold + WO-007</text>
+              </g>
+
+              <g class="stn-node" onclick="selectStation('s5')">
+                <circle id="svg-stn-s5" cx="1055" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
+                <text x="1055" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S5</text>
+                <text x="1055" y="128" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Gate 4 &amp; Audit</text>
+                <text x="1055" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">40 mg QD (WO-008)</text>
+              </g>
+            </svg>
+
+            <div class="subway-station-pills">
+              <button class="stn-pill active" id="pill-s0" onclick="selectStation('s0')">S0: Co-Scientist Prompt &amp; Split</button>
+              <button class="stn-pill" id="pill-s1" onclick="selectStation('s1')">S1: Genetics / scRNA-seq Switch</button>
+              <button class="stn-pill" id="pill-s2" onclick="selectStation('s2')">S2: Cryptic Groove vs EGF-A</button>
+              <button class="stn-pill" id="pill-s3" onclick="selectStation('s3')">S3: hERG Block &rarr; BRICS Loop</button>
+              <button class="stn-pill" id="pill-s4" onclick="selectStation('s4')">S4: &#9208; Wet-Lab Hold &amp; Oral PK</button>
+              <button class="stn-pill" id="pill-s5" onclick="selectStation('s5')">S5: Gate 4 &amp; Macrocycle Override</button>
+            </div>
+          </div>
+
+          <div id="subway-inspector" class="grid-2" style="margin-bottom:0.85rem;"></div>
+
+          <details style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.75rem 1.05rem;">
+            <summary style="cursor:pointer;font-weight:700;color:#1e3a8a;font-size:0.88rem;">
+              &#8644; Why Pair a Linear 7-Step Replay With a Dynamic Subway State Machine?
+            </summary>
+            <table style="margin-top:0.65rem;">
+              <thead><tr><th>Dimension</th><th>Linear 7-Step Replay Spine (<code>Step 1 &rarr; Step 7</code>)</th><th>Dynamic Subway Map (<code>.oase/control/</code> State Machine)</th><th>How They Work Together</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Primary Role</strong></td><td>Easy for 20 scientists and executives to follow in 4.5 minutes of recorded video without getting lost in 16 branches.</td><td>Proves OASE is <strong>not</strong> a rigid Nextflow DAG: tool outputs spawn detours, pause for wet-lab CRO assays, or switch chemotype lines.</td><td>The <strong>7 chapters</strong> trace our winning journey (including the Step 4 <code>hERG</code> reroute), while the <strong>Recap Map + Live Scion Prompts</strong> let you test alternate branches on demand.</td></tr>
+                <tr><td><strong>Upstream Seed Brief</strong></td><td>Introduced up front in <code>Step 1</code>.</td><td><strong>Draws the map:</strong> TPP rules (unenhanced oral Ro5, LoF safety, <code>FP-001</code> kill criteria) lock <code>.oase/thresholds.yaml</code> and park <code>IC-002</code> as backup.</td><td>Every threshold and detour above traces directly back to the initial human + Co-Scientist goal definition.</td></tr>
+                <tr><td><strong>Workshop Reset Safety</strong></td><td>Deterministic <code>ch0..ch7</code> Git + SQLite snapshots reset in <code>&lt;2s</code>.</td><td>Live Scion Webchat lets attendees ask <code>@science-program-lead</code> to switch tracks mid-session.</td><td>Branch freely in live Scion Webchat, then click <strong><code>&#8634; Reset CHN (&lt;2s)</code></strong> to snap back cleanly.</td></tr>
+              </tbody>
+            </table>
+          </details>
+        </div>
+
         <details style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:0.85rem 1.1rem;margin-top:0.75rem;">
           <summary style="cursor:pointer;font-weight:700;color:#1e3a8a;font-size:0.9rem;">
             &#128300; Expand Under-the-Hood Architecture Scorecard &amp; Engineering Verification Notes
@@ -809,10 +936,10 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
 
         <div class="lab-block">
           <div class="lab-block-hdr">
-            <h4>Block 5 (`2:10&ndash;2:30` &middot; 20 min) &mdash; Portfolio Closeout, Custom Internal Tools &amp; Deploying in Your Own GCP Environment (`Step 7`)</h4>
-            <button class="subpage-back-btn" onclick="showChapter('ch7')">Jump to Step 7 &rarr;</button>
+            <h4>Block 5 (`2:10&ndash;2:30` &middot; 20 min) &mdash; Campaign Route Recap, Custom Internal Tools &amp; Deploying in Your Own GCP Environment (`Step 7`)</h4>
+            <button class="subpage-back-btn" onclick="jumpToRecapMap()">Open Step 7 Route Recap &rarr;</button>
           </div>
-          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Tour the compiled 30-page static HTML Evidence Portal (<code>WO-008</code>), review the ~100-line two-phase adapter pattern for internal assays/LIMS tools (<code>oase h5ad</code>), and map a concrete 2-week pilot in the organization's own Google Cloud environment:</p>
+          <p style="margin:0 0 0.5rem 0;font-size:0.86rem;color:#334155;"><strong>Goal:</strong> Walk through the <strong>Interactive Campaign Route Recap Map</strong> in <code>Step 7</code> (showing how <code>pcsk9-oral</code> dynamically routed across 6 stations), tour the compiled 30-page static HTML Evidence Portal (<code>WO-008</code>), review the ~100-line two-phase adapter pattern for internal assays/LIMS tools (<code>oase h5ad</code>), and map a concrete 2-week pilot in the organization's own Google Cloud environment:</p>
           <div class="terminal"><span class="cmd"># 1. Provision isolated GCP project + least-privilege service account</span>
 $ python3 scripts/provision-gcp-project.py --project-id &lt;your-pilot-project&gt; --org-id &lt;your-org-id&gt;
 
@@ -826,127 +953,6 @@ $ ./scripts/deploy-pilot-stack.sh</div>
             <strong>Closeout Alignment Questions for the Room:</strong> (1) Which <strong>internal target or hit series</strong> makes the sharpest 2-week validation pilot? (2) Which <strong>1&ndash;2 internal assays or tools</strong> (e.g., scRNA-seq <code>.h5ad</code> atlas, proprietary docking/FEP, or CRO PK sheet) should we wrap first? (3) Who are the <strong>5 discovery pod counterparts</strong> to seat in your pilot Grove?
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DYNAMIC DISCOVERY SUBWAY MAP PANEL -->
-  <section class="chapter-panel" id="panel-subway">
-    <div class="chapter-header">
-      <h2>Dynamic Discovery Subway Map vs. Rigid Pipeline (`pcsk9-oral` Topology)</h2>
-      <span class="stage-pill">Click Any Transfer Station (`S0`..`S5`) to Inspect Track Switching</span>
-    </div>
-    <div class="stack-full">
-      <p style="margin:0;font-size:0.93rem;color:#334155;line-height:1.5;">
-        Watching a single completed replay (<code>Steps 1&ndash;7</code>) makes a campaign look like a straight line&mdash;just like tracing one commuter's trip makes a city subway look like a single track. Underneath, <strong>GCP-OASE routes Work Orders dynamically based on what each tool returns</strong>: the upstream <strong>Co-Scientist Research Brief</strong> opens two parallel modality lines (<strong>Green: <code>IC-001</code> Small Molecule</strong> &amp; <strong>Amber: <code>IC-002</code> Macrocycle Backup</strong>), Step 3 terminates flat <code>EGF-A</code> (<code>0.24</code>) for Rule-of-5 chemistry, and <strong>even our recorded Step 4 run hits a Red Signal on top docker <code>PCSK9-A02</code> (<code>hERG</code> / <code>cLogP 5.09</code>) and takes the <code>BRICS</code> Reroute Loop to rescue <code>OASE-PCSK9-014</code></strong>. Click any station below to compare the recorded trace against alternate branches:
-      </p>
-
-      <div class="subway-board">
-        <div class="subway-legend">
-          <span><strong style="color:#10b981;">&#9644;&#9644; Green Line:</strong> Primary Allosteric Small Molecule (<code>IC-001</code> &rarr; <code>OASE-PCSK9-014</code>)</span>
-          <span><strong style="color:#f59e0b;">&#9644;&#9644; Amber Line:</strong> Parallel Tricyclic Macrocycle Backup (<code>IC-002</code> / <code>PCSK9-B07</code> Override)</span>
-          <span><strong style="color:#38bdf8;">&#9644;&#9644; Blue Loops:</strong> Data-Driven Detours (<code>scRNA-seq .h5ad</code> &amp; <code>BRICS</code> Med-Chem Rescue)</span>
-          <span><strong style="color:#ef4444;">&#10005; Red Spurs:</strong> Disqualified by Phase-2 Cutoffs</span>
-        </div>
-
-        <svg viewBox="0 0 1160 330" style="width:100%;height:auto;display:block;background:#020617;border-radius:8px;border:1px solid #1e293b;">
-          <!-- S1 Single-cell h5ad detour loop (dashed blue) -->
-          <path d="M 275 155 C 295 55, 435 55, 465 155" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-dasharray="7,5"/>
-          <rect x="295" y="28" width="150" height="24" rx="5" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1"/>
-          <text x="370" y="44" fill="#e0f2fe" font-size="11" font-family="monospace" text-anchor="middle">Bulk &lt;5 TPM &rarr; scRNA h5ad</text>
-
-          <!-- S3 BRICS Med-Chem Active Reroute Loop (solid cyan/green: ACTUALLY TAKEN!) -->
-          <path d="M 655 155 C 680 55, 815 55, 850 155" fill="none" stroke="#10b981" stroke-width="5.5"/>
-          <rect x="662" y="24" width="186" height="26" rx="5" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
-          <text x="755" y="41" fill="#ecfdf5" font-size="11.5" font-weight="bold" font-family="monospace" text-anchor="middle">&#8618; BRICS Loop: OASE-PCSK9-014</text>
-
-          <!-- Amber Backup Line (IC-002 Macrocycle) -->
-          <path d="M 95 165 C 145 270, 200 270, 275 270 L 850 270 C 930 270, 995 235, 1055 155" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,5"/>
-          <text x="545" y="294" fill="#fbbf24" font-size="11.5" font-family="monospace" text-anchor="middle">Amber Backup Line: IC-002 Oral Macrocycle (Parked at S0 &middot; Reopened via S5 Override if S4 Fails)</text>
-
-          <!-- Vertical transfer connectors -->
-          <line x1="465" y1="155" x2="465" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
-          <line x1="850" y1="155" x2="850" y2="270" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
-
-          <!-- Red Dead-End Spurs -->
-          <!-- S2 EGF-A 0.24 & Clash spur -->
-          <path d="M 465 155 L 548 212" fill="none" stroke="#ef4444" stroke-width="4"/>
-          <text x="556" y="220" fill="#fca5a5" font-size="11" font-weight="bold" font-family="monospace">&#10005; EGF-A 0.24 / Clash 1.72&Aring;</text>
-
-          <!-- S3 PCSK9-A02 hERG Red Signal spur -->
-          <path d="M 655 155 L 748 155" fill="none" stroke="#ef4444" stroke-width="5"/>
-          <text x="756" y="159" fill="#fca5a5" font-size="11.5" font-weight="bold" font-family="monospace">&#10005; A02 (hERG cLogP 5.09)</text>
-
-          <!-- Green Main Line segments -->
-          <line x1="95" y1="155" x2="655" y2="155" stroke="#10b981" stroke-width="6"/>
-          <line x1="850" y1="155" x2="1055" y2="155" stroke="#10b981" stroke-width="6"/>
-
-          <!-- Clickable Transfer Stations -->
-          <g class="stn-node" onclick="selectStation('s0')">
-            <circle id="svg-stn-s0" cx="95" cy="155" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
-            <text x="95" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S0</text>
-            <text x="95" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Co-Scientist</text>
-            <text x="95" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">WO-001 Seed</text>
-          </g>
-
-          <g class="stn-node" onclick="selectStation('s1')">
-            <circle id="svg-stn-s1" cx="275" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
-            <text x="275" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S1</text>
-            <text x="275" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">Genetics &amp; GTEx</text>
-            <text x="275" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 1 (WO-002..3)</text>
-          </g>
-
-          <g class="stn-node" onclick="selectStation('s2')">
-            <circle id="svg-stn-s2" cx="465" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
-            <text x="465" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S2</text>
-            <text x="465" y="128" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">AF3 &amp; Pockets</text>
-            <text x="465" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 2 (WO-004..5)</text>
-          </g>
-
-          <g class="stn-node" onclick="selectStation('s3')">
-            <circle id="svg-stn-s3" cx="655" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
-            <text x="655" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S3</text>
-            <text x="655" y="192" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">ADMET Reroute</text>
-            <text x="655" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">Gate 3 (WO-006)</text>
-          </g>
-
-          <g class="stn-node" onclick="selectStation('s4')">
-            <circle id="svg-stn-s4" cx="850" cy="155" r="15" fill="#0f172a" stroke="#f59e0b" stroke-width="3.5"/>
-            <text x="850" y="159" fill="#fde68a" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">&#9208;</text>
-            <text x="850" y="192" fill="#fde68a" font-size="12" font-weight="bold" text-anchor="middle">Wet-Lab &amp; PK</text>
-            <text x="850" y="207" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">CRO Hold + WO-007</text>
-          </g>
-
-          <g class="stn-node" onclick="selectStation('s5')">
-            <circle id="svg-stn-s5" cx="1055" cy="155" r="15" fill="#0f172a" stroke="#10b981" stroke-width="3.5"/>
-            <text x="1055" y="159" fill="#fff" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">S5</text>
-            <text x="1055" y="128" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Gate 4 &amp; Audit</text>
-            <text x="1055" y="113" fill="#94a3b8" font-size="10.5" font-family="monospace" text-anchor="middle">40 mg QD (WO-008)</text>
-          </g>
-        </svg>
-
-        <div class="subway-station-pills">
-          <button class="stn-pill active" id="pill-s0" onclick="selectStation('s0')">S0: Co-Scientist Prompt &amp; Split</button>
-          <button class="stn-pill" id="pill-s1" onclick="selectStation('s1')">S1: Genetics / scRNA-seq Switch</button>
-          <button class="stn-pill" id="pill-s2" onclick="selectStation('s2')">S2: Cryptic Groove vs EGF-A</button>
-          <button class="stn-pill" id="pill-s3" onclick="selectStation('s3')">S3: hERG Block &rarr; BRICS Loop</button>
-          <button class="stn-pill" id="pill-s4" onclick="selectStation('s4')">S4: &#9208; Wet-Lab Hold &amp; Oral PK</button>
-          <button class="stn-pill" id="pill-s5" onclick="selectStation('s5')">S5: Gate 4 &amp; Macrocycle Override</button>
-        </div>
-      </div>
-
-      <div id="subway-inspector" class="grid-2"></div>
-
-      <div>
-        <h3 style="margin:0.2rem 0 0.45rem 0;color:#0f172a;">Design Trade-Off: Dynamic Subway Map vs. Linear 7-Step Story Arc</h3>
-        <table>
-          <thead><tr><th>Dimension</th><th>Linear 7-Step Replay Spine (<code>Step 1 &rarr; Step 7</code>)</th><th>Dynamic Subway Map (<code>.oase/control/</code> State Machine)</th><th>How This Workshop Uses Both Together</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Primary Strength</strong></td><td>Easy for 20 scientists and executives to follow in 4.5 minutes of recorded video without getting lost across 16 combinatoric branches.</td><td>Proves OASE is <strong>not</strong> a rigid Nextflow DAG: tool outputs dynamically spawn detours, pause for wet-lab CRO assays, or switch chemotype lines.</td><td>The <strong>7 chapters</strong> record one complete winning journey (including the Step 4 <code>hERG</code> reroute), while the <strong>Subway Map + Live Scion Prompts</strong> let you test alternate branches on demand.</td></tr>
-            <tr><td><strong>Role of Upstream Prompt</strong></td><td>Hidden if you start at <code>WO-001</code> output.</td><td><strong>Draws the map:</strong> TPP preferences (unenhanced oral Ro5, LoF safety, <code>FP-001</code> kill criteria) set <code>.oase/thresholds.yaml</code> and park <code>IC-002</code> as backup.</td><td><code>Step 1</code> surfaces the full Co-Scientist brief and traces every downstream threshold back to that initial prompt.</td></tr>
-            <tr><td><strong>Workshop Reset Safety</strong></td><td>Deterministic <code>ch0..ch7</code> Git + SQLite snapshots reset in <code>&lt;2s</code>.</td><td>Live Scion Webchat lets attendees ask <code>@science-program-lead</code> to branch mid-workshop.</td><td>Experiment with dynamic track switches live in Scion Webchat, then click <strong><code>&#8634; Reset CHN (&lt;2s)</code></strong> to snap back cleanly.</td></tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
@@ -982,6 +988,14 @@ function showChapter(ch) {
   if (history.replaceState) history.replaceState(null, '', '#' + ch);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+window.jumpToRecapMap = function() {
+  showChapter('ch7');
+  setTimeout(() => {
+    const el = document.getElementById('recap-subway-section');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+};
 
 function openLightbox(src, caption) {
   const lb = document.getElementById('lightbox');
@@ -1036,7 +1050,9 @@ function bindSubpageLinks(root) {
 bindSubpageLinks(document);
 
 const hash = window.location.hash.replace('#', '');
-if (hash && document.getElementById('panel-' + hash)) {
+if (hash === 'subway' || hash === 'recap-subway-section') {
+  jumpToRecapMap();
+} else if (hash && document.getElementById('panel-' + hash)) {
   showChapter(hash);
 }
 

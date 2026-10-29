@@ -74,7 +74,7 @@ Divide attendees into **5 functional roles** (individuals or small 2–4 person 
 
 **Objective:** Experience **What If #1 (Multiplayer Surface)** and **What If #2 (Multi-Model Optionality)** firsthand while taking `pcsk9-oral` through **Gate 1 (Target Validation)**.
 
-1. **Watch Context (`3 min`):** Play the **Step 1** (`WO-001` Co-Scientist Elo Tournament) and **Step 2** (`WO-002..003` Human Genetics & Omics) Squadron clips in `chapters.html` (`#ch1` and `#ch2`), and inspect the **Upstream Co-Scientist Research Brief** ([`prompts/coscientist-research-brief.md`](../prompts/coscientist-research-brief.md)) plus the **`Dynamic Subway Map`** tab (`#subway`)—pointing out how the initial prompt's unenhanced oral Rule-of-5 preference and `FP-001` kill criteria open both **Green Line (`IC-001`)** and **Amber Backup Line (`IC-002`)** and lock `.oase/thresholds.yaml`.
+1. **Watch Context (`3 min`):** Review the high-level **Subway Navigator** framing in `Overview` (`#why`), then play the **Step 1** (`WO-001` Co-Scientist Elo Tournament) and **Step 2** (`WO-002..003` Human Genetics & Omics) Squadron clips in `chapters.html` (`#ch1` and `#ch2`), inspecting the **Upstream Co-Scientist Research Brief** ([`prompts/coscientist-research-brief.md`](../prompts/coscientist-research-brief.md))—pointing out how the initial prompt's unenhanced oral Rule-of-5 preference and `FP-001` kill criteria open both primary hypothesis `IC-001` and backup macrocycle `IC-002` while locking `.oase/thresholds.yaml`.
 2. **Multiplayer Scion & Dynamic Subway Routing Exercise (`10 min`):**
    - **Seat 1 (`oase-sarah`)** and **Seat 2 (`oase-marcus`)** both click **"Join Live at This Stage"** on `Step 2` so the room sees multiple scientists typing in the same shared Grove conversation simultaneously.
    - Paste or adapt these live `@mention` prompts in Scion Webchat (including a live **Subway Track-Switch Drill** showing how OASE dynamically routes to single-cell `.h5ad` if bulk RNA-seq comes back low):
@@ -186,8 +186,8 @@ Divide attendees into **5 functional roles** (individuals or small 2–4 person 
 
 **Objective:** Connect the workshop experience directly to the organization's internal tools, assays, and Google Cloud environment.
 
-1. **Portfolio Closeout & 30-Page Evidence Portal (`5 min`):**
-   - Watch **Step 7** (`#ch7`, `Grove-1` closeout) and click **`Portal Home (30 Pages)`** (`index.html`) + **`WO-008 Candidate Dossier`** to show the self-contained executive deliverable a portfolio committee receives—every claim clickable down to its Layer-0 JSON receipt.
+1. **Campaign Route Recap & 30-Page Evidence Portal (`5 min`):**
+   - Watch **Step 7** (`#ch7`, `Grove-1` closeout), walk through the **Interactive Campaign Route Recap Map** (`#recap-subway-section`, clicking Stations `S0`–`S5` to review how the campaign dynamically switched tracks around flat `EGF-A` and the `PCSK9-A02` `hERG` trap), and click **`Portal Home (30 Pages)`** (`index.html`) + **`WO-008 Candidate Dossier`** to show the self-contained executive deliverable a portfolio committee receives—every claim clickable down to its Layer-0 JSON receipt.
 2. **Wrapping Internal Tools & Assays (`7 min`):**
    - Open [Module 05 — Build & Register Custom Tools](05-extend-custom-tools.md) (`oase h5ad` adapter + `49` unit tests). Highlight how any internal Python library, container, or LIMS/CRO reader plugs into OASE in ~100 lines by emitting `raw/<class>/<id>.json` + `.meta.json` (Phase 1) and `.analysis.json` (Phase 2).
 3. **Actionable Next-Step Closeout — Standing Up a Pilot in Your GCP Environment (`8 min`):**
