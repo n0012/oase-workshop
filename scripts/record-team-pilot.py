@@ -1005,6 +1005,148 @@ def build_pip_overlay_clip(
     )
 
 
+def build_console_drawer_clip(
+    tid: str,
+    viewer_name: str,
+    caption_text: str,
+    accent_hex: str,
+    slot_frames: int,
+    do_scroll: bool,
+    seg_tmp_dir: Path,
+) -> Path:
+    """Render an exact `slot_frames`-frame 1004x992 @ 30fps Console Evidence Drawer MP4 without parent-iframe CSP."""
+    from playwright.sync_api import sync_playwright
+
+    viewers_dir = REPO_ROOT / "site-template" / "viewers"
+    viewer_file = viewers_dir / viewer_name
+    if not viewer_file.exists():
+        raise FileNotFoundError(f"Viewer file not found: {viewer_file}")
+
+    border_col = "#" + accent_hex.replace("0x", "").replace("#", "")
+    cache_dir = seg_tmp_dir / "_drawer_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
+    # Inject the top 38px Console Evidence header bar directly into a wrapper copy so it matches CONSOLE_VIEWER_INJECT_JS
+    raw_html = viewer_file.read_text(encoding="utf-8")
+    hdr_bar = f"""
+    <div style="height:38px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:#f8fafc;font-size:12px;font-weight:700;letter-spacing:0.02em;position:sticky;top:0;z-index:99999;">
+      <div style="display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;">
+        <span style="width:9px;height:9px;border-radius:50%;background:{border_col};box-shadow:0 0 8px {border_col};display:inline-block;flex-shrink:0;"></span>
+        <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{caption_text or 'LIVE CONSOLE EVIDENCE VIEWER'}</span>
+      </div>
+      <span style="font-family:monospace;font-size:11px;color:#38bdf8;background:rgba(56,189,248,0.12);padding:2px 8px;border-radius:6px;border:1px solid rgba(56,189,248,0.3);flex-shrink:0;">/workspace/_site/viewers/{viewer_name}</span>
+    </div>
+    """
+    wrapped_html = raw_html.replace("<body>", f"<body style='border:2px solid {border_col};min-height:992px;'>\n{hdr_bar}", 1)
+    wrapped_file = cache_dir / f"{tid}_{viewer_name}"
+    wrapped_file.write_text(wrapped_html, encoding="utf-8")
+
+    out_drawer_mp4 = seg_tmp_dir / f"{tid}_drawer.mp4"
+    slot_dur_s = slot_frames / float(FPS)
+
+    if viewer_name == "af3-live-viewer.html":
+        # Record live 60fps spinning 3D AlphaFold 3 canvas in Playwright!
+        vid_tmp = cache_dir / f"vid_{tid}"
+        if vid_tmp.exists():
+            shutil.rmtree(vid_tmp, ignore_errors=True)
+        vid_tmp.mkdir(parents=True, exist_ok=True)
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True, executable_path="/usr/bin/google-chrome")
+            ctx = browser.new_context(
+                viewport={"width": 1004, "height": 992},
+                record_video_dir=str(vid_tmp),
+                record_video_size={"width": 1004, "height": 992},
+            )
+            page = ctx.new_page()
+            page.goto(f"file://{wrapped_file.resolve()}", wait_until="load")
+            half_ms = int((slot_dur_s + 0.5) * 500)
+            page.wait_for_timeout(half_ms)
+            if do_scroll:
+                page.evaluate("window.scrollTo({ top: 110, behavior: 'smooth' })")
+            page.wait_for_timeout(half_ms)
+            vpath = Path(page.video.path())
+            ctx.close()
+            browser.close()
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-ss",
+                "0.25",
+                "-i",
+                str(vpath),
+                "-vf",
+                f"fps={FPS},scale=1004:992,drawbox=x=0:y=0:w=1004:h=992:color={accent_hex}:t=2",
+                "-frames:v",
+                str(slot_frames),
+                "-r",
+                str(FPS),
+                "-c:v",
+                "libx264",
+                "-preset",
+                "fast",
+                "-crf",
+                "18",
+                "-pix_fmt",
+                "yuv420p",
+                "-an",
+                str(out_drawer_mp4),
+            ],
+            check=True,
+            capture_output=True,
+        )
+        shutil.rmtree(vid_tmp, ignore_errors=True)
+        return out_drawer_mp4
+
+    # For SVG/table viewers, capture exact 1004x1120 PNG once and animate smooth scroll in ffmpeg
+    png_path = cache_dir / f"{tid}_drawer.png"
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True, executable_path="/usr/bin/google-chrome")
+        page = browser.new_page(viewport={"width": 1004, "height": 1120})
+        page.goto(f"file://{wrapped_file.resolve()}", wait_until="load")
+        page.wait_for_timeout(200)
+        page.screenshot(path=str(png_path), clip={"x": 0, "y": 0, "width": 1004, "height": 1120})
+        browser.close()
+
+    half_s = slot_dur_s * 0.50
+    scroll_px = 96 if do_scroll else 0
+    fc_drawer = (
+        f"[0:v]fps={FPS},crop=1004:992:0:'if(lt(t,{half_s:.3f}),0,min({scroll_px},(t-{half_s:.3f})*140))',"
+        f"drawbox=x=0:y=0:w=1004:h=992:color={accent_hex}:t=2[vout]"
+    )
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loop",
+            "1",
+            "-i",
+            str(png_path),
+            "-filter_complex",
+            fc_drawer,
+            "-map",
+            "[vout]",
+            "-frames:v",
+            str(slot_frames),
+            "-r",
+            str(FPS),
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-pix_fmt",
+            "yuv420p",
+            "-an",
+            str(out_drawer_mp4),
+        ],
+        check=True,
+        capture_output=True,
+    )
+    return out_drawer_mp4
+
+
 def master_chapter_videos(
     spec: dict[str, Any],
     all_timings: dict[str, Any],
@@ -1074,11 +1216,14 @@ def master_chapter_videos(
         scrub_markers: list[dict[str, Any]] = []
         cursor_frames = 0
 
+        spec_turns_by_id = {t["turn_id"]: t for t in ch["turns"]}
+
         for idx, tinfo in enumerate(rec["turns"]):
             tid = tinfo["turn_id"]
             tnum = int(tinfo.get("turn_num", idx + 1))
             speaker = tinfo["speaker"]
             vmeta = voices[speaker]
+            spec_turn = spec_turns_by_id.get(tid, {})
             src_wav = audio_dir / f"{tid}.wav"
             slot_frames = int(tinfo.get("slot_frames") or round(float(tinfo["target_slot_s"]) * FPS))
             slot_dur_s = slot_frames / float(FPS)
@@ -1108,19 +1253,38 @@ def master_chapter_videos(
                 f_end = f_start + slot_frames
 
             vseg_mp4 = seg_tmp_dir / f"{tid}_vseg.mp4"
-            fc = (
-                f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
-                f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
-                f"[base][1:v]overlay=1608:700[vout]"
-            )
+            viewer_name = (spec_turn.get("console_viewer") or "").strip()
+            if viewer_name:
+                accent_hex = vmeta.get("accent_hex", "0x10b981")
+                drawer_mp4 = build_console_drawer_clip(
+                    tid=tid,
+                    viewer_name=viewer_name,
+                    caption_text=(spec_turn.get("console_caption") or "").strip(),
+                    accent_hex=accent_hex,
+                    slot_frames=slot_frames,
+                    do_scroll=(spec_turn.get("action") == "wait_agent_reply"),
+                    seg_tmp_dir=seg_tmp_dir,
+                )
+                fc = (
+                    f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
+                    f"[base][2:v]overlay=586:48[with_drawer];"
+                    f"[with_drawer][1:v]overlay=1608:700[vout]"
+                )
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4)]
+            else:
+                fc = (
+                    f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
+                    f"[base][1:v]overlay=1608:700[vout]"
+                )
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4)]
+
             subprocess.run(
                 [
                     "ffmpeg",
                     "-y",
-                    "-i",
-                    str(cfr_mp4),
-                    "-i",
-                    str(pip_mp4),
+                    *ff_inputs,
                     "-filter_complex",
                     fc,
                     "-map",

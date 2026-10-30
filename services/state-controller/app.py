@@ -35,7 +35,7 @@ SNAPSHOT_DIR = Path(
 ).resolve()
 GOLDEN_DB_PATH = SNAPSHOT_DIR / "golden-hub.db"
 STATE_TOKEN = os.environ.get("OASE_STATE_TOKEN", "").strip()
-DEFAULT_CAMPAIGN = "pcsk9-pilot-v1"
+DEFAULT_CAMPAIGN = "pcsk9-live-argolis"
 CAMPAIGN_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 
 VALID_CHAPTERS = ("ch0", "ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7")

@@ -1,7 +1,71 @@
 {
   "schema_version": "1.0",
-  "default_campaign": "pcsk9-pilot-v1",
+  "default_campaign": "pcsk9-live-argolis",
   "campaigns": [
+    {
+      "id": "pcsk9-live-argolis",
+      "short_label": "PCSK9 Oral · Multi-Model Live Run (v2)",
+      "nav_slug": "pcsk9-live-v2 · Argon+Opus",
+      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Run: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs (v2)",
+      "status": "ready",
+      "badge": "LIVE · ARGON + OPUS 5.5",
+      "target": "PCSK9 (Q8NBP7) · Gemini 4 Argon (High/Med) + Claude Opus 5.5 + 1P AlphaGenome & AlphaFold 3",
+      "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · Gemini 4 Argon + Claude Opus 5.5 · Dedicated Vertex AI A100 Endpoints · 78/78 oase doctor",
+      "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
+      "static_video_prefix": "assets/videos",
+      "video_manifest": "assets/video-chapters-live-v2-manifest.json",
+      "portal_prefix": "",
+      "kpis": [
+        { "val": "Argon + Opus 5.5", "lbl": "Multi-Model Frontier Squadron" },
+        { "val": "78 / 78 [PASS]", "lbl": "oase doctor Live Health" },
+        { "val": "1P AlphaGenome", "lbl": "Dedicated A100 (us-central1)" },
+        { "val": "1P AlphaFold 3", "lbl": "Dedicated A100 (us-east4)" },
+        { "val": "3D .cif + 1 Mb", "lbl": "Interactive Live Viewers" },
+        { "val": "OASE-PCSK9-014", "lbl": "40 mg QD Lead (8/8 WOs)" }
+      ],
+      "pause_links": {
+        "ch1": [
+          { "label": "🏆 Interactive 7-Agent Hypex Bracket (Argon + Opus 5.5)", "href": "viewers/coscientist-live-viewer.html", "mode": "tab" },
+          { "label": "📄 WO-001 Co-Scientist Finding", "href": "finding_findings_computational-biology_WO-001_md.html", "mode": "subpage" },
+          { "label": "📦 Hypotheses SHA-256 Receipt", "href": "artifact_hypotheses.html", "mode": "subpage" },
+          { "label": "📋 Work Order WO-001-r1", "href": "workorder_WO-001_r1.html", "mode": "subpage" }
+        ],
+        "ch2": [
+          { "label": "🧬 Interactive 1P AlphaGenome 1 Mb Track Browser", "href": "viewers/alphagenome-live-viewer.html", "mode": "tab" },
+          { "label": "📄 WO-002 gnomAD & GTEx Finding", "href": "finding_findings_computational-biology_WO-002_md.html", "mode": "subpage" },
+          { "label": "📄 WO-003 AlphaGenome & Trials", "href": "finding_findings_computational-biology_WO-003_md.html", "mode": "subpage" },
+          { "label": "📊 GTEx Liver Expression", "href": "artifact_gtex.html", "mode": "subpage" }
+        ],
+        "ch3": [
+          { "label": "🧊 Interactive 3D AlphaFold 3 Co-Fold Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
+          { "label": "📄 WO-004 AF3 & Pocket Finding", "href": "finding_findings_structural-biology_WO-004_md.html", "mode": "subpage" },
+          { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" },
+          { "label": "🧪 Interactive Pocket Table", "href": "viewers/pockets-viewer.html?file=../raw/pocket/Q8NBP7_pockets.json", "mode": "tab" }
+        ],
+        "ch4": [
+          { "label": "💊 Claude Opus 5.5 Med-Chem DMTA & Wet-Lab Gate", "href": "viewers/dmta-live-viewer.html", "mode": "tab" },
+          { "label": "📄 WO-006 Med-Chem & BRICS Finding", "href": "finding_findings_medicinal-chemistry_WO-006_md.html", "mode": "subpage" },
+          { "label": "⚠️ Liability Tracker (L-002)", "href": "program_state_liability-tracker.html", "mode": "subpage" },
+          { "label": "📋 Active Series State", "href": "program_state_active-series.html", "mode": "subpage" }
+        ],
+        "ch5": [
+          { "label": "📈 Multi-Species Oral PK Curve & Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
+          { "label": "📄 WO-007 Human Oral PK Finding", "href": "finding_findings_admet-dmpk_WO-007_md.html", "mode": "subpage" },
+          { "label": "📑 WO-008 Candidate Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
+          { "label": "📈 Raw Scaled PK JSON", "href": "viewers/json-viewer.html?file=../raw/pk/oase_pcsk9_014_scaled_pk.json", "mode": "tab" }
+        ],
+        "ch6": [
+          { "label": "🛡 Multi-Model Flight Recorder & Tamper Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
+          { "label": "📜 Signed Decision & Override Log", "href": "program_state_decision-log.html", "mode": "subpage" },
+          { "label": "⚠️ Program Liability Tracker", "href": "program_state_liability-tracker.html", "mode": "subpage" }
+        ],
+        "ch7": [
+          { "label": "🛡 Multi-Model Flight Recorder & 78/78 Doctor", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
+          { "label": "📑 WO-008 Nominated Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
+          { "label": "🏠 Full 30-Page Evidence Portal", "href": "index.html", "mode": "subpage" }
+        ]
+      }
+    },
     {
       "id": "pcsk9-pilot-v1",
       "short_label": "PCSK9 Oral · Reference Pilot (v1)",
@@ -37,7 +101,7 @@
           { "label": "📊 GTEx Liver Expression", "href": "artifact_gtex.html", "mode": "subpage" }
         ],
         "ch3": [
-          { "label": "🧊 Interactive 3Dmol.js AlphaFold 3 Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
+          { "label": "🧊 Interactive 3D AlphaFold 3 Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
           { "label": "📄 WO-004 AF3 & Pocket Finding", "href": "finding_findings_structural-biology_WO-004_md.html", "mode": "subpage" },
           { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" },
           { "label": "🧪 Interactive Pocket Table", "href": "viewers/pockets-viewer.html?file=../raw/pocket/Q8NBP7_pockets.json", "mode": "tab" }
@@ -60,69 +124,6 @@
         ],
         "ch7": [
           { "label": "🛡 Live Multi-Model Flight Recorder & Audit", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
-          { "label": "📑 WO-008 Nominated Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
-          { "label": "🏠 Full 30-Page Evidence Portal", "href": "index.html", "mode": "subpage" }
-        ]
-      }
-    },
-    {
-      "id": "pcsk9-live-argolis",
-      "short_label": "PCSK9 Oral · Multi-Model Live Run (v2)",
-      "nav_slug": "pcsk9-live-v2 · Argon+Opus",
-      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Run: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs (v2)",
-      "status": "ready",
-      "badge": "LIVE · ARGON + OPUS 5.5",
-      "target": "PCSK9 (Q8NBP7) · Gemini 4 Argon (High/Med) + Claude Opus 5.5 + 1P AlphaGenome & AlphaFold 3",
-      "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · Gemini 4 Argon + Claude Opus 5.5 · Dedicated Vertex AI A100 Endpoints · 78/78 oase doctor",
-      "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
-      "static_video_prefix": "assets/videos",
-      "video_manifest": "assets/video-chapters-manifest.json",
-      "portal_prefix": "",
-      "kpis": [
-        { "val": "Argon + Opus 5.5", "lbl": "Multi-Model Frontier Squadron" },
-        { "val": "78 / 78 [PASS]", "lbl": "oase doctor Live Health" },
-        { "val": "1P AlphaGenome", "lbl": "Dedicated A100 (us-central1)" },
-        { "val": "1P AlphaFold 3", "lbl": "Dedicated A100 (us-east4)" },
-        { "val": "3D .cif + 1 Mb", "lbl": "Interactive Live Viewers" },
-        { "val": "OASE-PCSK9-014", "lbl": "40 mg QD Lead (8/8 WOs)" }
-      ],
-      "pause_links": {
-        "ch1": [
-          { "label": "🏆 Interactive 7-Agent Hypex Bracket (Argon + Opus 5.5)", "href": "viewers/coscientist-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-001 Co-Scientist Finding", "href": "finding_findings_computational-biology_WO-001_md.html", "mode": "subpage" },
-          { "label": "📦 Hypotheses SHA-256 Receipt", "href": "artifact_hypotheses.html", "mode": "subpage" },
-          { "label": "📋 Work Order WO-001-r1", "href": "workorder_WO-001_r1.html", "mode": "subpage" }
-        ],
-        "ch2": [
-          { "label": "🧬 Interactive 1P AlphaGenome 1 Mb Track Browser", "href": "viewers/alphagenome-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-002 gnomAD & GTEx Finding", "href": "finding_findings_computational-biology_WO-002_md.html", "mode": "subpage" },
-          { "label": "📄 WO-003 AlphaGenome & Trials", "href": "finding_findings_computational-biology_WO-003_md.html", "mode": "subpage" },
-          { "label": "📊 GTEx Liver Expression", "href": "artifact_gtex.html", "mode": "subpage" }
-        ],
-        "ch3": [
-          { "label": "🧊 Interactive 3Dmol.js AlphaFold 3 Co-Fold Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-004 AF3 & Pocket Finding", "href": "finding_findings_structural-biology_WO-004_md.html", "mode": "subpage" },
-          { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" },
-          { "label": "🧪 Interactive Pocket Table", "href": "viewers/pockets-viewer.html?file=../raw/pocket/Q8NBP7_pockets.json", "mode": "tab" }
-        ],
-        "ch4": [
-          { "label": "💊 Claude Opus 5.5 Med-Chem DMTA & Wet-Lab Gate", "href": "viewers/dmta-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-006 Med-Chem & BRICS Finding", "href": "finding_findings_medicinal-chemistry_WO-006_md.html", "mode": "subpage" },
-          { "label": "⚠️ Liability Tracker (L-002)", "href": "program_state_liability-tracker.html", "mode": "subpage" },
-          { "label": "📋 Active Series State", "href": "program_state_active-series.html", "mode": "subpage" }
-        ],
-        "ch5": [
-          { "label": "📄 WO-007 Human Oral PK Finding", "href": "finding_findings_admet-dmpk_WO-007_md.html", "mode": "subpage" },
-          { "label": "📑 WO-008 Candidate Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
-          { "label": "📈 Raw Scaled PK JSON", "href": "viewers/json-viewer.html?file=../raw/pk/oase_pcsk9_014_scaled_pk.json", "mode": "tab" }
-        ],
-        "ch6": [
-          { "label": "🛡 Multi-Model Flight Recorder & Tamper Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
-          { "label": "📜 Signed Decision & Override Log", "href": "program_state_decision-log.html", "mode": "subpage" },
-          { "label": "⚠️ Program Liability Tracker", "href": "program_state_liability-tracker.html", "mode": "subpage" }
-        ],
-        "ch7": [
-          { "label": "🛡 Multi-Model Flight Recorder & 78/78 Doctor", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
           { "label": "📑 WO-008 Nominated Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
           { "label": "🏠 Full 30-Page Evidence Portal", "href": "index.html", "mode": "subpage" }
         ]

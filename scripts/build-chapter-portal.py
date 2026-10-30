@@ -1396,6 +1396,7 @@ selectStation('s3');
 <script id="oase-cockpit-script">
 (function() {
   const STATIC_VIDEO_MANIFEST = __VIDEO_MANIFEST_JSON__;
+  const STATIC_VIDEO_MANIFESTS_BY_CAMPAIGN = __VIDEO_MANIFESTS_BY_CAMPAIGN_JSON__;
   const STATIC_CAMPAIGNS_REGISTRY = __CAMPAIGNS_REGISTRY_JSON__;
   const DEFAULT_PERSONAS = [
     {"key": "sarah", "prefix": "oase-sarah", "name": "Dr. Sarah Chen", "role": "Program Lead", "avatar": "assets/avatars/sarah.jpg"},
@@ -1758,13 +1759,13 @@ selectStation('s3');
       return;
     }
 
-    const manifest = (cfg && cfg.videos) || STATIC_VIDEO_MANIFEST || {};
+    const cid = (activeCamp && activeCamp.id) || 'pcsk9-live-argolis';
+    const manifest = (cfg && cfg.videos) || (STATIC_VIDEO_MANIFESTS_BY_CAMPAIGN && STATIC_VIDEO_MANIFESTS_BY_CAMPAIGN[cid]) || STATIC_VIDEO_MANIFEST || {};
     const videos = manifest.chapters || {};
     const fullVideo = manifest.full_walkthrough;
     const stChapters = (cfg && cfg.state && cfg.state.chapters) || {};
     const personas = (cfg && cfg.personas) || DEFAULT_PERSONAS;
     const promptsMap = (cfg && cfg.followup_prompts) || DEFAULT_PROMPTS;
-    const cid = (activeCamp && activeCamp.id) || 'pcsk9-pilot-v1';
     const staticPrefix = ((activeCamp && activeCamp.static_video_prefix) || 'assets/videos').replace(/\/?$/, '/');
     const videoBase = isLive
       ? (cid === 'pcsk9-pilot-v1' ? '/api/videos/' : `/api/videos/${encodeURIComponent(cid)}/`)
@@ -2188,25 +2189,33 @@ def main() -> int:
         body_inner = re.sub(r"<nav[^>]*>.*?</nav>", "", body_inner, count=1, flags=re.DOTALL | re.IGNORECASE)
         subpages[html_file.name] = body_inner.strip()
 
-    vmanifest_path = site_dir / "assets" / "video-chapters-manifest.json"
-    if not vmanifest_path.is_file():
-        vmanifest_path = repo_root / "site-template" / "assets" / "video-chapters-manifest.json"
-    vmanifest_data = (
-        json.loads(vmanifest_path.read_text(encoding="utf-8"))
-        if vmanifest_path.is_file()
-        else {"chapters": {}}
-    )
-
+    src_creg = repo_root / "site-template" / "assets" / "campaigns-registry.json"
     cregistry_path = site_dir / "assets" / "campaigns-registry.json"
-    if not cregistry_path.is_file():
-        src_creg = repo_root / "site-template" / "assets" / "campaigns-registry.json"
-        if src_creg.is_file():
-            shutil.copy2(src_creg, cregistry_path)
-            cregistry_path = src_creg
+    if src_creg.is_file() and src_creg.resolve() != cregistry_path.resolve():
+        shutil.copy2(src_creg, cregistry_path)
     cregistry_data = (
         json.loads(cregistry_path.read_text(encoding="utf-8"))
         if cregistry_path.is_file()
-        else {"default_campaign": "pcsk9-pilot-v1", "campaigns": []}
+        else {"default_campaign": "pcsk9-live-argolis", "campaigns": []}
+    )
+
+    manifests_by_campaign = {}
+    for camp in cregistry_data.get("campaigns", []):
+        cid = camp.get("id", "")
+        mrel = camp.get("video_manifest", "assets/video-chapters-manifest.json")
+        src_m = repo_root / "site-template" / mrel
+        dst_m = site_dir / mrel
+        if src_m.is_file() and src_m.resolve() != dst_m.resolve():
+            dst_m.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src_m, dst_m)
+        mpath = dst_m if dst_m.is_file() else src_m
+        if cid and mpath.is_file():
+            manifests_by_campaign[cid] = json.loads(mpath.read_text(encoding="utf-8"))
+
+    vmanifest_data = (
+        manifests_by_campaign.get(cregistry_data.get("default_campaign", "pcsk9-live-argolis"))
+        or manifests_by_campaign.get("pcsk9-pilot-v1")
+        or {"chapters": {}}
     )
 
     html_out = (
@@ -2214,6 +2223,7 @@ def main() -> int:
         .replace("__ENV_SHA__", env_sha)
         .replace("__SUBPAGES_JSON__", json.dumps(subpages))
         .replace("__VIDEO_MANIFEST_JSON__", json.dumps(vmanifest_data))
+        .replace("__VIDEO_MANIFESTS_BY_CAMPAIGN_JSON__", json.dumps(manifests_by_campaign))
         .replace("__CAMPAIGNS_REGISTRY_JSON__", json.dumps(cregistry_data))
     )
     # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports

@@ -410,7 +410,7 @@
           "speaker": "ai_dmpk",
           "action": "wait_agent_reply",
           "target_agent": "admet-dmpk-scientist",
-          "console_viewer": "dmta-live-viewer.html",
+          "console_viewer": "flight-recorder-viewer.html",
           "console_caption": "LIVE ORAL PK & CLINICAL BENCHMARK \u00b7 Rat AUC 12,797 / Dog AUC 19,510 ng*h/mL -> Human t1/2 8.18 h (450 Trials)",
           "tts_text": "Live P-K scaling complete, Claire! Rat A-U-C hit twelve thousand seven hundred ninety-seven and dog hit nineteen thousand five hundred ten, projecting an eight point one-eight hour human half-life for a forty-milligram daily tablet across four hundred fifty clinical studies!",
           "chat_text": "**[WO-007 & WO-008 Complete \u2014 Multi-Species PK Scaling + ClinicalTrials.gov Benchmark]**\n- **WO-007 (`sha256:00020c62` Rat \u00b7 `sha256:67563803` Dog \u00b7 `sha256:14ed82dc` Human):** Rat oral NCA (`10 mg/kg PO`, `AUC0-inf = 4208.1 ng*h/mL`, `t1/2 = 4.53 h`) and Dog oral NCA (`5 mg/kg PO`, `AUC0-inf = 6176.2 ng*h/mL`, `t1/2 = 6.95 h`) scale allometrically to **Human CL = 2.66 mL/min/kg**, **Vd = 1.88 L/kg**, and **t1/2 = 8.18 h** (`105 mg QD` oral projection).\n- **WO-008 (`raw/clinical/PCSK9_trials.clinical.json` \u00b7 `sha256:c8fdf83a`):** Benchmarked **450** live ClinicalTrials.gov PCSK9 studies (`MK-0616` Enlicitide 69% Phase 3 completion; `AZD0780` oral small-molecule precedent)."

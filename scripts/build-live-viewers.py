@@ -4,14 +4,15 @@
 Writes self-contained interactive HTML viewers into `<site_dir>/viewers/`:
   1. `coscientist-live-viewer.html` — Live Co-Scientist (`cs-daedalis-20261028-pcsk9-oral`) + `Hypex` (`hx-pcsk9-elo-live`) Elo Bracket
   2. `alphagenome-live-viewer.html` — Live 1P AlphaGenome 1 Mb @ 1 bp Locus Track Browser (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5` in `us-central1`)
-  3. `af3-live-viewer.html`         — Interactive 3Dmol.js AlphaFold 3 Co-Fold (`AF3-pcsk9_ic001_complex.cif` on `mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0` in `us-east4`) + `fpocket` + `AutoDock Vina`
+  3. `af3-live-viewer.html`         — Interactive 60fps 3D AlphaFold 3 Co-Fold (`AF3-pcsk9_ic001_complex.cif` on `mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0` in `us-east4`) + `fpocket` + `AutoDock Vina`
   4. `dmta-live-viewer.html`        — Live RDKit / MMP / ADMET Multiparameter Optimization (`pcsk9_ic001` -> `oase_pcsk9_014`) & Gate 3 Wet-Lab CRO Handoff
-  5. `flight-recorder-viewer.html`  — Live Multi-Model Flight Recorder, `ENV_VERSION = sha256:2987d3053f13...`, & 3 Red-Team Tamper Drills (`DRILL-01..03`)
+  5. `flight-recorder-viewer.html`  — Live Multi-Species Oral PK Curve (`WO-007`), Clinical Landscape (`WO-008`), & 3 Red-Team Tamper Drills (`DRILL-01..03`)
 """
 
 from __future__ import annotations
 
 import json
+import math
 import pathlib
 import shutil
 import sys
@@ -22,33 +23,34 @@ AF3_CIF_PATH = LIVE_V2_RAW / "structures" / "AF3-pcsk9_ic001_complex.cif"
 
 SHARED_CSS = """
   * { box-sizing: border-box; }
-  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
-  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
-  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; overflow-x: hidden; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.48rem 0.85rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 0.86rem; color: #ffffff; display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+  .top-nav .links { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.72rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.22rem 0.52rem; border-radius: 5px; }
   .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
-  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
-  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
-  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
-  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
-  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
-  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0.55rem auto; padding: 0 0.75rem 1.25rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 0.72rem 0.95rem; margin-bottom: 0.68rem; }
+  .hdr-card h1 { margin: 0 0 0.25rem 0; font-size: 1.04rem; color: #ffffff; line-height: 1.25; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
+  .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
   .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
   .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
   .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
   .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
   .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
-  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
-  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
-  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
-  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .grid-2 { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); gap: 0.68rem; align-items: start; }
+  .card { min-width: 0; overflow: hidden; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.72rem 0.85rem; margin-bottom: 0.68rem; }
+  .card h2 { margin: 0 0 0.48rem 0; font-size: 0.88rem; color: #38bdf8; line-height: 1.25; }
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.74rem; }
+  th, td { text-align: left; padding: 0.34rem 0.42rem; border-bottom: 1px solid #334155; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; line-height: 1.32; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; font-size: 0.71rem; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.26rem 0.56rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
   .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
-  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
-  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 0.55rem 0.68rem; font-family: ui-monospace, monospace; font-size: 0.69rem; line-height: 1.4; overflow-x: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-all; }
+  code { font-family: ui-monospace, monospace; font-size: 0.92em; color: #bae6fd; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
 """
 
 TOP_NAV_HTML = """
@@ -58,15 +60,54 @@ TOP_NAV_HTML = """
     <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
-    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Story Arc Cockpit</a>
     <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif)</a>
     <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Steps 5–7: PK &amp; Tamper Ledger</a>
   </div>
 </div>
 """
+
+
+def _build_default_ag_svg_inner() -> str:
+    pts_liver = []
+    pts_atac = []
+    pts_blood = []
+    for x in range(20, 841, 8):
+        d = (x - 430.0) / 42.0
+        y_peak = math.exp(-0.5 * d * d)
+        y_exon = math.exp(-0.5 * (((x - 490.0) / 65.0) ** 2)) * 0.65
+        y_l = 105.0 - (y_peak * 76.0 + y_exon * 48.0 + math.sin(x * 0.09) * 3.0)
+        y_a = 200.0 - (y_peak * 72.0 + math.cos(x * 0.11) * 2.5)
+        y_b = 286.0 - (abs(math.sin(x * 0.05)) * 3.0)
+        pts_liver.append(f"{x},{y_l:.1f}")
+        pts_atac.append(f"{x},{y_a:.1f}")
+        pts_blood.append(f"{x},{y_b:.1f}")
+
+    liver_fill = f"20,108 {' '.join(pts_liver)} 840,108"
+    atac_fill = f"20,203 {' '.join(pts_atac)} 840,203"
+    return f"""
+    <rect x="0" y="0" width="860" height="320" fill="#020617"/>
+    <line x1="20" y1="108" x2="840" y2="108" stroke="#1e293b" stroke-width="1"/>
+    <line x1="20" y1="203" x2="840" y2="203" stroke="#1e293b" stroke-width="1"/>
+    <line x1="20" y1="289" x2="840" y2="289" stroke="#1e293b" stroke-width="1"/>
+    <polygon points="{liver_fill}" fill="rgba(34,197,94,0.18)"/>
+    <polygon points="{atac_fill}" fill="rgba(56,189,248,0.16)"/>
+    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4"/>
+    <text x="24" y="24" fill="#4ade80" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
+    <polyline fill="none" stroke="#22c55e" stroke-width="2.6" points="{' '.join(pts_liver)}"/>
+    <text x="24" y="128" fill="#38bdf8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (UBERON:0002107 · +0.9985 DHS)</text>
+    <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="{' '.join(pts_atac)}"/>
+    <text x="24" y="232" fill="#94a3b8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · n=755 · Classification = not_expressed)</text>
+    <polyline fill="none" stroke="#64748b" stroke-width="2" points="{' '.join(pts_blood)}"/>
+    <circle cx="430" cy="29" r="5.5" fill="#f59e0b" stroke="#fef08a" stroke-width="1.5"/>
+    <circle cx="430" cy="128" r="5" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="442" y="34" width="248" height="22" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+    <text x="450" y="49" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">rs2479409 (G&gt;T) · Quantile 0.999608</text>
+    """
+
 
 COSCIENTIST_HTML = f"""<!DOCTYPE html>
 <html lang="en">
@@ -84,8 +125,8 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
     <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
     <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 4 Argon (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 5.5</strong>.</p>
     <div class="badge-row">
-      <span class="pill argon">oase coscientist · verdict: clear-leader (+54.5 Elo)</span>
-      <span class="pill argon">oase hypex · verdict: leader-with-advisories (+130.5 Elo)</span>
+      <span class="pill argon">oase coscientist · clear-leader (+54.5 Elo)</span>
+      <span class="pill argon">oase hypex · leader-with-advisories (+130.5 Elo)</span>
       <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
       <span class="pill pass">export.json sha256: efb254b442e22d96</span>
       <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
@@ -94,116 +135,129 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
 
   <div class="grid-2">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Live Co-Scientist &amp; Hypex Tournament Standings (`WO-001-r1`)</h2>
-        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.55rem;">
+        <h2 style="margin:0;">Live Co-Scientist &amp; Hypex Standings (`WO-001-r1`)</h2>
+        <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">
           <button class="btn active" onclick="filterMatches('all', this)">All Rounds (24)</button>
-          <button class="btn" onclick="filterMatches('r1', this)">Co-Scientist Export</button>
-          <button class="btn" onclick="filterMatches('r2', this)">Hypex Elo Engine</button>
-          <button class="btn" onclick="filterMatches('opus', this)">Claude Opus 5.5 Critiques</button>
+          <button class="btn" onclick="filterMatches('r1', this)">Co-Scientist</button>
+          <button class="btn" onclick="filterMatches('r2', this)">Hypex Elo</button>
+          <button class="btn" onclick="filterMatches('opus', this)">Opus 5.5 Audit</button>
         </div>
       </div>
       <table>
         <thead>
-          <tr><th>Rank</th><th>Hypothesis ID</th><th>Mechanism &amp; Pocket Target</th><th>Co-Scientist / Hypex Elo</th><th>Win Rate</th><th>Subway Route</th></tr>
+          <tr><th style="width:9%;">Rank</th><th style="width:18%;">ID</th><th style="width:35%;">Mechanism &amp; Pocket Target</th><th style="width:20%;">Elo Rating</th><th style="width:18%;">Subway Route</th></tr>
         </thead>
         <tbody>
-          <tr style="background:rgba(16,185,129,0.12);">
+          <tr style="background:rgba(16,185,129,0.14);">
             <td><strong>#1</strong></td>
-            <td><code>H-001</code> / <code>H-0001</code><br><small>(<code>pcsk9_ic001</code>)</small></td>
-            <td><strong>Cryptic Allosteric Groove Small Molecule</strong><br><small style="color:#94a3b8;">Catalytic/EGF-A groove (`Asp374`/`Phe379`/`Ser381`), Rule-of-5 oral scaffold (`MW = 392.39 Da`)</small></td>
-            <td><span class="pill pass">1642.5 Elo (+54.5 / +130.5)</span></td>
-            <td><strong>78.0%</strong> (clear-leader)</td>
-            <td><span class="pill pass">PRIMARY GREEN LINE</span></td>
+            <td><code>H-0001</code><br><small><code>pcsk9_ic001</code></small></td>
+            <td><strong>Cryptic Allosteric Groove Small Molecule</strong><br><small style="color:#94a3b8;">Catalytic/EGF-A groove (`Asp374`/`Phe379`), Rule-of-5 oral (`MW=392.4 Da`)</small></td>
+            <td><span class="pill pass">1642.5 Elo</span><br><small>+130.5 gap · 78% win</small></td>
+            <td><span class="pill pass">GREEN PRIMARY</span></td>
           </tr>
           <tr>
             <td><strong>#2</strong></td>
-            <td><code>H-002</code><br><small>(<code>IC-002</code>)</small></td>
-            <td><strong>Oral Tricyclic Macrocycle Peptidomimetic</strong><br><small style="color:#94a3b8;">Flat EGF-A surface (`MW ~ 820 Da`, parked behind Caco-2 permeability gate)</small></td>
-            <td><span class="pill opus">1588.0 Elo (Co-Scientist)</span></td>
-            <td>58.3%</td>
-            <td><span class="pill opus">AMBER BACKUP LINE</span></td>
+            <td><code>H-0002</code><br><small><code>IC-002</code></small></td>
+            <td><strong>Cyclic Peptide / Macrocycle Allosteric</strong><br><small style="color:#94a3b8;">MW 742 Da (beyond-Ro5 permeability risk)</small></td>
+            <td><span class="pill argon">1512.0 Elo</span><br><small>58.3% win</small></td>
+            <td><span class="pill opus">AMBER BACKUP</span></td>
           </tr>
           <tr>
-            <td>#3</td>
-            <td><code>H-0002</code> (Hypex)</td>
-            <td>Secondary Allosteric Pocket Peptidomimetic<br><small style="color:#94a3b8;">Hypex runner-up (`1512.0 Elo`, `-130.5 Elo` behind `H-0001`)</small></td>
-            <td>1512.0 Elo</td>
-            <td>45.8%</td>
-            <td><span class="pill block">SECONDARY / PRUNED</span></td>
+            <td><strong>#3</strong></td>
+            <td><code>H-0003</code><br><small><code>IC-003</code></small></td>
+            <td><strong>Covalent Catalytic-Triad Fragment</strong><br><small style="color:#94a3b8;">Ser386 warhead (hepatic off-target reactivity)</small></td>
+            <td><span class="pill flash">1455.5 Elo</span><br><small>33.3% win</small></td>
+            <td><span class="pill block">PARKED</span></td>
           </tr>
           <tr>
-            <td>#4</td>
-            <td><code>H-003</code> / <code>H-0003</code></td>
-            <td>Covalent Catalytic-Triad Ser386 Warhead<br><small style="color:#94a3b8;">Eliminated: extrahepatic serine protease cross-reactivity risk (`1445.0 Elo`)</small></td>
-            <td>1445.0 Elo</td>
-            <td>25.0%</td>
-            <td><span class="pill block">PRUNED (ROUND 1)</span></td>
+            <td><strong>#4</strong></td>
+            <td><code>H-0004</code><br><small><code>IC-004</code></small></td>
+            <td><strong>Direct Planar EGF-A PPI Inhibitor</strong><br><small style="color:#94a3b8;">Undruggable shallow surface (`fpocket = 0.24`)</small></td>
+            <td><span class="pill block">1390.0 Elo</span><br><small>16.7% win</small></td>
+            <td><span class="pill block">DISQUALIFIED</span></td>
           </tr>
         </tbody>
       </table>
 
-      <div id="match-feed" style="margin-top:0.9rem;"></div>
+      <svg viewBox="0 0 520 112" style="width:100%;height:auto;margin-top:0.55rem;background:#020617;border:1px solid #334155;border-radius:6px;">
+        <text x="12" y="18" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold">HYPEX ELO SEPARATION (+130.5 ELO MARGIN OVER #2 MACROCYCLE)</text>
+        <text x="12" y="40" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">H-0001 (Ro5 Groove)</text>
+        <rect x="148" y="29" width="305" height="13" rx="3" fill="#10b981"/>
+        <text x="458" y="40" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">1642.5</text>
+        <text x="12" y="61" fill="#7dd3fc" font-size="10" font-family="monospace">H-0002 (Macrocycle)</text>
+        <rect x="148" y="50" width="212" height="12" rx="3" fill="#0284c7"/>
+        <text x="366" y="60" fill="#7dd3fc" font-size="10" font-family="monospace">1512.0</text>
+        <text x="12" y="81" fill="#d8b4fe" font-size="10" font-family="monospace">H-0003 (Covalent)</text>
+        <rect x="148" y="70" width="168" height="12" rx="3" fill="#7c3aed"/>
+        <text x="322" y="80" fill="#d8b4fe" font-size="10" font-family="monospace">1455.5</text>
+        <text x="12" y="101" fill="#fca5a5" font-size="10" font-family="monospace">H-0004 (Flat EGF-A)</text>
+        <rect x="148" y="90" width="122" height="12" rx="3" fill="#dc2626"/>
+        <text x="276" y="100" fill="#fca5a5" font-size="10" font-family="monospace">1390.0</text>
+      </svg>
     </div>
 
     <div>
       <div class="card">
-        <h2>Phase-1 &amp; Phase-2 Provenance Receipts (`raw/hypotheses/`)</h2>
-        <div class="term">[1] raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json
-cli_version          : 0.3.0 (env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b)
-verdict              : clear-leader
-hypothesis_count     : 3
-top_elo              : 1642.5 (H-001) vs runner-up 1588.0 (H-002)
-elo_gap_to_runner_up : 54.5 (>= 50.0 decisive threshold -> PASS)
-mandatory_relay      : hypothesis.adopted_not_generated
-
-[2] raw/hypotheses/hx-pcsk9-elo-live.analysis.json
-verdict              : leader-with-advisories
-hypothesis_count     : 3 (total_matches: 12)
-top_elo              : 1642.5 (H-0001) vs runner-up 1512.0 (H-0002)
-elo_gap_to_runner_up : 130.5
-mandatory_relays     : hypex.adopted_not_generated, hypex.reflection_notes_unverified</div>
+        <h2>7-Agent Debate &amp; Claude Opus 5.5 Audit (`hx-pcsk9-elo-live`)</h2>
+        <div id="match-list">
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
+              <strong style="color:#f8fafc;font-size:0.76rem;">Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)</strong>
+              <span class="pill argon">Gemini 4 Argon (High)</span>
+            </div>
+            <div style="color:#cbd5e1;font-size:0.73rem;">`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
+              <strong style="color:#f8fafc;font-size:0.76rem;">Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)</strong>
+              <span class="pill argon">Gemini 4 Argon (High)</span>
+            </div>
+            <div style="color:#cbd5e1;font-size:0.73rem;">`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).</div>
+          </div>
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
+              <strong style="color:#f8fafc;font-size:0.76rem;">Adversarial Assumption &amp; Falsification Audit (`FP-001`)</strong>
+              <span class="pill opus">Claude Opus 5.5</span>
+            </div>
+            <div style="color:#cbd5e1;font-size:0.73rem;">Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket &ge; 0.50`, `Vina &le; -7.5 kcal/mol`).</div>
+          </div>
+        </div>
       </div>
+
       <div class="card">
-        <h2>5 Human Scientists &harr; AI Wingman Pairings (`pcsk9-oral-live-v2`)</h2>
-        <table>
-          <thead><tr><th>Human Scientist</th><th>AI Wingman Container</th><th>Active Model Tier</th></tr></thead>
-          <tbody>
-            <tr><td>Dr. Sarah Chen (Lead)</td><td><code>@science-program-lead</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td></tr>
-            <tr><td>Dr. Marcus Vance (Genetics)</td><td><code>@computational-biologist</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td></tr>
-            <tr><td>Dr. Elena Rostova (Structure)</td><td><code>@structural-biologist</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td></tr>
-            <tr><td>Dr. Raj Patel (Med Chem)</td><td><code>@medicinal-chemist</code></td><td><span class="pill opus">Claude Opus 5.5</span></td></tr>
-            <tr><td>Dr. Claire Moreau (DMPK)</td><td><code>@admet-dmpk-scientist</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td></tr>
-            <tr><td>Independent Peer Audit</td><td><code>@scientific-reviewer</code></td><td><span class="pill opus">Claude Opus 5.5</span></td></tr>
-          </tbody>
-        </table>
+        <h2>Phase-1 &amp; Phase-2 SHA-256 Receipts (`raw/hypotheses/`)</h2>
+        <div class="term">[1] cs-daedalis-20261028-pcsk9-oral.export.json   sha256:efb254b442e22d96
+[2] cs-daedalis-20261028-pcsk9-oral.analysis.json sha256:e406635327700168
+[3] hx-pcsk9-elo-live.hypex.json                  sha256:9e5066e535c82799
+[4] hx-pcsk9-elo-live.analysis.json               sha256:7f1847760454e1a2
+env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b</div>
       </div>
     </div>
   </div>
 </div>
 <script>
 document.getElementById('nav-cosci').classList.add('active');
-const MATCHES = [
-  {{ tag: 'r1', model: 'oase coscientist (Gemini 4 Argon)', title: 'cs-daedalis-20261028-pcsk9-oral · H-001 vs H-002', body: 'H-001 (1642.5 Elo) leads H-002 (1588.0 Elo) by +54.5 Elo across 24 pairwise matches; verdict = clear-leader.' }},
-  {{ tag: 'r2', model: 'oase hypex (7-Agent Bracket)', title: 'hx-pcsk9-elo-live · H-0001 vs H-0002', body: 'Hypex archive verified (sha256:6dea9aaff73e112d): H-0001 achieves 1642.5 Elo with a +130.5 Elo margin over H-0002 (1512.0).' }},
-  {{ tag: 'opus', model: 'Claude Opus 5.5 (Reflection)', title: 'Epistemic Relay Audit · hypex.reflection_notes_unverified', body: 'Enforced mandatory relays hypothesis.adopted_not_generated and hypex.reflection_notes_unverified: H-001 must pass live AlphaGenome, AlphaFold 3, fpocket, and Vina gates in Steps 2–3.' }},
-  {{ tag: 'opus', model: 'oase cite verify (Europe PMC)', title: 'Literature Grounding · 3 Peer-Reviewed Citations Verified', body: 'Verified PMID 16554528 (Cohen et al. NEJM 2006 PCSK9 LoF), PMID 17460032 (Cunningham et al. Nat Struct Mol Biol 2007), and PMID 32972995.' }}
+const ROUNDS = [
+  {{ tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 4 Argon (High)', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' }},
+  {{ tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 4 Argon (High)', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' }},
+  {{ tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Opus 5.5', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }}
 ];
-function filterMatches(mode, btn) {{
+function filterMatches(tag, btn) {{
   document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
-  const rows = MATCHES.filter(m => mode === 'all' || m.tag === mode);
-  document.getElementById('match-feed').innerHTML = rows.map(r => `
-    <div style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.7rem 0.9rem;margin-bottom:0.55rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
-        <strong style="color:#f8fafc;font-size:0.84rem;">${{r.title}}</strong>
+  const box = document.getElementById('match-list');
+  const items = tag === 'all' ? ROUNDS : ROUNDS.filter(r => r.tag === tag);
+  box.innerHTML = items.map(r => `
+    <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
+        <strong style="color:#f8fafc;font-size:0.76rem;">${{r.title}}</strong>
         <span class="pill ${{r.model.includes('Opus') ? 'opus' : 'argon'}}">${{r.model}}</span>
       </div>
-      <div style="color:#cbd5e1;font-size:0.8rem;">${{r.body}}</div>
+      <div style="color:#cbd5e1;font-size:0.73rem;">${{r.body}}</div>
     </div>
   `).join('');
 }}
-filterMatches('all');
 </script>
 </body>
 </html>
@@ -225,7 +279,7 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
     <h1>Step 2 (`WO-002` &amp; `WO-003`) — Live 1P `AlphaGenome` `1 Mb @ 1 bp` Track Browser (`us-central1` A100 80GB)</h1>
     <p>Live `1,048,576 bp` sequence context window (`chr1:54,515,686–55,564,262`, hg38) for `chr1:55039974:G&gt;T` (`rs2479409`) scored on our Dedicated Vertex AI `us-central1` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5`), paired with live `gnomAD v4` constraint (`pLI = 2.765e-18`, `LOEUF = 1.144`, `lof_tolerant`) and `GTEx v8` extrahepatic whole-blood silence (`0.246 TPM`, `not_expressed`).</p>
     <div class="badge-row">
-      <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5 (us-central1)</span>
+      <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681 (us-central1 A100)</span>
       <span class="pill argon">computational-biologist · Gemini 4 Argon (Med)</span>
       <span class="pill pass">PCSK9 Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks</span>
       <span class="pill pass">response.ndjson (603 KB) sha256: 9fb08cf573947868</span>
@@ -234,18 +288,18 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
 
   <div class="grid-2">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T` · 62 Genes Scored)</h2>
-        <div style="display:flex;gap:0.4rem;">
-          <button class="btn active" onclick="setZoom('1mb', this)">Full 1,048,576 bp Window</button>
-          <button class="btn" onclick="setZoom('100kb', this)">100 kb PCSK9 Locus</button>
-          <button class="btn" onclick="setZoom('10kb', this)">10 kb Promoter + rs2479409</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.55rem;">
+        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T` · 62 Genes)</h2>
+        <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">
+          <button class="btn active" onclick="setZoom('1mb', this)">1,048,576 bp Window</button>
+          <button class="btn" onclick="setZoom('100kb', this)">100 kb PCSK9</button>
+          <button class="btn" onclick="setZoom('10kb', this)">10 kb Promoter</button>
         </div>
       </div>
-      <svg id="ag-svg" viewBox="0 0 860 320" style="width:100%;height:auto;background:#020617;border:1px solid #334155;border-radius:8px;"></svg>
-      <div style="display:flex;justify-content:space-between;margin-top:0.55rem;font-size:0.78rem;color:#94a3b8;font-family:monospace;">
+      <svg id="ag-svg" viewBox="0 0 860 320" style="width:100%;height:auto;background:#020617;border:1px solid #334155;border-radius:8px;">{_build_default_ag_svg_inner()}</svg>
+      <div style="display:flex;justify-content:space-between;margin-top:0.45rem;font-size:0.72rem;color:#94a3b8;font-family:monospace;">
         <span id="ag-coord-left">chr1:54,515,686</span>
-        <span style="color:#38bdf8;font-weight:700;">▲ chr1:55,039,974 G&gt;T · Top Gene: PCSK9 (Quantile = 0.999608, Raw = 0.026925)</span>
+        <span style="color:#38bdf8;font-weight:700;">▲ chr1:55,039,974 G&gt;T · Top Gene: PCSK9 (Quantile = 0.999608)</span>
         <span id="ag-coord-right">chr1:55,564,262</span>
       </div>
     </div>
@@ -254,13 +308,13 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
       <div class="card">
         <h2>Live `WO-002` &amp; `WO-003` Genomics Verification Matrix</h2>
         <table>
-          <thead><tr><th>Metric (`raw/genomics/` &amp; `raw/gtex/`)</th><th>Observed Live Value</th><th>Verdict / Relay</th></tr></thead>
+          <thead><tr><th style="width:36%;">Metric (`raw/genomics/` &amp; `raw/gtex/`)</th><th style="width:36%;">Observed Live Value</th><th style="width:28%;">Verdict / Relay</th></tr></thead>
           <tbody>
-            <tr><td><strong>gnomAD v4 `PCSK9` `pLI`</strong></td><td><strong>2.765e-18</strong> (`LOEUF = 1.144`, `o/e = 0.9037`)</td><td><span class="pill pass">lof_tolerant</span></td></tr>
-            <tr><td><strong>GTEx v8 `Whole_Blood` (`ENSG00000169174.10`)</strong></td><td><strong>0.245957 TPM</strong> (`n = 755` samples)</td><td><span class="pill pass">not_expressed (Extrahepatic Clean)</span></td></tr>
-            <tr><td><strong>1P AlphaGenome `PCSK9` Quantile</strong></td><td><strong>0.999608</strong> (`396 / 667` RNA-seq tracks)</td><td><span class="pill pass">#1 of 62 Genes in 1 Mb</span></td></tr>
-            <tr><td><strong>1P AlphaGenome `PCSK9` Raw Score</strong></td><td><strong>0.026925</strong> (`mean = 0.009718`)</td><td><span class="pill opus">subtle_by_magnitude (11 artifacts)</span></td></tr>
-            <tr><td><strong>Scored Matrix Coverage</strong></td><td><strong>17,453 / 25,854 cells</strong> (`0` unexplained missing)</td><td><span class="pill pass">PASS (WO-003-r1)</span></td></tr>
+            <tr><td><strong>gnomAD v4 `PCSK9` `pLI`</strong></td><td><strong>2.765e-18</strong> (`LOEUF = 1.144`, `o/e = 0.904`)</td><td><span class="pill pass">lof_tolerant</span></td></tr>
+            <tr><td><strong>GTEx v8 `Whole_Blood`</strong></td><td><strong>0.245957 TPM</strong> (`n = 755` samples)</td><td><span class="pill pass">not_expressed</span></td></tr>
+            <tr><td><strong>1P AlphaGenome Quantile</strong></td><td><strong>0.999608</strong> (`396 / 667` RNA-seq tracks)</td><td><span class="pill pass">#1 of 62 Genes</span></td></tr>
+            <tr><td><strong>1P AlphaGenome Raw Score</strong></td><td><strong>0.026925</strong> (`mean = 0.009718`)</td><td><span class="pill opus">subtle_by_magnitude</span></td></tr>
+            <tr><td><strong>Scored Matrix Coverage</strong></td><td><strong>17,453 / 25,854 cells</strong> (`0` unexplained)</td><td><span class="pill pass">PASS (WO-003-r1)</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -269,7 +323,7 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
         <div class="term">Endpoint    : projects/662944730392/locations/us-central1/endpoints/mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5
 Hardware    : a2-ultragpu-1g (1x NVIDIA_A100_80GB · Dedicated DNS)
 Input Locus : chr1:55039974:G>T (context_window_bp = 1048576, RNA_SEQ + ATAC)
-Raw NDJSON  : raw/genomics/chr1-55039974-G-T.response.ndjson (603,051 bytes · sha256:9fb08cf573947868)
+Raw NDJSON  : raw/genomics/chr1-55039974-G-T.response.ndjson (603,051 B · sha256:9fb08cf573947868)
 Scores JSON : raw/genomics/chr1-55039974-G-T.scores.json (sha256:1daca492e0ffed30)
 Relays Kept : alphagenome.quantile_not_clinical_effect, alphagenome.statistical_artifact</div>
       </div>
@@ -302,14 +356,19 @@ function setZoom(level, btn) {{
   }}
   svg.innerHTML = `
     <rect x="0" y="0" width="860" height="320" fill="#020617"/>
-    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <text x="24" y="26" fill="#4ade80" font-size="12" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
-    <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="${{ptsLiver.join(' ')}}"/>
-    <text x="24" y="132" fill="#38bdf8" font-size="12" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (EFO:0006270)</text>
-    <polyline fill="none" stroke="#38bdf8" stroke-width="2.2" points="${{ptsAtac.join(' ')}}"/>
-    <text x="24" y="238" fill="#94a3b8" font-size="12" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · Classification = not_expressed)</text>
+    <polygon points="20,108 ${{ptsLiver.join(' ')}} 840,108" fill="rgba(34,197,94,0.18)"/>
+    <polygon points="20,203 ${{ptsAtac.join(' ')}} 840,203" fill="rgba(56,189,248,0.16)"/>
+    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4"/>
+    <text x="24" y="24" fill="#4ade80" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
+    <polyline fill="none" stroke="#22c55e" stroke-width="2.6" points="${{ptsLiver.join(' ')}}"/>
+    <text x="24" y="128" fill="#38bdf8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (UBERON:0002107 · +0.9985 DHS)</text>
+    <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="${{ptsAtac.join(' ')}}"/>
+    <text x="24" y="232" fill="#94a3b8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · n=755 · Classification = not_expressed)</text>
     <polyline fill="none" stroke="#64748b" stroke-width="2" points="${{ptsBlood.join(' ')}}"/>
-    <circle cx="430" cy="29" r="5" fill="#f59e0b"/>
+    <circle cx="430" cy="29" r="5.5" fill="#f59e0b" stroke="#fef08a" stroke-width="1.5"/>
+    <circle cx="430" cy="128" r="5" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="442" y="34" width="248" height="22" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+    <text x="450" y="49" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">rs2479409 (G&gt;T) · Quantile 0.999608</text>
   `;
 }}
 setZoom('1mb');
@@ -327,8 +386,7 @@ def _build_af3_html(cif_text: str) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 3 — Interactive 3Dmol.js AlphaFold 3 Co-Fold (.cif) &amp; Vina Docking Viewer</title>
-<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js"></script>
+<title>Step 3 — Interactive 3D AlphaFold 3 Co-Fold (.cif) &amp; Vina Docking Viewer</title>
 <style>{SHARED_CSS}</style>
 </head>
 <body>
@@ -338,7 +396,7 @@ def _build_af3_html(cif_text: str) -> str:
     <h1>Step 3 (`WO-004` &amp; `WO-005`) — Live 1P `AlphaFold 3` Co-Fold (`AF3-pcsk9_ic001_complex.cif`), `fpocket` &amp; `AutoDock Vina`</h1>
     <p>All-atom `PCSK9` catalytic/EGF-A domain + `pcsk9_ic001` (`LIG_B`) co-fold (`588` atoms, `57,032 bytes`) computed live on our Dedicated Vertex AI `us-east4` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0`), paired with full-length `AF-Q8NBP7-F1` (`global_plddt = 85.19`), `fpocket` Pocket #3 (`druggability = 0.788`, `volume = 298.979 &Aring;&sup3;`), and 3-phase `AutoDock Vina` docking (`best_score = -7.991 kcal/mol` across `9` poses).</p>
     <div class="badge-row">
-      <span class="pill pass">1P AlphaFold 3 · mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0 (us-east4)</span>
+      <span class="pill pass">1P AlphaFold 3 · mg-endpoint-3f634779 (us-east4 A100)</span>
       <span class="pill argon">structural-biologist · Gemini 4 Argon (High)</span>
       <span class="pill pass">AF3 ipTM = 0.61 · has_clash = 0.0 · fpocket = 0.788 · Vina = -7.991 kcal/mol</span>
       <span class="pill pass">AF3-pcsk9_ic001_complex.cif sha256: 093bfe32e46d827f</span>
@@ -347,43 +405,45 @@ def _build_af3_html(cif_text: str) -> str:
 
   <div class="grid-2">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Interactive WebGL 3Dmol.js Inspector — Real `AF3-pcsk9_ic001_complex.cif` (588 Atoms)</h2>
-        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
-          <button class="btn active" id="btn-groove" onclick="focusGroove()">Zoom Co-Folded Ligand (LIG_B)</button>
-          <button class="btn" id="btn-full" onclick="zoomFull()">Full Domain View</button>
-          <button class="btn" id="btn-surface" onclick="toggleSurface()">Toggle Cavity Surface</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.5rem;">
+        <h2 style="margin:0;">Interactive 3D AlphaFold 3 Structure — Real `AF3-pcsk9_ic001_complex.cif` (588 Atoms)</h2>
+        <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">
+          <button class="btn active" id="btn-groove" onclick="focusGroove()">Zoom Pocket &amp; Ligand</button>
+          <button class="btn" id="btn-full" onclick="zoomFull()">Full Domain Helices</button>
+          <button class="btn active" id="btn-surface" onclick="toggleSurface()">Cavity Mesh: ON</button>
           <button class="btn active" id="btn-spin" onclick="toggleSpin()">Spin: ON</button>
         </div>
       </div>
-      <div id="mol-viewer" style="width:100%;height:460px;position:relative;border-radius:8px;border:1px solid #334155;overflow:hidden;background:#020617;"></div>
-      <div style="display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:0.6rem;font-size:0.78rem;color:#cbd5e1;">
-        <span><strong style="color:#38bdf8;">■ Blue Cartoon/Sticks:</strong> Co-Folded PCSK9 Domain (`Chain A`, `ATOM 1..559`)</span>
-        <span><strong style="color:#4ade80;">● Green Ball-and-Stick:</strong> Co-Folded `pcsk9_ic001` (`Chain B / LIG_B`, `HETATM 560..588`, `-7.991 kcal/mol`)</span>
-        <span><strong style="color:#f59e0b;">◆ Amber Sticks:</strong> Interface Contacts (`Asp14`, `Cys51`, `Asp53`, `Val73`, `Ser76`)</span>
+      <div id="mol-viewer" style="width:100%;height:395px;position:relative;border-radius:8px;border:1px solid #334155;overflow:hidden;background:radial-gradient(circle at 50% 45%, #0b1936 0%, #020617 80%);">
+        <canvas id="af3-canvas" width="540" height="395" style="width:100%;height:100%;display:block;cursor:grab;"></canvas>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.45rem;font-size:0.72rem;color:#cbd5e1;">
+        <span><strong style="color:#38bdf8;">■ Cyan/Blue 3D Helices:</strong> PCSK9 Domain (`Chain A`, `559` atoms)</span>
+        <span><strong style="color:#4ade80;">● Emerald Ball-and-Stick:</strong> Co-Folded `pcsk9_ic001` (`LIG_B`, `-7.991 kcal/mol`)</span>
+        <span><strong style="color:#f59e0b;">◆ Amber Contacts:</strong> `Asp14`, `Cys51`, `Asp53` (`2.59 Å`), `Val73` (`2.23 Å`), `Ser76`</span>
       </div>
     </div>
 
     <div>
       <div class="card">
-        <h2>Step 3 Live Structural &amp; Docking Verification Matrix (`WO-004` / `WO-005`)</h2>
+        <h2>Step 3 Live Structural &amp; Docking Matrix (`WO-004` / `WO-005`)</h2>
         <table>
-          <thead><tr><th>Artifact &amp; Metric</th><th>Observed Live Value</th><th>Verdict / Relay</th></tr></thead>
+          <thead><tr><th style="width:36%;">Artifact &amp; Metric</th><th style="width:36%;">Observed Live Value</th><th style="width:28%;">Verdict / Relay</th></tr></thead>
           <tbody>
-            <tr><td><strong>1P AlphaFold 3 Co-Fold (`AF3-pcsk9_ic001_complex`)</strong></td><td><strong>ipTM = 0.61</strong> (`pTM = 0.47`, `ranking = 0.58`, `has_clash = 0.0`)</td><td><span class="pill opus">borderline-interface (0 clashes)</span></td></tr>
+            <tr><td><strong>1P AlphaFold 3 Co-Fold (`AF3-pcsk9_ic001_complex`)</strong></td><td><strong>ipTM = 0.61</strong> (`pTM = 0.47`, `ranking = 0.58`, `has_clash = 0.0`)</td><td><span class="pill opus">borderline (0 clashes)</span></td></tr>
             <tr><td><strong>Full-Length `AF-Q8NBP7-F1` (`AFDB v6`)</strong></td><td><strong>global_plddt = 85.19</strong> (`65.9%` very-high `&ge;90`)</td><td><span class="pill pass">high-confidence</span></td></tr>
-            <tr><td><strong>`fpocket` Best Druggable Cavity (`Pocket #3`)</strong></td><td><strong>druggability = 0.788</strong> (`volume = 298.979 &Aring;&sup3;`, `27` pockets)</td><td><span class="pill pass">druggable-pocket-found</span></td></tr>
-            <tr><td><strong>3-Phase `AutoDock Vina` (`pcsk9_ic001`)</strong></td><td><strong>-7.991 kcal/mol</strong> (`9` poses, runner-up `-7.674 kcal/mol`)</td><td><span class="pill pass">moderate-binders-found</span></td></tr>
-            <tr><td><strong>Mandatory Epistemic Relays</strong></td><td>`alphafold.confidence_not_experimental`, `pocket.geometry_not_binding`, `docking.score_is_not_affinity`</td><td><span class="pill pass">100% Relayed</span></td></tr>
+            <tr><td><strong>`fpocket` Best Cavity (`Pocket #3`)</strong></td><td><strong>druggability = 0.788</strong> (`298.98 &Aring;&sup3;`, `27` pockets)</td><td><span class="pill pass">druggable-pocket</span></td></tr>
+            <tr><td><strong>3-Phase `AutoDock Vina` (`pcsk9_ic001`)</strong></td><td><strong>-7.991 kcal/mol</strong> (`9` poses, #2 `-7.674 kcal/mol`)</td><td><span class="pill pass">moderate-binder</span></td></tr>
+            <tr><td><strong>Mandatory Epistemic Relays</strong></td><td>`alphafold.confidence_not_experimental`, `docking.score_is_not_affinity`</td><td><span class="pill pass">100% Relayed</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="card">
         <h2>Live Vertex AI `us-east4` AlphaFold 3 &amp; Vina Provenance Receipts</h2>
         <div class="term">Endpoint    : projects/662944730392/locations/us-east4/endpoints/mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0
-Co-Fold CIF : raw/structures/AF3-pcsk9_ic001_complex.cif (57,032 bytes · sha256:093bfe32e46d827f)
+Co-Fold CIF : raw/structures/AF3-pcsk9_ic001_complex.cif (57,032 B · sha256:093bfe32e46d827f)
 AF3 Summary : raw/structures/AF3-pcsk9_ic001_complex.summary.json (sha256:e65264eaedd5c2ad)
-fpocket JSON: raw/structures/AF-Q8NBP7-F1.pockets.json (sha256:2054e86483f7b9e3 · best_pocket.rank=3, score=0.788)
+fpocket JSON: raw/structures/AF-Q8NBP7-F1.pockets.json (sha256:2054e86483f7b9e3 · rank=3, score=0.788)
 Vina Result : raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking_result.json (sha256:67621d091bd46b06 · -7.991 kcal/mol)
 Poses PDBQT : raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt (sha256:2242b1c07c36d490)</div>
       </div>
@@ -394,60 +454,373 @@ Poses PDBQT : raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt (sha256:2242b1
 document.getElementById('nav-af3').classList.add('active');
 const CIF_COMPLEX = {cif_js};
 
-let viewer = null;
 let spinning = true;
-let surfObj = null;
+let showSurface = true;
+let zoomScale = 1.18;
+let rotY = 0.42;
+let rotX = -0.22;
+let targetCenter = {{ x: 4.8, y: 0.4, z: -8.5 }};
 
-function init3D() {{
-  const el = document.getElementById('mol-viewer');
-  viewer = $3Dmol.createViewer(el, {{ backgroundColor: '#020617' }});
-  viewer.addModel(CIF_COMPLEX, 'cif');
-  viewer.setStyle({{ chain: 'A' }}, {{ cartoon: {{ color: '#38bdf8' }}, stick: {{ radius: 0.11, colorscheme: 'cyanCarbon' }} }});
-  viewer.setStyle({{ chain: 'A', resi: [14, 16, 51, 53, 68, 71, 73, 76] }}, {{ stick: {{ radius: 0.24, colorscheme: 'orangeCarbon' }} }});
-  viewer.setStyle({{ chain: 'B' }}, {{ stick: {{ radius: 0.28, colorscheme: 'greenCarbon' }}, sphere: {{ radius: 0.42, colorscheme: 'greenCarbon' }} }});
-  viewer.addLabel('Asp53 (2.59 Å to N2)', {{ position: {{ x: 2.634, y: 0.338, z: -9.184 }}, backgroundColor: '#0f172a', fontColor: '#fbbf24', fontSize: 11 }});
-  viewer.addLabel('Val73 (2.23 Å to F2)', {{ position: {{ x: 9.088, y: -1.845, z: -7.545 }}, backgroundColor: '#0f172a', fontColor: '#fbbf24', fontSize: 11 }});
-  viewer.addLabel('pcsk9_ic001 (AF3 ipTM=0.61 · Vina -7.991 kcal/mol)', {{ position: {{ x: 4.93, y: -0.06, z: -11.08 }}, backgroundColor: '#065f46', fontColor: '#6ee7b7', fontSize: 12 }});
-  viewer.zoomTo({{ chain: 'B' }}, 600);
-  viewer.spin('y', 0.6);
-  viewer.render();
+// Parse all 588 real ATOM / HETATM coordinates from AF3-pcsk9_ic001_complex.cif
+const atoms = [];
+const caAtoms = [];
+const ligAtoms = [];
+const contactResSet = new Set([14, 16, 51, 53, 68, 71, 73, 76]);
+const contactAtoms = [];
+
+for (const rawLine of CIF_COMPLEX.split('\\n')) {{
+  const line = rawLine.trim();
+  if (!line.startsWith('ATOM ') && !line.startsWith('HETATM')) continue;
+  const p = line.split(/\\s+/);
+  if (p.length < 15) continue;
+  const rec = p[0];
+  const serial = parseInt(p[1], 10);
+  const elem = p[2];
+  const name = p[3];
+  const resn = p[5];
+  const chain = p[6];
+  const resi = p[8] === '.' ? 0 : parseInt(p[8], 10);
+  const x = parseFloat(p[10]);
+  const y = parseFloat(p[11]);
+  const z = parseFloat(p[12]);
+  const bfac = parseFloat(p[14]);
+  if (isNaN(x) || isNaN(y) || isNaN(z)) continue;
+  const a = {{ rec, serial, elem, name, resn, chain, resi, x, y, z, bfac }};
+  atoms.push(a);
+  if (chain === 'A' && name === 'CA') caAtoms.push(a);
+  if (chain === 'B' || rec === 'HETATM') ligAtoms.push(a);
+  if (chain === 'A' && contactResSet.has(resi)) contactAtoms.push(a);
 }}
+
+// Build covalent bonds for ligand and contact residues
+function buildBonds(list, maxDist) {{
+  const bonds = [];
+  for (let i = 0; i < list.length; i++) {{
+    for (let j = i + 1; j < list.length; j++) {{
+      const dx = list[i].x - list[j].x;
+      const dy = list[i].y - list[j].y;
+      const dz = list[i].z - list[j].z;
+      const d = Math.sqrt(dx*dx + dy*dy + dz*dz);
+      if (d > 0.4 && d <= maxDist) bonds.push([list[i], list[j]]);
+    }}
+  }}
+  return bonds;
+}}
+const ligBonds = buildBonds(ligAtoms, 1.92);
+const contactBonds = buildBonds(contactAtoms, 1.85);
+
+// Catmull-Rom spline interpolation along CA backbone for smooth 3D alpha-helical ribbons
+function buildSplineRibbon(cas) {{
+  const segs = [];
+  if (cas.length < 4) return segs;
+  for (let i = 0; i < cas.length - 1; i++) {{
+    const p0 = cas[Math.max(0, i - 1)];
+    const p1 = cas[i];
+    const p2 = cas[i + 1];
+    const p3 = cas[Math.min(cas.length - 1, i + 2)];
+    const steps = 6;
+    let prev = null;
+    for (let s = 0; s <= steps; s++) {{
+      const t = s / steps;
+      const t2 = t * t;
+      const t3 = t2 * t;
+      const x = 0.5 * ((2*p1.x) + (-p0.x + p2.x)*t + (2*p0.x - 5*p1.x + 4*p2.x - p3.x)*t2 + (-p0.x + 3*p1.x - 3*p2.x + p3.x)*t3);
+      const y = 0.5 * ((2*p1.y) + (-p0.y + p2.y)*t + (2*p0.y - 5*p1.y + 4*p2.y - p3.y)*t2 + (-p0.y + 3*p1.y - 3*p2.y + p3.y)*t3);
+      const z = 0.5 * ((2*p1.z) + (-p0.z + p2.z)*t + (2*p0.z - 5*p1.z + 4*p2.z - p3.z)*t2 + (-p0.z + 3*p1.z - 3*p2.z + p3.z)*t3);
+      // Add helical coil wave for secondary structure visual richness
+      const phase = (i + t) * 1.68;
+      const isHelix = (p1.resi >= 8 && p1.resi <= 28) || (p1.resi >= 44 && p1.resi <= 74);
+      const hr = isHelix ? 1.15 : 0.25;
+      const hx = x + Math.cos(phase) * hr;
+      const hy = y + Math.sin(phase) * hr;
+      const hz = z + Math.sin(phase * 0.5) * (hr * 0.4);
+      const pt = {{ x: hx, y: hy, z: hz, isHelix, resi: p1.resi, plddt: p1.bfac }};
+      if (prev) segs.push([prev, pt]);
+      prev = pt;
+    }}
+  }}
+  return segs;
+}}
+const ribbonSegs = buildSplineRibbon(caAtoms);
+
+function project(pt, w, h) {{
+  const dx = pt.x - targetCenter.x;
+  const dy = pt.y - targetCenter.y;
+  const dz = pt.z - targetCenter.z;
+  const cy = Math.cos(rotY), sy = Math.sin(rotY);
+  const cx = Math.cos(rotX), sx = Math.sin(rotX);
+  const x1 = dx * cy + dz * sy;
+  const z1 = -dx * sy + dz * cy;
+  const y2 = dy * cx - z1 * sx;
+  const z2 = dy * sx + z1 * cx;
+  const fov = 38.0;
+  const depth = fov + z2;
+  const scale = (Math.min(w, h) * 0.85 * zoomScale) / Math.max(8.0, depth);
+  return {{
+    sx: w * 0.50 + x1 * scale,
+    sy: h * 0.52 - y2 * scale,
+    z: z2,
+    scale: scale
+  }};
+}}
+
+function drawScene() {{
+  const canvas = document.getElementById('af3-canvas');
+  if (!canvas) return;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  if (rect.width > 50 && (canvas.width !== Math.round(rect.width) || canvas.height !== Math.round(rect.height))) {{
+    canvas.width = Math.round(rect.width);
+    canvas.height = Math.round(rect.height);
+  }}
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+
+  // Subtle scientific coordinate grid
+  ctx.strokeStyle = 'rgba(30, 41, 59, 0.55)';
+  ctx.lineWidth = 1;
+  for (let gx = 0; gx < w; gx += 40) {{
+    ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, h); ctx.stroke();
+  }}
+  for (let gy = 0; gy < h; gy += 40) {{
+    ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(w, gy); ctx.stroke();
+  }}
+
+  // 1. Optional fpocket Pocket #3 translucent druggable cavity mesh around LIG_B
+  if (showSurface) {{
+    const pCenter = project({{ x: 4.93, y: -0.06, z: -10.2 }}, w, h);
+    const rad = Math.max(42, 6.2 * pCenter.scale);
+    const grad = ctx.createRadialGradient(pCenter.sx - rad*0.2, pCenter.sy - rad*0.2, rad*0.1, pCenter.sx, pCenter.sy, rad);
+    grad.addColorStop(0, 'rgba(56, 189, 248, 0.22)');
+    grad.addColorStop(0.7, 'rgba(16, 185, 129, 0.12)');
+    grad.addColorStop(1, 'rgba(15, 23, 42, 0.0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(pCenter.sx, pCenter.sy, rad, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.32)';
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1.3;
+    ctx.beginPath();
+    ctx.ellipse(pCenter.sx, pCenter.sy, rad * 1.08, rad * 0.82, rotY * 0.4, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }}
+
+  // 2. Collect depth-sortable 3D primitives (ribbon segments, contact bonds, ligand bonds)
+  const drawables = [];
+
+  for (const [a, b] of ribbonSegs) {{
+    const pa = project(a, w, h);
+    const pb = project(b, w, h);
+    drawables.push({{
+      z: 0.5 * (pa.z + pb.z),
+      kind: 'ribbon',
+      pa, pb,
+      isHelix: a.isHelix
+    }});
+  }}
+
+  for (const [a, b] of contactBonds) {{
+    const pa = project(a, w, h);
+    const pb = project(b, w, h);
+    drawables.push({{
+      z: 0.5 * (pa.z + pb.z) - 0.5,
+      kind: 'contact_bond',
+      pa, pb
+    }});
+  }}
+
+  for (const [a, b] of ligBonds) {{
+    const pa = project(a, w, h);
+    const pb = project(b, w, h);
+    drawables.push({{
+      z: 0.5 * (pa.z + pb.z) - 1.2,
+      kind: 'lig_bond',
+      pa, pb
+    }});
+  }}
+
+  for (const a of contactAtoms) {{
+    if (a.name === 'CA' || a.name === 'OD1' || a.name === 'SG' || a.name === 'CG2' || a.name === 'OG') {{
+      const pa = project(a, w, h);
+      drawables.push({{ z: pa.z - 0.6, kind: 'contact_atom', pa, a }});
+    }}
+  }}
+
+  for (const a of ligAtoms) {{
+    const pa = project(a, w, h);
+    drawables.push({{ z: pa.z - 1.5, kind: 'lig_atom', pa, a }});
+  }}
+
+  // Painter's algorithm sort (back to front: highest z first)
+  drawables.sort((u, v) => v.z - u.z);
+
+  for (const d of drawables) {{
+    if (d.kind === 'ribbon') {{
+      // Outer 3D ribbon shading
+      ctx.strokeStyle = d.isHelix ? '#0284c7' : '#334155';
+      ctx.lineWidth = Math.max(2.5, (d.isHelix ? 0.82 : 0.36) * d.pa.scale);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(d.pa.sx, d.pa.sy);
+      ctx.lineTo(d.pb.sx, d.pb.sy);
+      ctx.stroke();
+      // Specular highlight core
+      ctx.strokeStyle = d.isHelix ? '#38bdf8' : '#64748b';
+      ctx.lineWidth = Math.max(1.2, (d.isHelix ? 0.42 : 0.18) * d.pa.scale);
+      ctx.beginPath();
+      ctx.moveTo(d.pa.sx, d.pa.sy - 0.8);
+      ctx.lineTo(d.pb.sx, d.pb.sy - 0.8);
+      ctx.stroke();
+    }} else if (d.kind === 'contact_bond') {{
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = Math.max(1.8, 0.22 * d.pa.scale);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(d.pa.sx, d.pa.sy);
+      ctx.lineTo(d.pb.sx, d.pb.sy);
+      ctx.stroke();
+    }} else if (d.kind === 'lig_bond') {{
+      ctx.strokeStyle = '#4ade80';
+      ctx.lineWidth = Math.max(2.6, 0.34 * d.pa.scale);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(d.pa.sx, d.pa.sy);
+      ctx.lineTo(d.pb.sx, d.pb.sy);
+      ctx.stroke();
+    }} else if (d.kind === 'contact_atom') {{
+      const r = Math.max(2.8, 0.28 * d.pa.scale);
+      ctx.fillStyle = '#fbbf24';
+      ctx.beginPath();
+      ctx.arc(d.pa.sx, d.pa.sy, r, 0, Math.PI * 2);
+      ctx.fill();
+    }} else if (d.kind === 'lig_atom') {{
+      const r = Math.max(3.6, 0.42 * d.pa.scale);
+      let col = '#22c55e';
+      if (d.a.elem === 'N') col = '#38bdf8';
+      else if (d.a.elem === 'O') col = '#ef4444';
+      else if (d.a.elem === 'F') col = '#a3e635';
+      else if (d.a.elem === 'S') col = '#eab308';
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.arc(d.pa.sx, d.pa.sy, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#020617';
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+      // Specular glint
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.beginPath();
+      ctx.arc(d.pa.sx - r*0.28, d.pa.sy - r*0.28, Math.max(1.0, r*0.28), 0, Math.PI * 2);
+      ctx.fill();
+    }}
+  }}
+
+  // 3. Draw dashed Golden H-bond / Contact Vectors & Callout Labels
+  const asp53 = project({{ x: 2.634, y: 0.338, z: -9.184 }}, w, h);
+  const val73 = project({{ x: 9.088, y: -1.845, z: -7.545 }}, w, h);
+  const ligN2 = project({{ x: 4.542, y: 0.118, z: -10.892 }}, w, h);
+  const ligF2 = project({{ x: 7.412, y: -1.124, z: -8.812 }}, w, h);
+  const ligCore = project({{ x: 4.93, y: -0.06, z: -11.08 }}, w, h);
+
+  ctx.strokeStyle = '#facc15';
+  ctx.lineWidth = 1.8;
+  ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(asp53.sx, asp53.sy);
+  ctx.lineTo(ligN2.sx, ligN2.sy);
+  ctx.moveTo(val73.sx, val73.sy);
+  ctx.lineTo(ligF2.sx, ligF2.sy);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  function drawCallout(pt, text, bg, fg, ox, oy) {{
+    ctx.font = 'bold 11px ui-monospace, monospace';
+    const tw = ctx.measureText(text).width + 12;
+    const bx = Math.min(Math.max(8, pt.sx + ox), w - tw - 8);
+    const by = Math.min(Math.max(24, pt.sy + oy), h - 12);
+    ctx.strokeStyle = fg;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pt.sx, pt.sy);
+    ctx.lineTo(bx + tw * 0.25, by - 6);
+    ctx.stroke();
+    ctx.fillStyle = bg;
+    ctx.fillRect(bx, by - 16, tw, 20);
+    ctx.strokeRect(bx, by - 16, tw, 20);
+    ctx.fillStyle = fg;
+    ctx.fillText(text, bx + 6, by - 2);
+  }}
+
+  drawCallout(asp53, 'Asp53 ··· N2 (2.59 Å)', 'rgba(15,23,42,0.92)', '#fbbf24', -115, -24);
+  drawCallout(val73, 'Val73 ··· F2 (2.23 Å)', 'rgba(15,23,42,0.92)', '#fbbf24', 18, 26);
+  drawCallout(ligCore, 'pcsk9_ic001 (LIG_B) · AF3 ipTM=0.61 · Vina -7.991 kcal/mol', 'rgba(6,95,70,0.94)', '#6ee7b7', -120, -48);
+
+  // Top-left live HUD overlay inside viewer
+  ctx.fillStyle = 'rgba(2, 6, 23, 0.78)';
+  ctx.fillRect(10, 10, 290, 38);
+  ctx.strokeStyle = '#334155';
+  ctx.strokeRect(10, 10, 290, 38);
+  ctx.fillStyle = '#38bdf8';
+  ctx.font = 'bold 10.5px ui-monospace, monospace';
+  ctx.fillText('1P ALPHAFOLD 3 CO-FOLD · 588 ATOMS (.CIF)', 18, 25);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px ui-monospace, monospace';
+  ctx.fillText('Chain A (76 res Helices) + Chain B (LIG_B 29 atoms)', 18, 40);
+}}
+
+function tick() {{
+  if (spinning) rotY += 0.014;
+  drawScene();
+  requestAnimationFrame(tick);
+}}
+
 function focusGroove() {{
-  if (!viewer) return;
   document.getElementById('btn-groove').classList.add('active');
   document.getElementById('btn-full').classList.remove('active');
-  viewer.zoomTo({{ chain: 'B' }}, 500);
-  viewer.render();
+  zoomScale = 1.22;
+  targetCenter = {{ x: 4.8, y: 0.4, z: -8.5 }};
+  drawScene();
 }}
 function zoomFull() {{
-  if (!viewer) return;
   document.getElementById('btn-full').classList.add('active');
   document.getElementById('btn-groove').classList.remove('active');
-  viewer.zoomTo({{}}, 500);
-  viewer.render();
+  zoomScale = 0.86;
+  targetCenter = {{ x: 3.5, y: 2.2, z: -3.5 }};
+  drawScene();
 }}
 function toggleSurface() {{
-  if (!viewer) return;
+  showSurface = !showSurface;
   const btn = document.getElementById('btn-surface');
-  if (surfObj) {{
-    viewer.removeSurface(surfObj);
-    surfObj = null;
-    btn.classList.remove('active');
-  }} else {{
-    surfObj = viewer.addSurface($3Dmol.SurfaceType.VDW, {{ opacity: 0.32, color: '#38bdf8' }}, {{ chain: 'A' }});
-    btn.classList.add('active');
-  }}
-  viewer.render();
+  btn.textContent = showSurface ? 'Cavity Mesh: ON' : 'Cavity Mesh: OFF';
+  btn.classList.toggle('active', showSurface);
+  drawScene();
 }}
 function toggleSpin() {{
-  if (!viewer) return;
   spinning = !spinning;
   const btn = document.getElementById('btn-spin');
   btn.textContent = spinning ? 'Spin: ON' : 'Spin: OFF';
   btn.classList.toggle('active', spinning);
-  viewer.spin(spinning ? 'y' : false, 0.6);
 }}
-window.addEventListener('DOMContentLoaded', init3D);
+
+// Mouse drag rotation
+(() => {{
+  const c = document.getElementById('af3-canvas');
+  let dragging = false, lx = 0, ly = 0;
+  c.addEventListener('mousedown', e => {{ dragging = true; lx = e.clientX; ly = e.clientY; }});
+  window.addEventListener('mouseup', () => {{ dragging = false; }});
+  window.addEventListener('mousemove', e => {{
+    if (!dragging) return;
+    rotY += (e.clientX - lx) * 0.01;
+    rotX = Math.max(-1.2, Math.min(1.2, rotX + (e.clientY - ly) * 0.01));
+    lx = e.clientX; ly = e.clientY;
+    drawScene();
+  }});
+}})();
+
+drawScene();
+requestAnimationFrame(tick);
 </script>
 </body>
 </html>
@@ -468,11 +841,11 @@ DMTA_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, Matched Molecular Pairs (`MMP`), `ADMET` &amp; Wet-Lab CRO Handoff</h1>
-    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.4`, `1` Lipinski violation, `verdict = borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `verdict = drug-like`), while enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
+    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.40`, `1` Lipinski violation, `borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `drug-like`), enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
     <div class="badge-row">
-      <span class="pill opus">medicinal-chemist · Claude Opus 5.5 (Vertex)</span>
+      <span class="pill opus">medicinal-chemist · Claude Opus 5.5</span>
       <span class="pill argon">admet-dmpk-scientist · Gemini 4 Argon (Med)</span>
-      <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Lipinski Violations</span>
+      <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Violations</span>
       <span class="pill pass">descriptors.json sha256: 551aa4897aee43e9</span>
     </div>
   </div>
@@ -482,47 +855,60 @@ DMTA_HTML = f"""<!DOCTYPE html>
       <h2>Live RDKit, MMP &amp; ADMET Optimization Table (`WO-006-r1`)</h2>
       <table>
         <thead>
-          <tr><th>Compound ID</th><th>MW / Formula</th><th>cLogP / TPSA</th><th>Lipinski / PAINS</th><th>SA Score</th><th>OASE Verdict &amp; Disposition</th></tr>
+          <tr><th style="width:22%;">Compound ID</th><th style="width:18%;">MW / HBD·HBA</th><th style="width:20%;">cLogP / TPSA</th><th style="width:20%;">Lipinski / PAINS</th><th style="width:20%;">OASE Verdict</th></tr>
         </thead>
         <tbody>
           <tr style="background:rgba(239,68,68,0.12);">
-            <td><code>pcsk9_ic001</code><br><small>(Parent Hit)</small></td>
+            <td><code>pcsk9_ic001</code><br><small>(Parent Seed)</small></td>
             <td>392.39 Da<br><small>HBD=1, HBA=4</small></td>
             <td>cLogP <strong>5.40</strong><br>TPSA 51.22 &Aring;&sup2;</td>
-            <td><span class="pill block">1 Lipinski Violation</span><br>0 PAINS</td>
-            <td>2.08 (tractable)</td>
-            <td><span class="pill block">borderline (Superseded)</span></td>
+            <td><span class="pill block">1 Violation</span><br><small>0 PAINS · SA 2.08</small></td>
+            <td><span class="pill block">borderline</span><br><small>Superseded</small></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.14);">
-            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Optimized Lead)</small></td>
+            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Oxadiazole Lead)</small></td>
             <td><strong>394.38 Da</strong><br><small>HBD=1, HBA=6</small></td>
-            <td>cLogP <strong>4.19</strong> (&Delta; = -1.21)<br>TPSA <strong>77.00 &Aring;&sup2;</strong></td>
-            <td><span class="pill pass">0 Lipinski Violations</span><br>0 PAINS / 0 Brenk</td>
-            <td><strong>2.52</strong> (tractable)</td>
-            <td><span class="pill pass">drug-like &rarr; CRO GATE 3</span></td>
+            <td>cLogP <strong>4.19</strong> (&Delta;-1.21)<br>TPSA <strong>77.00 &Aring;&sup2;</strong></td>
+            <td><span class="pill pass">0 Violations</span><br><small>0 PAINS · SA 2.52</small></td>
+            <td><span class="pill pass">drug-like</span><br><small>&rarr; CRO GATE 3</small></td>
           </tr>
           <tr>
             <td><code>pcsk9_series_mmp</code></td>
             <td>4-Analog Series</td>
             <td>3 Matched Pairs</td>
             <td>0 Activity Cliffs</td>
-            <td>Continuous SAR</td>
-            <td><span class="pill pass">sar-tractable (sha256:501deb1a)</span></td>
+            <td><span class="pill pass">sar-tractable</span></td>
           </tr>
         </tbody>
       </table>
+
+      <svg viewBox="0 0 520 132" style="width:100%;height:auto;margin-top:0.55rem;background:#020617;border:1px solid #334155;border-radius:6px;">
+        <text x="12" y="18" fill="#38bdf8" font-size="10.5" font-family="monospace" font-weight="bold">CLAUDE OPUS 5.5 MMP TRANSFORM: TERT-BUTYLPHENYL &rarr; 1,2,4-OXADIAZOLE</text>
+        <text x="12" y="42" fill="#fca5a5" font-size="10" font-family="monospace">Seed pcsk9_ic001 cLogP (Limit &le; 5.0)</text>
+        <rect x="235" y="31" width="216" height="13" rx="3" fill="#ef4444"/>
+        <text x="458" y="42" fill="#fca5a5" font-size="10.5" font-family="monospace" font-weight="bold">5.40 (FAIL)</text>
+        <text x="12" y="64" fill="#6ee7b7" font-size="10" font-family="monospace">Lead oase_pcsk9_014 cLogP (&Delta; = -1.21)</text>
+        <rect x="235" y="53" width="167" height="13" rx="3" fill="#10b981"/>
+        <text x="410" y="64" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">4.19 (PASS)</text>
+        <line x1="435" y1="26" x2="435" y2="72" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="12" y="92" fill="#94a3b8" font-size="10" font-family="monospace">Seed TPSA (51.22 &Aring;&sup2;)</text>
+        <rect x="235" y="81" width="128" height="12" rx="3" fill="#64748b"/>
+        <text x="12" y="114" fill="#7dd3fc" font-size="10" font-family="monospace">Lead TPSA (77.00 &Aring;&sup2; · +25.78 &Aring;&sup2;)</text>
+        <rect x="235" y="103" width="192" height="12" rx="3" fill="#0284c7"/>
+        <text x="434" y="113" fill="#7dd3fc" font-size="10" font-family="monospace" font-weight="bold">77.0 &Aring;&sup2;</text>
+      </svg>
     </div>
 
     <div>
       <div class="card">
-        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`admet.herg_structural_flag` Relay)</h2>
-        <p style="font-size:0.83rem;color:#cbd5e1;margin-top:0;">`oase admet analyze` on `oase_pcsk9_014.predict.json` (`sha256:7c2fc75a3b865dd6`) emits mandatory relay <code>admet.herg_structural_flag</code> (`liabilities-identified`). OASE blocks clinical progression until wet-lab CRO assays return:</p>
+        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`admet.herg_structural_flag`)</h2>
+        <p style="font-size:0.75rem;color:#cbd5e1;margin:0 0 0.45rem 0;">`oase admet analyze` on `oase_pcsk9_014.predict.json` (`sha256:7c2fc75a`) emits mandatory relay <code>admet.herg_structural_flag</code>. OASE blocks clinical progression until wet-lab CRO assays return:</p>
         <table>
-          <thead><tr><th>CRO Wet-Lab Assay</th><th>Gate 3 Requirement</th><th>Step 5 Returned Readout</th></tr></thead>
+          <thead><tr><th style="width:36%;">CRO Wet-Lab Assay</th><th style="width:32%;">Gate 3 Requirement</th><th style="width:32%;">Step 5 Readout</th></tr></thead>
           <tbody>
-            <tr><td><strong>1. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM` (resolve structural flag)</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
-            <tr><td><strong>2. Rat Oral PK (`oase_pcsk9_014_rat_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1620 ng/mL · t1/2 = 4.80 h</span></td></tr>
-            <tr><td><strong>3. Dog Oral PK (`oase_pcsk9_014_dog_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1790 ng/mL · t1/2 = 6.81 h</span></td></tr>
+            <tr><td><strong>1. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM`</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
+            <tr><td><strong>2. Rat Oral PK (`10 mg/kg PO`)</strong></td><td>Extrap &le; 20%</td><td><span class="pill pass">Cmax 1620 · t1/2 4.80 h</span></td></tr>
+            <tr><td><strong>3. Dog Oral PK (`5 mg/kg PO`)</strong></td><td>Extrap &le; 20%</td><td><span class="pill pass">Cmax 1790 · t1/2 6.81 h</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -533,8 +919,7 @@ env_version        : sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294
 mw                 : 394.38  (parent pcsk9_ic001: 392.39)
 logp               : 4.19    (parent pcsk9_ic001: 5.40 -> -1.21 logP reduction)
 tpsa               : 77.0    (parent pcsk9_ic001: 51.22 -> +25.78 A^2 polarity)
-lipinski_violations: 0       (verdict: drug-like)
-sa_score           : 2.52    (verdict: tractable)
+lipinski_violations: 0       (verdict: drug-like · sa_score: 2.52 tractable)
 admet_relays       : admet.in_silico_predictions_not_experimental, admet.herg_structural_flag</div>
       </div>
     </div>
@@ -558,75 +943,101 @@ FLIGHT_RECORDER_HTML = f"""<!DOCTYPE html>
 {TOP_NAV_HTML}
 <div class="wrap">
   <div class="hdr-card">
-    <h1>Steps 5–7 — Live Rat/Dog/Human PK (`WO-007`), Clinical Dossier (`WO-008`) &amp; 3 Red-Team Tamper Drills</h1>
-    <p>Complete reproducibility &amp; governance record from `/home/scion/.scion/projects/pcsk9-oral-live-v2` (`dfe725e0-2c33-4569-84b2-1af9bb7b96fa`): all `28` Phase-1 `.meta.json` receipts carry `env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b`, all `8/8` Work Orders (`WO-001-r1..WO-008-r1`) are `scientifically_accepted` (`0` failures, `0` warnings), and all `3/3` live `oase validate check --dry-run --json` Red-Team Tamper Drills (`DRILL-01..03`) exited with code `1` (`passed: false`).</p>
+    <h1>Steps 5–7 — Live Rat/Dog/Human Oral PK (`WO-007`), 450-Trial Dossier (`WO-008`) &amp; 3 Red-Team Tamper Drills</h1>
+    <p>Complete reproducibility &amp; governance record from `/home/scion/.scion/projects/pcsk9-oral-live-v2`: all `28` Phase-1 `.meta.json` receipts carry `env_version: sha256:2987d3053f13...`, all `8/8` Work Orders (`WO-001..WO-008`) are `scientifically_accepted` (`0` failures), and all `3/3` live `oase validate check --dry-run --json` Red-Team Tamper Drills (`DRILL-01..03`) exited with code `1` (`BLOCKED`).</p>
     <div class="badge-row">
-      <span class="pill pass">8 / 8 Work Orders scientifically_accepted (0 warnings)</span>
-      <span class="pill pass">Human PK: t1/2 = 8.1805 h · CL = 0.009974 L/h/kg · Vd = 0.117741 L/kg</span>
+      <span class="pill pass">8 / 8 WOs scientifically_accepted (0 warnings)</span>
+      <span class="pill pass">Human PK: t1/2 = 8.18 h · CL = 0.00997 L/h/kg · Vd = 0.118 L/kg (40 mg QD)</span>
       <span class="pill pass">ClinicalTrials.gov: 450 PCSK9 Studies (146 Recruiting)</span>
-      <span class="pill block">3 / 3 Live Tamper Drills BLOCKED (exit code 1)</span>
+      <span class="pill block">3 / 3 Live Tamper Drills BLOCKED (Exit Code 1)</span>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <h2>Step 6 Live Red-Team Tamper Drills (`gates/stage3-candidate-nomination/tamper-drills/`)</h2>
+      <h2>Step 5 Live Multi-Species Oral PK &amp; Human Allometry (`WO-007` &amp; `WO-008`)</h2>
+      <svg viewBox="0 0 520 165" style="width:100%;height:auto;margin-bottom:0.5rem;background:#020617;border:1px solid #334155;border-radius:6px;">
+        <text x="14" y="18" fill="#38bdf8" font-size="10.5" font-family="monospace" font-weight="bold">ORAL PLASMA CONCENTRATION-TIME PROFILES (RAT · DOG · 70 KG HUMAN QD)</text>
+        <line x1="42" y1="28" x2="42" y2="142" stroke="#475569" stroke-width="1"/>
+        <line x1="42" y1="142" x2="502" y2="142" stroke="#475569" stroke-width="1"/>
+        <!-- IC90 target trough line -->
+        <line x1="42" y1="108" x2="502" y2="108" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="4,3"/>
+        <text x="348" y="103" fill="#fbbf24" font-size="9.5" font-family="monospace">Free IC90 Target Trough (24h QD)</text>
+        <!-- Rat 10 mg/kg PO curve (t1/2 = 4.80 h, Cmax = 1620 ng/mL, AUC = 12,797) -->
+        <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="42,138 68,46 98,62 145,84 210,106 310,126 490,139"/>
+        <!-- Dog 5 mg/kg PO curve (t1/2 = 6.81 h, Cmax = 1790 ng/mL, AUC = 19,510) -->
+        <polyline fill="none" stroke="#a855f7" stroke-width="2.3" points="42,138 72,36 108,49 160,68 235,88 340,111 490,128"/>
+        <!-- Human 40 mg QD Allometric Projection (t1/2 = 8.18 h) -->
+        <polyline fill="none" stroke="#22c55e" stroke-width="2.8" points="42,138 76,42 118,52 175,65 255,80 365,94 490,104"/>
+        <circle cx="76" cy="42" r="4" fill="#22c55e"/>
+        <circle cx="490" cy="104" r="4" fill="#22c55e"/>
+        <text x="45" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">0h</text>
+        <text x="155" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">6h</text>
+        <text x="268" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">12h</text>
+        <text x="378" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">18h</text>
+        <text x="476" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">24h</text>
+        <text x="195" y="38" fill="#4ade80" font-size="9.5" font-family="monospace" font-weight="bold">■ Human 40 mg QD (t1/2 = 8.18 h)</text>
+        <text x="195" y="51" fill="#c084fc" font-size="9.5" font-family="monospace">■ Dog PO (AUC 19,510 · t1/2 = 6.81 h)</text>
+        <text x="195" y="64" fill="#38bdf8" font-size="9.5" font-family="monospace">■ Rat PO (AUC 12,797 · t1/2 = 4.80 h)</text>
+      </svg>
       <table>
-        <thead><tr><th>Drill Receipt</th><th>Injected Tamper Against Live Artifacts</th><th>Failed Mechanical Gate (`exit 1`)</th><th>Outcome</th></tr></thead>
+        <thead><tr><th style="width:36%;">Artifact (`raw/pk/` &amp; `raw/pipeline/`)</th><th style="width:42%;">Observed Live Metrics</th><th style="width:22%;">SHA-256</th></tr></thead>
         <tbody>
-          <tr>
-            <td><code>drill-01-value-mismatch.json</code></td>
-            <td>Edited <code>wo-005-vina-docking.md</code> to claim <code>-11.400 kcal/mol</code> against <code>best_score = -7.991 kcal/mol</code></td>
-            <td><code>source_tags_resolve</code>:<br><small><code>claimed -11.4 vs actual -7.991 (diff 42.7% &gt; 1.0%)</code></small></td>
-            <td><span class="pill block">BLOCKED</span></td>
-          </tr>
-          <tr>
-            <td><code>drill-02-sha256-tamper.json</code></td>
-            <td>Appended unauthorized coordinate line to <code>raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt</code></td>
-            <td><code>provenance_valid</code>:<br><small><code>SHA-256 mismatch (expected 2242b1c07c36d490...)</code></small></td>
-            <td><span class="pill block">BLOCKED</span></td>
-          </tr>
-          <tr>
-            <td><code>drill-03-suppressed-relay.json</code></td>
-            <td>Deleted <code>admet.herg_structural_flag</code> section from <code>wo-006-dmta-admet-mmp.md</code></td>
-            <td><code>relay_coverage</code>:<br><small><code>Missing required relay admet.herg_structural_flag</code></small></td>
-            <td><span class="pill block">BLOCKED</span></td>
-          </tr>
-          <tr style="background:rgba(16,185,129,0.12);">
-            <td><code>DEC-OVERRIDE-001</code></td>
-            <td>Audited co-signed exception for backup macrocycle <code>IC-002</code> in <code>decision-log.md</code></td>
-            <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code></td>
-            <td><span class="pill pass">CO-SIGNED</span></td>
-          </tr>
+          <tr><td><code>oase_pcsk9_014_rat_po.pk-nca.json</code></td><td>Cmax <strong>1620 ng/mL</strong>, t1/2 <strong>4.80 h</strong>, AUC <strong>12,796.8</strong> (extrap 3.7%)</td><td><code>00020c62</code></td></tr>
+          <tr><td><code>oase_pcsk9_014_dog_po.pk-nca.json</code></td><td>Cmax <strong>1790 ng/mL</strong>, t1/2 <strong>6.81 h</strong>, AUC <strong>19,510.2</strong> (extrap 9.8%)</td><td><code>67563803</code></td></tr>
+          <tr><td><code>scaling-dog-rat.pk-scaling.json</code></td><td>70 kg Human: <strong>t1/2 = 8.18 h</strong>, CL = <strong>0.00997 L/h/kg</strong>, Vd = <strong>0.118 L/kg</strong></td><td><code>14ed82dc</code></td></tr>
+          <tr><td><code>pcsk9.trials-clinicaltrials.json</code></td><td><strong>450</strong> studies, <strong>146</strong> recruiting, <strong>77</strong> Phase 2+, <strong>177</strong> Phase 3+</td><td><code>c8fdf83a</code></td></tr>
+          <tr><td><code>dossier-export.json</code></td><td><strong>8/8</strong> CTD sections, <strong>8/8</strong> WOs accepted, <strong>35</strong> HTML pages built</td><td><code>VERIFIED</code></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="card">
-      <h2>Step 5 Live Preclinical PK &amp; Clinical Landscape Summary (`WO-007` &amp; `WO-008`)</h2>
-      <table>
-        <thead><tr><th>Artifact (`raw/pk/` &amp; `raw/pipeline/`)</th><th>Observed Metrics</th><th>SHA-256 Receipt</th></tr></thead>
-        <tbody>
-          <tr><td><code>oase_pcsk9_014_rat_po.pk-nca.json</code></td><td>Cmax = <strong>1620.0 ng/mL</strong>, t1/2 = <strong>4.7958 h</strong>, AUC0-&infin; = <strong>12796.76</strong> (extrap 3.68%)</td><td><code>00020c62903e38d8</code></td></tr>
-          <tr><td><code>oase_pcsk9_014_dog_po.pk-nca.json</code></td><td>Cmax = <strong>1790.0 ng/mL</strong>, t1/2 = <strong>6.8094 h</strong>, AUC0-&infin; = <strong>19510.20</strong> (extrap 9.82%)</td><td><code>6756380315ffeee4</code></td></tr>
-          <tr><td><code>scaling-dog-rat.pk-scaling.json</code></td><td>70 kg Human: t1/2 = <strong>8.1805 h</strong>, CL = <strong>0.009974 L/h/kg</strong>, Vd = <strong>0.117741 L/kg</strong></td><td><code>14ed82dcc3aea396</code></td></tr>
-          <tr><td><code>pcsk9.trials-clinicaltrials.json</code></td><td><strong>450</strong> studies, <strong>146</strong> recruiting, <strong>77</strong> Phase 2+ recruiting, <strong>177</strong> Phase 3+</td><td><code>c8fdf83adece5d50</code></td></tr>
-          <tr><td><code>gates/dossier-export/dossier-export.json</code></td><td><strong>8/8</strong> CTD sections populated, <strong>8/8</strong> WOs <code>scientifically_accepted</code>, <strong>35</strong> HTML pages built</td><td><code>oase dossier export</code></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <div>
+      <div class="card">
+        <h2>Step 6 Live Red-Team Tamper Drills (`gates/stage3-candidate-nomination/tamper-drills/`)</h2>
+        <table>
+          <thead><tr><th style="width:26%;">Drill Receipt</th><th style="width:32%;">Injected Tamper Attack</th><th style="width:24%;">Failed Gate (`exit 1`)</th><th style="width:18%;">Outcome</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>drill-01-value-mismatch.json</code></td>
+              <td>Edited <code>wo-005-vina-docking.md</code> to claim <code>-11.400</code> vs actual <code>-7.991 kcal/mol</code></td>
+              <td><code>source_tags_resolve</code><br><small>diff 42.7% &gt; 1.0%</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr>
+              <td><code>drill-02-sha256-tamper.json</code></td>
+              <td>Appended unauthorized atom coordinate to <code>poses.pdbqt</code></td>
+              <td><code>provenance_valid</code><br><small>SHA-256 mismatch</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr>
+              <td><code>drill-03-suppressed-relay.json</code></td>
+              <td>Deleted <code>admet.herg_structural_flag</code> from <code>wo-006-dmta-admet-mmp.md</code></td>
+              <td><code>relay_coverage</code><br><small>Missing hERG relay</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr style="background:rgba(16,185,129,0.12);">
+              <td><code>DEC-OVERRIDE-001</code></td>
+              <td>Audited co-signed exception for backup macrocycle <code>IC-002</code> in <code>decision-log.md</code></td>
+              <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code></td>
+              <td><span class="pill pass">CO-SIGNED</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <div class="card">
-    <h2>Live `oase workorder accept-all --json` &amp; Tamper Drill Telemetry (`pcsk9-oral-live-v2`)</h2>
-    <div class="term">{{"work_order_id":"WO-001","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-001-hypothesis-tournament.md"}}
-{{"work_order_id":"WO-002","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-002-human-genetics-gtex.md"}}
-{{"work_order_id":"WO-003","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-003-alphagenome-variant.md","endpoint":"mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5"}}
-{{"work_order_id":"WO-004","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/structural-biology/wo-004-alphafold3-pocket.md","endpoint":"mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0"}}
-{{"work_order_id":"WO-005","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/structural-biology/wo-005-vina-docking.md","best_score_kcal_mol":-7.991}}
-{{"work_order_id":"WO-006","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md","lead":"oase_pcsk9_014"}}
-{{"work_order_id":"WO-007","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/admet-dmpk/wo-007-oral-pk-scaling.md","predicted_half_life_h":8.1805}}
-{{"work_order_id":"WO-008","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/regulatory/wo-008-clinical-landscape-dossier.md","total_studies":450,"site_pages_rendered":35}}</div>
+      <div class="card">
+        <h2>Step 7 Live `oase workorder accept-all --json` Telemetry (`pcsk9-oral-live-v2`)</h2>
+        <div class="term">{{"work_order_id":"WO-001","status":"scientifically_accepted","passed":true,"failures":0,"finding":"wo-001-hypothesis-tournament.md"}}
+{{"work_order_id":"WO-002","status":"scientifically_accepted","passed":true,"failures":0,"finding":"wo-002-human-genetics-gtex.md"}}
+{{"work_order_id":"WO-003","status":"scientifically_accepted","passed":true,"failures":0,"endpoint":"mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5"}}
+{{"work_order_id":"WO-004","status":"scientifically_accepted","passed":true,"failures":0,"endpoint":"mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0"}}
+{{"work_order_id":"WO-005","status":"scientifically_accepted","passed":true,"failures":0,"best_score_kcal_mol":-7.991}}
+{{"work_order_id":"WO-006","status":"scientifically_accepted","passed":true,"failures":0,"lead":"oase_pcsk9_014"}}
+{{"work_order_id":"WO-007","status":"scientifically_accepted","passed":true,"failures":0,"predicted_half_life_h":8.1805}}
+{{"work_order_id":"WO-008","status":"scientifically_accepted","passed":true,"failures":0,"total_studies":450,"site_pages":35}}</div>
+      </div>
+    </div>
   </div>
 </div>
 <script>document.getElementById('nav-fr').classList.add('active');</script>

@@ -7,33 +7,34 @@
 <title>Step 2 — Live 1P AlphaGenome 1 Mb Multi-Modal Track Browser (us-central1)</title>
 <style>
   * { box-sizing: border-box; }
-  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
-  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
-  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; overflow-x: hidden; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.48rem 0.85rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 0.86rem; color: #ffffff; display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+  .top-nav .links { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.72rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.22rem 0.52rem; border-radius: 5px; }
   .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
-  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
-  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
-  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
-  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
-  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
-  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0.55rem auto; padding: 0 0.75rem 1.25rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 0.72rem 0.95rem; margin-bottom: 0.68rem; }
+  .hdr-card h1 { margin: 0 0 0.25rem 0; font-size: 1.04rem; color: #ffffff; line-height: 1.25; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
+  .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
   .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
   .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
   .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
   .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
   .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
-  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
-  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
-  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
-  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .grid-2 { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); gap: 0.68rem; align-items: start; }
+  .card { min-width: 0; overflow: hidden; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.72rem 0.85rem; margin-bottom: 0.68rem; }
+  .card h2 { margin: 0 0 0.48rem 0; font-size: 0.88rem; color: #38bdf8; line-height: 1.25; }
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.74rem; }
+  th, td { text-align: left; padding: 0.34rem 0.42rem; border-bottom: 1px solid #334155; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; line-height: 1.32; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; font-size: 0.71rem; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.26rem 0.56rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
   .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
-  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
-  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 0.55rem 0.68rem; font-family: ui-monospace, monospace; font-size: 0.69rem; line-height: 1.4; overflow-x: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-all; }
+  code { font-family: ui-monospace, monospace; font-size: 0.92em; color: #bae6fd; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -44,12 +45,12 @@
     <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
-    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Story Arc Cockpit</a>
     <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif)</a>
     <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Steps 5–7: PK &amp; Tamper Ledger</a>
   </div>
 </div>
 
@@ -58,7 +59,7 @@
     <h1>Step 2 (`WO-002` &amp; `WO-003`) — Live 1P `AlphaGenome` `1 Mb @ 1 bp` Track Browser (`us-central1` A100 80GB)</h1>
     <p>Live `1,048,576 bp` sequence context window (`chr1:54,515,686–55,564,262`, hg38) for `chr1:55039974:G&gt;T` (`rs2479409`) scored on our Dedicated Vertex AI `us-central1` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5`), paired with live `gnomAD v4` constraint (`pLI = 2.765e-18`, `LOEUF = 1.144`, `lof_tolerant`) and `GTEx v8` extrahepatic whole-blood silence (`0.246 TPM`, `not_expressed`).</p>
     <div class="badge-row">
-      <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5 (us-central1)</span>
+      <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681 (us-central1 A100)</span>
       <span class="pill argon">computational-biologist · Gemini 4 Argon (Med)</span>
       <span class="pill pass">PCSK9 Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks</span>
       <span class="pill pass">response.ndjson (603 KB) sha256: 9fb08cf573947868</span>
@@ -67,18 +68,36 @@
 
   <div class="grid-2">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T` · 62 Genes Scored)</h2>
-        <div style="display:flex;gap:0.4rem;">
-          <button class="btn active" onclick="setZoom('1mb', this)">Full 1,048,576 bp Window</button>
-          <button class="btn" onclick="setZoom('100kb', this)">100 kb PCSK9 Locus</button>
-          <button class="btn" onclick="setZoom('10kb', this)">10 kb Promoter + rs2479409</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.55rem;">
+        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T` · 62 Genes)</h2>
+        <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">
+          <button class="btn active" onclick="setZoom('1mb', this)">1,048,576 bp Window</button>
+          <button class="btn" onclick="setZoom('100kb', this)">100 kb PCSK9</button>
+          <button class="btn" onclick="setZoom('10kb', this)">10 kb Promoter</button>
         </div>
       </div>
-      <svg id="ag-svg" viewBox="0 0 860 320" style="width:100%;height:auto;background:#020617;border:1px solid #334155;border-radius:8px;"></svg>
-      <div style="display:flex;justify-content:space-between;margin-top:0.55rem;font-size:0.78rem;color:#94a3b8;font-family:monospace;">
+      <svg id="ag-svg" viewBox="0 0 860 320" style="width:100%;height:auto;background:#020617;border:1px solid #334155;border-radius:8px;">
+    <rect x="0" y="0" width="860" height="320" fill="#020617"/>
+    <line x1="20" y1="108" x2="840" y2="108" stroke="#1e293b" stroke-width="1"/>
+    <line x1="20" y1="203" x2="840" y2="203" stroke="#1e293b" stroke-width="1"/>
+    <line x1="20" y1="289" x2="840" y2="289" stroke="#1e293b" stroke-width="1"/>
+    <polygon points="20,108 20,102.1 28,103.3 36,105.3 44,107.2 52,108.0 60,107.3 68,105.5 76,103.4 84,102.1 92,102.3 100,103.8 108,105.9 116,107.5 124,108.0 132,106.9 140,104.9 148,102.9 156,102.0 164,102.6 172,104.3 180,106.4 188,107.8 196,107.8 204,106.4 212,104.3 220,102.6 228,102.0 236,102.9 244,104.9 252,106.9 260,107.9 268,107.4 276,105.6 284,103.4 292,101.6 300,101.1 308,101.7 316,102.7 324,103.0 332,101.4 340,97.4 348,91.1 356,83.4 364,75.2 372,67.1 380,59.1 388,50.9 396,41.9 404,32.2 412,22.2 420,13.4 428,7.1 436,4.7 444,6.5 452,12.0 460,19.7 468,27.9 476,35.5 484,41.9 492,47.4 500,52.7 508,58.5 516,65.0 524,71.7 532,77.8 540,82.3 548,85.0 556,86.2 564,86.8 572,87.9 580,90.1 588,93.5 596,97.4 604,100.7 612,102.6 620,102.8 628,101.8 636,100.6 644,100.2 652,101.1 660,103.1 668,105.5 676,107.2 684,107.5 692,106.3 700,104.3 708,102.6 716,101.9 724,102.8 732,104.7 740,106.7 748,107.9 756,107.6 764,106.0 772,103.9 780,102.3 788,102.1 796,103.3 804,105.3 812,107.2 820,108.0 828,107.3 836,105.5 840,108" fill="rgba(34,197,94,0.18)"/>
+    <polygon points="20,203 20,201.5 28,202.5 36,201.7 44,199.7 52,197.9 60,197.6 68,199.1 76,201.2 84,202.5 92,201.9 100,200.0 108,198.1 116,197.5 124,198.8 132,200.9 140,202.4 148,202.1 156,200.3 164,198.3 172,197.5 180,198.5 188,200.6 196,202.3 204,202.3 212,200.6 220,198.5 228,197.5 236,198.3 244,200.3 252,202.1 260,202.3 268,200.9 276,198.7 284,197.4 292,197.8 300,199.4 308,200.9 316,200.6 324,198.2 332,194.3 340,190.4 348,187.2 356,184.5 364,180.8 372,174.7 380,166.0 388,155.7 396,145.8 404,138.3 412,133.7 420,131.5 428,130.6 436,130.4 444,131.5 452,135.1 460,141.9 468,151.3 476,161.7 484,171.0 492,177.7 500,182.0 508,185.2 516,188.7 524,193.0 532,197.2 540,200.1 548,200.7 556,199.5 564,197.8 572,197.3 580,198.5 588,200.6 596,202.3 604,202.2 612,200.5 620,198.5 628,197.5 636,198.3 644,200.4 652,202.1 660,202.4 668,200.9 676,198.7 684,197.5 692,198.1 700,200.1 708,202.0 716,202.4 724,201.1 732,199.0 740,197.6 748,197.9 756,199.8 764,201.8 772,202.5 780,201.4 788,199.3 796,197.7 804,197.8 812,199.5 820,201.5 828,202.5 836,201.6 840,203" fill="rgba(56,189,248,0.16)"/>
+    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4"/>
+    <text x="24" y="24" fill="#4ade80" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
+    <polyline fill="none" stroke="#22c55e" stroke-width="2.6" points="20,102.1 28,103.3 36,105.3 44,107.2 52,108.0 60,107.3 68,105.5 76,103.4 84,102.1 92,102.3 100,103.8 108,105.9 116,107.5 124,108.0 132,106.9 140,104.9 148,102.9 156,102.0 164,102.6 172,104.3 180,106.4 188,107.8 196,107.8 204,106.4 212,104.3 220,102.6 228,102.0 236,102.9 244,104.9 252,106.9 260,107.9 268,107.4 276,105.6 284,103.4 292,101.6 300,101.1 308,101.7 316,102.7 324,103.0 332,101.4 340,97.4 348,91.1 356,83.4 364,75.2 372,67.1 380,59.1 388,50.9 396,41.9 404,32.2 412,22.2 420,13.4 428,7.1 436,4.7 444,6.5 452,12.0 460,19.7 468,27.9 476,35.5 484,41.9 492,47.4 500,52.7 508,58.5 516,65.0 524,71.7 532,77.8 540,82.3 548,85.0 556,86.2 564,86.8 572,87.9 580,90.1 588,93.5 596,97.4 604,100.7 612,102.6 620,102.8 628,101.8 636,100.6 644,100.2 652,101.1 660,103.1 668,105.5 676,107.2 684,107.5 692,106.3 700,104.3 708,102.6 716,101.9 724,102.8 732,104.7 740,106.7 748,107.9 756,107.6 764,106.0 772,103.9 780,102.3 788,102.1 796,103.3 804,105.3 812,107.2 820,108.0 828,107.3 836,105.5"/>
+    <text x="24" y="128" fill="#38bdf8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (UBERON:0002107 · +0.9985 DHS)</text>
+    <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="20,201.5 28,202.5 36,201.7 44,199.7 52,197.9 60,197.6 68,199.1 76,201.2 84,202.5 92,201.9 100,200.0 108,198.1 116,197.5 124,198.8 132,200.9 140,202.4 148,202.1 156,200.3 164,198.3 172,197.5 180,198.5 188,200.6 196,202.3 204,202.3 212,200.6 220,198.5 228,197.5 236,198.3 244,200.3 252,202.1 260,202.3 268,200.9 276,198.7 284,197.4 292,197.8 300,199.4 308,200.9 316,200.6 324,198.2 332,194.3 340,190.4 348,187.2 356,184.5 364,180.8 372,174.7 380,166.0 388,155.7 396,145.8 404,138.3 412,133.7 420,131.5 428,130.6 436,130.4 444,131.5 452,135.1 460,141.9 468,151.3 476,161.7 484,171.0 492,177.7 500,182.0 508,185.2 516,188.7 524,193.0 532,197.2 540,200.1 548,200.7 556,199.5 564,197.8 572,197.3 580,198.5 588,200.6 596,202.3 604,202.2 612,200.5 620,198.5 628,197.5 636,198.3 644,200.4 652,202.1 660,202.4 668,200.9 676,198.7 684,197.5 692,198.1 700,200.1 708,202.0 716,202.4 724,201.1 732,199.0 740,197.6 748,197.9 756,199.8 764,201.8 772,202.5 780,201.4 788,199.3 796,197.7 804,197.8 812,199.5 820,201.5 828,202.5 836,201.6"/>
+    <text x="24" y="232" fill="#94a3b8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · n=755 · Classification = not_expressed)</text>
+    <polyline fill="none" stroke="#64748b" stroke-width="2" points="20,283.5 28,283.0 36,283.1 44,283.6 52,284.5 60,285.6 68,285.2 76,284.2 84,283.4 92,283.0 100,283.1 108,283.7 116,284.6 124,285.8 132,285.1 140,284.0 148,283.3 156,283.0 164,283.2 172,283.8 180,284.8 188,285.9 196,284.9 204,283.9 212,283.2 220,283.0 228,283.2 236,283.9 244,284.9 252,285.9 260,284.7 268,283.8 276,283.2 284,283.0 292,283.3 300,284.0 308,285.1 316,285.7 324,284.6 332,283.7 340,283.1 348,283.0 356,283.4 364,284.2 372,285.3 380,285.6 388,284.4 396,283.6 404,283.1 412,283.0 420,283.5 428,284.3 436,285.4 444,285.4 452,284.3 460,283.5 468,283.0 476,283.1 484,283.6 492,284.5 500,285.6 508,285.2 516,284.1 524,283.4 532,283.0 540,283.1 548,283.7 556,284.6 564,285.8 572,285.0 580,284.0 588,283.3 596,283.0 604,283.2 612,283.8 620,284.8 628,286.0 636,284.9 644,283.9 652,283.2 660,283.0 668,283.3 676,283.9 684,285.0 692,285.9 700,284.7 708,283.8 716,283.2 724,283.0 732,283.3 740,284.1 748,285.1 756,285.7 764,284.6 772,283.6 780,283.1 788,283.0 796,283.4 804,284.2 812,285.3 820,285.5 828,284.4 836,283.5"/>
+    <circle cx="430" cy="29" r="5.5" fill="#f59e0b" stroke="#fef08a" stroke-width="1.5"/>
+    <circle cx="430" cy="128" r="5" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="442" y="34" width="248" height="22" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+    <text x="450" y="49" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">rs2479409 (G&gt;T) · Quantile 0.999608</text>
+    </svg>
+      <div style="display:flex;justify-content:space-between;margin-top:0.45rem;font-size:0.72rem;color:#94a3b8;font-family:monospace;">
         <span id="ag-coord-left">chr1:54,515,686</span>
-        <span style="color:#38bdf8;font-weight:700;">▲ chr1:55,039,974 G&gt;T · Top Gene: PCSK9 (Quantile = 0.999608, Raw = 0.026925)</span>
+        <span style="color:#38bdf8;font-weight:700;">▲ chr1:55,039,974 G&gt;T · Top Gene: PCSK9 (Quantile = 0.999608)</span>
         <span id="ag-coord-right">chr1:55,564,262</span>
       </div>
     </div>
@@ -87,13 +106,13 @@
       <div class="card">
         <h2>Live `WO-002` &amp; `WO-003` Genomics Verification Matrix</h2>
         <table>
-          <thead><tr><th>Metric (`raw/genomics/` &amp; `raw/gtex/`)</th><th>Observed Live Value</th><th>Verdict / Relay</th></tr></thead>
+          <thead><tr><th style="width:36%;">Metric (`raw/genomics/` &amp; `raw/gtex/`)</th><th style="width:36%;">Observed Live Value</th><th style="width:28%;">Verdict / Relay</th></tr></thead>
           <tbody>
-            <tr><td><strong>gnomAD v4 `PCSK9` `pLI`</strong></td><td><strong>2.765e-18</strong> (`LOEUF = 1.144`, `o/e = 0.9037`)</td><td><span class="pill pass">lof_tolerant</span></td></tr>
-            <tr><td><strong>GTEx v8 `Whole_Blood` (`ENSG00000169174.10`)</strong></td><td><strong>0.245957 TPM</strong> (`n = 755` samples)</td><td><span class="pill pass">not_expressed (Extrahepatic Clean)</span></td></tr>
-            <tr><td><strong>1P AlphaGenome `PCSK9` Quantile</strong></td><td><strong>0.999608</strong> (`396 / 667` RNA-seq tracks)</td><td><span class="pill pass">#1 of 62 Genes in 1 Mb</span></td></tr>
-            <tr><td><strong>1P AlphaGenome `PCSK9` Raw Score</strong></td><td><strong>0.026925</strong> (`mean = 0.009718`)</td><td><span class="pill opus">subtle_by_magnitude (11 artifacts)</span></td></tr>
-            <tr><td><strong>Scored Matrix Coverage</strong></td><td><strong>17,453 / 25,854 cells</strong> (`0` unexplained missing)</td><td><span class="pill pass">PASS (WO-003-r1)</span></td></tr>
+            <tr><td><strong>gnomAD v4 `PCSK9` `pLI`</strong></td><td><strong>2.765e-18</strong> (`LOEUF = 1.144`, `o/e = 0.904`)</td><td><span class="pill pass">lof_tolerant</span></td></tr>
+            <tr><td><strong>GTEx v8 `Whole_Blood`</strong></td><td><strong>0.245957 TPM</strong> (`n = 755` samples)</td><td><span class="pill pass">not_expressed</span></td></tr>
+            <tr><td><strong>1P AlphaGenome Quantile</strong></td><td><strong>0.999608</strong> (`396 / 667` RNA-seq tracks)</td><td><span class="pill pass">#1 of 62 Genes</span></td></tr>
+            <tr><td><strong>1P AlphaGenome Raw Score</strong></td><td><strong>0.026925</strong> (`mean = 0.009718`)</td><td><span class="pill opus">subtle_by_magnitude</span></td></tr>
+            <tr><td><strong>Scored Matrix Coverage</strong></td><td><strong>17,453 / 25,854 cells</strong> (`0` unexplained)</td><td><span class="pill pass">PASS (WO-003-r1)</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -102,7 +121,7 @@
         <div class="term">Endpoint    : projects/662944730392/locations/us-central1/endpoints/mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5
 Hardware    : a2-ultragpu-1g (1x NVIDIA_A100_80GB · Dedicated DNS)
 Input Locus : chr1:55039974:G>T (context_window_bp = 1048576, RNA_SEQ + ATAC)
-Raw NDJSON  : raw/genomics/chr1-55039974-G-T.response.ndjson (603,051 bytes · sha256:9fb08cf573947868)
+Raw NDJSON  : raw/genomics/chr1-55039974-G-T.response.ndjson (603,051 B · sha256:9fb08cf573947868)
 Scores JSON : raw/genomics/chr1-55039974-G-T.scores.json (sha256:1daca492e0ffed30)
 Relays Kept : alphagenome.quantile_not_clinical_effect, alphagenome.statistical_artifact</div>
       </div>
@@ -135,14 +154,19 @@ function setZoom(level, btn) {
   }
   svg.innerHTML = `
     <rect x="0" y="0" width="860" height="320" fill="#020617"/>
-    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <text x="24" y="26" fill="#4ade80" font-size="12" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
-    <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="${ptsLiver.join(' ')}"/>
-    <text x="24" y="132" fill="#38bdf8" font-size="12" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (EFO:0006270)</text>
-    <polyline fill="none" stroke="#38bdf8" stroke-width="2.2" points="${ptsAtac.join(' ')}"/>
-    <text x="24" y="238" fill="#94a3b8" font-size="12" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · Classification = not_expressed)</text>
+    <polygon points="20,108 ${ptsLiver.join(' ')} 840,108" fill="rgba(34,197,94,0.18)"/>
+    <polygon points="20,203 ${ptsAtac.join(' ')} 840,203" fill="rgba(56,189,248,0.16)"/>
+    <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4"/>
+    <text x="24" y="24" fill="#4ade80" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
+    <polyline fill="none" stroke="#22c55e" stroke-width="2.6" points="${ptsLiver.join(' ')}"/>
+    <text x="24" y="128" fill="#38bdf8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (UBERON:0002107 · +0.9985 DHS)</text>
+    <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="${ptsAtac.join(' ')}"/>
+    <text x="24" y="232" fill="#94a3b8" font-size="11.5" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · n=755 · Classification = not_expressed)</text>
     <polyline fill="none" stroke="#64748b" stroke-width="2" points="${ptsBlood.join(' ')}"/>
-    <circle cx="430" cy="29" r="5" fill="#f59e0b"/>
+    <circle cx="430" cy="29" r="5.5" fill="#f59e0b" stroke="#fef08a" stroke-width="1.5"/>
+    <circle cx="430" cy="128" r="5" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="442" y="34" width="248" height="22" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+    <text x="450" y="49" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">rs2479409 (G&gt;T) · Quantile 0.999608</text>
   `;
 }
 setZoom('1mb');

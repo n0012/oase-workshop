@@ -82,7 +82,7 @@ FOLLOWUP_PROMPTS = {
 
 app = FastAPI(title="OASE Story Arc Presenter Cockpit", version="1.1.0")
 _gcs_client: storage.Client | None = None
-DEFAULT_CAMPAIGN = "pcsk9-pilot-v1"
+DEFAULT_CAMPAIGN = "pcsk9-live-argolis"
 CAMPAIGN_RE = re.compile(r"^[a-z0-9][a-z0-9_-]{1,63}$")
 
 
