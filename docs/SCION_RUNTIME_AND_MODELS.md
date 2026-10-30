@@ -123,10 +123,12 @@ gcloud ai endpoints list \
 
 ### Hub-Scoped Environment Variables (`hub.db` -> `env_vars`)
 
-`scripts/reconcile-scion-runtime.py` upserts all 8 variables at `scope='hub'` with `injection_mode='always'` so every container across `antigravity` and `claude` receives them automatically:
+`scripts/reconcile-scion-runtime.py` upserts all 10 variables at `scope='hub'` with `injection_mode='always'` so every container across `antigravity` and `claude` receives them automatically at PID 1 (`sciontool init`):
 
 | Variable | Description |
 | :--- | :--- |
+| `OASE_PROJECT` | Default OASE campaign program root inside agent containers (`/workspace`) |
+| `OASE_TOOLS_HOME` | Shared OASE v0.3.0 toolchain volume path inside agent containers (`/workspace/.scion-volumes/tools`) |
 | `OASE_AG_PROJECT` | Consumer GCP project ID hosting the AlphaGenome endpoint |
 | `OASE_AG_REGION` | Region for AlphaGenome (`us-central1`) |
 | `OASE_AG_ENDPOINT_ID` | Vertex AI Endpoint ID (`mg-endpoint-...`) |
@@ -168,5 +170,26 @@ gcloud compute ssh scion-hub-oase \
 2. **Live Model Inference Verification**:
    - `pcsk9-oral-live-v2--science-program-lead` runs `scion-antigravity:latest` with `SCION_MODEL=extra-large` -> **`Gemini 4 Argon (High)`** (`gemini-4-argon-high`).
    - `pcsk9-oral-live-v2--scientific-reviewer` runs `scion-claude:latest` with `SCION_MODEL=large` -> **`Claude Opus 5.5`** (`claude-opus-5-5`).
+   - `pcsk9-oral-live-v2--controller` runs `scion-antigravity:latest` with `SCION_MODEL=medium` -> **`Gemini 3.8 Flash (Medium)`** (`gemini-3.8-flash-medium`).
 3. **Zero Mutation of Reference Groves (`00..07`)**:
    - All 8 reference pilot chapters (`00-pcsk9-initial-seed` through `07-pcsk9-mission-closeout`) remain untouched and selectable in the Story Arc Presenter Cockpit.
+
+---
+
+## 6. Argolis First-Try Execution Hardening (Lessons from `venter-scion`)
+
+Cross-referencing the original `venter-scion` pilot handoff (`docs/pilot-handoff.md`, `docs/quickstart-pilot.md`, and `docs/alphafold-complex-prediction.md`) surfaced six operational safeguards now enforced by [`scripts/reconcile-scion-runtime.py`](../scripts/reconcile-scion-runtime.py):
+
+1. **Container PID 1 `OASE_PROJECT` & `OASE_TOOLS_HOME` Injection:**
+   - Because Scion launches `claude` and `agy` via `tmux new-session ... sh -c` (non-interactive shell before `.bashrc` runs), `OASE_PROJECT=/workspace` and `OASE_TOOLS_HOME=/workspace/.scion-volumes/tools` are injected directly via Hub `env_vars` (`injection_mode='always'`) so every agent sees `OASE_PROJECT=/workspace` immediately on startup.
+2. **Pre-Booted `controller` (`research-operations-controller`) Alongside `science-program-lead` and `scientific-reviewer`:**
+   - `science-program-lead` never executes CLI tools or spawns specialist containers directly; it dispatches approved work orders to `controller` (`research-operations-controller`), which spawns specialist workers (`computational-biologist`, `structural-biologist`, `computational-chemist`, `medicinal-chemist`, `admet-dmpk-scientist`, `finding-validator`, `hypex-supervisor`) via `scion start`. Pre-booting `controller` in `pcsk9-oral-live-v2` ensures work orders execute immediately.
+3. **`#general` Webchat Default Agent Routing (`default_agent = 'science-program-lead'`):**
+   - `webchat_topic` and `conversations` in `pcsk9-oral-live-v2` bind `default_agent = 'science-program-lead'` and register all 5 scientist accounts plus the 3 live orchestrator agents in `conversation_participants` so any un-tagged message in `#general` routes automatically to `science-program-lead`.
+4. **`web-builder` Template Alias to `project-curator`:**
+   - `templates/research-operations-controller/agents.md` dispatches portal builds via `scion start <program>-web-builder --type web-builder`. Registering `web-builder` as a project template alias for `project-curator` prevents a missing-template error during stage-gate portal publication.
+5. **Complete `agent-role-full` Permissions (`role_definitions`):**
+   - Ensures `agent-role-full` grants `"agent.list"`, `"agent.read"`, `"agent.update"`, `"agent.message"`, `"project.chat_post"`, `"inbox.read"`, and `"inbox.write"` so agents spawned dynamically by `controller` or `hypex-supervisor` can message peers and post to Webchat without `403` errors.
+6. **Single-Flight AlphaFold 3 & Heredoc Messaging Discipline:**
+   - **AlphaFold 3 (`oase alphafold predict`)** runs on a single-replica Dedicated Vertex AI Endpoint (`--deadline 1800`, retrying `504` every `60s` on cold start and `429` every `15–25s` when busy). Always schedule AF3 work orders sequentially rather than fanning out across parallel containers.
+   - **Backtick Command-Substitution Guard (`scion message`)**: Never pass double-quoted strings containing backticks to `scion message`; always use single-quoted heredocs (`scion message "conv:<id>" - <<'MSG' ... MSG`).

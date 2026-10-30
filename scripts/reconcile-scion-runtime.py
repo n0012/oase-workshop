@@ -597,6 +597,10 @@ def hydrate_and_repair_templates(hub_dir: Path, dry_run: bool) -> dict:
             "content_hash": content_hash,
         }
 
+    if "project-curator" in canonical_by_slug:
+        canonical_by_slug["web-builder"] = canonical_by_slug["project-curator"]
+        canonical_by_slug["controller"] = canonical_by_slug.get("research-operations-controller", canonical_by_slug["project-curator"])
+
     index_path.write_text(json.dumps(cache_index, indent=2) + "\n", encoding="utf-8")
 
     conn = sqlite3.connect(str(db_path), timeout=30)
@@ -915,6 +919,86 @@ def provision_live_v2_grove(
             "INSERT OR IGNORE INTO role_bindings (id, principal_type, principal_id, scope_type, scope_id, created_by, created, membership_kind, role_definition_id) VALUES (?, 'user', ?, 'project', ?, ?, ?, 'explicit', ?)",
             (str(uuid.uuid5(uuid.NAMESPACE_DNS, f"rb-{pid}-{rb['principal_id']}")), rb["principal_id"], pid, sarah_id, now_sql, rb["role_definition_id"]),
         )
+    # Ensure agent-role-full has complete agent & chat messaging permissions
+    full_perms = json.dumps(
+        [
+            "agent.create",
+            "agent.read",
+            "agent.list",
+            "agent.update",
+            "agent.delete",
+            "agent.attach",
+            "agent.lifecycle",
+            "agent.message",
+            "agent.set_message_mode",
+            "project.read",
+            "project.chat_post",
+            "artifact.read",
+            "artifact.create",
+            "artifact.manage",
+            "skill.create",
+            "skill.read",
+            "skill.update",
+            "skill.list",
+            "template.create",
+            "template.read",
+            "template.update",
+            "template.list",
+            "harness_config.read",
+            "harness_config.list",
+            "gcp_service_account.assign",
+            "agent.status_update",
+            "project.secret_read",
+            "agent.notify",
+            "agent.token_refresh",
+            "agent.port_forward",
+            "secret.use",
+            "inbox.read",
+            "inbox.write",
+        ],
+        separators=(",", ":"),
+    ).encode("utf-8")
+    cur.execute("UPDATE role_definitions SET permissions = ? WHERE name = 'agent-role-full'", (full_perms,))
+
+    # Ensure web-builder template alias exists (referenced in research-operations-controller/agents.md)
+    cur.execute("SELECT * FROM templates WHERE project_id = ? AND slug = 'project-curator' LIMIT 1", (pid,))
+    pc_tpl = cur.fetchone()
+    cur.execute("SELECT id FROM templates WHERE project_id = ? AND slug = 'web-builder' LIMIT 1", (pid,))
+    if pc_tpl and not cur.fetchone():
+        wb_tid = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"oase-tpl-{pid}-web-builder"))
+        wb_rel = f"hubs/{hub_id}/templates/groves/{pid}/web-builder.{wb_tid}"
+        cur.execute(
+            """
+            INSERT INTO templates (
+                id, name, slug, display_name, description, harness, default_harness_config,
+                agent_config, content_hash, scope, scope_id, project_id, storage_uri,
+                storage_bucket, storage_path, layout, files, base_template, status,
+                owner_id, created_by, updated_by, source_url, created, updated
+            ) VALUES (?, 'web-builder', 'web-builder', 'Web Builder (Project Curator)', ?, ?, ?, ?, ?, 'project', ?, ?, ?, '', ?, ?, ?, ?, 'active', ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                wb_tid,
+                pc_tpl["description"],
+                pc_tpl["harness"],
+                pc_tpl["default_harness_config"],
+                pc_tpl["agent_config"],
+                pc_tpl["content_hash"],
+                pid,
+                pid,
+                f"gs:///{wb_rel}/",
+                wb_rel,
+                pc_tpl["layout"],
+                pc_tpl["files"],
+                pc_tpl["base_template"],
+                sarah_id,
+                sarah_id,
+                sarah_id,
+                pc_tpl["source_url"],
+                now_sql,
+                now_sql,
+            ),
+        )
+
     conn.commit()
     conn.close()
 
@@ -943,13 +1027,18 @@ def provision_live_v2_grove(
     update_template_models(db_path, plan=plan, target_project_slug=live_slug, dry_run=False)
     hydrate_and_repair_templates(hub_dir, dry_run=False)
 
-    # Boot live Gemini 4 Argon (science-program-lead) + Claude Opus 5.5 (scientific-reviewer)
+    # Boot live Gemini 4 Argon (science-program-lead), Claude Opus 5.5 (scientific-reviewer), and controller (research-operations-controller)
     launched: dict[str, dict] = {}
     _, ag_resp = api_call(hub_api, "GET", f"/api/v1/projects/{pid}/agents", token)
     ag_list = ag_resp.get("agents", ag_resp.get("items", ag_resp)) if isinstance(ag_resp, dict) else ag_resp
     existing_agents = {a.get("slug") or a.get("name"): a for a in (ag_list if isinstance(ag_list, list) else [])}
 
-    for ag_slug in ("science-program-lead", "scientific-reviewer"):
+    live_agent_specs = [
+        ("science-program-lead", "science-program-lead"),
+        ("scientific-reviewer", "scientific-reviewer"),
+        ("controller", "research-operations-controller"),
+    ]
+    for ag_slug, tpl_slug in live_agent_specs:
         ex = existing_agents.get(ag_slug)
         cname = f"{live_slug}--{ag_slug}"
         needs_recreate = False
@@ -961,7 +1050,7 @@ def provision_live_v2_grove(
                     cname,
                     "bash",
                     "-lc",
-                    "ps aux; echo ===; ls -la /home/scion/.scion/harness/inputs/",
+                    "ps aux; echo ===; ls -la /home/scion/.scion/harness/inputs/; echo ===; tr '\\0' '\\n' < /proc/1/environ | grep '^OASE_PROJECT=' || true",
                 ],
                 capture_output=True,
                 text=True,
@@ -976,11 +1065,12 @@ def provision_live_v2_grove(
             if (
                 "# Placeholder" in chk.stdout
                 or "resolved-skills.json" not in chk.stdout
+                or "OASE_PROJECT=/workspace" not in chk.stdout
                 or f"/projects/{live_slug}\"" not in mnt.stdout
             ):
                 needs_recreate = True
             else:
-                launched[ag_slug] = {"id": ex["id"], "status": "already_running", "harness": plan[ag_slug][0], "model": plan[ag_slug][1]}
+                launched[ag_slug] = {"id": ex["id"], "status": "already_running", "harness": plan[tpl_slug][0], "model": plan[tpl_slug][1]}
                 continue
         if ex and ex.get("id"):
             api_call(hub_api, "DELETE", f"/api/v1/agents/{ex['id']}", token)
@@ -988,11 +1078,11 @@ def provision_live_v2_grove(
         payload = {
             "name": ag_slug,
             "projectId": pid,
-            "template": ag_slug,
+            "template": tpl_slug,
             "agentRole": "full",
             "gcp_identity": {"metadata_mode": "assign", "service_account_id": sa_id},
             "task": (
-                f"You are `{ag_slug}` in live execution grove `{live_slug}` (`t=0` seed). "
+                f"You are `{ag_slug}` (`{tpl_slug}`) in live execution grove `{live_slug}` (`t=0` seed). "
                 f"Stand by for multi-human Webchat instructions and always reply via `scion message \"conv:<id>\"`."
             ),
         }
@@ -1001,10 +1091,44 @@ def provision_live_v2_grove(
         launched[ag_slug] = {
             "http_status": st,
             "id": aobj.get("id"),
-            "recreated_from_placeholder": needs_recreate,
-            "harness": plan[ag_slug][0],
-            "model": plan[ag_slug][1],
+            "recreated": needs_recreate,
+            "harness": plan[tpl_slug][0],
+            "model": plan[tpl_slug][1],
         }
+
+    # Wire #general webchat_topic & conversations default_agent to science-program-lead + add participants
+    lead_id = launched.get("science-program-lead", {}).get("id")
+    if lead_id:
+        conn2 = sqlite3.connect(str(db_path), timeout=30)
+        conn2.row_factory = sqlite3.Row
+        cur2 = conn2.cursor()
+        cur2.execute(
+            "UPDATE webchat_topic SET default_agent = 'science-program-lead', created_by = ? WHERE project_id = ? AND is_general = 1",
+            (sarah_id, pid),
+        )
+        cur2.execute(
+            "UPDATE conversations SET default_agent_id = ? WHERE project_id = ? AND display_name = 'general'",
+            (lead_id, pid),
+        )
+        cur2.execute("SELECT id FROM conversations WHERE project_id = ? AND display_name = 'general' LIMIT 1", (pid,))
+        grow = cur2.fetchone()
+        if grow:
+            gcid = grow["id"]
+            for urow in cur2.execute("SELECT id FROM users WHERE email LIKE 'oase-%'"):
+                uid = urow["id"]
+                cur2.execute(
+                    "INSERT OR IGNORE INTO conversation_participants (id, conversation_id, principal_kind, principal_id, role, joined_at) VALUES (?, ?, 'user', ?, 'member', ?)",
+                    (str(uuid.uuid5(uuid.NAMESPACE_DNS, f"cp-{gcid}-{uid}")), gcid, uid, now_sql),
+                )
+            for ag_info in launched.values():
+                aid = ag_info.get("id")
+                if aid:
+                    cur2.execute(
+                        "INSERT OR IGNORE INTO conversation_participants (id, conversation_id, principal_kind, principal_id, role, joined_at) VALUES (?, ?, 'agent', ?, 'member', ?)",
+                        (str(uuid.uuid5(uuid.NAMESPACE_DNS, f"cp-{gcid}-{aid}")), gcid, aid, now_sql),
+                    )
+        conn2.commit()
+        conn2.close()
 
     return {"project_id": pid, "slug": live_slug, "launched_agents": launched}
 
@@ -1091,6 +1215,8 @@ def main() -> int:
     tools_summary = repair_shared_oase_volumes(hub_dir, dry_run=args.dry_run)
 
     env_map = {
+        "OASE_PROJECT": ("/workspace", "Default OASE campaign program root inside agent containers"),
+        "OASE_TOOLS_HOME": ("/workspace/.scion-volumes/tools", "Shared OASE v0.3.0 toolchain volume path inside agent containers"),
         "OASE_AG_PROJECT": (args.gcp_project, "GCP project hosting Dedicated AlphaGenome Endpoint"),
         "OASE_AG_REGION": (args.ag_region, "GCP region for Dedicated AlphaGenome Endpoint"),
         "OASE_AG_ENDPOINT_ID": (args.ag_endpoint_id, "Vertex AI Endpoint ID for AlphaGenome"),
@@ -1103,6 +1229,7 @@ def main() -> int:
     env_count = upsert_hub_env_vars(db_path, env_map, dry_run=args.dry_run)
 
     plan = build_template_model_plan(enable_claude=args.enable_claude)
+    plan["web-builder"] = plan.get("project-curator", ("antigravity", "medium"))
     tpl_updated = update_template_models(
         db_path,
         plan=plan,
@@ -1131,7 +1258,7 @@ def main() -> int:
             doctor_checks.append(run_container_doctor(args.verify_container))
         if args.provision_live_grove:
             time.sleep(8)
-            for role in ("science-program-lead", "scientific-reviewer"):
+            for role in ("science-program-lead", "scientific-reviewer", "controller"):
                 cname = f"{args.provision_live_grove}--{role}"
                 doctor_checks.append(run_container_doctor(cname))
 
