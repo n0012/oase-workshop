@@ -76,7 +76,7 @@
       "target": "PCSK9 (Q8NBP7) · Oral Rule-of-5 Small Molecule",
       "stack_summary": "5 Live Scientist Avatars + 6 Voiced AI Wingmen · Deterministic 2-Phase Receipts · Sub-2s SQLite Reset",
       "gcs_video_prefix": "videos",
-      "static_video_prefix": "assets/videos",
+      "static_video_prefix": "assets/videos-v1",
       "video_manifest": "assets/video-chapters-manifest.json",
       "portal_prefix": "",
       "kpis": [

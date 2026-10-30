@@ -1778,7 +1778,8 @@ selectStation('s3');
         fwCard.className = 'cockpit-stage-card';
         const durMin = fullVideo.duration_s ? (fullVideo.duration_s / 60).toFixed(1) + ' min' : '7 Chapters';
         const fwFile = fullVideo.video_filename || 'full-pilot-walkthrough.mp4';
-        const fwSrc = isLive ? `${videoBase}${fwFile}?v=${fullVideo.duration_s || '267'}` : `${videoBase}${fwFile}`;
+        const fwVer = fullVideo.duration_s || '474';
+        const fwSrc = `${videoBase}${fwFile}?v=${fwVer}`;
         fwCard.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.55rem;">
             <div>
@@ -1876,7 +1877,7 @@ selectStation('s3');
 
       const videoFilename = vmeta ? vmeta.video_filename : `chapter-0${chId.slice(2)}.mp4`;
       const videoVer = vmeta && vmeta.duration_s ? vmeta.duration_s : '38';
-      const videoSrc = isLive ? `${videoBase}${videoFilename}?v=${videoVer}` : `${videoBase}${videoFilename}`;
+      const videoSrc = `${videoBase}${videoFilename}?v=${videoVer}`;
       const subBadge = isLive && cstate.slug
         ? `Live Project: ${cstate.slug} · Git ${cstate.git_commit} · ${cstate.message_count} Webchat msgs · ${(cstate.running_agents || []).length} live containers`
         : `Scion Grove Checkpoint: ${(vmeta && vmeta.slug) || chId} · ${vmeta && vmeta.duration_s ? vmeta.duration_s + 's' : '1080p'} · 5 Live Avatars + 6 AI Wingmen`;
