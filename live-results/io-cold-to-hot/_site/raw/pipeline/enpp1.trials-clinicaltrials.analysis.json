@@ -1,0 +1,90 @@
+{
+  "record_type": "analysis",
+  "source": "raw/pipeline/enpp1.trials-clinicaltrials.artifact.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:16:11Z",
+  "threshold_set": "trials@1.0",
+  "thresholds_applied": {
+    "active_pipeline_min_phase": 2
+  },
+  "metrics": {
+    "total_studies": 26,
+    "by_phase": {
+      "N/A": 11,
+      "Phase2": 4,
+      "Phase1": 7,
+      "Phase1/Phase2": 2,
+      "Phase3": 2
+    },
+    "by_status": {
+      "RECRUITING": 9,
+      "TERMINATED": 5,
+      "UNKNOWN": 1,
+      "COMPLETED": 8,
+      "NOT_YET_RECRUITING": 1,
+      "ACTIVE_NOT_RECRUITING": 1,
+      "WITHDRAWN": 1
+    },
+    "recruiting_count": 11,
+    "phase_2_plus_recruiting": 2,
+    "max_phase": 3,
+    "top_sponsors": [
+      "Inozyme Pharma",
+      "Riboscience, LLC.",
+      "Centre Hospitalier Universitaire de Nice",
+      "Tam Anh Research Institute",
+      "Universit\u00e4t M\u00fcnster"
+    ],
+    "top_interventions": [
+      "INZ-701",
+      "RBS2418",
+      "Placebo",
+      "No Intervention for this observational study",
+      "Pembrolizumab"
+    ],
+    "date_range": {
+      "earliest": "2018-03-15",
+      "latest": "2029-12-30"
+    }
+  },
+  "assessment": {
+    "verdict": "active_pipeline",
+    "query_term": "ENPP1",
+    "n_studies": 26,
+    "max_phase": 3,
+    "recruiting_count": 11,
+    "phase_2_plus_recruiting": 2,
+    "phase_3_plus_count": 2,
+    "top_sponsors": [
+      "Inozyme Pharma",
+      "Riboscience, LLC.",
+      "Centre Hospitalier Universitaire de Nice",
+      "Tam Anh Research Institute",
+      "Universit\u00e4t M\u00fcnster"
+    ],
+    "top_interventions": [
+      "INZ-701",
+      "RBS2418",
+      "Placebo",
+      "No Intervention for this observational study",
+      "Pembrolizumab"
+    ],
+    "confidence": "low_text_match_only",
+    "confidence_reason": "Query 'ENPP1' (5 chars) returned 26 studies \u2014 text matching of short gene symbols is unreliable. Triggers: Phase 3+ ratio (2/26 = 7.7%) exceeds 5% threshold. Manual review of trial titles/interventions is required."
+  },
+  "mandatory_relays": [
+    {
+      "code": "trials.text_match_not_mechanism",
+      "message": "Trial search for 'ENPP1' used full-text matching, not mechanism-specific filtering. The 26 results may include incidental mentions. Any finding citing this verdict MUST note that results are text-matched, not mechanism-verified."
+    },
+    {
+      "code": "trials.active_competitor_pipeline",
+      "message": "2 Phase 3+ trial(s) found for 'ENPP1'; sponsors include Inozyme Pharma. Late-stage clinical development may affect freedom to operate or competitive positioning."
+    }
+  ],
+  "written_by": "scientific-reviewer",
+  "work_order_id": null,
+  "source_sha256": "ca3c8c3d364843430a2dd1a3dad3d7f702376a2923ffa11fdaee3b03d0182075"
+}

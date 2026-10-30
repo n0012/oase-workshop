@@ -1,0 +1,59 @@
+data_pocket40_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    40:
+0  - Pocket Score                      : -0.0088
+1  - Drug Score                        : 0.0000
+2  - Number of alpha spheres           :    22
+3  - Mean alpha-sphere radius          : 3.7614
+4  - Mean alpha-sphere Solvent Acc.    : 0.4327
+5  - Mean B-factor of pocket residues  : 0.9698
+6  - Hydrophobicity Score              : 10.4444
+7  - Polarity Score                    :     8
+8  - Amino Acid based volume Score     : 3.7778
+9  - Pocket volume (Monte Carlo)       : 213.2662
+10  -Pocket volume (convex hull)       : 6.8398
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0455
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5798     O    O ?  THR      A 733 ?   25.836   -0.305  -21.152   0.00  0 733 A
+ATOM    6059     C   CB ?  GLN      A 767 ?   20.282   -2.710  -23.960   0.00  0 767 A
+ATOM    5790     O    O ?  ASN      A 732 ?   25.239    1.350  -24.985  -4.29  0 732 A
+ATOM    6064     O  OE1 ?  GLN      A 767 ?   22.679   -3.626  -25.147   0.00  0 767 A
+ATOM    6070     O   OG ?  SER      A 768 ?   19.002   -5.050  -19.515  -2.28  0 768 A
+ATOM    6856     O    O ?  THR      A 862 ?   19.970   -3.819  -17.344  -0.14  0 862 A
+ATOM    6056     N    N ?  GLN      A 767 ?   19.040   -1.124  -22.599  -1.51  0 767 A
+ATOM    5810     N    N ?  VAL      A 735 ?   23.715    3.197  -22.006   0.00  0 735 A
+ATOM    5812     C    C ?  VAL      A 735 ?   22.143    3.591  -23.860   0.00  0 735 A
+ATOM    5803     C    C ?  LYS      A 734 ?   24.123    2.811  -20.796   0.00  0 734 A
+ATOM    6855     C   CB ?  THR      A 862 ?   20.624   -1.516  -15.451   0.00  0 862 A
+ATOM    6050     C  CD1 ?  TYR      A 766 ?   20.063    1.859  -18.767   0.00  0 766 A
+ATOM    6857     C  CG2 ?  THR      A 862 ?   20.889   -0.012  -15.460   0.00  0 862 A
+ATOM    5811     C   CA ?  VAL      A 735 ?   22.347    3.626  -22.339   0.00  0 735 A
+ATOM    5805     O    O ?  LYS      A 734 ?   23.392    2.805  -19.809  -1.48  0 734 A
+ATOM    6047     C   CB ?  TYR      A 766 ?   18.298    0.272  -19.693   0.00  0 766 A
+ATOM    5817     N    N ?  SER      A 736 ?   20.939    3.221  -24.287  -1.09  0 736 A
+# 

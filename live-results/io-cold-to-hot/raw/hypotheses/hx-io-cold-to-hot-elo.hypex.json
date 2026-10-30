@@ -1,0 +1,214 @@
+{
+  "schema": "oase.hypex.v1",
+  "hypex_run_id": "io-cold-to-hot-elo",
+  "hypex_run_dir": "/workspace/raw/hypex_runs/io-cold-to-hot-elo",
+  "run_id": "",
+  "work_order_id": "",
+  "run": {
+    "goal": "Prioritize innate immune checkpoint targets for cold-to-hot TME conversion with oral small molecules",
+    "constraints": [
+      "Extracellular or druggable catalytic pocket with human LoF safety"
+    ],
+    "created_at": "2026-10-30T19:00:00Z",
+    "tournament_strategy": "",
+    "composite_preset": null
+  },
+  "termination": {
+    "reason": "converged",
+    "epoch_reached": 1,
+    "declared": true
+  },
+  "observed": {
+    "n_hypotheses": 3,
+    "n_quarantined": 0,
+    "n_reviews": 3,
+    "n_matches": 6,
+    "n_epochs_observed": 2,
+    "last_match_id": "M-0006"
+  },
+  "declared_budgets": {
+    "max_hypotheses": 50,
+    "max_matches": 200,
+    "max_epochs": 5
+  },
+  "roster": [
+    {
+      "agent": "hypex-supervisor",
+      "role": "supervisor"
+    },
+    {
+      "agent": "hypex-generation",
+      "role": "generation"
+    },
+    {
+      "agent": "hypex-reflection",
+      "role": "reflection"
+    },
+    {
+      "agent": "hypex-ranking",
+      "role": "ranking"
+    },
+    {
+      "agent": "hypex-evolution",
+      "role": "evolution"
+    },
+    {
+      "agent": "hypex-proximity",
+      "role": "proximity"
+    }
+  ],
+  "ratings": {
+    "epoch": 1,
+    "base_rating": 1500.0,
+    "per_hypothesis": {
+      "H-0001": {
+        "elo": 1658.4,
+        "matches": 4,
+        "wins": 4,
+        "draws": 0
+      },
+      "H-0002": {
+        "elo": 1554.5,
+        "matches": 5,
+        "wins": 2,
+        "draws": 0
+      },
+      "H-0003": {
+        "elo": 1368.0,
+        "matches": 3,
+        "wins": 0,
+        "draws": 0
+      }
+    }
+  },
+  "pacing": {
+    "tier": "standard",
+    "roster_size": 6
+  },
+  "progress": null,
+  "hypotheses": [
+    {
+      "id": "H-0001",
+      "title": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+      "status": "active",
+      "cluster": null,
+      "elo": 1658.4,
+      "matches": 4,
+      "wins": 4,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 5.0,
+        "novelty": 5.0,
+        "testability": 5.0,
+        "safety": 5.0,
+        "goal_alignment": 5.0,
+        "constraint_compliance": 5.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+        "mechanism": "ENPP1 hydrolysis of extracellular 2',3'-cGAMP suppresses anti-tumor STING signaling."
+      }
+    },
+    {
+      "id": "H-0002",
+      "title": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling",
+      "status": "reviewed",
+      "cluster": null,
+      "elo": 1554.5,
+      "matches": 5,
+      "wins": 2,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 5.0,
+        "novelty": 5.0,
+        "testability": 5.0,
+        "safety": 5.0,
+        "goal_alignment": 5.0,
+        "constraint_compliance": 5.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling",
+        "mechanism": "PTPN2 loss sensitizes tumors to immunotherapy by amplifying IFN-gamma STAT1 signaling."
+      }
+    },
+    {
+      "id": "H-0003",
+      "title": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk",
+      "status": "reviewed",
+      "cluster": null,
+      "elo": 1368.0,
+      "matches": 3,
+      "wins": 0,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 5.0,
+        "novelty": 5.0,
+        "testability": 5.0,
+        "safety": 5.0,
+        "goal_alignment": 5.0,
+        "constraint_compliance": 5.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk",
+        "mechanism": "Germline TREX1 loss-of-function mutations cause Aicardi-Goutieres encephalomyelitis."
+      }
+    }
+  ],
+  "integrity": {
+    "dangling_match_refs": [],
+    "dangling_review_refs": [],
+    "dangling_lineage_parents": [],
+    "id_filename_mismatches": [],
+    "unrated_hypotheses": [],
+    "quarantine_duplicates": []
+  },
+  "_schema_validation": {
+    "files_checked": 12,
+    "files_failed": []
+  }
+}

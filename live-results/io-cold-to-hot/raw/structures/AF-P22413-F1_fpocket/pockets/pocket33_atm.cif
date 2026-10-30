@@ -1,0 +1,66 @@
+data_pocket33_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    33:
+0  - Pocket Score                      : 0.0136
+1  - Drug Score                        : 0.0963
+2  - Number of alpha spheres           :    22
+3  - Mean alpha-sphere radius          : 3.7178
+4  - Mean alpha-sphere Solvent Acc.    : 0.6381
+5  - Mean B-factor of pocket residues  : 0.5738
+6  - Hydrophobicity Score              : 46.1429
+7  - Polarity Score                    :     2
+8  - Amino Acid based volume Score     : 4.1429
+9  - Pocket volume (Monte Carlo)       : 313.9536
+10  -Pocket volume (convex hull)       : 16.7652
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 15.8000
+13 - Number of apolar alpha sphere     :    20
+14 - Proportion of apolar alpha sphere : 0.9091
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    508      O  OD1 ?  ASN      A 73 ?  -72.695  -62.389   47.845  -2.14  0 73 A
+ATOM    543      C  CG2 ?  VAL      A 77 ?  -73.422  -57.337   44.397   0.00  0 77 A
+ATOM    507      N  ND2 ?  ASN      A 73 ?  -73.449  -63.465   46.099  -3.45  0 73 A
+ATOM    506      C   CG ?  ASN      A 73 ?  -73.579  -62.536   47.014   0.00  0 73 A
+ATOM    570      O    O ?  VAL      A 81 ?  -69.484  -47.941   46.007   0.00  0 81 A
+ATOM    592      C  CG1 ?  VAL      A 84 ?  -66.183  -47.755   42.582   0.00  0 84 A
+ATOM    571      C  CG1 ?  VAL      A 81 ?  -72.269  -48.653   44.531   0.00  0 81 A
+ATOM    599      S   SG ?  CYS      A 85 ?  -70.313  -45.044   44.810   0.00  0 85 A
+ATOM    567      C   CA ?  VAL      A 81 ?  -70.287  -50.062   45.343   0.00  0 81 A
+ATOM    572      C  CG2 ?  VAL      A 81 ?  -71.951  -50.939   43.658   0.00  0 81 A
+ATOM    590      C   CB ?  VAL      A 84 ?  -66.328  -48.651   43.820   0.00  0 84 A
+ATOM    561      C   CB ?  LEU      A 80 ?  -68.363  -54.224   45.582   0.00  0 80 A
+ATOM    560      C    C ?  LEU      A 80 ?  -68.605  -51.740   46.031   0.00  0 80 A
+ATOM    565      C  CD2 ?  LEU      A 80 ?  -67.028  -55.240   43.695   0.00  0 80 A
+ATOM    542      C  CG1 ?  VAL      A 77 ?  -73.793  -54.953   43.863   0.00  0 77 A
+ATOM    541      O    O ?  VAL      A 77 ?  -71.939  -53.301   46.023   0.00  0 77 A
+ATOM    593      C  CG2 ?  VAL      A 84 ?  -65.573  -49.953   43.516   0.00  0 84 A
+ATOM    531      C   CB ?  LYS      A 76 ?  -70.958  -58.992   48.682   0.00  0 76 A
+ATOM    532      O    O ?  LYS      A 76 ?  -70.398  -55.932   47.719  -2.14  0 76 A
+ATOM    564      C  CD1 ?  LEU      A 80 ?  -66.233  -55.501   46.026   0.00  0 80 A
+ATOM    566      N    N ?  VAL      A 81 ?  -69.877  -51.385   45.833   0.00  0 81 A
+ATOM    562      O    O ?  LEU      A 80 ?  -67.676  -50.983   45.795   0.00  0 80 A
+ATOM    538      C   CA ?  VAL      A 77 ?  -72.565  -55.585   46.005   0.00  0 77 A
+ATOM    530      C    C ?  LYS      A 76 ?  -71.385  -56.629   47.897   0.00  0 76 A
+# 

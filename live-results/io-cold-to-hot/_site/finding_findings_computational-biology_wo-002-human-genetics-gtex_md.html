@@ -1,0 +1,395 @@
+<!--
+ Copyright 2026 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE html>
+<!--
+ Copyright 2026 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="oase 0.3.0">
+<title>Finding — WO-002: Human Genetic Constraint (`ENPP1` vs `TREX1` gnomAD v4) &amp; GTEx v8 Expression Triage</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #1a1a1a; background: #fafafa; }
+  nav { background: #2c3e50; color: #ecf0f1; padding: 0.75rem 2rem; }
+  nav a { color: #ecf0f1; text-decoration: none; margin-right: 1.5rem; }
+  nav a:hover { text-decoration: underline; }
+  nav .nav-title { font-weight: bold; margin-right: 2rem; }
+  h1, h2, h3 { color: #2c3e50; }
+  .meta { background: #eee; padding: 0.75rem 1rem; border-radius: 4px; margin: 1rem 0; font-size: 0.85rem; color: #555; }
+  .meta dt { font-weight: bold; display: inline; }
+  .meta dd { display: inline; margin: 0 1rem 0 0; }
+  a { color: #2980b9; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; }
+  th { background: #ecf0f1; font-weight: 600; }
+  pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+  footer { margin-top: 3rem; padding: 1rem 0; border-top: 1px solid #ddd; font-size: 0.8rem; color: #888; }
+
+  /* Sidebar layout */
+  .site-layout { display: flex; min-height: calc(100vh - 50px); }
+  .sidebar { width: 240px; min-width: 240px; background: #2c3e50; color: #ecf0f1; padding: 1rem 0; overflow-y: auto; }
+  .sidebar details { margin: 0; }
+  .sidebar summary { padding: 0.6rem 1rem; font-weight: 600; font-size: 0.9rem; cursor: pointer; color: #ecf0f1; list-style: none; background: #243342; border-bottom: 1px solid #1a252f; }
+  .sidebar summary::-webkit-details-marker { display: none; }
+  .sidebar summary::before { content: "\25b6"; display: inline-block; margin-right: 0.5rem; font-size: 0.7rem; transition: transform 0.15s; }
+  .sidebar details[open] > summary::before { transform: rotate(90deg); }
+  .sidebar ul { list-style: none; margin: 0; padding: 0; }
+  .sidebar li a { display: block; padding: 0.4rem 1rem 0.4rem 1.5rem; color: #bdc3c7; text-decoration: none; font-size: 0.85rem; border-left: 3px solid transparent; }
+  .sidebar li a:hover { background: #34495e; color: #ecf0f1; }
+  .sidebar li a.active { background: #34495e; color: #ecf0f1; border-left-color: #3498db; font-weight: 600; }
+  .main-content { flex: 1; min-width: 0; }
+  .main-content .container { max-width: 960px; margin: 0 auto; padding: 1rem 2rem; }
+
+  /* Breadcrumbs */
+  .breadcrumbs { padding: 0.5rem 2rem; background: #ecf0f1; font-size: 0.85rem; color: #555; }
+  .breadcrumbs a { color: #2980b9; text-decoration: none; }
+  .breadcrumbs a:hover { text-decoration: underline; }
+
+  /* Responsive: collapse sidebar on narrow screens */
+  @media (max-width: 768px) {
+    .site-layout { flex-direction: column; }
+    .sidebar { width: 100%; min-width: 100%; }
+    .sidebar details { border-bottom: 1px solid #1a252f; }
+    .sidebar details:not([open]) > summary { border-bottom: none; }
+  }
+
+  /* Security: blocked external content markers (#170) */
+  .blocked-image { background: #fff3cd; border: 1px solid #ffc107; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.85rem; color: #856404; }
+  .blocked-link { color: #dc3545; text-decoration: line-through; }
+</style>
+<link rel="stylesheet" href="katex/katex.min.css">
+<script defer src="katex/katex.min.js"></script>
+<script defer src="katex/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [
+    {left: '$$', right: '$$', display: true},
+    {left: '\\(', right: '\\)', display: false},
+    {left: '\\[', right: '\\]', display: true}
+  ]});"></script>
+</head>
+<body>
+<nav>
+  <span class="nav-title">OASE Program</span>
+  <a href="index.html">Home</a>
+</nav>
+<div class="site-layout">
+  <aside class="sidebar">
+  
+    
+    <details open>
+      <summary>Executive Summary</summary>
+      <ul>
+      
+        
+        <li><a href="executive.html">Executive Summary — IO Cold-to-Hot Tumor Reprogramming Campaign (`io-cold-to-hot`)</a></li>
+        
+      
+      </ul>
+    </details>
+    
+    <details open>
+      <summary>Program State</summary>
+      <ul>
+      
+        
+        <li><a href="program_state_active-series.html">Active Series — IO Cold-to-Hot Tumor Reprogramming Campaign (`io-cold-to-hot`)</a></li>
+        
+      
+        
+        <li><a href="program_state_decision-log.html">Decision Log — IO Cold-to-Hot Tumor Reprogramming Campaign (`io-cold-to-hot`)</a></li>
+        
+      
+        
+        <li><a href="program_state_liability-tracker.html">Liability Tracker — IO Cold-to-Hot Campaign (`io-cold-to-hot`)</a></li>
+        
+      
+        
+        <li><a href="program_state_open-questions.html">Open Questions — IO Cold-to-Hot Campaign (`io-cold-to-hot`)</a></li>
+        
+      
+      </ul>
+    </details>
+    
+    <details open>
+      <summary>Findings</summary>
+      <ul>
+      
+        
+        <li style="padding: 0.4rem 1rem 0.2rem 1rem; font-size: 0.75rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.05em;">— Admet Dmpk —</li>
+        
+      
+        
+        <li><a href="finding_findings_admet-dmpk_wo-007-wetlab-request-package_md.html">WO-007: Preclinical Translational Synthesis &amp; 4-Assay Wet-Lab Request Package (`EXP-01`..`EXP-04`)</a></li>
+        
+      
+        
+        <li style="padding: 0.4rem 1rem 0.2rem 1rem; font-size: 0.75rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.05em;">— Computational Biology —</li>
+        
+      
+        
+        <li><a href="finding_findings_computational-biology_wo-001-hypothesis-tournament_md.html">WO-001: Co-Scientist &amp; Hypex Elo Tournament for Cold-to-Hot Tumor Microenvironment Reprogramming</a></li>
+        
+      
+        
+        <li><a href="finding_findings_computational-biology_wo-002-human-genetics-gtex_md.html" class="active">WO-002: Human Genetic Constraint (`ENPP1` vs `TREX1` gnomAD v4) &amp; GTEx v8 Expression Triage</a></li>
+        
+      
+        
+        <li><a href="finding_findings_computational-biology_wo-003-alphagenome-variant_md.html">WO-003: Live 1P AlphaGenome Regulatory &amp; Chromatin Accessibility Scoring at the `ENPP1` Locus (`chr6:131894218C&gt;T`)</a></li>
+        
+      
+        
+        <li style="padding: 0.4rem 1rem 0.2rem 1rem; font-size: 0.75rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.05em;">— Medicinal Chemistry —</li>
+        
+      
+        
+        <li><a href="finding_findings_medicinal-chemistry_wo-006-dmta-admet-mmp_md.html">WO-006: DMTA Lead Optimization (`enpp1_hit_001` → `oase_enpp1_009`), RDKit Profiling, BRICS MMP &amp; ADMET Qualification</a></li>
+        
+      
+        
+        <li style="padding: 0.4rem 1rem 0.2rem 1rem; font-size: 0.75rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.05em;">— Regulatory —</li>
+        
+      
+        
+        <li><a href="finding_findings_regulatory_wo-008-clinical-landscape-dossier_md.html">WO-008: ClinicalTrials.gov ENPP1 Competitive Landscape &amp; Pre-Wet-Lab Candidate Dossier (`oase_enpp1_009`)</a></li>
+        
+      
+        
+        <li style="padding: 0.4rem 1rem 0.2rem 1rem; font-size: 0.75rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 0.05em;">— Structural Biology —</li>
+        
+      
+        
+        <li><a href="finding_findings_structural-biology_wo-004-alphafold3-pocket_md.html">WO-004: AlphaFold DB Full-Length ENPP1 (`P22413`), `fpocket` Catalytic Cavity Mapping &amp; Live 1P AlphaFold 3 Co-Folding</a></li>
+        
+      
+        
+        <li><a href="finding_findings_structural-biology_wo-005-vina-docking_md.html">WO-005: AutoDock Vina Physics-Based Docking of `oase_enpp1_009` into ENPP1 `Pocket #7`</a></li>
+        
+      
+      </ul>
+    </details>
+    
+    <details open>
+      <summary>Operations</summary>
+      <ul>
+      
+        
+        <li><a href="workorder_WO-001_r1.html">WO-001-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-002_r1.html">WO-002-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-003_r1.html">WO-003-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-004_r1.html">WO-004-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-005_r1.html">WO-005-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-006_r1.html">WO-006-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-007_r1.html">WO-007-r1</a></li>
+        
+      
+        
+        <li><a href="workorder_WO-008_r1.html">WO-008-r1</a></li>
+        
+      
+      </ul>
+    </details>
+    
+    <details open>
+      <summary>Gates</summary>
+      <ul>
+      
+        
+        <li><a href="gate_stage1-intervention-validation_gate1-decision.html">Stage Gate 1 (`DEC-001`) — Target &amp; Intervention Validation (`PASSED`)</a></li>
+        
+      
+        
+        <li><a href="gate_stage2-starting-matter-declaration_gate2-decision.html">Stage Gate 2 (`DEC-002`) — Structural Druggability &amp; Starting Matter (`PASSED`)</a></li>
+        
+      
+        
+        <li><a href="gate_stage3-candidate-nomination_gate3-decision.html">Stage Gate 3 (`DEC-003`) — Candidate Nomination &amp; Wet-Lab Wall Gate (`HALTED AWAITING WET-LAB CRO READOUTS`)</a></li>
+        
+      
+      </ul>
+    </details>
+    
+    <details open>
+      <summary>Raw Data</summary>
+      <ul>
+      
+        
+        <li><a href="artifact_oase_admet.html">oase.admet</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_compounds.html">oase.compounds</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_docking.html">oase.docking</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_genomics.html">oase.genomics</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_gtex.html">oase.gtex</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_hypotheses.html">oase.hypotheses</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_pipeline.html">oase.pipeline</a></li>
+        
+      
+        
+        <li><a href="artifact_oase_structures.html">oase.structures</a></li>
+        
+      
+      </ul>
+    </details>
+    
+  
+  </aside>
+  <div class="main-content">
+    
+<div class="breadcrumbs">
+  <a href="index.html">Home</a> &rsaquo;
+  <span>Findings</span> &rsaquo;
+  <span>WO-002: Human Genetic Constraint (`ENPP1` vs `TREX1` gnomAD v4) &amp; GTEx v8 Expression Triage</span>
+</div>
+
+    <div class="container">
+    
+<h1>WO-002: Human Genetic Constraint (`ENPP1` vs `TREX1` gnomAD v4) &amp; GTEx v8 Expression Triage</h1>
+
+<div class="meta">
+  <dl>
+    <dt>Work Order:</dt>
+    <dd>WO-002-r1</dd>
+    <dt>Source Path:</dt>
+    <dd>findings/computational-biology/wo-002-human-genetics-gtex.md</dd>
+    <dt>Role:</dt>
+    <dd>computational-biologist</dd>
+  </dl>
+</div>
+
+<h2>Finding Content</h2>
+<div class="finding-body">
+<p><strong>Work Order:</strong> <code>WO-002-r1</code>
+<strong>Author:</strong> <code>computational-biologist</code> (Dr. Marcus Vance)</p>
+<h2 id="summary">Summary</h2>
+<p>We queried gnomAD v4 genetic constraint (<code>oase genetics fetch/analyze</code>) for <code>ENPP1</code> (<code>ENSG00000197594</code>) and <code>TREX1</code> (<code>ENSG00000213689</code>), alongside GTEx v8 whole-blood RNA-seq expression (<code>oase gtex fetch/analyze ENPP1</code>), to evaluate systemic human target safety and formally adjudicate the <code>TREX1</code> autoimmunity liability (<code>L-001</code>).</p>
+<h2 id="key-findings">Key Findings</h2>
+<ul>
+<li><strong>ENPP1 Human Loss-of-Function Tolerance (<code>ENPP1.gnomad-constraint.json</code>):</strong><ul>
+<li><code>ENPP1</code> (<code>ENSG00000197594</code>) is tolerant to heterozygous loss-of-function in general human populations (<code>verdict: lof_tolerant</code>), with <code>pLI =</code> 2.7418338646034427e-13 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json <span class="math">\(.metrics.pLI}, `LOEUF =` 0.7220920420139987 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json \)</span>.metrics.loeuf}, and <code>oe_lof =</code> 0.594315275499504 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json <span class="math">\(.metrics.oe_lof} (73 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json \)</span>.metrics.obs_lof} observed vs. 122.8304285779054 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json <span class="math">\(.metrics.exp_lof} expected LoF variants) and missense ratio `oe_mis =` 0.8669424407497454 {source: raw/genomics/ENPP1.gnomad-constraint.analysis.json \)</span>.metrics.oe_mis}.</li>
+</ul>
+</li>
+<li><strong>TREX1 Mendelian Autoimmunity Disqualification (<code>TREX1.gnomad-constraint.json</code>):</strong><ul>
+<li>Although <code>TREX1</code> (<code>ENSG00000213689</code>) shows <code>pLI =</code> 0.0005448355030087425 {source: raw/genomics/TREX1.gnomad-constraint.analysis.json <span class="math">\(.metrics.pLI} and `LOEUF =` 1.3292074754847876 {source: raw/genomics/TREX1.gnomad-constraint.analysis.json \)</span>.metrics.loeuf} (11 {source: raw/genomics/TREX1.gnomad-constraint.analysis.json $.metrics.obs_lof} observed LoF variants), human Mendelian genetics (<code>PMID:16845398</code>) proves that biallelic or dominant-negative <code>TREX1</code> loss-of-function triggers Aicardi-Goutières syndrome, systemic lupus erythematosus, and fatal autoimmune myocarditis via unchecked cytosolic DNA accumulation (<code>L-001</code>). <code>TREX1</code> is therefore permanently disqualified at <code>DEC-001</code>.</li>
+</ul>
+</li>
+<li><strong>GTEx v8 Whole-Blood Bulk RNA-Seq Expression (<code>ENSG00000197594.11.gtex.json</code>):</strong><ul>
+<li>GTEx whole-blood expression for <code>ENPP1</code> (<code>ENSG00000197594.11</code>) is classified as <code>not_expressed</code>, with <code>median_tpm =</code> 0.035069699999999995 {source: raw/gtex/ENSG00000197594.11.analysis.json $.metrics.median_tpm} TPM in <code>Whole_Blood</code> (<code>UBERON:0013756</code>), minimizing systemic circulating target-sink risk.</li>
+</ul>
+</li>
+<li><strong>Supporting Artifacts:</strong><ul>
+<li><a href="../../raw/genomics/ENPP1.gnomad-constraint.json">ENPP1 gnomAD Constraint Artifact</a></li>
+<li><a href="../../raw/genomics/TREX1.gnomad-constraint.json">TREX1 gnomAD Constraint Artifact</a></li>
+<li><a href="../../raw/gtex/ENSG00000197594.11.gtex.json">ENPP1 GTEx Expression Artifact</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="mandatory-relays-amp-governance-dispositions">Mandatory Relays &amp; Governance Dispositions</h2>
+<ul>
+<li><strong>Relay: <code>gtex.whole_blood_is_not_peripheral_blood</code></strong> — GTEx whole blood is drawn from femoral/subclavian veins and measured by bulk RNA-seq (755 samples, median TPM). Report this as 'GTEx whole-blood RNA-seq expression', not as 'peripheral blood expression'. It is a partial proxy, not an equivalent measurement.</li>
+</ul>
+<h2 id="implications">Implications</h2>
+<p><code>ENPP1</code> passes Stage 1 human genetic safety triage while <code>TREX1</code> is eliminated (<code>DEC-001</code>); proceed to <code>WO-003</code> live 1P AlphaGenome regulatory scoring of the <code>ENPP1</code> locus (<code>chr6:131894218C&gt;T</code>).</p>
+
+</div>
+
+<h2>Provenance</h2>
+<ul>
+  <li><strong>Work Order:</strong> WO-002 revision 1</li>
+  <li><strong>State:</strong> scientifically_accepted</li>
+  <li><strong>Stage:</strong> stage1-intervention-validation</li>
+  <li><strong>Cycle:</strong> cycle-1</li>
+
+  <li><strong>Referenced Artifact Classes:</strong>
+    <ul>
+    
+      <li><a href="artifact_oase_gtex.html">oase.gtex</a></li>
+    
+    </ul>
+  </li>
+
+
+  <li><strong>Artifact Viewers:</strong>
+    <ul>
+    
+      <li><a href="viewers/json-viewer.html?file=../raw/gtex/ENSG00000197594.11.gtex.json" target="_blank">ENSG00000197594.11.gtex.json</a> <span style="color:#888; font-size:0.85em">(oase.gtex)</span></li>
+    
+    </ul>
+  </li>
+
+</ul>
+
+<p><a href="index.html">&larr; Back to index</a></p>
+
+    <footer>
+      <p>Generated by oase 0.3.0</p>
+    </footer>
+    </div>
+  </div>
+</div>
+</body>
+</html>

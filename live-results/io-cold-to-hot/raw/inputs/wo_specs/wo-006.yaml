@@ -1,0 +1,33 @@
+decision_question: Does BRICS MMP lead optimization (enpp1_hit_001 -> oase_enpp1_009)
+  achieve Rule-of-5 drug-likeness, extracellular polarity, and clean in silico ADMET?
+requested_role: medicinal-chemist
+stage: stage3-candidate-nomination
+cycle: cycle-1
+context:
+  content: Profile enpp1_hit_001 and oase_enpp1_009 with RDKit, run BRICS MMP analysis
+    on the 3-compound series, and evaluate ADMET endpoints.
+  artifact_links:
+  - path: raw/compounds/oase_enpp1_009.descriptors.json
+  - path: raw/compounds/enpp1_series_mmp.mmp-pairs.json
+  - path: raw/admet/oase_enpp1_009.predict.json
+dependencies:
+- WO-005
+capabilities:
+- oase.compound
+- oase.mmp
+- oase.admet
+deliverables:
+  layer_0_classes:
+  - oase.compounds
+  - oase.admet
+  layer_1:
+  - findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md
+acceptance_criteria:
+- Lead oase_enpp1_009 passes Lipinski, Veber, PAINS, Brenk, and SA-score thresholds
+- All compound, MMP, and ADMET relays explicitly addressed
+alert_policy:
+  mode: standard
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

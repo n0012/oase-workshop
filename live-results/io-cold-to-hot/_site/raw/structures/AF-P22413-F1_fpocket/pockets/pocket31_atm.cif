@@ -1,0 +1,69 @@
+data_pocket31_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    31:
+0  - Pocket Score                      : 0.0162
+1  - Drug Score                        : 0.0020
+2  - Number of alpha spheres           :    41
+3  - Mean alpha-sphere radius          : 3.9835
+4  - Mean alpha-sphere Solvent Acc.    : 0.6029
+5  - Mean B-factor of pocket residues  : 0.6465
+6  - Hydrophobicity Score              : 17.0000
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 4.8000
+9  - Pocket volume (Monte Carlo)       : 396.5118
+10  -Pocket volume (convex hull)       : 27.7171
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 17.0000
+13 - Number of apolar alpha sphere     :    18
+14 - Proportion of apolar alpha sphere : 0.4390
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    870      N  NH1 ?  ARG      A 121 ?  -34.661  -25.735   48.815   0.00  0 121 A
+ATOM    871      N  NH2 ?  ARG      A 121 ?  -33.909  -23.655   48.683  -2.19  0 121 A
+ATOM    821      C   CD ?  ARG      A 115 ?  -35.396  -19.504   51.742   0.00  0 115 A
+ATOM    823      N  NH1 ?  ARG      A 115 ?  -33.775  -20.152   54.042   0.00  0 115 A
+ATOM    872      C   CZ ?  ARG      A 121 ?  -34.716  -24.565   48.241   0.00  0 121 A
+ATOM    841      C  CE1 ?  PHE      A 117 ?  -41.852  -24.025   53.457   0.00  0 117 A
+ATOM    818      C   CB ?  ARG      A 115 ?  -37.400  -19.116   50.297   0.00  0 115 A
+ATOM    822      N   NE ?  ARG      A 115 ?  -33.951  -19.787   51.780   0.00  0 115 A
+ATOM    820      C   CG ?  ARG      A 115 ?  -35.878  -19.283   50.305   0.00  0 115 A
+ATOM    869      N   NE ?  ARG      A 121 ?  -35.542  -24.324   47.243  -1.09  0 121 A
+ATOM    843      C   CZ ?  PHE      A 117 ?  -41.715  -22.722   53.966   0.00  0 117 A
+ATOM    830      O    O ?  THR      A 116 ?  -40.924  -22.811   47.701  -4.02  0 116 A
+ATOM    826      N    N ?  THR      A 116 ?  -39.906  -20.163   48.014  -1.09  0 116 A
+ATOM    868      C   CD ?  ARG      A 121 ?  -36.398  -25.328   46.578   0.00  0 121 A
+ATOM    842      C  CE2 ?  PHE      A 117 ?  -42.340  -21.645   53.313   0.00  0 117 A
+ATOM    825      C   CZ ?  ARG      A 115 ?  -33.240  -20.081   52.853   0.00  0 115 A
+ATOM    824      N  NH2 ?  ARG      A 115 ?  -31.964  -20.316   52.747  -5.21  0 115 A
+ATOM    828      C    C ?  THR      A 116 ?  -41.654  -21.898   48.078   0.00  0 116 A
+ATOM    847      O    O ?  GLY      A 118 ?  -42.083  -26.625   45.649  -0.95  0 118 A
+ATOM    844      N    N ?  GLY      A 118 ?  -43.532  -24.847   47.085   0.00  0 118 A
+ATOM    834      C   CA ?  PHE      A 117 ?  -43.282  -23.457   49.081   0.00  0 117 A
+ATOM    867      C   CG ?  ARG      A 121 ?  -37.431  -24.738   45.609   0.00  0 121 A
+ATOM    817      C    C ?  ARG      A 115 ?  -39.460  -19.243   48.858   0.00  0 115 A
+ATOM    839      C  CD1 ?  PHE      A 117 ?  -42.614  -24.252   52.297   0.00  0 117 A
+ATOM    838      C   CG ?  PHE      A 117 ?  -43.246  -23.177   51.640   0.00  0 117 A
+ATOM    840      C  CD2 ?  PHE      A 117 ?  -43.106  -21.872   52.154   0.00  0 117 A
+ATOM    816      C   CA ?  ARG      A 115 ?  -37.950  -19.027   48.868   0.00  0 115 A
+# 

@@ -1,0 +1,86 @@
+data_pocket61_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    61:
+0  - Pocket Score                      : -0.0814
+1  - Drug Score                        : 0.0260
+2  - Number of alpha spheres           :    72
+3  - Mean alpha-sphere radius          : 4.1217
+4  - Mean alpha-sphere Solvent Acc.    : 0.5007
+5  - Mean B-factor of pocket residues  : 0.9305
+6  - Hydrophobicity Score              : 34.0000
+7  - Polarity Score                    :     7
+8  - Amino Acid based volume Score     : 3.8333
+9  - Pocket volume (Monte Carlo)       : 701.9094
+10  -Pocket volume (convex hull)       : 171.4527
+11 - Charge Score                      :    -1
+12 - Local hydrophobic density Score   : 33.2632
+13 - Number of apolar alpha sphere     :    38
+14 - Proportion of apolar alpha sphere : 0.5278
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1293     O    O ?  CYS      A 176 ?  -32.746   -0.962   27.355  -7.50  0 176 A
+ATOM    1209     C   CB ?  CYS      A 164 ?  -30.481   -3.753   29.628   0.00  0 164 A
+ATOM    2705     C  CD2 ?  LEU      A 351 ?  -26.981   -0.331   25.524   0.00  0 351 A
+ATOM    1285     O    O ?  ASP      A 175 ?  -32.885   -1.051   30.729  -2.14  0 175 A
+ATOM    1280     O    O ?  GLY      A 174 ?  -32.447    3.886   29.880   0.00  0 174 A
+ATOM    2731     C   CG ?  GLN      A 355 ?  -25.364    5.498   27.389   0.00  0 355 A
+ATOM    2733     N  NE2 ?  GLN      A 355 ?  -25.162    3.902   29.223   0.00  0 355 A
+ATOM    3162     C   CG ?  GLU      A 409 ?  -35.992    3.118   22.159   0.00  0 409 A
+ATOM    1278     C   CA ?  GLY      A 174 ?  -34.554    4.825   30.487   0.00  0 174 A
+ATOM    2765     O  OE1 ?  GLN      A 358 ?  -30.731    7.935   25.838  -0.54  0 358 A
+ATOM    3173     C  CD2 ?  LEU      A 410 ?  -31.986    7.166   22.444   0.00  0 410 A
+ATOM    2764     N  NE2 ?  GLN      A 358 ?  -29.076    6.848   24.917  -2.61  0 358 A
+ATOM    2702     O    O ?  LEU      A 351 ?  -24.367    3.464   24.968   0.00  0 351 A
+ATOM    3139     O    O ?  GLY      A 406 ?  -31.642    3.860   19.299   0.00  0 406 A
+ATOM    3172     C  CD1 ?  LEU      A 410 ?  -29.909    6.737   21.142   0.00  0 410 A
+ATOM    3171     C   CG ?  LEU      A 410 ?  -31.430    6.564   21.156   0.00  0 410 A
+ATOM    2724     C  CD1 ?  LEU      A 354 ?  -27.345    1.813   21.186   0.00  0 354 A
+ATOM    1279     C    C ?  GLY      A 174 ?  -33.546    3.672   30.384   0.00  0 174 A
+ATOM    1289     N    N ?  CYS      A 176 ?  -34.366    0.080   29.474   0.00  0 176 A
+ATOM    1292     C   CB ?  CYS      A 176 ?  -35.859   -0.710   27.670   0.00  0 176 A
+ATOM    1299     O    O ?  CYS      A 177 ?  -34.405   -3.015   25.085  -2.14  0 177 A
+ATOM    1294     S   SG ?  CYS      A 176 ?  -37.411   -0.059   28.327   0.00  0 176 A
+ATOM    1302     C   CA ?  ILE      A 178 ?  -32.549   -2.301   23.093   0.00  0 178 A
+ATOM    1305     O    O ?  ILE      A 178 ?  -34.512   -2.274   21.703  -3.21  0 178 A
+ATOM    1306     C  CG1 ?  ILE      A 178 ?  -30.346   -1.104   22.912   0.00  0 178 A
+ATOM    1308     C  CD1 ?  ILE      A 178 ?  -28.930   -1.032   22.333   0.00  0 178 A
+ATOM    3160     C   CB ?  GLU      A 409 ?  -35.150    2.978   20.873   0.00  0 409 A
+ATOM    1320     C   CB ?  TYR      A 180 ?  -37.443   -3.473   25.441   0.00  0 180 A
+ATOM    1334     O   OG ?  SER      A 181 ?  -39.134   -0.250   22.166  -1.07  0 181 A
+ATOM    1282     C   CA ?  ASP      A 175 ?  -32.935    1.351   31.018   0.00  0 175 A
+ATOM    1284     C   CB ?  ASP      A 175 ?  -32.471    1.224   32.477   0.00  0 175 A
+ATOM    1202     O    O ?  LEU      A 163 ?  -27.764   -3.475   31.620   0.00  0 163 A
+ATOM    1252     C   CA ?  LYS      A 171 ?  -39.161    3.061   29.649   0.00  0 171 A
+ATOM    1256     C   CG ?  LYS      A 171 ?  -39.965    2.079   27.451   0.00  0 171 A
+ATOM    1255     O    O ?  LYS      A 171 ?  -38.417    5.233   30.273   0.00  0 171 A
+ATOM    3163     C   CD ?  GLU      A 409 ?  -37.402    2.496   22.085   0.00  0 409 A
+ATOM    2721     C   CB ?  LEU      A 354 ?  -26.623    3.997   22.154   0.00  0 354 A
+ATOM    3137     C   CA ?  GLY      A 406 ?  -30.807    1.604   19.410   0.00  0 406 A
+ATOM    1249     O    O ?  CYS      A 170 ?  -36.916    2.128   31.019   0.00  0 170 A
+ATOM    3164     O  OE1 ?  GLU      A 409 ?  -38.260    2.827   22.937  -1.62  0 409 A
+ATOM    1254     C   CB ?  LYS      A 171 ?  -40.316    3.021   28.621   0.00  0 171 A
+ATOM    1257     C   CD ?  LYS      A 171 ?  -40.785    2.258   26.159   0.00  0 171 A
+ATOM    2704     C  CD1 ?  LEU      A 351 ?  -25.435   -1.964   26.535   0.00  0 351 A
+ATOM    2701     C   CB ?  LEU      A 351 ?  -24.504    0.220   25.686   0.00  0 351 A
+# 

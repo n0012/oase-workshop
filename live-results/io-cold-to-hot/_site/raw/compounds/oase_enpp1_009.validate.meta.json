@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "validate",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC",
+    "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC"
+  },
+  "timestamp": "2026-10-30T20:15:51Z",
+  "completed": "2026-10-30T20:15:51Z",
+  "outputs": [
+    {
+      "path": "oase_enpp1_009.validate.json",
+      "sha256": "54881a71dac55f6f86a26347bd45582fdb5b5e432b7a909b75ec9dde7aeba8c9",
+      "bytes": 280
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "oase_enpp1_009"
+}

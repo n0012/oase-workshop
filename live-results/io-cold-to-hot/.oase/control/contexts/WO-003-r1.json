@@ -1,0 +1,13 @@
+{
+  "work_order_id": "WO-003",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/genomics/chr6-131894218-C-T.scores.json",
+      "sha256": "ac31ae621fa71f1cd5d230692528aeed3166470776b3e40724032da9d9876a8a"
+    }
+  ],
+  "content": "Score chr6:131894218:C>T across RNA_SEQ and ATAC tracks on the live Vertex AI AlphaGenome A100-80GB endpoint.",
+  "content_sha256": "9c65835227f6b052a939a16880095af44f851fd232bceef76a6f633995cd0b4e",
+  "created_at": "2026-10-30T21:27:44Z"
+}

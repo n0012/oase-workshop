@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-30T19:00:00Z",
+  "created_by": "hypex-generation",
+  "epoch": 1,
+  "evidence": [
+    {
+      "lit_id": "PMID:25344818",
+      "note": "ENPP1 hydrolysis of extracellular 2',3'-cGAMP suppresses anti-tumor STING signaling.",
+      "role": "supports"
+    }
+  ],
+  "experiments": [
+    {
+      "design": "AlphaFold 3 co-fold + fpocket + Vina + tumor-slice CXCL9/10 ELISA",
+      "est_difficulty": "med",
+      "readout": "ipTM, kcal/mol, and CXCL10 fold-change"
+    }
+  ],
+  "focus_area": "Cold-to-Hot Innate Immune Checkpoint",
+  "id": "H-0001",
+  "lineage": {
+    "operator": "null",
+    "parents": []
+  },
+  "mechanism": "ENPP1 hydrolysis of extracellular 2',3'-cGAMP suppresses anti-tumor STING signaling.",
+  "predictions": [
+    "Pocket #1 druggability >= 0.70",
+    "Vina score <= -7.5 kcal/mol"
+  ],
+  "statement": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+  "status": "active",
+  "title": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation"
+}

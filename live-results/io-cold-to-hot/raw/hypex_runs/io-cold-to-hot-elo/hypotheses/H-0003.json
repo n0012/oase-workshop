@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-30T19:00:00Z",
+  "created_by": "hypex-generation",
+  "epoch": 1,
+  "evidence": [
+    {
+      "lit_id": "PMID:16845398",
+      "note": "Germline TREX1 loss-of-function mutations cause Aicardi-Goutieres encephalomyelitis.",
+      "role": "supports"
+    }
+  ],
+  "experiments": [
+    {
+      "design": "AlphaFold 3 co-fold + fpocket + Vina + tumor-slice CXCL9/10 ELISA",
+      "est_difficulty": "med",
+      "readout": "ipTM, kcal/mol, and CXCL10 fold-change"
+    }
+  ],
+  "focus_area": "Cold-to-Hot Innate Immune Checkpoint",
+  "id": "H-0003",
+  "lineage": {
+    "operator": "null",
+    "parents": []
+  },
+  "mechanism": "Germline TREX1 loss-of-function mutations cause Aicardi-Goutieres encephalomyelitis.",
+  "predictions": [
+    "Pocket #1 druggability >= 0.70",
+    "Vina score <= -7.5 kcal/mol"
+  ],
+  "statement": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk",
+  "status": "reviewed",
+  "title": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk"
+}

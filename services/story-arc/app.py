@@ -106,10 +106,10 @@ def _load_campaigns_registry() -> dict[str, Any]:
         "campaigns": [
             {
                 "id": DEFAULT_CAMPAIGN,
-                "short_label": "PCSK9 Oral · Reference Pilot (v1)",
+                "short_label": "PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign",
                 "status": "ready",
-                "gcs_video_prefix": "videos",
-                "video_manifest": "assets/video-chapters-manifest.json",
+                "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
+                "video_manifest": "assets/video-chapters-live-v2-manifest.json",
             }
         ],
     }

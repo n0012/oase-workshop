@@ -1,0 +1,30 @@
+decision_question: Is the ENPP1 clinical competitive landscape favorable and is the
+  Pre-Wet-Lab Candidate Dossier complete and provenance-sealed for oase_enpp1_009
+  at DEC-003?
+requested_role: scientific-reviewer
+stage: stage3-candidate-nomination
+cycle: cycle-1
+context:
+  content: Analyze ClinicalTrials.gov ENPP1 competitive pipeline and export the Pre-Wet-Lab
+    Candidate Dossier waiting on wet-lab results.
+  artifact_links:
+  - path: raw/pipeline/enpp1.trials-clinicaltrials.artifact.json
+dependencies:
+- WO-007
+capabilities:
+- oase.trials
+- oase.dossier
+deliverables:
+  layer_0_classes:
+  - oase.pipeline
+  layer_1:
+  - findings/regulatory/wo-008-clinical-landscape-dossier.md
+acceptance_criteria:
+- ClinicalTrials.gov ENPP1 pipeline analyzed and text-match relay addressed
+- Pre-Wet-Lab Candidate Dossier check and export completed
+alert_policy:
+  mode: standard
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

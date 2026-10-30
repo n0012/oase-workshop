@@ -1,0 +1,59 @@
+data_pocket43_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    43:
+0  - Pocket Score                      : -0.0116
+1  - Drug Score                        : 0.0044
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.9453
+4  - Mean alpha-sphere Solvent Acc.    : 0.6509
+5  - Mean B-factor of pocket residues  : 0.2703
+6  - Hydrophobicity Score              : -9.6000
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 4.4000
+9  - Pocket volume (Monte Carlo)       : 267.1320
+10  -Pocket volume (convex hull)       : 6.8946
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 13.0000
+13 - Number of apolar alpha sphere     :    14
+14 - Proportion of apolar alpha sphere : 0.8235
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    483      C   CD ?  LYS      A 70 ?  -85.352  -60.751   52.196   0.00  0 70 A
+ATOM    515      O  OG1 ?  THR      A 74 ?  -78.764  -57.777   49.360   0.00  0 74 A
+ATOM    482      C   CG ?  LYS      A 70 ?  -85.095  -61.395   50.822   0.00  0 70 A
+ATOM    484      C   CE ?  LYS      A 70 ?  -86.432  -59.665   52.132   0.00  0 70 A
+ATOM    499      C   CG ?  PRO      A 72 ?  -77.052  -64.035   52.642   0.00  0 72 A
+ATOM    481      O    O ?  LYS      A 70 ?  -82.632  -65.118   50.821  -2.55  0 70 A
+ATOM    487      C   CA ?  ASP      A 71 ?  -79.979  -64.343   50.038   0.00  0 71 A
+ATOM    492      O  OD1 ?  ASP      A 71 ?  -79.410  -66.682   51.496  -1.88  0 71 A
+ATOM    480      C   CB ?  LYS      A 70 ?  -83.986  -62.446   50.973   0.00  0 70 A
+ATOM    525      C  CE2 ?  TYR      A 75 ?  -77.939  -56.758   54.250   0.00  0 75 A
+ATOM    486      N    N ?  ASP      A 71 ?  -81.275  -63.792   49.593  -7.66  0 71 A
+ATOM    488      C    C ?  ASP      A 71 ?  -78.858  -63.286   49.815   0.00  0 71 A
+ATOM    490      O    O ?  ASP      A 71 ?  -79.077  -62.328   49.061  -4.02  0 71 A
+ATOM    497      C   CB ?  PRO      A 72 ?  -76.727  -62.542   52.570   0.00  0 72 A
+ATOM    479      C    C ?  LYS      A 70 ?  -82.463  -64.173   50.063   0.00  0 70 A
+ATOM    495      C   CA ?  PRO      A 72 ?  -77.217  -62.090   51.178   0.00  0 72 A
+ATOM    523      C  CD2 ?  TYR      A 75 ?  -76.853  -57.289   53.528   0.00  0 75 A
+# 

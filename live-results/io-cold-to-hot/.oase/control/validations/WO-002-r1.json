@@ -1,0 +1,200 @@
+{
+  "work_order_id": "WO-002",
+  "work_order_revision": 1,
+  "run_id": null,
+  "validated_at": "2026-10-30T21:27:56Z",
+  "cli_version": "0.3.0",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "deliverables_exist",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "layer_1_count": 1,
+        "layer_0_classes": [
+          "oase.gtex"
+        ]
+      }
+    },
+    {
+      "name": "report_headings",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "reference": "WO-002-r1"
+      }
+    },
+    {
+      "name": "paths_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "links_checked": 3
+      }
+    },
+    {
+      "name": "provenance_valid",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "artifacts_checked": 1
+      }
+    },
+    {
+      "name": "analysis_citations",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "analyses_checked": 1
+      }
+    },
+    {
+      "name": "relay_coverage",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "codes_checked": 1,
+        "codes_addressed": 1,
+        "codes_not_addressed": 0,
+        "unaddressed": []
+      }
+    },
+    {
+      "name": "version_policy",
+      "result": "skip",
+      "status": "skip",
+      "kind": null,
+      "detail": "program.yaml not present \u2014 check deferred to a future program.yaml configuration issue"
+    },
+    {
+      "name": "findings_integrity",
+      "result": "pass",
+      "status": "ok",
+      "kind": "CONVENTION",
+      "detail": "no misplaced sidecars found under findings/"
+    },
+    {
+      "name": "source_tags_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "tags_checked": 10
+      },
+      "sub_findings": [
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.pLI}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "detail": "locator resolves (no numerical claim to compare)"
+        },
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.loeuf}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.7220920420139987",
+          "actual_value": "0.7220920420139987",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.oe_lof}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.594315275499504",
+          "actual_value": "0.594315275499504",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.obs_lof}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "73.0",
+          "actual_value": "73",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.exp_lof}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "122.8304285779054",
+          "actual_value": "122.8304285779054",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/ENPP1.gnomad-constraint.analysis.json $.metrics.oe_mis}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.8669424407497454",
+          "actual_value": "0.8669424407497454",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/TREX1.gnomad-constraint.analysis.json $.metrics.pLI}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0005448355030087425",
+          "actual_value": "0.0005448355030087425",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/TREX1.gnomad-constraint.analysis.json $.metrics.loeuf}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1.3292074754847876",
+          "actual_value": "1.3292074754847876",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/genomics/TREX1.gnomad-constraint.analysis.json $.metrics.obs_lof}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "11.0",
+          "actual_value": "11",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/gtex/ENSG00000197594.11.analysis.json $.metrics.median_tpm}",
+          "file": "findings/computational-biology/wo-002-human-genetics-gtex.md",
+          "line": 15,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.035069699999999995",
+          "actual_value": "0.035069699999999995",
+          "detail": "values match within tolerance"
+        }
+      ]
+    },
+    {
+      "name": "unrecognized_json",
+      "result": "pass",
+      "status": "ok",
+      "kind": "unrecognized_record_type",
+      "detail": "no unrecognized JSON files found"
+    }
+  ]
+}

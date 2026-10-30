@@ -148,11 +148,13 @@ gcloud compute ssh "${SCION_VM_NAME}" --zone="${ZONE}" --project="${GCP_PROJECT_
   sudo -u scion tar -xzf /tmp/oase-pilot-sync.tar.gz -C /home/scion/oase-workshop
   rm -f /tmp/oase-pilot-sync.tar.gz
 
-  # Seed 8 checkpoints (ch0..ch7) + live agent containers
-  sudo -u scion python3 /home/scion/oase-workshop/scripts/seed-pilot-chapters.py \
+  # Seed the two canonical live campaigns (pcsk9-live-argolis & io-cold-to-hot)
+  sudo -u scion python3 /home/scion/oase-workshop/scripts/run-live-v2-campaign.py \
     --gcp-project '${GCP_PROJECT_ID}' \
-    --workshop-domain '${WORKSHOP_DOMAIN}' \
-    --stop-legacy-containers
+    --workshop-domain '${WORKSHOP_DOMAIN}'
+  sudo -u scion python3 /home/scion/oase-workshop/scripts/run-io-cold-to-hot-campaign.py \
+    --gcp-project '${GCP_PROJECT_ID}' \
+    --workshop-domain '${WORKSHOP_DOMAIN}'
 
   # Install & start FastAPI State Controller (:8780)
   if [[ ! -x /home/scion/.oase-state-venv/bin/uvicorn ]]; then

@@ -1,0 +1,37 @@
+{
+  "tool": "gtex",
+  "subcommand": "fetch",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://gtexportal.org",
+  "parameters": {
+    "query": "ENPP1",
+    "resolved_gencode_id": "ENSG00000197594.11",
+    "resolved_symbol": "ENPP1",
+    "resolved_by": "symbol",
+    "tissue": "Whole_Blood",
+    "dataset": "gtex_v8"
+  },
+  "timestamp": "2026-10-30T20:14:26Z",
+  "completed": "2026-10-30T20:14:27Z",
+  "outputs": [
+    {
+      "path": "ENSG00000197594.11.gtex.json",
+      "sha256": "003ec2d4769d8aba6d3c8af73fd0d6c4a79c8ef4058ebcb526c018b059f3fd67",
+      "bytes": 284
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source": "GTEx Portal (Genotype-Tissue Expression project)",
+  "licence": "dbGaP (public summary data, no access restriction)",
+  "gtex_dataset": "gtex_v8",
+  "gencode_version": "v26",
+  "genome_build": "GRCh38/hg38",
+  "whole_blood_data": "present",
+  "median_tpm": 0.035069699999999995,
+  "unit": "TPM"
+}

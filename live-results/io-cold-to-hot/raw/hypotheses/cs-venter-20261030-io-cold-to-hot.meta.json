@@ -1,0 +1,38 @@
+{
+  "tool": "co-scientist",
+  "subcommand": "ingest",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "export_file": "/workspace/seed/io-cold-to-hot/coscientist-export.json",
+    "top": null
+  },
+  "timestamp": "2026-10-30T20:14:12Z",
+  "completed": "2026-10-30T20:14:12Z",
+  "outputs": [
+    {
+      "path": "cs-venter-20261030-io-cold-to-hot.export.json",
+      "sha256": "a5757f4572c8048015376d8fa7aec48247461bb138c8128377d3d3283ce4b41f",
+      "bytes": 9799
+    },
+    {
+      "path": "cs-venter-20261030-io-cold-to-hot.tournament.json",
+      "sha256": "665b900ebdb2946f22543f0540cf8b4dbee37cebda472e7419e92955f16e7056",
+      "bytes": 8804
+    }
+  ],
+  "warnings": [
+    "Idea list resolved structurally from minified key 'ideas'; these key names are not stable across Co-Scientist builds."
+  ],
+  "mandatory_relays": [],
+  "resolved_keys": {
+    "ideas": "ideas",
+    "report": null,
+    "report_references": null
+  },
+  "source_sha256": "a5757f4572c8048015376d8fa7aec48247461bb138c8128377d3d3283ce4b41f"
+}

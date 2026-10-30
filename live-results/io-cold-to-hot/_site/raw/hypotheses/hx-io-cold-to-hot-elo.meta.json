@@ -1,0 +1,32 @@
+{
+  "tool": "hypex",
+  "subcommand": "ingest",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "run_dir": "/workspace/raw/hypex_runs/io-cold-to-hot-elo"
+  },
+  "timestamp": "2026-10-30T20:14:15Z",
+  "completed": "2026-10-30T20:14:15Z",
+  "outputs": [
+    {
+      "path": "hx-io-cold-to-hot-elo.run.tar.zst",
+      "sha256": "bc5ffddc2474576fa1ae50c51e54605e219ae2740316c22a7e848d179e1546fd",
+      "bytes": 2642
+    },
+    {
+      "path": "hx-io-cold-to-hot-elo.hypex.json",
+      "sha256": "2578a0b7d270129ca6d566b27b4fc0eaf97e36fd3ff09a7d7f966391d9649925",
+      "bytes": 5360
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "hypex_run_id": "io-cold-to-hot-elo",
+  "source_sha256": "2578a0b7d270129ca6d566b27b4fc0eaf97e36fd3ff09a7d7f966391d9649925",
+  "archive_sha256": "bc5ffddc2474576fa1ae50c51e54605e219ae2740316c22a7e848d179e1546fd"
+}

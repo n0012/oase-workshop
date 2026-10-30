@@ -1,0 +1,67 @@
+data_pocket47_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    47:
+0  - Pocket Score                      : -0.0278
+1  - Drug Score                        : 0.0009
+2  - Number of alpha spheres           :    30
+3  - Mean alpha-sphere radius          : 3.6766
+4  - Mean alpha-sphere Solvent Acc.    : 0.3946
+5  - Mean B-factor of pocket residues  : 0.8661
+6  - Hydrophobicity Score              : 39.5000
+7  - Polarity Score                    :     6
+8  - Amino Acid based volume Score     : 5.2500
+9  - Pocket volume (Monte Carlo)       : 346.2543
+10  -Pocket volume (convex hull)       : 40.5349
+11 - Charge Score                      :    -1
+12 - Local hydrophobic density Score   : 16.0000
+13 - Number of apolar alpha sphere     :    17
+14 - Proportion of apolar alpha sphere : 0.5667
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    7023     S   SD ?  MET      A 883 ?   -2.278   -9.780  -16.079   0.00  0 883 A
+ATOM    7370     O    O ?  ASP      A 925 ?   -7.231  -14.172  -18.224   0.00  0 925 A
+ATOM    6214     N   NZ ?  LYS      A 783 ?   -3.405  -11.016  -24.307   0.00  0 783 A
+ATOM    6991     O  OE2 ?  GLU      A 879 ?   -0.582  -10.984  -22.788   0.00  0 879 A
+ATOM    7016     C  CD2 ?  LEU      A 882 ?    2.291   -4.029  -20.634   0.00  0 882 A
+ATOM    6988     C   CG ?  GLU      A 879 ?    1.407  -10.000  -21.799   0.00  0 879 A
+ATOM    6984     C   CA ?  GLU      A 879 ?    2.452   -9.482  -19.546   0.00  0 879 A
+ATOM    7012     C   CB ?  LEU      A 882 ?    2.253   -5.099  -18.361   0.00  0 882 A
+ATOM    6185     C  CD1 ?  LEU      A 780 ?    2.198   -6.674  -23.578   0.00  0 780 A
+ATOM    6225     O   OH ?  TYR      A 784 ?   -2.523   -5.484  -21.618   0.00  0 784 A
+ATOM    6986     C   CB ?  GLU      A 879 ?    1.541  -10.464  -20.330   0.00  0 879 A
+ATOM    7022     C   CG ?  MET      A 883 ?   -1.415   -8.193  -16.061   0.00  0 883 A
+ATOM    6987     O    O ?  GLU      A 879 ?    1.677   -8.682  -17.412  -1.07  0 879 A
+ATOM    6805     C  CE1 ?  PHE      A 856 ?   -0.504   -2.625  -17.908   0.00  0 856 A
+ATOM    7341     C   CZ ?  PHE      A 921 ?   -5.546   -5.642  -16.312   0.00  0 921 A
+ATOM    6807     C   CZ ?  PHE      A 856 ?   -1.084   -2.366  -19.162   0.00  0 856 A
+ATOM    7340     C  CE2 ?  PHE      A 921 ?   -4.703   -6.068  -15.270   0.00  0 921 A
+ATOM    7339     C  CE1 ?  PHE      A 921 ?   -6.704   -6.376  -16.620   0.00  0 921 A
+ATOM    6791     C  CD2 ?  LEU      A 854 ?   -4.729   -2.662  -19.676   0.00  0 854 A
+ATOM    6223     C  CE1 ?  TYR      A 784 ?   -4.282   -5.418  -23.246   0.00  0 784 A
+ATOM    7024     C   CE ?  MET      A 883 ?   -0.898  -10.922  -16.357   0.00  0 883 A
+ATOM    7374     O  OXT ?  ASP      A 925 ?   -6.376  -13.968  -16.190  -2.55  0 925 A
+ATOM    6258     N  NH1 ?  ARG      A 788 ?   -7.266   -3.436  -22.980   0.00  0 788 A
+ATOM    6259     N  NH2 ?  ARG      A 788 ?   -8.660   -2.710  -21.377  -2.77  0 788 A
+ATOM    6248     O  OE1 ?  GLU      A 787 ?   -8.878   -6.802  -24.003   0.00  0 787 A
+# 

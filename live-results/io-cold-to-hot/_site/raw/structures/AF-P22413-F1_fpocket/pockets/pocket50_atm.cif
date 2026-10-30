@@ -1,0 +1,56 @@
+data_pocket50_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    50:
+0  - Pocket Score                      : -0.0444
+1  - Drug Score                        : 0.0000
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.9120
+4  - Mean alpha-sphere Solvent Acc.    : 0.4755
+5  - Mean B-factor of pocket residues  : 0.1573
+6  - Hydrophobicity Score              : -27.6667
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 5.6667
+9  - Pocket volume (Monte Carlo)       : 277.4348
+10  -Pocket volume (convex hull)       : 2.4518
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 4.0000
+13 - Number of apolar alpha sphere     :     5
+14 - Proportion of apolar alpha sphere : 0.2941
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    206      C   CD ?  ARG      A 31 ?  -10.491  -39.832  -14.707   0.00  0 31 A
+ATOM    208      N  NH1 ?  ARG      A 31 ?   -8.911  -41.048  -16.763   0.00  0 31 A
+ATOM    187      C   CD ?  ARG      A 29 ?   -7.757  -44.036   -9.666   0.00  0 29 A
+ATOM    198      O  OD1 ?  ASP      A 30 ?  -13.964  -42.281  -12.096  -2.95  0 30 A
+ATOM    209      N  NH2 ?  ARG      A 31 ?   -7.029  -40.331  -15.806   0.00  0 31 A
+ATOM    191      C   CZ ?  ARG      A 29 ?   -5.545  -44.813  -10.520   0.00  0 29 A
+ATOM    189      N  NH1 ?  ARG      A 29 ?   -6.076  -45.627  -11.391   0.00  0 29 A
+ATOM    190      N  NH2 ?  ARG      A 29 ?   -4.244  -44.732  -10.490   0.00  0 29 A
+ATOM    188      N   NE ?  ARG      A 29 ?   -6.281  -44.089   -9.691  -0.17  0 29 A
+ATOM    184      C   CB ?  ARG      A 29 ?   -9.830  -43.199   -8.615   0.00  0 29 A
+ATOM    193      C   CA ?  ASP      A 30 ?  -13.067  -41.182   -9.750   0.00  0 30 A
+ATOM    205      C   CG ?  ARG      A 31 ?  -11.018  -39.203  -13.406   0.00  0 31 A
+ATOM    207      N   NE ?  ARG      A 31 ?   -9.018  -39.914  -14.767  -0.84  0 31 A
+ATOM    210      C   CZ ?  ARG      A 31 ?   -8.328  -40.432  -15.771   0.00  0 31 A
+# 

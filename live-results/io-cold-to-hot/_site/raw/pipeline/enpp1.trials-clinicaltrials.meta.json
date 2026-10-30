@@ -1,0 +1,32 @@
+{
+  "tool": "oase.trials",
+  "subcommand": "search",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "parameters": {
+    "query_term": "ENPP1",
+    "search_by": "target"
+  },
+  "timestamp": "2026-10-30T20:16:09Z",
+  "completed": "2026-10-30T20:16:09Z",
+  "outputs": [
+    {
+      "path": "enpp1.trials-clinicaltrials.json",
+      "sha256": "c37ce7f96ad401bac3909a64ea7c9b8ef5fa07b6f49cd3258679550d84299e16",
+      "bytes": 386049
+    },
+    {
+      "path": "enpp1.trials-clinicaltrials.artifact.json",
+      "sha256": "ca3c8c3d364843430a2dd1a3dad3d7f702376a2923ffa11fdaee3b03d0182075",
+      "bytes": 18995
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source_db": "clinicaltrials.gov",
+  "n_studies": 26
+}

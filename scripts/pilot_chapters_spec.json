@@ -2,56 +2,56 @@
   "voices": {
     "sarah": {
       "display_name": "Dr. Sarah Chen",
-      "role": "Program Lead · GOLD-1",
+      "role": "Program Lead \u00b7 GOLD-1",
       "callsign": "GOLD-1",
       "is_agent": false,
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)"
+      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Ingrid (Leda)"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
-      "role": "Comp Biology · GOLD-2",
+      "role": "Comp Biology \u00b7 GOLD-2",
       "callsign": "GOLD-2",
       "is_agent": false,
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)"
+      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Sam (Sadaltager)"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
-      "role": "Structural Bio · GOLD-3",
+      "role": "Structural Bio \u00b7 GOLD-3",
       "callsign": "GOLD-3",
       "is_agent": false,
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)"
+      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Kira (Kore)"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
-      "role": "Med Chemistry · GOLD-4",
+      "role": "Med Chemistry \u00b7 GOLD-4",
       "callsign": "GOLD-4",
       "is_agent": false,
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)"
+      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Jay (Alnilam)"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
-      "role": "DMPK & Safety · GOLD-5",
+      "role": "DMPK & Safety \u00b7 GOLD-5",
       "callsign": "GOLD-5",
       "is_agent": false,
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)"
+      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Vera (Pulcherrima)"
     },
     "ai_lead": {
-      "display_name": "Grove-1 · AI Program Lead",
+      "display_name": "Grove-1 \u00b7 AI Program Lead",
       "role": "@science-program-lead [SP]",
       "callsign": "GROVE-1",
       "badge_code": "SP",
@@ -61,10 +61,10 @@
       "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (High) · Grove-1 [SP]"
+      "accent_label": "Gemini 4 Argon (High) \u00b7 Grove-1 [SP]"
     },
     "ai_compbio": {
-      "display_name": "Helix-2 · AI Comp Bio",
+      "display_name": "Helix-2 \u00b7 AI Comp Bio",
       "role": "@computational-biologist [CB]",
       "callsign": "HELIX-2",
       "badge_code": "CB",
@@ -74,10 +74,10 @@
       "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (Med) · Helix-2 [CB]"
+      "accent_label": "Gemini 4 Argon (Med) \u00b7 Helix-2 [CB]"
     },
     "ai_structbio": {
-      "display_name": "Fold-3 · AI Structural Bio",
+      "display_name": "Fold-3 \u00b7 AI Structural Bio",
       "role": "@structural-biologist [SB]",
       "callsign": "FOLD-3",
       "badge_code": "SB",
@@ -87,10 +87,10 @@
       "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 4 Argon (High) · Fold-3 [SB]"
+      "accent_label": "Gemini 4 Argon (High) \u00b7 Fold-3 [SB]"
     },
     "ai_medchem": {
-      "display_name": "Spark-4 · AI Med Chemist",
+      "display_name": "Spark-4 \u00b7 AI Med Chemist",
       "role": "@medicinal-chemist [MC]",
       "callsign": "SPARK-4",
       "badge_code": "MC",
@@ -100,10 +100,10 @@
       "model_label": "Claude Opus 5.5",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 5.5 · Spark-4 [MC]"
+      "accent_label": "Claude Opus 5.5 \u00b7 Spark-4 [MC]"
     },
     "ai_dmpk": {
-      "display_name": "Shield-5 · AI Safety & PK",
+      "display_name": "Shield-5 \u00b7 AI Safety & PK",
       "role": "@admet-dmpk-scientist [AD]",
       "callsign": "SHIELD-5",
       "badge_code": "AD",
@@ -113,10 +113,10 @@
       "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 4 Argon (Med) · Shield-5 [AD]"
+      "accent_label": "Gemini 4 Argon (Med) \u00b7 Shield-5 [AD]"
     },
     "ai_validator": {
-      "display_name": "Aegis-6 · AI Validator",
+      "display_name": "Aegis-6 \u00b7 AI Validator",
       "role": "@finding-validator [FV]",
       "callsign": "AEGIS-6",
       "badge_code": "FV",
@@ -126,7 +126,7 @@
       "model_label": "Gemini 3.8 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 3.8 Flash · Aegis-6 [FV]"
+      "accent_label": "Gemini 3.8 Flash \u00b7 Aegis-6 [FV]"
     }
   },
   "chapters": [
@@ -134,7 +134,7 @@
       "chapter": "ch1",
       "number": 1,
       "slug": "01-pcsk9-coscientist",
-      "title": "Step 1 — Pre-Mission Brief, Co-Scientist Prompt & Wingman Roster (WO-001)",
+      "title": "Step 1 \u2014 Pre-Mission Brief, Co-Scientist Prompt & Wingman Roster (WO-001)",
       "video_filename": "chapter-01.mp4",
       "turns": [
         {
@@ -144,7 +144,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Pre-Mission Brief — Campaign Outset] Gold Squadron, before we run Co-Scientist on oral PCSK9 (ENSG00000169174 / Q8NBP7), let's co-author our Research Brief and Target Product Profile together—then lock our AI wingman pairings.",
+          "chat_text": "[Pre-Mission Brief \u2014 Campaign Outset] Gold Squadron, before we run Co-Scientist on oral PCSK9 (ENSG00000169174 / Q8NBP7), let's co-author our Research Brief and Target Product Profile together\u2014then lock our AI wingman pairings.",
           "tts_text": "Gold Squadron, welcome to the pre-mission brief! Before we launch Co-Scientist on our daily cholesterol pill, let's build the prompt together!"
         },
         {
@@ -154,7 +154,7 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Co-Scientist Prompt Clause 1 — Comp Bio] Locking human loss-of-function genetic cardioprotection (PCSK9 R46L / gnomAD pLI < 0.90) and hepatocyte-selective regulation (GTEx >= 100 TPM + 1P AlphaGenome 1 Mb scoring) so we avoid extrahepatic toxicity.",
+          "chat_text": "[Co-Scientist Prompt Clause 1 \u2014 Comp Bio] Locking human loss-of-function genetic cardioprotection (PCSK9 R46L / gnomAD pLI < 0.90) and hepatocyte-selective regulation (GTEx >= 100 TPM + 1P AlphaGenome 1 Mb scoring) so we avoid extrahepatic toxicity.",
           "tts_text": "First rule for the prompt: demand human genetic proof and strict liver targeting, so AlphaGenome keeps us clear of brain side effects."
         },
         {
@@ -164,7 +164,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "structural-biologist",
-          "chat_text": "[Co-Scientist Prompt Clause 2 — Structural Bio] Pre-registering falsifiable kill criterion FP-001: require an allosteric groove with fpocket druggability >= 0.50 and 1P AlphaFold 3 ligand ipTM >= 0.70 (KILL small molecule if < 0.30), plus tricyclic macrocycle comparator FP-002.",
+          "chat_text": "[Co-Scientist Prompt Clause 2 \u2014 Structural Bio] Pre-registering falsifiable kill criterion FP-001: require an allosteric groove with fpocket druggability >= 0.50 and 1P AlphaFold 3 ligand ipTM >= 0.70 (KILL small molecule if < 0.30), plus tricyclic macrocycle comparator FP-002.",
           "tts_text": "Adding my structural kill switch! Flat protein surfaces trap pills, so AlphaFold Three must confirm a deep pocket, with macrocycles as backup."
         },
         {
@@ -212,8 +212,8 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Step 1 Pre-Mission Brief Signed — LAUNCH] Co-Scientist prompt, .oase/thresholds.yaml (36/36 schemas), Subway Map (IC-001 primary / IC-002 backup), and 5 Human-AI Wingman pairs locked in gates/STEP-01-pre-mission-brief.md. Marcus + Helix-2, take point on Step 2!",
-          "tts_text": "Pre-mission brief signed, Gold Squadron! Primary and backup tracks armed, wingmen paired—Marcus and Helix Two, punch it into Step Two!"
+          "chat_text": "[Step 1 Pre-Mission Brief Signed \u2014 LAUNCH] Co-Scientist prompt, .oase/thresholds.yaml (36/36 schemas), Subway Map (IC-001 primary / IC-002 backup), and 5 Human-AI Wingman pairs locked in gates/STEP-01-pre-mission-brief.md. Marcus + Helix-2, take point on Step 2!",
+          "tts_text": "Pre-mission brief signed, Gold Squadron! Primary and backup tracks armed, wingmen paired\u2014Marcus and Helix Two, punch it into Step Two!"
         }
       ]
     },
@@ -221,7 +221,7 @@
       "chapter": "ch2",
       "number": 2,
       "slug": "02-pcsk9-genetics-gate1",
-      "title": "Step 2 — Human Genetics, Multi-Omics & Stage Gate 1 (WO-002..003)",
+      "title": "Step 2 \u2014 Human Genetics, Multi-Omics & Stage Gate 1 (WO-002..003)",
       "video_filename": "chapter-02.mp4",
       "turns": [
         {
@@ -259,7 +259,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 1 Co-Signed — PASS] Human genetic causal evidence and hepatocyte expression criteria met (WO-002, WO-003 scientifically_accepted). Unlocking Step 3 Structural Biology & Docking.",
+          "chat_text": "[Stage Gate 1 Co-Signed \u2014 PASS] Human genetic causal evidence and hepatocyte expression criteria met (WO-002, WO-003 scientifically_accepted). Unlocking Step 3 Structural Biology & Docking.",
           "tts_text": "Clean radar across the board. Marcus and I are signing Gate 1. Elena, take the stick for 3D protein folding!"
         }
       ]
@@ -268,7 +268,7 @@
       "chapter": "ch3",
       "number": 3,
       "slug": "03-pcsk9-structure-gate2",
-      "title": "Step 3 — AlphaFold 3, Cryptic Pocket & Vina Docking (WO-004..005)",
+      "title": "Step 3 \u2014 AlphaFold 3, Cryptic Pocket & Vina Docking (WO-004..005)",
       "video_filename": "chapter-03.mp4",
       "turns": [
         {
@@ -296,7 +296,7 @@
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "Med Chem inspection of WO-005: Both poses engage Asp374/Phe379/Ser381 cleanly, and docking.score_not_affinity is relayed. However, top-scoring PCSK9-A02 carries a lipophilic basic amine (cLogP = 5.09) — logging L-002 for hERG and oxadiazole MMP testing in Step 4.",
+          "chat_text": "Med Chem inspection of WO-005: Both poses engage Asp374/Phe379/Ser381 cleanly, and docking.score_not_affinity is relayed. However, top-scoring PCSK9-A02 carries a lipophilic basic amine (cLogP = 5.09) \u2014 logging L-002 for hERG and oxadiazole MMP testing in Step 4.",
           "tts_text": "Whoa, eyes on the radar, team! That top scorer fits great, sure, but it's super greasy, and greasy molecules love ambushing heart rhythms."
         },
         {
@@ -306,7 +306,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 2 Co-Signed — PASS] Cryptic Pocket #1 druggability (0.68 >= 0.50) and Vina pose thresholds cleared (WO-004, WO-005 accepted). Advancing PCSK9-A02 and PCSK9-A03 to Step 4 ADMET & hERG gating.",
+          "chat_text": "[Stage Gate 2 Co-Signed \u2014 PASS] Cryptic Pocket #1 druggability (0.68 >= 0.50) and Vina pose thresholds cleared (WO-004, WO-005 accepted). Advancing PCSK9-A02 and PCSK9-A03 to Step 4 ADMET & hERG gating.",
           "tts_text": "Good eye on my wing, Raj! The 3D pocket itself is solid, so Gate 2 is signed. Take both designs into the dogfight!"
         }
       ]
@@ -315,7 +315,7 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "04-pcsk9-admet-wetlab-gate3",
-      "title": "Step 4 — hERG Disqualification, Gate 3 & Wet-Lab Handoff (WO-006)",
+      "title": "Step 4 \u2014 hERG Disqualification, Gate 3 & Wet-Lab Handoff (WO-006)",
       "video_filename": "chapter-04.mp4",
       "turns": [
         {
@@ -353,7 +353,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Co-Signed — PAUSED FOR EXPERIMENTAL READOUT] OASE-PCSK9-014 dispatched for synthesis and CRO wet-lab package (gates/GATE-03-wetlab-handoff.md).",
+          "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Co-Signed \u2014 PAUSED FOR EXPERIMENTAL READOUT] OASE-PCSK9-014 dispatched for synthesis and CRO wet-lab package (gates/GATE-03-wetlab-handoff.md).",
           "tts_text": "No simulation-only shortcuts on this squad. Gate 3 is signed, sending our clean candidate to the physical lab!"
         }
       ]
@@ -362,7 +362,7 @@
       "chapter": "ch5",
       "number": 5,
       "slug": "05-pcsk9-oral-pk-gate4",
-      "title": "Step 5 — Human Oral PK (40 mg QD), Dossier & Gate 4 (WO-007..008)",
+      "title": "Step 5 \u2014 Human Oral PK (40 mg QD), Dossier & Gate 4 (WO-007..008)",
       "video_filename": "chapter-05.mp4",
       "turns": [
         {
@@ -400,7 +400,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 4 Candidate Nomination — APPROVED] Nominating OASE-PCSK9-014 (40.0 mg oral QD tablet, conventional excipient formulation) for IND-enabling GLP toxicology.",
+          "chat_text": "[Stage Gate 4 Candidate Nomination \u2014 APPROVED] Nominating OASE-PCSK9-014 (40.0 mg oral QD tablet, conventional excipient formulation) for IND-enabling GLP toxicology.",
           "tts_text": "What a run, squad! Gate 4 is signed, and our daily cholesterol pill candidate is officially cleared for pre-clinical launch!"
         }
       ]
@@ -409,7 +409,7 @@
       "chapter": "ch6",
       "number": 6,
       "slug": "06-pcsk9-governance-audit",
-      "title": "Step 6 — Adversarial Tamper Drills & Audited Human Override",
+      "title": "Step 6 \u2014 Adversarial Tamper Drills & Audited Human Override",
       "video_filename": "chapter-06.mp4",
       "turns": [
         {
@@ -447,7 +447,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Governance Audit Complete — Override Co-Signed] Appended workorder.overridden record to .oase/control/events.ndjson with named human justification while preserving .oase/thresholds.yaml immutable.",
+          "chat_text": "[Governance Audit Complete \u2014 Override Co-Signed] Appended workorder.overridden record to .oase/control/events.ndjson with named human justification while preserving .oase/thresholds.yaml immutable.",
           "tts_text": "Signed into the flight log! Guardrails held strong. Now let's rally with Grove One for our final mission debrief!"
         }
       ]
@@ -456,7 +456,7 @@
       "chapter": "ch7",
       "number": 7,
       "slug": "07-pcsk9-mission-closeout",
-      "title": "Step 7 — Post-Mission Debrief, Subway Map Recap & Portfolio Sign-Off",
+      "title": "Step 7 \u2014 Post-Mission Debrief, Subway Map Recap & Portfolio Sign-Off",
       "video_filename": "chapter-07.mp4",
       "turns": [
         {
@@ -485,8 +485,8 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Post-Mission Debrief — Comp Bio + Helix-2] Pairing on WO-002..WO-003 validated human LoF cardioprotection (pLI = 0.0001) and liver-selective expression (184.2 TPM + 1P AlphaGenome rs2479409 = 0.984) up front, keeping CNS exposure risk off the board.",
-          "tts_text": "Helix Two and I cleared human genetics and AlphaGenome liver scoring right at the gate—saving weeks of wasted chemistry downstream."
+          "chat_text": "[Post-Mission Debrief \u2014 Comp Bio + Helix-2] Pairing on WO-002..WO-003 validated human LoF cardioprotection (pLI = 0.0001) and liver-selective expression (184.2 TPM + 1P AlphaGenome rs2479409 = 0.984) up front, keeping CNS exposure risk off the board.",
+          "tts_text": "Helix Two and I cleared human genetics and AlphaGenome liver scoring right at the gate\u2014saving weeks of wasted chemistry downstream."
         },
         {
           "turn_id": "ch7_t4",
@@ -495,7 +495,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "structural-biologist",
-          "chat_text": "[Post-Mission Debrief — Structural Bio + Fold-3] Pairing on WO-004..WO-005 proved our Co-Scientist's cryptic groove hypothesis via 1P AlphaFold 3 co-folding (ipTM = 0.84) and fpocket (0.68 vs 0.24 flat EGF-A), terminating the flat surface spur cleanly.",
+          "chat_text": "[Post-Mission Debrief \u2014 Structural Bio + Fold-3] Pairing on WO-004..WO-005 proved our Co-Scientist's cryptic groove hypothesis via 1P AlphaFold 3 co-folding (ipTM = 0.84) and fpocket (0.68 vs 0.24 flat EGF-A), terminating the flat surface spur cleanly.",
           "tts_text": "Fold Three and I proved that hidden groove hypothesis with AlphaFold Three, and shut down the flat surface trap right on schedule!"
         },
         {
@@ -505,7 +505,7 @@
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
-          "chat_text": "[Post-Mission Debrief — Med Chem + Spark-4] When top docker PCSK9-A02 tripped our Aronov hERG red signal (cLogP = 5.09), Spark-4 and I took the BRICS reroute loop to OASE-PCSK9-014 (cLogP = 3.01, 0 alerts) and logged backup PCSK9-B07 via signed override.",
+          "chat_text": "[Post-Mission Debrief \u2014 Med Chem + Spark-4] When top docker PCSK9-A02 tripped our Aronov hERG red signal (cLogP = 5.09), Spark-4 and I took the BRICS reroute loop to OASE-PCSK9-014 (cLogP = 3.01, 0 alerts) and logged backup PCSK9-B07 via signed override.",
           "tts_text": "When our greasy top scorer tripped the heart-rhythm alarm, Spark Four and I rerouted to a clean oxadiazole without losing grip!"
         },
         {
@@ -515,8 +515,8 @@
           "speaker": "claire",
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
-          "chat_text": "[Post-Mission Debrief — DMPK + Shield-5] Enforcing the Gate 3 CRO wet-lab pause confirmed patch-clamp hERG > 30 uM and rat (54%) / dog (61%) bioavailability—delivering our 40.0 mg once-daily unenhanced tablet right on our Step 1 TPP.",
-          "tts_text": "And pausing for real wet-lab data paid off! Shield Five locked a simple forty-milligram daily tablet—nailing our Day One target profile."
+          "chat_text": "[Post-Mission Debrief \u2014 DMPK + Shield-5] Enforcing the Gate 3 CRO wet-lab pause confirmed patch-clamp hERG > 30 uM and rat (54%) / dog (61%) bioavailability\u2014delivering our 40.0 mg once-daily unenhanced tablet right on our Step 1 TPP.",
+          "tts_text": "And pausing for real wet-lab data paid off! Shield Five locked a simple forty-milligram daily tablet\u2014nailing our Day One target profile."
         },
         {
           "turn_id": "ch7_t7",
@@ -525,7 +525,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Post-Mission Debrief Complete — Portfolio Hand-Off Co-Signed] All 5 Doctor + AI Wingman pairs have signed gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md for OASE-PCSK9-014 (40 mg QD). Inspect our traversed Subway Map below or jump into any live Grove seat!",
+          "chat_text": "[Post-Mission Debrief Complete \u2014 Portfolio Hand-Off Co-Signed] All 5 Doctor + AI Wingman pairs have signed gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md for OASE-PCSK9-014 (40 mg QD). Inspect our traversed Subway Map below or jump into any live Grove seat!",
           "tts_text": "Debrief complete and dossier co-signed, squad! Check out the dynamic route map below, then grab a scientist seat and fly live!"
         }
       ]

@@ -1,0 +1,56 @@
+data_pocket14_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    14:
+0  - Pocket Score                      : 0.0828
+1  - Drug Score                        : 0.0011
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.6511
+4  - Mean alpha-sphere Solvent Acc.    : 0.3991
+5  - Mean B-factor of pocket residues  : 0.9934
+6  - Hydrophobicity Score              : 35.5556
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 4.2222
+9  - Pocket volume (Monte Carlo)       : 111.8143
+10  -Pocket volume (convex hull)       : 1.5347
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 8.0000
+13 - Number of apolar alpha sphere     :     9
+14 - Proportion of apolar alpha sphere : 0.5625
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    7158     C  CD1 ?  PHE      A 900 ?   -2.982   12.088  -19.686   0.00  0 900 A
+ATOM    5193     O    O ?  GLY      A 660 ?   -6.053   15.599  -24.183  -4.29  0 660 A
+ATOM    7169     C  CD1 ?  TYR      A 901 ?   -8.568   11.157  -20.868   0.00  0 901 A
+ATOM    7163     N    N ?  TYR      A 901 ?   -7.607   14.146  -20.003   0.00  0 901 A
+ATOM    7155     C   CB ?  PHE      A 900 ?   -5.290   12.556  -18.721   0.00  0 900 A
+ATOM    7171     C  CE1 ?  TYR      A 901 ?   -7.916    9.912  -20.930   0.00  0 901 A
+ATOM    5185     C  CD2 ?  TYR      A 659 ?   -8.755   10.380  -24.634   0.00  0 659 A
+ATOM    5181     C   CB ?  TYR      A 659 ?   -9.605   12.697  -24.082   0.00  0 659 A
+ATOM    5164     C   CA ?  LEU      A 657 ?   -6.112   14.011  -28.951   0.00  0 657 A
+ATOM    6287     O  OD1 ?  ASN      A 792 ?   -5.709    8.734  -26.094  -1.07  0 792 A
+ATOM    5178     N    N ?  TYR      A 659 ?   -9.578   13.404  -26.411   0.00  0 659 A
+ATOM    6301     C  CG2 ?  VAL      A 794 ?   -2.447    9.925  -23.819   0.00  0 794 A
+ATOM    5211     C   CD ?  PRO      A 662 ?   -2.069   15.295  -23.341   0.00  0 662 A
+ATOM    5473     O   OG ?  SER      A 694 ?   -2.668   11.368  -27.250  -2.14  0 694 A
+# 

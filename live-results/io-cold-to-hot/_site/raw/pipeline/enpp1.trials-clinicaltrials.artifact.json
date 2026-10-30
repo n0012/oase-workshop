@@ -1,0 +1,683 @@
+{
+  "schema": "oase.clinical-trials.v1",
+  "query": {
+    "term": "ENPP1",
+    "search_by": "target",
+    "source": "clinicaltrials.gov"
+  },
+  "summary": {
+    "n_studies": 26,
+    "by_phase": {
+      "N/A": 11,
+      "Phase2": 4,
+      "Phase1": 7,
+      "Phase1/Phase2": 2,
+      "Phase3": 2
+    },
+    "by_status": {
+      "RECRUITING": 9,
+      "TERMINATED": 5,
+      "UNKNOWN": 1,
+      "COMPLETED": 8,
+      "NOT_YET_RECRUITING": 1,
+      "ACTIVE_NOT_RECRUITING": 1,
+      "WITHDRAWN": 1
+    },
+    "top_sponsors": [
+      "Inozyme Pharma",
+      "Riboscience, LLC.",
+      "Centre Hospitalier Universitaire de Nice",
+      "Tam Anh Research Institute",
+      "Universit\u00e4t M\u00fcnster"
+    ]
+  },
+  "studies": [
+    {
+      "nct_id": "NCT07808164",
+      "title": "ENPP1/cGAS (EG) and FAP Expression Profiles in Solid Tumors: An Immunohistochemical Study in a Vietnamese Cohort",
+      "status": "RECRUITING",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "HCC - Hepatocellular Carcinoma",
+        "CRC (Colorectal Cancer)",
+        "Gastric Carcinoma",
+        "Breast Cancer",
+        "Lung Cancer",
+        "Endometrial Cancer",
+        "Melanoma (Skin Cancer)",
+        "Pancreatic Cancer"
+      ],
+      "interventions": [
+        {
+          "type": "OTHER",
+          "name": "IHC analysis for ENPP1, cGAS, and FAP expression"
+        }
+      ],
+      "sponsor": "Tam Anh Research Institute",
+      "enrollment": 162,
+      "start_date": "2026-03-19",
+      "completion_date": "2027-06-30"
+    },
+    {
+      "nct_id": "NCT07323082",
+      "title": "Purinergic Compounds in Pseudoxanthoma Elasticum",
+      "status": "RECRUITING",
+      "phases": [
+        "NA"
+      ],
+      "phase_label": "N/A",
+      "conditions": [
+        "Pseudoxanthoma Elasticum"
+      ],
+      "interventions": [
+        {
+          "type": "BIOLOGICAL",
+          "name": "supplementary tubes"
+        },
+        {
+          "type": "RADIATION",
+          "name": "SCANNER"
+        }
+      ],
+      "sponsor": "Centre Hospitalier Universitaire de Nice",
+      "enrollment": 45,
+      "start_date": "2026-01-20",
+      "completion_date": "2027-01-15"
+    },
+    {
+      "nct_id": "NCT06824064",
+      "title": "Evaluation of RBS2418 in Patients With Advanced, Metastatic, and Progressive Colorectal Cancer",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "phase_label": "Phase2",
+      "conditions": [
+        "Metastatic Colorectal Cancer",
+        "Advanced Colorectal Cancer"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "RBS2418"
+        },
+        {
+          "type": "DRUG",
+          "name": "Placebo"
+        }
+      ],
+      "sponsor": "Riboscience, LLC.",
+      "enrollment": 150,
+      "start_date": "2025-01-17",
+      "completion_date": "2027-12"
+    },
+    {
+      "nct_id": "NCT06302439",
+      "title": "PROPEL - A Prospective Observational Patient Registry to Evaluate ENPP1 and ABCC6 Deficiency",
+      "status": "TERMINATED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/Phosphodiesterase 1 Deficiency",
+        "ATP-Binding Cassette Subfamily C Member 6 Deficiency"
+      ],
+      "interventions": [
+        {
+          "type": "OTHER",
+          "name": "No Intervention for this observational study"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 54,
+      "start_date": "2024-07-25",
+      "completion_date": "2026-08-28"
+    },
+    {
+      "nct_id": "NCT05270213",
+      "title": "Evaluation of RBS2418 in Subjects With Advanced, Metastatic Solid Tumors",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Advanced Cancer"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "RBS2418"
+        },
+        {
+          "type": "DRUG",
+          "name": "Pembrolizumab"
+        },
+        {
+          "type": "DRUG",
+          "name": "Other approved anti-cancer therapy"
+        }
+      ],
+      "sponsor": "Riboscience, LLC.",
+      "enrollment": 164,
+      "start_date": "2022-07-11",
+      "completion_date": "2027-04"
+    },
+    {
+      "nct_id": "NCT03758534",
+      "title": "Natural History of GACI With or Without ARHR2 or PXE",
+      "status": "UNKNOWN",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Generalized Arterial Calcification in Infancy",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Pseudoxanthoma Elasticum"
+      ],
+      "interventions": [
+        {
+          "type": "OTHER",
+          "name": "No intervention"
+        }
+      ],
+      "sponsor": "Universit\u00e4t M\u00fcnster",
+      "enrollment": 80,
+      "start_date": "2018-03-15",
+      "completion_date": "2019-12-31"
+    },
+    {
+      "nct_id": "NCT05030831",
+      "title": "Evaluation of Safety, Tolerability, and Efficacy of INZ-701 in Adults With ABCC6 Deficiency Causing PXE",
+      "status": "COMPLETED",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "phase_label": "Phase1/Phase2",
+      "conditions": [
+        "ATP-Binding Cassette Subfamily C Member 6 Deficiency",
+        "Pseudoxanthoma Elasticum",
+        "Generalized Arterial Calcification of Infancy"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 10,
+      "start_date": "2022-04-11",
+      "completion_date": "2024-07-09"
+    },
+    {
+      "nct_id": "NCT06724042",
+      "title": "Study of ISM5939 in Patients With Advanced and/or Metastatic Solid Tumors",
+      "status": "NOT_YET_RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Advanced Solid Tumor",
+        "Metastatic Solid Tumor",
+        "Advanced and/or Metastatic Solid Tumors"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "ISM5939"
+        },
+        {
+          "type": "DRUG",
+          "name": "Cisplatin"
+        },
+        {
+          "type": "DRUG",
+          "name": "Docetaxel"
+        },
+        {
+          "type": "DRUG",
+          "name": "Pembrolizumab"
+        }
+      ],
+      "sponsor": "InSilico Medicine Hong Kong Limited",
+      "enrollment": 159,
+      "start_date": "2026-12-30",
+      "completion_date": "2029-12-30"
+    },
+    {
+      "nct_id": "NCT07762001",
+      "title": "Study to Evaluate the Safety and Tolerability of AD-NP1 in Healthy Human Adult Volunteers",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Maximum Tolerated Dose",
+        "Dose Escalation"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "AD-NP1"
+        },
+        {
+          "type": "DRUG",
+          "name": "Placebo"
+        }
+      ],
+      "sponsor": "Arjun Deb, MD",
+      "enrollment": 36,
+      "start_date": "2026-06-02",
+      "completion_date": "2028-01-01"
+    },
+    {
+      "nct_id": "NCT05734196",
+      "title": "The ENERGY Study: Evaluation of Safety and Tolerability of INZ-701 in Infants With ENPP1 Deficiency or ABCC6 Deficiency",
+      "status": "TERMINATED",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Generalized Arterial Calcification of Infancy",
+        "ATP-Binding Cassette Subfamily C Member 6 Deficiency",
+        "Pseudoxanthoma Elasticum"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 9,
+      "start_date": "2023-06-25",
+      "completion_date": "2026-09-29"
+    },
+    {
+      "nct_id": "NCT07005986",
+      "title": "Role of Circulating Pyrophosphate as a Biomarker of Mediacalcinosis in Type 2 Diabetic Patients",
+      "status": "RECRUITING",
+      "phases": [
+        "NA"
+      ],
+      "phase_label": "N/A",
+      "conditions": [
+        "Type 2 Diabetes",
+        "Type 2 Diabetes Patients"
+      ],
+      "interventions": [
+        {
+          "type": "DIAGNOSTIC_TEST",
+          "name": "Plasmatic PPi level"
+        }
+      ],
+      "sponsor": "Centre Hospitalier Universitaire de Nice",
+      "enrollment": 20,
+      "start_date": "2025-06-18",
+      "completion_date": "2026-07-18"
+    },
+    {
+      "nct_id": "NCT04372446",
+      "title": "Understanding the Spectrum of ENPP1 Deficiency and Acute ABCC6 Deficiency",
+      "status": "COMPLETED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Generalized Arterial Calcification in Infancy",
+        "Autosomal Recessive Hypophosphatemic Rickets Type 2"
+      ],
+      "interventions": [],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 38,
+      "start_date": "2020-05-06",
+      "completion_date": "2020-09-30"
+    },
+    {
+      "nct_id": "NCT06091592",
+      "title": "The d\u0131agnost\u0131c Value of Serum autotax\u0131n Level \u0131n Colorectal Cancer",
+      "status": "COMPLETED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Colo-rectal Cancer"
+      ],
+      "interventions": [
+        {
+          "type": "OTHER",
+          "name": "Serum autotax\u0131n levels"
+        }
+      ],
+      "sponsor": "Diskapi Yildirim Beyazit Education and Research Hospital",
+      "enrollment": 129,
+      "start_date": "2020-12-30",
+      "completion_date": "2021-11-20"
+    },
+    {
+      "nct_id": "NCT04686175",
+      "title": "Evaluation of Safety, Tolerability, and Efficacy of INZ-701 in Adults With ENPP1 Deficiency",
+      "status": "COMPLETED",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "phase_label": "Phase1/Phase2",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Generalized Arterial Calcification of Infancy"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 13,
+      "start_date": "2021-11-21",
+      "completion_date": "2024-10-29"
+    },
+    {
+      "nct_id": "NCT06657755",
+      "title": "Evaluation of ENPP1 Expression and Immune Response in Bladder Cancer Patients",
+      "status": "COMPLETED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Bladder (Urothelial, Transitional Cell) Cancer"
+      ],
+      "interventions": [
+        {
+          "type": "DIAGNOSTIC_TEST",
+          "name": "Immunohistochemistry"
+        }
+      ],
+      "sponsor": "Lanzhou University Second Hospital",
+      "enrollment": 12,
+      "start_date": "2024-06-01",
+      "completion_date": "2024-10-01"
+    },
+    {
+      "nct_id": "NCT06046820",
+      "title": "The ENERGY 3 Study: Evaluation of Efficacy and Safety of INZ-701 in Children With ENPP1 Deficiency",
+      "status": "TERMINATED",
+      "phases": [
+        "PHASE3"
+      ],
+      "phase_label": "Phase3",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/Phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Generalized Arterial Calcification of Infancy"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        },
+        {
+          "type": "DRUG",
+          "name": "Control Arm (Conventional Therapy)"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 27,
+      "start_date": "2023-11-05",
+      "completion_date": "2026-01-29"
+    },
+    {
+      "nct_id": "NCT06739980",
+      "title": "The ENABLE Study: Safety and Efficacy Study of INZ-701 in Patients With ENPP1 Deficiency",
+      "status": "WITHDRAWN",
+      "phases": [
+        "PHASE2"
+      ],
+      "phase_label": "Phase2",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Generalized Arterial Calcification of Infancy 1"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 0,
+      "start_date": "2025-01-31",
+      "completion_date": "2027-03-31"
+    },
+    {
+      "nct_id": "NCT06462547",
+      "title": "ADAPT Study: Long-term Safety Study of INZ-701 in Patients With ENPP1 Deficiency and ABCC6 Deficiency",
+      "status": "TERMINATED",
+      "phases": [
+        "PHASE2"
+      ],
+      "phase_label": "Phase2",
+      "conditions": [
+        "Gene Mutations",
+        "Pseudoxanthoma Elasticum",
+        "Arterial Calcification",
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets Type 2"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 22,
+      "start_date": "2024-06-19",
+      "completion_date": "2026-09-30"
+    },
+    {
+      "nct_id": "NCT05050669",
+      "title": "Natural History Study of ENPP1 Deficiency and the Early-onset Form of ABCC6 Deficiency",
+      "status": "COMPLETED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Generalized Arterial Calcification of Infancy",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Adenosine Triphosphate Binding Cassette Transporter Protein Subfamily C Member 6"
+      ],
+      "interventions": [
+        {
+          "type": "OTHER",
+          "name": "No Intervention for this observational study"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 12,
+      "start_date": "2022-06-28",
+      "completion_date": "2024-05-31"
+    },
+    {
+      "nct_id": "NCT06063681",
+      "title": "A Study of SR-8541A (ENPPI Inhibitor) in Advanced/Metastatic Solid Tumors",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Advanced / Metastatic Solid Tumor"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "SR-8541A"
+        },
+        {
+          "type": "DRUG",
+          "name": "Immune checkpoint inhibitor (ICI)"
+        }
+      ],
+      "sponsor": "Stingray Therapeutics",
+      "enrollment": 25,
+      "start_date": "2023-10-12",
+      "completion_date": "2025-12"
+    },
+    {
+      "nct_id": "NCT07745179",
+      "title": "Natural History Study: ENPP1 Deficiency or the Early-Onset Form of ABCC6 Deficiency",
+      "status": "COMPLETED",
+      "phases": [],
+      "phase_label": "N/A",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "ATP-Binding Cassette Subfamily C Member 6 Deficiency",
+        "Generalized Arterial Calcification of Infancy",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "PXE (Pseudoxanthoma Elasticum)"
+      ],
+      "interventions": [],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 23,
+      "start_date": "2018-12-05",
+      "completion_date": "2023-06-08"
+    },
+    {
+      "nct_id": "NCT07473973",
+      "title": "ENERGY 2: Evaluation of the Efficacy and Safety of INZ-701 in Infants With ENPP1 Deficiency",
+      "status": "TERMINATED",
+      "phases": [
+        "PHASE3"
+      ],
+      "phase_label": "Phase3",
+      "conditions": [
+        "Ectonucleotide Pyrophosphatase/phosphodiesterase1 Deficiency",
+        "Autosomal Recessive Hypophosphatemic Rickets",
+        "Generalized Arterial Calcification of Infancy 1"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 2,
+      "start_date": "2025-03-26",
+      "completion_date": "2026-08-31"
+    },
+    {
+      "nct_id": "NCT06283589",
+      "title": "SEAPORT 1: Study of INZ-701 in Adults With Hemodialysis-Dependent End-Stage Kidney Disease",
+      "status": "COMPLETED",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Calciphylaxis"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "INZ-701"
+        }
+      ],
+      "sponsor": "Inozyme Pharma",
+      "enrollment": 11,
+      "start_date": "2024-02-12",
+      "completion_date": "2024-07-27"
+    },
+    {
+      "nct_id": "NCT06934681",
+      "title": "Exercise to Fight Obesity",
+      "status": "RECRUITING",
+      "phases": [
+        "NA"
+      ],
+      "phase_label": "N/A",
+      "conditions": [
+        "Morbid Obesity",
+        "Bariatric Surgery",
+        "Telerehabilitation"
+      ],
+      "interventions": [
+        {
+          "type": "BEHAVIORAL",
+          "name": "Usual Care Group"
+        },
+        {
+          "type": "BEHAVIORAL",
+          "name": "Controlled exercise with telerehabilitation"
+        }
+      ],
+      "sponsor": "Instituto de Investigacion Sanitaria La Fe",
+      "enrollment": 72,
+      "start_date": "2025-05-19",
+      "completion_date": "2028-12"
+    },
+    {
+      "nct_id": "NCT05978492",
+      "title": "A Study of TXN10128 in Subjects With Solid Tumors",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "phase_label": "Phase1",
+      "conditions": [
+        "Locally Advanced (Unresectable) or Metastatic Solid Tumors"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "TXN10128"
+        },
+        {
+          "type": "DRUG",
+          "name": "Irinotecan"
+        },
+        {
+          "type": "DRUG",
+          "name": "Paclitaxel"
+        }
+      ],
+      "sponsor": "Txinno Bioscience Inc.",
+      "enrollment": 96,
+      "start_date": "2023-07-27",
+      "completion_date": "2025-12-31"
+    },
+    {
+      "nct_id": "NCT07175441",
+      "title": "Evaluation of RBS2418 in Combination With Tremelimumab Plus Durvalumab in Participants With Advanced Unresectable Hepatocellular Carcinoma",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "phase_label": "Phase2",
+      "conditions": [
+        "Advanced Unresectable Hepatocellular Carcinoma"
+      ],
+      "interventions": [
+        {
+          "type": "DRUG",
+          "name": "RBS2418"
+        },
+        {
+          "type": "DRUG",
+          "name": "STRIDE (durvalumab + tremelimumab)"
+        }
+      ],
+      "sponsor": "Riboscience, LLC.",
+      "enrollment": 220,
+      "start_date": "2026-04-10",
+      "completion_date": "2027-04"
+    }
+  ]
+}

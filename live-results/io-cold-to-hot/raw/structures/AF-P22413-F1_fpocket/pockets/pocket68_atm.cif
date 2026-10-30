@@ -1,0 +1,54 @@
+data_pocket68_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    68:
+0  - Pocket Score                      : -0.1354
+1  - Drug Score                        : 0.0001
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 4.3364
+4  - Mean alpha-sphere Solvent Acc.    : 0.5338
+5  - Mean B-factor of pocket residues  : 0.1615
+6  - Hydrophobicity Score              : 4.3333
+7  - Polarity Score                    :     2
+8  - Amino Acid based volume Score     : 5.3333
+9  - Pocket volume (Monte Carlo)       : 292.2635
+10  -Pocket volume (convex hull)       : 2.0930
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 2.0000
+13 - Number of apolar alpha sphere     :     3
+14 - Proportion of apolar alpha sphere : 0.2000
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    448      C   CZ ?  ARG      A 65 ?  -98.062  -60.391   34.591   0.00  0 65 A
+ATOM    445      N   NE ?  ARG      A 65 ?  -96.773  -60.506   34.867  -1.93  0 65 A
+ATOM    447      N  NH2 ?  ARG      A 65 ?  -98.593  -59.216   34.405   0.00  0 65 A
+ATOM    463      N  NH2 ?  ARG      A 67 ?  -96.748  -59.675   43.008   0.00  0 67 A
+ATOM    446      N  NH1 ?  ARG      A 65 ?  -98.847  -61.428   34.493  -3.45  0 65 A
+ATOM    462      N  NH1 ?  ARG      A 67 ?  -97.113  -61.823   43.480  -2.77  0 67 A
+ATOM    444      C   CD ?  ARG      A 65 ?  -96.036  -61.762   35.111   0.00  0 65 A
+ATOM    452      C   CB ?  ALA      A 66 ?  -92.688  -62.532   38.650   0.00  0 66 A
+ATOM    443      C   CG ?  ARG      A 65 ?  -94.525  -61.520   35.221   0.00  0 65 A
+ATOM    464      C   CZ ?  ARG      A 67 ?  -96.275  -60.883   43.141   0.00  0 67 A
+ATOM    461      N   NE ?  ARG      A 67 ?  -94.991  -61.127   42.937  -3.28  0 67 A
+ATOM    460      C   CD ?  ARG      A 67 ?  -94.321  -62.440   43.054   0.00  0 67 A
+# 

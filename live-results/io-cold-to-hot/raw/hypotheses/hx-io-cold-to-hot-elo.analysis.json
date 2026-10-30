@@ -1,0 +1,132 @@
+{
+  "record_type": "analysis",
+  "source": "raw/hypotheses/hx-io-cold-to-hot-elo.hypex.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:14:17Z",
+  "threshold_set": "hypex@1.0+program",
+  "thresholds_applied": {
+    "min_matches": 5,
+    "min_win_rate": 0.5,
+    "max_phantom_citations": 0,
+    "elo_decisive_gap": 50.0,
+    "max_suspect_citations": 1,
+    "min_safety_score": 0.8
+  },
+  "metrics": {
+    "n_hypotheses": 3,
+    "n_matches": 6,
+    "n_reviews": 3,
+    "n_quarantined": 0,
+    "elo_range": [
+      1368.0,
+      1658.4
+    ],
+    "termination": {
+      "reason": "converged",
+      "epoch_reached": 1,
+      "declared": true
+    }
+  },
+  "assessment": {
+    "verdict": "leader-with-advisories",
+    "leader": {
+      "id": "H-0001",
+      "title": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+      "elo": 1658.4
+    },
+    "elo_gap_to_runner_up": 103.9,
+    "leader_gap_is_decisive": true,
+    "n_hypotheses_ranked": 3,
+    "ideas": [
+      {
+        "id": "H-0001",
+        "title": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+        "elo": 1658.4,
+        "win_rate": 1.0,
+        "n_matches": 4,
+        "advisories": [
+          "only 4 matches played (< min_matches); ranking is not well supported"
+        ]
+      },
+      {
+        "id": "H-0002",
+        "title": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling",
+        "elo": 1554.5,
+        "win_rate": 0.4,
+        "n_matches": 5,
+        "advisories": [
+          "win rate 40% below min_win_rate"
+        ]
+      },
+      {
+        "id": "H-0003",
+        "title": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk",
+        "elo": 1368.0,
+        "win_rate": 0.0,
+        "n_matches": 3,
+        "advisories": [
+          "win rate 0% below min_win_rate",
+          "only 3 matches played (< min_matches); ranking is not well supported"
+        ]
+      }
+    ],
+    "assessment_core": {
+      "schema": "oase.hypothesis-assessment.v1",
+      "strategy": "hypex",
+      "source_artifact": "raw/hypotheses/hx-io-cold-to-hot-elo.hypex.json",
+      "source_sha256": "2578a0b7d270129ca6d566b27b4fc0eaf97e36fd3ff09a7d7f966391d9649925",
+      "candidates": [
+        {
+          "candidate_id": "H-0001",
+          "statement": "Extracellular ENPP1 Catalytic Pocket Blockade Preserves 2',3'-cGAMP for Paracrine STING Activation",
+          "rank": 1,
+          "score": {
+            "value": 1658.4,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-0002",
+          "statement": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling",
+          "rank": 2,
+          "score": {
+            "value": 1554.5,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-0003",
+          "statement": "Cytosolic TREX1 Exonuclease Inhibition Induces Systemic Type I Interferon Autoimmunity Risk",
+          "rank": 3,
+          "score": {
+            "value": 1368.0,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        }
+      ]
+    }
+  },
+  "mandatory_relays": [
+    {
+      "code": "hypex.pacing_uncoordinated",
+      "message": "Pacing was not coordinated (tier=standard, roster_size=6). Retrieval rate may have exceeded upstream limits."
+    }
+  ],
+  "threshold_sources": {
+    "min_matches": "program",
+    "min_win_rate": "program",
+    "max_phantom_citations": "program",
+    "elo_decisive_gap": "program",
+    "max_suspect_citations": "program",
+    "min_safety_score": "program"
+  },
+  "threshold_provenance": "structural defaults for reading a hypex ELO tournament; no external source claims these cutoffs. elo_decisive_gap, max_suspect_citations and min_safety_score are UNRESOLVED \u2014 measure the distribution before filling them",
+  "written_by": "hypex-supervisor",
+  "work_order_id": null,
+  "source_sha256": "2578a0b7d270129ca6d566b27b4fc0eaf97e36fd3ff09a7d7f966391d9649925"
+}

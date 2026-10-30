@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-30T19:00:00Z",
+  "created_by": "hypex-generation",
+  "epoch": 1,
+  "evidence": [
+    {
+      "lit_id": "PMID:28723893",
+      "note": "PTPN2 loss sensitizes tumors to immunotherapy by amplifying IFN-gamma STAT1 signaling.",
+      "role": "supports"
+    }
+  ],
+  "experiments": [
+    {
+      "design": "AlphaFold 3 co-fold + fpocket + Vina + tumor-slice CXCL9/10 ELISA",
+      "est_difficulty": "med",
+      "readout": "ipTM, kcal/mol, and CXCL10 fold-change"
+    }
+  ],
+  "focus_area": "Cold-to-Hot Innate Immune Checkpoint",
+  "id": "H-0002",
+  "lineage": {
+    "operator": "null",
+    "parents": []
+  },
+  "mechanism": "PTPN2 loss sensitizes tumors to immunotherapy by amplifying IFN-gamma STAT1 signaling.",
+  "predictions": [
+    "Pocket #1 druggability >= 0.70",
+    "Vina score <= -7.5 kcal/mol"
+  ],
+  "statement": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling",
+  "status": "reviewed",
+  "title": "Intracellular PTPN2 Phosphatase Inhibition Amplifies Tumor and CD8+ T-Cell IFN-Gamma Signaling"
+}

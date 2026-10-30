@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "alerts",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC",
+    "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC"
+  },
+  "timestamp": "2026-10-30T20:15:44Z",
+  "completed": "2026-10-30T20:15:44Z",
+  "outputs": [
+    {
+      "path": "enpp1_hit_001.alerts.json",
+      "sha256": "2767032c9f88fc16a1c50e640caf4110ae3d940edf9f79e4da0e2af8c359d989",
+      "bytes": 224
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "enpp1_hit_001"
+}

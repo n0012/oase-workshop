@@ -1,0 +1,29 @@
+{
+  "instances": [
+    {
+      "name": "enpp1_009_complex",
+      "modelSeeds": [
+        1
+      ],
+      "dialect": "alphafold3",
+      "version": 1,
+      "sequences": [
+        {
+          "protein": {
+            "id": "A",
+            "sequence": "EPIWVTAKYQGLKSGTFFWPGSDVEINGIFPDIYKMYNGSVPFEERILAVLQWLQLPKDERPHFYTLYLEEPDSSGHSYG",
+            "unpairedMsa": "",
+            "pairedMsa": "",
+            "templates": []
+          }
+        },
+        {
+          "ligand": {
+            "id": "B",
+            "smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Executive Summary — IO Cold-to-Hot Tumor Reprogramming Campaign (`io-cold-to-hot`)
+
+## Campaign Overview & Origin
+Replay and full GCP live execution (`losiern-oase-workshop`, `scion-hub-oase`) of David's `venter-scion` **Immuno-Oncology Cold-to-Hot Tumor Microenvironment (TME) Reprogramming** pilot (`io-cold-to-hot`). The campaign evaluated five innate-immune checkpoint mechanisms (`ENPP1`, `ADAR1`, `PTPN2`, `TREX1`, `LSD1`) to convert immunologically "cold" solid tumors into inflamed, $\text{CD8}^+$ T-cell-infiltrated "hot" tumors responsive to anti-PD-1 therapy, nominating the oral small-molecule ENPP1 inhibitor **`oase_enpp1_009`** and halting cleanly at the **Wet-Lab Wall (`DEC-003`)** with a complete, tamper-tested Pre-Wet-Lab Candidate Dossier (`WO-008`).
+
+## End-to-End Evidence Chain (`WO-001` through `WO-008`)
+- **Stage 1 — Co-Scientist & Hypex Elo Tournaments + Human Genetics & Live 1P AlphaGenome (`WO-001`, `WO-002`, `WO-003`):**
+  - Co-Scientist (`cs-venter-20261030-io-cold-to-hot`, `5` candidates) and Hypex (`hx-io-cold-to-hot-elo`, `3` finalists) independently ranked **extracellular ENPP1 catalytic pocket blockade** (`H-0001`, Elo `1658.4`) #1 (`+56.4` Elo over `ADAR1` `1602.0` and `+103.9` Elo over `PTPN2` `1554.5`).
+  - gnomAD v4 human genetic constraint confirmed `ENPP1` (`ENSG00000197594`) is loss-of-function tolerant (`pLI = 2.7418338646034427e-13`, `LOEUF = 0.7220920420139987`, `73` observed LoF variants), whereas `TREX1` (`ENSG00000213689`) was disqualified at `DEC-001` due to Mendelian Aicardi-Goutières lupus/myocarditis autoimmunity (`L-001`, `PMID:16845398`). GTEx v8 whole-blood RNA-seq (`ENSG00000197594.11`) confirmed negligible systemic blood expression (`median_tpm = 0.035069699999999995`, `not_expressed`).
+  - Live 1P **AlphaGenome** GPU variant scoring (`chr6:131894218C>T` on `mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5` in `us-central1`) evaluated `40` gene-modality entries across a `1,048,576 bp` window (`11260` scored gene-track cells), flagging `8` high-quantile/low-raw statistical artifacts (`alphagenome.quantile_artifact`).
+- **Stage 2 — AlphaFold DB `P22413`, `fpocket`, Live 1P AlphaFold 3 Co-Folding & AutoDock Vina (`WO-004`, `WO-005`):**
+  - Full-length human ENPP1 (`AF-P22413-F1.cif`, `925` residues, `global_plddt = 90.69`) and `fpocket` (`70` pockets) identified catalytic groove **`Pocket #7`** (`druggability_score = 0.694`, `volume = 535.366 Å³`).
+  - Live 1P **AlphaFold 3** protein-ligand co-folding (`AF3-enpp1_009_complex.cif` on `mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0` in `us-east4`) produced a clash-free (`has_clash = 0.0`) 3D co-crystal model (`ipTM = 0.36`, `pTM = 0.38`, `ranking_score = 0.36`).
+  - **AutoDock Vina** rigid-body docking (`oase_enpp1_009.3d_AF-P22413-F1`) converged on `Pocket #7` with `best_score = -9.793 kcal/mol`.
+- **Stage 3 — DMTA Lead Optimization, ADMET & Wet-Lab Wall Candidate Dossier (`WO-006`, `WO-007`, `WO-008`):**
+  - BRICS matched molecular pair (`enpp1_series_mmp`) guided optimization from hit `enpp1_hit_001` (`MW = 427.89 Da`, `cLogP = 3.65`) to lead **`oase_enpp1_009`** (`MW = 475.5 Da`, `cLogP = 2.01`, `TPSA = 113.96 Å²`, `SA-score = 2.37`, `0` Lipinski/Veber/PAINS/Brenk violations, `0` CYP isoforms flagged, `no hERG pharmacophore features matched`).
+  - ClinicalTrials.gov competitive landscape (`26` ENPP1 studies, `11` recruiting) and the 4-experiment Wet-Lab Request Package (`WO-007`, `WO-008`) completed the Pre-Wet-Lab Candidate Dossier (`DEC-003`).

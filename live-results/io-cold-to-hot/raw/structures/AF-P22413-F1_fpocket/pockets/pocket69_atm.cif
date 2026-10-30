@@ -1,0 +1,61 @@
+data_pocket69_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    69:
+0  - Pocket Score                      : -0.1643
+1  - Drug Score                        : 0.0004
+2  - Number of alpha spheres           :    21
+3  - Mean alpha-sphere radius          : 4.0883
+4  - Mean alpha-sphere Solvent Acc.    : 0.5298
+5  - Mean B-factor of pocket residues  : 0.9544
+6  - Hydrophobicity Score              : 8.2857
+7  - Polarity Score                    :     6
+8  - Amino Acid based volume Score     : 5.0000
+9  - Pocket volume (Monte Carlo)       : 428.2018
+10  -Pocket volume (convex hull)       : 36.1548
+11 - Charge Score                      :     3
+12 - Local hydrophobic density Score   : 12.0000
+13 - Number of apolar alpha sphere     :    13
+14 - Proportion of apolar alpha sphere : 0.6190
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    2203     C   CD ?  LYS      A 291 ?    0.827   -7.530   23.251   0.00  0 291 A
+ATOM    2205     N   NZ ?  LYS      A 291 ?   -0.836   -9.398   23.529   0.00  0 291 A
+ATOM    2204     C   CE ?  LYS      A 291 ?   -0.437   -8.220   22.715   0.00  0 291 A
+ATOM    4160     N   NZ ?  LYS      A 528 ?    2.687  -14.529   18.817   0.00  0 528 A
+ATOM    2099     C   CE ?  LYS      A 278 ?    4.521   -7.923   15.900   0.00  0 278 A
+ATOM    4159     C   CE ?  LYS      A 528 ?    2.662  -14.185   17.372   0.00  0 528 A
+ATOM    3508     O   OH ?  TYR      A 451 ?    4.279  -12.104   14.599  -3.21  0 451 A
+ATOM    2100     N   NZ ?  LYS      A 278 ?    4.073   -8.931   14.904  -1.09  0 278 A
+ATOM    2087     C   CB ?  ASN      A 277 ?    0.600   -4.165   13.530   0.00  0 277 A
+ATOM    2195     C  CD1 ?  LEU      A 290 ?   -1.566   -3.764   16.853   0.00  0 290 A
+ATOM    2090     N  ND2 ?  ASN      A 277 ?   -1.650   -5.029   13.094   0.00  0 277 A
+ATOM    2194     C   CG ?  LEU      A 290 ?   -0.272   -3.132   17.366   0.00  0 290 A
+ATOM    2088     O    O ?  ASN      A 277 ?    2.757   -3.187   15.492   0.00  0 277 A
+ATOM    2200     C   CB ?  LYS      A 291 ?    2.087   -5.310   23.267   0.00  0 291 A
+ATOM    2202     C   CG ?  LYS      A 291 ?    0.890   -6.095   22.703   0.00  0 291 A
+ATOM    2188     O   OG ?  SER      A 289 ?    4.689   -4.432   19.697   0.00  0 289 A
+ATOM    2189     N    N ?  LEU      A 290 ?    2.152   -2.603   18.996   0.00  0 290 A
+ATOM    2192     C   CB ?  LEU      A 290 ?   -0.244   -3.209   18.904   0.00  0 290 A
+ATOM    2197     N    N ?  LYS      A 291 ?    1.779   -3.449   21.652   0.00  0 291 A
+# 

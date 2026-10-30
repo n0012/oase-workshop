@@ -1,0 +1,97 @@
+data_pocket65_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    65:
+0  - Pocket Score                      : -0.1016
+1  - Drug Score                        : 0.0074
+2  - Number of alpha spheres           :    78
+3  - Mean alpha-sphere radius          : 4.0578
+4  - Mean alpha-sphere Solvent Acc.    : 0.5501
+5  - Mean B-factor of pocket residues  : 0.8169
+6  - Hydrophobicity Score              : 7.2632
+7  - Polarity Score                    :    13
+8  - Amino Acid based volume Score     : 4.4211
+9  - Pocket volume (Monte Carlo)       : 951.9398
+10  -Pocket volume (convex hull)       : 283.2539
+11 - Charge Score                      :    -2
+12 - Local hydrophobic density Score   : 22.2308
+13 - Number of apolar alpha sphere     :    26
+14 - Proportion of apolar alpha sphere : 0.3333
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    7026     C   CA ?  LEU      A 884 ?    2.137   -6.096  -11.578   0.00  0 884 A
+ATOM    7025     N    N ?  LEU      A 884 ?    1.597   -6.442  -12.894   0.00  0 884 A
+ATOM    7051     N  NH1 ?  ARG      A 886 ?   -2.684   -6.041  -10.757  -6.31  0 886 A
+ATOM    7021     O    O ?  MET      A 883 ?   -0.481   -5.687  -12.496   0.00  0 883 A
+ATOM    7334     C   CB ?  PHE      A 921 ?   -6.567   -9.197  -14.026   0.00  0 921 A
+ATOM    7335     O    O ?  PHE      A 921 ?   -7.236   -9.954  -11.031  -4.69  0 921 A
+ATOM    7023     S   SD ?  MET      A 883 ?   -2.278   -9.780  -16.079   0.00  0 883 A
+ATOM    7355     N  NE2 ?  GLN      A 923 ?   -2.305  -15.272   -8.841   0.00  0 923 A
+ATOM    6997     C   CG ?  GLU      A 880 ?    3.574  -13.132  -15.548   0.00  0 880 A
+ATOM    6996     O    O ?  GLU      A 880 ?    3.104   -8.731  -14.285   0.00  0 880 A
+ATOM    4049     O  OD1 ?  ASP      A 515 ?    4.169  -14.559   -6.205  -4.02  0 515 A
+ATOM    4048     C   CG ?  ASP      A 515 ?    3.607  -15.650   -5.973   0.00  0 515 A
+ATOM    4050     O  OD2 ?  ASP      A 515 ?    3.784  -16.697   -6.637  -0.81  0 515 A
+ATOM    6995     C   CB ?  GLU      A 880 ?    4.095  -11.685  -15.465   0.00  0 880 A
+ATOM    7032     C  CD2 ?  LEU      A 884 ?    5.414   -7.565  -10.016   0.00  0 884 A
+ATOM    3812     N   NZ ?  LYS      A 488 ?    8.236  -10.461  -10.422  -4.12  0 488 A
+ATOM    7346     O    O ?  SER      A 922 ?   -6.765  -12.796  -12.601  -2.55  0 922 A
+ATOM    6993     C   CA ?  GLU      A 880 ?    3.118  -10.559  -15.870   0.00  0 880 A
+ATOM    4253     C  CD1 ?  PHE      A 541 ?   -2.845  -10.255   -4.969   0.00  0 541 A
+ATOM    4246     C  CG2 ?  VAL      A 540 ?   -3.335   -6.217   -6.842   0.00  0 540 A
+ATOM    4244     O    O ?  VAL      A 540 ?   -6.382   -7.708   -6.004  -2.14  0 540 A
+ATOM    4255     C  CE1 ?  PHE      A 541 ?   -1.512  -10.483   -5.360   0.00  0 541 A
+ATOM    6998     C   CD ?  GLU      A 880 ?    4.734  -14.150  -15.458   0.00  0 880 A
+ATOM    7019     C    C ?  MET      A 883 ?    0.338   -6.198  -13.267   0.00  0 883 A
+ATOM    7020     C   CB ?  MET      A 883 ?   -0.605   -7.962  -14.784   0.00  0 883 A
+ATOM    7024     C   CE ?  MET      A 883 ?   -0.898  -10.922  -16.357   0.00  0 883 A
+ATOM    7374     O  OXT ?  ASP      A 925 ?   -6.376  -13.968  -16.190  -2.55  0 925 A
+ATOM    7349     C   CA ?  GLN      A 923 ?   -6.289  -15.229  -11.396   0.00  0 923 A
+ATOM    7354     C   CD ?  GLN      A 923 ?   -3.585  -15.467   -8.604   0.00  0 923 A
+ATOM    4057     C   CD ?  PRO      A 516 ?   -0.562  -14.526   -5.054   0.00  0 516 A
+ATOM    4054     C   CB ?  PRO      A 516 ?   -2.502  -15.294   -3.892   0.00  0 516 A
+ATOM    4258     N    N ?  SER      A 542 ?   -7.936  -10.411   -4.132   0.00  0 542 A
+ATOM    4250     C   CB ?  PHE      A 541 ?   -4.692  -10.335   -3.172   0.00  0 541 A
+ATOM    4056     C   CG ?  PRO      A 516 ?   -2.080  -14.353   -5.019   0.00  0 516 A
+ATOM    7356     O  OE1 ?  GLN      A 923 ?   -3.896  -16.167   -7.653  -5.09  0 923 A
+ATOM    4248     C   CA ?  PHE      A 541 ?   -5.646   -9.510   -4.055   0.00  0 541 A
+ATOM    7031     C  CD1 ?  LEU      A 884 ?    3.280   -7.080   -8.866   0.00  0 884 A
+ATOM    7028     C   CB ?  LEU      A 884 ?    3.463   -6.861  -11.410   0.00  0 884 A
+ATOM    7338     C  CD2 ?  PHE      A 921 ?   -5.025   -7.224  -14.532   0.00  0 921 A
+ATOM    3309     O  OE2 ?  GLU      A 427 ?   -5.784  -15.672   -0.319  -3.21  0 427 A
+ATOM    4264     N    N ?  ASN      A 543 ?   -8.936  -11.721   -1.739  -1.09  0 543 A
+ATOM    4270     N  ND2 ?  ASN      A 543 ?   -8.488  -15.647   -0.950  -4.54  0 543 A
+ATOM    4261     C   CB ?  SER      A 542 ?  -10.034  -11.575   -4.712   0.00  0 542 A
+ATOM    7352     O    O ?  GLN      A 923 ?   -6.298  -17.324  -12.567   0.00  0 923 A
+ATOM    7351     C   CB ?  GLN      A 923 ?   -5.527  -15.826  -10.198   0.00  0 923 A
+ATOM    4033     O   OH ?  TYR      A 513 ?    1.365   -8.962   -6.381  -0.14  0 513 A
+ATOM    4231     O  OD2 ?  ASP      A 538 ?   -0.064   -6.913   -5.609  -1.07  0 538 A
+ATOM    3903     N  NH2 ?  ARG      A 498 ?    0.267   -4.899   -7.467   0.00  0 498 A
+ATOM    4031     C  CE1 ?  TYR      A 513 ?    3.496   -9.957   -5.939   0.00  0 513 A
+ATOM    4257     C   CZ ?  PHE      A 541 ?   -0.586  -11.013   -4.445   0.00  0 541 A
+ATOM    4263     O   OG ?  SER      A 542 ?   -9.575  -11.447   -6.045  -0.54  0 542 A
+ATOM    7348     N    N ?  GLN      A 923 ?   -7.262  -14.213  -10.952  -4.79  0 923 A
+ATOM    7343     C   CA ?  SER      A 922 ?   -8.726  -12.255  -11.312   0.00  0 922 A
+ATOM    7052     N  NH2 ?  ARG      A 886 ?   -4.741   -5.711   -9.934  -3.28  0 886 A
+ATOM    7353     C   CG ?  GLN      A 923 ?   -4.608  -14.800   -9.520   0.00  0 923 A
+# 

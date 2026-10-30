@@ -1,0 +1,10 @@
+{
+  "tool": "compound",
+  "subcommand": "alerts",
+  "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC",
+  "n_alerts": 0,
+  "pains_hits": [],
+  "brenk_hits": [],
+  "aggregator_hits": [],
+  "clean": true
+}

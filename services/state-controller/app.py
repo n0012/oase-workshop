@@ -60,10 +60,12 @@ def _campaign_paths(campaign: str | None = None) -> tuple[str, Path, Path, Path]
     cid = (campaign or DEFAULT_CAMPAIGN).strip() or DEFAULT_CAMPAIGN
     if not CAMPAIGN_RE.fullmatch(cid):
         raise HTTPException(status_code=400, detail=f"Invalid campaign identifier '{cid}'")
-    if cid == DEFAULT_CAMPAIGN:
-        return cid, MANIFEST_PATH, SNAPSHOT_DIR, GOLDEN_DB_PATH
     c_manifest = (HUB_DIR / "campaigns" / cid / "pilot-chapters-manifest.json").resolve()
     c_snap_dir = (HUB_DIR / "snapshots" / cid).resolve()
+    if c_manifest.exists():
+        return cid, c_manifest, c_snap_dir, c_snap_dir / "golden-hub.db"
+    if cid == DEFAULT_CAMPAIGN:
+        return cid, MANIFEST_PATH, SNAPSHOT_DIR, GOLDEN_DB_PATH
     return cid, c_manifest, c_snap_dir, c_snap_dir / "golden-hub.db"
 
 

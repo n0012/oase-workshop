@@ -1,0 +1,62 @@
+data_pocket20_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    20:
+0  - Pocket Score                      : 0.0523
+1  - Drug Score                        : 0.0002
+2  - Number of alpha spheres           :    22
+3  - Mean alpha-sphere radius          : 3.7607
+4  - Mean alpha-sphere Solvent Acc.    : 0.4671
+5  - Mean B-factor of pocket residues  : 0.9927
+6  - Hydrophobicity Score              : -9.5455
+7  - Polarity Score                    :    10
+8  - Amino Acid based volume Score     : 4.0000
+9  - Pocket volume (Monte Carlo)       : 289.5370
+10  -Pocket volume (convex hull)       : 21.5098
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0455
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    3947     N   NZ ?  LYS      A 503 ?    6.118   12.524   -0.593   0.00  0 503 A
+ATOM    6395     N   NE ?  ARG      A 806 ?    2.425   14.869   -5.382  -0.59  0 806 A
+ATOM    6393     C   CG ?  ARG      A 806 ?    4.674   13.842   -5.125   0.00  0 806 A
+ATOM    6394     C   CD ?  ARG      A 806 ?    3.175   13.600   -5.309   0.00  0 806 A
+ATOM    6383     O  OD2 ?  ASP      A 804 ?    7.280   13.445   -2.708   0.00  0 804 A
+ATOM    4596     N  ND2 ?  ASN      A 585 ?   -0.848   11.177   -1.065  -4.54  0 585 A
+ATOM    6398     C   CZ ?  ARG      A 806 ?    1.111   14.977   -5.380   0.00  0 806 A
+ATOM    6380     O    O ?  ASP      A 804 ?    5.722   10.413   -3.127   0.00  0 804 A
+ATOM    6396     N  NH1 ?  ARG      A 806 ?    0.356   13.923   -5.447  -4.37  0 806 A
+ATOM    6397     N  NH2 ?  ARG      A 806 ?    0.529   16.139   -5.298  -0.84  0 806 A
+ATOM    4586     O    O ?  ASN      A 584 ?   -3.984   14.214   -0.581   0.00  0 584 A
+ATOM    7115     C  CD2 ?  HIS      A 894 ?   -1.142   11.612   -6.603   0.00  0 894 A
+ATOM    6387     O    O ?  GLY      A 805 ?    3.742   10.561   -7.095  -2.14  0 805 A
+ATOM    2045     O   OG ?  SER      A 271 ?    2.625   10.460    2.192  -4.29  0 271 A
+ATOM    2038     O  OE1 ?  GLU      A 270 ?    4.428    7.098   -0.977  -1.07  0 270 A
+ATOM    3920     N  ND1 ?  HIS      A 500 ?    1.660    6.575   -4.235  -1.09  0 500 A
+ATOM    6385     C   CA ?  GLY      A 805 ?    5.300    9.313   -5.764   0.00  0 805 A
+ATOM    2019     C  CD2 ?  TYR      A 268 ?   -0.468    7.496   -1.110   0.00  0 268 A
+ATOM    3921     C  CE1 ?  HIS      A 500 ?    0.958    6.672   -5.373   0.00  0 500 A
+ATOM    2021     C  CE2 ?  TYR      A 268 ?   -1.169    7.473   -2.329   0.00  0 268 A
+# 

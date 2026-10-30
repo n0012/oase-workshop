@@ -1,0 +1,57 @@
+{
+  "id": "WO-007",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "What quantitative 4-assay wet-lab validation package (EXP-01..EXP-04) is required at the Wet-Lab Wall (DEC-003) before advancing oase_enpp1_009 to IND-enabling studies?",
+  "requested_role": "admet-dmpk-scientist",
+  "stage": "stage3-candidate-nomination",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Specify EXP-01 (recombinant ENPP1 cGAMP IC50), EXP-02 (THP-1/tumor co-culture IFN-beta/CXCL10 ELISA), EXP-03 (patch-clamp hERG & hepatocyte CLint), and EXP-04 (syngeneic MC38/CT26 + anti-PD-1 TGI).",
+    "artifact_links": [
+      {
+        "path": "raw/compounds/oase_enpp1_009.descriptors.json",
+        "sha256": "5fb7d81b85a45fc85511a171397e198ec230489897baa274cfe1caf5c45d14a4"
+      },
+      {
+        "path": "raw/admet/oase_enpp1_009.predict.json",
+        "sha256": "1260391763445e20f7c4e0bf59eddf4bafa783263cda3a21d05b7f8ace7f5a9e"
+      },
+      {
+        "path": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.docking_result.json",
+        "sha256": "61d6ce80815385d6fb55a987d5a5c6a62177daa1a1726acf49a67afd8422bf1c"
+      }
+    ],
+    "snapshot": "contexts/WO-007-r1.json",
+    "snapshot_sha256": "1d90f84d8b0a2c97c6afce1ab6f13c528e07b13a931a64191240386272d0c842"
+  },
+  "dependencies": [
+    "WO-006"
+  ],
+  "capabilities": [
+    "oase.compound",
+    "oase.admet",
+    "oase.docking"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.admet"
+    ],
+    "layer_1": [
+      "findings/admet-dmpk/wo-007-wetlab-request-package.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "Quantitative Go/No-Go thresholds defined for EXP-01 through EXP-04",
+    "All upstream relays addressed"
+  ],
+  "alert_policy": {
+    "mode": "standard",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T21:27:47Z",
+  "committed_at": "2026-10-30T21:27:47Z"
+}

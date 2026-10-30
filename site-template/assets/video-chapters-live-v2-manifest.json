@@ -6,7 +6,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 1 \u2014 Live Co-Scientist & Hypex Tournament (WO-001 \u00b7 +130.5 Elo)",
       "video_filename": "chapter-01.mp4",
-      "duration_s": 101.1,
+      "duration_s": 99.87,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -32,8 +32,8 @@
         {
           "key": "prompt_structure",
           "label": "3. Live AF3 Co-Fold & Pocket Rule",
-          "time_s": 28.13,
-          "timecode": "0:28",
+          "time_s": 27.33,
+          "timecode": "0:27",
           "speaker": "Dr. Elena Rostova",
           "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
@@ -41,8 +41,8 @@
         {
           "key": "coscientist_launch",
           "label": "4. Execute WO-001 Co-Scientist + Hypex",
-          "time_s": 40.73,
-          "timecode": "0:41",
+          "time_s": 39.77,
+          "timecode": "0:40",
           "speaker": "Dr. Raj Patel",
           "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
@@ -50,8 +50,8 @@
         {
           "key": "tournament_readout",
           "label": "5. Live Hypex +130.5 Elo Readout",
-          "time_s": 53.3,
-          "timecode": "0:53",
+          "time_s": 51.7,
+          "timecode": "0:52",
           "speaker": "Grove-1 \u00b7 AI Program Lead",
           "role": "@science-program-lead [SP]",
           "voice_id": "en-us-techagent-3"
@@ -59,8 +59,8 @@
         {
           "key": "subway_routing",
           "label": "6. Inspect Bracket & Wingman Roster",
-          "time_s": 66.33,
-          "timecode": "1:06",
+          "time_s": 64.6,
+          "timecode": "1:05",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
@@ -68,8 +68,8 @@
         {
           "key": "wingman_roster",
           "label": "7. Multi-Model Roster Confirmed",
-          "time_s": 78.6,
-          "timecode": "1:19",
+          "time_s": 76.87,
+          "timecode": "1:17",
           "speaker": "Helix-2 \u00b7 AI Comp Bio",
           "role": "@computational-biologist [CB]",
           "voice_id": "en-us-advisor-8"
@@ -77,8 +77,8 @@
         {
           "key": "mission_launch",
           "label": "8. WO-001 Accepted & Step 2 Launch",
-          "time_s": 90.33,
-          "timecode": "1:30",
+          "time_s": 88.6,
+          "timecode": "1:29",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
@@ -91,7 +91,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 2 \u2014 gnomAD, GTEx & Live 1P AlphaGenome A100 Scoring (WO-002..003)",
       "video_filename": "chapter-02.mp4",
-      "duration_s": 57.67,
+      "duration_s": 55.57,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -108,7 +108,7 @@
         {
           "key": "agent_analysis",
           "label": "2. Live 1P AlphaGenome 0.9996 Quantile",
-          "time_s": 16.57,
+          "time_s": 16.53,
           "timecode": "0:17",
           "speaker": "Helix-2 \u00b7 AI Comp Bio",
           "role": "@computational-biologist [CB]",
@@ -117,7 +117,7 @@
         {
           "key": "validator_verdict",
           "label": "3. Inspect 396 Tracks & Risk Relay",
-          "time_s": 30.3,
+          "time_s": 29.53,
           "timecode": "0:30",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
@@ -126,8 +126,8 @@
         {
           "key": "gate_signoff",
           "label": "4. Stage Gate 1 Co-Signed",
-          "time_s": 43.07,
-          "timecode": "0:43",
+          "time_s": 42.3,
+          "timecode": "0:42",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
@@ -140,7 +140,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 3 \u2014 Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
       "video_filename": "chapter-03.mp4",
-      "duration_s": 63.37,
+      "duration_s": 64.93,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -157,8 +157,8 @@
         {
           "key": "agent_analysis",
           "label": "2. Live 588-Atom AF3 Co-Fold & Vina",
-          "time_s": 14.4,
-          "timecode": "0:14",
+          "time_s": 16.77,
+          "timecode": "0:17",
           "speaker": "Fold-3 \u00b7 AI Structural Bio",
           "role": "@structural-biologist [SB]",
           "voice_id": "en-gb-tutor-17"
@@ -166,8 +166,8 @@
         {
           "key": "validator_verdict",
           "label": "3. Inspect 3D Contacts & cLogP 5.4 Flag",
-          "time_s": 32.3,
-          "timecode": "0:32",
+          "time_s": 33.87,
+          "timecode": "0:34",
           "speaker": "Dr. Raj Patel",
           "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
@@ -175,8 +175,8 @@
         {
           "key": "gate_signoff",
           "label": "4. Stage Gate 2 Co-Signed",
-          "time_s": 50.27,
-          "timecode": "0:50",
+          "time_s": 51.83,
+          "timecode": "0:52",
           "speaker": "Dr. Elena Rostova",
           "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
@@ -189,7 +189,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 4 \u2014 Opus 5.5 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
       "video_filename": "chapter-04.mp4",
-      "duration_s": 58.87,
+      "duration_s": 59.73,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -206,7 +206,7 @@
         {
           "key": "agent_analysis",
           "label": "2. Opus 5.5 Readout: cLogP 4.19 & 0 Violations",
-          "time_s": 14.67,
+          "time_s": 14.63,
           "timecode": "0:15",
           "speaker": "Spark-4 \u00b7 AI Med Chemist",
           "role": "@medicinal-chemist [MC]",
@@ -215,8 +215,8 @@
         {
           "key": "validator_verdict",
           "label": "3. Enforce Mandatory hERG Wet-Lab Gate",
-          "time_s": 29.83,
-          "timecode": "0:30",
+          "time_s": 28.57,
+          "timecode": "0:29",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
@@ -224,8 +224,8 @@
         {
           "key": "gate_signoff",
           "label": "4. Stage Gate 3 & CRO Wet-Lab Dispatch",
-          "time_s": 44.27,
-          "timecode": "0:44",
+          "time_s": 43.17,
+          "timecode": "0:43",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
@@ -238,7 +238,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 5 \u2014 Rat/Dog NCA, Human PK Scaling & 450 Clinical Trials (WO-007..008)",
       "video_filename": "chapter-05.mp4",
-      "duration_s": 55.6,
+      "duration_s": 56.5,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -287,7 +287,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 6 \u2014 Live Red-Team Tamper Drills (DRILL-01..03) & Audited Override",
       "video_filename": "chapter-06.mp4",
-      "duration_s": 50.57,
+      "duration_s": 50.93,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -313,7 +313,7 @@
         {
           "key": "validator_verdict",
           "label": "3. Inspect Tamper JSON & Signed Override",
-          "time_s": 27.63,
+          "time_s": 28.0,
           "timecode": "0:28",
           "speaker": "Dr. Raj Patel",
           "role": "Med Chemistry \u00b7 GOLD-4",
@@ -322,7 +322,7 @@
         {
           "key": "gate_signoff",
           "label": "4. Governance Audit Signed",
-          "time_s": 39.77,
+          "time_s": 40.13,
           "timecode": "0:40",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
@@ -336,7 +336,7 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 7 \u2014 Live Campaign Closeout, 35-Page Portal & Portfolio Sign-Off",
       "video_filename": "chapter-07.mp4",
-      "duration_s": 86.47,
+      "duration_s": 86.37,
       "resolution": "1920x1080",
       "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
       "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
@@ -371,7 +371,7 @@
         {
           "key": "debrief_structbio",
           "label": "4. Structural Bio + Fold-3 Debrief",
-          "time_s": 37.87,
+          "time_s": 37.77,
           "timecode": "0:38",
           "speaker": "Dr. Elena Rostova",
           "role": "Structural Bio \u00b7 GOLD-3",
@@ -380,7 +380,7 @@
         {
           "key": "debrief_medchem",
           "label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
-          "time_s": 51.63,
+          "time_s": 51.53,
           "timecode": "0:52",
           "speaker": "Dr. Raj Patel",
           "role": "Med Chemistry \u00b7 GOLD-4",
@@ -389,7 +389,7 @@
         {
           "key": "debrief_dmpk",
           "label": "6. DMPK + Shield-5 Debrief",
-          "time_s": 63.1,
+          "time_s": 63.0,
           "timecode": "1:03",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
@@ -398,7 +398,7 @@
         {
           "key": "portfolio_handoff",
           "label": "7. Final Portfolio Hand-Off",
-          "time_s": 74.2,
+          "time_s": 74.1,
           "timecode": "1:14",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
@@ -409,7 +409,7 @@
   },
   "full_walkthrough": {
     "video_filename": "full-pilot-walkthrough.mp4",
-    "duration_s": 473.63,
+    "duration_s": 473.9,
     "resolution": "1920x1080"
   }
 }

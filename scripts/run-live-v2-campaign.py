@@ -611,21 +611,80 @@ def main() -> int:
     )
 
     # Register campaign manifest and golden snapshot for pcsk9-live-argolis in oase-state-controller
-    base_manifest_path = hub_dir / "pilot-chapters-manifest.json"
-    if base_manifest_path.exists():
-        base_manifest = json.loads(base_manifest_path.read_text(encoding="utf-8"))
-        camp_dir = hub_dir / "campaigns" / CAMPAIGN_ID
-        camp_dir.mkdir(parents=True, exist_ok=True)
-        camp_manifest = dict(base_manifest)
-        camp_manifest["campaign_id"] = CAMPAIGN_ID
-        camp_manifest["live_grove_slug"] = LIVE_GROVE_SLUG
-        camp_manifest["live_grove_project_id"] = live_pid
-        camp_manifest["generated_at"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        (camp_dir / "pilot-chapters-manifest.json").write_text(
-            json.dumps(camp_manifest, indent=2) + "\n", encoding="utf-8"
-        )
+    manifest_chapters: dict[str, Any] = {}
+    lead_by_ch = {
+        "ch0": "sarah",
+        "ch1": "sarah",
+        "ch2": "marcus",
+        "ch3": "elena",
+        "ch4": "raj",
+        "ch5": "claire",
+        "ch6": "sarah",
+        "ch7": "sarah",
+    }
+    for ch_key, lh in lead_by_ch.items():
+        manifest_chapters[ch_key] = {
+            "chapter": ch_key,
+            "project_id": live_pid,
+            "slug": LIVE_GROVE_SLUG,
+            "name": LIVE_GROVE_SLUG,
+            "description": f"PCSK9 Oral Live v2 ({ch_key.upper()}) — Multi-Model Discovery Campaign",
+            "lead_human": lh,
+            "lead_human_email": personas[lh]["email"],
+            "workspace_path": str(ws_dir),
+            "general_topic_id": topic_id,
+            "general_conv_id": conv_id,
+            "stage_topic_id": topic_id,
+            "stage_conv_id": conv_id,
+            "live_agents": list(agents_map.keys()),
+            "artifact_count": 13,
+        }
 
-        snap_dir = hub_dir / "snapshots" / CAMPAIGN_ID
+    camp_manifest = {
+        "campaign_id": CAMPAIGN_ID,
+        "live_grove_slug": LIVE_GROVE_SLUG,
+        "live_grove_project_id": live_pid,
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "gcp_project": "losiern-oase-workshop",
+        "workshop_domain": "losiern-1.altostrat.com",
+        "personas": personas,
+        "chapters": manifest_chapters,
+    }
+    camp_dir = hub_dir / "campaigns" / CAMPAIGN_ID
+    camp_dir.mkdir(parents=True, exist_ok=True)
+    manifest_json = json.dumps(camp_manifest, indent=2) + "\n"
+    (camp_dir / "pilot-chapters-manifest.json").write_text(manifest_json, encoding="utf-8")
+    (hub_dir / "pilot-chapters-manifest.json").write_text(manifest_json, encoding="utf-8")
+
+    # Reset messages in pcsk9-oral-live-v2 back to the single t=0 seed message (keeping all 13 artifacts)
+    # so record-team-pilot.py starts ch1 from clean t=0 and freezes the live 58-message snapshot at ch7!
+    conn_t0 = sqlite3.connect(str(db_path), timeout=30.0)
+    cur_t0 = conn_t0.cursor()
+    cur_t0.execute("DELETE FROM webchat_message_star WHERE project_id = ?", (live_pid,))
+    cur_t0.execute("DELETE FROM messages WHERE project_id = ?", (live_pid,))
+    conn_t0.commit()
+    conn_t0.close()
+    append_webchat_turn(
+        db_path=db_path,
+        project_id=live_pid,
+        topic_id=topic_id,
+        conv_id=conv_id,
+        sender_str=f"user:{personas['sarah']['email']}",
+        sender_id=sarah_id,
+        agent_id=lead_aid,
+        auth_uid=sarah_id,
+        msg_text=(
+            "**[Campaign Charter Staged — `t=0` Initial Seed (`pcsk9-oral-live-v2` Multi-Model Grove)]**\n"
+            "Team: `seed/pcsk9-oral/campaign-seed.json` and `CHECKSUMS.json` are staged in `/workspace` with all 41 verification skills and 78/78 `oase doctor` checks active.\n"
+            "- **Active Multi-Model Roster**: `@science-program-lead` (**Gemini 4 Argon High**), "
+            "`@scientific-reviewer` (**Claude Opus 5.5**), `@medicinal-chemist` (**Claude Opus 5.5**), "
+            "and `@controller` (**Gemini 3.8 Flash Med**) + Dedicated 1P **AlphaGenome** (`us-central1`) & **AlphaFold 3** (`us-east4`)."
+        ),
+        star_uid=sarah_id,
+    )
+
+    for snap_sub in (CAMPAIGN_ID, "golden-pilot"):
+        snap_dir = hub_dir / "snapshots" / snap_sub
         snap_dir.mkdir(parents=True, exist_ok=True)
         golden_db = snap_dir / "golden-hub.db"
         src_conn = sqlite3.connect(str(db_path), timeout=30)

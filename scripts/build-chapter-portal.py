@@ -180,8 +180,8 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
     <div class="pilot-switcher-wrap" id="oase-campaign-switcher">
       <button type="button" class="pilot-switcher-btn" id="oase-campaign-btn" onclick="oaseToggleCampaignMenu(event)">
         <span>&#128450; Pilot:</span>
-        <strong id="oase-campaign-btn-label">PCSK9 Oral · Reference Pilot (v1)</strong>
-        <span class="pilot-badge-pill ready" id="oase-campaign-btn-badge">LIVE · 8 GROVES</span>
+        <strong id="oase-campaign-btn-label">PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign</strong>
+        <span class="pilot-badge-pill ready" id="oase-campaign-btn-badge">LIVE · 78/78 DOCTOR</span>
         <span style="opacity:0.75;">&#9662;</span>
       </button>
       <div class="pilot-menu" id="oase-campaign-menu"></div>
@@ -198,10 +198,10 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="hero">
   <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
-  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral · Multi-Model Live Run (v2) — PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs</div>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs</div>
   <div class="kpi-strip" id="hero-kpi-strip">
     <div class="kpi-card"><div class="kpi-val">Argon + Opus 5.5</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
-    <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">oase doctor Live Health</div></div>
+    <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">41 Skills · oase doctor Live</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaGenome</div><div class="kpi-lbl">Dedicated A100 (us-central1)</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaFold 3</div><div class="kpi-lbl">Dedicated A100 (us-east4)</div></div>
     <div class="kpi-card"><div class="kpi-val">3D .cif + 1 Mb</div><div class="kpi-lbl">Interactive Live Viewers</div></div>
@@ -243,69 +243,69 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
         <div class="arcade-cover-overlay">
           <div style="max-width:700px;">
             <div style="font-family:ui-monospace,monospace;font-size:0.75rem;font-weight:800;color:#fbbf24;text-transform:uppercase;letter-spacing:0.08em;">NINTENDO STARFOX HOMAGE · TEAM-BASED AGENTIC BIOPHARMA R&amp;D</div>
-            <div style="font-size:1.25rem;font-weight:800;color:#ffffff;margin-top:0.2rem;text-shadow:0 2px 10px rgba(0,0,0,0.8);">Choose Your Campaign Pilot &amp; Launch Into the Live Scion Grove</div>
-            <div style="font-size:0.83rem;color:#e2e8f0;margin-top:0.2rem;">Featuring our 5 live scientist avatars (<strong>Dr. Raj Patel</strong>, <strong>Dr. Marcus Vance</strong>, <strong>Dr. Sarah Chen</strong>, <strong>Dr. Elena Rostova</strong>, and <strong>Dr. Claire Moreau</strong>) in tactical flight gear alongside Arwing bio-interceptors.</div>
+            <div style="font-size:1.25rem;font-weight:800;color:#ffffff;margin-top:0.2rem;text-shadow:0 2px 10px rgba(0,0,0,0.8);">Choose Your Live Campaign Pilot &amp; Jump Straight to Scion Hub or GCP Console</div>
+            <div style="font-size:0.83rem;color:#e2e8f0;margin-top:0.2rem;">Featuring our 5 live scientist avatars (<strong>Dr. Raj Patel</strong>, <strong>Dr. Marcus Vance</strong>, <strong>Dr. Sarah Chen</strong>, <strong>Dr. Elena Rostova</strong>, and <strong>Dr. Claire Moreau</strong>) with all 41 verification skills (<code>78/78 oase doctor PASS</code>) active across both seeded Groves.</div>
           </div>
           <div style="display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;">
             <button type="button" class="arcade-press-start" onclick="oaseLaunchMission('pcsk9-live-argolis', 'ch1', false)">
-              &#9654; PRESS START · LAUNCH LIVE RUN (v2)
+              &#9654; LAUNCH MISSION 01 · PCSK9 ORAL
             </button>
-            <button type="button" class="arcade-launch-btn ghost" style="padding:0.58rem 0.95rem;font-size:0.82rem;border-color:#fbbf24;color:#fef08a;" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">
-              &#127916; Watch 7.9-Min Full Reel
+            <button type="button" class="arcade-launch-btn gold" style="padding:0.58rem 0.95rem;font-size:0.82rem;" onclick="oaseLaunchMission('io-cold-to-hot', 'ch1', false)">
+              &#9654; LAUNCH MISSION 02 · IO COLD-TO-HOT
             </button>
           </div>
         </div>
       </div>
 
       <div class="arcade-missions-hdr">
-        <h3>&#127919; Select Campaign Mission Cartridge (3 Workspaces Ready)</h3>
-        <span style="font-size:0.8rem;color:#cbd5e1;font-family:ui-monospace,monospace;" id="arcade-active-mission-indicator">Active Cartridge: PCSK9 Oral · Multi-Model Live Run (v2)</span>
+        <h3>&#127919; Select Campaign Mission Cartridge (2 Live Verified Pilots + Hands-On Lab)</h3>
+        <span style="font-size:0.8rem;color:#cbd5e1;font-family:ui-monospace,monospace;" id="arcade-active-mission-indicator">Active Cartridge: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign</span>
       </div>
 
       <div class="arcade-missions-grid">
-        <!-- MISSION 01: LIVE ARGOLIS MULTI-MODEL v2 -->
+        <!-- MISSION 01: PCSK9 ORAL SMALL MOLECULE (FULL STAGE 1-4 PRE-IND) -->
         <div class="arcade-mission-card selected-mission" id="arcade-card-pcsk9-live-argolis">
           <div>
             <div class="arcade-mission-slot">
-              <span>MISSION 01 · DEFAULT</span>
-              <span class="pilot-badge-pill ready">LIVE · ARGON + OPUS 5.5</span>
+              <span>MISSION 01 · FULL STAGE 1–4 PRE-IND</span>
+              <span class="pilot-badge-pill ready">LIVE · 78/78 DOCTOR</span>
             </div>
-            <div class="arcade-mission-title">PCSK9 Oral — Multi-Model Live Run (v2 · 7:54 Reel)</div>
-            <p class="arcade-mission-desc">100% real execution in Google Cloud (`losiern-oase-workshop`) driven from Chrome with live Console Evidence drawers—zero reverse-engineered outputs.</p>
+            <div class="arcade-mission-title">PCSK9 Oral Small Molecule — Full Stage 1–4 Pre-IND Campaign</div>
+            <p class="arcade-mission-desc">Complete 8-Work-Order campaign in Google Cloud (<code>losiern-oase-workshop</code>) from Co-Scientist tournament through wet-lab rat/dog PK and 40 mg QD human oral candidate nomination (<code>OASE-PCSK9-014</code>).</p>
             <ul class="arcade-spec-list">
               <li><strong>Frontier LLMs:</strong> Gemini 4 Argon (High/Med) + Claude Opus 5.5</li>
               <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome A100 + AlphaFold 3 A100</li>
               <li><strong>Live 3D &amp; Omics Viewers:</strong> 588-atom 3D <code>.cif</code> canvas + 1 Mb SVG tracks</li>
-              <li><strong>Mechanical Verification:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
+              <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
             </ul>
           </div>
           <div class="arcade-btn-row">
             <button type="button" class="arcade-launch-btn gold" onclick="oaseLaunchMission('pcsk9-live-argolis', 'ch1', false)">&#128640; Launch Step 1 Brief &rarr;</button>
-            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">&#127916; 7.9m Full Reel</button>
-            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', false)">Overview</button>
+            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">&#127916; Full Campaign Reel</button>
+            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
           </div>
         </div>
 
-        <!-- MISSION 02: REFERENCE PILOT v1 -->
-        <div class="arcade-mission-card" id="arcade-card-pcsk9-pilot-v1">
+        <!-- MISSION 02: IO COLD-TO-HOT TUMOR REPROGRAMMING (HALTED AT WET-LAB WALL DEC-003) -->
+        <div class="arcade-mission-card" id="arcade-card-io-cold-to-hot">
           <div>
             <div class="arcade-mission-slot">
-              <span>MISSION 02 · REFERENCE</span>
-              <span class="pilot-badge-pill ready">READY · 8 GROVES</span>
+              <span>MISSION 02 · WET-LAB WALL (DEC-003)</span>
+              <span class="pilot-badge-pill ready">LIVE · 78/78 DOCTOR</span>
             </div>
-            <div class="arcade-mission-title">PCSK9 Oral — Reference Squadron Walkthrough (v1 · 5:48 Reel)</div>
-            <p class="arcade-mission-desc">Original 7-chapter baseline walkthrough demonstrating deterministic 2-phase SHA-256 receipts, Subway-Map routing, and sub-2s SQLite state resets.</p>
+            <div class="arcade-mission-title">IO Cold-to-Hot Tumor Reprogramming — ENPP1 Wet-Lab Wall Dossier</div>
+            <p class="arcade-mission-desc">Live replay of David's <code>venter-scion</code> campaign: 5-target IO tournament (<code>ENPP1</code> vs <code>TREX1/PTPN2/ADAR1</code>), 1P AlphaGenome (<code>chr6</code>), 1P AlphaFold 3 (<code>OASE-ENPP1-009</code>), halting cleanly at the <strong>Wet-Lab Wall (<code>DEC-003</code>)</strong> awaiting CRO assays <code>EXP-01..04</code>.</p>
             <ul class="arcade-spec-list">
-              <li><strong>Squadron Comms:</strong> 5 Live Scientist Avatars + 6 Voiced AI Wingmen</li>
-              <li><strong>Time-Machine Checkpoints:</strong> 8 pre-seeded Scion Groves (<code>ch0..ch7</code>)</li>
-              <li><strong>Adversarial Governance:</strong> 3 tamper drills blocked + 1 signed override</li>
-              <li><strong>Candidate Outcome:</strong> <code>OASE-PCSK9-014</code> nominated (40 mg oral QD)</li>
+              <li><strong>Mendelian Safety Gate:</strong> <code>TREX1</code> blocked (Lupus <code>L-001</code>); <code>ENPP1</code> advances</li>
+              <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome <code>chr6:131894218C&gt;T</code> + AF3 co-fold</li>
+              <li><strong>Halted at Wet-Lab Wall:</strong> Pre-Wet-Lab Dossier (<code>WO-008</code>) + <code>EXP-01..04</code></li>
+              <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 3 tamper drills blocked</li>
             </ul>
           </div>
           <div class="arcade-btn-row">
-            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'ch1', false)">&#9654; Launch Mission 02 (Step 1) &rarr;</button>
-            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'why', true)">5.8m Reel</button>
-            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'why', false)">Overview</button>
+            <button type="button" class="arcade-launch-btn gold" onclick="oaseLaunchMission('io-cold-to-hot', 'ch1', false)">&#128640; Launch Mission 02 (Step 1) &rarr;</button>
+            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('io-cold-to-hot', 'why', true)">&#127916; Full Campaign Reel</button>
+            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
           </div>
         </div>
 
@@ -313,23 +313,39 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
         <div class="arcade-mission-card" id="arcade-card-next-pilot-slot">
           <div>
             <div class="arcade-mission-slot">
-              <span>MISSION 03 · CUSTOM VPC</span>
-              <span class="pilot-badge-pill staging">&#9889; HANDS-ON LAB &amp; STAGING</span>
+              <span>MISSION 03 · HANDS-ON LAB &amp; GCP CONSOLE</span>
+              <span class="pilot-badge-pill staging">&#9889; LIVE GCP &amp; LAB</span>
             </div>
-            <div class="arcade-mission-title">Bring Your Own Target — 2.5-Hr Lab &amp; Custom Pilot Slot</div>
-            <p class="arcade-mission-desc">Run the 150-minute hands-on workshop lab, inspect the 30-page CTD Evidence Portal, or seed a fresh Scion Grove with your own disease target.</p>
+            <div class="arcade-mission-title">Bring Your Own Target — 2.5-Hr Lab, 30-Page Portal &amp; Live GCP Console</div>
+            <p class="arcade-mission-desc">Run the 150-minute hands-on workshop lab, inspect the 30-page CTD Evidence Portal, or jump directly into the live Google Cloud Console and Scion Hub containers.</p>
             <ul class="arcade-spec-list">
               <li><strong>Hands-On Lab:</strong> Step-by-step CLI, custom tool &amp; gate exercises</li>
               <li><strong>30-Page Evidence Portal:</strong> Full eCTD-style dossier &amp; SHA-256 sidecars</li>
-              <li><strong>Subway-Map Simulator:</strong> Interactive what-if branch &amp; detour explorer</li>
+              <li><strong>Live GCP Console Links:</strong> Vertex AI A100s, Compute VM, Cloud Run &amp; Logs</li>
               <li><strong>Sovereign Deployment:</strong> One-command customer VPC &amp; Cloud Run kit</li>
             </ul>
           </div>
           <div class="arcade-btn-row">
             <button type="button" class="arcade-launch-btn" style="background:#2563eb;border-color:#60a5fa;" onclick="showChapter('lab')">&#129514; 2.5-Hr Lab Guide &rarr;</button>
             <button type="button" class="arcade-launch-btn ghost" onclick="window.location.href='index.html'">30-Page Portal</button>
-            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('next-pilot-slot', 'why', false)">Staging Slot</button>
+            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop" target="_blank" rel="noopener">&#9729; GCP Console &nearr;</a>
           </div>
+        </div>
+      </div>
+
+      <!-- LIVE GCP CONSOLE & SCION HUB DIRECT JUMP-OFF BAR -->
+      <div style="margin-top:1.1rem;padding:0.85rem 1.05rem;background:rgba(15,23,42,0.92);border:1px solid #38bdf8;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;">
+        <div style="font-family:ui-monospace,monospace;font-size:0.78rem;color:#7dd3fc;font-weight:800;">
+          &#9729; LIVE GOOGLE CLOUD CONSOLE &amp; SCION HUB JUMP-OFF LINKS (<code>losiern-oase-workshop</code>):
+        </div>
+        <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2" target="_blank" rel="noopener">&#128172; Scion Grove: pcsk9-oral-live-v2 &nearr;</a>
+          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot" target="_blank" rel="noopener">&#128172; Scion Grove: io-cold-to-hot &nearr;</a>
+          <a class="pause-pill" href="https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop" target="_blank" rel="noopener">&#129516; Vertex AI 1P Endpoints (AlphaGenome &amp; AF3) &nearr;</a>
+          <a class="pause-pill" href="https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop" target="_blank" rel="noopener">&#128421; Compute VM (scion-hub-oase) &nearr;</a>
+          <a class="pause-pill" href="https://console.cloud.google.com/logs/query?project=losiern-oase-workshop" target="_blank" rel="noopener">&#128220; Cloud Logging &nearr;</a>
+          <a class="pause-pill" href="https://console.cloud.google.com/run?project=losiern-oase-workshop" target="_blank" rel="noopener">&#9729; Cloud Run Services &nearr;</a>
+          <a class="pause-pill" href="https://console.cloud.google.com/storage/browser/losiern-oase-workshop-bundles?project=losiern-oase-workshop" target="_blank" rel="noopener">&#128452; GCS Artifact Bucket &nearr;</a>
         </div>
       </div>
 
@@ -1668,7 +1684,7 @@ selectStation('s3');
     const q = new URLSearchParams(window.location.search).get('campaign');
     const list = (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.campaigns) || [];
     if (q && list.some(c => c.id === q)) return q;
-    return (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.default_campaign) || 'pcsk9-pilot-v1';
+    return (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.default_campaign) || 'pcsk9-live-argolis';
   }
 
   let activeCampaignId = resolveInitialCampaign();
@@ -1676,7 +1692,7 @@ selectStation('s3');
   function getCampaignObj(registry, cid) {
     const reg = registry || STATIC_CAMPAIGNS_REGISTRY || {};
     const list = reg.campaigns || [];
-    return list.find(c => c.id === cid) || list[0] || { id: 'pcsk9-pilot-v1', short_label: 'PCSK9 Oral · Reference Pilot (v1)', status: 'ready', badge: 'LIVE · 8 GROVES' };
+    return list.find(c => c.id === cid) || list[0] || { id: 'pcsk9-live-argolis', short_label: 'PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign', status: 'ready', badge: 'LIVE · 78/78 DOCTOR' };
   }
 
   function showToast(msg, isErr) {
@@ -1909,6 +1925,10 @@ selectStation('s3');
       }
     }
     const isStaging = activeCamp && activeCamp.status !== 'ready';
+    const liveGroveUrl = (activeCamp && activeCamp.live_grove_url) || 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects';
+    const gcpEndpointsUrl = 'https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop';
+    const gcpVmUrl = 'https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop';
+    const gcpLogsUrl = 'https://console.cloud.google.com/logs/query?project=losiern-oase-workshop';
     if (!isLive) {
       bar.innerHTML = `
         <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
@@ -1916,7 +1936,10 @@ selectStation('s3');
           <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen'}</span>
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-          ${isStaging ? `<button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Switch to Reference Pilot (v1 · Ready)</button>` : `<span style="color:#94a3b8;font-size:0.78rem;">Live 5-Persona Scion Grove &amp; &lt;2s Reset Active on Cloud Run Cockpit</span>`}
+          <a class="cockpit-btn primary" href="${liveGroveUrl}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Grove ↗</a>
+          <a class="cockpit-btn" href="${gcpEndpointsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🧬 GCP Vertex AI 1P GPUs ↗</a>
+          <a class="cockpit-btn" href="${gcpVmUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🖥 GCP Compute VM ↗</a>
+          <a class="cockpit-btn" href="${gcpLogsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📜 GCP Logs ↗</a>
         </div>
       `;
       return;
@@ -1933,7 +1956,7 @@ selectStation('s3');
     const ch0 = (st.chapters || {}).ch0;
     const ch0Url = (cfg.scion_hub_url && ch0 && cfg.workshop_domain)
       ? `${cfg.scion_hub_url}/chat/${ch0.slug}/${ch0.general_topic_id}?authuser=oase-sarah@${cfg.workshop_domain}`
-      : '#';
+      : liveGroveUrl;
 
     bar.innerHTML = `
       <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
@@ -1941,8 +1964,10 @@ selectStation('s3');
         ${cfg.signed_in_user ? `<span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">Signed in: <strong style="color:#fff;">${cfg.signed_in_user}</strong></span>` : ''}
       </div>
       <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
-        ${isStaging ? `<button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Return to Reference Pilot (v1)</button>` : ''}
-        ${(!isStaging && ch0Url !== '#') ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">🧪 Launch Fresh Sandbox (ch0 · t=0) ↗</a>` : ''}
+        ${(!isStaging && ch0Url !== '#') ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Webchat ↗</a>` : ''}
+        <a class="cockpit-btn" href="${gcpEndpointsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🧬 GCP Vertex AI GPUs ↗</a>
+        <a class="cockpit-btn" href="${gcpVmUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🖥 GCP Compute VM ↗</a>
+        <a class="cockpit-btn" href="${gcpLogsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📜 GCP Logs ↗</a>
         ${!isStaging ? `<button class="cockpit-btn" onclick="oaseToggleDrawer()">⚙ Facilitator Reset Drawer</button>` : ''}
         ${!isStaging ? `<button class="cockpit-btn danger" onclick="oaseResetAll()">↺ Reset Entire Demo (t=0)</button>` : ''}
       </div>
@@ -2012,7 +2037,7 @@ selectStation('s3');
               <h3 style="margin:0.2rem 0 0.35rem 0;color:#ffffff;font-size:1.08rem;">${activeCamp.title}</h3>
               <p style="margin:0;color:#cbd5e1;font-size:0.85rem;">${activeCamp.stack_summary || ''}</p>
             </div>
-            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← View Completed Reference Pilot (v1) →</button>
+            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-live-argolis')">← View PCSK9 Oral Campaign →</button>
           </div>
           <ul style="margin:0.75rem 0 0 1.2rem;padding:0;font-size:0.82rem;color:#e2e8f0;line-height:1.45;">${surfaces}</ul>
         `;
@@ -2036,7 +2061,7 @@ selectStation('s3');
                 This isolated campaign slot will capture unscripted Scion Grove messages, dedicated Vertex AI GPU telemetry, interactive 3D/genomics viewers, and Flight-Recorder logs during the live run.
               </div>
             </div>
-            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-pilot-v1')">← Open Reference Pilot (v1) Video &amp; Grove</button>
+            <button class="cockpit-btn primary" onclick="oaseSelectCampaign('pcsk9-live-argolis')">← Open PCSK9 Oral Video &amp; Grove</button>
           </div>
           ${renderPauseLinksHtml(activeCamp, chId)}
         `;
@@ -2056,7 +2081,7 @@ selectStation('s3');
     const promptsMap = (cfg && cfg.followup_prompts) || DEFAULT_PROMPTS;
     const staticPrefix = ((activeCamp && activeCamp.static_video_prefix) || 'assets/videos').replace(/\/?$/, '/');
     const videoBase = isLive
-      ? (cid === 'pcsk9-pilot-v1' ? '/api/videos/' : `/api/videos/${encodeURIComponent(cid)}/`)
+      ? `/api/videos/${encodeURIComponent(cid)}/`
       : staticPrefix;
 
     if (fullVideo && !document.getElementById('cockpit-full-walkthrough-card')) {
@@ -2503,7 +2528,6 @@ def main() -> int:
 
     vmanifest_data = (
         manifests_by_campaign.get(cregistry_data.get("default_campaign", "pcsk9-live-argolis"))
-        or manifests_by_campaign.get("pcsk9-pilot-v1")
         or {"chapters": {}}
     )
 
@@ -2587,11 +2611,12 @@ def main() -> int:
                 '<a href="chapters.html#arcade" style="display:block;border:2px solid #fbbf24;border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.5);flex-shrink:0;">'
                 '<img src="assets/starfox_oase_cover_hero.jpg" alt="STAR OASE Mission Select" style="width:170px;height:96px;object-fit:cover;display:block;"></a>'
                 '<div><div style="font-family:monospace;font-size:0.75rem;color:#fbbf24;font-weight:800;letter-spacing:0.06em;">&#127918; STAR OASE // GOLD SQUADRON COMMAND DECK</div>'
-                '<strong style="font-size:1.08rem;">Team-Based Human + Agent Drug Discovery Pilot (Multi-Model v2 + Reference v1)</strong>'
-                '<div style="color:#cbd5e1;font-size:0.86rem;margin-top:0.2rem;">5 Human Avatar Scientists + 6 Voiced AI Wingmen · Gemini 4 Argon + Claude Opus 5.5 + 1P AlphaGenome &amp; AlphaFold 3 A100</div></div></div>'
+                '<strong style="font-size:1.08rem;">Team-Based Human + Agent Drug Discovery Pilots (PCSK9 Oral + IO Cold-to-Hot ENPP1)</strong>'
+                '<div style="color:#cbd5e1;font-size:0.86rem;margin-top:0.2rem;">5 Human Avatar Scientists + 6 Voiced AI Wingmen · All 41 Verification Skills Active (78/78 PASS) · 1P AlphaGenome &amp; AlphaFold 3 A100</div></div></div>'
                 '<div style="display:flex;gap:0.6rem;flex-wrap:wrap;">'
                 '<a href="chapters.html#arcade" style="background:linear-gradient(135deg,#ea580c 0%,#d97706 100%);color:#ffffff;border:1.5px solid #fde047;text-decoration:none;font-weight:800;padding:0.52rem 0.95rem;border-radius:6px;font-size:0.85rem;">&#127918; Open Star OASE Mission Select &rarr;</a>'
-                '<a href="chapters.html?campaign=pcsk9-live-argolis#ch1" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#128640; Launch Live Run (v2 · 7.9m) &rarr;</a>'
+                '<a href="chapters.html?campaign=pcsk9-live-argolis#ch1" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#128640; Mission 01: PCSK9 Oral &rarr;</a>'
+                '<a href="chapters.html?campaign=io-cold-to-hot#ch1" style="background:#0284c7;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#129516; Mission 02: IO Cold-to-Hot &rarr;</a>'
                 '<a href="plan.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">Build Tracker &rarr;</a>'
                 '</div></div></div>'
             )

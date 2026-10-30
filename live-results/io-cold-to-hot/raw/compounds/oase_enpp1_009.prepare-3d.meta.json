@@ -1,0 +1,31 @@
+{
+  "tool": "compound",
+  "subcommand": "prepare-3d",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC",
+    "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC"
+  },
+  "timestamp": "2026-10-30T20:14:46Z",
+  "completed": "2026-10-30T20:14:47Z",
+  "outputs": [
+    {
+      "path": "oase_enpp1_009.3d.sdf",
+      "sha256": "6809fd95b4bc91b8a16769ae24f2c7e0689799cbda10b11a331de8eb531c38f6",
+      "bytes": 4681
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "oase_enpp1_009",
+  "rdkit_version": "2026.03.6",
+  "embedding_method": "ETKDGv3",
+  "force_field": "MMFF",
+  "hydrogens_added": true,
+  "optimization_converged": false
+}

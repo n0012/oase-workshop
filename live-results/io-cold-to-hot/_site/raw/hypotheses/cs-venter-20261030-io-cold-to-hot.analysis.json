@@ -1,0 +1,180 @@
+{
+  "record_type": "analysis",
+  "source": "raw/hypotheses/cs-venter-20261030-io-cold-to-hot.tournament.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:14:14Z",
+  "threshold_set": "coscientist@1.1+program",
+  "thresholds_applied": {
+    "elo_decisive_gap": 50.0,
+    "min_win_rate": 0.6,
+    "max_contradicted_claims": 0,
+    "min_matches": 5
+  },
+  "metrics": {
+    "n_ideas": 5,
+    "n_ideas_generated": 5,
+    "elo_range": [
+      1368.0,
+      1658.4
+    ],
+    "claim_verdicts": {
+      "ACCURATE": 1
+    },
+    "n_claims_reported_total": 1,
+    "claim_denominator": "deepVerification lists only claims the verifier disputed; in all exports observed to date every listed claim carried an inaccurate verdict. Read n_contradicted_claims as an absolute count of flagged claims, NOT as a share of the idea's claims. The idea's total claim count is not present in the export and cannot be inferred."
+  },
+  "assessment": {
+    "verdict": "clear-leader",
+    "leader": {
+      "gene": "ENPP1",
+      "ranking": 1,
+      "elo_rating": 1658.4
+    },
+    "elo_gap_to_runner_up": 56.4,
+    "leader_gap_is_decisive": true,
+    "n_ideas_flagged": 4,
+    "ideas": [
+      {
+        "ranking": 1,
+        "gene": "ENPP1",
+        "title": "Extracellular ENPP1 catalytic PDE pocket blockade preserving tumor-derived 2',3'-cGAMP for paracrine APC STING activation",
+        "elo_rating": 1658.4,
+        "win_rate": 0.875,
+        "n_matches": 16,
+        "n_claims_reported": 1,
+        "n_contradicted_claims": 0,
+        "advisories": []
+      },
+      {
+        "ranking": 2,
+        "gene": "ADAR",
+        "title": "ADAR1 deaminase domain inhibition to derepress endogenous dsRNA MDA5/MAVS interferon signaling",
+        "elo_rating": 1602.0,
+        "win_rate": 0.6875,
+        "n_matches": 16,
+        "n_claims_reported": 0,
+        "n_contradicted_claims": 0,
+        "advisories": [
+          "no deep-verification claims present for this idea; absence of flagged claims is not evidence the idea was verified"
+        ]
+      },
+      {
+        "ranking": 3,
+        "gene": "PTPN2",
+        "title": "PTPN2 active-site/allosteric phosphatase inhibition to amplify IFN-gamma JAK1/STAT1 signaling",
+        "elo_rating": 1554.5,
+        "win_rate": 0.5625,
+        "n_matches": 16,
+        "n_claims_reported": 0,
+        "n_contradicted_claims": 0,
+        "advisories": [
+          "win rate 56% below min_win_rate",
+          "no deep-verification claims present for this idea; absence of flagged claims is not evidence the idea was verified"
+        ]
+      },
+      {
+        "ranking": 4,
+        "gene": "KDM1A",
+        "title": "KDM1A (LSD1) histone demethylase inhibition to reactivate endogenous retroelements",
+        "elo_rating": 1442.0,
+        "win_rate": 0.25,
+        "n_matches": 16,
+        "n_claims_reported": 0,
+        "n_contradicted_claims": 0,
+        "advisories": [
+          "win rate 25% below min_win_rate",
+          "no deep-verification claims present for this idea; absence of flagged claims is not evidence the idea was verified"
+        ]
+      },
+      {
+        "ranking": 5,
+        "gene": "TREX1",
+        "title": "TREX1 cytosolic exonuclease inhibition to accumulate cytosolic dsDNA",
+        "elo_rating": 1368.0,
+        "win_rate": 0.125,
+        "n_matches": 16,
+        "n_claims_reported": 0,
+        "n_contradicted_claims": 0,
+        "advisories": [
+          "win rate 12% below min_win_rate",
+          "no deep-verification claims present for this idea; absence of flagged claims is not evidence the idea was verified"
+        ]
+      }
+    ],
+    "recommendation": {
+      "section": null,
+      "reviews_overview_available": false,
+      "top_ideas_summary_available": false
+    },
+    "assessment_core": {
+      "schema": "oase.hypothesis-assessment.v1",
+      "strategy": "co-scientist",
+      "source_artifact": "raw/hypotheses/cs-venter-20261030-io-cold-to-hot.tournament.json",
+      "source_sha256": "665b900ebdb2946f22543f0540cf8b4dbee37cebda472e7419e92955f16e7056",
+      "candidates": [
+        {
+          "candidate_id": "H-001",
+          "statement": "Extracellular ENPP1 catalytic PDE pocket blockade preserving tumor-derived 2',3'-cGAMP for paracrine APC STING activation",
+          "rank": 1,
+          "score": {
+            "value": 1658.4,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-002",
+          "statement": "ADAR1 deaminase domain inhibition to derepress endogenous dsRNA MDA5/MAVS interferon signaling",
+          "rank": 2,
+          "score": {
+            "value": 1602.0,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-003",
+          "statement": "PTPN2 active-site/allosteric phosphatase inhibition to amplify IFN-gamma JAK1/STAT1 signaling",
+          "rank": 3,
+          "score": {
+            "value": 1554.5,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-004",
+          "statement": "KDM1A (LSD1) histone demethylase inhibition to reactivate endogenous retroelements",
+          "rank": 4,
+          "score": {
+            "value": 1442.0,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-005",
+          "statement": "TREX1 cytosolic exonuclease inhibition to accumulate cytosolic dsDNA",
+          "rank": 5,
+          "score": {
+            "value": 1368.0,
+            "basis": "coscientist-elo@1.1"
+          },
+          "origin": "generated"
+        }
+      ]
+    }
+  },
+  "threshold_sources": {
+    "elo_decisive_gap": "program",
+    "min_win_rate": "program",
+    "max_contradicted_claims": "program",
+    "min_matches": "program"
+  },
+  "threshold_provenance": "structural defaults for reading an ELO tournament; no external source claims these cutoffs",
+  "written_by": "hypex-supervisor",
+  "work_order_id": null,
+  "source_sha256": "665b900ebdb2946f22543f0540cf8b4dbee37cebda472e7419e92955f16e7056"
+}

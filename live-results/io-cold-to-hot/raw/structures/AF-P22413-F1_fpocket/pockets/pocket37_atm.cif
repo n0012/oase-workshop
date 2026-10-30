@@ -1,0 +1,57 @@
+data_pocket37_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    37:
+0  - Pocket Score                      : -0.0040
+1  - Drug Score                        : 0.0002
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.8520
+4  - Mean alpha-sphere Solvent Acc.    : 0.4946
+5  - Mean B-factor of pocket residues  : 0.9544
+6  - Hydrophobicity Score              : -8.4444
+7  - Polarity Score                    :     8
+8  - Amino Acid based volume Score     : 3.6667
+9  - Pocket volume (Monte Carlo)       : 96.7720
+10  -Pocket volume (convex hull)       : 0.4562
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0588
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1380     O    O ?  LYS      A 188 ?  -39.262   -2.596   15.052  -2.14  0 188 A
+ATOM    3134     O  OD1 ?  ASP      A 405 ?  -33.895   -2.870   15.643  -1.07  0 405 A
+ATOM    1338     C   CB ?  SER      A 182 ?  -38.609   -5.597   18.382   0.00  0 182 A
+ATOM    1386     C   CA ?  SER      A 189 ?  -36.922   -4.194   14.710   0.00  0 189 A
+ATOM    3133     C   CG ?  ASP      A 405 ?  -33.187   -3.250   16.604   0.00  0 405 A
+ATOM    1305     O    O ?  ILE      A 178 ?  -34.512   -2.274   21.703  -3.21  0 178 A
+ATOM    3131     C   CB ?  ASP      A 405 ?  -32.575   -2.187   17.521   0.00  0 405 A
+ATOM    3132     O    O ?  ASP      A 405 ?  -33.227    1.015   18.189  -2.14  0 405 A
+ATOM    3153     C   CG ?  LYS      A 408 ?  -36.656    2.020   15.372   0.00  0 408 A
+ATOM    3156     N   NZ ?  LYS      A 408 ?  -39.351    0.141   15.966  -4.37  0 408 A
+ATOM    3165     O  OE2 ?  GLU      A 409 ?  -37.649    1.623   21.221  -4.29  0 409 A
+ATOM    3154     C   CD ?  LYS      A 408 ?  -37.230    0.743   14.729   0.00  0 408 A
+ATOM    1332     C   CB ?  SER      A 181 ?  -39.602   -1.152   21.182   0.00  0 181 A
+ATOM    1335     N    N ?  SER      A 182 ?  -39.454   -4.244   20.253  -1.09  0 182 A
+ATOM    1310     C   CA ?  ASN      A 179 ?  -34.815   -5.027   21.578   0.00  0 179 A
+# 

@@ -23,6 +23,7 @@ import datetime
 import json
 import os
 import re
+import shutil
 import subprocess
 import time
 import urllib.request
@@ -51,6 +52,103 @@ MEAN_VOL_RE = re.compile(r"mean_volume:\s*(-?[0-9.]+)\s*dB")
 MAX_VOL_RE = re.compile(r"max_volume:\s*(-?[0-9.]+)\s*dB")
 SILENCE_START_RE = re.compile(r"silence_start:\s*([0-9.]+)")
 SILENCE_END_RE = re.compile(r"silence_end:\s*([0-9.]+)")
+
+_NUM_WORDS = {
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+    5: "five",
+    6: "six",
+    7: "seven",
+    8: "eight",
+    9: "nine",
+    10: "ten",
+    11: "eleven",
+    12: "twelve",
+    14: "fourteen",
+}
+
+_BIOPHARMA_PHONETIC_RULES: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"\bADMET\b"), "add-met"),
+    (re.compile(r"\bDMPK\b"), "D-M-P-K"),
+    (re.compile(r"\bhERG\b", re.IGNORECASE), "herg"),
+    (re.compile(r"\bgnomAD\b", re.IGNORECASE), "gnome-add"),
+    (re.compile(r"\bfpocket\b", re.IGNORECASE), "F-pocket"),
+    (re.compile(r"\bChEMBL\b", re.IGNORECASE), "kem-bull"),
+    (re.compile(r"\bHypEx\b", re.IGNORECASE), "hype-ex"),
+    (re.compile(r"\bcLogP\b", re.IGNORECASE), "see-log-P"),
+    (re.compile(r"\bTPSA\b"), "T-P-S-A"),
+    (re.compile(r"\bLipE\b"), "lip-E"),
+    (re.compile(r"\bpIC50\b", re.IGNORECASE), "P-I-C-fifty"),
+    (re.compile(r"\bIC50\b", re.IGNORECASE), "I-C-fifty"),
+    (re.compile(r"\bEC50\b", re.IGNORECASE), "E-C-fifty"),
+    (re.compile(r"\bpLDDT\b", re.IGNORECASE), "P-L-D-D-T"),
+    (re.compile(r"\bipTM\b", re.IGNORECASE), "I-P-T-M"),
+    (re.compile(r"\bpTM\b"), "P-T-M"),
+    (re.compile(r"\bGTEx\b", re.IGNORECASE), "G-tex"),
+    (re.compile(r"\bLOEUF\b", re.IGNORECASE), "low-uff"),
+    (re.compile(r"\bpLI\b"), "P-L-I"),
+    (re.compile(r"\bLoF\b"), "loss of function"),
+    (re.compile(r"\beQTL\b", re.IGNORECASE), "E-Q-T-L"),
+    (re.compile(r"\bscRNA-seq\b", re.IGNORECASE), "single-cell R-N-A-seek"),
+    (re.compile(r"\bRNA-seq\b", re.IGNORECASE), "R-N-A-seek"),
+    (re.compile(r"\bATAC-seq\b", re.IGNORECASE), "ay-tack-seek"),
+    (re.compile(r"\bPCSK9\b", re.IGNORECASE), "P-C-S-K-nine"),
+    (re.compile(r"\bcGAS-STING\b", re.IGNORECASE), "see-gas sting"),
+    (re.compile(r"\bcGAS\b", re.IGNORECASE), "see-gas"),
+    (re.compile(r"\bcGAMP\b", re.IGNORECASE), "see-gamp"),
+    (re.compile(r"\bENPP1\b", re.IGNORECASE), "E-N-P-P-one"),
+    (re.compile(r"\bADAR1\b", re.IGNORECASE), "ay-dar-one"),
+    (re.compile(r"\bPTPN2\b", re.IGNORECASE), "P-T-P-N-two"),
+    (re.compile(r"\bTREX1\b", re.IGNORECASE), "T-rex-one"),
+    (re.compile(r"\bKDM1A\b", re.IGNORECASE), "K-D-M-one-A"),
+    (re.compile(r"\bLSD1\b", re.IGNORECASE), "L-S-D-one"),
+    (re.compile(r"\bZBP1\b", re.IGNORECASE), "Z-B-P-one"),
+    (re.compile(r"\bMDA5\b", re.IGNORECASE), "M-D-A-five"),
+    (re.compile(r"\bCXCL9\b", re.IGNORECASE), "C-X-C-L-nine"),
+    (re.compile(r"\bCXCL10\b", re.IGNORECASE), "C-X-C-L-ten"),
+    (re.compile(r"\bELISA\b"), "uh-lie-zuh"),
+    (re.compile(r"\bMC38\b", re.IGNORECASE), "M-C-thirty-eight"),
+    (re.compile(r"\bCT26\b", re.IGNORECASE), "C-T-twenty-six"),
+    (re.compile(r"\bCD8\+(?=\s|$|[.,;:])"), "C-D-eight positive"),
+    (re.compile(r"\bCD8\b"), "C-D-eight"),
+    (re.compile(r"\bcDC1\b"), "see-D-C-one"),
+    (re.compile(r"\bPD-L1\b", re.IGNORECASE), "P-D-L-one"),
+    (re.compile(r"\bPD-1\b", re.IGNORECASE), "P-D-one"),
+    (re.compile(r"\bIFN-gamma\b", re.IGNORECASE), "interferon gamma"),
+    (re.compile(r"\bIFN-I\b"), "type one interferon"),
+    (re.compile(r"\bTCGA\b"), "T-C-G-A"),
+    (re.compile(r"\bWOs\b"), "Work Orders"),
+    (re.compile(r"\bWO\b"), "Work Order"),
+]
+
+
+def _replace_wo_match(m: re.Match[str]) -> str:
+    n = int(m.group(1))
+    word = _NUM_WORDS.get(n, str(n))
+    rev = m.group(2)
+    if rev:
+        rnum = int(rev)
+        rword = _NUM_WORDS.get(rnum, str(rnum))
+        return f"Work Order {word} revision {rword}"
+    return f"Work Order {word}"
+
+
+def _replace_dec_match(m: re.Match[str]) -> str:
+    n = int(m.group(1))
+    word = _NUM_WORDS.get(n, str(n))
+    return f"Decision {word}"
+
+
+def normalize_biopharma_tts_text(text: str) -> str:
+    """Rewrite biopharma acronyms & IDs into credible spoken phonetics for TTS/Avatar."""
+    out = re.sub(r"\bWO-0*([1-9][0-9]*)(?:-r0*([1-9][0-9]*))?\b", _replace_wo_match, text)
+    out = re.sub(r"\bDEC-0*([1-9][0-9]*)\b", _replace_dec_match, out)
+    out = re.sub(r"\bDEC-OVERRIDE-0*([1-9][0-9]*)\b", lambda m: f"Decision Override {_NUM_WORDS.get(int(m.group(1)), m.group(1))}", out)
+    for pat, repl in _BIOPHARMA_PHONETIC_RULES:
+        out = pat.sub(repl, out)
+    return out
 
 
 def split_for_avatar(text: str, max_words: int = 24) -> list[str]:
@@ -435,6 +533,7 @@ def render_single_human_turn(
         }
 
     clean_text = re.sub(r"<[^>]+>", " ", raw_text)
+    clean_text = normalize_biopharma_tts_text(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     chunks = split_for_avatar(clean_text, max_words=32)
 
@@ -593,7 +692,7 @@ def render_single_agent_turn(
     ch_id = job["chapter"]
     speaker = job["speaker"]
     voice_id = job["voice_id"]
-    text = job["tts_text"]
+    text = normalize_biopharma_tts_text(job["tts_text"])
     wav_path = audio_dir / f"{tid}.wav"
 
     if wav_path.exists() and wav_path.stat().st_size > 20_000:

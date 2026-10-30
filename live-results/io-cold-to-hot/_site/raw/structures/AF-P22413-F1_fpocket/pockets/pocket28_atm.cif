@@ -1,0 +1,62 @@
+data_pocket28_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    28:
+0  - Pocket Score                      : 0.0232
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    19
+3  - Mean alpha-sphere radius          : 3.9654
+4  - Mean alpha-sphere Solvent Acc.    : 0.5873
+5  - Mean B-factor of pocket residues  : 0.9904
+6  - Hydrophobicity Score              : -0.3333
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 3.3333
+9  - Pocket volume (Monte Carlo)       : 336.5301
+10  -Pocket volume (convex hull)       : 14.5068
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 4.0000
+13 - Number of apolar alpha sphere     :     5
+14 - Proportion of apolar alpha sphere : 0.2632
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1712     O    O ?  GLY      A 229 ?  -26.985  -12.203    4.122   0.00  0 229 A
+ATOM    1714     C   CA ?  GLY      A 230 ?  -27.888  -14.733    3.336   0.00  0 230 A
+ATOM    1716     O    O ?  GLY      A 230 ?  -29.076  -15.365    5.313  -0.54  0 230 A
+ATOM    1795     N   NZ ?  LYS      A 240 ?  -31.963   -9.048    1.187   0.00  0 240 A
+ATOM    1793     C   CD ?  LYS      A 240 ?  -31.547   -6.629    0.739   0.00  0 240 A
+ATOM    1764     C   CB ?  LYS      A 237 ?  -31.250   -4.748    5.990   0.00  0 237 A
+ATOM    1766     C   CG ?  LYS      A 237 ?  -32.265   -3.614    5.751   0.00  0 237 A
+ATOM    1409     O    O ?  VAL      A 191 ?  -35.366   -5.989    8.342   0.00  0 191 A
+ATOM    1734     C   CA ?  PRO      A 233 ?  -29.628  -10.072    7.569   0.00  0 233 A
+ATOM    1736     C   CB ?  PRO      A 233 ?  -30.780  -10.649    8.403   0.00  0 233 A
+ATOM    1737     O    O ?  PRO      A 233 ?  -29.991   -7.811    6.917  -3.21  0 233 A
+ATOM    1411     C  CG2 ?  VAL      A 191 ?  -32.567   -7.000    9.435   0.00  0 191 A
+ATOM    1758     C   CB ?  SER      A 236 ?  -28.080   -8.744    3.745   0.00  0 236 A
+ATOM    1762     C   CA ?  LYS      A 237 ?  -30.301   -4.807    4.774   0.00  0 237 A
+ATOM    1425     O    O ?  GLU      A 193 ?  -37.348   -3.438    6.497   0.00  0 193 A
+ATOM    1767     C   CD ?  LYS      A 237 ?  -33.354   -3.430    6.809   0.00  0 237 A
+ATOM    1442     S   SG ?  CYS      A 195 ?  -33.957   -1.607    1.706   0.00  0 195 A
+ATOM    1761     N    N ?  LYS      A 237 ?  -29.339   -5.917    4.856   0.00  0 237 A
+ATOM    1768     C   CE ?  LYS      A 237 ?  -34.099   -2.135    6.451   0.00  0 237 A
+ATOM    1437     N    N ?  CYS      A 195 ?  -36.897   -1.142    3.119  -2.19  0 195 A
+# 

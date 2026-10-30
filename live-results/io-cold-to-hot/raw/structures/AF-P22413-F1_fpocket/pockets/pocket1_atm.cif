@@ -1,0 +1,105 @@
+data_pocket1_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket     1:
+0  - Pocket Score                      : 0.2112
+1  - Drug Score                        : 0.4866
+2  - Number of alpha spheres           :   104
+3  - Mean alpha-sphere radius          : 3.9200
+4  - Mean alpha-sphere Solvent Acc.    : 0.4956
+5  - Mean B-factor of pocket residues  : 0.9640
+6  - Hydrophobicity Score              : 10.3333
+7  - Polarity Score                    :    15
+8  - Amino Acid based volume Score     : 4.3333
+9  - Pocket volume (Monte Carlo)       : 918.4810
+10  -Pocket volume (convex hull)       : 358.7388
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 43.8824
+13 - Number of apolar alpha sphere     :    51
+14 - Proportion of apolar alpha sphere : 0.4904
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5604     C   CG ?  ASN      A 710 ?   22.987    3.376  -35.875   0.00  0 710 A
+ATOM    5776     C   CE ?  LYS      A 730 ?   27.398    2.895  -36.361   0.00  0 730 A
+ATOM    5774     C   CG ?  LYS      A 730 ?   27.234    3.201  -33.815   0.00  0 730 A
+ATOM    5785     O  OD1 ?  ASN      A 731 ?   28.144   -0.466  -31.958   0.00  0 731 A
+ATOM    5602     C   CB ?  ASN      A 710 ?   21.772    2.492  -36.126   0.00  0 710 A
+ATOM    5569     O    O ?  GLU      A 706 ?   11.714   -2.792  -38.572  -2.14  0 706 A
+ATOM    5590     C  CE1 ?  PHE      A 708 ?   11.270   -0.536  -35.102   0.00  0 708 A
+ATOM    6129     N  NH2 ?  ARG      A 774 ?   11.638   -5.982  -33.091   0.00  0 774 A
+ATOM    6128     N  NH1 ?  ARG      A 774 ?   13.757   -5.481  -32.497   0.00  0 774 A
+ATOM    5606     O  OD1 ?  ASN      A 710 ?   23.863    3.597  -36.704  -1.07  0 710 A
+ATOM    5605     N  ND2 ?  ASN      A 710 ?   23.143    3.856  -34.659  -4.37  0 710 A
+ATOM    5580     O  OD1 ?  ASP      A 707 ?   16.172   -2.602  -36.703  -2.55  0 707 A
+ATOM    5562     O    O ?  THR      A 705 ?   10.751   -6.170  -39.005  -0.14  0 705 A
+ATOM    5575     C   CA ?  ASP      A 707 ?   14.437   -2.895  -38.842   0.00  0 707 A
+ATOM    5770     C   CA ?  LYS      A 730 ?   26.281    3.589  -31.445   0.00  0 730 A
+ATOM    5778     N    N ?  ASN      A 731 ?   27.167    1.622  -30.300   0.00  0 731 A
+ATOM    5761     O    O ?  TYR      A 729 ?   24.943    3.274  -28.990  -1.62  0 729 A
+ATOM    5592     C   CZ ?  PHE      A 708 ?   11.544    0.137  -33.901   0.00  0 708 A
+ATOM    5831     C  CE1 ?  TYR      A 737 ?   19.282    4.892  -31.236   0.00  0 737 A
+ATOM    5822     O   OG ?  SER      A 736 ?   19.852    1.604  -27.396   0.00  0 736 A
+ATOM    5577     C   CB ?  ASP      A 707 ?   15.793   -3.618  -38.847   0.00  0 707 A
+ATOM    5574     N    N ?  ASP      A 707 ?   13.475   -3.506  -39.760   0.00  0 707 A
+ATOM    5579     C   CG ?  ASP      A 707 ?   16.703   -3.081  -37.731   0.00  0 707 A
+ATOM    5599     N    N ?  ASN      A 710 ?   19.427    2.154  -35.426  -0.42  0 710 A
+ATOM    5760     C   CB ?  TYR      A 729 ?   22.670    5.467  -29.037   0.00  0 729 A
+ATOM    5596     C   CB ?  SER      A 709 ?   18.346   -0.899  -35.227   0.00  0 709 A
+ATOM    6089     N  NE2 ?  GLN      A 770 ?   16.913    0.439  -27.741   0.00  0 770 A
+ATOM    6090     O  OE1 ?  GLN      A 770 ?   17.961   -1.201  -26.792  -0.81  0 770 A
+ATOM    5834     C   CZ ?  TYR      A 737 ?   18.249    5.040  -32.187   0.00  0 737 A
+ATOM    5827     O    O ?  TYR      A 737 ?   16.172    3.110  -27.968  -1.07  0 737 A
+ATOM    5832     C  CE2 ?  TYR      A 737 ?   16.983    5.500  -31.771   0.00  0 737 A
+ATOM    5759     C    C ?  TYR      A 729 ?   24.914    4.384  -29.519   0.00  0 729 A
+ATOM    6112     C  CD1 ?  TRP      A 773 ?    9.648    1.349  -26.418   0.00  0 773 A
+ATOM    5886     O  OE1 ?  GLN      A 744 ?    7.990    0.697  -33.533  -1.07  0 744 A
+ATOM    6116     N  NE1 ?  TRP      A 773 ?    8.940    2.536  -26.405   0.00  0 773 A
+ATOM    5843     O    O ?  PHE      A 739 ?    8.971    4.788  -28.066  -2.14  0 739 A
+ATOM    5885     N  NE2 ?  GLN      A 744 ?    8.317   -1.204  -32.563  -3.28  0 744 A
+ATOM    5846     C  CD2 ?  PHE      A 739 ?   12.354    4.502  -31.981   0.00  0 739 A
+ATOM    6087     C   CG ?  GLN      A 770 ?   15.827   -0.625  -25.806   0.00  0 770 A
+ATOM    5836     C   CA ?  GLY      A 738 ?   13.592    4.196  -27.483   0.00  0 738 A
+ATOM    6042     S   SD ?  MET      A 765 ?   13.177    1.757  -24.429   0.00  0 765 A
+ATOM    6085     C   CB ?  GLN      A 770 ?   15.204   -2.032  -25.829   0.00  0 770 A
+ATOM    6126     C   CD ?  ARG      A 774 ?   12.636   -4.132  -30.117   0.00  0 774 A
+ATOM    6088     C   CD ?  GLN      A 770 ?   16.969   -0.490  -26.815   0.00  0 770 A
+ATOM    5591     C  CE2 ?  PHE      A 708 ?   12.386    1.262  -33.906   0.00  0 708 A
+ATOM    5848     C  CE2 ?  PHE      A 739 ?   13.433    4.591  -32.880   0.00  0 739 A
+ATOM    5593     N    N ?  SER      A 709 ?   16.580    0.221  -36.561   0.00  0 709 A
+ATOM    5839     N    N ?  PHE      A 739 ?   11.646    4.987  -28.721  -2.19  0 739 A
+ATOM    6125     C   CG ?  ARG      A 774 ?   11.594   -3.405  -29.267   0.00  0 774 A
+ATOM    6086     O    O ?  GLN      A 770 ?   12.414   -3.509  -26.091   0.00  0 770 A
+ATOM    6110     O    O ?  TRP      A 773 ?    7.800   -1.794  -26.780   0.00  0 773 A
+ATOM    6121     C   CA ?  ARG      A 774 ?    9.390   -3.728  -28.063   0.00  0 774 A
+ATOM    6083     C   CA ?  GLN      A 770 ?   14.006   -2.218  -24.877   0.00  0 770 A
+ATOM    5833     O   OH ?  TYR      A 737 ?   18.475    4.749  -33.497  -1.07  0 737 A
+ATOM    6161     N  ND1 ?  HIS      A 777 ?    6.172    0.382  -27.569   0.00  0 777 A
+ATOM    6159     C   CG ?  HIS      A 777 ?    5.390    0.169  -28.679   0.00  0 777 A
+ATOM    5865     C   CA ?  PRO      A 742 ?    6.195    3.586  -32.458   0.00  0 742 A
+ATOM    5867     C   CB ?  PRO      A 742 ?    5.361    2.333  -32.158   0.00  0 742 A
+ATOM    5594     C   CA ?  SER      A 709 ?   17.725    0.431  -35.679   0.00  0 709 A
+ATOM    5586     O    O ?  PHE      A 708 ?   15.972    2.378  -36.646   0.00  0 708 A
+ATOM    5589     C  CD2 ?  PHE      A 708 ?   12.947    1.720  -35.113   0.00  0 708 A
+ATOM    5842     C   CB ?  PHE      A 739 ?   10.404    5.561  -30.744   0.00  0 739 A
+ATOM    5877     C   CD ?  PRO      A 743 ?    8.885    3.866  -33.797   0.00  0 743 A
+# 

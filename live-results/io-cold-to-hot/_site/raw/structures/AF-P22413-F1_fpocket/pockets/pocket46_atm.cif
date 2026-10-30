@@ -1,0 +1,58 @@
+data_pocket46_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    46:
+0  - Pocket Score                      : -0.0204
+1  - Drug Score                        : 0.0001
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 3.9725
+4  - Mean alpha-sphere Solvent Acc.    : 0.6604
+5  - Mean B-factor of pocket residues  : 0.9736
+6  - Hydrophobicity Score              : -10.1667
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 4.3333
+9  - Pocket volume (Monte Carlo)       : 243.7275
+10  -Pocket volume (convex hull)       : 6.6078
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 1.0000
+13 - Number of apolar alpha sphere     :     2
+14 - Proportion of apolar alpha sphere : 0.1333
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    6259     N  NH2 ?  ARG      A 788 ?   -8.660   -2.710  -21.377  -2.77  0 788 A
+ATOM    6776     O  OD2 ?  ASP      A 852 ?  -10.844   -0.857  -21.063   0.00  0 852 A
+ATOM    6257     N   NE ?  ARG      A 788 ?   -8.897   -1.892  -23.455   0.00  0 788 A
+ATOM    6255     C   CG ?  ARG      A 788 ?   -9.748   -2.626  -25.674   0.00  0 788 A
+ATOM    6774     C   CG ?  ASP      A 852 ?  -11.794   -0.218  -20.543   0.00  0 852 A
+ATOM    6775     O  OD1 ?  ASP      A 852 ?  -12.188   -0.370  -19.361  -0.54  0 852 A
+ATOM    6673     C   CD ?  LYS      A 839 ?  -15.990    0.374  -19.573   0.00  0 839 A
+ATOM    6671     O    O ?  LYS      A 839 ?  -17.702   -1.320  -23.367  -0.95  0 839 A
+ATOM    6248     O  OE1 ?  GLU      A 787 ?   -8.878   -6.802  -24.003   0.00  0 787 A
+ATOM    6246     C   CG ?  GLU      A 787 ?   -9.608   -7.291  -26.236   0.00  0 787 A
+ATOM    6245     O    O ?  GLU      A 787 ?  -11.936   -5.458  -28.150  -2.55  0 787 A
+ATOM    6665     O    O ?  CYS      A 838 ?  -14.637    0.505  -24.565  -2.14  0 838 A
+ATOM    6668     C   CA ?  LYS      A 839 ?  -16.676    0.715  -22.674   0.00  0 839 A
+ATOM    6772     C   CB ?  ASP      A 852 ?  -12.493    0.899  -21.330   0.00  0 852 A
+ATOM    6260     C   CZ ?  ARG      A 788 ?   -8.264   -2.680  -22.614   0.00  0 788 A
+ATOM    6689     C  CG2 ?  THR      A 841 ?  -14.887   -3.145  -26.832   0.00  0 841 A
+# 

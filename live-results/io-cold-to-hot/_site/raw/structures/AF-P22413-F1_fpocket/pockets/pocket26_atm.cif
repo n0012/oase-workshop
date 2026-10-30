@@ -1,0 +1,58 @@
+data_pocket26_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    26:
+0  - Pocket Score                      : 0.0267
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 4.0361
+4  - Mean alpha-sphere Solvent Acc.    : 0.7206
+5  - Mean B-factor of pocket residues  : 0.9685
+6  - Hydrophobicity Score              : 0.3333
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 4.6667
+9  - Pocket volume (Monte Carlo)       : 226.6972
+10  -Pocket volume (convex hull)       : 8.2005
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 7.0000
+13 - Number of apolar alpha sphere     :     8
+14 - Proportion of apolar alpha sphere : 0.5333
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5704     C   CB ?  PRO      A 722 ?   25.917   15.662  -28.423   0.00  0 722 A
+ATOM    5745     O   OG ?  SER      A 727 ?   26.824   10.837  -33.131   0.00  0 727 A
+ATOM    5705     O    O ?  PRO      A 722 ?   23.999   13.142  -29.278   0.00  0 722 A
+ATOM    5731     C   CD ?  LYS      A 725 ?   24.855   14.713  -33.335   0.00  0 725 A
+ATOM    6542     C   CG ?  GLN      A 823 ?   27.405   14.349  -24.820   0.00  0 823 A
+ATOM    6522     O    O ?  ARG      A 821 ?   30.590   12.086  -24.422   0.00  0 821 A
+ATOM    6544     N  NE2 ?  GLN      A 823 ?   28.735   16.407  -25.007   0.00  0 823 A
+ATOM    5742     C    C ?  SER      A 727 ?   26.767    8.374  -31.396   0.00  0 727 A
+ATOM    5746     N    N ?  PHE      A 728 ?   25.905    9.017  -30.601   0.00  0 728 A
+ATOM    5744     O    O ?  SER      A 727 ?   27.673    7.681  -30.927   0.00  0 727 A
+ATOM    6543     C   CD ?  GLN      A 823 ?   27.555   15.841  -25.086   0.00  0 823 A
+ATOM    5753     C  CD2 ?  PHE      A 728 ?   26.008   10.616  -26.271   0.00  0 728 A
+ATOM    5749     C   CB ?  PHE      A 728 ?   25.049   10.027  -28.542   0.00  0 728 A
+ATOM    5747     C   CA ?  PHE      A 728 ?   25.966    8.953  -29.138   0.00  0 728 A
+ATOM    6524     C   CD ?  ARG      A 821 ?   29.295    7.435  -26.216   0.00  0 821 A
+ATOM    6521     C   CB ?  ARG      A 821 ?   29.786    9.398  -24.702   0.00  0 821 A
+# 

@@ -1,0 +1,55 @@
+data_pocket51_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    51:
+0  - Pocket Score                      : -0.0446
+1  - Drug Score                        : 0.0009
+2  - Number of alpha spheres           :    19
+3  - Mean alpha-sphere radius          : 3.7931
+4  - Mean alpha-sphere Solvent Acc.    : 0.6050
+5  - Mean B-factor of pocket residues  : 0.3581
+6  - Hydrophobicity Score              : 57.6667
+7  - Polarity Score                    :     2
+8  - Amino Acid based volume Score     : 5.0000
+9  - Pocket volume (Monte Carlo)       : 171.2547
+10  -Pocket volume (convex hull)       : 1.8176
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 16.0000
+13 - Number of apolar alpha sphere     :    17
+14 - Proportion of apolar alpha sphere : 0.8947
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    512      C   CB ?  THR      A 74 ?  -78.184  -56.944   48.382   0.00  0 74 A
+ATOM    511      C    C ?  THR      A 74 ?  -75.838  -56.572   49.110   0.00  0 74 A
+ATOM    527      C   CZ ?  TYR      A 75 ?  -77.855  -55.465   54.806   0.00  0 75 A
+ATOM    525      C  CE2 ?  TYR      A 75 ?  -77.939  -56.758   54.250   0.00  0 75 A
+ATOM    513      O    O ?  THR      A 74 ?  -75.408  -55.485   48.753   0.00  0 74 A
+ATOM    550      C  CD1 ?  LEU      A 78 ?  -76.706  -52.556   47.645   0.00  0 78 A
+ATOM    551      C  CD2 ?  LEU      A 78 ?  -76.777  -51.004   49.578   0.00  0 78 A
+ATOM    524      C  CE1 ?  TYR      A 75 ?  -76.681  -54.699   54.641   0.00  0 75 A
+ATOM    526      O   OH ?  TYR      A 75 ?  -78.912  -54.961   55.496   0.00  0 75 A
+ATOM    515      O  OG1 ?  THR      A 74 ?  -78.764  -57.777   49.360   0.00  0 74 A
+ATOM    522      C  CD1 ?  TYR      A 75 ?  -75.596  -55.232   53.919   0.00  0 75 A
+ATOM    521      C   CG ?  TYR      A 75 ?  -75.683  -56.525   53.362   0.00  0 75 A
+ATOM    523      C  CD2 ?  TYR      A 75 ?  -76.853  -57.289   53.528   0.00  0 75 A
+# 

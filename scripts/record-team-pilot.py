@@ -132,7 +132,11 @@ def ensure_tts_audio(
             tid = t["turn_id"]
             wav = audio_dir / f"{tid}.wav"
             if tid not in cached or not wav.exists() or wav.stat().st_size < 10_000:
-                missing.append((ch["chapter"], tid, t["speaker"], voices[t["speaker"]]["voice_id"], t["tts_text"]))
+                import importlib.util
+                _spec_mod = importlib.util.spec_from_file_location("render_live_avatars", REPO_ROOT / "scripts" / "render-live-avatars.py")
+                _mod = importlib.util.module_from_spec(_spec_mod)  # type: ignore[arg-type]
+                _spec_mod.loader.exec_module(_mod)  # type: ignore[union-attr]
+                missing.append((ch["chapter"], tid, t["speaker"], voices[t["speaker"]]["voice_id"], _mod.normalize_biopharma_tts_text(t["tts_text"])))
 
     if missing:
         if not gcp_project:
@@ -1266,7 +1270,7 @@ def master_chapter_videos(
                     seg_tmp_dir=seg_tmp_dir,
                 )
                 fc = (
-                    f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
+                    f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
                     f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
                     f"[base][2:v]overlay=586:48[with_drawer];"
                     f"[with_drawer][1:v]overlay=1608:700[vout]"
@@ -1274,7 +1278,7 @@ def master_chapter_videos(
                 ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4)]
             else:
                 fc = (
-                    f"[0:v]trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
+                    f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
                     f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
                     f"[base][1:v]overlay=1608:700[vout]"
                 )
@@ -1587,10 +1591,8 @@ def main() -> int:
                 tid = t_rec.get("turn_id", "")
                 if tid in durations and durations[tid].get("slot_frames"):
                     new_sf = int(durations[tid]["slot_frames"])
-                    old_sf = int(t_rec.get("slot_frames") or new_sf)
-                    if new_sf <= old_sf:
-                        t_rec["slot_frames"] = new_sf
-                        t_rec["target_slot_s"] = round(new_sf / float(FPS), 4)
+                    t_rec["slot_frames"] = new_sf
+                    t_rec["target_slot_s"] = round(new_sf / float(FPS), 4)
 
     if not args.record_only:
         master_chapter_videos(

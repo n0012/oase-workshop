@@ -1,0 +1,57 @@
+{
+  "tool": "alphafold3-vertex",
+  "subcommand": "predict",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "projects/662944730392/locations/us-east4/endpoints/mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0",
+  "parameters": {
+    "job_name": "enpp1_009_complex",
+    "dialect": "alphafold3",
+    "version": 1,
+    "model_seeds": [
+      1
+    ],
+    "n_chains": 2
+  },
+  "timestamp": "2026-10-30T20:51:25Z",
+  "completed": "2026-10-30T21:22:27Z",
+  "outputs": [
+    {
+      "path": "AF3-enpp1_009_complex.response.json",
+      "sha256": "4c98025ed08ed77f8c109dea93414d7f941b8dcefd8f0a758531086d54b77faa",
+      "bytes": 132609
+    },
+    {
+      "path": "AF3-enpp1_009_complex.request.json",
+      "sha256": "ec593f485ea1cbc4f50066d442a82c57948ab28bb4ea534e99ac68d4de23675f",
+      "bytes": 625
+    },
+    {
+      "path": "AF3-enpp1_009_complex.cif",
+      "sha256": "f9e6374bc91acc3761faeba6967948912a68ccf2cee7810ea4608a5f4bcfe182",
+      "bytes": 65889
+    },
+    {
+      "path": "AF3-enpp1_009_complex.summary.json",
+      "sha256": "cd6e2b2504f8a3a7058777f8503a0747fc0f91624a398d4b62772d9efd4f607f",
+      "bytes": 1430
+    },
+    {
+      "path": "AF3-enpp1_009_complex.plddt.json",
+      "sha256": "abd5f9f7534b2aa0d9c5b77dce7010f78641f85fc525c8c0e7e337149bdae5e5",
+      "bytes": 4789
+    },
+    {
+      "path": "AF3-enpp1_009_complex.pae.json",
+      "sha256": "7f2e264c14af89ca29dead443e527c88ca69713b865131bb1bef12e10f7b8a1e",
+      "bytes": 73375
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "attempts": 325,
+  "wall_time_s": 1862.0
+}

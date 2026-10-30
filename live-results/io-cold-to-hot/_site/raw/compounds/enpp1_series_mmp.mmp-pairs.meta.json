@@ -1,0 +1,28 @@
+{
+  "tool": "mmp",
+  "subcommand": "pairs",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "series_file": "/workspace/raw/compounds/enpp1_series_mmp.json"
+  },
+  "timestamp": "2026-10-30T20:16:01Z",
+  "completed": "2026-10-30T20:16:01Z",
+  "outputs": [
+    {
+      "path": "enpp1_series_mmp.mmp-pairs.json",
+      "sha256": "763d9e7d4fd0a75fd667c042235283e6393e9d3e21e271d6b076957008aff742",
+      "bytes": 5076
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "rdkit_version": "2026.03.6",
+  "source_sha256": "e51c33f58cc5b994262fd1ab0bb00865a903d8783386697b18d0b775d6c4f032",
+  "n_compounds": 3,
+  "n_pairs": 7
+}

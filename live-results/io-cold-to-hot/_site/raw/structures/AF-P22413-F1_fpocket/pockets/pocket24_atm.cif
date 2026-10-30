@@ -1,0 +1,55 @@
+data_pocket24_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    24:
+0  - Pocket Score                      : 0.0358
+1  - Drug Score                        : 0.0002
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.5691
+4  - Mean alpha-sphere Solvent Acc.    : 0.3822
+5  - Mean B-factor of pocket residues  : 0.9729
+6  - Hydrophobicity Score              : -5.0000
+7  - Polarity Score                    :     6
+8  - Amino Acid based volume Score     : 4.0000
+9  - Pocket volume (Monte Carlo)       : 73.6825
+10  -Pocket volume (convex hull)       : 0.1692
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 1.0000
+13 - Number of apolar alpha sphere     :     2
+14 - Proportion of apolar alpha sphere : 0.1176
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5490     O    O ?  THR      A 696 ?   -3.975    5.607  -33.803   0.00  0 696 A
+ATOM    5161     C  CG2 ?  THR      A 656 ?   -2.643   12.171  -33.589   0.00  0 656 A
+ATOM    5339     O    O ?  GLN      A 678 ?   -0.473    9.559  -34.376  -1.07  0 678 A
+ATOM    5911     N   NZ ?  LYS      A 747 ?   -4.977    5.937  -36.371  -5.47  0 747 A
+ATOM    5486     N    N ?  THR      A 696 ?   -3.416    7.398  -31.668  -1.09  0 696 A
+ATOM    5910     C   CE ?  LYS      A 747 ?   -3.639    5.790  -36.971   0.00  0 747 A
+ATOM    5155     O  OE2 ?  GLU      A 655 ?   -6.214   10.919  -38.129  -2.69  0 655 A
+ATOM    5149     C    C ?  GLU      A 655 ?   -6.493   11.320  -32.998   0.00  0 655 A
+ATOM    5150     C   CB ?  GLU      A 655 ?   -6.903   11.323  -35.483   0.00  0 655 A
+ATOM    5151     O    O ?  GLU      A 655 ?   -6.597   10.291  -32.332   0.00  0 655 A
+ATOM    5336     C   CA ?  GLN      A 678 ?   -0.034   10.139  -36.661   0.00  0 678 A
+ATOM    5329     O    O ?  HIS      A 677 ?   -1.396   12.095  -38.135  -0.40  0 677 A
+ATOM    5909     C   CD ?  LYS      A 747 ?   -3.711    5.893  -38.489   0.00  0 747 A
+# 

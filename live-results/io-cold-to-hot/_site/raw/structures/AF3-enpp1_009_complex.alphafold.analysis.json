@@ -1,0 +1,46 @@
+{
+  "record_type": "analysis",
+  "source": "raw/structures/AF3-enpp1_009_complex.summary.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T21:22:29Z",
+  "threshold_set": "af3@1.0",
+  "thresholds_applied": {
+    "iptm_confident": 0.8,
+    "iptm_borderline": 0.6,
+    "ptm_confident": 0.5,
+    "plddt_confident": 70.0,
+    "plddt_low": 50.0,
+    "fraction_disordered_notable": 0.3
+  },
+  "metrics": {
+    "ptm": 0.38,
+    "iptm": 0.36,
+    "ranking_score": 0.36,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.35,
+      0.51
+    ]
+  },
+  "assessment": {
+    "verdict": "low-confidence-interface",
+    "advisories": [
+      "Interface confidence is low; this complex should not be used for downstream structural work."
+    ]
+  },
+  "threshold_sources": {
+    "iptm_confident": "default",
+    "iptm_borderline": "default",
+    "ptm_confident": "default",
+    "plddt_confident": "default",
+    "plddt_low": "default",
+    "fraction_disordered_notable": "default"
+  },
+  "threshold_provenance": "DeepMind AlphaFold3 published confidence guidance (ipTM/pTM bands); ranking_score formula per af3-toolkit notes.md \u00a75",
+  "written_by": "structural-biologist",
+  "work_order_id": null,
+  "source_sha256": "cd6e2b2504f8a3a7058777f8503a0747fc0f91624a398d4b62772d9efd4f607f"
+}

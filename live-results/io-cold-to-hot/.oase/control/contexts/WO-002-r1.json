@@ -1,0 +1,21 @@
+{
+  "work_order_id": "WO-002",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/genomics/ENPP1.gnomad-constraint.json",
+      "sha256": "41315bf01293968b1a2018c3d7dcbdd3aa145f3d9d940cd092b1a81031ace4d8"
+    },
+    {
+      "path": "raw/genomics/TREX1.gnomad-constraint.json",
+      "sha256": "16628fb6ccda2f199faaa23c09ed0f53a408e54f801df566f32cc9e0ff2528f9"
+    },
+    {
+      "path": "raw/gtex/ENSG00000197594.11.gtex.json",
+      "sha256": "003ec2d4769d8aba6d3c8af73fd0d6c4a79c8ef4058ebcb526c018b059f3fd67"
+    }
+  ],
+  "content": "Compare ENPP1 (ENSG00000197594) and TREX1 (ENSG00000213689) in gnomAD v4 and assess ENPP1 whole-blood expression in GTEx v8.",
+  "content_sha256": "3eadc13a6ca030baff4e005a8e9d44cf0273d22d3ab7bd1e5da054c5eb295451",
+  "created_at": "2026-10-30T21:27:44Z"
+}

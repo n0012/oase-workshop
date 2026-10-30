@@ -1,0 +1,60 @@
+data_pocket38_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    38:
+0  - Pocket Score                      : -0.0058
+1  - Drug Score                        : 0.0010
+2  - Number of alpha spheres           :    26
+3  - Mean alpha-sphere radius          : 3.7441
+4  - Mean alpha-sphere Solvent Acc.    : 0.3449
+5  - Mean B-factor of pocket residues  : 0.9771
+6  - Hydrophobicity Score              : 19.5556
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 4.8889
+9  - Pocket volume (Monte Carlo)       : 229.9918
+10  -Pocket volume (convex hull)       : 17.3224
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 12.0000
+13 - Number of apolar alpha sphere     :    13
+14 - Proportion of apolar alpha sphere : 0.5000
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5200     C   CD ?  ARG      A 661 ?   -1.927   20.544  -25.426   0.00  0 661 A
+ATOM    5201     N   NE ?  ARG      A 661 ?   -2.107   21.922  -24.943   0.00  0 661 A
+ATOM    5136     N   NZ ?  LYS      A 653 ?   -6.676   22.520  -30.669   0.00  0 653 A
+ATOM    5135     C   CE ?  LYS      A 653 ?   -6.756   21.044  -30.550   0.00  0 653 A
+ATOM    5220     N  NH1 ?  ARG      A 663 ?   -5.729   20.657  -22.870   0.00  0 663 A
+ATOM    5221     N  NH2 ?  ARG      A 663 ?   -7.097   22.392  -22.562   0.00  0 663 A
+ATOM    7192     O  OE1 ?  GLN      A 903 ?  -10.572   21.778  -24.770   0.00  0 903 A
+ATOM    5301     C  CD2 ?  LEU      A 673 ?   -0.271   21.291  -29.523   0.00  0 673 A
+ATOM    5199     C   CG ?  ARG      A 661 ?   -3.098   19.659  -24.998   0.00  0 661 A
+ATOM    7189     C   CG ?  GLN      A 903 ?   -9.970   19.579  -24.031   0.00  0 903 A
+ATOM    5191     C   CA ?  GLY      A 660 ?   -7.640   16.945  -25.398   0.00  0 660 A
+ATOM    5194     N    N ?  ARG      A 661 ?   -5.226   17.389  -25.267  -1.09  0 661 A
+ATOM    5134     C   CD ?  LYS      A 653 ?   -6.408   20.417  -31.895   0.00  0 653 A
+ATOM    5101     O  OE1 ?  GLU      A 649 ?   -1.620   22.865  -34.585  -8.57  0 649 A
+ATOM    5166     C   CB ?  LEU      A 657 ?   -5.487   15.420  -28.853   0.00  0 657 A
+ATOM    5167     O    O ?  LEU      A 657 ?   -8.165   15.130  -28.389  -1.62  0 657 A
+ATOM    5361     S   SD ?  MET      A 680 ?   -1.297   18.135  -31.350   0.00  0 680 A
+ATOM    5169     C  CD1 ?  LEU      A 657 ?   -3.595   16.994  -28.806   0.00  0 657 A
+# 

@@ -1,0 +1,33 @@
+{
+  "schema": "oase.mmp-series.v1",
+  "series_id": "enpp1_quinazoline_opt",
+  "compounds": [
+    {
+      "compound_id": "enpp1_hit_001",
+      "smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC",
+      "properties": {
+        "pIC50": 6.8,
+        "cLogP": 3.6,
+        "hERG_IC50_uM": 8.5
+      }
+    },
+    {
+      "compound_id": "enpp1_mid_004",
+      "smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(F)cc4)CC3)c2cc1OC",
+      "properties": {
+        "pIC50": 7.4,
+        "cLogP": 3.1,
+        "hERG_IC50_uM": 19.0
+      }
+    },
+    {
+      "compound_id": "oase_enpp1_009",
+      "smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC",
+      "properties": {
+        "pIC50": 8.4,
+        "cLogP": 2.1,
+        "hERG_IC50_uM": 42.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "WO-004",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does human ENPP1 (P22413) contain a druggable catalytic pocket (fpocket) and does live 1P AlphaFold 3 co-folding support oase_enpp1_009 complex formation?",
+  "requested_role": "structural-biologist",
+  "stage": "stage2-starting-matter-declaration",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Fetch AlphaFold DB P22413 structure, run fpocket cavity detection, and execute live 1P AlphaFold 3 protein-ligand co-folding on Vertex AI.",
+    "artifact_links": [
+      {
+        "path": "raw/structures/AF-P22413-F1.cif",
+        "sha256": "f11fc5cf5935b3683c28ab52063fed20601c664be83862691445a31e3ae88c3b"
+      },
+      {
+        "path": "raw/structures/AF-P22413-F1.pockets.json",
+        "sha256": "b00960ed433d1166e043193f5103f7e9613eb93e71252a54255f17eb90038291"
+      },
+      {
+        "path": "raw/structures/AF3-enpp1_009_complex.cif",
+        "sha256": "f9e6374bc91acc3761faeba6967948912a68ccf2cee7810ea4608a5f4bcfe182"
+      }
+    ],
+    "snapshot": "contexts/WO-004-r1.json",
+    "snapshot_sha256": "a62aa5a5ce0c9adccdda73e7b81f64a42700f2e39a8046367714624bc8a258b9"
+  },
+  "dependencies": [
+    "WO-003"
+  ],
+  "capabilities": [
+    "oase.alphafold",
+    "oase.pocket"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.structures"
+    ],
+    "layer_1": [
+      "findings/structural-biology/wo-004-alphafold3-pocket.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "fpocket identifies a druggable catalytic pocket",
+    "Live Vertex AI AlphaFold 3 co-folding produces a clash-free complex structure"
+  ],
+  "alert_policy": {
+    "mode": "block_on_steric_clash",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "gpu-a100-80gb",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T21:27:45Z",
+  "committed_at": "2026-10-30T21:27:45Z"
+}

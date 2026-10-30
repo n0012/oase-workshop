@@ -1,0 +1,28 @@
+decision_question: Does live 1P AlphaGenome regulatory scoring at the ENPP1 locus
+  (chr6:131894218C>T) reveal any cis-regulatory or chromatin accessibility liabilities?
+requested_role: computational-biologist
+stage: stage1-intervention-validation
+cycle: cycle-1
+context:
+  content: Score chr6:131894218:C>T across RNA_SEQ and ATAC tracks on the live Vertex
+    AI AlphaGenome A100-80GB endpoint.
+  artifact_links:
+  - path: raw/genomics/chr6-131894218-C-T.scores.json
+dependencies:
+- WO-002
+capabilities:
+- oase.alphagenome
+deliverables:
+  layer_0_classes:
+  - oase.genomics
+  layer_1:
+  - findings/computational-biology/wo-003-alphagenome-variant.md
+acceptance_criteria:
+- Live Vertex AI AlphaGenome variant score and analysis completed across 1 Mb window
+- All AlphaGenome mandatory relays addressed
+alert_policy:
+  mode: block_on_unaddressed_relay
+  escalate_to: science-program-lead
+priority: high
+resource_class: gpu-a100-80gb
+report_to: science-program-lead

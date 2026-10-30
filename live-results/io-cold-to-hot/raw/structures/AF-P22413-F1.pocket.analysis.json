@@ -1,0 +1,62 @@
+{
+  "record_type": "analysis",
+  "source": "raw/structures/AF-P22413-F1.pockets.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:14:45Z",
+  "threshold_set": "pocket@1.0+program",
+  "thresholds_applied": {
+    "druggable_dscore": 0.5,
+    "borderline_dscore": 0.2,
+    "min_alpha_spheres": 15,
+    "contact_distance": 5.0,
+    "volume_estimate_tolerance": 0.05
+  },
+  "metrics": {
+    "n_pockets": 70,
+    "best_pocket": {
+      "rank": 7,
+      "druggability_score": 0.694,
+      "score": 0.144,
+      "volume": 535.366,
+      "n_alpha_spheres": 67.0,
+      "centre_of_mass_max_sphere_distance": 17.17
+    },
+    "site": null,
+    "volume_estimate_tolerance": 0.05
+  },
+  "assessment": {
+    "verdict": "druggable-pocket-present",
+    "statement": "Best pocket scores 0.694 (druggable) across 70 detected pocket(s).",
+    "advisories": [
+      "Scores were computed on a structure not established as experimental. Druggability is conformation-dependent; a low score here constrains this model, not the target.",
+      "Volumes are Monte Carlo estimates; differences under 5% between runs are noise, not change."
+    ],
+    "relayed_run_warnings": [
+      "Pocket volume is a Monte Carlo estimate seeded from the clock; fpocket exposes no seed. Repeated runs on one input differ by a few percent, and two runs inside the same second are identical because the seed has one-second resolution. Do not read a volume difference below the declared tolerance as a change.",
+      "AF-P22413-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    ]
+  },
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-P22413-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.694 is cavity shape in AF-P22413-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    }
+  ],
+  "threshold_sources": {
+    "druggable_dscore": "program",
+    "borderline_dscore": "program",
+    "min_alpha_spheres": "program",
+    "contact_distance": "program",
+    "volume_estimate_tolerance": "program"
+  },
+  "threshold_provenance": "Schmidtke & Barril, J Med Chem 2010;53(15):5858-67, 'Understanding and predicting druggability: a high-throughput method for detection of drug binding sites' \u2014 the fpocket drug score and its 0.5 decision boundary. min_alpha_spheres is fpocket 4.2.2's own detection default (-i). borderline_dscore and volume_estimate_tolerance are local: see the module comment above for how each was arrived at.",
+  "written_by": "structural-biologist",
+  "work_order_id": null,
+  "source_sha256": "b00960ed433d1166e043193f5103f7e9613eb93e71252a54255f17eb90038291"
+}

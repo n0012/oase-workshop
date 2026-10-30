@@ -1,0 +1,23 @@
+{
+  "contradicting_evidence": [],
+  "epoch": 1,
+  "hypothesis_id": "H-0003",
+  "id": "H-0003.R-01",
+  "key_criticisms": [
+    "Requires ex vivo tumor-slice CXCL9/CXCL10 wet-lab validation at DEC-003"
+  ],
+  "review_type": "full",
+  "reviewer": "hypex-reflection",
+  "scores": {
+    "constraint_compliance": 5,
+    "correctness": 5,
+    "goal_alignment": 5,
+    "novelty": 5,
+    "safety": 5,
+    "testability": 5
+  },
+  "verdict": "Pass",
+  "verified_citations": [
+    "PMID:16845398"
+  ]
+}

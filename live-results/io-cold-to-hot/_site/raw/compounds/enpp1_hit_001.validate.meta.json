@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "validate",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC",
+    "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)Nc4ccc(Cl)cc4)CC3)c2cc1OC"
+  },
+  "timestamp": "2026-10-30T20:15:41Z",
+  "completed": "2026-10-30T20:15:41Z",
+  "outputs": [
+    {
+      "path": "enpp1_hit_001.validate.json",
+      "sha256": "3966f471a15eeae232d9183b5d21fcba3775450fefab0258e863cefa8217489e",
+      "bytes": 264
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "enpp1_hit_001"
+}

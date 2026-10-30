@@ -1,0 +1,77 @@
+data_pocket39_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    39:
+0  - Pocket Score                      : -0.0070
+1  - Drug Score                        : 0.0367
+2  - Number of alpha spheres           :    38
+3  - Mean alpha-sphere radius          : 3.8793
+4  - Mean alpha-sphere Solvent Acc.    : 0.5530
+5  - Mean B-factor of pocket residues  : 0.9755
+6  - Hydrophobicity Score              : 19.2143
+7  - Polarity Score                    :    10
+8  - Amino Acid based volume Score     : 4.9286
+9  - Pocket volume (Monte Carlo)       : 495.4630
+10  -Pocket volume (convex hull)       : 100.0883
+11 - Charge Score                      :     4
+12 - Local hydrophobic density Score   : 21.5652
+13 - Number of apolar alpha sphere     :    23
+14 - Proportion of apolar alpha sphere : 0.6053
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    3487     O    O ?  VAL      A 449 ?   11.599  -10.268   10.981  -0.40  0 449 A
+ATOM    3506     C  CE1 ?  TYR      A 451 ?    6.409  -12.161   13.553   0.00  0 451 A
+ATOM    2098     C   CD ?  LYS      A 278 ?    5.537   -6.959   15.277   0.00  0 278 A
+ATOM    3491     C   CA ?  ILE      A 450 ?    9.604   -8.699    9.735   0.00  0 450 A
+ATOM    2100     N   NZ ?  LYS      A 278 ?    4.073   -8.931   14.904  -1.09  0 278 A
+ATOM    3496     C  CG2 ?  ILE      A 450 ?    7.496   -7.308    9.740   0.00  0 450 A
+ATOM    4145     O    O ?  ARG      A 527 ?    6.144  -17.675   14.855  -1.21  0 527 A
+ATOM    4158     C   CD ?  LYS      A 528 ?    2.535  -15.452   16.524   0.00  0 528 A
+ATOM    4160     N   NZ ?  LYS      A 528 ?    2.687  -14.529   18.817   0.00  0 528 A
+ATOM    4159     C   CE ?  LYS      A 528 ?    2.662  -14.185   17.372   0.00  0 528 A
+ATOM    3508     O   OH ?  TYR      A 451 ?    4.279  -12.104   14.599  -3.21  0 451 A
+ATOM    3481     C   CE ?  LYS      A 448 ?   13.237   -9.652   14.503   0.00  0 448 A
+ATOM    3482     N   NZ ?  LYS      A 448 ?   13.227  -10.991   15.133   0.00  0 448 A
+ATOM    3504     C  CD1 ?  TYR      A 451 ?    7.205  -12.381   12.417   0.00  0 451 A
+ATOM    2097     C   CG ?  LYS      A 278 ?    4.970   -5.536   15.266   0.00  0 278 A
+ATOM    2186     C   CB ?  SER      A 289 ?    5.404   -3.256   19.353   0.00  0 289 A
+ATOM    2176     O    O ?  PHE      A 288 ?    6.714   -1.695   16.860   0.00  0 288 A
+ATOM    3495     C  CG1 ?  ILE      A 450 ?    9.734   -6.221   10.284   0.00  0 450 A
+ATOM    4143     C    C ?  ARG      A 527 ?    5.846  -17.053   13.839   0.00  0 527 A
+ATOM    3559     N  NH2 ?  ARG      A 458 ?   13.114   -3.441   13.959   0.00  0 458 A
+ATOM    3479     C   CG ?  LYS      A 448 ?   14.649   -8.019   13.189   0.00  0 448 A
+ATOM    2103     C    C ?  MET      A 279 ?    9.342   -0.437   13.731   0.00  0 279 A
+ATOM    2101     N    N ?  MET      A 279 ?    7.121   -1.558   13.809   0.00  0 279 A
+ATOM    2105     O    O ?  MET      A 279 ?    9.451   -0.661   14.937  -1.07  0 279 A
+ATOM    3497     C  CD1 ?  ILE      A 450 ?    9.240   -4.786   10.063   0.00  0 450 A
+ATOM    2169     C   CB ?  SER      A 287 ?   11.231   -0.978   18.302   0.00  0 287 A
+ATOM    2095     C   CB ?  LYS      A 278 ?    5.830   -4.664   14.349   0.00  0 278 A
+ATOM    2094     C    C ?  LYS      A 278 ?    6.339   -2.499   13.285   0.00  0 278 A
+ATOM    2096     O    O ?  LYS      A 278 ?    6.430   -2.847   12.114   0.00  0 278 A
+ATOM    4136     O    O ?  GLU      A 526 ?    8.951  -14.681   13.109  -3.21  0 526 A
+ATOM    4134     C    C ?  GLU      A 526 ?    9.195  -15.842   13.432   0.00  0 526 A
+ATOM    4130     O    O ?  SER      A 525 ?   10.070  -18.019   16.153   0.00  0 525 A
+ATOM    4133     C   CA ?  GLU      A 526 ?   10.552  -16.201   14.058   0.00  0 526 A
+ATOM    4137     C   CG ?  GLU      A 526 ?   12.883  -15.350   14.442   0.00  0 526 A
+ATOM    4135     C   CB ?  GLU      A 526 ?   11.731  -15.437   13.435   0.00  0 526 A
+# 

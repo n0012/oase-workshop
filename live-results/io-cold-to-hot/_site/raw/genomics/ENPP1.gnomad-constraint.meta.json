@@ -1,0 +1,37 @@
+{
+  "tool": "genetics",
+  "subcommand": "fetch",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://gnomad.broadinstitute.org/api",
+  "parameters": {
+    "query_symbol": "ENPP1",
+    "resolved_symbol": "ENPP1",
+    "resolved_gene_id": "ENSG00000197594",
+    "reference_genome": "GRCh38",
+    "gene_resolution": {
+      "input": "ENPP1",
+      "resolved": true,
+      "canonical_symbol": "ENPP1",
+      "hgnc_id": "HGNC:3356",
+      "ensembl_id": null,
+      "source": "official"
+    }
+  },
+  "timestamp": "2026-10-30T20:14:19Z",
+  "completed": "2026-10-30T20:14:19Z",
+  "outputs": [
+    {
+      "path": "ENPP1.gnomad-constraint.json",
+      "sha256": "41315bf01293968b1a2018c3d7dcbdd3aa145f3d9d940cd092b1a81031ace4d8",
+      "bytes": 699
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source": "gnomAD (Broad Institute)",
+  "constraint_flags": []
+}

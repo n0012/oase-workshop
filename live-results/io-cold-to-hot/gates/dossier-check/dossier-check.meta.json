@@ -1,0 +1,23 @@
+{
+  "tool": "dossier",
+  "subcommand": "check",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {},
+  "timestamp": "2026-10-30T21:28:03Z",
+  "completed": "2026-10-30T21:28:03Z",
+  "outputs": [
+    {
+      "path": "dossier-check.json",
+      "sha256": "1d731fc17790df1c882231ab57be5215fcff233e043d53a0364ed3c0d5be798e",
+      "bytes": 1877
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "scope_caveat": "A complete checklist means the required evidence types are present; it does not mean the evidence meets regulatory standards, that the studies are GLP-compliant, or that the dossier is ready for filing."
+}

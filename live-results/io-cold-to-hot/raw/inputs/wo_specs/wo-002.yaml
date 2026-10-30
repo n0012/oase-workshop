@@ -1,0 +1,32 @@
+decision_question: Does human genetic constraint (gnomAD v4) and GTEx v8 expression
+  support ENPP1 safety while disqualifying TREX1 autoimmunity risk?
+requested_role: computational-biologist
+stage: stage1-intervention-validation
+cycle: cycle-1
+context:
+  content: Compare ENPP1 (ENSG00000197594) and TREX1 (ENSG00000213689) in gnomAD v4
+    and assess ENPP1 whole-blood expression in GTEx v8.
+  artifact_links:
+  - path: raw/genomics/ENPP1.gnomad-constraint.json
+  - path: raw/genomics/TREX1.gnomad-constraint.json
+  - path: raw/gtex/ENSG00000197594.11.gtex.json
+dependencies:
+- WO-001
+capabilities:
+- oase.genetics
+- oase.gtex
+deliverables:
+  layer_0_classes:
+  - oase.gtex
+  layer_1:
+  - findings/computational-biology/wo-002-human-genetics-gtex.md
+acceptance_criteria:
+- ENPP1 gnomAD v4 constraint confirms LoF tolerance
+- TREX1 Mendelian autoimmunity liability (L-001) documented and GTEx whole-blood relay
+  addressed
+alert_policy:
+  mode: block_on_lof_intolerant
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

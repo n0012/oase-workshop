@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Step 1 — IO Cold-to-Hot Co-Scientist &amp; Hypex Elo Tournament Viewer</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; overflow-x: hidden; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.48rem 0.85rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 0.86rem; color: #ffffff; display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+  .top-nav .links { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.72rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.22rem 0.52rem; border-radius: 5px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0.55rem auto; padding: 0 0.75rem 1.25rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 0.72rem 0.95rem; margin-bottom: 0.68rem; }
+  .hdr-card h1 { margin: 0 0 0.25rem 0; font-size: 1.04rem; color: #ffffff; line-height: 1.25; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
+  .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); gap: 0.68rem; align-items: start; }
+  .card { min-width: 0; overflow: hidden; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.72rem 0.85rem; margin-bottom: 0.68rem; }
+  .card h2 { margin: 0 0 0.48rem 0; font-size: 0.88rem; color: #38bdf8; line-height: 1.25; }
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.74rem; }
+  th, td { text-align: left; padding: 0.34rem 0.42rem; border-bottom: 1px solid #334155; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; line-height: 1.32; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; font-size: 0.71rem; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.26rem 0.56rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 0.55rem 0.68rem; font-family: ui-monospace, monospace; font-size: 0.69rem; line-height: 1.4; overflow-x: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-all; }
+  code { font-family: ui-monospace, monospace; font-size: 0.92em; color: #bae6fd; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🧬 GCP-OASE Live Validation Console (`io-cold-to-hot` · ENPP1 Cold-to-Hot TME)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · HALTED AT WET-LAB WALL (DEC-003)</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=io-cold-to-hot">← Story Arc Cockpit</a>
+    <a href="io-coscientist-live-viewer.html" id="nav-io-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="io-alphagenome-live-viewer.html" id="nav-io-ag">Step 2: Genetics &amp; 1P AlphaGenome</a>
+    <a href="io-af3-live-viewer.html" id="nav-io-af3">Step 3: 1P AlphaFold 3 (.cif) &amp; Vina</a>
+    <a href="io-dmta-live-viewer.html" id="nav-io-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="io-wetlab-wall-viewer.html" id="nav-io-wall">Steps 5–7: Wet-Lab Wall &amp; Dossier</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-venter-20261030-io-cold-to-hot`) + `Hypex` (`hx-io-cold-to-hot-elo`) Tournament</h1>
+    <p>Live replay of David's `venter-scion` Immuno-Oncology Cold-to-Hot Tumor Reprogramming campaign on `losiern-oase-workshop` (`scion-hub-oase`). Five innate-immune targets (`ENPP1`, `ADAR1`, `PTPN2`, `TREX1`, `LSD1`/`KDM1A`) were evaluated by `oase coscientist ingest/analyze` and `oase hypex ingest/analyze`, converging on <strong>extracellular ENPP1 catalytic pocket blockade (`1658.4 Elo`)</strong> to preserve tumor-derived 2&prime;,3&prime;-cGAMP for paracrine dendritic-cell STING activation.</p>
+    <div class="badge-row">
+      <span class="pill argon">oase coscientist · clear-leader (ENPP1 1658.4 Elo, +56.4 gap)</span>
+      <span class="pill argon">oase hypex · H-0001 Leader (1658.4 Elo, +103.9 gap over PTPN2)</span>
+      <span class="pill opus">TREX1 Disqualified at DEC-001 (Aicardi-Goutières Autoimmunity L-001)</span>
+      <span class="pill pass">0 Contradicted Literature Claims (PMID:32972994 Verified)</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>5-Target Cold-to-Hot Innate Immune Standings (`WO-001-r1`)</h2>
+      <table>
+        <thead>
+          <tr><th style="width:9%;">Rank</th><th style="width:17%;">Target</th><th style="width:36%;">Mechanism &amp; Cellular Compartment</th><th style="width:20%;">Elo Rating</th><th style="width:18%;">Decision (`DEC-001`)</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(16,185,129,0.14);">
+            <td><strong>#1</strong></td>
+            <td><code>ENPP1</code><br><small><code>H-0001</code></small></td>
+            <td><strong>Extracellular cGAMP Phosphodiesterase Blockade</strong><br><small style="color:#94a3b8;">Preserves 2&prime;,3&prime;-cGAMP for paracrine APC STING/IFN-&beta; (`PMID:32972994`)</small></td>
+            <td><span class="pill pass">1658.4 Elo</span><br><small>87.5% win · 16 matches</small></td>
+            <td><span class="pill pass">PRIMARY LEAD</span></td>
+          </tr>
+          <tr>
+            <td><strong>#2</strong></td>
+            <td><code>ADAR1</code><br><small><code>H-002</code></small></td>
+            <td><strong>Intracellular dsRNA Deaminase Inhibition</strong><br><small style="color:#94a3b8;">Derepresses MDA5/MAVS IFN signaling (`PMID:30559380`)</small></td>
+            <td><span class="pill argon">1602.0 Elo</span><br><small>68.8% win · RNA-edit tox risk</small></td>
+            <td><span class="pill opus">WATCHLIST</span></td>
+          </tr>
+          <tr>
+            <td><strong>#3</strong></td>
+            <td><code>PTPN2</code><br><small><code>H-0002</code></small></td>
+            <td><strong>Intracellular Tyrosine Phosphatase Inhibition</strong><br><small style="color:#94a3b8;">Amplifies JAK/STAT1 IFN-&gamma; (`PMID:28723893`, `ABBV-CLS-484`)</small></td>
+            <td><span class="pill argon">1554.5 Elo</span><br><small>56.3% win · Active-site polarity</small></td>
+            <td><span class="pill opus">BACKUP TARGET</span></td>
+          </tr>
+          <tr>
+            <td><strong>#4</strong></td>
+            <td><code>LSD1</code><br><small><code>KDM1A</code></small></td>
+            <td><strong>Epigenetic Histone Demethylase Inhibition</strong><br><small style="color:#94a3b8;">ERV dsRNA reactivation (hematopoietic thrombocytopenia)</small></td>
+            <td><span class="pill flash">1440.0 Elo</span><br><small>25.0% win</small></td>
+            <td><span class="pill block">PARKED</span></td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.12);">
+            <td><strong>#5</strong></td>
+            <td><code>TREX1</code><br><small><code>H-0003</code></small></td>
+            <td><strong>Cytosolic 3&prime;&rarr;5&prime; DNA Exonuclease Inhibition</strong><br><small style="color:#fca5a5;">Mendelian Aicardi-Goutières lupus &amp; myocarditis (`PMID:16845398`)</small></td>
+            <td><span class="pill block">1368.0 Elo</span><br><small>12.5% win · L-001</small></td>
+            <td><span class="pill block">DISQUALIFIED</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <svg viewBox="0 0 520 124" style="width:100%;height:auto;margin-top:0.55rem;background:#020617;border:1px solid #334155;border-radius:6px;">
+        <text x="12" y="18" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold">CO-SCIENTIST &amp; HYPEX ELO SEPARATION (+56.4 OVER ADAR1 · +103.9 OVER PTPN2)</text>
+        <text x="12" y="38" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">ENPP1 (Extracellular)</text>
+        <rect x="155" y="27" width="305" height="12" rx="3" fill="#10b981"/>
+        <text x="466" y="38" fill="#6ee7b7" font-size="10.5" font-family="monospace" font-weight="bold">1658.4</text>
+        <text x="12" y="58" fill="#7dd3fc" font-size="10" font-family="monospace">ADAR1 (Deaminase)</text>
+        <rect x="155" y="47" width="265" height="12" rx="3" fill="#0284c7"/>
+        <text x="426" y="58" fill="#7dd3fc" font-size="10" font-family="monospace">1602.0</text>
+        <text x="12" y="78" fill="#fdba74" font-size="10" font-family="monospace">PTPN2 (Phosphatase)</text>
+        <rect x="155" y="67" width="232" height="12" rx="3" fill="#f97316"/>
+        <text x="393" y="78" fill="#fdba74" font-size="10" font-family="monospace">1554.5</text>
+        <text x="12" y="98" fill="#d8b4fe" font-size="10" font-family="monospace">LSD1 (Demethylase)</text>
+        <rect x="155" y="87" width="165" height="12" rx="3" fill="#7c3aed"/>
+        <text x="326" y="98" fill="#d8b4fe" font-size="10" font-family="monospace">1440.0</text>
+        <text x="12" y="116" fill="#fca5a5" font-size="10" font-family="monospace">TREX1 (Exonuclease)</text>
+        <rect x="155" y="105" width="118" height="12" rx="3" fill="#dc2626"/>
+        <text x="279" y="116" fill="#fca5a5" font-size="10" font-family="monospace">1368.0 (L-001)</text>
+      </svg>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Why Extracellular `ENPP1` Defeated Intracellular Competitors (`WO-001`)</h2>
+        <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
+          <strong style="color:#6ee7b7;font-size:0.76rem;">1. Extracellular Ectoenzyme Accessibility (No Cytosolic Efflux Barrier)</strong>
+          <div style="color:#cbd5e1;font-size:0.73rem;margin-top:0.18rem;">Unlike `PTPN2` and `ADAR1`, `ENPP1` acts on the outer tumor plasma membrane (`TPSA = 111.79 Å²`), avoiding intracellular P-gp efflux and sparing healthy non-cGAMP-producing tissues.</div>
+        </div>
+        <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
+          <strong style="color:#fca5a5;font-size:0.76rem;">2. Elimination of `TREX1` Systemic Interferonopathy (`L-001`, `DEC-001`)</strong>
+          <div style="color:#cbd5e1;font-size:0.73rem;margin-top:0.18rem;">Hypex debate `M-002` and `WO-002` human genetics proved that systemic `TREX1` inhibition mimics Aicardi-Goutières syndrome (`PMID:16845398`), whereas `ENPP1` cleavage blockade is strictly conditional on tumor chromosomal instability (CIN) producing extracellular 2&prime;,3&prime;-cGAMP.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Live Container Execution Provenance (`io-cold-to-hot--hypex-supervisor`)</h2>
+        <div class="term">Container   : io-cold-to-hot--hypex-supervisor (Grove: ab3d65d5-f32c-463e-be48-d535034de34f)
+Artifacts   : raw/hypotheses/cs-venter-20261030-io-cold-to-hot.tournament.json
+              raw/hypotheses/cs-venter-20261030-io-cold-to-hot.analysis.json
+              raw/hypotheses/hx-io-cold-to-hot-elo.hypex.json
+              raw/hypotheses/hx-io-cold-to-hot-elo.analysis.json
+Relays Kept : coscientist.review_recommendation_available, hypex.pacing_uncoordinated
+Integrity   : cli_integrity="installed", cli_modified=False, env_version=sha256:2987d3053f13...</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>document.getElementById('nav-io-cosci').classList.add('active');</script>
+</body>
+</html>

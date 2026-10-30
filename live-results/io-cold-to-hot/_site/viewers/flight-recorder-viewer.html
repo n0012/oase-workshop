@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Steps 5–7 — Live PK Scaling, Clinical Dossier &amp; Red-Team Tamper Ledger</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; overflow-x: hidden; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.48rem 0.85rem; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 0.86rem; color: #ffffff; display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+  .top-nav .links { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.72rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.22rem 0.52rem; border-radius: 5px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0.55rem auto; padding: 0 0.75rem 1.25rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 0.72rem 0.95rem; margin-bottom: 0.68rem; }
+  .hdr-card h1 { margin: 0 0 0.25rem 0; font-size: 1.04rem; color: #ffffff; line-height: 1.25; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
+  .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); gap: 0.68rem; align-items: start; }
+  .card { min-width: 0; overflow: hidden; background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.72rem 0.85rem; margin-bottom: 0.68rem; }
+  .card h2 { margin: 0 0 0.48rem 0; font-size: 0.88rem; color: #38bdf8; line-height: 1.25; }
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.74rem; }
+  th, td { text-align: left; padding: 0.34rem 0.42rem; border-bottom: 1px solid #334155; vertical-align: top; overflow-wrap: anywhere; word-break: break-word; line-height: 1.32; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; font-size: 0.71rem; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.26rem 0.56rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 6px; padding: 0.55rem 0.68rem; font-family: ui-monospace, monospace; font-size: 0.69rem; line-height: 1.4; overflow-x: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-all; }
+  code { font-family: ui-monospace, monospace; font-size: 0.92em; color: #bae6fd; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Steps 5–7: PK &amp; Tamper Ledger</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Steps 5–7 — Live Rat/Dog/Human Oral PK (`WO-007`), 450-Trial Dossier (`WO-008`) &amp; 3 Red-Team Tamper Drills</h1>
+    <p>Complete reproducibility &amp; governance record from `/home/scion/.scion/projects/pcsk9-oral-live-v2`: all `28` Phase-1 `.meta.json` receipts carry `env_version: sha256:2987d3053f13...`, all `8/8` Work Orders (`WO-001..WO-008`) are `scientifically_accepted` (`0` failures), and all `3/3` live `oase validate check --dry-run --json` Red-Team Tamper Drills (`DRILL-01..03`) exited with code `1` (`BLOCKED`).</p>
+    <div class="badge-row">
+      <span class="pill pass">8 / 8 WOs scientifically_accepted (0 warnings)</span>
+      <span class="pill pass">Human PK: t1/2 = 8.18 h · CL = 0.00997 L/h/kg · Vd = 0.118 L/kg (40 mg QD)</span>
+      <span class="pill pass">ClinicalTrials.gov: 450 PCSK9 Studies (146 Recruiting)</span>
+      <span class="pill block">3 / 3 Live Tamper Drills BLOCKED (Exit Code 1)</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Step 5 Live Multi-Species Oral PK &amp; Human Allometry (`WO-007` &amp; `WO-008`)</h2>
+      <svg viewBox="0 0 520 165" style="width:100%;height:auto;margin-bottom:0.5rem;background:#020617;border:1px solid #334155;border-radius:6px;">
+        <text x="14" y="18" fill="#38bdf8" font-size="10.5" font-family="monospace" font-weight="bold">ORAL PLASMA CONCENTRATION-TIME PROFILES (RAT · DOG · 70 KG HUMAN QD)</text>
+        <line x1="42" y1="28" x2="42" y2="142" stroke="#475569" stroke-width="1"/>
+        <line x1="42" y1="142" x2="502" y2="142" stroke="#475569" stroke-width="1"/>
+        <!-- IC90 target trough line -->
+        <line x1="42" y1="108" x2="502" y2="108" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="4,3"/>
+        <text x="348" y="103" fill="#fbbf24" font-size="9.5" font-family="monospace">Free IC90 Target Trough (24h QD)</text>
+        <!-- Rat 10 mg/kg PO curve (t1/2 = 4.80 h, Cmax = 1620 ng/mL, AUC = 12,797) -->
+        <polyline fill="none" stroke="#38bdf8" stroke-width="2.3" points="42,138 68,46 98,62 145,84 210,106 310,126 490,139"/>
+        <!-- Dog 5 mg/kg PO curve (t1/2 = 6.81 h, Cmax = 1790 ng/mL, AUC = 19,510) -->
+        <polyline fill="none" stroke="#a855f7" stroke-width="2.3" points="42,138 72,36 108,49 160,68 235,88 340,111 490,128"/>
+        <!-- Human 40 mg QD Allometric Projection (t1/2 = 8.18 h) -->
+        <polyline fill="none" stroke="#22c55e" stroke-width="2.8" points="42,138 76,42 118,52 175,65 255,80 365,94 490,104"/>
+        <circle cx="76" cy="42" r="4" fill="#22c55e"/>
+        <circle cx="490" cy="104" r="4" fill="#22c55e"/>
+        <text x="45" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">0h</text>
+        <text x="155" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">6h</text>
+        <text x="268" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">12h</text>
+        <text x="378" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">18h</text>
+        <text x="476" y="156" fill="#94a3b8" font-size="9.5" font-family="monospace">24h</text>
+        <text x="195" y="38" fill="#4ade80" font-size="9.5" font-family="monospace" font-weight="bold">■ Human 40 mg QD (t1/2 = 8.18 h)</text>
+        <text x="195" y="51" fill="#c084fc" font-size="9.5" font-family="monospace">■ Dog PO (AUC 19,510 · t1/2 = 6.81 h)</text>
+        <text x="195" y="64" fill="#38bdf8" font-size="9.5" font-family="monospace">■ Rat PO (AUC 12,797 · t1/2 = 4.80 h)</text>
+      </svg>
+      <table>
+        <thead><tr><th style="width:36%;">Artifact (`raw/pk/` &amp; `raw/pipeline/`)</th><th style="width:42%;">Observed Live Metrics</th><th style="width:22%;">SHA-256</th></tr></thead>
+        <tbody>
+          <tr><td><code>oase_pcsk9_014_rat_po.pk-nca.json</code></td><td>Cmax <strong>1620 ng/mL</strong>, t1/2 <strong>4.80 h</strong>, AUC <strong>12,796.8</strong> (extrap 3.7%)</td><td><code>00020c62</code></td></tr>
+          <tr><td><code>oase_pcsk9_014_dog_po.pk-nca.json</code></td><td>Cmax <strong>1790 ng/mL</strong>, t1/2 <strong>6.81 h</strong>, AUC <strong>19,510.2</strong> (extrap 9.8%)</td><td><code>67563803</code></td></tr>
+          <tr><td><code>scaling-dog-rat.pk-scaling.json</code></td><td>70 kg Human: <strong>t1/2 = 8.18 h</strong>, CL = <strong>0.00997 L/h/kg</strong>, Vd = <strong>0.118 L/kg</strong></td><td><code>14ed82dc</code></td></tr>
+          <tr><td><code>pcsk9.trials-clinicaltrials.json</code></td><td><strong>450</strong> studies, <strong>146</strong> recruiting, <strong>77</strong> Phase 2+, <strong>177</strong> Phase 3+</td><td><code>c8fdf83a</code></td></tr>
+          <tr><td><code>dossier-export.json</code></td><td><strong>8/8</strong> CTD sections, <strong>8/8</strong> WOs accepted, <strong>35</strong> HTML pages built</td><td><code>VERIFIED</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Step 6 Live Red-Team Tamper Drills (`gates/stage3-candidate-nomination/tamper-drills/`)</h2>
+        <table>
+          <thead><tr><th style="width:26%;">Drill Receipt</th><th style="width:32%;">Injected Tamper Attack</th><th style="width:24%;">Failed Gate (`exit 1`)</th><th style="width:18%;">Outcome</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>drill-01-value-mismatch.json</code></td>
+              <td>Edited <code>wo-005-vina-docking.md</code> to claim <code>-11.400</code> vs actual <code>-7.991 kcal/mol</code></td>
+              <td><code>source_tags_resolve</code><br><small>diff 42.7% &gt; 1.0%</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr>
+              <td><code>drill-02-sha256-tamper.json</code></td>
+              <td>Appended unauthorized atom coordinate to <code>poses.pdbqt</code></td>
+              <td><code>provenance_valid</code><br><small>SHA-256 mismatch</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr>
+              <td><code>drill-03-suppressed-relay.json</code></td>
+              <td>Deleted <code>admet.herg_structural_flag</code> from <code>wo-006-dmta-admet-mmp.md</code></td>
+              <td><code>relay_coverage</code><br><small>Missing hERG relay</small></td>
+              <td><span class="pill block">BLOCKED</span></td>
+            </tr>
+            <tr style="background:rgba(16,185,129,0.12);">
+              <td><code>DEC-OVERRIDE-001</code></td>
+              <td>Audited co-signed exception for backup macrocycle <code>IC-002</code> in <code>decision-log.md</code></td>
+              <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code></td>
+              <td><span class="pill pass">CO-SIGNED</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Step 7 Live `oase workorder accept-all --json` Telemetry (`pcsk9-oral-live-v2`)</h2>
+        <div class="term">{"work_order_id":"WO-001","status":"scientifically_accepted","passed":true,"failures":0,"finding":"wo-001-hypothesis-tournament.md"}
+{"work_order_id":"WO-002","status":"scientifically_accepted","passed":true,"failures":0,"finding":"wo-002-human-genetics-gtex.md"}
+{"work_order_id":"WO-003","status":"scientifically_accepted","passed":true,"failures":0,"endpoint":"mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5"}
+{"work_order_id":"WO-004","status":"scientifically_accepted","passed":true,"failures":0,"endpoint":"mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0"}
+{"work_order_id":"WO-005","status":"scientifically_accepted","passed":true,"failures":0,"best_score_kcal_mol":-7.991}
+{"work_order_id":"WO-006","status":"scientifically_accepted","passed":true,"failures":0,"lead":"oase_pcsk9_014"}
+{"work_order_id":"WO-007","status":"scientifically_accepted","passed":true,"failures":0,"predicted_half_life_h":8.1805}
+{"work_order_id":"WO-008","status":"scientifically_accepted","passed":true,"failures":0,"total_studies":450,"site_pages":35}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>document.getElementById('nav-fr').classList.add('active');</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "tool": "alphafold-db",
+  "subcommand": "fetch",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://alphafold.ebi.ac.uk/api/prediction/P22413",
+  "parameters": {
+    "uniprot": "P22413"
+  },
+  "timestamp": "2026-10-30T20:14:31Z",
+  "completed": "2026-10-30T20:14:33Z",
+  "outputs": [
+    {
+      "path": "AF-P22413-F1.afdb.json",
+      "sha256": "c7d9ec0f05195f91c747dd9d8b87d15bc49c3b7c727444f25ff948ae5b5e86fa",
+      "bytes": 3809
+    },
+    {
+      "path": "AF-P22413-F1.cif",
+      "sha256": "f11fc5cf5935b3683c28ab52063fed20601c664be83862691445a31e3ae88c3b",
+      "bytes": 857537
+    },
+    {
+      "path": "AF-P22413-F1.pae.json",
+      "sha256": "f63a12a804e4e346a65ff7ed9b0ee4a0083be74259a08f9d883fee74061d71ba",
+      "bytes": 1972747
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "canonical_length": 925,
+  "modelled_length": 925,
+  "gene_symbol": "ENPP1",
+  "uniprot_requested": "P22413",
+  "uniprot_returned": "P22413"
+}

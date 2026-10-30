@@ -1,0 +1,4976 @@
+{
+  "tool": "fpocket",
+  "structure": "AF-P22413-F1.cif",
+  "structure_sha256": "f11fc5cf5935b3683c28ab52063fed20601c664be83862691445a31e3ae88c3b",
+  "experimental_structure": false,
+  "structure_origin_evidence": "no EXPDTA/_exptl.method record",
+  "n_pockets": 70,
+  "pockets": [
+    {
+      "rank": 1,
+      "score": 0.211,
+      "druggability_score": 0.487,
+      "n_alpha_spheres": 104.0,
+      "total_sasa": 244.538,
+      "polar_sasa": 118.945,
+      "apolar_sasa": 125.593,
+      "volume": 918.481,
+      "mean_local_hydrophobic_density": 43.882,
+      "mean_alpha_sphere_radius": 3.92,
+      "mean_alpha_sphere_solvent_access": 0.496,
+      "apolar_alpha_sphere_proportion": 0.49,
+      "hydrophobicity_score": 10.333,
+      "volume_score": 4.333,
+      "polarity_score": 15.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 42.857,
+      "alpha_sphere_density": 6.62,
+      "centre_of_mass_max_sphere_distance": 17.691,
+      "flexibility": 0.964,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 705,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 706,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 707,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 708,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 709,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 710,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 729,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 730,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 731,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 736,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 737,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 738,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 739,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 742,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 743,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 744,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 765,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 770,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 773,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 774,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 777,
+          "resname": "HIS"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "score": 0.206,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 29.0,
+      "total_sasa": 19.643,
+      "polar_sasa": 7.567,
+      "apolar_sasa": 12.076,
+      "volume": 127.152,
+      "mean_local_hydrophobic_density": 1.0,
+      "mean_alpha_sphere_radius": 3.664,
+      "mean_alpha_sphere_solvent_access": 0.458,
+      "apolar_alpha_sphere_proportion": 0.069,
+      "hydrophobicity_score": 18.6,
+      "volume_score": 4.4,
+      "polarity_score": 5.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 63.158,
+      "alpha_sphere_density": 2.09,
+      "centre_of_mass_max_sphere_distance": 4.433,
+      "flexibility": 0.997,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 270,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 492,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 495,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 496,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 497,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 500,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 501,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 502,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 803,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 805,
+          "resname": "GLY"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "score": 0.189,
+      "druggability_score": 0.003,
+      "n_alpha_spheres": 38.0,
+      "total_sasa": 74.677,
+      "polar_sasa": 43.279,
+      "apolar_sasa": 31.398,
+      "volume": 327.43,
+      "mean_local_hydrophobic_density": 12.0,
+      "mean_alpha_sphere_radius": 3.8,
+      "mean_alpha_sphere_solvent_access": 0.49,
+      "apolar_alpha_sphere_proportion": 0.342,
+      "hydrophobicity_score": 25.0,
+      "volume_score": 5.167,
+      "polarity_score": 8.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 48.148,
+      "alpha_sphere_density": 3.758,
+      "centre_of_mass_max_sphere_distance": 9.017,
+      "flexibility": 0.906,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 616,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 618,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 619,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 621,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 635,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 636,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 637,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 638,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 639,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 713,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 714,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 716,
+          "resname": "PHE"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "score": 0.162,
+      "druggability_score": 0.011,
+      "n_alpha_spheres": 24.0,
+      "total_sasa": 87.849,
+      "polar_sasa": 21.429,
+      "apolar_sasa": 66.42,
+      "volume": 276.657,
+      "mean_local_hydrophobic_density": 8.0,
+      "mean_alpha_sphere_radius": 3.8,
+      "mean_alpha_sphere_solvent_access": 0.652,
+      "apolar_alpha_sphere_proportion": 0.542,
+      "hydrophobicity_score": 60.0,
+      "volume_score": 4.286,
+      "polarity_score": 3.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 36.364,
+      "alpha_sphere_density": 4.855,
+      "centre_of_mass_max_sphere_distance": 12.215,
+      "flexibility": 0.596,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 75,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 78,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 79,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 82,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 83,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 86,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 87,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "score": 0.152,
+      "druggability_score": 0.004,
+      "n_alpha_spheres": 33.0,
+      "total_sasa": 77.979,
+      "polar_sasa": 35.712,
+      "apolar_sasa": 42.267,
+      "volume": 211.187,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 3.72,
+      "mean_alpha_sphere_solvent_access": 0.4,
+      "apolar_alpha_sphere_proportion": 0.182,
+      "hydrophobicity_score": 51.75,
+      "volume_score": 4.917,
+      "polarity_score": 4.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 41.667,
+      "alpha_sphere_density": 3.828,
+      "centre_of_mass_max_sphere_distance": 8.846,
+      "flexibility": 0.975,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 687,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 688,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 689,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 723,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 724,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 729,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 762,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 764,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 817,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 824,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 825,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 826,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "score": 0.145,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 39.0,
+      "total_sasa": 101.027,
+      "polar_sasa": 41.853,
+      "apolar_sasa": 59.174,
+      "volume": 418.044,
+      "mean_local_hydrophobic_density": 4.0,
+      "mean_alpha_sphere_radius": 3.794,
+      "mean_alpha_sphere_solvent_access": 0.465,
+      "apolar_alpha_sphere_proportion": 0.205,
+      "hydrophobicity_score": 25.538,
+      "volume_score": 5.385,
+      "polarity_score": 10.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 39.286,
+      "alpha_sphere_density": 4.333,
+      "centre_of_mass_max_sphere_distance": 12.508,
+      "flexibility": 0.976,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 432,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 434,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 435,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 436,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 439,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 440,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 482,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 483,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 484,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 485,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 486,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 487,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 518,
+          "resname": "TRP"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "score": 0.144,
+      "druggability_score": 0.694,
+      "n_alpha_spheres": 67.0,
+      "total_sasa": 162.62,
+      "polar_sasa": 51.519,
+      "apolar_sasa": 111.102,
+      "volume": 535.366,
+      "mean_local_hydrophobic_density": 37.05,
+      "mean_alpha_sphere_radius": 3.721,
+      "mean_alpha_sphere_solvent_access": 0.432,
+      "apolar_alpha_sphere_proportion": 0.597,
+      "hydrophobicity_score": 14.294,
+      "volume_score": 4.588,
+      "polarity_score": 13.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 35.556,
+      "alpha_sphere_density": 5.283,
+      "centre_of_mass_max_sphere_distance": 17.17,
+      "flexibility": 0.991,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 218,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 256,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 257,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 290,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 295,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 321,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 322,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 323,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 326,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 338,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 340,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 371,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 373,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 376,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 377,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 380,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 381,
+          "resname": "SER"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "score": 0.129,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 30.0,
+      "total_sasa": 60.456,
+      "polar_sasa": 19.397,
+      "apolar_sasa": 41.059,
+      "volume": 174.927,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 3.583,
+      "mean_alpha_sphere_solvent_access": 0.369,
+      "apolar_alpha_sphere_proportion": 0.2,
+      "hydrophobicity_score": 37.727,
+      "volume_score": 4.091,
+      "polarity_score": 4.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 55.0,
+      "alpha_sphere_density": 2.966,
+      "centre_of_mass_max_sphere_distance": 6.479,
+      "flexibility": 0.974,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 666,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 669,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 687,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 691,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 797,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 799,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 807,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 808,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 813,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 895,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 896,
+          "resname": "THR"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "score": 0.125,
+      "druggability_score": 0.012,
+      "n_alpha_spheres": 29.0,
+      "total_sasa": 105.437,
+      "polar_sasa": 26.941,
+      "apolar_sasa": 78.496,
+      "volume": 378.792,
+      "mean_local_hydrophobic_density": 13.333,
+      "mean_alpha_sphere_radius": 3.92,
+      "mean_alpha_sphere_solvent_access": 0.551,
+      "apolar_alpha_sphere_proportion": 0.517,
+      "hydrophobicity_score": 22.833,
+      "volume_score": 5.167,
+      "polarity_score": 9.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 34.615,
+      "alpha_sphere_density": 4.859,
+      "centre_of_mass_max_sphere_distance": 11.442,
+      "flexibility": 0.991,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 466,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 467,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 469,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 470,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 471,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 472,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 491,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 492,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 493,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 505,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 509,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 803,
+          "resname": "TYR"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "score": 0.107,
+      "druggability_score": 0.007,
+      "n_alpha_spheres": 43.0,
+      "total_sasa": 102.179,
+      "polar_sasa": 53.794,
+      "apolar_sasa": 48.384,
+      "volume": 356.474,
+      "mean_local_hydrophobic_density": 14.875,
+      "mean_alpha_sphere_radius": 3.742,
+      "mean_alpha_sphere_solvent_access": 0.388,
+      "apolar_alpha_sphere_proportion": 0.372,
+      "hydrophobicity_score": 11.2,
+      "volume_score": 4.8,
+      "polarity_score": 7.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 37.037,
+      "alpha_sphere_density": 3.826,
+      "centre_of_mass_max_sphere_distance": 9.101,
+      "flexibility": 0.974,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 190,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 193,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 194,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 195,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 196,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 237,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 241,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 408,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 413,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 551,
+          "resname": "TYR"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "score": 0.097,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 77.0,
+      "total_sasa": 219.129,
+      "polar_sasa": 98.366,
+      "apolar_sasa": 120.763,
+      "volume": 773.785,
+      "mean_local_hydrophobic_density": 11.909,
+      "mean_alpha_sphere_radius": 3.929,
+      "mean_alpha_sphere_solvent_access": 0.455,
+      "apolar_alpha_sphere_proportion": 0.286,
+      "hydrophobicity_score": 19.118,
+      "volume_score": 4.118,
+      "polarity_score": 12.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 45.098,
+      "alpha_sphere_density": 6.019,
+      "centre_of_mass_max_sphere_distance": 12.63,
+      "flexibility": 0.984,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 562,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 563,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 564,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 590,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 591,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 593,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 839,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 850,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 851,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 853,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 906,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 910,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 911,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 913,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 914,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 916,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 917,
+          "resname": "HIS"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "score": 0.092,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 25.0,
+      "total_sasa": 61.712,
+      "polar_sasa": 18.237,
+      "apolar_sasa": 43.475,
+      "volume": 194.3,
+      "mean_local_hydrophobic_density": 6.0,
+      "mean_alpha_sphere_radius": 3.661,
+      "mean_alpha_sphere_solvent_access": 0.409,
+      "apolar_alpha_sphere_proportion": 0.28,
+      "hydrophobicity_score": 31.667,
+      "volume_score": 3.889,
+      "polarity_score": 4.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 44.444,
+      "alpha_sphere_density": 2.906,
+      "centre_of_mass_max_sphere_distance": 6.732,
+      "flexibility": 0.921,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 609,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 610,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 611,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 612,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 664,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 666,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 669,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 670,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 671,
+          "resname": "ILE"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "score": 0.089,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 103.0,
+      "total_sasa": 284.258,
+      "polar_sasa": 120.357,
+      "apolar_sasa": 163.901,
+      "volume": 945.411,
+      "mean_local_hydrophobic_density": 11.043,
+      "mean_alpha_sphere_radius": 3.942,
+      "mean_alpha_sphere_solvent_access": 0.493,
+      "apolar_alpha_sphere_proportion": 0.223,
+      "hydrophobicity_score": -4.136,
+      "volume_score": 3.682,
+      "polarity_score": 15.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 50.847,
+      "alpha_sphere_density": 6.711,
+      "centre_of_mass_max_sphere_distance": 17.088,
+      "flexibility": 0.943,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 479,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 480,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 481,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 482,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 483,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 484,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 485,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 486,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 487,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 488,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 489,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 515,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 864,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 865,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 866,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 867,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 868,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 869,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 870,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 871,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 872,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 880,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "score": 0.083,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 26.822,
+      "polar_sasa": 7.5,
+      "apolar_sasa": 19.322,
+      "volume": 111.814,
+      "mean_local_hydrophobic_density": 8.0,
+      "mean_alpha_sphere_radius": 3.651,
+      "mean_alpha_sphere_solvent_access": 0.399,
+      "apolar_alpha_sphere_proportion": 0.562,
+      "hydrophobicity_score": 35.556,
+      "volume_score": 4.222,
+      "polarity_score": 4.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 35.714,
+      "alpha_sphere_density": 1.738,
+      "centre_of_mass_max_sphere_distance": 3.721,
+      "flexibility": 0.993,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 657,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 659,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 660,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 662,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 694,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 792,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 794,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 900,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 901,
+          "resname": "TYR"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "score": 0.082,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 18.0,
+      "total_sasa": 35.232,
+      "polar_sasa": 18.325,
+      "apolar_sasa": 16.907,
+      "volume": 97.844,
+      "mean_local_hydrophobic_density": 6.0,
+      "mean_alpha_sphere_radius": 3.517,
+      "mean_alpha_sphere_solvent_access": 0.375,
+      "apolar_alpha_sphere_proportion": 0.389,
+      "hydrophobicity_score": 31.0,
+      "volume_score": 5.0,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 46.667,
+      "alpha_sphere_density": 1.991,
+      "centre_of_mass_max_sphere_distance": 3.866,
+      "flexibility": 1.0,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 250,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 251,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 252,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 268,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 498,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 499,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 539,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 565,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 567,
+          "resname": "ILE"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "score": 0.077,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 18.0,
+      "total_sasa": 88.653,
+      "polar_sasa": 45.178,
+      "apolar_sasa": 43.475,
+      "volume": 345.951,
+      "mean_local_hydrophobic_density": 5.75,
+      "mean_alpha_sphere_radius": 4.094,
+      "mean_alpha_sphere_solvent_access": 0.698,
+      "apolar_alpha_sphere_proportion": 0.444,
+      "hydrophobicity_score": 35.571,
+      "volume_score": 4.429,
+      "polarity_score": 2.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 45.0,
+      "alpha_sphere_density": 4.258,
+      "centre_of_mass_max_sphere_distance": 10.471,
+      "flexibility": 0.943,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 611,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 612,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 613,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 614,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 615,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 661,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 673,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "score": 0.076,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 25.0,
+      "total_sasa": 99.978,
+      "polar_sasa": 40.804,
+      "apolar_sasa": 59.174,
+      "volume": 488.539,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 4.027,
+      "mean_alpha_sphere_solvent_access": 0.579,
+      "apolar_alpha_sphere_proportion": 0.04,
+      "hydrophobicity_score": 3.0,
+      "volume_score": 4.0,
+      "polarity_score": 7.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 42.308,
+      "alpha_sphere_density": 4.236,
+      "centre_of_mass_max_sphere_distance": 11.307,
+      "flexibility": 0.969,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 438,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 443,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 444,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 445,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 447,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 448,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 522,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 523,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 524,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 525,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 526,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "score": 0.065,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 85.882,
+      "polar_sasa": 39.755,
+      "apolar_sasa": 46.127,
+      "volume": 222.339,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 3.715,
+      "mean_alpha_sphere_solvent_access": 0.44,
+      "apolar_alpha_sphere_proportion": 0.158,
+      "hydrophobicity_score": 22.667,
+      "volume_score": 4.222,
+      "polarity_score": 5.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 42.857,
+      "alpha_sphere_density": 3.98,
+      "centre_of_mass_max_sphere_distance": 8.404,
+      "flexibility": 0.922,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 110,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 112,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 113,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 139,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 156,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 157,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 158,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 159,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 160,
+          "resname": "THR"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "score": 0.054,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 59.18,
+      "polar_sasa": 31.404,
+      "apolar_sasa": 27.775,
+      "volume": 231.399,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.856,
+      "mean_alpha_sphere_solvent_access": 0.58,
+      "apolar_alpha_sphere_proportion": 0.053,
+      "hydrophobicity_score": 24.875,
+      "volume_score": 4.625,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 45.0,
+      "alpha_sphere_density": 2.652,
+      "centre_of_mass_max_sphere_distance": 6.118,
+      "flexibility": 0.947,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 621,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 622,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 623,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 624,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 626,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 712,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 713,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 714,
+          "resname": "GLN"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "score": 0.052,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 22.0,
+      "total_sasa": 78.573,
+      "polar_sasa": 52.005,
+      "apolar_sasa": 26.568,
+      "volume": 289.537,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.761,
+      "mean_alpha_sphere_solvent_access": 0.467,
+      "apolar_alpha_sphere_proportion": 0.045,
+      "hydrophobicity_score": -9.545,
+      "volume_score": 4.0,
+      "polarity_score": 10.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 60.0,
+      "alpha_sphere_density": 3.28,
+      "centre_of_mass_max_sphere_distance": 8.036,
+      "flexibility": 0.993,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 268,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 270,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 271,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 500,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 503,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 584,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 585,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 804,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 805,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 806,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 894,
+          "resname": "HIS"
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "score": 0.044,
+      "druggability_score": 0.009,
+      "n_alpha_spheres": 48.0,
+      "total_sasa": 156.052,
+      "polar_sasa": 47.365,
+      "apolar_sasa": 108.687,
+      "volume": 530.751,
+      "mean_local_hydrophobic_density": 16.3,
+      "mean_alpha_sphere_radius": 4.025,
+      "mean_alpha_sphere_solvent_access": 0.512,
+      "apolar_alpha_sphere_proportion": 0.417,
+      "hydrophobicity_score": 21.533,
+      "volume_score": 5.0,
+      "polarity_score": 11.0,
+      "charge_score": 5.0,
+      "proportion_polar_atoms": 37.838,
+      "alpha_sphere_density": 4.918,
+      "centre_of_mass_max_sphere_distance": 10.212,
+      "flexibility": 0.99,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 493,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 494,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 766,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 800,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 801,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 803,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 816,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 818,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 827,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 828,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 829,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 830,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 860,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 861,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 862,
+          "resname": "THR"
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "score": 0.041,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 18.0,
+      "total_sasa": 86.205,
+      "polar_sasa": 37.899,
+      "apolar_sasa": 48.305,
+      "volume": 367.46,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 3.989,
+      "mean_alpha_sphere_solvent_access": 0.627,
+      "apolar_alpha_sphere_proportion": 0.333,
+      "hydrophobicity_score": 51.714,
+      "volume_score": 5.286,
+      "polarity_score": 3.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 33.333,
+      "alpha_sphere_density": 3.735,
+      "centre_of_mass_max_sphere_distance": 8.814,
+      "flexibility": 0.992,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 320,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 321,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 337,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 338,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 339,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 341,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 344,
+          "resname": "VAL"
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "score": 0.039,
+      "druggability_score": 0.126,
+      "n_alpha_spheres": 47.0,
+      "total_sasa": 184.702,
+      "polar_sasa": 52.833,
+      "apolar_sasa": 131.869,
+      "volume": 680.701,
+      "mean_local_hydrophobic_density": 18.615,
+      "mean_alpha_sphere_radius": 4.006,
+      "mean_alpha_sphere_solvent_access": 0.544,
+      "apolar_alpha_sphere_proportion": 0.553,
+      "hydrophobicity_score": 25.706,
+      "volume_score": 3.941,
+      "polarity_score": 8.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 34.211,
+      "alpha_sphere_density": 6.043,
+      "centre_of_mass_max_sphere_distance": 18.92,
+      "flexibility": 0.955,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 145,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 146,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 147,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 148,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 178,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 179,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 189,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 191,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 234,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 345,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 347,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 395,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 398,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 399,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 401,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 402,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 405,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "score": 0.036,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 28.395,
+      "polar_sasa": 15.111,
+      "apolar_sasa": 13.284,
+      "volume": 73.682,
+      "mean_local_hydrophobic_density": 1.0,
+      "mean_alpha_sphere_radius": 3.569,
+      "mean_alpha_sphere_solvent_access": 0.382,
+      "apolar_alpha_sphere_proportion": 0.118,
+      "hydrophobicity_score": -5.0,
+      "volume_score": 4.0,
+      "polarity_score": 6.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 53.846,
+      "alpha_sphere_density": 1.24,
+      "centre_of_mass_max_sphere_distance": 3.104,
+      "flexibility": 0.973,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 655,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 656,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 677,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 678,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 696,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 747,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "score": 0.031,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 43.869,
+      "polar_sasa": 16.094,
+      "apolar_sasa": 27.775,
+      "volume": 186.104,
+      "mean_local_hydrophobic_density": 4.0,
+      "mean_alpha_sphere_radius": 4.029,
+      "mean_alpha_sphere_solvent_access": 0.722,
+      "apolar_alpha_sphere_proportion": 0.312,
+      "hydrophobicity_score": 6.714,
+      "volume_score": 3.286,
+      "polarity_score": 4.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 46.667,
+      "alpha_sphere_density": 1.926,
+      "centre_of_mass_max_sphere_distance": 3.843,
+      "flexibility": 0.969,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 195,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 196,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 197,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 240,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 241,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 557,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 558,
+          "resname": "GLY"
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "score": 0.027,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 50.228,
+      "polar_sasa": 23.661,
+      "apolar_sasa": 26.568,
+      "volume": 226.697,
+      "mean_local_hydrophobic_density": 7.0,
+      "mean_alpha_sphere_radius": 4.036,
+      "mean_alpha_sphere_solvent_access": 0.721,
+      "apolar_alpha_sphere_proportion": 0.533,
+      "hydrophobicity_score": 0.333,
+      "volume_score": 4.667,
+      "polarity_score": 4.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 37.5,
+      "alpha_sphere_density": 2.177,
+      "centre_of_mass_max_sphere_distance": 4.492,
+      "flexibility": 0.969,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 722,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 725,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 727,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 728,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 821,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 823,
+          "resname": "GLN"
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "score": 0.024,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 27.0,
+      "total_sasa": 78.142,
+      "polar_sasa": 44.328,
+      "apolar_sasa": 33.814,
+      "volume": 173.888,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 3.558,
+      "mean_alpha_sphere_solvent_access": 0.378,
+      "apolar_alpha_sphere_proportion": 0.222,
+      "hydrophobicity_score": 9.333,
+      "volume_score": 4.667,
+      "polarity_score": 7.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 45.0,
+      "alpha_sphere_density": 2.753,
+      "centre_of_mass_max_sphere_distance": 6.21,
+      "flexibility": 0.943,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 703,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 704,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 705,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 706,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 708,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 744,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 774,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 778,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 782,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "score": 0.023,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 95.111,
+      "polar_sasa": 38.927,
+      "apolar_sasa": 56.184,
+      "volume": 336.53,
+      "mean_local_hydrophobic_density": 4.0,
+      "mean_alpha_sphere_radius": 3.965,
+      "mean_alpha_sphere_solvent_access": 0.587,
+      "apolar_alpha_sphere_proportion": 0.263,
+      "hydrophobicity_score": -0.333,
+      "volume_score": 3.333,
+      "polarity_score": 4.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 40.0,
+      "alpha_sphere_density": 3.9,
+      "centre_of_mass_max_sphere_distance": 9.007,
+      "flexibility": 0.99,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 191,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 193,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 195,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 229,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 230,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 233,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 236,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 237,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 240,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "score": 0.021,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 61.303,
+      "polar_sasa": 21.451,
+      "apolar_sasa": 39.852,
+      "volume": 259.642,
+      "mean_local_hydrophobic_density": 7.0,
+      "mean_alpha_sphere_radius": 4.182,
+      "mean_alpha_sphere_solvent_access": 0.638,
+      "apolar_alpha_sphere_proportion": 0.533,
+      "hydrophobicity_score": 4.667,
+      "volume_score": 4.5,
+      "polarity_score": 5.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 37.5,
+      "alpha_sphere_density": 2.619,
+      "centre_of_mass_max_sphere_distance": 6.191,
+      "flexibility": 0.946,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 771,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 774,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 775,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 778,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 779,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 874,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "score": 0.02,
+      "druggability_score": 0.006,
+      "n_alpha_spheres": 32.0,
+      "total_sasa": 104.694,
+      "polar_sasa": 41.898,
+      "apolar_sasa": 62.797,
+      "volume": 354.56,
+      "mean_local_hydrophobic_density": 17.158,
+      "mean_alpha_sphere_radius": 4.035,
+      "mean_alpha_sphere_solvent_access": 0.68,
+      "apolar_alpha_sphere_proportion": 0.594,
+      "hydrophobicity_score": 16.0,
+      "volume_score": 4.0,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 38.462,
+      "alpha_sphere_density": 3.611,
+      "centre_of_mass_max_sphere_distance": 10.456,
+      "flexibility": 0.996,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 575,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 578,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 579,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 580,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 581,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 588,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 599,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 600,
+          "resname": "TYR"
+        }
+      ]
+    },
+    {
+      "rank": 31,
+      "score": 0.016,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 41.0,
+      "total_sasa": 106.595,
+      "polar_sasa": 51.045,
+      "apolar_sasa": 55.551,
+      "volume": 396.512,
+      "mean_local_hydrophobic_density": 17.0,
+      "mean_alpha_sphere_radius": 3.983,
+      "mean_alpha_sphere_solvent_access": 0.603,
+      "apolar_alpha_sphere_proportion": 0.439,
+      "hydrophobicity_score": 17.0,
+      "volume_score": 4.8,
+      "polarity_score": 3.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 37.037,
+      "alpha_sphere_density": 3.129,
+      "centre_of_mass_max_sphere_distance": 8.535,
+      "flexibility": 0.647,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 115,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 116,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 117,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 118,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 121,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 32,
+      "score": 0.015,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 52.799,
+      "polar_sasa": 34.685,
+      "apolar_sasa": 18.114,
+      "volume": 188.414,
+      "mean_local_hydrophobic_density": 4.0,
+      "mean_alpha_sphere_radius": 3.913,
+      "mean_alpha_sphere_solvent_access": 0.611,
+      "apolar_alpha_sphere_proportion": 0.312,
+      "hydrophobicity_score": 3.167,
+      "volume_score": 4.5,
+      "polarity_score": 5.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 57.143,
+      "alpha_sphere_density": 2.129,
+      "centre_of_mass_max_sphere_distance": 4.654,
+      "flexibility": 0.944,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 731,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 732,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 733,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 734,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 820,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 821,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 33,
+      "score": 0.014,
+      "druggability_score": 0.096,
+      "n_alpha_spheres": 22.0,
+      "total_sasa": 117.286,
+      "polar_sasa": 13.035,
+      "apolar_sasa": 104.252,
+      "volume": 313.954,
+      "mean_local_hydrophobic_density": 15.8,
+      "mean_alpha_sphere_radius": 3.718,
+      "mean_alpha_sphere_solvent_access": 0.638,
+      "apolar_alpha_sphere_proportion": 0.909,
+      "hydrophobicity_score": 46.143,
+      "volume_score": 4.143,
+      "polarity_score": 2.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 29.167,
+      "alpha_sphere_density": 4.644,
+      "centre_of_mass_max_sphere_distance": 13.217,
+      "flexibility": 0.574,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 73,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 76,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 77,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 80,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 81,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 84,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 85,
+          "resname": "CYS"
+        }
+      ]
+    },
+    {
+      "rank": 34,
+      "score": 0.009,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 27.0,
+      "total_sasa": 120.465,
+      "polar_sasa": 62.499,
+      "apolar_sasa": 57.966,
+      "volume": 347.254,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 3.917,
+      "mean_alpha_sphere_solvent_access": 0.562,
+      "apolar_alpha_sphere_proportion": 0.222,
+      "hydrophobicity_score": 0.111,
+      "volume_score": 4.0,
+      "polarity_score": 7.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 45.455,
+      "alpha_sphere_density": 4.329,
+      "centre_of_mass_max_sphere_distance": 11.094,
+      "flexibility": 0.989,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 246,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 247,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 559,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 560,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 561,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 562,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 563,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 593,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 913,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 35,
+      "score": 0.001,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 56.587,
+      "polar_sasa": 20.358,
+      "apolar_sasa": 36.229,
+      "volume": 198.552,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 4.068,
+      "mean_alpha_sphere_solvent_access": 0.717,
+      "apolar_alpha_sphere_proportion": 0.353,
+      "hydrophobicity_score": 0.0,
+      "volume_score": 4.571,
+      "polarity_score": 6.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 33.333,
+      "alpha_sphere_density": 2.104,
+      "centre_of_mass_max_sphere_distance": 4.868,
+      "flexibility": 0.995,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 374,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 378,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 382,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 388,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 391,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 392,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 395,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 36,
+      "score": -0.004,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 22.0,
+      "total_sasa": 94.392,
+      "polar_sasa": 37.634,
+      "apolar_sasa": 56.759,
+      "volume": 306.691,
+      "mean_local_hydrophobic_density": 8.0,
+      "mean_alpha_sphere_radius": 3.938,
+      "mean_alpha_sphere_solvent_access": 0.573,
+      "apolar_alpha_sphere_proportion": 0.409,
+      "hydrophobicity_score": -8.167,
+      "volume_score": 3.167,
+      "polarity_score": 6.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 46.154,
+      "alpha_sphere_density": 3.359,
+      "centre_of_mass_max_sphere_distance": 7.431,
+      "flexibility": 0.987,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 199,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 201,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 209,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 210,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 417,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 553,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 554,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 575,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 576,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 578,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 595,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 597,
+          "resname": "ASN"
+        }
+      ]
+    },
+    {
+      "rank": 37,
+      "score": -0.004,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 34.025,
+      "polar_sasa": 18.325,
+      "apolar_sasa": 15.699,
+      "volume": 96.772,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.852,
+      "mean_alpha_sphere_solvent_access": 0.495,
+      "apolar_alpha_sphere_proportion": 0.059,
+      "hydrophobicity_score": -8.444,
+      "volume_score": 3.667,
+      "polarity_score": 8.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 46.667,
+      "alpha_sphere_density": 1.05,
+      "centre_of_mass_max_sphere_distance": 3.397,
+      "flexibility": 0.954,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 178,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 179,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 181,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 182,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 188,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 189,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 405,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 408,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 409,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 38,
+      "score": -0.006,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 26.0,
+      "total_sasa": 93.2,
+      "polar_sasa": 42.163,
+      "apolar_sasa": 51.037,
+      "volume": 229.992,
+      "mean_local_hydrophobic_density": 12.0,
+      "mean_alpha_sphere_radius": 3.744,
+      "mean_alpha_sphere_solvent_access": 0.345,
+      "apolar_alpha_sphere_proportion": 0.5,
+      "hydrophobicity_score": 19.556,
+      "volume_score": 4.889,
+      "polarity_score": 5.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 44.444,
+      "alpha_sphere_density": 3.117,
+      "centre_of_mass_max_sphere_distance": 6.686,
+      "flexibility": 0.977,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 649,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 653,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 657,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 660,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 661,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 663,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 673,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 680,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 903,
+          "resname": "GLN"
+        }
+      ]
+    },
+    {
+      "rank": 39,
+      "score": -0.007,
+      "druggability_score": 0.037,
+      "n_alpha_spheres": 38.0,
+      "total_sasa": 155.633,
+      "polar_sasa": 54.193,
+      "apolar_sasa": 101.441,
+      "volume": 495.463,
+      "mean_local_hydrophobic_density": 21.565,
+      "mean_alpha_sphere_radius": 3.879,
+      "mean_alpha_sphere_solvent_access": 0.553,
+      "apolar_alpha_sphere_proportion": 0.605,
+      "hydrophobicity_score": 19.214,
+      "volume_score": 4.929,
+      "polarity_score": 10.0,
+      "charge_score": 4.0,
+      "proportion_polar_atoms": 37.143,
+      "alpha_sphere_density": 4.891,
+      "centre_of_mass_max_sphere_distance": 13.102,
+      "flexibility": 0.975,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 278,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 279,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 287,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 288,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 289,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 448,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 449,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 450,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 451,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 458,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 525,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 526,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 527,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 528,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 40,
+      "score": -0.009,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 22.0,
+      "total_sasa": 75.263,
+      "polar_sasa": 54.733,
+      "apolar_sasa": 20.53,
+      "volume": 213.266,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.761,
+      "mean_alpha_sphere_solvent_access": 0.433,
+      "apolar_alpha_sphere_proportion": 0.045,
+      "hydrophobicity_score": 10.444,
+      "volume_score": 3.778,
+      "polarity_score": 8.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 52.941,
+      "alpha_sphere_density": 2.526,
+      "centre_of_mass_max_sphere_distance": 4.858,
+      "flexibility": 0.97,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 732,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 733,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 734,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 735,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 736,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 766,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 767,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 768,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 862,
+          "resname": "THR"
+        }
+      ]
+    },
+    {
+      "rank": 41,
+      "score": -0.009,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 78.857,
+      "polar_sasa": 57.119,
+      "apolar_sasa": 21.737,
+      "volume": 302.352,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 3.867,
+      "mean_alpha_sphere_solvent_access": 0.517,
+      "apolar_alpha_sphere_proportion": 0.176,
+      "hydrophobicity_score": 42.429,
+      "volume_score": 5.0,
+      "polarity_score": 3.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 46.667,
+      "alpha_sphere_density": 2.897,
+      "centre_of_mass_max_sphere_distance": 6.253,
+      "flexibility": 0.931,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 614,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 616,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 638,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 639,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 642,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 643,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 717,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 42,
+      "score": -0.01,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 20.0,
+      "total_sasa": 85.116,
+      "polar_sasa": 57.341,
+      "apolar_sasa": 27.775,
+      "volume": 254.398,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 4.122,
+      "mean_alpha_sphere_solvent_access": 0.574,
+      "apolar_alpha_sphere_proportion": 0.0,
+      "hydrophobicity_score": -10.889,
+      "volume_score": 4.333,
+      "polarity_score": 8.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 68.75,
+      "alpha_sphere_density": 3.068,
+      "centre_of_mass_max_sphere_distance": 7.336,
+      "flexibility": 0.89,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 427,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 433,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 486,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 515,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 516,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 517,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 518,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 543,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 923,
+          "resname": "GLN"
+        }
+      ]
+    },
+    {
+      "rank": 43,
+      "score": -0.012,
+      "druggability_score": 0.004,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 69.234,
+      "polar_sasa": 25.759,
+      "apolar_sasa": 43.475,
+      "volume": 267.132,
+      "mean_local_hydrophobic_density": 13.0,
+      "mean_alpha_sphere_radius": 3.945,
+      "mean_alpha_sphere_solvent_access": 0.651,
+      "apolar_alpha_sphere_proportion": 0.824,
+      "hydrophobicity_score": -9.6,
+      "volume_score": 4.4,
+      "polarity_score": 4.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 29.412,
+      "alpha_sphere_density": 2.508,
+      "centre_of_mass_max_sphere_distance": 7.676,
+      "flexibility": 0.27,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 70,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 71,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 72,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 74,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 75,
+          "resname": "TYR"
+        }
+      ]
+    },
+    {
+      "rank": 44,
+      "score": -0.012,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 58.211,
+      "polar_sasa": 36.474,
+      "apolar_sasa": 21.737,
+      "volume": 176.141,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.948,
+      "mean_alpha_sphere_solvent_access": 0.638,
+      "apolar_alpha_sphere_proportion": 0.0,
+      "hydrophobicity_score": 11.167,
+      "volume_score": 3.5,
+      "polarity_score": 1.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 57.143,
+      "alpha_sphere_density": 2.125,
+      "centre_of_mass_max_sphere_distance": 4.372,
+      "flexibility": 0.971,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 201,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 203,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 204,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 205,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 207,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 208,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 45,
+      "score": -0.02,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 79.532,
+      "polar_sasa": 31.227,
+      "apolar_sasa": 48.305,
+      "volume": 190.004,
+      "mean_local_hydrophobic_density": 1.0,
+      "mean_alpha_sphere_radius": 3.79,
+      "mean_alpha_sphere_solvent_access": 0.589,
+      "apolar_alpha_sphere_proportion": 0.125,
+      "hydrophobicity_score": -2.375,
+      "volume_score": 3.5,
+      "polarity_score": 4.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 50.0,
+      "alpha_sphere_density": 2.944,
+      "centre_of_mass_max_sphere_distance": 6.534,
+      "flexibility": 0.992,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 592,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 598,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 600,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 601,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 602,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 907,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 908,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 909,
+          "resname": "SER"
+        }
+      ]
+    },
+    {
+      "rank": 46,
+      "score": -0.02,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 68.892,
+      "polar_sasa": 29.04,
+      "apolar_sasa": 39.852,
+      "volume": 243.727,
+      "mean_local_hydrophobic_density": 1.0,
+      "mean_alpha_sphere_radius": 3.973,
+      "mean_alpha_sphere_solvent_access": 0.66,
+      "apolar_alpha_sphere_proportion": 0.133,
+      "hydrophobicity_score": -10.167,
+      "volume_score": 4.333,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 50.0,
+      "alpha_sphere_density": 2.498,
+      "centre_of_mass_max_sphere_distance": 5.022,
+      "flexibility": 0.974,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 787,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 788,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 838,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 839,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 841,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 852,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 47,
+      "score": -0.028,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 30.0,
+      "total_sasa": 127.597,
+      "polar_sasa": 66.74,
+      "apolar_sasa": 60.856,
+      "volume": 346.254,
+      "mean_local_hydrophobic_density": 16.0,
+      "mean_alpha_sphere_radius": 3.677,
+      "mean_alpha_sphere_solvent_access": 0.395,
+      "apolar_alpha_sphere_proportion": 0.567,
+      "hydrophobicity_score": 39.5,
+      "volume_score": 5.25,
+      "polarity_score": 6.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 36.0,
+      "alpha_sphere_density": 4.082,
+      "centre_of_mass_max_sphere_distance": 8.072,
+      "flexibility": 0.866,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 780,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 783,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 784,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 787,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 788,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 854,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 856,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 879,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 882,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 883,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 921,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 925,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 48,
+      "score": -0.032,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 35.0,
+      "total_sasa": 125.196,
+      "polar_sasa": 55.153,
+      "apolar_sasa": 70.042,
+      "volume": 374.647,
+      "mean_local_hydrophobic_density": 12.0,
+      "mean_alpha_sphere_radius": 3.912,
+      "mean_alpha_sphere_solvent_access": 0.488,
+      "apolar_alpha_sphere_proportion": 0.371,
+      "hydrophobicity_score": 13.091,
+      "volume_score": 4.091,
+      "polarity_score": 7.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 53.846,
+      "alpha_sphere_density": 3.726,
+      "centre_of_mass_max_sphere_distance": 9.681,
+      "flexibility": 0.987,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 472,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 475,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 476,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 479,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 489,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 491,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 493,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 494,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 861,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 862,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 865,
+          "resname": "SER"
+        }
+      ]
+    },
+    {
+      "rank": 49,
+      "score": -0.041,
+      "druggability_score": 0.085,
+      "n_alpha_spheres": 46.0,
+      "total_sasa": 196.007,
+      "polar_sasa": 71.225,
+      "apolar_sasa": 124.782,
+      "volume": 433.565,
+      "mean_local_hydrophobic_density": 15.923,
+      "mean_alpha_sphere_radius": 3.693,
+      "mean_alpha_sphere_solvent_access": 0.449,
+      "apolar_alpha_sphere_proportion": 0.565,
+      "hydrophobicity_score": 14.385,
+      "volume_score": 3.769,
+      "polarity_score": 5.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 36.842,
+      "alpha_sphere_density": 6.029,
+      "centre_of_mass_max_sphere_distance": 15.671,
+      "flexibility": 0.557,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 98,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 99,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 102,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 103,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 104,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 105,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 106,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 118,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 119,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 120,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 132,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 133,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 134,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 50,
+      "score": -0.044,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 83.711,
+      "polar_sasa": 64.389,
+      "apolar_sasa": 19.322,
+      "volume": 277.435,
+      "mean_local_hydrophobic_density": 4.0,
+      "mean_alpha_sphere_radius": 3.912,
+      "mean_alpha_sphere_solvent_access": 0.475,
+      "apolar_alpha_sphere_proportion": 0.294,
+      "hydrophobicity_score": -27.667,
+      "volume_score": 5.667,
+      "polarity_score": 3.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 50.0,
+      "alpha_sphere_density": 2.783,
+      "centre_of_mass_max_sphere_distance": 6.162,
+      "flexibility": 0.157,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 29,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 30,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 31,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 51,
+      "score": -0.045,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 47.334,
+      "polar_sasa": 17.143,
+      "apolar_sasa": 30.191,
+      "volume": 171.255,
+      "mean_local_hydrophobic_density": 16.0,
+      "mean_alpha_sphere_radius": 3.793,
+      "mean_alpha_sphere_solvent_access": 0.605,
+      "apolar_alpha_sphere_proportion": 0.895,
+      "hydrophobicity_score": 57.667,
+      "volume_score": 5.0,
+      "polarity_score": 2.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 23.077,
+      "alpha_sphere_density": 1.091,
+      "centre_of_mass_max_sphere_distance": 2.749,
+      "flexibility": 0.358,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 74,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 75,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 78,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 52,
+      "score": -0.046,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 56.336,
+      "polar_sasa": 22.523,
+      "apolar_sasa": 33.814,
+      "volume": 176.229,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 3.934,
+      "mean_alpha_sphere_solvent_access": 0.728,
+      "apolar_alpha_sphere_proportion": 0.375,
+      "hydrophobicity_score": 52.4,
+      "volume_score": 4.2,
+      "polarity_score": 3.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 38.462,
+      "alpha_sphere_density": 1.625,
+      "centre_of_mass_max_sphere_distance": 3.167,
+      "flexibility": 0.992,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 228,
+          "resname": "TRP"
+        },
+        {
+          "chain": "A",
+          "resnum": 385,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 386,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 387,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 390,
+          "resname": "ILE"
+        }
+      ]
+    },
+    {
+      "rank": 53,
+      "score": -0.047,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 26.0,
+      "total_sasa": 145.822,
+      "polar_sasa": 38.838,
+      "apolar_sasa": 106.984,
+      "volume": 428.155,
+      "mean_local_hydrophobic_density": 4.75,
+      "mean_alpha_sphere_radius": 3.984,
+      "mean_alpha_sphere_solvent_access": 0.473,
+      "apolar_alpha_sphere_proportion": 0.308,
+      "hydrophobicity_score": 12.75,
+      "volume_score": 4.0,
+      "polarity_score": 7.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 36.0,
+      "alpha_sphere_density": 4.919,
+      "centre_of_mass_max_sphere_distance": 12.165,
+      "flexibility": 0.986,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 587,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 605,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 665,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 666,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 806,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 807,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 890,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 893,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 894,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 897,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 912,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 915,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 54,
+      "score": -0.048,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 20.0,
+      "total_sasa": 103.527,
+      "polar_sasa": 43.146,
+      "apolar_sasa": 60.381,
+      "volume": 267.322,
+      "mean_local_hydrophobic_density": 11.0,
+      "mean_alpha_sphere_radius": 3.974,
+      "mean_alpha_sphere_solvent_access": 0.557,
+      "apolar_alpha_sphere_proportion": 0.6,
+      "hydrophobicity_score": 10.375,
+      "volume_score": 4.375,
+      "polarity_score": 6.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 35.0,
+      "alpha_sphere_density": 3.459,
+      "centre_of_mass_max_sphere_distance": 7.438,
+      "flexibility": 0.947,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 648,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 651,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 652,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 655,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 677,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 678,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 747,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 748,
+          "resname": "ASN"
+        }
+      ]
+    },
+    {
+      "rank": 55,
+      "score": -0.048,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 22.0,
+      "total_sasa": 89.658,
+      "polar_sasa": 46.183,
+      "apolar_sasa": 43.475,
+      "volume": 369.101,
+      "mean_local_hydrophobic_density": 11.0,
+      "mean_alpha_sphere_radius": 4.2,
+      "mean_alpha_sphere_solvent_access": 0.607,
+      "apolar_alpha_sphere_proportion": 0.545,
+      "hydrophobicity_score": 10.667,
+      "volume_score": 4.833,
+      "polarity_score": 4.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 33.333,
+      "alpha_sphere_density": 2.704,
+      "centre_of_mass_max_sphere_distance": 9.017,
+      "flexibility": 0.992,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 311,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 316,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 335,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 336,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 359,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 363,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 56,
+      "score": -0.052,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 38.804,
+      "polar_sasa": 20.69,
+      "apolar_sasa": 18.114,
+      "volume": 76.971,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 3.74,
+      "mean_alpha_sphere_solvent_access": 0.431,
+      "apolar_alpha_sphere_proportion": 0.067,
+      "hydrophobicity_score": 6.0,
+      "volume_score": 5.2,
+      "polarity_score": 4.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 63.636,
+      "alpha_sphere_density": 0.84,
+      "centre_of_mass_max_sphere_distance": 1.883,
+      "flexibility": 0.985,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 476,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 494,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 861,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 862,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 863,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 57,
+      "score": -0.055,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 16.0,
+      "total_sasa": 78.141,
+      "polar_sasa": 33.459,
+      "apolar_sasa": 44.682,
+      "volume": 275.016,
+      "mean_local_hydrophobic_density": 3.0,
+      "mean_alpha_sphere_radius": 4.122,
+      "mean_alpha_sphere_solvent_access": 0.668,
+      "apolar_alpha_sphere_proportion": 0.25,
+      "hydrophobicity_score": -4.125,
+      "volume_score": 4.375,
+      "polarity_score": 7.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 53.333,
+      "alpha_sphere_density": 2.486,
+      "centre_of_mass_max_sphere_distance": 5.158,
+      "flexibility": 0.871,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 609,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 667,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 668,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 669,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 670,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 686,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 810,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 814,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 58,
+      "score": -0.06,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 18.0,
+      "total_sasa": 87.564,
+      "polar_sasa": 53.75,
+      "apolar_sasa": 33.814,
+      "volume": 265.143,
+      "mean_local_hydrophobic_density": 3.0,
+      "mean_alpha_sphere_radius": 4.043,
+      "mean_alpha_sphere_solvent_access": 0.633,
+      "apolar_alpha_sphere_proportion": 0.222,
+      "hydrophobicity_score": -0.714,
+      "volume_score": 3.714,
+      "polarity_score": 7.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 52.941,
+      "alpha_sphere_density": 2.709,
+      "centre_of_mass_max_sphere_distance": 7.626,
+      "flexibility": 0.948,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 729,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 731,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 732,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 733,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 736,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 767,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 770,
+          "resname": "GLN"
+        }
+      ]
+    },
+    {
+      "rank": 59,
+      "score": -0.077,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 74.721,
+      "polar_sasa": 32.454,
+      "apolar_sasa": 42.267,
+      "volume": 124.707,
+      "mean_local_hydrophobic_density": 3.0,
+      "mean_alpha_sphere_radius": 3.573,
+      "mean_alpha_sphere_solvent_access": 0.438,
+      "apolar_alpha_sphere_proportion": 0.211,
+      "hydrophobicity_score": -3.4,
+      "volume_score": 3.0,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 40.0,
+      "alpha_sphere_density": 1.947,
+      "centre_of_mass_max_sphere_distance": 4.825,
+      "flexibility": 0.952,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 247,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 542,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 545,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 563,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 920,
+          "resname": "THR"
+        }
+      ]
+    },
+    {
+      "rank": 60,
+      "score": -0.079,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 78.816,
+      "polar_sasa": 55.871,
+      "apolar_sasa": 22.945,
+      "volume": 218.259,
+      "mean_local_hydrophobic_density": 0.0,
+      "mean_alpha_sphere_radius": 4.231,
+      "mean_alpha_sphere_solvent_access": 0.575,
+      "apolar_alpha_sphere_proportion": 0.053,
+      "hydrophobicity_score": -21.0,
+      "volume_score": 4.2,
+      "polarity_score": 5.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 64.286,
+      "alpha_sphere_density": 2.079,
+      "centre_of_mass_max_sphere_distance": 4.717,
+      "flexibility": 0.951,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 187,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 408,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 409,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 411,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 413,
+          "resname": "HIS"
+        }
+      ]
+    },
+    {
+      "rank": 61,
+      "score": -0.081,
+      "druggability_score": 0.026,
+      "n_alpha_spheres": 72.0,
+      "total_sasa": 230.661,
+      "polar_sasa": 98.95,
+      "apolar_sasa": 131.711,
+      "volume": 701.909,
+      "mean_local_hydrophobic_density": 33.263,
+      "mean_alpha_sphere_radius": 4.122,
+      "mean_alpha_sphere_solvent_access": 0.501,
+      "apolar_alpha_sphere_proportion": 0.528,
+      "hydrophobicity_score": 34.0,
+      "volume_score": 3.833,
+      "polarity_score": 7.0,
+      "charge_score": -1.0,
+      "proportion_polar_atoms": 36.364,
+      "alpha_sphere_density": 5.309,
+      "centre_of_mass_max_sphere_distance": 13.779,
+      "flexibility": 0.93,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 163,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 164,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 170,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 171,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 174,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 175,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 176,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 177,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 178,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 180,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 181,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 351,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 354,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 355,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 358,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 406,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 409,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 410,
+          "resname": "LEU"
+        }
+      ]
+    },
+    {
+      "rank": 62,
+      "score": -0.093,
+      "druggability_score": 0.002,
+      "n_alpha_spheres": 38.0,
+      "total_sasa": 128.759,
+      "polar_sasa": 57.925,
+      "apolar_sasa": 70.834,
+      "volume": 382.857,
+      "mean_local_hydrophobic_density": 16.0,
+      "mean_alpha_sphere_radius": 4.026,
+      "mean_alpha_sphere_solvent_access": 0.507,
+      "apolar_alpha_sphere_proportion": 0.447,
+      "hydrophobicity_score": 9.778,
+      "volume_score": 4.0,
+      "polarity_score": 6.0,
+      "charge_score": -2.0,
+      "proportion_polar_atoms": 48.0,
+      "alpha_sphere_density": 3.062,
+      "centre_of_mass_max_sphere_distance": 7.929,
+      "flexibility": 0.9,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 665,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 666,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 667,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 668,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 807,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 808,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 809,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 810,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 811,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 63,
+      "score": -0.098,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 19.0,
+      "total_sasa": 103.142,
+      "polar_sasa": 57.252,
+      "apolar_sasa": 45.89,
+      "volume": 324.67,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 3.977,
+      "mean_alpha_sphere_solvent_access": 0.575,
+      "apolar_alpha_sphere_proportion": 0.158,
+      "hydrophobicity_score": -1.5,
+      "volume_score": 4.0,
+      "polarity_score": 4.0,
+      "charge_score": 0.0,
+      "proportion_polar_atoms": 47.368,
+      "alpha_sphere_density": 2.899,
+      "centre_of_mass_max_sphere_distance": 5.672,
+      "flexibility": 0.894,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 619,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 620,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 622,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 714,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 718,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 719,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 720,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 725,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 64,
+      "score": -0.099,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 41.0,
+      "total_sasa": 173.032,
+      "polar_sasa": 89.706,
+      "apolar_sasa": 83.326,
+      "volume": 606.802,
+      "mean_local_hydrophobic_density": 5.0,
+      "mean_alpha_sphere_radius": 4.089,
+      "mean_alpha_sphere_solvent_access": 0.546,
+      "apolar_alpha_sphere_proportion": 0.146,
+      "hydrophobicity_score": 0.7,
+      "volume_score": 4.4,
+      "polarity_score": 7.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 48.485,
+      "alpha_sphere_density": 4.639,
+      "centre_of_mass_max_sphere_distance": 11.49,
+      "flexibility": 0.969,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 654,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 658,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 846,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 847,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 848,
+          "resname": "CYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 849,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 903,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 904,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 905,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 906,
+          "resname": "GLU"
+        }
+      ]
+    },
+    {
+      "rank": 65,
+      "score": -0.102,
+      "druggability_score": 0.007,
+      "n_alpha_spheres": 78.0,
+      "total_sasa": 263.075,
+      "polar_sasa": 128.632,
+      "apolar_sasa": 134.443,
+      "volume": 951.94,
+      "mean_local_hydrophobic_density": 22.231,
+      "mean_alpha_sphere_radius": 4.058,
+      "mean_alpha_sphere_solvent_access": 0.55,
+      "apolar_alpha_sphere_proportion": 0.333,
+      "hydrophobicity_score": 7.263,
+      "volume_score": 4.421,
+      "polarity_score": 13.0,
+      "charge_score": -2.0,
+      "proportion_polar_atoms": 43.636,
+      "alpha_sphere_density": 5.692,
+      "centre_of_mass_max_sphere_distance": 13.682,
+      "flexibility": 0.817,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 427,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 488,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 498,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 513,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 515,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 516,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 538,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 540,
+          "resname": "VAL"
+        },
+        {
+          "chain": "A",
+          "resnum": 541,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 542,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 543,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 880,
+          "resname": "GLU"
+        },
+        {
+          "chain": "A",
+          "resnum": 883,
+          "resname": "MET"
+        },
+        {
+          "chain": "A",
+          "resnum": 884,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 886,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 921,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 922,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 923,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 925,
+          "resname": "ASP"
+        }
+      ]
+    },
+    {
+      "rank": 66,
+      "score": -0.127,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 34.0,
+      "total_sasa": 147.817,
+      "polar_sasa": 59.661,
+      "apolar_sasa": 88.157,
+      "volume": 403.001,
+      "mean_local_hydrophobic_density": 3.0,
+      "mean_alpha_sphere_radius": 3.986,
+      "mean_alpha_sphere_solvent_access": 0.383,
+      "apolar_alpha_sphere_proportion": 0.118,
+      "hydrophobicity_score": 4.333,
+      "volume_score": 4.067,
+      "polarity_score": 10.0,
+      "charge_score": 4.0,
+      "proportion_polar_atoms": 52.0,
+      "alpha_sphere_density": 3.693,
+      "centre_of_mass_max_sphere_distance": 8.029,
+      "flexibility": 0.984,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 255,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 276,
+          "resname": "ASP"
+        },
+        {
+          "chain": "A",
+          "resnum": 277,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 278,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 380,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 450,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 451,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 452,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 453,
+          "resname": "PRO"
+        },
+        {
+          "chain": "A",
+          "resnum": 519,
+          "resname": "GLN"
+        },
+        {
+          "chain": "A",
+          "resnum": 528,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 532,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 533,
+          "resname": "GLY"
+        },
+        {
+          "chain": "A",
+          "resnum": 534,
+          "resname": "PHE"
+        },
+        {
+          "chain": "A",
+          "resnum": 535,
+          "resname": "HIS"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "score": -0.128,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 17.0,
+      "total_sasa": 80.515,
+      "polar_sasa": 32.21,
+      "apolar_sasa": 48.305,
+      "volume": 181.411,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 3.89,
+      "mean_alpha_sphere_solvent_access": 0.481,
+      "apolar_alpha_sphere_proportion": 0.176,
+      "hydrophobicity_score": 4.8,
+      "volume_score": 4.2,
+      "polarity_score": 3.0,
+      "charge_score": 1.0,
+      "proportion_polar_atoms": 46.154,
+      "alpha_sphere_density": 1.75,
+      "centre_of_mass_max_sphere_distance": 4.831,
+      "flexibility": 0.908,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 617,
+          "resname": "THR"
+        },
+        {
+          "chain": "A",
+          "resnum": 619,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 717,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 718,
+          "resname": "ILE"
+        },
+        {
+          "chain": "A",
+          "resnum": 719,
+          "resname": "PRO"
+        }
+      ]
+    },
+    {
+      "rank": 68,
+      "score": -0.135,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 89.473,
+      "polar_sasa": 56.867,
+      "apolar_sasa": 32.606,
+      "volume": 292.264,
+      "mean_local_hydrophobic_density": 2.0,
+      "mean_alpha_sphere_radius": 4.336,
+      "mean_alpha_sphere_solvent_access": 0.534,
+      "apolar_alpha_sphere_proportion": 0.2,
+      "hydrophobicity_score": 4.333,
+      "volume_score": 5.333,
+      "polarity_score": 2.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 50.0,
+      "alpha_sphere_density": 2.151,
+      "centre_of_mass_max_sphere_distance": 4.727,
+      "flexibility": 0.161,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 65,
+          "resname": "ARG"
+        },
+        {
+          "chain": "A",
+          "resnum": 66,
+          "resname": "ALA"
+        },
+        {
+          "chain": "A",
+          "resnum": 67,
+          "resname": "ARG"
+        }
+      ]
+    },
+    {
+      "rank": 69,
+      "score": -0.164,
+      "druggability_score": 0.0,
+      "n_alpha_spheres": 21.0,
+      "total_sasa": 132.567,
+      "polar_sasa": 46.825,
+      "apolar_sasa": 85.742,
+      "volume": 428.202,
+      "mean_local_hydrophobic_density": 12.0,
+      "mean_alpha_sphere_radius": 4.088,
+      "mean_alpha_sphere_solvent_access": 0.53,
+      "apolar_alpha_sphere_proportion": 0.619,
+      "hydrophobicity_score": 8.286,
+      "volume_score": 5.0,
+      "polarity_score": 6.0,
+      "charge_score": 3.0,
+      "proportion_polar_atoms": 47.368,
+      "alpha_sphere_density": 3.306,
+      "centre_of_mass_max_sphere_distance": 7.233,
+      "flexibility": 0.954,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 277,
+          "resname": "ASN"
+        },
+        {
+          "chain": "A",
+          "resnum": 278,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 289,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 290,
+          "resname": "LEU"
+        },
+        {
+          "chain": "A",
+          "resnum": 291,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 451,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 528,
+          "resname": "LYS"
+        }
+      ]
+    },
+    {
+      "rank": 70,
+      "score": -0.2,
+      "druggability_score": 0.001,
+      "n_alpha_spheres": 15.0,
+      "total_sasa": 105.161,
+      "polar_sasa": 19.419,
+      "apolar_sasa": 85.742,
+      "volume": 270.709,
+      "mean_local_hydrophobic_density": 8.0,
+      "mean_alpha_sphere_radius": 4.244,
+      "mean_alpha_sphere_solvent_access": 0.625,
+      "apolar_alpha_sphere_proportion": 0.6,
+      "hydrophobicity_score": 7.6,
+      "volume_score": 4.2,
+      "polarity_score": 5.0,
+      "charge_score": 2.0,
+      "proportion_polar_atoms": 33.333,
+      "alpha_sphere_density": 2.152,
+      "centre_of_mass_max_sphere_distance": 4.291,
+      "flexibility": 0.968,
+      "residues": [
+        {
+          "chain": "A",
+          "resnum": 380,
+          "resname": "HIS"
+        },
+        {
+          "chain": "A",
+          "resnum": 381,
+          "resname": "SER"
+        },
+        {
+          "chain": "A",
+          "resnum": 528,
+          "resname": "LYS"
+        },
+        {
+          "chain": "A",
+          "resnum": 529,
+          "resname": "TYR"
+        },
+        {
+          "chain": "A",
+          "resnum": 532,
+          "resname": "SER"
+        }
+      ]
+    }
+  ],
+  "fpocket_output_dir": "AF-P22413-F1_fpocket"
+}

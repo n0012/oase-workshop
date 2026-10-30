@@ -1,0 +1,6 @@
+{"agent": "hypex-supervisor", "role": "supervisor"}
+{"agent": "hypex-generation", "role": "generation"}
+{"agent": "hypex-reflection", "role": "reflection"}
+{"agent": "hypex-ranking", "role": "ranking"}
+{"agent": "hypex-evolution", "role": "evolution"}
+{"agent": "hypex-proximity", "role": "proximity"}

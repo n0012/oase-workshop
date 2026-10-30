@@ -1,0 +1,21 @@
+{
+  "work_order_id": "WO-006",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/compounds/oase_enpp1_009.descriptors.json",
+      "sha256": "5fb7d81b85a45fc85511a171397e198ec230489897baa274cfe1caf5c45d14a4"
+    },
+    {
+      "path": "raw/compounds/enpp1_series_mmp.mmp-pairs.json",
+      "sha256": "763d9e7d4fd0a75fd667c042235283e6393e9d3e21e271d6b076957008aff742"
+    },
+    {
+      "path": "raw/admet/oase_enpp1_009.predict.json",
+      "sha256": "1260391763445e20f7c4e0bf59eddf4bafa783263cda3a21d05b7f8ace7f5a9e"
+    }
+  ],
+  "content": "Profile enpp1_hit_001 and oase_enpp1_009 with RDKit, run BRICS MMP analysis on the 3-compound series, and evaluate ADMET endpoints.",
+  "content_sha256": "8ef7a86dd8fa1f801064261577c9095aa4e35be365627433b2a2d0283c52c2c8",
+  "created_at": "2026-10-30T21:27:46Z"
+}

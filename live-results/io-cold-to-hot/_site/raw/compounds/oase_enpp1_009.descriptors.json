@@ -1,0 +1,15 @@
+{
+  "tool": "compound",
+  "subcommand": "descriptors",
+  "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC",
+  "descriptors": {
+    "molecular_weight": 475.5,
+    "logp": 2.01,
+    "tpsa": 113.96,
+    "hba": 8,
+    "hbd": 1,
+    "rotatable_bonds": 5,
+    "aromatic_rings": 3,
+    "heavy_atom_count": 33
+  }
+}

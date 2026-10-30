@@ -1,0 +1,51 @@
+{
+  "id": "WO-005",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does AutoDock Vina physics-based molecular docking corroborate binding of oase_enpp1_009 inside the ENPP1 catalytic groove?",
+  "requested_role": "structural-biologist",
+  "stage": "stage2-starting-matter-declaration",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Prepare receptor grid box on ENPP1 best druggable pocket and dock 3D conformer oase_enpp1_009.3d.sdf using AutoDock Vina.",
+    "artifact_links": [
+      {
+        "path": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.docking_result.json",
+        "sha256": "61d6ce80815385d6fb55a987d5a5c6a62177daa1a1726acf49a67afd8422bf1c"
+      },
+      {
+        "path": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.poses.pdbqt",
+        "sha256": "caa05282e34d53134fd3721331e1990a361841e422d71a42142713d4719d2c77"
+      }
+    ],
+    "snapshot": "contexts/WO-005-r1.json",
+    "snapshot_sha256": "821aeab67bfbf44386cc1c2d8c3712761f5686218eff9f8d4f6153e1b88b54b5"
+  },
+  "dependencies": [
+    "WO-004"
+  ],
+  "capabilities": [
+    "oase.docking"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.docking"
+    ],
+    "layer_1": [
+      "findings/structural-biology/wo-005-vina-docking.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "AutoDock Vina best pose achieves favorable binding energy in ENPP1 pocket",
+    "All fpocket and docking relays addressed"
+  ],
+  "alert_policy": {
+    "mode": "block_on_weak_binding",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T21:27:46Z",
+  "committed_at": "2026-10-30T21:27:46Z"
+}

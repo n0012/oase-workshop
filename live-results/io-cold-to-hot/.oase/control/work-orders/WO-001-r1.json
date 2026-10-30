@@ -1,0 +1,50 @@
+{
+  "id": "WO-001",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Which innate-immune checkpoint mechanism ranks highest across Co-Scientist and Hypex Elo tournaments for cold-to-hot tumor reprogramming?",
+  "requested_role": "hypex-supervisor",
+  "stage": "stage1-intervention-validation",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Evaluate ENPP1, ADAR1, PTPN2, TREX1, and LSD1 via Co-Scientist and Hypex adversarial Elo tournaments.",
+    "artifact_links": [
+      {
+        "path": "raw/hypotheses/cs-venter-20261030-io-cold-to-hot.tournament.json",
+        "sha256": "665b900ebdb2946f22543f0540cf8b4dbee37cebda472e7419e92955f16e7056"
+      },
+      {
+        "path": "raw/hypotheses/hx-io-cold-to-hot-elo.hypex.json",
+        "sha256": "2578a0b7d270129ca6d566b27b4fc0eaf97e36fd3ff09a7d7f966391d9649925"
+      }
+    ],
+    "snapshot": "contexts/WO-001-r1.json",
+    "snapshot_sha256": "19a3b554d7781092af0ed9279acf1e4c8b22575a0946a537076e2e86c101184b"
+  },
+  "dependencies": [],
+  "capabilities": [
+    "oase.coscientist",
+    "oase.hypex"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.hypotheses"
+    ],
+    "layer_1": [
+      "findings/computational-biology/wo-001-hypothesis-tournament.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "Co-Scientist and Hypex tournament artifacts ingested and analyzed with zero integrity issues",
+    "All mandatory relays addressed in Layer 1 finding"
+  ],
+  "alert_policy": {
+    "mode": "block_on_contradicted_claims",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T21:27:43Z",
+  "committed_at": "2026-10-30T21:27:43Z"
+}

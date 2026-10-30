@@ -1,0 +1,103 @@
+{
+  "record_type": "analysis",
+  "source": "raw/admet/oase_enpp1_009.predict.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:16:07Z",
+  "threshold_set": "admet-endpoints@1.0+program",
+  "thresholds_applied": {
+    "metabolic_logp_high": 4.0,
+    "metabolic_aromatic_rings_high": 3,
+    "metabolic_logp_low": 3.0,
+    "permeability_tpsa_high": 110.0,
+    "permeability_logp_min": -1.0,
+    "permeability_logp_max": 6.0,
+    "permeability_tpsa_low": 140.0,
+    "permeability_mw_max": 500.0,
+    "herg_logp_min": 3.7,
+    "herg_min_aromatic_rings": 2,
+    "solubility_high": -1.0,
+    "solubility_moderate": -3.0,
+    "solubility_low": -5.0
+  },
+  "metrics": {
+    "canonical_smiles": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC",
+    "endpoint_results": {
+      "metabolic_stability": {
+        "predicted_class": "low",
+        "logp": 2.01,
+        "aromatic_rings": 3,
+        "status": "acceptable"
+      },
+      "cyp_inhibition": {
+        "flagged_isoforms": [],
+        "n_flagged": 0,
+        "status": "acceptable"
+      },
+      "permeability": {
+        "predicted_class": "moderate",
+        "tpsa": 113.96,
+        "logp": 2.01,
+        "mw": 475.5,
+        "status": "marginal"
+      },
+      "herg_liability": {
+        "flagged": false,
+        "has_basic_nitrogen": true,
+        "logp": 2.01,
+        "aromatic_rings": 3,
+        "status": "acceptable"
+      },
+      "solubility": {
+        "predicted_class": "low",
+        "predicted_logS": -4.083,
+        "status": "marginal"
+      }
+    },
+    "n_liabilities": 0,
+    "n_marginals": 2,
+    "liabilities": [],
+    "marginals": [
+      "permeability (moderate)",
+      "solubility (low, LogS = -4.083)"
+    ]
+  },
+  "assessment": {
+    "verdict": "flagged",
+    "statement": "COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC has 2 marginal ADMET endpoint(s): permeability (moderate); solubility (low, LogS = -4.083). No critical liabilities identified.",
+    "relay_dispositions": [
+      {
+        "code": "admet.prediction_not_measurement",
+        "status": "not_applicable",
+        "condition": "verdict is developable",
+        "reason": "verdict is flagged; the over-read risk this relay guards against \u2014 treating predictions as measurements \u2014 is highest when the profile looks clean, which this one does not"
+      },
+      {
+        "code": "admet.herg_structural_flag",
+        "status": "not_applicable",
+        "condition": "hERG structural features detected",
+        "reason": "no hERG pharmacophore features matched"
+      }
+    ]
+  },
+  "threshold_sources": {
+    "metabolic_logp_high": "default",
+    "metabolic_aromatic_rings_high": "default",
+    "metabolic_logp_low": "default",
+    "permeability_tpsa_high": "program",
+    "permeability_logp_min": "default",
+    "permeability_logp_max": "default",
+    "permeability_tpsa_low": "program",
+    "permeability_mw_max": "program",
+    "herg_logp_min": "program",
+    "herg_min_aromatic_rings": "program",
+    "solubility_high": "default",
+    "solubility_moderate": "default",
+    "solubility_low": "default"
+  },
+  "threshold_provenance": "Gleeson, J Med Chem 2008;51:817-834 (metabolic stability); Egan et al., J Med Chem 2000;43:3867-3877 (permeability); Aronov, Drug Discov Today 2005;10:149-155 (hERG); Delaney, J Chem Inf Comput Sci 2004;44:1000-1009 (solubility)",
+  "written_by": "admet-dmpk-scientist",
+  "work_order_id": null,
+  "source_sha256": "1260391763445e20f7c4e0bf59eddf4bafa783263cda3a21d05b7f8ace7f5a9e"
+}

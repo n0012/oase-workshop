@@ -1,0 +1,57 @@
+data_pocket59_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    59:
+0  - Pocket Score                      : -0.0767
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    19
+3  - Mean alpha-sphere radius          : 3.5725
+4  - Mean alpha-sphere Solvent Acc.    : 0.4377
+5  - Mean B-factor of pocket residues  : 0.9522
+6  - Hydrophobicity Score              : -3.4000
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 3.0000
+9  - Pocket volume (Monte Carlo)       : 124.7073
+10  -Pocket volume (convex hull)       : 2.8495
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 3.0000
+13 - Number of apolar alpha sphere     :     4
+14 - Proportion of apolar alpha sphere : 0.2105
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1844     C   CB ?  ASN      A 247 ?  -13.740   -5.027   -3.837   0.00  0 247 A
+ATOM    7330     O  OG1 ?  THR      A 920 ?   -9.128   -4.721   -9.179  -3.21  0 920 A
+ATOM    4421     O  OG1 ?  THR      A 563 ?  -13.870   -2.679   -6.379   0.00  0 563 A
+ATOM    4288     O  OE1 ?  GLN      A 545 ?   -9.756   -4.618   -3.287  -2.14  0 545 A
+ATOM    1847     N  ND2 ?  ASN      A 247 ?  -14.643   -6.655   -5.393  -1.68  0 247 A
+ATOM    1846     C   CG ?  ASN      A 247 ?  -14.102   -6.452   -4.212   0.00  0 247 A
+ATOM    4285     C   CG ?  GLN      A 545 ?  -10.531   -6.852   -2.798   0.00  0 545 A
+ATOM    1848     O  OD1 ?  ASN      A 247 ?  -13.874   -7.402   -3.486  -5.36  0 247 A
+ATOM    7329     C  CG2 ?  THR      A 920 ?   -9.022   -7.096   -9.093   0.00  0 920 A
+ATOM    4286     C   CD ?  GLN      A 545 ?   -9.479   -5.769   -2.991   0.00  0 545 A
+ATOM    4420     C  CG2 ?  THR      A 563 ?  -11.901   -1.435   -5.924   0.00  0 563 A
+ATOM    4263     O   OG ?  SER      A 542 ?   -9.575  -11.447   -6.045  -0.54  0 542 A
+ATOM    4261     C   CB ?  SER      A 542 ?  -10.034  -11.575   -4.712   0.00  0 542 A
+ATOM    4259     C   CA ?  SER      A 542 ?   -9.377  -10.502   -3.833   0.00  0 542 A
+ATOM    7327     C   CB ?  THR      A 920 ?   -9.360   -5.883   -9.958   0.00  0 920 A
+# 

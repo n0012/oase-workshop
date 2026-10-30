@@ -1,0 +1,68 @@
+data_pocket36_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    36:
+0  - Pocket Score                      : -0.0040
+1  - Drug Score                        : 0.0020
+2  - Number of alpha spheres           :    22
+3  - Mean alpha-sphere radius          : 3.9383
+4  - Mean alpha-sphere Solvent Acc.    : 0.5728
+5  - Mean B-factor of pocket residues  : 0.9874
+6  - Hydrophobicity Score              : -8.1667
+7  - Polarity Score                    :     6
+8  - Amino Acid based volume Score     : 3.1667
+9  - Pocket volume (Monte Carlo)       : 306.6912
+10  -Pocket volume (convex hull)       : 26.6664
+11 - Charge Score                      :    -1
+12 - Local hydrophobic density Score   : 8.0000
+13 - Number of apolar alpha sphere     :     9
+14 - Proportion of apolar alpha sphere : 0.4091
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    4684     O    O ?  ASN      A 597 ?  -24.258   16.718   -1.010  -1.88  0 597 A
+ATOM    4670     C  CD2 ?  LEU      A 595 ?  -22.162   11.671    0.540   0.00  0 595 A
+ATOM    4669     C  CD1 ?  LEU      A 595 ?  -20.908   13.382   -0.750   0.00  0 595 A
+ATOM    4520     O    O ?  ASP      A 575 ?  -20.346   16.733    3.756  -0.40  0 575 A
+ATOM    4531     C  CD2 ?  LEU      A 576 ?  -22.429   11.863    4.169   0.00  0 576 A
+ATOM    4348     C   CA ?  GLY      A 554 ?  -26.110   11.856    2.960   0.00  0 554 A
+ATOM    4683     C   CB ?  ASN      A 597 ?  -27.053   16.893   -1.360   0.00  0 597 A
+ATOM    4680     N    N ?  ASN      A 597 ?  -26.400   14.703   -2.202  -2.19  0 597 A
+ATOM    4350     O    O ?  GLY      A 554 ?  -25.601   11.298    0.682  -1.07  0 554 A
+ATOM    1553     C   CG ?  PRO      A 210 ?  -27.549   15.273    8.832   0.00  0 210 A
+ATOM    4343     C   CB ?  PRO      A 553 ?  -29.782   12.102    5.640   0.00  0 553 A
+ATOM    1488     C   CG ?  PRO      A 201 ?  -31.335   16.153    7.209   0.00  0 201 A
+ATOM    3231     N  ND2 ?  ASN      A 417 ?  -24.658   12.067    7.369  -2.19  0 417 A
+ATOM    1554     C   CD ?  PRO      A 210 ?  -26.504   16.382    8.849   0.00  0 210 A
+ATOM    4344     O    O ?  PRO      A 553 ?  -28.850   11.648    2.485  -2.14  0 553 A
+ATOM    1489     C   CD ?  PRO      A 201 ?  -32.214   15.855    5.994   0.00  0 201 A
+ATOM    4687     O  OD1 ?  ASN      A 597 ?  -29.104   15.684   -1.117  -3.62  0 597 A
+ATOM    1470     O    O ?  ASN      A 199 ?  -33.193   14.447    1.748   0.00  0 199 A
+ATOM    4342     C    C ?  PRO      A 553 ?  -28.441   11.386    3.614   0.00  0 553 A
+ATOM    4347     N    N ?  GLY      A 554 ?  -27.137   11.414    3.912   0.00  0 554 A
+ATOM    4345     C   CG ?  PRO      A 553 ?  -28.914   11.831    6.865   0.00  0 553 A
+ATOM    4528     O    O ?  LEU      A 576 ?  -21.956   15.329    7.096  -3.62  0 576 A
+ATOM    4546     N  ND2 ?  ASN      A 578 ?  -23.079   20.697    6.471  -0.42  0 578 A
+ATOM    1546     C  CG2 ?  THR      A 209 ?  -22.937   18.217    9.429   0.00  0 209 A
+ATOM    4547     O  OD1 ?  ASN      A 578 ?  -22.008   19.969    4.723  -5.36  0 578 A
+ATOM    4525     C   CA ?  LEU      A 576 ?  -20.737   14.389    5.255   0.00  0 576 A
+# 

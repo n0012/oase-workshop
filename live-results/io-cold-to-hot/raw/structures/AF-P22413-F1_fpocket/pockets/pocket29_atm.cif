@@ -1,0 +1,58 @@
+data_pocket29_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    29:
+0  - Pocket Score                      : 0.0210
+1  - Drug Score                        : 0.0006
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 4.1823
+4  - Mean alpha-sphere Solvent Acc.    : 0.6383
+5  - Mean B-factor of pocket residues  : 0.9456
+6  - Hydrophobicity Score              : 4.6667
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 4.5000
+9  - Pocket volume (Monte Carlo)       : 259.6416
+10  -Pocket volume (convex hull)       : 6.6983
+11 - Charge Score                      :    -1
+12 - Local hydrophobic density Score   : 7.0000
+13 - Number of apolar alpha sphere     :     8
+14 - Proportion of apolar alpha sphere : 0.5333
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    6134     C   CB ?  TYR      A 775 ?    7.401   -7.706  -25.941   0.00  0 775 A
+ATOM    6945     C   CB ?  ASP      A 874 ?    9.582  -12.329  -24.602   0.00  0 874 A
+ATOM    6138     C  CD2 ?  TYR      A 775 ?    6.234   -9.781  -26.831   0.00  0 775 A
+ATOM    6949     O  OD2 ?  ASP      A 874 ?   11.726  -12.300  -25.647   0.00  0 874 A
+ATOM    6126     C   CD ?  ARG      A 774 ?   12.636   -4.132  -30.117   0.00  0 774 A
+ATOM    6092     C   CA ?  VAL      A 771 ?   12.776   -5.906  -24.686   0.00  0 771 A
+ATOM    6096     C  CG1 ?  VAL      A 771 ?   12.736   -8.402  -24.209   0.00  0 771 A
+ATOM    6097     C  CG2 ?  VAL      A 771 ?   14.916   -7.222  -24.236   0.00  0 771 A
+ATOM    6171     O  OD2 ?  ASP      A 778 ?    9.071   -5.536  -31.765  -1.48  0 778 A
+ATOM    6178     O  OG1 ?  THR      A 779 ?    4.329   -9.156  -30.086   0.00  0 779 A
+ATOM    6167     C   CB ?  ASP      A 778 ?    6.658   -5.886  -31.618   0.00  0 778 A
+ATOM    6123     C   CB ?  ARG      A 774 ?   10.641   -4.416  -28.607   0.00  0 774 A
+ATOM    6127     N   NE ?  ARG      A 774 ?   11.960   -4.849  -31.210   0.00  0 774 A
+ATOM    6095     O    O ?  VAL      A 771 ?   10.416   -6.081  -25.075  -1.07  0 771 A
+ATOM    6131     N    N ?  TYR      A 775 ?    8.231   -5.685  -27.084  -1.09  0 775 A
+ATOM    6132     C   CA ?  TYR      A 775 ?    7.128   -6.656  -27.024   0.00  0 775 A
+# 

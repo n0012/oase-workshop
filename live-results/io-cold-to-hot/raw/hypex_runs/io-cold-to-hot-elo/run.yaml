@@ -1,0 +1,14 @@
+run_id: io-cold-to-hot-elo
+goal: Prioritize innate immune checkpoint targets for cold-to-hot TME conversion with oral small molecules
+constraints:
+    - Extracellular or druggable catalytic pocket with human LoF safety
+created_at: "2026-10-30T19:00:00Z"
+budgets:
+    max_hypotheses: 50
+    max_matches: 200
+    max_epochs: 5
+tournament:
+    strategy: proximity-elo
+    composite:
+        preset: balanced
+retrospective_mode: false

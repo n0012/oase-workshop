@@ -1,0 +1,57 @@
+data_pocket41_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    41:
+0  - Pocket Score                      : -0.0090
+1  - Drug Score                        : 0.0001
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.8673
+4  - Mean alpha-sphere Solvent Acc.    : 0.5170
+5  - Mean B-factor of pocket residues  : 0.9306
+6  - Hydrophobicity Score              : 42.4286
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 5.0000
+9  - Pocket volume (Monte Carlo)       : 302.3515
+10  -Pocket volume (convex hull)       : 16.5852
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 2.0000
+13 - Number of apolar alpha sphere     :     3
+14 - Proportion of apolar alpha sphere : 0.1765
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5041     C    C ?  PHE      A 642 ?    4.756   21.364  -41.232   0.00  0 642 A
+ATOM    5022     O  OE1 ?  GLN      A 639 ?    9.338   25.102  -42.248  -2.14  0 639 A
+ATOM    5043     O    O ?  PHE      A 642 ?    4.290   21.806  -40.180   0.00  0 642 A
+ATOM    5042     C   CB ?  PHE      A 642 ?    6.530   19.840  -40.162   0.00  0 642 A
+ATOM    4836     C   CB ?  PHE      A 616 ?   10.305   25.376  -39.060   0.00  0 616 A
+ATOM    5057     O  OD1 ?  ASN      A 643 ?    4.037   26.445  -43.017   0.00  0 643 A
+ATOM    5021     N  NE2 ?  GLN      A 639 ?    8.009   26.479  -43.273  -1.68  0 639 A
+ATOM    5051     C   CA ?  ASN      A 643 ?    3.800   23.235  -42.543   0.00  0 643 A
+ATOM    4833     N    N ?  PHE      A 616 ?    9.784   26.122  -36.774   0.00  0 616 A
+ATOM    4837     O    O ?  PHE      A 616 ?   11.760   27.855  -38.073   0.00  0 616 A
+ATOM    4839     C  CD1 ?  PHE      A 616 ?   11.860   26.159  -40.911   0.00  0 616 A
+ATOM    5053     C   CB ?  ASN      A 643 ?    4.453   24.155  -43.587   0.00  0 643 A
+ATOM    5667     C   CD ?  ARG      A 717 ?    8.247   21.523  -35.618   0.00  0 717 A
+ATOM    4824     O    O ?  CYS      A 614 ?    8.211   24.757  -33.498   0.00  0 614 A
+ATOM    5011     C  CE1 ?  PHE      A 638 ?   10.520   20.429  -39.219   0.00  0 638 A
+# 

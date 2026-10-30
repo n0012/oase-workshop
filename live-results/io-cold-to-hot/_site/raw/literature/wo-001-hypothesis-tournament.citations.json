@@ -1,0 +1,82 @@
+{
+  "schema": "oase.citation-manifest.v1",
+  "target_file": "wo-001-hypothesis-tournament.md",
+  "verified_at": "2026-10-30T21:28:02Z",
+  "verifier": "oase-cite/0.3.0",
+  "summary": {
+    "total": 5,
+    "verified": 5,
+    "suspect": 0,
+    "phantom": 0,
+    "unverified": 0,
+    "all_verified": true
+  },
+  "extraction_basis": "regex-fallback",
+  "citations": [
+    {
+      "id": "32972994",
+      "raw_id": "PMID:32972994",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Ultrapotent human antibodies protect against SARS-CoV-2 challenge via multiple mechanisms.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32972994%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32972994%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "30559380",
+      "raw_id": "PMID:30559380",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Loss of ADAR1 in tumours overcomes resistance to immune checkpoint blockade.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30559380%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30559380%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "28723893",
+      "raw_id": "PMID:28723893",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "In vivo CRISPR screening identifies Ptpn2 as a cancer immunotherapy target.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A28723893%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A28723893%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "37798395",
+      "raw_id": "PMID:37798395",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "An intramolecular disulphide bond in human 4E-T affects its binding to eIF4E1a protein.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A37798395%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A37798395%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "16845398",
+      "raw_id": "PMID:16845398",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Mutations in the gene encoding the 3'-5' DNA exonuclease TREX1 cause Aicardi-Gouti\u00e8res syndrome at the AGS1 locus.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16845398%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16845398%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    }
+  ]
+}

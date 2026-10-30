@@ -1,23 +1,60 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "default_campaign": "pcsk9-live-argolis",
+  "gcp_project_id": "losiern-oase-workshop",
+  "scion_hub_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app",
+  "story_arc_url": "https://oase-story-arc-zw7klespva-uc.a.run.app",
+  "gcp_console_links": [
+    {
+      "label": "💬 Live Scion Hub Projects & Webchat",
+      "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects",
+      "category": "scion"
+    },
+    {
+      "label": "🧬 GCP Vertex AI Endpoints (1P AlphaGenome & AlphaFold 3)",
+      "href": "https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop",
+      "category": "gcp"
+    },
+    {
+      "label": "🖥 GCP Compute Engine VM (scion-hub-oase · 20 Specialist Containers)",
+      "href": "https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop",
+      "category": "gcp"
+    },
+    {
+      "label": "📜 GCP Cloud Logging (Live Container & Tool Telemetry)",
+      "href": "https://console.cloud.google.com/logs/query?project=losiern-oase-workshop",
+      "category": "gcp"
+    },
+    {
+      "label": "☁️ GCP Cloud Run (oase-story-arc & scion-hub-oase-iap-proxy)",
+      "href": "https://console.cloud.google.com/run?project=losiern-oase-workshop",
+      "category": "gcp"
+    },
+    {
+      "label": "🗄 GCP Cloud Storage (losiern-oase-workshop-bundles)",
+      "href": "https://console.cloud.google.com/storage/browser/losiern-oase-workshop-bundles?project=losiern-oase-workshop",
+      "category": "gcp"
+    }
+  ],
   "campaigns": [
     {
       "id": "pcsk9-live-argolis",
-      "short_label": "PCSK9 Oral · Multi-Model Live Run (v2)",
-      "nav_slug": "pcsk9-live-v2 · Argon+Opus",
-      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Run: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs (v2)",
+      "grove_slug": "pcsk9-oral-live-v2",
+      "short_label": "PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign",
+      "nav_slug": "pcsk9-oral · Argon+Opus",
+      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs",
       "status": "ready",
-      "badge": "LIVE · ARGON + OPUS 5.5",
+      "badge": "LIVE · 78/78 DOCTOR · FULL PRE-IND",
       "target": "PCSK9 (Q8NBP7) · Gemini 4 Argon (High/Med) + Claude Opus 5.5 + 1P AlphaGenome & AlphaFold 3",
-      "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · Gemini 4 Argon + Claude Opus 5.5 · Dedicated Vertex AI A100 Endpoints · 78/78 oase doctor",
+      "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · All 41 Verification Skills Active (78/78 PASS) · Dedicated Vertex AI A100 Endpoints · 8/8 Work Orders Accepted",
       "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
       "static_video_prefix": "assets/videos",
       "video_manifest": "assets/video-chapters-live-v2-manifest.json",
       "portal_prefix": "",
+      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2",
       "kpis": [
         { "val": "Argon + Opus 5.5", "lbl": "Multi-Model Frontier Squadron" },
-        { "val": "78 / 78 [PASS]", "lbl": "oase doctor Live Health" },
+        { "val": "78 / 78 [PASS]", "lbl": "41 Skills · oase doctor Live" },
         { "val": "1P AlphaGenome", "lbl": "Dedicated A100 (us-central1)" },
         { "val": "1P AlphaFold 3", "lbl": "Dedicated A100 (us-east4)" },
         { "val": "3D .cif + 1 Mb", "lbl": "Interactive Live Viewers" },
@@ -26,27 +63,27 @@
       "pause_links": {
         "ch1": [
           { "label": "🏆 Interactive 7-Agent Hypex Bracket (Argon + Opus 5.5)", "href": "viewers/coscientist-live-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2", "mode": "tab" },
           { "label": "📄 WO-001 Co-Scientist Finding", "href": "finding_findings_computational-biology_WO-001_md.html", "mode": "subpage" },
-          { "label": "📦 Hypotheses SHA-256 Receipt", "href": "artifact_hypotheses.html", "mode": "subpage" },
-          { "label": "📋 Work Order WO-001-r1", "href": "workorder_WO-001_r1.html", "mode": "subpage" }
+          { "label": "📦 Hypotheses SHA-256 Receipt", "href": "artifact_hypotheses.html", "mode": "subpage" }
         ],
         "ch2": [
           { "label": "🧬 Interactive 1P AlphaGenome 1 Mb Track Browser", "href": "viewers/alphagenome-live-viewer.html", "mode": "tab" },
+          { "label": "☁️ GCP Vertex AI 1P AlphaGenome Endpoint (us-central1)", "href": "https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop", "mode": "tab" },
           { "label": "📄 WO-002 gnomAD & GTEx Finding", "href": "finding_findings_computational-biology_WO-002_md.html", "mode": "subpage" },
-          { "label": "📄 WO-003 AlphaGenome & Trials", "href": "finding_findings_computational-biology_WO-003_md.html", "mode": "subpage" },
-          { "label": "📊 GTEx Liver Expression", "href": "artifact_gtex.html", "mode": "subpage" }
+          { "label": "📄 WO-003 AlphaGenome & Trials", "href": "finding_findings_computational-biology_WO-003_md.html", "mode": "subpage" }
         ],
         "ch3": [
           { "label": "🧊 Interactive 3D AlphaFold 3 Co-Fold Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
+          { "label": "☁️ GCP Vertex AI 1P AlphaFold 3 Endpoint (us-east4)", "href": "https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop", "mode": "tab" },
           { "label": "📄 WO-004 AF3 & Pocket Finding", "href": "finding_findings_structural-biology_WO-004_md.html", "mode": "subpage" },
-          { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" },
-          { "label": "🧪 Interactive Pocket Table", "href": "viewers/pockets-viewer.html?file=../raw/pocket/Q8NBP7_pockets.json", "mode": "tab" }
+          { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" }
         ],
         "ch4": [
           { "label": "💊 Claude Opus 5.5 Med-Chem DMTA & Wet-Lab Gate", "href": "viewers/dmta-live-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2", "mode": "tab" },
           { "label": "📄 WO-006 Med-Chem & BRICS Finding", "href": "finding_findings_medicinal-chemistry_WO-006_md.html", "mode": "subpage" },
-          { "label": "⚠️ Liability Tracker (L-002)", "href": "program_state_liability-tracker.html", "mode": "subpage" },
-          { "label": "📋 Active Series State", "href": "program_state_active-series.html", "mode": "subpage" }
+          { "label": "⚠️ Liability Tracker (L-002)", "href": "program_state_liability-tracker.html", "mode": "subpage" }
         ],
         "ch5": [
           { "label": "📈 Multi-Species Oral PK Curve & Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
@@ -56,76 +93,76 @@
         ],
         "ch6": [
           { "label": "🛡 Multi-Model Flight Recorder & Tamper Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
+          { "label": "🖥 GCP Compute VM & Container Logs", "href": "https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop", "mode": "tab" },
           { "label": "📜 Signed Decision & Override Log", "href": "program_state_decision-log.html", "mode": "subpage" },
           { "label": "⚠️ Program Liability Tracker", "href": "program_state_liability-tracker.html", "mode": "subpage" }
         ],
         "ch7": [
           { "label": "🛡 Multi-Model Flight Recorder & 78/78 Doctor", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2", "mode": "tab" },
           { "label": "📑 WO-008 Nominated Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
           { "label": "🏠 Full 30-Page Evidence Portal", "href": "index.html", "mode": "subpage" }
         ]
       }
     },
     {
-      "id": "pcsk9-pilot-v1",
-      "short_label": "PCSK9 Oral · Reference Pilot (v1)",
-      "nav_slug": "pcsk9-oral · v1",
-      "title": "PCSK9 Oral Small Molecule — Reference Squadron Walkthrough (v1)",
+      "id": "io-cold-to-hot",
+      "grove_slug": "io-cold-to-hot",
+      "short_label": "IO Cold-to-Hot ENPP1 · Halted at Wet-Lab Wall (DEC-003)",
+      "nav_slug": "io-cold-to-hot · ENPP1",
+      "title": "IO Cold-to-Hot Tumor Reprogramming — ENPP1 cGAMP/STING Blockade & Wet-Lab Wall Dossier",
       "status": "ready",
-      "badge": "LIVE · 8 GROVES",
-      "target": "PCSK9 (Q8NBP7) · Oral Rule-of-5 Small Molecule",
-      "stack_summary": "5 Live Scientist Avatars + 6 Voiced AI Wingmen · Deterministic 2-Phase Receipts · Sub-2s SQLite Reset",
-      "gcs_video_prefix": "videos",
-      "static_video_prefix": "assets/videos-v1",
-      "video_manifest": "assets/video-chapters-manifest.json",
+      "badge": "LIVE · 78/78 DOCTOR · WET-LAB WALL (DEC-003)",
+      "target": "ENPP1 (P22413) vs TREX1/PTPN2/ADAR1 · 1P AlphaGenome (chr6) + 1P AlphaFold 3 + Wet-Lab Request Package",
+      "stack_summary": "Live Grove (io-cold-to-hot) · All 41 Verification Skills Active (78/78 PASS) · Halted at DEC-003 Wet-Lab Wall Awaiting EXP-01..04",
+      "gcs_video_prefix": "campaigns/io-cold-to-hot/videos",
+      "static_video_prefix": "assets/videos-io-cold-to-hot",
+      "video_manifest": "assets/video-chapters-io-cold-to-hot-manifest.json",
       "portal_prefix": "",
+      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot",
       "kpis": [
-        { "val": "5 Human + 11 AI", "lbl": "Discovery Pod & Agent Team" },
-        { "val": "4 Core Pillars", "lbl": "Grove · WOs · 2-Phase · Gates" },
-        { "val": "5 Artifact Layers", "lbl": "Separation of Powers" },
-        { "val": "8 / 8 [PASS]", "lbl": "Work Orders Accepted" },
-        { "val": "3 Blocked + 1 Signed", "lbl": "Tamper & Override Audit" },
-        { "val": "OASE-PCSK9-014", "lbl": "Nominated Lead (40 mg QD)" }
+        { "val": "ENPP1 (1658.4 Elo)", "lbl": "#1 Cold-to-Hot Target" },
+        { "val": "78 / 78 [PASS]", "lbl": "41 Skills · oase doctor Live" },
+        { "val": "1P AlphaGenome", "lbl": "chr6:131894218C>T (1 Mb)" },
+        { "val": "1P AlphaFold 3", "lbl": "AF3-enpp1_009_complex.cif" },
+        { "val": "OASE-ENPP1-009", "lbl": "cLogP 2.01 · TPSA 111.8 Å²" },
+        { "val": "DEC-003 HALTED", "lbl": "Wet-Lab Wall (EXP-01..04)" }
       ],
       "pause_links": {
         "ch1": [
-          { "label": "🏆 Interactive 7-Agent Hypex Bracket", "href": "viewers/coscientist-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-001 Co-Scientist Finding", "href": "finding_findings_computational-biology_WO-001_md.html", "mode": "subpage" },
-          { "label": "📦 Hypotheses SHA-256 Receipt", "href": "artifact_hypotheses.html", "mode": "subpage" },
-          { "label": "📋 Work Order WO-001-r1", "href": "workorder_WO-001_r1.html", "mode": "subpage" }
+          { "label": "🏆 Interactive 5-Target IO Co-Scientist & Hypex Bracket", "href": "viewers/io-coscientist-live-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (io-cold-to-hot)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot", "mode": "tab" },
+          { "label": "🗺 David's 29-Agent venter-scion DAG Map", "href": "assets/io-cold-to-hot-provenance/02_oase_agent_map.png", "mode": "tab" },
+          { "label": "💬 Live Tandem Chat (Nick & David)", "href": "assets/io-cold-to-hot-provenance/04b_tandem_chat_nick_and_david.png", "mode": "tab" }
         ],
         "ch2": [
-          { "label": "🧬 Interactive 1P AlphaGenome 1 Mb Browser", "href": "viewers/alphagenome-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-002 gnomAD & GTEx Finding", "href": "finding_findings_computational-biology_WO-002_md.html", "mode": "subpage" },
-          { "label": "📄 WO-003 AlphaGenome & Trials", "href": "finding_findings_computational-biology_WO-003_md.html", "mode": "subpage" },
-          { "label": "📊 GTEx Liver Expression", "href": "artifact_gtex.html", "mode": "subpage" }
+          { "label": "🧬 ENPP1 vs TREX1 Genetics & 1P AlphaGenome (chr6)", "href": "viewers/io-alphagenome-live-viewer.html", "mode": "tab" },
+          { "label": "☁️ GCP Vertex AI 1P AlphaGenome Endpoint (us-central1)", "href": "https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop", "mode": "tab" },
+          { "label": "📊 Target Nomination Matrix (DEC-001)", "href": "assets/io-cold-to-hot-provenance/06a_target_nomination_matrix.png", "mode": "tab" }
         ],
         "ch3": [
-          { "label": "🧊 Interactive 3D AlphaFold 3 Viewer", "href": "viewers/af3-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-004 AF3 & Pocket Finding", "href": "finding_findings_structural-biology_WO-004_md.html", "mode": "subpage" },
-          { "label": "📄 WO-005 Vina Docking Finding", "href": "finding_findings_computational-chemistry_WO-005_md.html", "mode": "subpage" },
-          { "label": "🧪 Interactive Pocket Table", "href": "viewers/pockets-viewer.html?file=../raw/pocket/Q8NBP7_pockets.json", "mode": "tab" }
+          { "label": "🧊 Interactive 3D AlphaFold 3 ENPP1 Co-Fold & Vina", "href": "viewers/io-af3-live-viewer.html", "mode": "tab" },
+          { "label": "☁️ GCP Vertex AI 1P AlphaFold 3 Endpoint (us-east4)", "href": "https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop", "mode": "tab" },
+          { "label": "🧬 Raw AF3-enpp1_009_complex.cif", "href": "viewers/AF3-enpp1_009_complex.cif", "mode": "tab" }
         ],
         "ch4": [
-          { "label": "💊 Interactive Claude Opus 5.5 DMTA & hERG Gate", "href": "viewers/dmta-live-viewer.html", "mode": "tab" },
-          { "label": "📄 WO-006 Med-Chem & BRICS Finding", "href": "finding_findings_medicinal-chemistry_WO-006_md.html", "mode": "subpage" },
-          { "label": "⚠️ Liability Tracker (L-002)", "href": "program_state_liability-tracker.html", "mode": "subpage" },
-          { "label": "📋 Active Series State", "href": "program_state_active-series.html", "mode": "subpage" }
+          { "label": "💊 ENPP1 Quinazoline Sulfonylurea DMTA & ADMET", "href": "viewers/io-dmta-live-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (io-cold-to-hot)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot", "mode": "tab" },
+          { "label": "📄 Lead Series Report (ENPP1 / PTPN2)", "href": "assets/io-cold-to-hot-provenance/06b_lead_series_report.png", "mode": "tab" }
         ],
         "ch5": [
-          { "label": "📄 WO-007 Human Oral PK Finding", "href": "finding_findings_admet-dmpk_WO-007_md.html", "mode": "subpage" },
-          { "label": "📑 WO-008 Candidate Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
-          { "label": "📈 Raw Scaled PK JSON", "href": "viewers/json-viewer.html?file=../raw/pk/oase_pcsk9_014_scaled_pk.json", "mode": "tab" }
+          { "label": "⏸ Wet-Lab Wall Gate (DEC-003) & EXP-01..04 Package", "href": "viewers/io-wetlab-wall-viewer.html", "mode": "tab" },
+          { "label": "📋 Original Wet-Lab Wall Readiness Report", "href": "assets/io-cold-to-hot-provenance/06c_wet_lab_wall_report.png", "mode": "tab" }
         ],
         "ch6": [
-          { "label": "🛡 Live Multi-Model Flight Recorder & Tamper Ledger", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
-          { "label": "📜 Signed Decision & Override Log", "href": "program_state_decision-log.html", "mode": "subpage" },
-          { "label": "⚠️ Program Liability Tracker", "href": "program_state_liability-tracker.html", "mode": "subpage" }
+          { "label": "🛡 Red-Team Tamper Ledger (DRILL-01..03 Blocked)", "href": "viewers/io-wetlab-wall-viewer.html", "mode": "tab" },
+          { "label": "🖥 GCP Compute VM & Container Logs", "href": "https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop", "mode": "tab" },
+          { "label": "📡 Scion Agent Communications Log", "href": "assets/io-cold-to-hot-provenance/03a_agent_communications.png", "mode": "tab" }
         ],
         "ch7": [
-          { "label": "🛡 Live Multi-Model Flight Recorder & Audit", "href": "viewers/flight-recorder-viewer.html", "mode": "tab" },
-          { "label": "📑 WO-008 Nominated Dossier", "href": "finding_findings_regulatory_WO-008_md.html", "mode": "subpage" },
-          { "label": "🏠 Full 30-Page Evidence Portal", "href": "index.html", "mode": "subpage" }
+          { "label": "📑 Pre-Wet-Lab Candidate Dossier (WO-008) & Gallery", "href": "viewers/io-wetlab-wall-viewer.html", "mode": "tab" },
+          { "label": "💬 Open Live Scion Grove (io-cold-to-hot)", "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot", "mode": "tab" },
+          { "label": "🏠 OASE Campaign Report Snapshot", "href": "assets/io-cold-to-hot-provenance/06_oase_campaign_report.png", "mode": "tab" }
         ]
       }
     }

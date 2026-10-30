@@ -1,0 +1,26 @@
+{
+  "a": "H-0001",
+  "b": "H-0003",
+  "created_at": "2026-10-30T19:01:00Z",
+  "criterion_scores": {
+    "novelty": {
+      "a": 5,
+      "b": 3
+    },
+    "plausibility": {
+      "a": 5,
+      "b": 3
+    },
+    "testability": {
+      "a": 5,
+      "b": 3
+    }
+  },
+  "epoch": 1,
+  "format": "multi-turn-debate",
+  "id": "M-0005",
+  "judge": "hypex-ranking",
+  "margin": "decisive",
+  "rationale": "H-0001 superior on extracellular druggability and human genetic safety.",
+  "winner": "H-0001"
+}

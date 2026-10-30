@@ -1,0 +1,56 @@
+{
+  "id": "WO-002",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does human genetic constraint (gnomAD v4) and GTEx v8 expression support ENPP1 safety while disqualifying TREX1 autoimmunity risk?",
+  "requested_role": "computational-biologist",
+  "stage": "stage1-intervention-validation",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Compare ENPP1 (ENSG00000197594) and TREX1 (ENSG00000213689) in gnomAD v4 and assess ENPP1 whole-blood expression in GTEx v8.",
+    "artifact_links": [
+      {
+        "path": "raw/genomics/ENPP1.gnomad-constraint.json",
+        "sha256": "41315bf01293968b1a2018c3d7dcbdd3aa145f3d9d940cd092b1a81031ace4d8"
+      },
+      {
+        "path": "raw/genomics/TREX1.gnomad-constraint.json",
+        "sha256": "16628fb6ccda2f199faaa23c09ed0f53a408e54f801df566f32cc9e0ff2528f9"
+      },
+      {
+        "path": "raw/gtex/ENSG00000197594.11.gtex.json",
+        "sha256": "003ec2d4769d8aba6d3c8af73fd0d6c4a79c8ef4058ebcb526c018b059f3fd67"
+      }
+    ],
+    "snapshot": "contexts/WO-002-r1.json",
+    "snapshot_sha256": "05d62708ed19184586988bb7ad11201ad52684b17372bf8bcf9b690ba7fab6ea"
+  },
+  "dependencies": [
+    "WO-001"
+  ],
+  "capabilities": [
+    "oase.genetics",
+    "oase.gtex"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.gtex"
+    ],
+    "layer_1": [
+      "findings/computational-biology/wo-002-human-genetics-gtex.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "ENPP1 gnomAD v4 constraint confirms LoF tolerance",
+    "TREX1 Mendelian autoimmunity liability (L-001) documented and GTEx whole-blood relay addressed"
+  ],
+  "alert_policy": {
+    "mode": "block_on_lof_intolerant",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T21:27:44Z",
+  "committed_at": "2026-10-30T21:27:44Z"
+}

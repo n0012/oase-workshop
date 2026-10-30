@@ -1,0 +1,86 @@
+{
+  "record_type": "analysis",
+  "source": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.docking_result.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T20:15:39Z",
+  "threshold_set": "docking-scores@1.0+program",
+  "thresholds_applied": {
+    "strong_binding_energy": -8.5,
+    "moderate_binding_energy": -6.5,
+    "weak_binding_energy": -5.0
+  },
+  "metrics": {
+    "ligand": "oase_enpp1_009.3d.sdf",
+    "receptor": "AF-P22413-F1.receptor.pdbqt",
+    "docking_mode": "rigid",
+    "n_poses": 5,
+    "best_score": -9.793,
+    "poses": [
+      {
+        "rank": 1,
+        "affinity_kcalmol": -9.793,
+        "rmsd_lb": 0.0,
+        "rmsd_ub": 0.0,
+        "band": "strong"
+      },
+      {
+        "rank": 2,
+        "affinity_kcalmol": -9.233,
+        "rmsd_lb": 1.842,
+        "rmsd_ub": 3.128,
+        "band": "strong"
+      },
+      {
+        "rank": 3,
+        "affinity_kcalmol": -8.837,
+        "rmsd_lb": 2.993,
+        "rmsd_ub": 4.172,
+        "band": "strong"
+      },
+      {
+        "rank": 4,
+        "affinity_kcalmol": -8.394,
+        "rmsd_lb": 5.285,
+        "rmsd_ub": 10.511,
+        "band": "moderate"
+      },
+      {
+        "rank": 5,
+        "affinity_kcalmol": -8.295,
+        "rmsd_lb": 4.661,
+        "rmsd_ub": 10.361,
+        "band": "moderate"
+      }
+    ]
+  },
+  "assessment": {
+    "verdict": "strong-binders-found",
+    "statement": "At least one pose scores -9.8 kcal/mol, in the strong predicted binding band (\u2264 -8.5 kcal/mol).",
+    "advisories": []
+  },
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-P22413-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.694 is cavity shape in AF-P22413-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    },
+    {
+      "code": "docking.score_is_not_affinity",
+      "message": "Best Vina score -9.8 kcal/mol for oase_enpp1_009.3d.sdf; this is a computed interaction energy, not a measured affinity."
+    }
+  ],
+  "threshold_sources": {
+    "strong_binding_energy": "program",
+    "moderate_binding_energy": "program",
+    "weak_binding_energy": "program"
+  },
+  "threshold_provenance": "AutoDock Vina binding energy interpretation: values are predicted binding free energies in kcal/mol (more negative = stronger predicted binding). No universally accepted cutoffs exist for classifying Vina scores; the values here are from commonly cited benchmarking studies. Eberhardt et al., J Chem Inf Model 2021;61:3891-3898 (Vina 1.2.x). Quiroga & Villarreal, PLoS ONE 2016;11:e0155183 report that scores below -6.0 kcal/mol correspond to low-micromolar predicted affinity in their benchmark set.",
+  "written_by": "structural-biologist",
+  "work_order_id": null,
+  "source_sha256": "61d6ce80815385d6fb55a987d5a5c6a62177daa1a1726acf49a67afd8422bf1c"
+}

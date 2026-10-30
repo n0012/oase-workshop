@@ -1,0 +1,15 @@
+{
+  "center": [
+    -7.255,
+    -3.23,
+    18.099
+  ],
+  "size": [
+    31.388,
+    41.724,
+    31.556
+  ],
+  "pocket_rank": 7,
+  "pocket_source": "/workspace/raw/structures/AF-P22413-F1.pockets.json",
+  "padding_angstrom": 10.0
+}

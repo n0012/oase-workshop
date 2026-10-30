@@ -1,0 +1,17 @@
+{
+  "work_order_id": "WO-005",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.docking_result.json",
+      "sha256": "61d6ce80815385d6fb55a987d5a5c6a62177daa1a1726acf49a67afd8422bf1c"
+    },
+    {
+      "path": "raw/docking/oase_enpp1_009.3d_AF-P22413-F1.poses.pdbqt",
+      "sha256": "caa05282e34d53134fd3721331e1990a361841e422d71a42142713d4719d2c77"
+    }
+  ],
+  "content": "Prepare receptor grid box on ENPP1 best druggable pocket and dock 3D conformer oase_enpp1_009.3d.sdf using AutoDock Vina.",
+  "content_sha256": "67d7ff3dfc032b4d67b29cbed4b677fb16f8746fe09d6809e087cfcd2900a37e",
+  "created_at": "2026-10-30T21:27:46Z"
+}

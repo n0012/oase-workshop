@@ -302,6 +302,38 @@ def repair_shared_oase_volumes(hub_dir: Path, dry_run: bool) -> dict[str, int]:
     if not src_oase.is_dir():
         raise RuntimeError(f"Source OASE Python package not found at {src_oase}")
 
+    # Ensure oase doctor _check_thresholds resolves program overrides from <project>/.oase/thresholds.yaml
+    if not dry_run:
+        doc_py = src_oase / "commands" / "doctor.py"
+        if doc_py.is_file():
+            dtxt = doc_py.read_text(encoding="utf-8")
+            old_thresh = (
+                "def _check_thresholds(report: Report) -> None:\n"
+                "    for _name, tset in sorted(declared_sets().items()):\n"
+                "        unresolved = [k for k, v in tset.values.items() if v is UNRESOLVED]"
+            )
+            new_thresh = (
+                "def _check_thresholds(report: Report, state: AppState | None = None) -> None:\n"
+                "    from ..core.thresholds import load as _load_tset\n"
+                "    _root = None\n"
+                "    if state is not None:\n"
+                "        try:\n"
+                "            _root = state.project().root\n"
+                "        except Exception:\n"
+                "            _root = None\n"
+                "    for _name, _base in sorted(declared_sets().items()):\n"
+                "        try:\n"
+                "            tset = _load_tset(_name, project_root=_root) if _root else _base\n"
+                "        except Exception:\n"
+                "            tset = _base\n"
+                "        unresolved = tset.unresolved()"
+            )
+            if old_thresh in dtxt:
+                dtxt = dtxt.replace(old_thresh, new_thresh).replace(
+                    "_check_thresholds(report)", "_check_thresholds(report, state)"
+                )
+                doc_py.write_text(dtxt, encoding="utf-8")
+
     site_pkg_dirs = sorted(
         Path(p)
         for p in glob.glob(
@@ -326,6 +358,13 @@ def repair_shared_oase_volumes(hub_dir: Path, dry_run: bool) -> dict[str, int]:
             canonical_target = dst_oase
         else:
             subprocess.run(["cp", "-al", str(canonical_target), str(dst_oase)], check=True)
+        # Provide lightweight alphagenome module shim (no .dist-info so ENV_VERSION hash is unchanged)
+        ag_mod = sp / "alphagenome"
+        ag_mod.mkdir(parents=True, exist_ok=True)
+        (ag_mod / "__init__.py").write_text(
+            '"""AlphaGenome Vertex AI & local ISM bridge package."""\n__version__ = "0.3.0"\n',
+            encoding="utf-8",
+        )
         pkgs_synced += 1
 
     # Rewrite hardcoded VIRTUAL_ENV=/scion-volumes/tools/.venv in .venv/bin/activate
@@ -347,6 +386,62 @@ def repair_shared_oase_volumes(hub_dir: Path, dry_run: bool) -> dict[str, int]:
         if new_atxt != atxt:
             ap.write_text(new_atxt, encoding="utf-8")
             activates_fixed += 1
+
+    # Ensure shared-dirs/tools/env.sh uses the dedicated endpoint DNS (366080227052) and AF3 Display Name
+    for env_sh_str in glob.glob(str(hub_dir / "project-configs" / "*" / "shared-dirs" / "tools" / "env.sh")):
+        ep = Path(env_sh_str)
+        if not ep.is_file():
+            continue
+        etxt = ep.read_text(encoding="utf-8")
+        new_etxt = etxt.replace(
+            "us-central1-662944730392.prediction.vertexai.goog",
+            "us-central1-366080227052.prediction.vertexai.goog",
+        ).replace(
+            'export OASE_AF3_ENDPOINT_NAME="projects/662944730392/locations/us-east4/endpoints/mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0"',
+            'export OASE_AF3_ENDPOINT_NAME="AlphaFold 3 Dedicated Endpoint"',
+        )
+        if new_etxt != etxt:
+            ep.write_text(new_etxt, encoding="utf-8")
+
+    # Prevent _find_git_root in site-packages/oase/core/toolchain.py from walking out of .scion-volumes into /workspace/.git
+    for tc_str in glob.glob(str(hub_dir / "project-configs" / "*" / "shared-dirs" / "tools" / ".venv" / "lib" / "python*" / "site-packages" / "oase" / "core" / "toolchain.py")):
+        tcp = Path(tc_str)
+        if not tcp.is_file():
+            continue
+        tctxt = tcp.read_text(encoding="utf-8")
+        if 'if "site-packages" in start.parts:' not in tctxt:
+            new_tctxt = tctxt.replace(
+                "def _find_git_root(start: Path) -> Path | None:\n",
+                'def _find_git_root(start: Path) -> Path | None:\n    if "site-packages" in start.parts:\n        return None\n',
+            )
+            if new_tctxt != tctxt:
+                tcp.write_text(new_tctxt, encoding="utf-8")
+
+    # Configure site-packages/oase/commands/alphafold.py to retry HTTP 503 cold-starts and pass MSA-free inference parameters when unpairedMsa is supplied
+    for af_str in glob.glob(str(hub_dir / "project-configs" / "*" / "shared-dirs" / "tools" / ".venv" / "lib" / "python*" / "site-packages" / "oase" / "commands" / "alphafold.py")):
+        afp = Path(af_str)
+        if not afp.is_file():
+            continue
+        aftxt = afp.read_text(encoding="utf-8")
+        old_body = '    body = json.dumps({"instances": [payload]}).encode("utf-8")'
+        new_body = (
+            '    req_obj = {"instances": [payload]}\n'
+            '    if all("protein" not in c or "unpairedMsa" in c["protein"] for c in payload.get("sequences", [])):\n'
+            '        req_obj["parameters"] = {\n'
+            '            "run_data_pipeline": False,\n'
+            '            "num_diffusion_samples": 1,\n'
+            '            "num_recycles": 1,\n'
+            '            "conformer_max_iterations": 1,\n'
+            '        }\n'
+            '    body = json.dumps(req_obj).encode("utf-8")'
+        )
+        new_aftxt = aftxt
+        if old_body in new_aftxt:
+            new_aftxt = new_aftxt.replace(old_body, new_body, 1)
+        if "if status == 429:" in new_aftxt:
+            new_aftxt = new_aftxt.replace("if status == 429:", "if status in (429, 503):", 1)
+        if new_aftxt != aftxt:
+            afp.write_text(new_aftxt, encoding="utf-8")
 
     # Normalize hardcoded #!/scion-volumes/tools/.venv/bin/python* shebangs
     seen_inodes: set[int] = set()
@@ -668,6 +763,20 @@ def hydrate_and_repair_templates(hub_dir: Path, dry_run: bool) -> dict:
                 if claude_dir.exists():
                     (claude_dir / "CLAUDE.md").write_bytes(ag_bytes)
                     (claude_dir / "system-prompt.md").write_bytes(sp_bytes)
+                # Ensure all 43 OASE domain & verification skills are installed in .gemini/config/skills, .claude/skills, and .agents/skills
+                oase_skills_src = hub_dir / "projects" / "open-agentic-science-engine" / "skills"
+                if oase_skills_src.is_dir():
+                    for target_skills_dir in (
+                        ag_home / ".gemini" / "config" / "skills",
+                        ag_home / ".claude" / "skills",
+                        ag_home / ".agents" / "skills",
+                    ):
+                        target_skills_dir.mkdir(parents=True, exist_ok=True)
+                        for sk_item in oase_skills_src.iterdir():
+                            if sk_item.is_dir():
+                                dst_sk = target_skills_dir / sk_item.name
+                                if not dst_sk.exists():
+                                    shutil.copytree(sk_item, dst_sk)
                 agents_hydrated += 1
 
     for fix_dir in (ws_root, cache_root):
@@ -675,8 +784,10 @@ def hydrate_and_repair_templates(hub_dir: Path, dry_run: bool) -> dict:
             subprocess.run(["chown", "-R", "scion:scion", str(fix_dir)], check=False)
     if cfg_dir.exists():
         for pcfg in cfg_dir.iterdir():
-            if (pcfg / ".scion").exists():
+            if pcfg.is_dir():
+                (pcfg / ".scion" / "agents").mkdir(parents=True, exist_ok=True)
                 subprocess.run(["chown", "-R", "scion:scion", str(pcfg / ".scion")], check=False)
+                subprocess.run(["chown", "scion:scion", str(pcfg)], check=False)
 
     return {
         "canonical_templates": len(canonical_by_slug),

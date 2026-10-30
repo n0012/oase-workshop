@@ -1,0 +1,34 @@
+{
+  "tool": "cite",
+  "subcommand": "verify",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "installed",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "europepmc",
+  "parameters": {
+    "file": "wo-001-hypothesis-tournament.md",
+    "extraction_basis": "regex-fallback",
+    "title_match_tolerance": 0.75,
+    "title_suspect_floor": 0.45
+  },
+  "timestamp": "2026-10-30T21:28:02Z",
+  "completed": "2026-10-30T21:28:02Z",
+  "outputs": [
+    {
+      "path": "wo-001-hypothesis-tournament.citations.json",
+      "sha256": "eeae9a6c19e92752b3923455e1cb06bd1cd5cd374eeee275af10b77c0cdb235d",
+      "bytes": 3650
+    }
+  ],
+  "warnings": [
+    "extraction basis is 'regex-fallback': references were recovered by pattern match, not from document structure"
+  ],
+  "mandatory_relays": [
+    {
+      "code": "cite.extraction_incomplete",
+      "message": "extraction basis is 'regex-fallback': references were recovered by pattern match, not from document structure"
+    }
+  ]
+}

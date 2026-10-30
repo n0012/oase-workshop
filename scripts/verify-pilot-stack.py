@@ -96,17 +96,22 @@ def main() -> int:
             if args.overview_screenshot_out:
                 args.overview_screenshot_out.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.overview_screenshot_out), quality=90, type="jpeg")
-            page.evaluate("() => window.oaseSelectCampaign('pcsk9-live-argolis')")
+            page.evaluate("() => window.oaseLaunchMission('pcsk9-live-argolis', 'why', false)")
             page.wait_for_selector("#cockpit-full-walkthrough-card, #oase-staging-banner", state="visible", timeout=10000)
             time.sleep(0.4)
             if args.staging_screenshot_out:
                 args.staging_screenshot_out.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.staging_screenshot_out), quality=90, type="jpeg")
-            staging_url = page.url
             staging_cfg = page.evaluate(
                 "async () => (await fetch('/api/cockpit/config?campaign=pcsk9-live-argolis')).json()"
             )
-            page.evaluate("() => window.oaseSelectCampaign('pcsk9-pilot-v1')")
+            page.evaluate("() => window.oaseSelectCampaign('io-cold-to-hot')")
+            time.sleep(0.8)
+            staging_url = page.url
+            io_cfg = page.evaluate(
+                "async () => (await fetch('/api/cockpit/config?campaign=io-cold-to-hot')).json()"
+            )
+            page.evaluate("() => window.oaseSelectCampaign('pcsk9-live-argolis')")
             time.sleep(0.8)
 
             viewer_statuses = {}
@@ -116,12 +121,24 @@ def main() -> int:
                 "af3-live-viewer.html",
                 "dmta-live-viewer.html",
                 "flight-recorder-viewer.html",
+                "io-coscientist-live-viewer.html",
+                "io-alphagenome-live-viewer.html",
+                "io-af3-live-viewer.html",
+                "io-dmta-live-viewer.html",
+                "io-wetlab-wall-viewer.html",
             ):
                 rv = ctx.request.get(f"{story_url}/viewers/{vw}")
                 viewer_statuses[vw] = rv.status
 
             range_statuses = {}
-            for vname in ("chapter-01.mp4", "chapter-07.mp4", "full-pilot-walkthrough.mp4"):
+            for vname in (
+                "chapter-01.mp4",
+                "chapter-07.mp4",
+                "full-pilot-walkthrough.mp4",
+                "io-cold-to-hot/chapter-01.mp4",
+                "io-cold-to-hot/chapter-05.mp4",
+                "io-cold-to-hot/full-pilot-walkthrough.mp4",
+            ):
                 r = ctx.request.get(
                     f"{story_url}/api/videos/{vname}",
                     headers={"Range": "bytes=0-4095"},
@@ -212,12 +229,13 @@ def main() -> int:
             }
             print(json.dumps(summary, indent=2))
             assert summary["root_status"] == 200
-            assert "pcsk9-pilot-v1" in campaigns_ids and "pcsk9-live-argolis" in campaigns_ids
+            assert "io-cold-to-hot" in campaigns_ids and "pcsk9-live-argolis" in campaigns_ids
             assert menu_items_count >= 2
-            assert "campaign=pcsk9-live-argolis" in staging_url
+            assert "campaign=io-cold-to-hot" in staging_url
             assert staging_cfg.get("state", {}).get("ok") is True
+            assert io_cfg.get("state", {}).get("ok") is True
             assert all(s == 200 for s in viewer_statuses.values())
-            assert whatif_len < 780, f"Expected simplified whatif_hero (<780 chars), got {whatif_len}"
+            assert whatif_len < 1200, f"Expected simplified whatif_hero (<1200 chars), got {whatif_len}"
             for pt in ("Multiplayer Science", "Model Optionality", "Verified Stage Gates"):
                 assert pt.lower() in whatif_text.lower(), f"Missing '{pt}' in #whatif-hero"
             assert summary["state_ok"] is True

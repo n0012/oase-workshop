@@ -1,0 +1,302 @@
+{
+  "sessionId": "venter-20261030-io-cold-to-hot",
+  "title": "Cold-to-Hot Tumor Microenvironment Reprogramming via Innate Immune Checkpoint Inhibition",
+  "goal": "Identify and rank genetically and structurally tractable small-molecule targets that convert immunologically cold (T-cell excluded) solid tumors into hot (CXCL9/CXCL10+, CD8+ T-cell inflamed) tumors to overcome anti-PD-1 resistance.",
+  "state": "COMPLETED",
+  "stage": "TOURNAMENT_COMPLETE",
+  "createTime": "2026-10-30T00:00:00Z",
+  "dateEnded": "2026-10-30T00:20:00Z",
+  "stats": {
+    "numIdeas": 5,
+    "numCategories": 3,
+    "highestEloRating": 1658.4,
+    "inputTokenCount": 186400,
+    "outputTokenCount": 54200
+  },
+  "config": {
+    "preferences": [
+      "Prioritize extracellular or druggable catalytic pockets tractable to oral Rule-of-5 small molecules",
+      "Enforce human loss-of-function genetic safety in gnomAD v4 (reject targets with severe germline autoimmune phenotypes)",
+      "Preserve extracellular 2',3'-cGAMP to activate paracrine STING -> TBK1 -> IRF3 -> Type I IFN & CXCL9/CXCL10"
+    ]
+  },
+  "ideas": [
+    {
+      "id": "H-001",
+      "ranking": 1,
+      "eloRating": 1658.4,
+      "title": "Extracellular ENPP1 catalytic PDE pocket blockade preserving tumor-derived 2',3'-cGAMP for paracrine APC STING activation",
+      "category": "innate_immune_checkpoint_small_molecule",
+      "attributes": [
+        {
+          "name": "Target Gene",
+          "value": "ENPP1"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "P22413"
+        },
+        {
+          "name": "Modality",
+          "value": "oral_small_molecule_catalytic_inhibitor"
+        },
+        {
+          "name": "Series ID",
+          "value": "ENPP1-Lead-Series-1"
+        }
+      ],
+      "matchResult": {
+        "numTotalMatches": 16,
+        "numMatchesWon": 14,
+        "numMatchesLost": 2,
+        "winRate": 0.875
+      },
+      "summary": {
+        "markdown": "Selective oral inhibition of the extracellular ENPP1 zinc-dependent phosphodiesterase pocket prevents hydrolysis of immunotransmitter 2',3'-cGAMP without systemic STING agonist toxicity."
+      },
+      "description": {
+        "markdown": "Chromosomally unstable cold tumors continuously export 2',3'-cGAMP, which is degraded extracellularly by ENPP1. Blocking ENPP1 with oral quinazoline-piperazine sulfamide oase_enpp1_009 restores paracrine dendritic-cell STING signaling and CXCL9/CXCL10 T-cell recruitment."
+      },
+      "reviewsSummary": {
+        "markdown": "Rank #1 target: combines a deep Zn2+ catalytic pocket (P22413), benign human heterozygous LoF tolerance in gnomAD, and tumor-localized cGAMP substrate dependence."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "Regulation of the innate immune system by ENPP1 hydrolysis of 2'3'-cGAMP",
+              "source": "PMID:25344818"
+            },
+            {
+              "title": "ENPP1 is an innate immune checkpoint that promotes metastasis by hydrolyzing extracellular cGAMP",
+              "source": "PMID:33328268"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "All biochemical, structural, and human genetic claims verified against gnomAD v4, PDB/AlphaFold P22413, and literature."
+        },
+        "claims": [
+          {
+            "claim": "ENPP1 is the dominant extracellular hydrolase of 2',3'-cGAMP and dampens paracrine STING signaling in cold tumors.",
+            "verdict": "ACCURATE",
+            "sourceSentence": "ENPP1 hydrolyzes extracellular 2'3'-cGAMP to prevent anti-tumor STING activation.",
+            "reasoning": "Verified in Li et al. Nat Chem Biol 2014 (PMID:25344818) and Carozza et al. Nat Cancer 2020 (PMID:33328268).",
+            "references": [
+              {
+                "title": "Regulation of the innate immune system by ENPP1 hydrolysis of 2'3'-cGAMP",
+                "source": "PMID:25344818"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H-002",
+      "ranking": 2,
+      "eloRating": 1602.0,
+      "title": "ADAR1 deaminase domain inhibition to derepress endogenous dsRNA MDA5/MAVS interferon signaling",
+      "category": "intracellular_rna_editing_inhibitor",
+      "attributes": [
+        {
+          "name": "Target Gene",
+          "value": "ADAR"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "P55265"
+        },
+        {
+          "name": "Modality",
+          "value": "small_molecule_deaminase_inhibitor"
+        }
+      ],
+      "matchResult": {
+        "numTotalMatches": 16,
+        "numMatchesWon": 11,
+        "numMatchesLost": 5,
+        "winRate": 0.6875
+      },
+      "summary": {
+        "markdown": "Inhibiting ADAR1 p150 A-to-I editing triggers dsRNA sensing via MDA5 and sensitizes immunotherapy-resistant tumors."
+      },
+      "description": {
+        "markdown": "Strong CRISPR loss-of-function synergy with anti-PD-1, but highly polar IP6-coordinated catalytic pocket limits oral small-molecule tractability."
+      },
+      "reviewsSummary": {
+        "markdown": "Strong biology (PMID:30566885), secondary chemical tractability relative to ENPP1."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "Loss of ADAR1 in tumours overcomes resistance to immune checkpoint blockade",
+              "source": "PMID:30566885"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "Verified."
+        },
+        "claims": []
+      }
+    },
+    {
+      "id": "H-003",
+      "ranking": 3,
+      "eloRating": 1554.5,
+      "title": "PTPN2 active-site/allosteric phosphatase inhibition to amplify IFN-gamma JAK1/STAT1 signaling",
+      "category": "intracellular_phosphatase_inhibitor",
+      "attributes": [
+        {
+          "name": "Target Gene",
+          "value": "PTPN2"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "P17706"
+        },
+        {
+          "name": "Modality",
+          "value": "oral_phosphatase_inhibitor"
+        },
+        {
+          "name": "Series ID",
+          "value": "PTPN2-Backup-Series"
+        }
+      ],
+      "matchResult": {
+        "numTotalMatches": 16,
+        "numMatchesWon": 9,
+        "numMatchesLost": 7,
+        "winRate": 0.5625
+      },
+      "summary": {
+        "markdown": "Retained as intracellular backup target (`PTPN2-Backup-Series`, benchmarked against ABBV-CLS-484)."
+      },
+      "description": {
+        "markdown": "Amplifies both tumor-cell IFNGR/STAT1 antigen presentation and CD8+ T-cell fitness."
+      },
+      "reviewsSummary": {
+        "markdown": "Retained as primary backup target (PMID:28723893)."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "In vivo CRISPR screening identifies Ptpn2 as a cancer immunotherapy target",
+              "source": "PMID:28723893"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "Verified."
+        },
+        "claims": []
+      }
+    },
+    {
+      "id": "H-004",
+      "ranking": 4,
+      "eloRating": 1442.0,
+      "title": "KDM1A (LSD1) histone demethylase inhibition to reactivate endogenous retroelements",
+      "category": "epigenetic_demethylase_inhibitor",
+      "attributes": [
+        {
+          "name": "Target Gene",
+          "value": "KDM1A"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "O60341"
+        }
+      ],
+      "matchResult": {
+        "numTotalMatches": 16,
+        "numMatchesWon": 4,
+        "numMatchesLost": 12,
+        "winRate": 0.25
+      },
+      "summary": {
+        "markdown": "Parked due to clinical on-target thrombocytopenia (`L-002`)."
+      },
+      "description": {
+        "markdown": "Hematopoietic progenitor toxicity limits chronic combination dosing."
+      },
+      "reviewsSummary": {
+        "markdown": "Parked (`L-002`)."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "LSD1 ablation stimulates anti-tumor immunity",
+              "source": "PMID:29937201"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "Verified."
+        },
+        "claims": []
+      }
+    },
+    {
+      "id": "H-005",
+      "ranking": 5,
+      "eloRating": 1368.0,
+      "title": "TREX1 cytosolic exonuclease inhibition to accumulate cytosolic dsDNA",
+      "category": "cytosolic_exonuclease_inhibitor",
+      "attributes": [
+        {
+          "name": "Target Gene",
+          "value": "TREX1"
+        },
+        {
+          "name": "UniProt ID",
+          "value": "Q9NSU2"
+        }
+      ],
+      "matchResult": {
+        "numTotalMatches": 16,
+        "numMatchesWon": 2,
+        "numMatchesLost": 14,
+        "winRate": 0.125
+      },
+      "summary": {
+        "markdown": "Disqualified (`L-001`): human TREX1 loss-of-function causes Aicardi-Goutieres syndrome and systemic lupus myocarditis."
+      },
+      "description": {
+        "markdown": "Rejected at Stage 1 human genetic safety gate."
+      },
+      "reviewsSummary": {
+        "markdown": "Rejected (`L-001`)."
+      },
+      "reviews": [
+        {
+          "references": [
+            {
+              "title": "Mutations in the gene encoding the 3'-5' DNA exonuclease TREX1 cause Aicardi-Goutieres syndrome",
+              "source": "PMID:16845398"
+            }
+          ]
+        }
+      ],
+      "deepVerification": {
+        "verificationSummary": {
+          "markdown": "Verified."
+        },
+        "claims": []
+      }
+    }
+  ]
+}

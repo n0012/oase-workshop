@@ -1,0 +1,43 @@
+{
+  "tool": "docking",
+  "subcommand": "run",
+  "receptor": "AF-P22413-F1.receptor.pdbqt",
+  "receptor_id": "AF-P22413-F1",
+  "ligand": "oase_enpp1_009.3d.sdf",
+  "docking_mode": "rigid",
+  "n_poses": 5,
+  "exhaustiveness": 2,
+  "poses": [
+    {
+      "rank": 1,
+      "affinity_kcalmol": -9.793,
+      "rmsd_lb": 0.0,
+      "rmsd_ub": 0.0
+    },
+    {
+      "rank": 2,
+      "affinity_kcalmol": -9.233,
+      "rmsd_lb": 1.842,
+      "rmsd_ub": 3.128
+    },
+    {
+      "rank": 3,
+      "affinity_kcalmol": -8.837,
+      "rmsd_lb": 2.993,
+      "rmsd_ub": 4.172
+    },
+    {
+      "rank": 4,
+      "affinity_kcalmol": -8.394,
+      "rmsd_lb": 5.285,
+      "rmsd_ub": 10.511
+    },
+    {
+      "rank": 5,
+      "affinity_kcalmol": -8.295,
+      "rmsd_lb": 4.661,
+      "rmsd_ub": 10.361
+    }
+  ],
+  "best_score": -9.793
+}
