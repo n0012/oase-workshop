@@ -63,6 +63,48 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   .chapter-btn.subway-btn { border-left: 3px solid #f59e0b; background: #fffbeb; color: #92400e; border-color: #fde68a; }
   .chapter-btn.subway-btn:hover { background: #fef3c7; }
   .chapter-btn.subway-btn.active { background: #d97706; color: #ffffff; border-color: #b45309; border-left: 3px solid #fbbf24; }
+  .chapter-btn.arcade-btn { border-left: 3px solid #f97316; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fbbf24; border-color: #f59e0b; font-weight: 800; letter-spacing: 0.02em; }
+  .chapter-btn.arcade-btn:hover { background: #1e293b; color: #fde68a; border-color: #fbbf24; }
+  .chapter-btn.arcade-btn.active { background: linear-gradient(135deg, #ea580c 0%, #d97706 100%); color: #ffffff; border-color: #fde047; border-left: 3px solid #fde047; box-shadow: 0 0 12px rgba(249, 115, 22, 0.45); }
+
+  /* STAR OASE // GOLD SQUADRON ARCADE COVER SCREEN */
+  .arcade-shell { background: radial-gradient(circle at 75% 18%, #431407 0%, #090d16 55%, #020617 100%); border: 2px solid #f59e0b; border-radius: 14px; padding: 1.35rem 1.5rem 1.6rem; color: #f8fafc; box-shadow: 0 16px 42px rgba(2, 6, 23, 0.55), inset 0 0 32px rgba(249, 115, 22, 0.12); position: relative; overflow: hidden; }
+  .arcade-hud-top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding-bottom: 0.85rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(251, 191, 36, 0.3); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; }
+  .arcade-coin-pill { background: rgba(249, 115, 22, 0.2); border: 1px solid #f97316; color: #fed7aa; padding: 0.25rem 0.75rem; border-radius: 999px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .arcade-cover-frame { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid #fbbf24; box-shadow: 0 12px 34px rgba(0, 0, 0, 0.65), 0 0 24px rgba(249, 115, 22, 0.28); background: #000; }
+  .arcade-cover-frame img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+  .arcade-cover-overlay { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(2,6,23,0.82) 55%, rgba(2,6,23,0.96) 100%); padding: 2.2rem 1.5rem 1.1rem; display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; pointer-events: none; }
+  .arcade-cover-overlay > * { pointer-events: auto; }
+  .arcade-press-start { display: inline-flex; align-items: center; gap: 0.55rem; background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); color: #090d16; font-family: ui-monospace, monospace; font-weight: 900; font-size: 0.92rem; padding: 0.6rem 1.2rem; border-radius: 8px; border: 2px solid #fef08a; cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em; box-shadow: 0 0 20px rgba(249, 115, 22, 0.65); transition: transform 0.15s, box-shadow 0.15s; }
+  .arcade-press-start:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 28px rgba(250, 204, 21, 0.9); }
+  .arcade-missions-hdr { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 1.35rem 0 0.75rem; }
+  .arcade-missions-hdr h3 { margin: 0; font-size: 1.15rem; color: #fbbf24; font-family: ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+  .arcade-missions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .arcade-mission-card { background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.92) 100%); border: 2px solid #334155; border-radius: 10px; padding: 1.05rem 1.15rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.16s; position: relative; }
+  .arcade-mission-card:hover { border-color: #38bdf8; transform: translateY(-2px); }
+  .arcade-mission-card.selected-mission { border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.25); background: linear-gradient(180deg, rgba(30, 27, 75, 0.95) 0%, rgba(15, 23, 42, 0.96) 100%); }
+  .arcade-mission-slot { font-family: ui-monospace, monospace; font-size: 0.74rem; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.06em; display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; }
+  .arcade-mission-title { font-size: 1.04rem; font-weight: 800; color: #ffffff; margin: 0.4rem 0 0.3rem; line-height: 1.32; }
+  .arcade-mission-desc { font-size: 0.81rem; color: #cbd5e1; line-height: 1.44; margin: 0 0 0.65rem; }
+  .arcade-spec-list { list-style: none; padding: 0; margin: 0 0 0.85rem; font-size: 0.76rem; color: #93c5fd; font-family: ui-monospace, monospace; line-height: 1.55; }
+  .arcade-spec-list li::before { content: "▸ "; color: #fbbf24; font-weight: 700; }
+  .arcade-btn-row { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: auto; }
+  .arcade-launch-btn { background: #059669; color: #ffffff; border: 1px solid #34d399; border-radius: 6px; padding: 0.48rem 0.8rem; font-size: 0.79rem; font-weight: 800; cursor: pointer; flex: 1; text-align: center; transition: all 0.14s; }
+  .arcade-launch-btn:hover { background: #047857; border-color: #6ee7b7; }
+  .arcade-launch-btn.gold { background: linear-gradient(135deg, #ea580c 0%, #d97706 100%); border-color: #fde047; color: #fff; }
+  .arcade-launch-btn.gold:hover { background: linear-gradient(135deg, #c2410c 0%, #b45309 100%); }
+  .arcade-launch-btn.ghost { background: #1e293b; border-color: #475569; color: #e2e8f0; flex: 0 1 auto; }
+  .arcade-launch-btn.ghost:hover { background: #334155; border-color: #94a3b8; color: #fff; }
+  .arcade-roster-strip { margin-top: 1.25rem; padding-top: 1.05rem; border-top: 1px solid rgba(148, 163, 184, 0.25); }
+  .arcade-roster-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7rem; margin-top: 0.65rem; }
+  .arcade-pilot-card { background: rgba(15, 23, 42, 0.88); border: 1px solid #334155; border-top: 3px solid #10b981; border-radius: 8px; padding: 0.65rem 0.7rem; cursor: pointer; transition: all 0.15s; text-align: left; color: #f8fafc; }
+  .arcade-pilot-card:hover { border-color: #fbbf24; transform: translateY(-2px); background: rgba(30, 41, 59, 0.95); }
+  .arcade-pilot-top { display: flex; align-items: center; gap: 0.55rem; }
+  .arcade-pilot-top img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.45); }
+  .arcade-callsign { font-family: ui-monospace, monospace; font-size: 0.69rem; font-weight: 800; color: #4ade80; letter-spacing: 0.04em; }
+  .arcade-pilot-name { font-size: 0.82rem; font-weight: 700; color: #ffffff; line-height: 1.2; }
+  .arcade-wingman-tag { margin-top: 0.45rem; font-family: ui-monospace, monospace; font-size: 0.71rem; color: #fbbf24; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 5px; padding: 0.22rem 0.45rem; display: block; }
+  @media (max-width: 1024px) { .arcade-missions-grid { grid-template-columns: 1fr; } .arcade-roster-grid { grid-template-columns: repeat(2, 1fr); } }
   .subway-board { background: #0f172a; border-radius: 10px; padding: 1.15rem 1.25rem; border: 1px solid #334155; color: #f8fafc; }
   .subway-legend { display: flex; gap: 1.1rem; flex-wrap: wrap; font-size: 0.79rem; color: #cbd5e1; margin-bottom: 0.65rem; }
   .subway-station-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.85rem; }
@@ -145,8 +187,9 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
       </button>
       <div class="pilot-menu" id="oase-campaign-menu"></div>
     </div>
+    <a href="#arcade" onclick="showChapter('arcade');return false;" style="color:#fbbf24;font-weight:700;">&#127918; Mission Select Cover</a>
     <a href="index.html">Portal Home (30 Pages)</a>
-    <a href="chapters.html" class="active-nav">Story Arc &amp; Replay</a>
+    <a href="chapters.html#why" onclick="showChapter('why');return false;" class="active-nav">Story Arc &amp; Replay</a>
     <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Dossier</a>
     <a href="plan.html" style="color:#4ade80;font-weight:700;">Build Tracker</a>
   </div>
@@ -156,19 +199,20 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="hero">
   <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
-  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral · Reference Pilot (v1) — PCSK9 (Q8NBP7) · Oral Rule-of-5 Small Molecule</div>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral · Multi-Model Live Run (v2) — PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs</div>
   <div class="kpi-strip" id="hero-kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">5 Human + 11 AI</div><div class="kpi-lbl">Discovery Pod &amp; Agent Team</div></div>
-    <div class="kpi-card"><div class="kpi-val">4 Core Pillars</div><div class="kpi-lbl">Grove · WOs · 2-Phase · Gates</div></div>
-    <div class="kpi-card"><div class="kpi-val">5 Artifact Layers</div><div class="kpi-lbl">Separation of Powers</div></div>
-    <div class="kpi-card"><div class="kpi-val">8 / 8 [PASS]</div><div class="kpi-lbl">Work Orders Accepted</div></div>
-    <div class="kpi-card"><div class="kpi-val">3 Blocked + 1 Signed</div><div class="kpi-lbl">Tamper &amp; Override Audit</div></div>
-    <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">Nominated Lead (40 mg QD)</div></div>
+    <div class="kpi-card"><div class="kpi-val">Argon + Opus 5.5</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
+    <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">oase doctor Live Health</div></div>
+    <div class="kpi-card"><div class="kpi-val">1P AlphaGenome</div><div class="kpi-lbl">Dedicated A100 (us-central1)</div></div>
+    <div class="kpi-card"><div class="kpi-val">1P AlphaFold 3</div><div class="kpi-lbl">Dedicated A100 (us-east4)</div></div>
+    <div class="kpi-card"><div class="kpi-val">3D .cif + 1 Mb</div><div class="kpi-lbl">Interactive Live Viewers</div></div>
+    <div class="kpi-card"><div class="kpi-val">OASE-PCSK9-014</div><div class="kpi-lbl">40 mg QD Lead (8/8 WOs)</div></div>
   </div>
 </div>
 
 <div class="chapter-bar">
-  <button class="chapter-btn act1 active" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
+  <button class="chapter-btn arcade-btn active" id="btn-arcade" onclick="showChapter('arcade')">&#127918; Mission Select Cover</button>
+  <button class="chapter-btn act1" id="btn-why" onclick="showChapter('why')">Overview &amp; Challenges</button>
   <button class="chapter-btn act1" id="btn-scion" onclick="showChapter('scion')">4 Core Pillars</button>
   <button class="chapter-btn lab-btn" id="btn-lab" onclick="showChapter('lab')">2.5-Hr Lab Guide</button>
   <button class="chapter-btn" id="btn-ch1" onclick="showChapter('ch1')">Step 1: Pre-Brief &amp; Co-Scientist (WO-001)</button>
@@ -181,8 +225,192 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 </div>
 
 <div class="container">
+  <!-- PANEL ARCADE: STAR OASE // GOLD SQUADRON GAME START & MISSION SELECT COVER -->
+  <section class="chapter-panel active" id="panel-arcade" style="background:transparent;border:none;padding:0;box-shadow:none;">
+    <div class="arcade-shell">
+      <div class="arcade-hud-top">
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+          <span class="arcade-coin-pill">&#128760; STAR OASE 64 // GOLD SQUADRON COMMAND DECK</span>
+          <span style="color:#fde68a;">5 Human Avatar Scientists (<code>GOLD-1..5</code>) &plus; 6 Voiced AI Wingmen (<code>Grove-1..Aegis-6</code>)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+          <button type="button" class="arcade-launch-btn ghost" style="padding:0.28rem 0.65rem;font-size:0.74rem;" onclick="oasePlayStarfoxChime(true)">&#128266; Play Squadron Comms Fanfare</button>
+          <span style="color:#4ade80;font-weight:700;">● FREE PLAY · APACHE 2.0 ($0/SEAT)</span>
+        </div>
+      </div>
+
+      <div class="arcade-cover-frame">
+        <img src="assets/starfox_oase_cover_hero.jpg" alt="STAR OASE — Gold Squadron Mission Select Cover Art featuring our 5 Human Discovery Pod Avatar Scientists" onclick="openLightbox(this.src, this.alt)">
+        <div class="arcade-cover-overlay">
+          <div style="max-width:700px;">
+            <div style="font-family:ui-monospace,monospace;font-size:0.75rem;font-weight:800;color:#fbbf24;text-transform:uppercase;letter-spacing:0.08em;">NINTENDO STARFOX HOMAGE · TEAM-BASED AGENTIC BIOPHARMA R&amp;D</div>
+            <div style="font-size:1.25rem;font-weight:800;color:#ffffff;margin-top:0.2rem;text-shadow:0 2px 10px rgba(0,0,0,0.8);">Choose Your Campaign Pilot &amp; Launch Into the Live Scion Grove</div>
+            <div style="font-size:0.83rem;color:#e2e8f0;margin-top:0.2rem;">Featuring our 5 live scientist avatars (<strong>Dr. Raj Patel</strong>, <strong>Dr. Marcus Vance</strong>, <strong>Dr. Sarah Chen</strong>, <strong>Dr. Elena Rostova</strong>, and <strong>Dr. Claire Moreau</strong>) in tactical flight gear alongside Arwing bio-interceptors.</div>
+          </div>
+          <div style="display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;">
+            <button type="button" class="arcade-press-start" onclick="oaseLaunchMission('pcsk9-live-argolis', 'ch1', false)">
+              &#9654; PRESS START · LAUNCH LIVE RUN (v2)
+            </button>
+            <button type="button" class="arcade-launch-btn ghost" style="padding:0.58rem 0.95rem;font-size:0.82rem;border-color:#fbbf24;color:#fef08a;" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">
+              &#127916; Watch 7.9-Min Full Reel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="arcade-missions-hdr">
+        <h3>&#127919; Select Campaign Mission Cartridge (3 Workspaces Ready)</h3>
+        <span style="font-size:0.8rem;color:#cbd5e1;font-family:ui-monospace,monospace;" id="arcade-active-mission-indicator">Active Cartridge: PCSK9 Oral · Multi-Model Live Run (v2)</span>
+      </div>
+
+      <div class="arcade-missions-grid">
+        <!-- MISSION 01: LIVE ARGOLIS MULTI-MODEL v2 -->
+        <div class="arcade-mission-card selected-mission" id="arcade-card-pcsk9-live-argolis">
+          <div>
+            <div class="arcade-mission-slot">
+              <span>MISSION 01 · DEFAULT</span>
+              <span class="pilot-badge-pill ready">LIVE · ARGON + OPUS 5.5</span>
+            </div>
+            <div class="arcade-mission-title">PCSK9 Oral — Multi-Model Live Run (v2 · 7:54 Reel)</div>
+            <p class="arcade-mission-desc">100% real execution in Google Cloud (`losiern-oase-workshop`) driven from Chrome with live Console Evidence drawers—zero reverse-engineered outputs.</p>
+            <ul class="arcade-spec-list">
+              <li><strong>Frontier LLMs:</strong> Gemini 4 Argon (High/Med) + Claude Opus 5.5</li>
+              <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome A100 + AlphaFold 3 A100</li>
+              <li><strong>Live 3D &amp; Omics Viewers:</strong> 588-atom 3D <code>.cif</code> canvas + 1 Mb SVG tracks</li>
+              <li><strong>Mechanical Verification:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
+            </ul>
+          </div>
+          <div class="arcade-btn-row">
+            <button type="button" class="arcade-launch-btn gold" onclick="oaseLaunchMission('pcsk9-live-argolis', 'ch1', false)">&#128640; Launch Step 1 Brief &rarr;</button>
+            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">&#127916; 7.9m Full Reel</button>
+            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', false)">Overview</button>
+          </div>
+        </div>
+
+        <!-- MISSION 02: REFERENCE PILOT v1 -->
+        <div class="arcade-mission-card" id="arcade-card-pcsk9-pilot-v1">
+          <div>
+            <div class="arcade-mission-slot">
+              <span>MISSION 02 · REFERENCE</span>
+              <span class="pilot-badge-pill ready">READY · 8 GROVES</span>
+            </div>
+            <div class="arcade-mission-title">PCSK9 Oral — Reference Squadron Walkthrough (v1 · 5:48 Reel)</div>
+            <p class="arcade-mission-desc">Original 7-chapter baseline walkthrough demonstrating deterministic 2-phase SHA-256 receipts, Subway-Map routing, and sub-2s SQLite state resets.</p>
+            <ul class="arcade-spec-list">
+              <li><strong>Squadron Comms:</strong> 5 Live Scientist Avatars + 6 Voiced AI Wingmen</li>
+              <li><strong>Time-Machine Checkpoints:</strong> 8 pre-seeded Scion Groves (<code>ch0..ch7</code>)</li>
+              <li><strong>Adversarial Governance:</strong> 3 tamper drills blocked + 1 signed override</li>
+              <li><strong>Candidate Outcome:</strong> <code>OASE-PCSK9-014</code> nominated (40 mg oral QD)</li>
+            </ul>
+          </div>
+          <div class="arcade-btn-row">
+            <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'ch1', false)">&#9654; Launch Mission 02 (Step 1) &rarr;</button>
+            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'why', true)">5.8m Reel</button>
+            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('pcsk9-pilot-v1', 'why', false)">Overview</button>
+          </div>
+        </div>
+
+        <!-- MISSION 03: HANDS-ON LAB & CUSTOM VPC STAGING -->
+        <div class="arcade-mission-card" id="arcade-card-next-pilot-slot">
+          <div>
+            <div class="arcade-mission-slot">
+              <span>MISSION 03 · CUSTOM VPC</span>
+              <span class="pilot-badge-pill staging">&#9889; HANDS-ON LAB &amp; STAGING</span>
+            </div>
+            <div class="arcade-mission-title">Bring Your Own Target — 2.5-Hr Lab &amp; Custom Pilot Slot</div>
+            <p class="arcade-mission-desc">Run the 150-minute hands-on workshop lab, inspect the 30-page CTD Evidence Portal, or seed a fresh Scion Grove with your own disease target.</p>
+            <ul class="arcade-spec-list">
+              <li><strong>Hands-On Lab:</strong> Step-by-step CLI, custom tool &amp; gate exercises</li>
+              <li><strong>30-Page Evidence Portal:</strong> Full eCTD-style dossier &amp; SHA-256 sidecars</li>
+              <li><strong>Subway-Map Simulator:</strong> Interactive what-if branch &amp; detour explorer</li>
+              <li><strong>Sovereign Deployment:</strong> One-command customer VPC &amp; Cloud Run kit</li>
+            </ul>
+          </div>
+          <div class="arcade-btn-row">
+            <button type="button" class="arcade-launch-btn" style="background:#2563eb;border-color:#60a5fa;" onclick="showChapter('lab')">&#129514; 2.5-Hr Lab Guide &rarr;</button>
+            <button type="button" class="arcade-launch-btn ghost" onclick="window.location.href='index.html'">30-Page Portal</button>
+            <button type="button" class="arcade-launch-btn ghost" onclick="oaseLaunchMission('next-pilot-slot', 'why', false)">Staging Slot</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="arcade-roster-strip">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <strong style="font-family:ui-monospace,monospace;font-size:0.84rem;color:#fbbf24;text-transform:uppercase;letter-spacing:0.05em;">&#129489;&zwj;&#128640; Gold Squadron Pilot Lineup (Left-to-Right in Cover Art) &mdash; Click Any Pilot to Jump to Their Mission Stage</strong>
+          <span style="font-size:0.76rem;color:#94a3b8;">Each human scientist co-pilots a mirrored specialist AI Wingman inside the shared Scion Grove</span>
+        </div>
+        <div class="arcade-roster-grid">
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch4', false)">
+            <div class="arcade-pilot-top">
+              <img src="assets/avatars/raj.jpg" alt="Dr. Raj Patel">
+              <div>
+                <div class="arcade-callsign">GOLD-4 · FAR LEFT</div>
+                <div class="arcade-pilot-name">Dr. Raj Patel</div>
+                <div style="font-size:0.72rem;color:#94a3b8;">Medicinal Chemistry</div>
+              </div>
+            </div>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude Opus 5.5)</span>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 4 (WO-006)</strong>: Flags hERG alert on A02 &amp; designs oxadiazole lead <code>OASE-PCSK9-014</code>.</div>
+          </button>
+
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch2', false)">
+            <div class="arcade-pilot-top">
+              <img src="assets/avatars/marcus.jpg" alt="Dr. Marcus Vance">
+              <div>
+                <div class="arcade-callsign">GOLD-2 · CENTER LEFT</div>
+                <div class="arcade-pilot-name">Dr. Marcus Vance</div>
+                <div style="font-size:0.72rem;color:#94a3b8;">Computational Biology</div>
+              </div>
+            </div>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Helix-2 (1P AlphaGenome)</span>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 2 (WO-002..003)</strong>: Human LoF genetics, GTEx liver expression &amp; 1 Mb AlphaGenome tracks.</div>
+          </button>
+
+          <button type="button" class="arcade-pilot-card" style="border-top-color:#fbbf24;background:rgba(30,27,75,0.85);" onclick="oaseLaunchMission(null, 'ch1', false)">
+            <div class="arcade-pilot-top">
+              <img src="assets/avatars/sarah.jpg" alt="Dr. Sarah Chen" style="border-color:#fbbf24;">
+              <div>
+                <div class="arcade-callsign" style="color:#fbbf24;">GOLD-1 · SQUADRON LEAD</div>
+                <div class="arcade-pilot-name">Dr. Sarah Chen</div>
+                <div style="font-size:0.72rem;color:#94a3b8;">Science Program Lead</div>
+              </div>
+            </div>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Grove-1 (Gemini 4 Argon)</span>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 1 &amp; Step 7</strong>: Co-Scientist tournament brief, 4 Stage Gate co-signs &amp; portfolio handoff.</div>
+          </button>
+
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch3', false)">
+            <div class="arcade-pilot-top">
+              <img src="assets/avatars/elena.jpg" alt="Dr. Elena Rostova">
+              <div>
+                <div class="arcade-callsign">GOLD-3 · CENTER RIGHT</div>
+                <div class="arcade-pilot-name">Dr. Elena Rostova</div>
+                <div style="font-size:0.72rem;color:#94a3b8;">Structural Biology</div>
+              </div>
+            </div>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Fold-3 (1P AlphaFold 3)</span>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 3 (WO-004..005)</strong>: 1P AlphaFold 3 co-folding (<code>ipTM=0.90</code>), <code>fpocket</code> &amp; Vina docking.</div>
+          </button>
+
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch5', false)">
+            <div class="arcade-pilot-top">
+              <img src="assets/avatars/claire.jpg" alt="Dr. Claire Moreau">
+              <div>
+                <div class="arcade-callsign">GOLD-5 · FAR RIGHT</div>
+                <div class="arcade-pilot-name">Dr. Claire Moreau</div>
+                <div style="font-size:0.72rem;color:#94a3b8;">DMPK, Safety &amp; Audit</div>
+              </div>
+            </div>
+            <span class="arcade-wingman-tag">&#8644; Wingmen: Shield-5 &amp; Aegis-6</span>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Steps 5 &amp; 6 (WO-007..008)</strong>: Multi-species oral PK (<code>40 mg QD</code>) &amp; 10-check tamper drills.</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PANEL WHY: THE PROBLEM, 4 CHALLENGES & WHAT YOU'LL SEE IN THIS DEMO -->
-  <section class="chapter-panel active" id="panel-why">
+  <section class="chapter-panel" id="panel-why">
     <div class="chapter-header">
       <h2>Three "What Ifs" Behind GCP-OASE</h2>
       <span class="stage-pill">Apache 2.0 ($0/Seat) · Sovereign Customer VPC · Subway-Map Routing</span>
@@ -1475,6 +1703,60 @@ selectStation('s3');
     }
   });
 
+  window.oasePlayStarfoxChime = function(withVoice) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
+        const times = [0.0, 0.09, 0.18, 0.28, 0.42, 0.52];
+        const durs  = [0.08, 0.08, 0.09, 0.12, 0.08, 0.28];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + times[i]);
+          gain.gain.setValueAtTime(0.14, ctx.currentTime + times[i]);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + times[i] + durs[i]);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + times[i]);
+          osc.stop(ctx.currentTime + times[i] + durs[i] + 0.02);
+        });
+      }
+      if (withVoice && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance("Gold Squadron all-range mode engaged. Select your OASE campaign mission.");
+        u.rate = 1.04;
+        u.pitch = 0.96;
+        window.speechSynthesis.speak(u);
+      }
+    } catch (_) {}
+  };
+
+  window.oaseLaunchMission = async function(cid, targetChapter, openFullReel) {
+    window.oasePlayStarfoxChime(false);
+    if (cid && cid !== activeCampaignId) {
+      await window.oaseSelectCampaign(cid);
+    }
+    const ch = targetChapter || 'why';
+    if (typeof showChapter === 'function') {
+      showChapter(ch);
+    }
+    if (openFullReel) {
+      setTimeout(() => {
+        const fw = document.getElementById('cockpit-full-walkthrough-card');
+        if (fw) {
+          const det = fw.querySelector('details');
+          if (det) det.open = true;
+          fw.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const v = document.getElementById('video-full');
+          if (v) { v.play().catch(() => {}); }
+        }
+      }, 180);
+    }
+  };
+
   window.oaseSelectCampaign = async function(cid) {
     activeCampaignId = cid;
     const menu = document.getElementById('oase-campaign-menu');
@@ -1530,6 +1812,13 @@ selectStation('s3');
     if (heroTag) {
       heroTag.textContent = `Active Scion Pilot: ${active.short_label} — ${active.target || ''}`;
     }
+    const arcadeInd = document.getElementById('arcade-active-mission-indicator');
+    if (arcadeInd) {
+      arcadeInd.textContent = `Active Cartridge: ${active.short_label || active.id}`;
+    }
+    document.querySelectorAll('.arcade-mission-card').forEach(el => el.classList.remove('selected-mission'));
+    const activeCard = document.getElementById('arcade-card-' + active.id);
+    if (activeCard) activeCard.classList.add('selected-mission');
     const kpiStrip = document.getElementById('hero-kpi-strip');
     if (kpiStrip && Array.isArray(active.kpis) && active.kpis.length > 0) {
       kpiStrip.innerHTML = active.kpis.map(k =>
@@ -2227,7 +2516,7 @@ def main() -> int:
         .replace("__VIDEO_MANIFESTS_BY_CAMPAIGN_JSON__", json.dumps(manifests_by_campaign))
         .replace("__CAMPAIGNS_REGISTRY_JSON__", json.dumps(cregistry_data))
     )
-    # Inline assets/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
+    # Inline assets/* and assets/avatars/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
     for img_path in sorted(site_assets.iterdir()):
         if img_path.suffix.lower() in (".jpg", ".jpeg", ".png"):
             mime = "image/png" if img_path.suffix.lower() == ".png" else "image/jpeg"
@@ -2236,6 +2525,16 @@ def main() -> int:
                 f'src="assets/{img_path.name}"',
                 f'src="data:{mime};base64,{b64}"',
             )
+    avatars_dir = site_assets / "avatars"
+    if avatars_dir.is_dir():
+        for av_path in sorted(avatars_dir.iterdir()):
+            if av_path.suffix.lower() in (".jpg", ".jpeg", ".png"):
+                mime = "image/png" if av_path.suffix.lower() == ".png" else "image/jpeg"
+                b64 = base64.b64encode(av_path.read_bytes()).decode("ascii")
+                html_out = html_out.replace(
+                    f'src="assets/avatars/{av_path.name}"',
+                    f'src="data:{mime};base64,{b64}"',
+                )
 
     chapters_path = site_dir / "chapters.html"
     chapters_path.write_text(html_out, encoding="utf-8")
@@ -2243,7 +2542,9 @@ def main() -> int:
     nav_target = '<a href="index.html">Home</a>'
     nav_replacement = (
         '<a href="index.html">Home</a>\n'
-        '  <a href="chapters.html" style="color:#38bdf8;font-weight:600;">'
+        '  <a href="chapters.html#arcade" style="color:#fbbf24;font-weight:700;">'
+        "&#127918; Mission Select Cover</a>\n"
+        '  <a href="chapters.html#why" style="color:#38bdf8;font-weight:600;">'
         "Architecture, Value Prop &amp; Campaign Replay</a>\n"
         '  <a href="plan.html" style="color:#4ade80;font-weight:700;">'
         "Pilot Vision &amp; Build Tracker</a>"
@@ -2278,15 +2579,21 @@ def main() -> int:
     index_file = site_dir / "index.html"
     if index_file.is_file():
         idx_txt = index_file.read_text(encoding="utf-8")
-        if "pilot-top-banner" not in idx_txt and "</nav>" in idx_txt:
+        idx_txt = re.sub(r'<div id="pilot-top-banner".*?</div></div></div>', "", idx_txt, flags=re.DOTALL)
+        if "</nav>" in idx_txt:
             banner = (
-                '</nav>\n<div id="pilot-top-banner" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#ffffff;padding:1.15rem 2rem;border-bottom:3px solid #22c55e;">'
-                '<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">'
-                '<div><strong style="font-size:1.05rem;">Team-Based Human + Agent Drug Discovery Pilot (7-Chapter Squadron Edition)</strong>'
-                '<div style="color:#cbd5e1;font-size:0.88rem;margin-top:0.2rem;">5-Scientist Pod + 6 Voiced AI Wingmen · Native Gemini 3.8 Live Avatars + Gemini 3.8 Flash TTS · Live Role Logins · &lt;2s Reset</div></div>'
-                '<div style="display:flex;gap:0.65rem;flex-wrap:wrap;">'
-                '<a href="chapters.html" style="background:#22c55e;color:#052e16;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">▶ Open Story Arc &amp; 7 Videos →</a>'
-                '<a href="plan.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.48rem 0.9rem;border-radius:6px;font-size:0.86rem;">View Outcome Goal &amp; Build Plan →</a>'
+                '</nav>\n<div id="pilot-top-banner" style="background:radial-gradient(circle at 80% 20%,#431407 0%,#0f172a 60%,#020617 100%);color:#ffffff;padding:1.25rem 2rem;border-bottom:3px solid #f59e0b;">'
+                '<div style="max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;">'
+                '<div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">'
+                '<a href="chapters.html#arcade" style="display:block;border:2px solid #fbbf24;border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.5);flex-shrink:0;">'
+                '<img src="assets/starfox_oase_cover_hero.jpg" alt="STAR OASE Mission Select" style="width:170px;height:96px;object-fit:cover;display:block;"></a>'
+                '<div><div style="font-family:monospace;font-size:0.75rem;color:#fbbf24;font-weight:800;letter-spacing:0.06em;">&#127918; STAR OASE // GOLD SQUADRON COMMAND DECK</div>'
+                '<strong style="font-size:1.08rem;">Team-Based Human + Agent Drug Discovery Pilot (Multi-Model v2 + Reference v1)</strong>'
+                '<div style="color:#cbd5e1;font-size:0.86rem;margin-top:0.2rem;">5 Human Avatar Scientists + 6 Voiced AI Wingmen · Gemini 4 Argon + Claude Opus 5.5 + 1P AlphaGenome &amp; AlphaFold 3 A100</div></div></div>'
+                '<div style="display:flex;gap:0.6rem;flex-wrap:wrap;">'
+                '<a href="chapters.html#arcade" style="background:linear-gradient(135deg,#ea580c 0%,#d97706 100%);color:#ffffff;border:1.5px solid #fde047;text-decoration:none;font-weight:800;padding:0.52rem 0.95rem;border-radius:6px;font-size:0.85rem;">&#127918; Open Star OASE Mission Select &rarr;</a>'
+                '<a href="chapters.html?campaign=pcsk9-live-argolis#ch1" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#128640; Launch Live Run (v2 · 7.9m) &rarr;</a>'
+                '<a href="plan.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">Build Tracker &rarr;</a>'
                 '</div></div></div>'
             )
             idx_txt = idx_txt.replace("</nav>", banner, 1)
