@@ -1,0 +1,23 @@
+{
+  "contradicting_evidence": [],
+  "epoch": 1,
+  "hypothesis_id": "H-0001",
+  "id": "H-0001.R-01",
+  "key_criticisms": [
+    "Requires co-folding and docking confirmation of Pocket #3"
+  ],
+  "review_type": "full",
+  "reviewer": "hypex-reflection",
+  "scores": {
+    "constraint_compliance": 5,
+    "correctness": 5,
+    "goal_alignment": 5,
+    "novelty": 5,
+    "safety": 5,
+    "testability": 5
+  },
+  "verdict": "Strong pass — advances to structural and ADMET validation",
+  "verified_citations": [
+    "PMID:17461796"
+  ]
+}

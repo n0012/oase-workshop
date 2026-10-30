@@ -1,0 +1,32 @@
+{
+  "tool": "pk",
+  "subcommand": "nca",
+  "work_order_id": "WO-007",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "study_file": "oase_pcsk9_014_rat_po.pk-study.json",
+    "study_id": "oase_pcsk9_014_rat_po",
+    "blq_method": null
+  },
+  "timestamp": "2026-10-30T04:57:00Z",
+  "completed": "2026-10-30T04:57:00Z",
+  "outputs": [
+    {
+      "path": "oase_pcsk9_014_rat_po.pk-nca.json",
+      "sha256": "00020c62903e38d81387396107597e369bcbebc49273fcbb83be8d2e0d48fc9b",
+      "bytes": 896
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "study_sha256": "888ce988951964b51442a8dc607da36e9f8943ec67d59d168d3b35089aa0dfbd",
+  "species": "rat",
+  "route": "oral",
+  "n_time_points": 8,
+  "n_blq_points": 0,
+  "method_caveat": "NCA assumes dose-proportional exposure (linear PK). If the compound shows nonlinear PK (saturable metabolism, saturable absorption), NCA parameters are dose-dependent and the therapeutic index derived from them is specific to the study dose."
+}

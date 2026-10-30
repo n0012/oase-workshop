@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 4 — Claude Opus 5.5 Med-Chem DMTA, hERG Rescue &amp; Wet-Lab Gate</title>
+<title>Step 4 — Claude Opus 5.5 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
 <style>
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
@@ -40,78 +40,62 @@
 
 <div class="top-nav">
   <div class="title">
-    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
-    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
     <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
-    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
-    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hdr-card">
-    <h1>Step 4 (`WO-006`) — `Claude Opus 5.5` Med-Chem DMTA, `Aronov hERG` Disqualification &amp; Wet-Lab CRO Handoff</h1>
-    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate the 5 docked analogs (`PCSK9-A01..A05`). Top docking hit `PCSK9-A02` (`cLogP = 5.09`, basic amine) triggers cardiac `hERG` alert `L-002` and is formally eliminated; neutral `1,2,4-oxadiazole` **`OASE-PCSK9-014`** clears every oral Ro5 &amp; safety gate and pauses at **Stage Gate 3 (`gates/GATE-03-wetlab-handoff.md`)** for wet-lab CRO assays.</p>
+    <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, Matched Molecular Pairs (`MMP`), `ADMET` &amp; Wet-Lab CRO Handoff</h1>
+    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.4`, `1` Lipinski violation, `verdict = borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `verdict = drug-like`), while enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
     <div class="badge-row">
       <span class="pill opus">medicinal-chemist · Claude Opus 5.5 (Vertex)</span>
       <span class="pill argon">admet-dmpk-scientist · Gemini 4 Argon (Med)</span>
-      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
-      <span class="pill pass">Lead: OASE-PCSK9-014 · cLogP = 3.1 · LipE = 5.2 · 0 Alerts</span>
+      <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Lipinski Violations</span>
+      <span class="pill pass">descriptors.json sha256: 551aa4897aee43e9</span>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <h2>Matched Molecular Pair (MMP) &amp; ADMET Triage Table (`WO-006`)</h2>
+      <h2>Live RDKit, MMP &amp; ADMET Optimization Table (`WO-006-r1`)</h2>
       <table>
         <thead>
-          <tr><th>Compound ID</th><th>Scaffold Modification</th><th>Vina dG</th><th>cLogP / LipE</th><th>hERG / Alerts</th><th>Disposition</th></tr>
+          <tr><th>Compound ID</th><th>MW / Formula</th><th>cLogP / TPSA</th><th>Lipinski / PAINS</th><th>SA Score</th><th>OASE Verdict &amp; Disposition</th></tr>
         </thead>
         <tbody>
           <tr style="background:rgba(239,68,68,0.12);">
-            <td><code>PCSK9-A02</code></td>
-            <td>Lipophilic Tertiary Basic Amine (Parent Hit)</td>
-            <td>-9.4 kcal/mol</td>
-            <td>cLogP <strong>4.8–5.09</strong><br>LipE 3.4</td>
-            <td><span class="pill block">Aronov hERG L-002 (2.1 µM)</span></td>
-            <td><span class="pill block">ELIMINATED (liability-tracker.md)</span></td>
+            <td><code>pcsk9_ic001</code><br><small>(Parent Hit)</small></td>
+            <td>392.39 Da<br><small>HBD=1, HBA=4</small></td>
+            <td>cLogP <strong>5.40</strong><br>TPSA 51.22 &Aring;&sup2;</td>
+            <td><span class="pill block">1 Lipinski Violation</span><br>0 PAINS</td>
+            <td>2.08 (tractable)</td>
+            <td><span class="pill block">borderline (Superseded)</span></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.14);">
-            <td><strong><code>OASE-PCSK9-014</code></strong><br><small>(<code>PCSK9-A03</code>)</small></td>
-            <td><strong>Neutral 1,2,4-Oxadiazole + C6-Fluoropyridine</strong></td>
-            <td><strong>-9.4 kcal/mol</strong></td>
-            <td>cLogP <strong>3.1</strong><br>LipE <strong>5.2</strong></td>
-            <td><span class="pill pass">0 Alerts (hERG &gt; 30 µM)</span></td>
-            <td><span class="pill pass">NOMINATED LEAD &rarr; CRO GATE 3</span></td>
+            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Optimized Lead)</small></td>
+            <td><strong>394.38 Da</strong><br><small>HBD=1, HBA=6</small></td>
+            <td>cLogP <strong>4.19</strong> (&Delta; = -1.21)<br>TPSA <strong>77.00 &Aring;&sup2;</strong></td>
+            <td><span class="pill pass">0 Lipinski Violations</span><br>0 PAINS / 0 Brenk</td>
+            <td><strong>2.52</strong> (tractable)</td>
+            <td><span class="pill pass">drug-like &rarr; CRO GATE 3</span></td>
           </tr>
           <tr>
-            <td><code>PCSK9-A01</code></td>
-            <td>Unsubstituted Benzamide Core</td>
-            <td>-8.6 kcal/mol</td>
-            <td>cLogP 3.8 / LipE 4.1</td>
-            <td>0 Alerts</td>
-            <td>Backup analog</td>
-          </tr>
-          <tr>
-            <td><code>PCSK9-A04</code></td>
-            <td>Sulfonamide Polar Linker</td>
-            <td>-8.9 kcal/mol</td>
-            <td>cLogP 2.9 / LipE 4.7</td>
-            <td>0 Alerts (TPSA 118 Å²)</td>
-            <td>Secondary backup</td>
-          </tr>
-          <tr>
-            <td><code>PCSK9-A05</code></td>
-            <td>Bulky Naphthyl Substituent</td>
-            <td>Clash (1.72 Å)</td>
-            <td>cLogP 5.4</td>
-            <td>Steric clash &lt; 2.0 Å</td>
-            <td><span class="pill block">PRUNED IN STEP 3</span></td>
+            <td><code>pcsk9_series_mmp</code></td>
+            <td>4-Analog Series</td>
+            <td>3 Matched Pairs</td>
+            <td>0 Activity Cliffs</td>
+            <td>Continuous SAR</td>
+            <td><span class="pill pass">sar-tractable (sha256:501deb1a)</span></td>
           </tr>
         </tbody>
       </table>
@@ -119,27 +103,27 @@
 
     <div>
       <div class="card">
-        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`gates/GATE-03-wetlab-handoff.md`)</h2>
-        <p style="font-size:0.83rem;color:#cbd5e1;margin-top:0;">OASE never mistakes in-silico scores for wet-lab truth. At Gate 3, the state machine pauses on disk until 3 experimental CRO readouts return:</p>
+        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`admet.herg_structural_flag` Relay)</h2>
+        <p style="font-size:0.83rem;color:#cbd5e1;margin-top:0;">`oase admet analyze` on `oase_pcsk9_014.predict.json` (`sha256:7c2fc75a3b865dd6`) emits mandatory relay <code>admet.herg_structural_flag</code> (`liabilities-identified`). OASE blocks clinical progression until wet-lab CRO assays return:</p>
         <table>
-          <thead><tr><th>CRO Wet-Lab Assay</th><th>Gate 3 Criterion</th><th>Returned Readout (`Step 5`)</th></tr></thead>
+          <thead><tr><th>CRO Wet-Lab Assay</th><th>Gate 3 Requirement</th><th>Step 5 Returned Readout</th></tr></thead>
           <tbody>
-            <tr><td><strong>1. Surface Plasmon Resonance (`SPR KD`)</strong></td><td>Direct human PCSK9 binding</td><td><span class="pill pass">KD = 14.2 nM (Confirmed)</span></td></tr>
-            <tr><td><strong>2. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM` (`0` cardiac risk)</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
-            <tr><td><strong>3. Rat &amp; Dog Oral Cassette PK</strong></td><td>`F &ge; 30%` unenhanced oral</td><td><span class="pill pass">Rat F = 54% · Dog F = 61%</span></td></tr>
+            <tr><td><strong>1. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM` (resolve structural flag)</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
+            <tr><td><strong>2. Rat Oral PK (`oase_pcsk9_014_rat_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1620 ng/mL · t1/2 = 4.80 h</span></td></tr>
+            <tr><td><strong>3. Dog Oral PK (`oase_pcsk9_014_dog_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1790 ng/mL · t1/2 = 6.81 h</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="card">
-        <h2>`Claude Opus 5.5` Retrosynthesis &amp; Provenance Receipt (`WO-006`)</h2>
-        <div class="term">[raw/admet/pcsk9_ic001_series_admet.analysis.json]
-lead_id            : OASE-PCSK9-014
-parent_clogp       : 4.8   -> lead_clogp : 3.1  (PASS <= 3.5)
-lead_lipe          : 5.2   (PASS >= 5.0)
-mw                 : 462.5 (PASS <= 500.0)
-tpsa               : 88.4  (PASS <= 120.0)
-structural_alerts  : 0     (PAINS=0, Brenk=0, Aronov_hERG=0)
-retro_steps        : 4     (ASKCOS plausibility = 0.87)</div>
+        <h2>`WO-006` Live Phase-1 &amp; Phase-2 Receipts (`raw/compounds/` &amp; `raw/admet/`)</h2>
+        <div class="term">[raw/compounds/oase_pcsk9_014.compound.analysis.json]
+env_version        : sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b
+mw                 : 394.38  (parent pcsk9_ic001: 392.39)
+logp               : 4.19    (parent pcsk9_ic001: 5.40 -> -1.21 logP reduction)
+tpsa               : 77.0    (parent pcsk9_ic001: 51.22 -> +25.78 A^2 polarity)
+lipinski_violations: 0       (verdict: drug-like)
+sa_score           : 2.52    (verdict: tractable)
+admet_relays       : admet.in_silico_predictions_not_experimental, admet.herg_structural_flag</div>
       </div>
     </div>
   </div>

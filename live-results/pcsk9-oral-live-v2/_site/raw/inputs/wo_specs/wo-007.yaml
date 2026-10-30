@@ -1,0 +1,30 @@
+decision_question: Do Rat and Dog oral PK studies and two-species allometric scaling
+  project a human oral half-life compatible with once-daily dosing for oase_pcsk9_014?
+requested_role: admet-dmpk-scientist
+stage: stage4-human-readiness-package
+cycle: cycle-1
+context:
+  content: Run NCA on Rat (10 mg/kg PO) and Dog (5 mg/kg PO) PK studies and scale
+    to 70 kg human via simple allometry.
+  artifact_links:
+  - path: raw/pk/oase_pcsk9_014_rat_po.pk-nca.json
+  - path: raw/pk/oase_pcsk9_014_dog_po.pk-nca.json
+  - path: raw/pk/scaling-dog-rat.pk-scaling.json
+dependencies:
+- WO-006
+capabilities:
+- oase.pk
+deliverables:
+  layer_0_classes:
+  - oase.pk
+  layer_1:
+  - findings/admet-dmpk/wo-007-oral-pk-scaling.md
+acceptance_criteria:
+- Rat and Dog oral NCA AUC extrapolation < 20%
+- Predicted human elimination half-life >= 6.0 hours
+alert_policy:
+  mode: block_on_high_extrapolation
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

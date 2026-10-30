@@ -1,0 +1,72 @@
+{
+  "record_type": "analysis",
+  "source": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking_result.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:55:40Z",
+  "threshold_set": "docking-scores@1.0+program",
+  "thresholds_applied": {
+    "strong_binding_energy": -8.5,
+    "moderate_binding_energy": -6.5,
+    "weak_binding_energy": -5.0
+  },
+  "metrics": {
+    "ligand": "pcsk9_ic001.3d.sdf",
+    "receptor": "AF-Q8NBP7-F1.receptor.pdbqt",
+    "docking_mode": "rigid",
+    "n_poses": 3,
+    "best_score": -7.991,
+    "poses": [
+      {
+        "rank": 1,
+        "affinity_kcalmol": -7.991,
+        "rmsd_lb": 0.0,
+        "rmsd_ub": 0.0,
+        "band": "moderate"
+      },
+      {
+        "rank": 2,
+        "affinity_kcalmol": -7.902,
+        "rmsd_lb": 5.742,
+        "rmsd_ub": 10.365,
+        "band": "moderate"
+      },
+      {
+        "rank": 3,
+        "affinity_kcalmol": -6.923,
+        "rmsd_lb": 3.862,
+        "rmsd_ub": 5.841,
+        "band": "moderate"
+      }
+    ]
+  },
+  "assessment": {
+    "verdict": "moderate-binders-found",
+    "statement": "Best pose scores -8.0 kcal/mol, in the moderate predicted binding band (\u2264 -6.5 kcal/mol).",
+    "advisories": []
+  },
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.788 is cavity shape in AF-Q8NBP7-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    },
+    {
+      "code": "docking.score_is_not_affinity",
+      "message": "Best Vina score -8.0 kcal/mol for pcsk9_ic001.3d.sdf; this is a computed interaction energy, not a measured affinity."
+    }
+  ],
+  "threshold_sources": {
+    "strong_binding_energy": "program",
+    "moderate_binding_energy": "program",
+    "weak_binding_energy": "program"
+  },
+  "threshold_provenance": "AutoDock Vina binding energy interpretation: values are predicted binding free energies in kcal/mol (more negative = stronger predicted binding). No universally accepted cutoffs exist for classifying Vina scores; the values here are from commonly cited benchmarking studies. Eberhardt et al., J Chem Inf Model 2021;61:3891-3898 (Vina 1.2.x). Quiroga & Villarreal, PLoS ONE 2016;11:e0155183 report that scores below -6.0 kcal/mol correspond to low-micromolar predicted affinity in their benchmark set.",
+  "written_by": "structural-biologist",
+  "work_order_id": "WO-005",
+  "source_sha256": "67621d091bd46b06ec06603a4ac4d9a4227263e555049618dd118e5f3c5a8c8b"
+}

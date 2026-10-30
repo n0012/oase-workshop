@@ -1,0 +1,59 @@
+data_pocket9_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket     9:
+0  - Pocket Score                      : 0.0221
+1  - Drug Score                        : 0.0001
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 3.9582
+4  - Mean alpha-sphere Solvent Acc.    : 0.5896
+5  - Mean B-factor of pocket residues  : 0.9856
+6  - Hydrophobicity Score              : 26.1000
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 3.6000
+9  - Pocket volume (Monte Carlo)       : 247.3463
+10  -Pocket volume (convex hull)       : 6.0199
+11 - Charge Score                      :    -1
+12 - Local hydrophobic density Score   : 2.0000
+13 - Number of apolar alpha sphere     :     3
+14 - Proportion of apolar alpha sphere : 0.2000
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    881      C   CB ?  LEU      A 112 ?  -28.819   -5.999   10.622   0.00  0 112 A
+ATOM    973      C  CD2 ?  LEU      A 123 ?  -25.618   -5.302    8.727   0.00  0 123 A
+ATOM    882      O    O ?  LEU      A 112 ?  -29.873   -2.988   11.350   0.00  0 112 A
+ATOM    2076     C  CD1 ?  ILE      A 266 ?  -24.474   -1.562    9.637   0.00  0 266 A
+ATOM    1656     O    O ?  VAL      A 208 ?  -20.049   -6.101   16.912   0.00  0 208 A
+ATOM    1651     O  OD1 ?  ASN      A 207 ?  -21.759   -3.291   13.372  -0.81  0 207 A
+ATOM    1654     C    C ?  VAL      A 208 ?  -18.963   -5.955   16.346   0.00  0 208 A
+ATOM    2036     O  OG1 ?  THR      A 260 ?  -19.273   -6.360   10.470  -1.07  0 260 A
+ATOM    2049     O   OG ?  SER      A 262 ?  -21.670   -6.437    8.951  -1.88  0 262 A
+ATOM    884      C  CD1 ?  LEU      A 112 ?  -27.424   -8.054   10.946   0.00  0 112 A
+ATOM    597      C  CG2 ?  THR      A 77 ?  -24.792   -9.846    8.283   0.00  0 77 A
+ATOM    598      O  OG1 ?  THR      A 77 ?  -24.899  -11.695    9.719  -0.40  0 77 A
+ATOM    1659     N    N ?  PRO      A 209 ?  -18.286   -7.009   15.852   0.00  0 209 A
+ATOM    2035     C  CG2 ?  THR      A 260 ?  -18.469   -8.384   11.354   0.00  0 260 A
+ATOM    1660     C   CA ?  PRO      A 209 ?  -18.673   -8.386   16.132   0.00  0 209 A
+ATOM    1650     N  ND2 ?  ASN      A 207 ?  -23.126   -1.702   12.786   0.00  0 207 A
+ATOM    1156     O  OD2 ?  ASP      A 146 ?  -21.212   -8.886    8.406  -2.95  0 146 A
+# 

@@ -25,7 +25,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, Header, HTTPException, Query
+from fastapi import Body, FastAPI, Header, HTTPException, Query
 
 HUB_DIR = Path(os.environ.get("SCION_HUB_DIR", "/home/scion/.scion")).resolve()
 DB_PATH = HUB_DIR / "hub.db"
@@ -488,3 +488,68 @@ def reset_all_chapters(
         "reset_at": now_iso,
         "chapters": per_chapter,
     }
+
+
+@app.post("/api/state/agent-reply")
+def trigger_container_agent_reply(
+    payload: dict[str, Any] = Body(...),
+    x_oase_state_token: str | None = Header(default=None),
+) -> dict[str, Any]:
+    _check_auth(x_oase_state_token)
+    slug = str(payload.get("slug", "")).strip()
+    agent_slug = str(payload.get("agent_slug", "")).strip()
+    conv_id = str(payload.get("conv_id", "")).strip()
+    body = str(payload.get("body", "")).strip()
+    if not slug or not agent_slug or not conv_id or not body:
+        raise HTTPException(status_code=400, detail="Missing slug, agent_slug, conv_id, or body")
+
+    container_name = f"{slug}--{agent_slug}"
+    # Cancel any long-running tmux tool loop inside grove containers so no delayed duplicate reply lands later
+    ps_proc = subprocess.run(
+        ["docker", "ps", "--filter", f"name=^{slug}--", "--format", "{{.Names}}"],
+        text=True,
+        check=False,
+        capture_output=True,
+        timeout=5,
+    )
+    for cname in (ps_proc.stdout or "").splitlines():
+        cname = cname.strip()
+        if cname:
+            subprocess.run(
+                ["docker", "exec", "-u", "scion", cname, "tmux", "send-keys", "-t", "scion", "Escape"],
+                check=False,
+                capture_output=True,
+                timeout=3,
+            )
+    proc = subprocess.run(
+        [
+            "docker",
+            "exec",
+            "-i",
+            "-u",
+            "scion",
+            container_name,
+            "scion",
+            "message",
+            f"conv:{conv_id}",
+            "--body-file",
+            "-",
+        ],
+        input=body,
+        text=True,
+        check=False,
+        capture_output=True,
+        timeout=15,
+    )
+    if proc.returncode != 0:
+        raise HTTPException(
+            status_code=500,
+            detail=f"scion message inside {container_name} failed ({proc.returncode}): {proc.stderr or proc.stdout}",
+        )
+    return {
+        "ok": True,
+        "container": container_name,
+        "conv_id": conv_id,
+        "stdout": (proc.stdout or "").strip(),
+    }
+

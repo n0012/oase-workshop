@@ -1,0 +1,118 @@
+{
+  "record_type": "analysis",
+  "source": "raw/admet/oase_pcsk9_014.predict.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:55:50Z",
+  "threshold_set": "admet-endpoints@1.0+program",
+  "thresholds_applied": {
+    "metabolic_logp_high": 4.0,
+    "metabolic_aromatic_rings_high": 3,
+    "metabolic_logp_low": 3.0,
+    "permeability_tpsa_high": 110.0,
+    "permeability_logp_min": -1.0,
+    "permeability_logp_max": 6.0,
+    "permeability_tpsa_low": 140.0,
+    "permeability_mw_max": 500.0,
+    "herg_logp_min": 3.7,
+    "herg_min_aromatic_rings": 2,
+    "solubility_high": -1.0,
+    "solubility_moderate": -3.0,
+    "solubility_low": -5.0
+  },
+  "metrics": {
+    "canonical_smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1",
+    "endpoint_results": {
+      "metabolic_stability": {
+        "predicted_class": "high",
+        "logp": 4.19,
+        "aromatic_rings": 3,
+        "status": "unacceptable"
+      },
+      "cyp_inhibition": {
+        "flagged_isoforms": [
+          "CYP2D6"
+        ],
+        "n_flagged": 1,
+        "status": "marginal"
+      },
+      "permeability": {
+        "predicted_class": "high",
+        "tpsa": 77.0,
+        "logp": 4.19,
+        "mw": 394.38,
+        "status": "acceptable"
+      },
+      "herg_liability": {
+        "flagged": true,
+        "has_basic_nitrogen": true,
+        "logp": 4.19,
+        "aromatic_rings": 3,
+        "status": "unacceptable",
+        "triggering_features": [
+          "basic nitrogen (protonatable at physiological pH)",
+          "LogP = 4.19 (> 3.7, hydrophobic)",
+          "3 aromatic ring(s) (>= 2, hydrophobic mass)"
+        ]
+      },
+      "solubility": {
+        "predicted_class": "insoluble",
+        "predicted_logS": -5.127,
+        "status": "unacceptable"
+      }
+    },
+    "n_liabilities": 3,
+    "n_marginals": 1,
+    "liabilities": [
+      "metabolic_stability (high liability)",
+      "herg_liability (structural features flagged)",
+      "solubility (insoluble, LogS = -5.127)"
+    ],
+    "marginals": [
+      "cyp_inhibition (CYP2D6 flagged)"
+    ]
+  },
+  "assessment": {
+    "verdict": "liabilities-identified",
+    "statement": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1 has 3 ADMET liability(ies): metabolic_stability (high liability); herg_liability (structural features flagged); solubility (insoluble, LogS = -5.127).",
+    "relay_dispositions": [
+      {
+        "code": "admet.prediction_not_measurement",
+        "status": "not_applicable",
+        "condition": "verdict is developable",
+        "reason": "verdict is liabilities-identified; the over-read risk this relay guards against \u2014 treating predictions as measurements \u2014 is highest when the profile looks clean, which this one does not"
+      },
+      {
+        "code": "admet.herg_structural_flag",
+        "status": "emitted",
+        "condition": "hERG structural features detected"
+      }
+    ]
+  },
+  "mandatory_relays": [
+    {
+      "code": "admet.herg_structural_flag",
+      "message": "hERG flag triggered on COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1 by: basic nitrogen (protonatable at physiological pH); LogP = 4.19 (> 3.7, hydrophobic); 3 aromatic ring(s) (>= 2, hydrophobic mass). This is a pharmacophore-based prediction, not a measured IC50 or patch-clamp result. Rule-based hERG prediction has a documented false-negative rate: absence of this flag is not evidence of hERG safety."
+    }
+  ],
+  "threshold_sources": {
+    "metabolic_logp_high": "default",
+    "metabolic_aromatic_rings_high": "default",
+    "metabolic_logp_low": "default",
+    "permeability_tpsa_high": "program",
+    "permeability_logp_min": "default",
+    "permeability_logp_max": "default",
+    "permeability_tpsa_low": "program",
+    "permeability_mw_max": "program",
+    "herg_logp_min": "program",
+    "herg_min_aromatic_rings": "program",
+    "solubility_high": "default",
+    "solubility_moderate": "default",
+    "solubility_low": "default"
+  },
+  "threshold_provenance": "Gleeson, J Med Chem 2008;51:817-834 (metabolic stability); Egan et al., J Med Chem 2000;43:3867-3877 (permeability); Aronov, Drug Discov Today 2005;10:149-155 (hERG); Delaney, J Chem Inf Comput Sci 2004;44:1000-1009 (solubility)",
+  "written_by": "medicinal-chemist",
+  "work_order_id": "WO-006",
+  "source_sha256": "7c2fc75a3b865dd6f44ace2cb603fe09dfd8745a080a383199907d7640ae9a2c"
+}

@@ -1,0 +1,32 @@
+{
+  "tool": "dossier",
+  "subcommand": "export",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "unknown",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "work_order_id": "WO-008",
+    "format": "ctd",
+    "output_format": "markdown"
+  },
+  "timestamp": "2026-10-30T05:46:32Z",
+  "completed": "2026-10-30T05:46:32Z",
+  "outputs": [
+    {
+      "path": "dossier-export.json",
+      "sha256": "db844520ad7c9d5f10c154c0b9c9d892ae184da36984587e42f43327412d8b03",
+      "bytes": 9586
+    },
+    {
+      "path": "dossier-export.md",
+      "sha256": "a76d228dae0056f76f2322c9ca51908290e3bad4038c23bee106953929402368",
+      "bytes": 4541
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "scope_caveat": "A complete checklist means the required evidence types are present; it does not mean the evidence meets regulatory standards, that the studies are GLP-compliant, or that the dossier is ready for filing."
+}

@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-30T05:10:05Z",
+  "created_by": "hypex-generation",
+  "epoch": 1,
+  "evidence": [
+    {
+      "lit_id": "PMID:25014122",
+      "note": "Flat orthosteric surface typically requires \u003e700 Da macrocycles for sub-100 nM potency.",
+      "role": "constrains"
+    }
+  ],
+  "experiments": [
+    {
+      "design": "SPR competition binding and Caco-2 bidirectional efflux",
+      "est_difficulty": "med",
+      "readout": "Kd and Papp A-\u003eB"
+    }
+  ],
+  "focus_area": "Orthosteric PPI Blockade",
+  "id": "H-0002",
+  "lineage": {
+    "operator": "null",
+    "parents": []
+  },
+  "mechanism": "Competitive orthosteric blockade of the PCSK9 D374 salt-bridge and hydrophobic patch.",
+  "predictions": [
+    "SPR Kd \u003c 100 nM",
+    "High polar surface area limiting Caco-2 permeability"
+  ],
+  "statement": "Peptidomimetic bicyclic scaffold directly competing with LDLR EGF-A residues N295-C308 on the solvent-exposed PCSK9 catalytic surface.",
+  "status": "reviewed",
+  "title": "Direct Orthosteric Small-Molecule Mimicry of LDLR EGF-A Ca2+ Loop Across the Flat PCSK9 Beta-Sheet"
+}

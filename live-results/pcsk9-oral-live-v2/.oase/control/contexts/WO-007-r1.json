@@ -1,0 +1,21 @@
+{
+  "work_order_id": "WO-007",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/pk/oase_pcsk9_014_rat_po.pk-nca.json",
+      "sha256": "00020c62903e38d81387396107597e369bcbebc49273fcbb83be8d2e0d48fc9b"
+    },
+    {
+      "path": "raw/pk/oase_pcsk9_014_dog_po.pk-nca.json",
+      "sha256": "6756380315ffeee4e1f499ae9f29c2656300c7fe0c320741a0d724417b2f0427"
+    },
+    {
+      "path": "raw/pk/scaling-dog-rat.pk-scaling.json",
+      "sha256": "14ed82dcc3aea396f3f216d35c8c32049551bc1d544ea8a77929baaf8a3d04ec"
+    }
+  ],
+  "content": "Run NCA on Rat (10 mg/kg PO) and Dog (5 mg/kg PO) PK studies and scale to 70 kg human via simple allometry.",
+  "content_sha256": "07ce9039f5164cba59286e3603a12f2714985aefc9adcac2949b9781fb837ff0",
+  "created_at": "2026-10-30T05:46:10Z"
+}

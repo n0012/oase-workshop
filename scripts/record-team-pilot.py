@@ -69,8 +69,19 @@ TURN_BEACON_RGB: dict[int, tuple[int, int, int]] = {
 }
 
 
-def http_json(url: str, method: str = "GET", headers: dict[str, str] | None = None, timeout: int = 30) -> dict[str, Any]:
-    req = urllib.request.Request(url, method=method, headers=headers or {})
+def http_json(
+    url: str,
+    method: str = "GET",
+    headers: dict[str, str] | None = None,
+    payload: dict[str, Any] | None = None,
+    timeout: int = 30,
+) -> dict[str, Any]:
+    hdrs = dict(headers or {})
+    data = None
+    if payload is not None:
+        data = json.dumps(payload).encode("utf-8")
+        hdrs["Content-Type"] = "application/json"
+    req = urllib.request.Request(url, data=data, method=method, headers=hdrs)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8"))
 
@@ -269,6 +280,75 @@ HUD_INJECT_JS = """
 }
 """
 
+CONSOLE_VIEWER_INJECT_JS = """
+({viewerHtml, viewerName, captionText, accentHex}) => {
+  let panel = document.getElementById('oase-live-console-drawer');
+  if (!viewerHtml) {
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  if (!panel) {
+    panel = document.createElement('div');
+    panel.id = 'oase-live-console-drawer';
+    panel.style.cssText = [
+      'position:fixed',
+      'top:48px',
+      'left:586px',
+      'width:1004px',
+      'height:992px',
+      'background:#020617',
+      'border:2px solid #10b981',
+      'border-radius:14px',
+      'box-shadow:0 20px 50px rgba(2,6,23,0.82)',
+      'z-index:999995',
+      'display:flex',
+      'flex-direction:column',
+      'overflow:hidden',
+      'font-family:system-ui,-apple-system,sans-serif'
+    ].join(';');
+    panel.innerHTML = `
+      <div id="oase-live-console-hdr" style="height:38px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:#f8fafc;font-size:12px;font-weight:700;letter-spacing:0.02em;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span id="oase-live-console-dot" style="width:9px;height:9px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;display:inline-block;"></span>
+          <span id="oase-live-console-title"></span>
+        </div>
+        <span id="oase-live-console-file" style="font-family:monospace;font-size:11px;color:#38bdf8;background:rgba(56,189,248,0.12);padding:2px 8px;border-radius:6px;border:1px solid rgba(56,189,248,0.3);"></span>
+      </div>
+      <iframe id="oase-live-console-iframe" style="width:100%;flex:1;border:0;background:#0f172a;"></iframe>
+    `;
+    document.body.appendChild(panel);
+  }
+  const color = accentHex || '#10b981';
+  panel.style.borderColor = color;
+  panel.style.display = 'flex';
+  const dot = document.getElementById('oase-live-console-dot');
+  if (dot) {
+    dot.style.background = color;
+    dot.style.boxShadow = `0 0 8px ${color}`;
+  }
+  const titleEl = document.getElementById('oase-live-console-title');
+  if (titleEl) titleEl.textContent = captionText || 'LIVE CONSOLE EVIDENCE VIEWER';
+  const fileEl = document.getElementById('oase-live-console-file');
+  if (fileEl) fileEl.textContent = `/workspace/_site/viewers/${viewerName}`;
+  const iframe = document.getElementById('oase-live-console-iframe');
+  if (iframe && iframe.getAttribute('data-viewer') !== viewerName) {
+    iframe.setAttribute('data-viewer', viewerName);
+    iframe.srcdoc = viewerHtml;
+  }
+}
+"""
+
+SCROLL_CONSOLE_VIEWER_JS = """
+(scrollTopPx) => {
+  const iframe = document.getElementById('oase-live-console-iframe');
+  if (iframe && iframe.contentWindow) {
+    try {
+      iframe.contentWindow.scrollTo({ top: scrollTopPx, behavior: 'smooth' });
+    } catch (e) {}
+  }
+}
+"""
+
 SCROLL_CHAT_BOTTOM_JS = """
 () => {
   function scrollAll(root) {
@@ -302,18 +382,23 @@ def record_live_chapters(
     raw_dir: Path,
     selected_chapters: set[str],
     headless: bool = True,
+    campaign: str = "",
 ) -> dict[str, Any]:
     from playwright.sync_api import sync_playwright
 
     raw_dir.mkdir(parents=True, exist_ok=True)
-    status_before = http_json(f"{state_url}/api/state/status", headers=state_headers)
+    q_suffix = f"?campaign={campaign}" if campaign else ""
+    status_before = http_json(f"{state_url}/api/state/status{q_suffix}", headers=state_headers)
     chapters_meta = status_before["chapters"]
     voices = spec["voices"]
+    viewers_dir = REPO_ROOT / "site-template" / "viewers"
 
     timings_path = raw_dir / "raw_turn_timings.json"
     all_timings: dict[str, Any] = {}
     if timings_path.exists():
         all_timings = json.loads(timings_path.read_text(encoding="utf-8"))
+
+    reset_slugs_done: set[str] = set()
 
     for ch in spec["chapters"]:
         ch_id = ch["chapter"]
@@ -327,9 +412,11 @@ def record_live_chapters(
         lead_human = cmeta["lead_human"]
         chat_url = f"{scion_hub_url.rstrip('/')}/chat/{slug}/{topic_id}"
 
-        print(f"\n=== Recording Live Multi-Human + Agent Chapter {ch_id}: {slug} ===", flush=True)
-        http_json(f"{state_url}/api/state/chapters/{ch_id}/reset", method="POST", headers=state_headers)
-        baseline_msgs = http_json(f"{state_url}/api/state/status", headers=state_headers)["chapters"][ch_id][
+        print(f"\n=== Recording Live Multi-Human + Agent Chapter {ch_id}: {slug} (campaign={campaign or 'default'}) ===", flush=True)
+        if slug not in reset_slugs_done:
+            http_json(f"{state_url}/api/state/chapters/{ch_id}/reset{q_suffix}", method="POST", headers=state_headers)
+            reset_slugs_done.add(slug)
+        baseline_msgs = http_json(f"{state_url}/api/state/status{q_suffix}", headers=state_headers)["chapters"][ch_id][
             "message_count"
         ]
 
@@ -409,6 +496,11 @@ def record_live_chapters(
                 slot_frames = int(round((tts_dur + BREATH_GAP_S) * FPS))
                 target_slot_s = slot_frames / float(FPS)
                 progress_pct = int((turn_num / len(ch["turns"])) * 100)
+                viewer_name = turn.get("console_viewer", "").strip()
+                viewer_caption = turn.get("console_caption", "").strip()
+                viewer_html = ""
+                if viewer_name and (viewers_dir / viewer_name).is_file():
+                    viewer_html = (viewers_dir / viewer_name).read_text(encoding="utf-8")
 
                 if turn["action"] == "human_chat":
                     raw_msg = turn["chat_text"].replace("<conversation.id>", conv_id)
@@ -422,6 +514,15 @@ def record_live_chapters(
                         box.fill(raw_msg)
                         lead_page.wait_for_timeout(120)
 
+                    lead_page.evaluate(
+                        CONSOLE_VIEWER_INJECT_JS,
+                        {
+                            "viewerHtml": viewer_html,
+                            "viewerName": viewer_name,
+                            "captionText": viewer_caption,
+                            "accentHex": dot_hex,
+                        },
+                    )
                     # Stamp exact on-screen turn start beacon!
                     lead_page.evaluate(
                         HUD_INJECT_JS,
@@ -451,7 +552,9 @@ def record_live_chapters(
 
                     lead_page.wait_for_timeout(650)
                     lead_page.evaluate(SCROLL_CHAT_BOTTOM_JS)
-                    msg_floor = http_json(f"{state_url}/api/state/status", headers=state_headers)["chapters"][ch_id][
+                    if viewer_html:
+                        lead_page.evaluate(SCROLL_CONSOLE_VIEWER_JS, 260)
+                    msg_floor = http_json(f"{state_url}/api/state/status{q_suffix}", headers=state_headers)["chapters"][ch_id][
                         "message_count"
                     ]
 
@@ -478,10 +581,27 @@ def record_live_chapters(
                     wait_t0 = time.perf_counter()
                     replied = False
                     nudged = False
+                    target_ag = turn.get("target_agent") or ch["turns"][max(0, idx - 1)].get(
+                        "target_agent", "science-program-lead"
+                    )
+                    agent_chat_body = (turn.get("chat_text") or "").strip()
+                    if agent_chat_body:
+                        lead_page.wait_for_timeout(2400)
+                        http_json(
+                            f"{state_url}/api/state/agent-reply",
+                            method="POST",
+                            headers=state_headers,
+                            payload={
+                                "slug": slug,
+                                "agent_slug": target_ag,
+                                "conv_id": conv_id,
+                                "body": agent_chat_body,
+                            },
+                        )
                     deadline = wait_t0 + 65.0
                     while time.perf_counter() < deadline:
-                        lead_page.wait_for_timeout(1200)
-                        cur_cnt = http_json(f"{state_url}/api/state/status", headers=state_headers)["chapters"][ch_id][
+                        lead_page.wait_for_timeout(600)
+                        cur_cnt = http_json(f"{state_url}/api/state/status{q_suffix}", headers=state_headers)["chapters"][ch_id][
                             "message_count"
                         ]
                         if cur_cnt > msg_floor:
@@ -492,11 +612,8 @@ def record_live_chapters(
                                 flush=True,
                             )
                             break
-                        if not nudged and (time.perf_counter() - wait_t0) > 42.0:
+                        if not agent_chat_body and not nudged and (time.perf_counter() - wait_t0) > 42.0:
                             nudged = True
-                            target_ag = turn.get("target_agent") or ch["turns"][max(0, idx - 1)].get(
-                                "target_agent", "science-program-lead"
-                            )
                             print(f"  [{tid}] Sending gentle Webchat shell reminder to @{target_ag}...", flush=True)
                             lbox = lead_page.locator("textarea[placeholder='Send a message...']").first
                             lbox.fill(
@@ -504,7 +621,7 @@ def record_live_chapters(
                             )
                             lead_page.keyboard.press("Enter")
                             lead_page.wait_for_timeout(600)
-                            msg_floor = http_json(f"{state_url}/api/state/status", headers=state_headers)["chapters"][
+                            msg_floor = http_json(f"{state_url}/api/state/status{q_suffix}", headers=state_headers)["chapters"][
                                 ch_id
                             ]["message_count"]
 
@@ -514,6 +631,15 @@ def record_live_chapters(
                     # Wait 350ms for SSE DOM render, trigger smooth scroll, and IMMEDIATELY start Turn 2 beacon!
                     lead_page.wait_for_timeout(350)
                     lead_page.evaluate(SCROLL_CHAT_BOTTOM_JS)
+                    lead_page.evaluate(
+                        CONSOLE_VIEWER_INJECT_JS,
+                        {
+                            "viewerHtml": viewer_html,
+                            "viewerName": viewer_name,
+                            "captionText": viewer_caption,
+                            "accentHex": dot_hex,
+                        },
+                    )
                     lead_page.evaluate(
                         HUD_INJECT_JS,
                         {
@@ -526,8 +652,12 @@ def record_live_chapters(
                         },
                     )
                     t_start = time.perf_counter()
-                    # Hold full real-time slot while specialist's live Markdown reply is right on screen!
-                    lead_page.wait_for_timeout(int((target_slot_s + 0.65) * 1000))
+                    # Hold full real-time slot while specialist's live Markdown reply + Console Evidence Viewer are right on screen!
+                    half_ms = int((target_slot_s + 0.65) * 500)
+                    lead_page.wait_for_timeout(half_ms)
+                    if viewer_html:
+                        lead_page.evaluate(SCROLL_CONSOLE_VIEWER_JS, 160)
+                    lead_page.wait_for_timeout(half_ms)
                     t_end = time.perf_counter()
 
                 else:
@@ -1185,9 +1315,15 @@ def master_chapter_videos(
     return existing_manifest
 
 
-def upload_videos_to_gcs(out_videos_dir: Path, bucket: str, gcloud_config: str | None = None) -> None:
+def upload_videos_to_gcs(
+    out_videos_dir: Path,
+    bucket: str,
+    gcloud_config: str | None = None,
+    gcs_prefix: str = "videos",
+) -> None:
     bkt = bucket if bucket.startswith("gs://") else f"gs://{bucket}"
-    dst = f"{bkt.rstrip('/')}/videos/"
+    clean_prefix = gcs_prefix.strip("/") or "videos"
+    dst = f"{bkt.rstrip('/')}/{clean_prefix}/"
     mp4s = sorted(out_videos_dir.glob("*.mp4"))
     if not mp4s:
         raise RuntimeError(f"No MP4 files found in {out_videos_dir}")
@@ -1206,6 +1342,8 @@ def upload_videos_to_gcs(out_videos_dir: Path, bucket: str, gcloud_config: str |
 def main() -> int:
     ap = argparse.ArgumentParser(description="Record & master the 7-Chapter OASE Multi-Human + Multi-Agent Pilot.")
     ap.add_argument("--spec", type=Path, default=DEFAULT_SPEC)
+    ap.add_argument("--campaign", default=os.environ.get("OASE_CAMPAIGN_ID", ""))
+    ap.add_argument("--gcs-prefix", default=os.environ.get("GCS_VIDEO_PREFIX", "videos"))
     ap.add_argument("--scion-hub-url", default=os.environ.get("SCION_HUB_URL", ""))
     ap.add_argument("--state-url", default=os.environ.get("STATE_CONTROLLER_URL", "http://127.0.0.1:8780"))
     ap.add_argument("--state-token", default=os.environ.get("OASE_STATE_TOKEN", ""))
@@ -1229,12 +1367,13 @@ def main() -> int:
     args = ap.parse_args()
 
     spec = json.loads(args.spec.read_text(encoding="utf-8"))
+    campaign_id = (args.campaign or spec.get("campaign_id", "")).strip()
     selected = {c.strip() for c in args.chapters.split(",") if c.strip()}
 
     if args.dry_run:
         print(
             f"[DRY-RUN] Validated {len(spec['chapters'])} chapters, {len(spec['voices'])} Gemini 3.8 TTS voices, "
-            f"selected={sorted(selected)}"
+            f"campaign={campaign_id or 'default'}, selected={sorted(selected)}"
         )
         return 0
 
@@ -1266,10 +1405,12 @@ def main() -> int:
             raw_dir=raw_dir,
             selected_chapters=selected,
             headless=not args.headful,
+            campaign=campaign_id,
         )
 
         if args.freeze_snapshot:
-            snap = http_json(f"{args.state_url.rstrip('/')}/api/state/snapshot", method="POST", headers=state_headers)
+            q_snap = f"?campaign={campaign_id}" if campaign_id else ""
+            snap = http_json(f"{args.state_url.rstrip('/')}/api/state/snapshot{q_snap}", method="POST", headers=state_headers)
             print(f"[SNAPSHOT] Froze authentic golden-hub.db snapshot: {json.dumps(snap)}", flush=True)
     else:
         timings_path = raw_dir / "raw_turn_timings.json"
@@ -1303,7 +1444,12 @@ def main() -> int:
         if args.upload_gcs:
             if not args.gcs_bucket:
                 raise SystemExit("ERROR: --gcs-bucket or GCS_BUNDLE_BUCKET required for --upload-gcs.")
-            upload_videos_to_gcs(out_videos_dir, args.gcs_bucket, args.gcloud_config or None)
+            upload_videos_to_gcs(
+                out_videos_dir,
+                args.gcs_bucket,
+                args.gcloud_config or None,
+                gcs_prefix=args.gcs_prefix,
+            )
 
     return 0
 

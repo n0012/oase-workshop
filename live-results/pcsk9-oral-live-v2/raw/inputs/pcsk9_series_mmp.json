@@ -1,0 +1,21 @@
+{
+  "schema": "oase.mmp-series.v1",
+  "series_id": "pcsk9_ic001_opt",
+  "compounds": [
+    {
+      "compound_id": "PCSK9-IC-001",
+      "smiles": "CC1=CC(=CC=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=C3)C(F)(F)F)OC",
+      "properties": {"pIC50": 7.1, "cLogP": 4.8, "hERG_IC50_uM": 4.2}
+    },
+    {
+      "compound_id": "PCSK9-A02",
+      "smiles": "CC1=CC(=CN=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=C3)C(F)(F)F)OC",
+      "properties": {"pIC50": 7.8, "cLogP": 3.8, "hERG_IC50_uM": 14.5}
+    },
+    {
+      "compound_id": "OASE-PCSK9-014",
+      "smiles": "CC1=CC(=CN=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=N3)C(F)(F)F)OC",
+      "properties": {"pIC50": 8.3, "cLogP": 3.1, "hERG_IC50_uM": 38.0}
+    }
+  ]
+}

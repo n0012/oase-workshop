@@ -1,0 +1,42 @@
+{
+  "tool": "docking",
+  "subcommand": "run",
+  "work_order_id": "WO-005",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "receptor": "AF-Q8NBP7-F1.receptor.pdbqt",
+    "receptor_id": "AF-Q8NBP7-F1",
+    "ligand": "pcsk9_ic001.3d.sdf",
+    "exhaustiveness": 2,
+    "n_poses": 5
+  },
+  "timestamp": "2026-10-30T04:55:35Z",
+  "completed": "2026-10-30T04:55:38Z",
+  "outputs": [
+    {
+      "path": "pcsk9_ic001.3d_AF-Q8NBP7-F1.docking_result.json",
+      "sha256": "67621d091bd46b06ec06603a4ac4d9a4227263e555049618dd118e5f3c5a8c8b",
+      "bytes": 596
+    },
+    {
+      "path": "pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt",
+      "sha256": "2242b1c07c36d4902d30f92b53fe4dd1330f7588ec6d5ed6c560740ea2aabf4f",
+      "bytes": 8793
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "receptor_sha256": "b15ec6a16343ff988241d966f303aaa699f74b8e7aaa5c88ffa3b2082ae59f7e",
+  "ligand_sha256": "10030bc530c25448613ca42ff8337ea9b4a9d9aeeaed690870b974ff6cdade12",
+  "receptor_path": "/workspace/raw/docking/AF-Q8NBP7-F1.receptor.pdbqt",
+  "ligand_path": "/workspace/raw/compounds/pcsk9_ic001.3d.sdf",
+  "gridbox_path": "/workspace/raw/docking/AF-Q8NBP7-F1.gridbox.json",
+  "docking_mode": "rigid",
+  "vina_binary": "/workspace/.scion-volumes/tools/bin/vina",
+  "vina_version": "AutoDock Vina v1.2.5",
+  "meeko_version": "0.8.0"
+}

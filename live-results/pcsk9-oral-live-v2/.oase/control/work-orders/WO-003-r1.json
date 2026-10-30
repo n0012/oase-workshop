@@ -1,0 +1,47 @@
+{
+  "id": "WO-003",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does live 1P AlphaGenome variant scoring of PCSK9 rs11591147 (chr1:55039974:G>T, R46L) reveal any cis-regulatory or chromatin accessibility liabilities?",
+  "requested_role": "computational-biologist",
+  "stage": "stage1-intervention-validation",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Score chr1:55039974:G>T across RNA_SEQ and ATAC tracks on the live Vertex AI AlphaGenome A100-80GB endpoint.",
+    "artifact_links": [
+      {
+        "path": "raw/genomics/chr1-55039974-G-T.scores.json",
+        "sha256": "1daca492e0ffed30dfb2322d6e701ded35762cbdce5415d2681ec0caeb99e10c"
+      }
+    ],
+    "snapshot": "contexts/WO-003-r1.json",
+    "snapshot_sha256": "e8e71b3cdb334bebfa76da94f823588bb06e3d7e28d84059e3b38b4250595994"
+  },
+  "dependencies": [
+    "WO-002"
+  ],
+  "capabilities": [
+    "oase.alphagenome"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.genomics"
+    ],
+    "layer_1": [
+      "findings/computational-biology/wo-003-alphagenome-variant.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "Live Vertex AI AlphaGenome variant score and analysis completed across 1 Mb window",
+    "High-quantile/low-raw statistical artifacts identified and relayed"
+  ],
+  "alert_policy": {
+    "mode": "block_on_unaddressed_relay",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "gpu-a100-80gb",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T05:46:07Z",
+  "committed_at": "2026-10-30T05:46:07Z"
+}

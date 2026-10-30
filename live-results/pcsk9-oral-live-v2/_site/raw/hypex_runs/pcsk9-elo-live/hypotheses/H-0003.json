@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-30T05:10:10Z",
+  "created_by": "hypex-generation",
+  "epoch": 1,
+  "evidence": [
+    {
+      "lit_id": "PMID:33125864",
+      "note": "Beyond-Rule-of-5 molecular weight penalizes oral absorption.",
+      "role": "constrains"
+    }
+  ],
+  "experiments": [
+    {
+      "design": "Cellular HiBiT degradation and rat oral PK",
+      "est_difficulty": "high",
+      "readout": "DC50 and oral F%"
+    }
+  ],
+  "focus_area": "Targeted Protein Degradation",
+  "id": "H-0003",
+  "lineage": {
+    "operator": "null",
+    "parents": []
+  },
+  "mechanism": "Ubiquitin-proteasome clearance of Golgi/endosomal PCSK9 prior to secretion.",
+  "predictions": [
+    "DC50 \u003c 50 nM in HepG2 cells",
+    "Oral bioavailability F \u003c 10% due to MW \u003e 850 Da"
+  ],
+  "statement": "Heterobifunctional degrader linking a PCSK9 C-terminal domain binder to a thalidomide CRBN ligand.",
+  "status": "reviewed",
+  "title": "PROTAC Ternary Complex Degradation of Intracellular PCSK9 via CRBN Recruitment"
+}

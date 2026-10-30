@@ -1,0 +1,58 @@
+data_pocket45_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    45:
+0  - Pocket Score                      : -0.1595
+1  - Drug Score                        : 0.0000
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 4.0591
+4  - Mean alpha-sphere Solvent Acc.    : 0.4850
+5  - Mean B-factor of pocket residues  : 0.7990
+6  - Hydrophobicity Score              : -8.6667
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 2.8333
+9  - Pocket volume (Monte Carlo)       : 356.9550
+10  -Pocket volume (convex hull)       : 28.9426
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     0
+14 - Proportion of apolar alpha sphere : 0.0000
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    2845     O    O ?  SER      A 373 ?   -4.139    2.312   28.607  -0.14  0 373 A
+ATOM    1759     O    O ?  ALA      A 220 ?   -8.204   -2.795   31.744   0.00  0 220 A
+ATOM    2848     C   CA ?  ASP      A 374 ?   -1.540    1.854   29.552   0.00  0 374 A
+ATOM    2851     O    O ?  ASP      A 374 ?   -2.033    2.732   31.748  -3.35  0 374 A
+ATOM    2853     O  OD1 ?  ASP      A 374 ?   -0.711   -0.712   28.493   0.00  0 374 A
+ATOM    2850     C   CB ?  ASP      A 374 ?   -0.090    1.345   29.542   0.00  0 374 A
+ATOM    1773     C   CE ?  LYS      A 222 ?   -8.908    2.839   30.886   0.00  0 222 A
+ATOM    1761     C   CA ?  SER      A 221 ?   -8.158   -4.006   29.265   0.00  0 221 A
+ATOM    1766     N    N ?  LYS      A 222 ?   -9.034   -1.905   28.347  -4.37  0 222 A
+ATOM    2846     O   OG ?  SER      A 373 ?   -3.923    0.656   25.544  -2.55  0 373 A
+ATOM    1792     C   CB ?  SER      A 225 ?   -3.832   -1.392   22.653   0.00  0 225 A
+ATOM    1794     O   OG ?  SER      A 225 ?   -2.432   -1.381   22.474  -3.35  0 225 A
+ATOM    1765     O   OG ?  SER      A 221 ?   -7.739   -4.346   26.904  -5.09  0 221 A
+ATOM    1771     C   CG ?  LYS      A 222 ?   -9.555    0.851   29.430   0.00  0 222 A
+ATOM    1774     N   NZ ?  LYS      A 222 ?   -8.340    4.212   30.838  -0.17  0 222 A
+ATOM    1763     C   CB ?  SER      A 221 ?   -8.003   -5.017   28.123   0.00  0 221 A
+# 

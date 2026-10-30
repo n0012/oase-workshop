@@ -1,0 +1,54 @@
+data_pocket37_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    37:
+0  - Pocket Score                      : -0.1174
+1  - Drug Score                        : 0.0000
+2  - Number of alpha spheres           :    15
+3  - Mean alpha-sphere radius          : 4.2413
+4  - Mean alpha-sphere Solvent Acc.    : 0.6339
+5  - Mean B-factor of pocket residues  : 0.6077
+6  - Hydrophobicity Score              : 13.3333
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 3.8333
+9  - Pocket volume (Monte Carlo)       : 146.8750
+10  -Pocket volume (convex hull)       : 0.8093
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0667
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    5161     O  OE1 ?  GLN      A 686 ?    8.328   29.522  -12.902  -0.14  0 686 A
+ATOM    5133     C   CB ?  HIS      A 683 ?    4.685   29.680  -13.774   0.00  0 683 A
+ATOM    3434     C   CB ?  TRP      A 453 ?    1.639   26.394  -12.014   0.00  0 453 A
+ATOM    3421     O    O ?  GLY      A 450 ?    3.131   25.672   -8.178   0.00  0 450 A
+ATOM    5117     O    O ?  SER      A 681 ?    5.788   24.393  -16.033  -2.95  0 681 A
+ATOM    5130     N    N ?  HIS      A 683 ?    5.194   28.306  -15.728   0.00  0 683 A
+ATOM    3435     O    O ?  TRP      A 453 ?    2.307   23.972  -13.645   0.00  0 453 A
+ATOM    3446     C   CA ?  GLN      A 454 ?    3.339   21.903  -12.061   0.00  0 454 A
+ATOM    3445     N    N ?  GLN      A 454 ?    2.416   22.951  -11.644   0.00  0 454 A
+ATOM    3433     C    C ?  TRP      A 453 ?    1.980   23.917  -12.454   0.00  0 453 A
+ATOM    3448     C   CB ?  GLN      A 454 ?    4.179   21.488  -10.844   0.00  0 454 A
+ATOM    3450     C   CG ?  GLN      A 454 ?    5.270   20.458  -11.172   0.00  0 454 A
+# 

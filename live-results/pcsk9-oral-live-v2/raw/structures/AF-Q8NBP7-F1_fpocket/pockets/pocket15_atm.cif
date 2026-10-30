@@ -1,0 +1,68 @@
+data_pocket15_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    15:
+0  - Pocket Score                      : -0.0064
+1  - Drug Score                        : 0.0051
+2  - Number of alpha spheres           :    31
+3  - Mean alpha-sphere radius          : 3.9747
+4  - Mean alpha-sphere Solvent Acc.    : 0.4466
+5  - Mean B-factor of pocket residues  : 0.5382
+6  - Hydrophobicity Score              : 39.2727
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 4.2727
+9  - Pocket volume (Monte Carlo)       : 491.4208
+10  -Pocket volume (convex hull)       : 65.1587
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 10.6667
+13 - Number of apolar alpha sphere     :    12
+14 - Proportion of apolar alpha sphere : 0.3871
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1250     C  CD1 ?  LEU      A 158 ?   10.973    7.192   18.270   0.00  0 158 A
+ATOM    1251     C  CD2 ?  LEU      A 158 ?    9.527    6.657   16.359   0.00  0 158 A
+ATOM    1887     C   CA ?  ALA      A 239 ?    5.149   11.959   18.381   0.00  0 239 A
+ATOM    1260     O  OE2 ?  GLU      A 159 ?   12.788    9.518   15.862  -4.02  0 159 A
+ATOM    1882     O    O ?  ASP      A 238 ?    6.388   14.485   18.856   0.00  0 238 A
+ATOM    1890     O    O ?  ALA      A 239 ?    4.593   11.233   16.152  -0.95  0 239 A
+ATOM    1259     O  OE1 ?  GLU      A 159 ?   13.311   10.445   13.914  -2.95  0 159 A
+ATOM    1286     O  OG1 ?  THR      A 162 ?   11.153   14.005   10.280  -3.21  0 162 A
+ATOM    1257     C   CG ?  GLU      A 159 ?   12.015    8.445   13.864   0.00  0 159 A
+ATOM    1265     O    O ?  ARG      A 160 ?    9.030    7.990    9.802  -2.14  0 160 A
+ATOM    2969     N  NE2 ?  HIS      A 391 ?    5.150    7.545   11.265  -4.79  0 391 A
+ATOM    1261     N    N ?  ARG      A 160 ?   11.085    6.798   11.279   0.00  0 160 A
+ATOM    2822     O    O ?  ILE      A 369 ?    4.737    6.838   17.600  -2.14  0 369 A
+ATOM    2816     C  CG2 ?  ILE      A 368 ?    4.887    4.895   14.244   0.00  0 368 A
+ATOM    1901     C  CG2 ?  VAL      A 241 ?    3.115   11.513   11.052   0.00  0 241 A
+ATOM    1279     C  CD1 ?  ILE      A 161 ?    6.625   11.847   10.037   0.00  0 161 A
+ATOM    1277     C  CG1 ?  ILE      A 161 ?    7.818   10.908    9.823   0.00  0 161 A
+ATOM    1272     N    N ?  ILE      A 161 ?   10.368    9.535    8.854  -2.19  0 161 A
+ATOM    1258     C   CD ?  GLU      A 159 ?   12.771    9.554   14.611   0.00  0 159 A
+ATOM    2817     C  CD1 ?  ILE      A 368 ?    7.189    4.237   12.144   0.00  0 368 A
+ATOM    1889     C   CB ?  ALA      A 239 ?    5.074   10.584   19.059   0.00  0 239 A
+ATOM    1881     C   CB ?  ASP      A 238 ?    5.529   14.513   22.208   0.00  0 238 A
+ATOM    1880     C    C ?  ASP      A 238 ?    5.509   14.092   19.627   0.00  0 238 A
+ATOM    1886     N    N ?  ALA      A 239 ?    4.801   12.976   19.392   0.00  0 239 A
+ATOM    2821     C   CB ?  ILE      A 369 ?    7.219    5.934   19.526   0.00  0 369 A
+ATOM    2824     C  CG2 ?  ILE      A 369 ?    6.585    6.782   20.644   0.00  0 369 A
+# 

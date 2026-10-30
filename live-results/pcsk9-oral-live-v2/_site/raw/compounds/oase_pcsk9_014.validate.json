@@ -1,0 +1,9 @@
+{
+  "tool": "compound",
+  "subcommand": "validate",
+  "input_smiles": "CC1=CC(=CN=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=N3)C(F)(F)F)OC",
+  "canonical_smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1",
+  "parse_status": "valid",
+  "n_atoms": 27,
+  "n_heavy_atoms": 27
+}

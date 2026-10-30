@@ -1,0 +1,149 @@
+{
+  "mode": "dry_run",
+  "work_order_id": "WO-005",
+  "work_order_revision": 1,
+  "result": "fail",
+  "checks": [
+    {
+      "name": "deliverables_exist",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "layer_1_count": 1,
+        "layer_0_classes": [
+          "oase.docking"
+        ]
+      }
+    },
+    {
+      "name": "report_headings",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "reference": "WO-005-r1"
+      }
+    },
+    {
+      "name": "paths_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "links_checked": 2
+      }
+    },
+    {
+      "name": "provenance_valid",
+      "result": "fail",
+      "status": "fail",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "artifacts_checked": 4,
+        "issues": [
+          {
+            "artifact": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt",
+            "issue": "no provenance sidecar covers this artifact"
+          }
+        ]
+      }
+    },
+    {
+      "name": "analysis_citations",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "analyses_checked": 1
+      }
+    },
+    {
+      "name": "relay_coverage",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "codes_checked": 3,
+        "codes_addressed": 3,
+        "codes_not_addressed": 0,
+        "unaddressed": []
+      }
+    },
+    {
+      "name": "version_policy",
+      "result": "skip",
+      "status": "skip",
+      "kind": null,
+      "detail": "program.yaml not present \u2014 check deferred to a future program.yaml configuration issue"
+    },
+    {
+      "name": "findings_integrity",
+      "result": "pass",
+      "status": "ok",
+      "kind": "CONVENTION",
+      "detail": "no misplaced sidecars found under findings/"
+    },
+    {
+      "name": "source_tags_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "tags_checked": 4
+      },
+      "sub_findings": [
+        {
+          "tag": "{source: raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking.analysis.json $.metrics.n_poses}",
+          "file": "findings/structural-biology/wo-005-vina-docking.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "3.0",
+          "actual_value": "3",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking.analysis.json $.metrics.best_score}",
+          "file": "findings/structural-biology/wo-005-vina-docking.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "-7.991",
+          "actual_value": "-7.991",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking.analysis.json $.metrics.poses[1].affinity_kcalmol}",
+          "file": "findings/structural-biology/wo-005-vina-docking.md",
+          "line": 12,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "-7.902",
+          "actual_value": "-7.902",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking.analysis.json $.metrics.poses[2].affinity_kcalmol}",
+          "file": "findings/structural-biology/wo-005-vina-docking.md",
+          "line": 12,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "-6.923",
+          "actual_value": "-6.923",
+          "detail": "values match within tolerance"
+        }
+      ]
+    },
+    {
+      "name": "unrecognized_json",
+      "result": "pass",
+      "status": "ok",
+      "kind": "unrecognized_record_type",
+      "detail": "no unrecognized JSON files found"
+    }
+  ],
+  "checks_failed": [
+    "provenance_valid"
+  ]
+}

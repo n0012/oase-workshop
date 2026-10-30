@@ -1,0 +1,39 @@
+{
+  "tool": "pk",
+  "subcommand": "nca",
+  "schema": "oase.pk-nca.v1",
+  "study_id": "oase_pcsk9_014_rat_po",
+  "species": "rat",
+  "route": "oral",
+  "parameters": {
+    "cmax": 1620.0,
+    "cmax_units": "ng/mL",
+    "tmax": 2.0,
+    "tmax_units": "h",
+    "auc_0_t": 12326.2795,
+    "auc_0_inf": 12796.7633,
+    "auc_units": "ng/mL * h",
+    "auc_extrapolation_pct": 3.68,
+    "half_life": 4.7958,
+    "half_life_units": "h",
+    "lambda_z": 0.144532,
+    "clearance_f": 0.000195,
+    "clearance_f_units": "mg / (ng/mL * h) (apparent)",
+    "vd_f": 0.001352,
+    "vd_f_units": "mg / ng/mL (apparent)",
+    "bioavailability": "not determinable (single study)"
+  },
+  "blq_handling": {
+    "method": "none (no BLQ values)",
+    "blq_value": null,
+    "n_blq_points": 0
+  },
+  "terminal_phase": {
+    "n_points": 5,
+    "r_squared": 0.995085,
+    "time_range": [
+      2.0,
+      24.0
+    ]
+  }
+}

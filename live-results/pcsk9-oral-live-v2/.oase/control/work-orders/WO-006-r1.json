@@ -1,0 +1,58 @@
+{
+  "id": "WO-006",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does BRICS MMP lead optimization (pcsk9_ic001 -> oase_pcsk9_014) resolve lipophilicity while maintaining Rule-of-5 drug-likeness and transparent ADMET relay tracking?",
+  "requested_role": "medicinal-chemist",
+  "stage": "stage3-candidate-nomination",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Profile pcsk9_ic001 and oase_pcsk9_014 with RDKit, run BRICS MMP analysis on the 4-compound series, and evaluate ADMET endpoints.",
+    "artifact_links": [
+      {
+        "path": "raw/compounds/oase_pcsk9_014.descriptors.json",
+        "sha256": "551aa4897aee43e91d6060214d38e6511b9c2a6a5407281c271d73a56506af38"
+      },
+      {
+        "path": "raw/compounds/pcsk9_series_mmp.mmp-pairs.json",
+        "sha256": "501deb1ab013b1e195d65b10e59051334e650faefba23a733947cabb3075d54d"
+      },
+      {
+        "path": "raw/admet/oase_pcsk9_014.predict.json",
+        "sha256": "7c2fc75a3b865dd6f44ace2cb603fe09dfd8745a080a383199907d7640ae9a2c"
+      }
+    ],
+    "snapshot": "contexts/WO-006-r1.json",
+    "snapshot_sha256": "2bfabba3bc5433ce644abed68da5fc53c1e3c0ed22044f28bc42541e8fea2220"
+  },
+  "dependencies": [
+    "WO-005"
+  ],
+  "capabilities": [
+    "oase.compound",
+    "oase.mmp",
+    "oase.admet"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.compounds",
+      "oase.admet"
+    ],
+    "layer_1": [
+      "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "Lead oase_pcsk9_014 passes Lipinski, Veber, PAINS, Brenk, and SA-score thresholds",
+    "admet.herg_structural_flag and mmp.small_pair_count relays explicitly addressed"
+  ],
+  "alert_policy": {
+    "mode": "require_herg_mitigation_plan",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T05:46:10Z",
+  "committed_at": "2026-10-30T05:46:10Z"
+}

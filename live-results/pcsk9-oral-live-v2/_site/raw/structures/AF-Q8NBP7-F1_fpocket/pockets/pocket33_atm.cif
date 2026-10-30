@@ -1,0 +1,63 @@
+data_pocket33_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    33:
+0  - Pocket Score                      : -0.1049
+1  - Drug Score                        : 0.0057
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.8002
+4  - Mean alpha-sphere Solvent Acc.    : 0.5539
+5  - Mean B-factor of pocket residues  : 0.0951
+6  - Hydrophobicity Score              : 55.2500
+7  - Polarity Score                    :     1
+8  - Amino Acid based volume Score     : 4.7500
+9  - Pocket volume (Monte Carlo)       : 304.3569
+10  -Pocket volume (convex hull)       : 27.3458
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 9.0000
+13 - Number of apolar alpha sphere     :    10
+14 - Proportion of apolar alpha sphere : 0.6250
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    356      C   CG ?  ARG      A 46 ?  -66.661  -14.604  -12.686   0.00  0 46 A
+ATOM    350      C  CD2 ?  LEU      A 45 ?  -67.129   -8.329  -11.404   0.00  0 45 A
+ATOM    354      C   CB ?  ARG      A 46 ?  -66.046  -13.567  -13.632   0.00  0 46 A
+ATOM    357      C   CD ?  ARG      A 46 ?  -68.013  -15.036  -13.271   0.00  0 46 A
+ATOM    337      C  CD2 ?  LEU      A 43 ?  -66.050  -15.247   -5.740   0.00  0 43 A
+ATOM    333      C   CB ?  LEU      A 43 ?  -67.299  -13.234   -4.835   0.00  0 43 A
+ATOM    336      C  CD1 ?  LEU      A 43 ?  -68.462  -15.414   -5.240   0.00  0 43 A
+ATOM    358      N   NE ?  ARG      A 46 ?  -68.593  -16.195  -12.566  -2.35  0 46 A
+ATOM    360      N  NH2 ?  ARG      A 46 ?  -70.207  -17.730  -12.084  -0.59  0 46 A
+ATOM    361      C   CZ ?  ARG      A 46 ?  -69.832  -16.639  -12.691   0.00  0 46 A
+ATOM    340      C    C ?  ALA      A 44 ?  -64.058  -10.048   -7.708   0.00  0 44 A
+ATOM    343      N    N ?  LEU      A 45 ?  -63.898  -10.339   -9.012  -1.51  0 45 A
+ATOM    342      O    O ?  ALA      A 44 ?  -63.026   -9.938   -7.058   0.00  0 44 A
+ATOM    331      C   CA ?  LEU      A 43 ?  -66.137  -12.407   -4.245   0.00  0 43 A
+ATOM    338      N    N ?  ALA      A 44 ?  -65.300  -10.631   -5.683  -2.61  0 44 A
+ATOM    330      N    N ?  LEU      A 43 ?  -65.950  -12.741   -2.802   0.00  0 43 A
+ATOM    344      C   CA ?  LEU      A 45 ?  -64.762  -10.449  -10.206   0.00  0 45 A
+ATOM    339      C   CA ?  ALA      A 44 ?  -65.409   -9.874   -6.953   0.00  0 44 A
+ATOM    351      N    N ?  ARG      A 46 ?  -64.934  -11.853  -12.262   0.00  0 46 A
+ATOM    347      O    O ?  LEU      A 45 ?  -63.153  -12.117  -10.921  -0.54  0 45 A
+ATOM    345      C    C ?  LEU      A 45 ?  -64.209  -11.542  -11.172   0.00  0 45 A
+# 

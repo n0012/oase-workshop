@@ -1,0 +1,51 @@
+{
+  "id": "WO-005",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Does AutoDock Vina physics-based molecular docking corroborate binding of pcsk9_ic001 inside PCSK9 Pocket #3?",
+  "requested_role": "structural-biologist",
+  "stage": "stage2-starting-matter-declaration",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Prepare receptor grid box on PCSK9 Pocket #3 and dock 3D conformer pcsk9_ic001.3d.sdf using AutoDock Vina.",
+    "artifact_links": [
+      {
+        "path": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking_result.json",
+        "sha256": "67621d091bd46b06ec06603a4ac4d9a4227263e555049618dd118e5f3c5a8c8b"
+      },
+      {
+        "path": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt",
+        "sha256": "2242b1c07c36d4902d30f92b53fe4dd1330f7588ec6d5ed6c560740ea2aabf4f"
+      }
+    ],
+    "snapshot": "contexts/WO-005-r1.json",
+    "snapshot_sha256": "64f1e7e01919c8df0cf5a8611d9ff69e4e62ee724c4e94cb98944679d9f2d3e3"
+  },
+  "dependencies": [
+    "WO-004"
+  ],
+  "capabilities": [
+    "oase.docking"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.docking"
+    ],
+    "layer_1": [
+      "findings/structural-biology/wo-005-vina-docking.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "AutoDock Vina best pose achieves <= -7.5 kcal/mol in Pocket #3",
+    "All fpocket and docking relays addressed"
+  ],
+  "alert_policy": {
+    "mode": "block_on_weak_binding",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T05:46:09Z",
+  "committed_at": "2026-10-30T05:46:09Z"
+}

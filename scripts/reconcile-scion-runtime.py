@@ -1035,8 +1035,15 @@ def provision_live_v2_grove(
 
     live_agent_specs = [
         ("science-program-lead", "science-program-lead"),
+        ("computational-biologist", "computational-biologist"),
+        ("structural-biologist", "structural-biologist"),
+        ("medicinal-chemist", "medicinal-chemist"),
+        ("admet-dmpk-scientist", "admet-dmpk-scientist"),
         ("scientific-reviewer", "scientific-reviewer"),
-        ("controller", "research-operations-controller"),
+        ("finding-validator", "finding-validator"),
+        ("project-curator", "project-curator"),
+        ("hypex-supervisor", "hypex-supervisor"),
+        ("hypex-reflection", "hypex-reflection"),
     ]
     for ag_slug, tpl_slug in live_agent_specs:
         ex = existing_agents.get(ag_slug)
@@ -1188,10 +1195,22 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--hub-api", default=os.environ.get("SCION_HUB_API", "http://127.0.0.1:8080"))
     p.add_argument("--gcp-project", default=os.environ.get("GCP_PROJECT_ID", ""))
     p.add_argument("--ag-region", default=os.environ.get("OASE_AG_REGION", "us-central1"))
-    p.add_argument("--ag-endpoint-id", default=os.environ.get("OASE_AG_ENDPOINT_ID", ""))
-    p.add_argument("--ag-endpoint-dns", default=os.environ.get("OASE_AG_ENDPOINT_DNS", ""))
+    p.add_argument("--ag-endpoint-id", default=os.environ.get("OASE_AG_ENDPOINT_ID", "mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5"))
+    p.add_argument(
+        "--ag-endpoint-dns",
+        default=os.environ.get(
+            "OASE_AG_ENDPOINT_DNS",
+            "mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5.us-central1-662944730392.prediction.vertexai.goog",
+        ),
+    )
     p.add_argument("--af3-region", default=os.environ.get("OASE_AF3_REGION", "us-east4"))
-    p.add_argument("--af3-endpoint-name", default=os.environ.get("OASE_AF3_ENDPOINT_NAME", "AlphaFold 3 Dedicated Endpoint"))
+    p.add_argument(
+        "--af3-endpoint-name",
+        default=os.environ.get(
+            "OASE_AF3_ENDPOINT_NAME",
+            "projects/662944730392/locations/us-east4/endpoints/mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0",
+        ),
+    )
     p.add_argument("--claude-vertex-region", default=os.environ.get("CLAUDE_VERTEX_REGION", "global"))
     p.add_argument("--enable-claude", action="store_true", help="Route peer-review & med-chem roles to Claude Opus 5.5")
     p.add_argument("--provision-live-grove", default="", help="Optional slug for isolated v2 live execution grove (e.g. pcsk9-oral-live-v2)")
@@ -1225,6 +1244,9 @@ def main() -> int:
         "OASE_AF3_REGION": (args.af3_region, "GCP region for Dedicated AlphaFold 3 Endpoint"),
         "OASE_AF3_ENDPOINT_NAME": (args.af3_endpoint_name, "Vertex AI Endpoint display name for AlphaFold 3"),
         "CLOUD_ML_REGION": (args.claude_vertex_region, "Vertex AI region for Anthropic Claude partner models"),
+        "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": ("1", "Disable Claude Code experimental fallback betas on Vertex AI"),
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": ("claude-opus-5-5", "Pin Claude Code default Haiku model to enabled Opus 5.5 Vertex endpoint"),
+        "ANTHROPIC_SMALL_FAST_MODEL": ("claude-opus-5-5", "Pin Claude Code small fast model to enabled Opus 5.5 Vertex endpoint"),
     }
     env_count = upsert_hub_env_vars(db_path, env_map, dry_run=args.dry_run)
 
@@ -1258,7 +1280,7 @@ def main() -> int:
             doctor_checks.append(run_container_doctor(args.verify_container))
         if args.provision_live_grove:
             time.sleep(8)
-            for role in ("science-program-lead", "scientific-reviewer", "controller"):
+            for role in ("science-program-lead", "scientific-reviewer", "medicinal-chemist", "structural-biologist"):
                 cname = f"{args.provision_live_grove}--{role}"
                 doctor_checks.append(run_container_doctor(cname))
 

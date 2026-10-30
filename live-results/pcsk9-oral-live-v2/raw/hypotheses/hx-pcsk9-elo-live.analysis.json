@@ -1,0 +1,132 @@
+{
+  "record_type": "analysis",
+  "source": "raw/hypotheses/hx-pcsk9-elo-live.hypex.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "unknown",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T05:24:34Z",
+  "threshold_set": "hypex@1.0+program",
+  "thresholds_applied": {
+    "min_matches": 5,
+    "min_win_rate": 0.5,
+    "max_phantom_citations": 0,
+    "elo_decisive_gap": 50.0,
+    "max_suspect_citations": 1,
+    "min_safety_score": 0.8
+  },
+  "metrics": {
+    "n_hypotheses": 3,
+    "n_matches": 6,
+    "n_reviews": 3,
+    "n_quarantined": 0,
+    "elo_range": [
+      1445.5,
+      1642.5
+    ],
+    "termination": {
+      "reason": "converged",
+      "epoch_reached": 1,
+      "declared": true
+    }
+  },
+  "assessment": {
+    "verdict": "leader-with-advisories",
+    "leader": {
+      "id": "H-0001",
+      "title": "Cryptic Allosteric Groove Between PCSK9 Catalytic and C-Terminal Domains Permits Oral Rule-of-5 Disruption",
+      "elo": 1642.5
+    },
+    "elo_gap_to_runner_up": 130.5,
+    "leader_gap_is_decisive": true,
+    "n_hypotheses_ranked": 3,
+    "ideas": [
+      {
+        "id": "H-0001",
+        "title": "Cryptic Allosteric Groove Between PCSK9 Catalytic and C-Terminal Domains Permits Oral Rule-of-5 Disruption",
+        "elo": 1642.5,
+        "win_rate": 1.0,
+        "n_matches": 4,
+        "advisories": [
+          "only 4 matches played (< min_matches); ranking is not well supported"
+        ]
+      },
+      {
+        "id": "H-0002",
+        "title": "Direct Orthosteric Small-Molecule Mimicry of LDLR EGF-A Ca2+ Loop Across the Flat PCSK9 Beta-Sheet",
+        "elo": 1512.0,
+        "win_rate": 0.4,
+        "n_matches": 5,
+        "advisories": [
+          "win rate 40% below min_win_rate"
+        ]
+      },
+      {
+        "id": "H-0003",
+        "title": "PROTAC Ternary Complex Degradation of Intracellular PCSK9 via CRBN Recruitment",
+        "elo": 1445.5,
+        "win_rate": 0.0,
+        "n_matches": 3,
+        "advisories": [
+          "win rate 0% below min_win_rate",
+          "only 3 matches played (< min_matches); ranking is not well supported"
+        ]
+      }
+    ],
+    "assessment_core": {
+      "schema": "oase.hypothesis-assessment.v1",
+      "strategy": "hypex",
+      "source_artifact": "raw/hypotheses/hx-pcsk9-elo-live.hypex.json",
+      "source_sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca",
+      "candidates": [
+        {
+          "candidate_id": "H-0001",
+          "statement": "A dynamic cryptic sub-pocket (Pocket #3, 299 A^3, druggability 0.788) adjacent to the D374/F379/S381 EGF-A interface stabilizes a conformation incompatible with LDLR binding, enabling MW < 420 Da oral small molecules.",
+          "rank": 1,
+          "score": {
+            "value": 1642.5,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-0002",
+          "statement": "Peptidomimetic bicyclic scaffold directly competing with LDLR EGF-A residues N295-C308 on the solvent-exposed PCSK9 catalytic surface.",
+          "rank": 2,
+          "score": {
+            "value": 1512.0,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        },
+        {
+          "candidate_id": "H-0003",
+          "statement": "Heterobifunctional degrader linking a PCSK9 C-terminal domain binder to a thalidomide CRBN ligand.",
+          "rank": 3,
+          "score": {
+            "value": 1445.5,
+            "basis": "hypex-elo@1.0"
+          },
+          "origin": "generated"
+        }
+      ]
+    }
+  },
+  "mandatory_relays": [
+    {
+      "code": "hypex.pacing_uncoordinated",
+      "message": "Pacing was not coordinated (tier=standard, roster_size=6). Retrieval rate may have exceeded upstream limits."
+    }
+  ],
+  "threshold_sources": {
+    "min_matches": "program",
+    "min_win_rate": "program",
+    "max_phantom_citations": "program",
+    "elo_decisive_gap": "program",
+    "max_suspect_citations": "program",
+    "min_safety_score": "program"
+  },
+  "threshold_provenance": "structural defaults for reading a hypex ELO tournament; no external source claims these cutoffs. elo_decisive_gap, max_suspect_citations and min_safety_score are UNRESOLVED \u2014 measure the distribution before filling them",
+  "written_by": "hypex-supervisor",
+  "work_order_id": null,
+  "source_sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca"
+}

@@ -1,0 +1,13 @@
+{
+  "work_order_id": "WO-008",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/pipeline/pcsk9.trials-clinicaltrials.artifact.json",
+      "sha256": "b4ece39c026f2955282a802809d68d67da0b51d106f1801cee6e23d4b8333af1"
+    }
+  ],
+  "content": "Analyze ClinicalTrials.gov PCSK9 competitive pipeline and export CTD Module 2.6/4 dossier summary tables.",
+  "content_sha256": "97a346aabe67af6f2f2f94f1b04a736e9f2d268101bc49a264d5d66542fa7b5a",
+  "created_at": "2026-10-30T05:46:11Z"
+}

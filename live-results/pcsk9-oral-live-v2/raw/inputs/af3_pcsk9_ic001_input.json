@@ -1,0 +1,23 @@
+{
+  "dialect": "alphafold3",
+  "version": 1,
+  "name": "pcsk9_ic001_complex",
+  "modelSeeds": [42],
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "STHGAGWQLFCRTVWSAHSGPTRMATAVARCAPDEELLSCSSFSRSGKRRGERMEAQGGKLVCRA",
+        "unpairedMsa": "",
+        "pairedMsa": "",
+        "templates": []
+      }
+    },
+    {
+      "ligand": {
+        "id": "B",
+        "smiles": "CC1=CC(=CC=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=C3)C(F)(F)F)OC"
+      }
+    }
+  ]
+}

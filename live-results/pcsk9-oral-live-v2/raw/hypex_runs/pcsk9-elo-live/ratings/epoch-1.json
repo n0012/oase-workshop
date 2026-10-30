@@ -1,0 +1,24 @@
+{
+  "epoch": 1,
+  "base_rating": 1500.0,
+  "ratings": {
+    "H-0001": {
+      "elo": 1642.5,
+      "matches": 4,
+      "wins": 4,
+      "draws": 0
+    },
+    "H-0002": {
+      "elo": 1512.0,
+      "matches": 5,
+      "wins": 2,
+      "draws": 0
+    },
+    "H-0003": {
+      "elo": 1445.5,
+      "matches": 3,
+      "wins": 0,
+      "draws": 0
+    }
+  }
+}

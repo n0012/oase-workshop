@@ -1,0 +1,293 @@
+{
+  "work_order_id": "WO-006",
+  "work_order_revision": 1,
+  "run_id": null,
+  "validated_at": "2026-10-30T05:46:20Z",
+  "cli_version": "0.3.0",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "deliverables_exist",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "layer_1_count": 1,
+        "layer_0_classes": [
+          "oase.compounds",
+          "oase.admet"
+        ]
+      }
+    },
+    {
+      "name": "report_headings",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "reference": "WO-006-r1"
+      }
+    },
+    {
+      "name": "paths_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "links_checked": 3
+      }
+    },
+    {
+      "name": "provenance_valid",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "artifacts_checked": 10
+      }
+    },
+    {
+      "name": "analysis_citations",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "analyses_checked": 4
+      }
+    },
+    {
+      "name": "relay_coverage",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "codes_checked": 4,
+        "codes_addressed": 4,
+        "codes_not_addressed": 0,
+        "unaddressed": []
+      }
+    },
+    {
+      "name": "version_policy",
+      "result": "skip",
+      "status": "skip",
+      "kind": null,
+      "detail": "program.yaml not present \u2014 check deferred to a future program.yaml configuration issue"
+    },
+    {
+      "name": "findings_integrity",
+      "result": "pass",
+      "status": "ok",
+      "kind": "CONVENTION",
+      "detail": "no misplaced sidecars found under findings/"
+    },
+    {
+      "name": "source_tags_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "tags_checked": 19
+      },
+      "sub_findings": [
+        {
+          "tag": "{source: raw/compounds/pcsk9_ic001.analysis.json $.metrics.descriptors.molecular_weight}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "392.39",
+          "actual_value": "392.4",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_ic001.analysis.json $.metrics.descriptors.logp}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "5.4",
+          "actual_value": "5.4",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_ic001.analysis.json $.metrics.descriptors.tpsa}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "51.22",
+          "actual_value": "51.22",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_ic001.analysis.json $.metrics.sa_score}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "2.08",
+          "actual_value": "2.08",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.descriptors.logp}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "4.19",
+          "actual_value": "4.19",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.descriptors.molecular_weight}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "394.38",
+          "actual_value": "394.38",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.descriptors.tpsa}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "77.0",
+          "actual_value": "77.0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.n_lipinski_violations}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.n_veber_violations}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.pains_hits}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.brenk_hits}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/oase_pcsk9_014.analysis.json $.metrics.sa_score}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 13,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "2.52",
+          "actual_value": "2.52",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_series_mmp.mmp-analysis.json $.metrics.n_pairs_total}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 15,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "3.0",
+          "actual_value": "3",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_series_mmp.mmp-analysis.json $.metrics.n_transformations}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 15,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "3.0",
+          "actual_value": "3",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/compounds/pcsk9_series_mmp.mmp-analysis.json $.metrics.n_cliffs}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 15,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/admet/oase_pcsk9_014.analysis.json $.metrics.endpoint_results.permeability.tpsa}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 17,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "77.0",
+          "actual_value": "77.0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/admet/oase_pcsk9_014.analysis.json $.metrics.n_liabilities}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 17,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "3.0",
+          "actual_value": "3",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/admet/oase_pcsk9_014.analysis.json $.metrics.endpoint_results.solubility.predicted_logS}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 17,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "-5.127",
+          "actual_value": "-5.127",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/admet/oase_pcsk9_014.analysis.json $.metrics.n_marginals}",
+          "file": "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+          "line": 17,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1.0",
+          "actual_value": "1",
+          "detail": "values match within tolerance"
+        }
+      ]
+    },
+    {
+      "name": "unrecognized_json",
+      "result": "pass",
+      "status": "ok",
+      "kind": "unrecognized_record_type",
+      "detail": "no unrecognized JSON files found"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "tool": "pk",
+  "subcommand": "scale",
+  "work_order_id": "WO-007",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "n_species": 2,
+    "human_bw_kg": 70.0,
+    "scaling_method": "simple_allometry",
+    "species": [
+      "rat",
+      "dog"
+    ]
+  },
+  "timestamp": "2026-10-30T04:57:06Z",
+  "completed": "2026-10-30T04:57:06Z",
+  "outputs": [
+    {
+      "path": "scaling-dog-rat.pk-scaling.json",
+      "sha256": "14ed82dcc3aea396f3f216d35c8c32049551bc1d544ea8a77929baaf8a3d04ec",
+      "bytes": 1195
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source_rat": "oase_pcsk9_014_rat_po.pk-nca.json",
+  "source_dog": "oase_pcsk9_014_dog_po.pk-nca.json",
+  "confidence_class": "moderate",
+  "cl_exponent": 0.698297,
+  "vd_exponent": 0.792736,
+  "method_caveat": "This is allometric scaling (an empirical correlation across species), not a mechanistic PBPK model of human physiology. A predicted human dose from allometry is a starting estimate, not a validated projection."
+}

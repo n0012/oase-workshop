@@ -1,0 +1,50 @@
+{
+  "id": "WO-001",
+  "revision": 1,
+  "state": "scientifically_accepted",
+  "decision_question": "Which oral PCSK9 inhibition hypothesis ranks highest across independent Co-Scientist and Hypex Elo tournaments?",
+  "requested_role": "computational-biologist",
+  "stage": "stage1-intervention-validation",
+  "cycle": "cycle-1",
+  "context": {
+    "content": "Evaluate H-001 (allosteric Pocket #3 small molecule), H-002 (oral macrocycle), and H-003 (PROTAC) via Co-Scientist and Hypex.",
+    "artifact_links": [
+      {
+        "path": "raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json",
+        "sha256": "2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b"
+      },
+      {
+        "path": "raw/hypotheses/hx-pcsk9-elo-live.hypex.json",
+        "sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca"
+      }
+    ],
+    "snapshot": "contexts/WO-001-r1.json",
+    "snapshot_sha256": "36f919adcf4830bf446ff254dd0749dd40f088a7e14cbe7acb43a9d545e40b1c"
+  },
+  "dependencies": [],
+  "capabilities": [
+    "oase.coscientist",
+    "oase.hypex"
+  ],
+  "deliverables": {
+    "layer_0_classes": [
+      "oase.hypotheses"
+    ],
+    "layer_1": [
+      "findings/computational-biology/wo-001-hypothesis-tournament.md"
+    ]
+  },
+  "acceptance_criteria": [
+    "Co-Scientist and Hypex tournament artifacts ingested and analyzed with zero integrity issues",
+    "All mandatory relays addressed in Layer 1 finding"
+  ],
+  "alert_policy": {
+    "mode": "block_on_contradicted_claims",
+    "escalate_to": "science-program-lead"
+  },
+  "priority": "high",
+  "resource_class": "cpu-standard",
+  "report_to": "science-program-lead",
+  "created_at": "2026-10-30T05:46:06Z",
+  "committed_at": "2026-10-30T05:46:06Z"
+}

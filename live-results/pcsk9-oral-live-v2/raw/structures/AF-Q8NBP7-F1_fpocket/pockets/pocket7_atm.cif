@@ -1,0 +1,58 @@
+data_pocket7_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket     7:
+0  - Pocket Score                      : 0.0454
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.4931
+4  - Mean alpha-sphere Solvent Acc.    : 0.3319
+5  - Mean B-factor of pocket residues  : 0.9672
+6  - Hydrophobicity Score              : 30.3333
+7  - Polarity Score                    :     5
+8  - Amino Acid based volume Score     : 4.0000
+9  - Pocket volume (Monte Carlo)       : 113.7176
+10  -Pocket volume (convex hull)       : 2.7723
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0625
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    4918     N  ND2 ?  ASN      A 652 ?   10.083   12.569  -12.384  -2.77  0 652 A
+ATOM    3163     N  ND1 ?  HIS      A 417 ?    7.049   15.419   -8.564  -3.28  0 417 A
+ATOM    3477     O    O ?  CYS      A 457 ?    3.717   10.982  -12.137  -4.29  0 457 A
+ATOM    4910     O  OD1 ?  ASP      A 651 ?    8.771   10.183  -10.206  -5.36  0 651 A
+ATOM    4776     C  CG2 ?  THR      A 631 ?    5.907   14.382  -15.083   0.00  0 631 A
+ATOM    4919     O  OD1 ?  ASN      A 652 ?    9.125   12.383  -14.351  -1.07  0 652 A
+ATOM    4777     O  OG1 ?  THR      A 631 ?    7.008   16.374  -14.464  -5.36  0 631 A
+ATOM    3458     O    O ?  LEU      A 455 ?    4.326   17.524  -13.213  -2.14  0 455 A
+ATOM    3473     N    N ?  CYS      A 457 ?    2.648   13.480  -12.956  -2.19  0 457 A
+ATOM    3159     C   CB ?  HIS      A 417 ?    5.269   14.692   -6.868   0.00  0 417 A
+ATOM    3468     C  CD1 ?  PHE      A 456 ?    3.356   16.917   -9.283   0.00  0 456 A
+ATOM    3465     C   CB ?  PHE      A 456 ?    1.677   15.825  -10.833   0.00  0 456 A
+ATOM    3463     C   CA ?  PHE      A 456 ?    2.375   15.781  -12.193   0.00  0 456 A
+ATOM    3157     C   CA ?  HIS      A 417 ?    5.882   13.392   -6.339   0.00  0 417 A
+ATOM    3154     C  CG2 ?  ILE      A 416 ?    3.944    9.355   -7.546   0.00  0 416 A
+ATOM    3124     O    O ?  GLN      A 413 ?    2.227   13.475   -6.747   0.00  0 413 A
+# 

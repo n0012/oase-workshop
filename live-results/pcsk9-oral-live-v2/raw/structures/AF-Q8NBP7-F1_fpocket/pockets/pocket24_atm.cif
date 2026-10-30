@@ -1,0 +1,63 @@
+data_pocket24_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    24:
+0  - Pocket Score                      : -0.0453
+1  - Drug Score                        : 0.0001
+2  - Number of alpha spheres           :    30
+3  - Mean alpha-sphere radius          : 3.9552
+4  - Mean alpha-sphere Solvent Acc.    : 0.6151
+5  - Mean B-factor of pocket residues  : 0.9482
+6  - Hydrophobicity Score              : 32.1000
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 4.3000
+9  - Pocket volume (Monte Carlo)       : 222.2926
+10  -Pocket volume (convex hull)       : 5.9392
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 0.0000
+13 - Number of apolar alpha sphere     :     1
+14 - Proportion of apolar alpha sphere : 0.0333
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    671      O    O ?  THR      A 86 ?  -32.209    3.845   -3.931   0.00  0 86 A
+ATOM    684      N    N ?  LEU      A 88 ?  -34.589    5.138   -1.033  -5.47  0 88 A
+ATOM    907      O    O ?  PHE      A 115 ?  -29.983    2.539    1.958   0.00  0 115 A
+ATOM    917      C   CB ?  HIS      A 116 ?  -30.353    5.717    2.693   0.00  0 116 A
+ATOM    924      N    N ?  GLY      A 117 ?  -27.799    7.108    1.285  -0.17  0 117 A
+ATOM    932      O    O ?  LEU      A 118 ?  -23.575    5.315   -1.693  -3.21  0 118 A
+ATOM    927      O    O ?  GLY      A 117 ?  -24.832    8.598   -0.007  -5.09  0 117 A
+ATOM    926      C    C ?  GLY      A 117 ?  -25.449    7.838    0.742   0.00  0 117 A
+ATOM    925      C   CA ?  GLY      A 117 ?  -26.857    8.233    1.201   0.00  0 117 A
+ATOM    2353     N  NH2 ?  ARG      A 303 ?  -24.488    8.734   -6.061  -4.12  0 303 A
+ATOM    950      C   CD ?  PRO      A 120 ?  -27.209    2.399   -3.548   0.00  0 120 A
+ATOM    653      O    O ?  GLU      A 84 ?  -28.960    4.455   -6.923  -1.48  0 84 A
+ATOM    947      C   CB ?  PRO      A 120 ?  -29.561    2.040   -3.233   0.00  0 120 A
+ATOM    930      C    C ?  LEU      A 118 ?  -24.029    5.081   -0.580   0.00  0 118 A
+ATOM    945      C   CA ?  PRO      A 120 ?  -28.841    1.750   -1.922   0.00  0 120 A
+ATOM    938      C    C ?  LEU      A 119 ?  -26.716    2.651   -1.098   0.00  0 119 A
+ATOM    915      C   CA ?  HIS      A 116 ?  -28.983    5.196    2.236   0.00  0 116 A
+ATOM    944      N    N ?  PRO      A 120 ?  -27.496    2.269   -2.123   0.00  0 120 A
+ATOM    940      O    O ?  LEU      A 119 ?  -27.142    2.684    0.058   0.00  0 119 A
+ATOM    936      N    N ?  LEU      A 119 ?  -24.819    4.033   -0.341   0.00  0 119 A
+ATOM    937      C   CA ?  LEU      A 119 ?  -25.265    3.082   -1.366   0.00  0 119 A
+# 

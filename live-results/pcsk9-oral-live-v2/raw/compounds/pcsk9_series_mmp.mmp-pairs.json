@@ -1,0 +1,76 @@
+{
+  "tool": "mmp",
+  "subcommand": "pairs",
+  "schema": "oase.mmp-pairs.v1",
+  "source_file": "pcsk9_series_mmp.json",
+  "rdkit_version": "2026.03.6",
+  "summary": {
+    "n_compounds": 3,
+    "n_pairs": 3,
+    "n_transformations": 3,
+    "transformations": {
+      "[16*]c1ccc(OC)cc1C -> [14*]c1ncc(OC)cc1C": 1,
+      "[1*]Nc1ccc(C(F)(F)F)cc1 -> [1*]Nc1ccc(C(F)(F)F)cn1": 1,
+      "[6*]C(=O)Nc1ccc(C(F)(F)F)cc1 -> [6*]C(=O)Nc1ccc(C(F)(F)F)cn1": 1
+    }
+  },
+  "pairs": [
+    {
+      "core": "[14*]c1nc(C(=O)Nc2ccc(C(F)(F)F)cc2)cs1",
+      "compound_a": {
+        "compound_id": "PCSK9-IC-001",
+        "smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)c(C)c1",
+        "r_group": "[16*]c1ccc(OC)cc1C"
+      },
+      "compound_b": {
+        "compound_id": "PCSK9-A02",
+        "smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)c(C)c1",
+        "r_group": "[14*]c1ncc(OC)cc1C"
+      },
+      "transformation": "[16*]c1ccc(OC)cc1C -> [14*]c1ncc(OC)cc1C",
+      "property_deltas": {
+        "cLogP": -1.0,
+        "hERG_IC50_uM": 10.3,
+        "pIC50": 0.7
+      }
+    },
+    {
+      "core": "[5*]C(=O)c1csc(-c2ncc(OC)cc2C)n1",
+      "compound_a": {
+        "compound_id": "PCSK9-A02",
+        "smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)c(C)c1",
+        "r_group": "[1*]Nc1ccc(C(F)(F)F)cc1"
+      },
+      "compound_b": {
+        "compound_id": "OASE-PCSK9-014",
+        "smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1",
+        "r_group": "[1*]Nc1ccc(C(F)(F)F)cn1"
+      },
+      "transformation": "[1*]Nc1ccc(C(F)(F)F)cc1 -> [1*]Nc1ccc(C(F)(F)F)cn1",
+      "property_deltas": {
+        "cLogP": -0.7,
+        "hERG_IC50_uM": 23.5,
+        "pIC50": 0.5
+      }
+    },
+    {
+      "core": "[14*]c1csc(-c2ncc(OC)cc2C)n1",
+      "compound_a": {
+        "compound_id": "PCSK9-A02",
+        "smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)c(C)c1",
+        "r_group": "[6*]C(=O)Nc1ccc(C(F)(F)F)cc1"
+      },
+      "compound_b": {
+        "compound_id": "OASE-PCSK9-014",
+        "smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1",
+        "r_group": "[6*]C(=O)Nc1ccc(C(F)(F)F)cn1"
+      },
+      "transformation": "[6*]C(=O)Nc1ccc(C(F)(F)F)cc1 -> [6*]C(=O)Nc1ccc(C(F)(F)F)cn1",
+      "property_deltas": {
+        "cLogP": -0.7,
+        "hERG_IC50_uM": 23.5,
+        "pIC50": 0.5
+      }
+    }
+  ]
+}

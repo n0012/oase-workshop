@@ -1,0 +1,60 @@
+data_pocket16_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    16:
+0  - Pocket Score                      : -0.0162
+1  - Drug Score                        : 0.0057
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.8928
+4  - Mean alpha-sphere Solvent Acc.    : 0.6803
+5  - Mean B-factor of pocket residues  : 0.8110
+6  - Hydrophobicity Score              : 49.2500
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 4.5000
+9  - Pocket volume (Monte Carlo)       : 276.7393
+10  -Pocket volume (convex hull)       : 6.1134
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 10.0000
+13 - Number of apolar alpha sphere     :    11
+14 - Proportion of apolar alpha sphere : 0.6875
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    2441     C   CB ?  ASN      A 317 ?    0.056   -7.321    8.404   0.00  0 317 A
+ATOM    2444     N  ND2 ?  ASN      A 317 ?    0.026   -5.657   10.140  -2.19  0 317 A
+ATOM    1212     C  CG1 ?  ILE      A 154 ?    2.083   -7.845   14.196   0.00  0 154 A
+ATOM    1214     C  CD1 ?  ILE      A 154 ?    2.788   -9.043   13.547   0.00  0 154 A
+ATOM    1205     O    O ?  SER      A 153 ?   -0.574   -6.123   14.767  -0.54  0 153 A
+ATOM    560      C  CZ2 ?  TRP      A 72 ?   -7.008  -12.808    6.623   0.00  0 72 A
+ATOM    1182     C  CD1 ?  PHE      A 150 ?   -9.132  -10.422   11.677   0.00  0 150 A
+ATOM    558      N  NE1 ?  TRP      A 72 ?   -8.571  -14.353    7.904   0.00  0 72 A
+ATOM    2454     C  CE1 ?  PHE      A 318 ?   -3.907  -10.872    7.197   0.00  0 318 A
+ATOM    1183     C  CD2 ?  PHE      A 150 ?   -9.035  -10.064    9.271   0.00  0 150 A
+ATOM    1184     C  CE1 ?  PHE      A 150 ?   -9.883  -11.594   11.470   0.00  0 150 A
+ATOM    1186     C   CZ ?  PHE      A 150 ?  -10.217  -11.996   10.165   0.00  0 150 A
+ATOM    1179     C   CB ?  PHE      A 150 ?   -7.900   -8.383   10.797   0.00  0 150 A
+ATOM    1199     N  NE2 ?  GLN      A 152 ?   -5.182   -6.498    8.839   0.00  0 152 A
+ATOM    2456     C   CZ ?  PHE      A 318 ?   -4.657   -9.726    6.876   0.00  0 318 A
+ATOM    1191     O    O ?  ALA      A 151 ?   -4.785   -6.127   11.950   0.00  0 151 A
+ATOM    1181     C   CG ?  PHE      A 150 ?   -8.698   -9.658   10.577   0.00  0 150 A
+ATOM    1200     O  OE1 ?  GLN      A 152 ?   -3.256   -6.368    7.851   0.00  0 152 A
+# 

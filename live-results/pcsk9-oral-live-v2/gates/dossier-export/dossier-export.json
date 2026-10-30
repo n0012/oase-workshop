@@ -1,0 +1,270 @@
+{
+  "schema": "oase.dossier-export.v1",
+  "work_order_id": "WO-008",
+  "format": "ctd",
+  "scope_caveat": "A complete checklist means the required evidence types are present; it does not mean the evidence meets regulatory standards, that the studies are GLP-compliant, or that the dossier is ready for filing.",
+  "sections": [
+    {
+      "ctd_section": "2.6.2",
+      "title": "Pharmacology Tabulated Summary",
+      "guidance_references": [
+        {
+          "code": "ICH S7A",
+          "title": "Safety Pharmacology Studies for Human Pharmaceuticals"
+        },
+        {
+          "code": "ICH S7B",
+          "title": "Nonclinical Evaluation of the Potential for Delayed Ventricular Repolarization (hERG) by Human Pharmaceuticals"
+        }
+      ],
+      "subsections": [
+        {
+          "name": "Primary Pharmacodynamics",
+          "status": "NOT_AVAILABLE",
+          "reason": "No source artifact found",
+          "entries": []
+        },
+        {
+          "name": "Safety Pharmacology",
+          "status": "NOT_AVAILABLE",
+          "reason": "No source artifact found",
+          "entries": []
+        }
+      ]
+    },
+    {
+      "ctd_section": "2.6.4",
+      "title": "Pharmacokinetics Tabulated Summary",
+      "guidance_references": [
+        {
+          "code": "ICH S3A",
+          "title": "Toxicokinetics: Assessment of Systemic Exposure in Toxicity Studies"
+        }
+      ],
+      "subsections": [
+        {
+          "name": "Absorption",
+          "status": "POPULATED",
+          "entries": [
+            {
+              "species": "dog",
+              "route": "oral",
+              "dose_mg_kg": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "dose_units": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "parameters": {
+                "cmax": 1790.0,
+                "cmax_units": "ng/mL",
+                "tmax": 2.0,
+                "tmax_units": "h",
+                "auc_0_t": 17594.5314,
+                "auc_0_inf": 19510.2024,
+                "auc_units": "ng/mL * h",
+                "auc_extrapolation_pct": 9.82,
+                "half_life": 6.8094,
+                "half_life_units": "h",
+                "lambda_z": 0.101792,
+                "clearance_f": 0.002563,
+                "clearance_f_units": "mg / (ng/mL * h) (apparent)",
+                "vd_f": 0.025176,
+                "vd_f_units": "mg / ng/mL (apparent)",
+                "bioavailability": "not determinable (single study)"
+              },
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-nca.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "dog",
+              "route": "oral",
+              "dose_mg_kg": 5.0,
+              "dose_units": "mg/kg",
+              "parameters": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "dose_mg_kg": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "dose_units": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "parameters": {
+                "cmax": 1620.0,
+                "cmax_units": "ng/mL",
+                "tmax": 2.0,
+                "tmax_units": "h",
+                "auc_0_t": 12326.2795,
+                "auc_0_inf": 12796.7633,
+                "auc_units": "ng/mL * h",
+                "auc_extrapolation_pct": 3.68,
+                "half_life": 4.7958,
+                "half_life_units": "h",
+                "lambda_z": 0.144532,
+                "clearance_f": 0.000195,
+                "clearance_f_units": "mg / (ng/mL * h) (apparent)",
+                "vd_f": 0.001352,
+                "vd_f_units": "mg / ng/mL (apparent)",
+                "bioavailability": "not determinable (single study)"
+              },
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-nca.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "dose_mg_kg": 10.0,
+              "dose_units": "mg/kg",
+              "parameters": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Distribution",
+          "status": "POPULATED",
+          "entries": [
+            {
+              "species": "dog",
+              "route": "oral",
+              "dose_mg_kg": 5.0,
+              "vd": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "dose_mg_kg": 10.0,
+              "vd": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Metabolism",
+          "status": "POPULATED",
+          "entries": [
+            {
+              "species": "dog",
+              "route": "oral",
+              "metabolites": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "enzyme": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "metabolites": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "enzyme": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Excretion",
+          "status": "POPULATED",
+          "entries": [
+            {
+              "species": "dog",
+              "route": "oral",
+              "clearance": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "half_life": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-nca.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "dog",
+              "route": "oral",
+              "clearance": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "half_life": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_dog_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "clearance": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "half_life": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-nca.json",
+                "work_order_id": "WO-008"
+              }
+            },
+            {
+              "species": "rat",
+              "route": "oral",
+              "clearance": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "half_life": "NOT AVAILABLE \u2014 field not present in source artifact",
+              "source": {
+                "artifact_path": "raw/pk/oase_pcsk9_014_rat_po.pk-study.json",
+                "work_order_id": "WO-008"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ctd_section": "2.6.6",
+      "title": "Toxicology Tabulated Summary",
+      "guidance_references": [
+        {
+          "code": "ICH S2(R1)",
+          "title": "Guidance on Genotoxicity Testing and Data Interpretation"
+        },
+        {
+          "code": "ICH M3(R2)",
+          "title": "Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for Pharmaceuticals"
+        },
+        {
+          "code": "ICH S5(R3)",
+          "title": "Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals"
+        }
+      ],
+      "subsections": [
+        {
+          "name": "Single-Dose Toxicity",
+          "status": "NOT_AVAILABLE",
+          "reason": "No source artifact found",
+          "entries": []
+        },
+        {
+          "name": "Repeat-Dose Toxicity",
+          "status": "NOT_AVAILABLE",
+          "reason": "No source artifact found",
+          "entries": []
+        },
+        {
+          "name": "Genotoxicity",
+          "status": "NOT_AVAILABLE",
+          "reason": "No source artifact found",
+          "entries": []
+        }
+      ]
+    }
+  ],
+  "relays": [],
+  "relay_count": 0
+}

@@ -1,0 +1,214 @@
+{
+  "schema": "oase.hypex.v1",
+  "hypex_run_id": "pcsk9-elo-live",
+  "hypex_run_dir": "/workspace/raw/hypex_runs/pcsk9-elo-live",
+  "run_id": "",
+  "work_order_id": "",
+  "run": {
+    "goal": "Identify oral small-molecule allosteric disruptors of the PCSK9-LDLR EGF-A interaction",
+    "constraints": [
+      "Rule-of-5 oral permeability (MW < 500 Da, Caco-2 > 10e-6 cm/s)"
+    ],
+    "created_at": "2026-10-30T05:14:49Z",
+    "tournament_strategy": "",
+    "composite_preset": null
+  },
+  "termination": {
+    "reason": "converged",
+    "epoch_reached": 1,
+    "declared": true
+  },
+  "observed": {
+    "n_hypotheses": 3,
+    "n_quarantined": 0,
+    "n_reviews": 3,
+    "n_matches": 6,
+    "n_epochs_observed": 2,
+    "last_match_id": "M-0006"
+  },
+  "declared_budgets": {
+    "max_hypotheses": 50,
+    "max_matches": 200,
+    "max_epochs": 5
+  },
+  "roster": [
+    {
+      "agent": "hypex-supervisor",
+      "role": "supervisor"
+    },
+    {
+      "agent": "hypex-generation",
+      "role": "generation"
+    },
+    {
+      "agent": "hypex-reflection",
+      "role": "reflection"
+    },
+    {
+      "agent": "hypex-ranking",
+      "role": "ranking"
+    },
+    {
+      "agent": "hypex-evolution",
+      "role": "evolution"
+    },
+    {
+      "agent": "hypex-proximity",
+      "role": "proximity"
+    }
+  ],
+  "ratings": {
+    "epoch": 1,
+    "base_rating": 1500.0,
+    "per_hypothesis": {
+      "H-0001": {
+        "elo": 1642.5,
+        "matches": 4,
+        "wins": 4,
+        "draws": 0
+      },
+      "H-0002": {
+        "elo": 1512.0,
+        "matches": 5,
+        "wins": 2,
+        "draws": 0
+      },
+      "H-0003": {
+        "elo": 1445.5,
+        "matches": 3,
+        "wins": 0,
+        "draws": 0
+      }
+    }
+  },
+  "pacing": {
+    "tier": "standard",
+    "roster_size": 6
+  },
+  "progress": null,
+  "hypotheses": [
+    {
+      "id": "H-0001",
+      "title": "Cryptic Allosteric Groove Between PCSK9 Catalytic and C-Terminal Domains Permits Oral Rule-of-5 Disruption",
+      "status": "active",
+      "cluster": null,
+      "elo": 1642.5,
+      "matches": 4,
+      "wins": 4,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 5.0,
+        "novelty": 5.0,
+        "testability": 5.0,
+        "safety": 5.0,
+        "goal_alignment": 5.0,
+        "constraint_compliance": 5.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "A dynamic cryptic sub-pocket (Pocket #3, 299 A^3, druggability 0.788) adjacent to the D374/F379/S381 EGF-A interface stabilizes a conformation incompatible with LDLR binding, enabling MW < 420 Da oral small molecules.",
+        "mechanism": "Allosteric wedge insertion at the catalytic-CTD hinge displaces the EGF-A beta-hairpin contact loop (D374-Y379) without requiring a >800 Da macrocycle."
+      }
+    },
+    {
+      "id": "H-0002",
+      "title": "Direct Orthosteric Small-Molecule Mimicry of LDLR EGF-A Ca2+ Loop Across the Flat PCSK9 Beta-Sheet",
+      "status": "reviewed",
+      "cluster": null,
+      "elo": 1512.0,
+      "matches": 5,
+      "wins": 2,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 3.0,
+        "novelty": 3.0,
+        "testability": 4.0,
+        "safety": 5.0,
+        "goal_alignment": 3.0,
+        "constraint_compliance": 2.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "Peptidomimetic bicyclic scaffold directly competing with LDLR EGF-A residues N295-C308 on the solvent-exposed PCSK9 catalytic surface.",
+        "mechanism": "Competitive orthosteric blockade of the PCSK9 D374 salt-bridge and hydrophobic patch."
+      }
+    },
+    {
+      "id": "H-0003",
+      "title": "PROTAC Ternary Complex Degradation of Intracellular PCSK9 via CRBN Recruitment",
+      "status": "reviewed",
+      "cluster": null,
+      "elo": 1445.5,
+      "matches": 3,
+      "wins": 0,
+      "draws": 0,
+      "composite": null,
+      "scores": {
+        "correctness": 3.0,
+        "novelty": 3.0,
+        "testability": 4.0,
+        "safety": 5.0,
+        "goal_alignment": 3.0,
+        "constraint_compliance": 2.0
+      },
+      "n_reviews": 1,
+      "citations": {
+        "total": 1,
+        "verified": 1,
+        "suspect": 0,
+        "phantom": 0,
+        "unverified": 0,
+        "manifest_present": true
+      },
+      "lineage": {
+        "parents": [],
+        "operator": "null",
+        "citation_delta_compliant": true
+      },
+      "prose": {
+        "statement": "Heterobifunctional degrader linking a PCSK9 C-terminal domain binder to a thalidomide CRBN ligand.",
+        "mechanism": "Ubiquitin-proteasome clearance of Golgi/endosomal PCSK9 prior to secretion."
+      }
+    }
+  ],
+  "integrity": {
+    "dangling_match_refs": [],
+    "dangling_review_refs": [],
+    "dangling_lineage_parents": [],
+    "id_filename_mismatches": [],
+    "unrated_hypotheses": [],
+    "quarantine_duplicates": []
+  },
+  "_schema_validation": {
+    "files_checked": 12,
+    "files_failed": []
+  }
+}

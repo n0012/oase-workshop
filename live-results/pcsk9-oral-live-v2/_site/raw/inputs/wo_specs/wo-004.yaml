@@ -1,0 +1,32 @@
+decision_question: Does PCSK9 contain a druggable allosteric pocket (fpocket) and
+  does live 1P AlphaFold 3 co-folding support pcsk9_ic001 complex formation?
+requested_role: structural-biologist
+stage: stage2-starting-matter-declaration
+cycle: cycle-1
+context:
+  content: Fetch AlphaFold DB Q8NBP7 structure, run fpocket cavity detection, and
+    execute live 1P AlphaFold 3 protein-ligand co-folding on Vertex AI.
+  artifact_links:
+  - path: raw/structures/AF-Q8NBP7-F1.cif
+  - path: raw/structures/AF-Q8NBP7-F1.pockets.json
+  - path: raw/structures/AF3-pcsk9_ic001_complex.cif
+dependencies:
+- WO-003
+capabilities:
+- oase.alphafold
+- oase.pocket
+deliverables:
+  layer_0_classes:
+  - oase.structures
+  layer_1:
+  - findings/structural-biology/wo-004-alphafold3-pocket.md
+acceptance_criteria:
+- fpocket identifies a druggable pocket (druggability_score >= 0.70)
+- Live Vertex AI AlphaFold 3 co-folding produces a clash-free complex structure with
+  ipTM >= 0.60
+alert_policy:
+  mode: block_on_steric_clash
+  escalate_to: science-program-lead
+priority: high
+resource_class: gpu-a100-80gb
+report_to: science-program-lead

@@ -1,0 +1,45 @@
+{
+  "record_type": "analysis",
+  "source": "raw/gtex/ENSG00000169174.10.gtex.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "bc8db94",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:52:07Z",
+  "threshold_set": "gtex-expression@1.0+program",
+  "thresholds_applied": {
+    "expressed_tpm": 10.0,
+    "high_expression_tpm": 100.0,
+    "low_expression_tpm": 1.0
+  },
+  "metrics": {
+    "gencode_id": "ENSG00000169174.10",
+    "gene_symbol": "PCSK9",
+    "dataset": "gtex_v8",
+    "tissue": "Whole_Blood",
+    "median_tpm": 0.245957,
+    "unit": "TPM",
+    "ontology_id": "UBERON:0013756"
+  },
+  "assessment": {
+    "whole_blood_expression": "measured",
+    "median_tpm": 0.245957,
+    "unit": "TPM",
+    "gene_symbol": "PCSK9",
+    "classification": "not_expressed"
+  },
+  "mandatory_relays": [
+    {
+      "code": "gtex.whole_blood_is_not_peripheral_blood",
+      "message": "GTEx whole blood is drawn from femoral/subclavian veins and measured by bulk RNA-seq (755 samples, median TPM). Report this as 'GTEx whole-blood RNA-seq expression', not as 'peripheral blood expression'. It is a partial proxy, not an equivalent measurement."
+    }
+  ],
+  "threshold_sources": {
+    "expressed_tpm": "program",
+    "high_expression_tpm": "program",
+    "low_expression_tpm": "program"
+  },
+  "threshold_provenance": "GTEx Portal (gtexportal.org), dataset gtex_v8. GTEx publishes median TPM from bulk RNA-seq but defines no expression-level cutoffs. No peer-reviewed source establishes universal TPM thresholds for classifying GTEx whole-blood expression. The Human Protein Atlas (HPA) uses nTPM with its own cutoffs (nTPM >= 1 for 'detected'), but nTPM and TPM are not directly comparable \u2014 different normalization, different tissue sets, different pipelines. All values are UNRESOLVED.",
+  "written_by": "computational-biologist",
+  "work_order_id": "WO-002",
+  "source_sha256": "05ffbee9c1ebc453782c617359811cb0699d1420752e4964fc9294a75b1df0ae"
+}

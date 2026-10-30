@@ -1,0 +1,92 @@
+{
+  "record_type": "analysis",
+  "source": "raw/compounds/pcsk9_series_mmp.mmp-pairs.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:55:53Z",
+  "threshold_set": "mmp-cliffs@1.0",
+  "thresholds_applied": {
+    "min_pair_count": 3,
+    "cliff_absolute_delta": {
+      "pic50": 1.0,
+      "pki": 1.0
+    }
+  },
+  "metrics": {
+    "n_pairs_total": 3,
+    "n_transformations": 3,
+    "n_cliffs": 0,
+    "n_low_pair_count_transformations": 3,
+    "n_properties_not_evaluated": 2,
+    "properties_not_evaluated": [
+      "cLogP",
+      "hERG_IC50_uM"
+    ]
+  },
+  "assessment": {
+    "cliff_results": [
+      {
+        "transformation": "[1*]Nc1ccc(C(F)(F)F)cc1 -> [1*]Nc1ccc(C(F)(F)F)cn1",
+        "n_pairs": 1,
+        "cliffs": [],
+        "advisories": [
+          "Only 1 pair(s) for this transformation (minimum 3); trend cannot be reported with confidence.",
+          "Property 'cLogP' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki.",
+          "Property 'hERG_IC50_uM' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki."
+        ],
+        "low_pair_count": true,
+        "not_evaluated_properties": [
+          "cLogP",
+          "hERG_IC50_uM"
+        ]
+      },
+      {
+        "transformation": "[16*]c1ccc(OC)cc1C -> [14*]c1ncc(OC)cc1C",
+        "n_pairs": 1,
+        "cliffs": [],
+        "advisories": [
+          "Only 1 pair(s) for this transformation (minimum 3); trend cannot be reported with confidence.",
+          "Property 'cLogP' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki.",
+          "Property 'hERG_IC50_uM' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki."
+        ],
+        "low_pair_count": true,
+        "not_evaluated_properties": [
+          "cLogP",
+          "hERG_IC50_uM"
+        ]
+      },
+      {
+        "transformation": "[6*]C(=O)Nc1ccc(C(F)(F)F)cc1 -> [6*]C(=O)Nc1ccc(C(F)(F)F)cn1",
+        "n_pairs": 1,
+        "cliffs": [],
+        "advisories": [
+          "Only 1 pair(s) for this transformation (minimum 3); trend cannot be reported with confidence.",
+          "Property 'cLogP' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki.",
+          "Property 'hERG_IC50_uM' not evaluated for cliffs: no threshold configured for this property in cliff_absolute_delta. Configured properties: pic50, pki."
+        ],
+        "low_pair_count": true,
+        "not_evaluated_properties": [
+          "cLogP",
+          "hERG_IC50_uM"
+        ]
+      }
+    ],
+    "unresolved_cliff_thresholds": [],
+    "not_evaluated_advisory": "Property/properties cLogP, hERG_IC50_uM appeared in property_deltas but have no cliff threshold configured in cliff_absolute_delta. Cliff detection was not performed for these properties. This is not 'no cliffs' \u2014 the question was not asked. Configured properties: pic50, pki."
+  },
+  "mandatory_relays": [
+    {
+      "code": "mmp.small_pair_count",
+      "message": "Transformation '[1*]Nc1ccc(C(F)(F)F)cc1 -> [1*]Nc1ccc(C(F)(F)F)cn1' has 1 matched pair(s), below the minimum of 3 required for a reliable SAR conclusion."
+    }
+  ],
+  "threshold_sources": {
+    "min_pair_count": "default",
+    "cliff_absolute_delta": "default"
+  },
+  "threshold_provenance": "Property-cliff detection thresholds for matched molecular pair analysis. Minimum pair count from Hussain & Rea, J Chem Inf Model 2010;50:339-348, who recommend caution with small pair counts but do not prescribe a specific minimum. cliff_absolute_delta is a per-property dict, not a universal scalar, because a series file's properties dict is unconstrained \u2014 potency (log-scale, deltas of 0-3), solubility (\u00b5g/mL, deltas of hundreds), and molecular weight (deltas of tens) cannot share one number. Potency-property thresholds (pic50, pki) are set to 1.0 log unit (10-fold potency difference), the conservative end of the 0.5-1.0 range cited in the activity-cliff literature: Stumpfe & Bajorath, J Med Chem 2012;55:2932-2942; Cruz-Monteagudo et al., Drug Discov Today 2014;19:1069-1080. Properties not in the dict are not evaluated for cliffs \u2014 this is explicit in the analysis output, not silent. Override via .oase/thresholds.yaml to add properties or adjust thresholds for a specific program.",
+  "written_by": "medicinal-chemist",
+  "work_order_id": "WO-006",
+  "source_sha256": "501deb1ab013b1e195d65b10e59051334e650faefba23a733947cabb3075d54d"
+}

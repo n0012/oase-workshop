@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Steps 6–7 — Live Multi-Model Flight Recorder &amp; Red-Team Governance Ledger</title>
+<title>Steps 5–7 — Live PK Scaling, Clinical Dossier &amp; Red-Team Tamper Ledger</title>
 <style>
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
@@ -40,94 +40,90 @@
 
 <div class="top-nav">
   <div class="title">
-    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
-    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
     <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
-    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
-    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hdr-card">
-    <h1>Steps 6–7 — Multi-Model Flight Recorder, `78/78` `oase doctor` &amp; Adversarial Tamper Ledger</h1>
-    <p>Complete reproducibility &amp; governance record from `pcsk9-oral-live-v2` (`dfe725e0-2c33-4569-84b2-1af9bb7b96fa`): every `Gemini 4 Argon (High/Med)`, `Claude Opus 5.5`, and `Gemini 3.8 Flash` audit turn, all 3 mechanically blocked Red-Team Tamper Drills (`DRILL-01..03`), and the co-signed human override (`DEC-OVERRIDE-001`).</p>
+    <h1>Steps 5–7 — Live Rat/Dog/Human PK (`WO-007`), Clinical Dossier (`WO-008`) &amp; 3 Red-Team Tamper Drills</h1>
+    <p>Complete reproducibility &amp; governance record from `/home/scion/.scion/projects/pcsk9-oral-live-v2` (`dfe725e0-2c33-4569-84b2-1af9bb7b96fa`): all `28` Phase-1 `.meta.json` receipts carry `env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b`, all `8/8` Work Orders (`WO-001-r1..WO-008-r1`) are `scientifically_accepted` (`0` failures, `0` warnings), and all `3/3` live `oase validate check --dry-run --json` Red-Team Tamper Drills (`DRILL-01..03`) exited with code `1` (`passed: false`).</p>
     <div class="badge-row">
-      <span class="pill pass">oase doctor: 78 / 78 PASS (0 Failures)</span>
-      <span class="pill block">3 / 3 Adversarial Tamper Drills BLOCKED</span>
-      <span class="pill pass">1 Co-Signed Override (DEC-OVERRIDE-001)</span>
-      <span class="pill argon">Gemini 4 Argon (High/Med)</span>
-      <span class="pill opus">Claude Opus 5.5 (Vertex)</span>
+      <span class="pill pass">8 / 8 Work Orders scientifically_accepted (0 warnings)</span>
+      <span class="pill pass">Human PK: t1/2 = 8.1805 h · CL = 0.009974 L/h/kg · Vd = 0.117741 L/kg</span>
+      <span class="pill pass">ClinicalTrials.gov: 450 PCSK9 Studies (146 Recruiting)</span>
+      <span class="pill block">3 / 3 Live Tamper Drills BLOCKED (exit code 1)</span>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <h2>Step 6 Red-Team Tamper Drills &amp; Audited Human Override</h2>
+      <h2>Step 6 Live Red-Team Tamper Drills (`gates/stage3-candidate-nomination/tamper-drills/`)</h2>
       <table>
-        <thead><tr><th>Drill / Event ID</th><th>Injected Failure Mode</th><th>Validator Exit Code &amp; Rule</th><th>Outcome</th></tr></thead>
+        <thead><tr><th>Drill Receipt</th><th>Injected Tamper Against Live Artifacts</th><th>Failed Mechanical Gate (`exit 1`)</th><th>Outcome</th></tr></thead>
         <tbody>
           <tr>
-            <td><code>DRILL-01</code></td>
-            <td>Fabricated Vina score (<code>-11.8 kcal/mol</code>) in prose without Phase-1/2 sidecar receipt</td>
-            <td><code>MISSING_PROVENANCE_SIDECAR</code> (exit <code>1</code>)</td>
+            <td><code>drill-01-value-mismatch.json</code></td>
+            <td>Edited <code>wo-005-vina-docking.md</code> to claim <code>-11.400 kcal/mol</code> against <code>best_score = -7.991 kcal/mol</code></td>
+            <td><code>source_tags_resolve</code>:<br><small><code>claimed -11.4 vs actual -7.991 (diff 42.7% &gt; 1.0%)</code></small></td>
             <td><span class="pill block">BLOCKED</span></td>
           </tr>
           <tr>
-            <td><code>DRILL-02</code></td>
-            <td>Silent edit to <code>.oase/thresholds.yaml</code> to relax hERG cutoff for <code>PCSK9-A02</code></td>
-            <td><code>IMMUTABLE_THRESHOLD_TAMPER</code> (exit <code>1</code>)</td>
+            <td><code>drill-02-sha256-tamper.json</code></td>
+            <td>Appended unauthorized coordinate line to <code>raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt</code></td>
+            <td><code>provenance_valid</code>:<br><small><code>SHA-256 mismatch (expected 2242b1c07c36d490...)</code></small></td>
             <td><span class="pill block">BLOCKED</span></td>
           </tr>
           <tr>
-            <td><code>DRILL-03</code></td>
-            <td>Truncated <code>executive/CANDIDATE-SUMMARY.md</code> omitting mandatory risk table</td>
-            <td><code>REPORT_HEADINGS_MISSING</code> (exit <code>1</code>)</td>
+            <td><code>drill-03-suppressed-relay.json</code></td>
+            <td>Deleted <code>admet.herg_structural_flag</code> section from <code>wo-006-dmta-admet-mmp.md</code></td>
+            <td><code>relay_coverage</code>:<br><small><code>Missing required relay admet.herg_structural_flag</code></small></td>
             <td><span class="pill block">BLOCKED</span></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.12);">
             <td><code>DEC-OVERRIDE-001</code></td>
-            <td>Bounded exploratory override for backup macrocycle <code>PCSK9-B07</code> (<code>IC-002</code>)</td>
-            <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code> via <code>oase workorder override</code></td>
-            <td><span class="pill pass">LOGGED IN EVENTS.NDJSON</span></td>
+            <td>Audited co-signed exception for backup macrocycle <code>IC-002</code> in <code>decision-log.md</code></td>
+            <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code></td>
+            <td><span class="pill pass">CO-SIGNED</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="card">
-      <h2>Live Multi-Model Grove Roster (`pcsk9-oral-live-v2`)</h2>
+      <h2>Step 5 Live Preclinical PK &amp; Clinical Landscape Summary (`WO-007` &amp; `WO-008`)</h2>
       <table>
-        <thead><tr><th>Agent Container</th><th>Harness Image</th><th>Active Model</th><th>Doctor</th></tr></thead>
+        <thead><tr><th>Artifact (`raw/pk/` &amp; `raw/pipeline/`)</th><th>Observed Metrics</th><th>SHA-256 Receipt</th></tr></thead>
         <tbody>
-          <tr><td><code>science-program-lead</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>scientific-reviewer</code></td><td><code>scion-claude:latest</code></td><td><span class="pill opus">Claude Opus 5.5</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>medicinal-chemist</code></td><td><code>scion-claude:latest</code></td><td><span class="pill opus">Claude Opus 5.5</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>structural-biologist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>computational-biologist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>admet-dmpk-scientist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>finding-validator</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill flash">Gemini 3.8 Flash (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
-          <tr><td><code>controller</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill flash">Gemini 3.8 Flash (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>oase_pcsk9_014_rat_po.pk-nca.json</code></td><td>Cmax = <strong>1620.0 ng/mL</strong>, t1/2 = <strong>4.7958 h</strong>, AUC0-&infin; = <strong>12796.76</strong> (extrap 3.68%)</td><td><code>00020c62903e38d8</code></td></tr>
+          <tr><td><code>oase_pcsk9_014_dog_po.pk-nca.json</code></td><td>Cmax = <strong>1790.0 ng/mL</strong>, t1/2 = <strong>6.8094 h</strong>, AUC0-&infin; = <strong>19510.20</strong> (extrap 9.82%)</td><td><code>6756380315ffeee4</code></td></tr>
+          <tr><td><code>scaling-dog-rat.pk-scaling.json</code></td><td>70 kg Human: t1/2 = <strong>8.1805 h</strong>, CL = <strong>0.009974 L/h/kg</strong>, Vd = <strong>0.117741 L/kg</strong></td><td><code>14ed82dcc3aea396</code></td></tr>
+          <tr><td><code>pcsk9.trials-clinicaltrials.json</code></td><td><strong>450</strong> studies, <strong>146</strong> recruiting, <strong>77</strong> Phase 2+ recruiting, <strong>177</strong> Phase 3+</td><td><code>c8fdf83adece5d50</code></td></tr>
+          <tr><td><code>gates/dossier-export/dossier-export.json</code></td><td><strong>8/8</strong> CTD sections populated, <strong>8/8</strong> WOs <code>scientifically_accepted</code>, <strong>35</strong> HTML pages built</td><td><code>oase dossier export</code></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="card">
-    <h2>Immutable `.oase/events.ndjson` &amp; Multi-Model Flight Recorder Excerpt</h2>
-    <div class="term">{"event":"campaign_initialized","campaign":"pcsk9-oral","target":"PCSK9 (ENSG00000169174 / Q8NBP7)","env_version":"sha256:61020936449a"}
-{"event":"workorder_scientifically_accepted","work_order_id":"WO-001","primary_model":"gemini-4-argon-high","reviewer_model":"claude-opus-5-5","top_elo":1642.5}
-{"event":"stage_gate_signed","gate":"GATE-01","workorders":["WO-002","WO-003"],"alphagenome_endpoint":"2271936108785795072","rs2479409_quantile":0.984}
-{"event":"stage_gate_signed","gate":"GATE-02","workorders":["WO-004","WO-005"],"af3_endpoint":"4654231070018895872","iptm":0.84,"pocket1_druggability":0.68,"vina_dg":-9.4}
-{"event":"stage_gate_signed","gate":"GATE-03-WETLAB-HANDOFF","workorders":["WO-006"],"medchem_model":"claude-opus-5-5","disqualified":"PCSK9-A02 (hERG L-002)","nominated_lead":"OASE-PCSK9-014"}
-{"event":"stage_gate_signed","gate":"GATE-04-CANDIDATE-NOMINATION","workorders":["WO-007","WO-008"],"human_oral_f_pct":52.0,"half_life_h":14.8,"qd_dose_mg":40.0}
-{"event":"governance_tamper_drills_verified","drills_blocked":["DRILL-01:MISSING_PROVENANCE_SIDECAR","DRILL-02:IMMUTABLE_THRESHOLD_TAMPER","DRILL-03:REPORT_HEADINGS_MISSING"]}
-{"event":"governance_override_cosigned","decision_id":"DEC-OVERRIDE-001","compound":"PCSK9-B07","cosigners":["oase-raj@losiern-1.altostrat.com","oase-sarah@losiern-1.altostrat.com"],"condition":"14-day manual patch-clamp hERG gate"}</div>
+    <h2>Live `oase workorder accept-all --json` &amp; Tamper Drill Telemetry (`pcsk9-oral-live-v2`)</h2>
+    <div class="term">{"work_order_id":"WO-001","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-001-hypothesis-tournament.md"}
+{"work_order_id":"WO-002","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-002-human-genetics-gtex.md"}
+{"work_order_id":"WO-003","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/computational-biology/wo-003-alphagenome-variant.md","endpoint":"mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5"}
+{"work_order_id":"WO-004","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/structural-biology/wo-004-alphafold3-pocket.md","endpoint":"mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0"}
+{"work_order_id":"WO-005","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/structural-biology/wo-005-vina-docking.md","best_score_kcal_mol":-7.991}
+{"work_order_id":"WO-006","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md","lead":"oase_pcsk9_014"}
+{"work_order_id":"WO-007","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/admet-dmpk/wo-007-oral-pk-scaling.md","predicted_half_life_h":8.1805}
+{"work_order_id":"WO-008","status":"scientifically_accepted","passed":true,"failures":0,"warnings":0,"finding":"findings/regulatory/wo-008-clinical-landscape-dossier.md","total_studies":450,"site_pages_rendered":35}</div>
   </div>
 </div>
 <script>document.getElementById('nav-fr').classList.add('active');</script>

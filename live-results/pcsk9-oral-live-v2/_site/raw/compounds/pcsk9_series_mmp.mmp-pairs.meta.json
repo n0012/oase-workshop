@@ -1,0 +1,28 @@
+{
+  "tool": "mmp",
+  "subcommand": "pairs",
+  "work_order_id": "WO-006",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "series_file": "/workspace/raw/compounds/pcsk9_series_mmp.json"
+  },
+  "timestamp": "2026-10-30T04:55:52Z",
+  "completed": "2026-10-30T04:55:52Z",
+  "outputs": [
+    {
+      "path": "pcsk9_series_mmp.mmp-pairs.json",
+      "sha256": "501deb1ab013b1e195d65b10e59051334e650faefba23a733947cabb3075d54d",
+      "bytes": 2339
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "rdkit_version": "2026.03.6",
+  "source_sha256": "d631a0655b941ecfc82b59bd226ec4e6c33f1c37790f4d0cb552cedc6e6415eb",
+  "n_compounds": 3,
+  "n_pairs": 3
+}

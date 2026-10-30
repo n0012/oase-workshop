@@ -1,0 +1,17 @@
+{
+  "work_order_id": "WO-002",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/genomics/PCSK9.gnomad-constraint.json",
+      "sha256": "e86f2c5c55429749cd0decc47f82ff68a7f958b0de756bf352db2c39e4a4211d"
+    },
+    {
+      "path": "raw/gtex/ENSG00000169174.10.gtex.json",
+      "sha256": "05ffbee9c1ebc453782c617359811cb0699d1420752e4964fc9294a75b1df0ae"
+    }
+  ],
+  "content": "Assess PCSK9 (ENSG00000169174) LoF tolerance in gnomAD v4 and whole-blood RNA-seq expression in GTEx v8.",
+  "content_sha256": "d8b0d23d321c947dd1cd51e32a095716c384f052c4fa4c0348a17d5135a8edec",
+  "created_at": "2026-10-30T05:46:06Z"
+}

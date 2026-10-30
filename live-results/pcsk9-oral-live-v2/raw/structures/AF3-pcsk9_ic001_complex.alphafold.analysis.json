@@ -1,0 +1,46 @@
+{
+  "record_type": "analysis",
+  "source": "raw/structures/AF3-pcsk9_ic001_complex.summary.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "unknown",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T05:32:34Z",
+  "threshold_set": "af3@1.0",
+  "thresholds_applied": {
+    "iptm_confident": 0.8,
+    "iptm_borderline": 0.6,
+    "ptm_confident": 0.5,
+    "plddt_confident": 70.0,
+    "plddt_low": 50.0,
+    "fraction_disordered_notable": 0.3
+  },
+  "metrics": {
+    "ptm": 0.47,
+    "iptm": 0.61,
+    "ranking_score": 0.58,
+    "fraction_disordered": 0.0,
+    "has_clash": 0.0,
+    "chain_ptm": [
+      0.39,
+      0.38
+    ]
+  },
+  "assessment": {
+    "verdict": "borderline-interface",
+    "advisories": [
+      "Interface confidence is borderline; treat the complex geometry as a hypothesis, not a result."
+    ]
+  },
+  "threshold_sources": {
+    "iptm_confident": "default",
+    "iptm_borderline": "default",
+    "ptm_confident": "default",
+    "plddt_confident": "default",
+    "plddt_low": "default",
+    "fraction_disordered_notable": "default"
+  },
+  "threshold_provenance": "DeepMind AlphaFold3 published confidence guidance (ipTM/pTM bands); ranking_score formula per af3-toolkit notes.md \u00a75",
+  "written_by": "structural-biologist",
+  "work_order_id": null,
+  "source_sha256": "e65264eaedd5c2add9ea91c47604bb8cbfbcc93ca96061fe741fe493b2db0c8e"
+}

@@ -1,0 +1,95 @@
+{
+  "record_type": "analysis",
+  "source": "raw/pipeline/pcsk9.trials-clinicaltrials.artifact.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:56:00Z",
+  "threshold_set": "trials@1.0",
+  "thresholds_applied": {
+    "active_pipeline_min_phase": 2
+  },
+  "metrics": {
+    "total_studies": 450,
+    "by_phase": {
+      "Phase1": 56,
+      "Phase4": 67,
+      "N/A": 136,
+      "Phase2": 66,
+      "Phase1/Phase2": 7,
+      "Phase3": 101,
+      "Early Phase1": 8,
+      "Phase2/Phase3": 9
+    },
+    "by_status": {
+      "COMPLETED": 220,
+      "UNKNOWN": 58,
+      "RECRUITING": 67,
+      "WITHDRAWN": 7,
+      "ACTIVE_NOT_RECRUITING": 27,
+      "NOT_YET_RECRUITING": 50,
+      "TERMINATED": 18,
+      "ENROLLING_BY_INVITATION": 2,
+      "SUSPENDED": 1
+    },
+    "recruiting_count": 146,
+    "phase_2_plus_recruiting": 77,
+    "max_phase": 4,
+    "top_sponsors": [
+      "Novartis Pharmaceuticals",
+      "Amgen",
+      "Sanofi",
+      "LIB Therapeutics LLC",
+      "Merck Sharp & Dohme LLC"
+    ],
+    "top_interventions": [
+      "Placebo",
+      "Evolocumab",
+      "Alirocumab",
+      "Ezetimibe",
+      "Inclisiran"
+    ],
+    "date_range": {
+      "earliest": "2008-02",
+      "latest": "2033-12-04"
+    }
+  },
+  "assessment": {
+    "verdict": "active_pipeline",
+    "query_term": "PCSK9",
+    "n_studies": 450,
+    "max_phase": 4,
+    "recruiting_count": 146,
+    "phase_2_plus_recruiting": 77,
+    "phase_3_plus_count": 177,
+    "top_sponsors": [
+      "Novartis Pharmaceuticals",
+      "Amgen",
+      "Sanofi",
+      "LIB Therapeutics LLC",
+      "Merck Sharp & Dohme LLC"
+    ],
+    "top_interventions": [
+      "Placebo",
+      "Evolocumab",
+      "Alirocumab",
+      "Ezetimibe",
+      "Inclisiran"
+    ],
+    "confidence": "low_text_match_only",
+    "confidence_reason": "Query 'PCSK9' (5 chars) returned 450 studies \u2014 text matching of short gene symbols is unreliable. Triggers: hit count (450) exceeds 200; Phase 3+ ratio (177/450 = 39.3%) exceeds 5% threshold. Manual review of trial titles/interventions is required."
+  },
+  "mandatory_relays": [
+    {
+      "code": "trials.text_match_not_mechanism",
+      "message": "Trial search for 'PCSK9' used full-text matching, not mechanism-specific filtering. The 450 results may include incidental mentions. Any finding citing this verdict MUST note that results are text-matched, not mechanism-verified."
+    },
+    {
+      "code": "trials.active_competitor_pipeline",
+      "message": "177 Phase 3+ trial(s) found for 'PCSK9'; sponsors include Akeso, Amgen, Assistance Publique - H\u00f4pitaux de Paris, Assiut University, AstraZeneca. Late-stage clinical development may affect freedom to operate or competitive positioning."
+    }
+  ],
+  "written_by": "admet-dmpk-scientist",
+  "work_order_id": "WO-008",
+  "source_sha256": "b4ece39c026f2955282a802809d68d67da0b51d106f1801cee6e23d4b8333af1"
+}

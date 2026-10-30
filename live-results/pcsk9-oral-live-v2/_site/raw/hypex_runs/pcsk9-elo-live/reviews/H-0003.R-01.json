@@ -1,0 +1,23 @@
+{
+  "contradicting_evidence": [],
+  "epoch": 1,
+  "hypothesis_id": "H-0003",
+  "id": "H-0003.R-01",
+  "key_criticisms": [
+    "High MW/TPSA risk for oral dosing"
+  ],
+  "review_type": "full",
+  "reviewer": "hypex-reflection",
+  "scores": {
+    "constraint_compliance": 2,
+    "correctness": 3,
+    "goal_alignment": 3,
+    "novelty": 3,
+    "safety": 5,
+    "testability": 4
+  },
+  "verdict": "Hold — oral bioavailability constraint risk",
+  "verified_citations": [
+    "PMID:25014122"
+  ]
+}

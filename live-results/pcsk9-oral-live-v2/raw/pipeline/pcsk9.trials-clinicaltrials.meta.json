@@ -1,0 +1,32 @@
+{
+  "tool": "oase.trials",
+  "subcommand": "search",
+  "work_order_id": "WO-008",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "parameters": {
+    "query_term": "PCSK9",
+    "search_by": "target"
+  },
+  "timestamp": "2026-10-30T04:55:59Z",
+  "completed": "2026-10-30T04:55:59Z",
+  "outputs": [
+    {
+      "path": "pcsk9.trials-clinicaltrials.json",
+      "sha256": "c8fdf83adece5d50b4259b67f7e702c65b7d288d39826b710313c1eb586d6ba7",
+      "bytes": 36389325
+    },
+    {
+      "path": "pcsk9.trials-clinicaltrials.artifact.json",
+      "sha256": "b4ece39c026f2955282a802809d68d67da0b51d106f1801cee6e23d4b8333af1",
+      "bytes": 326573
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "source_db": "clinicaltrials.gov",
+  "n_studies": 450
+}

@@ -1,0 +1,32 @@
+{
+  "tool": "pk",
+  "subcommand": "ingest",
+  "work_order_id": "WO-007",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_file": "oase_pcsk9_014_dog_oral.json",
+    "study_id": "oase_pcsk9_014_dog_po",
+    "species": "dog",
+    "route": "oral"
+  },
+  "timestamp": "2026-10-30T04:56:56Z",
+  "completed": "2026-10-30T04:56:56Z",
+  "outputs": [
+    {
+      "path": "oase_pcsk9_014_dog_po.pk-study.json",
+      "sha256": "6f90225e693a32f797b46a5c2b9bc33671fac10231f3ee4d02fe695bc124b2ae",
+      "bytes": 493
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "input_sha256": "3bb519d2ef7435b8cc14e930e87a028ef5a94f8486a1f7cc2ca41f1892c6e6a6",
+  "n_time_points": 8,
+  "species": "dog",
+  "route": "oral",
+  "dose_mg_kg": 5.0
+}

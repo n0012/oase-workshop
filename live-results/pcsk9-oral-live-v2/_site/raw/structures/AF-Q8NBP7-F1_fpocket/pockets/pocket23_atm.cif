@@ -1,0 +1,61 @@
+data_pocket23_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    23:
+0  - Pocket Score                      : -0.0439
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    25
+3  - Mean alpha-sphere radius          : 4.1962
+4  - Mean alpha-sphere Solvent Acc.    : 0.5239
+5  - Mean B-factor of pocket residues  : 0.2992
+6  - Hydrophobicity Score              : -8.4000
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 5.6000
+9  - Pocket volume (Monte Carlo)       : 357.8372
+10  -Pocket volume (convex hull)       : 8.7604
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 6.0000
+13 - Number of apolar alpha sphere     :     7
+14 - Proportion of apolar alpha sphere : 0.2800
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1309     N  NH1 ?  ARG      A 165 ?   17.969   23.243   -1.065   0.00  0 165 A
+ATOM    1307     C   CD ?  ARG      A 165 ?   16.959   21.590    1.061   0.00  0 165 A
+ATOM    1308     N   NE ?  ARG      A 165 ?   18.324   21.602    0.504   0.00  0 165 A
+ATOM    1333     N  NH2 ?  ARG      A 167 ?   16.570   28.324    5.259  -0.84  0 167 A
+ATOM    1356     O  OE2 ?  GLU      A 170 ?   10.635   26.666    3.991  -0.40  0 170 A
+ATOM    1305     O    O ?  ARG      A 165 ?   13.219   21.454    4.387  -3.21  0 165 A
+ATOM    1332     N  NH1 ?  ARG      A 167 ?   14.476   28.666    4.592   0.00  0 167 A
+ATOM    1334     C   CZ ?  ARG      A 167 ?   15.308   28.002    5.339   0.00  0 167 A
+ATOM    1331     N   NE ?  ARG      A 167 ?   14.925   27.037    6.152   0.00  0 167 A
+ATOM    1304     C   CB ?  ARG      A 165 ?   15.408   20.790    2.834   0.00  0 165 A
+ATOM    1302     C   CA ?  ARG      A 165 ?   15.206   20.131    4.213   0.00  0 165 A
+ATOM    1311     C   CZ ?  ARG      A 165 ?   18.745   22.365   -0.491   0.00  0 165 A
+ATOM    1306     C   CG ?  ARG      A 165 ?   16.845   20.701    2.306   0.00  0 165 A
+ATOM    1329     C   CG ?  ARG      A 167 ?   13.412   25.337    7.145   0.00  0 167 A
+ATOM    1303     C    C ?  ARG      A 165 ?   13.874   20.531    4.855   0.00  0 165 A
+ATOM    1316     O    O ?  TYR      A 166 ?   13.434   21.455    8.397  -0.54  0 166 A
+ATOM    3391     C   CB ?  PRO      A 446 ?   10.458   20.782    0.615   0.00  0 446 A
+ATOM    1330     C   CD ?  ARG      A 167 ?   13.528   26.612    6.317   0.00  0 167 A
+ATOM    3392     O    O ?  PRO      A 446 ?    9.027   22.995    2.448  -7.50  0 446 A
+# 

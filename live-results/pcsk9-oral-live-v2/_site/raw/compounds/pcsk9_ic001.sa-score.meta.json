@@ -1,0 +1,28 @@
+{
+  "tool": "compound",
+  "subcommand": "sa-score",
+  "work_order_id": "WO-006",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "CC1=CC(=CC=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=C3)C(F)(F)F)OC",
+    "canonical_smiles": "COc1ccc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cc3)cs2)c(C)c1"
+  },
+  "timestamp": "2026-10-30T04:55:42Z",
+  "completed": "2026-10-30T04:55:43Z",
+  "outputs": [
+    {
+      "path": "pcsk9_ic001.sa-score.json",
+      "sha256": "69bf89572afc53a9d3e4fdaff628bf8c7e9d4fb46200b8a5d7a9e63cd29332eb",
+      "bytes": 180
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "pcsk9_ic001",
+  "rdkit_version": "2026.03.6",
+  "sa_score_source": "rdkit.Contrib.SA_Score.sascorer (Ertl & Schuffenhauer 2009)"
+}

@@ -1,0 +1,26 @@
+{
+  "tool": "compound",
+  "subcommand": "validate",
+  "work_order_id": "WO-006",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_smiles": "CC1=CC(=CN=C1C2=NC(=CS2)C(=O)NC3=CC=C(C=N3)C(F)(F)F)OC",
+    "canonical_smiles": "COc1cnc(-c2nc(C(=O)Nc3ccc(C(F)(F)F)cn3)cs2)c(C)c1"
+  },
+  "timestamp": "2026-10-30T04:55:45Z",
+  "completed": "2026-10-30T04:55:45Z",
+  "outputs": [
+    {
+      "path": "oase_pcsk9_014.validate.json",
+      "sha256": "3efb2bfb0ab2367bcfd75ff7ff14478e9789d7b7e16f052ca31e7eb87cfe8ad3",
+      "bytes": 271
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "compound_name": "oase_pcsk9_014"
+}

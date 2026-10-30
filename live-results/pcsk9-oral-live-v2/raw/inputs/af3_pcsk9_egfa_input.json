@@ -1,0 +1,22 @@
+{
+  "dialect": "alphafold3",
+  "version": 1,
+  "name": "my_docking",
+  "modelSeeds": [
+    42
+  ],
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "REPLACE_WITH_SEQUENCE"
+      }
+    },
+    {
+      "ligand": {
+        "id": "B",
+        "smiles": "REPLACE_WITH_SMILES"
+      }
+    }
+  ]
+}

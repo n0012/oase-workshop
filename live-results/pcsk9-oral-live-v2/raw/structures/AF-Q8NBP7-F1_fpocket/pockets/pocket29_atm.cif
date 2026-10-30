@@ -1,0 +1,58 @@
+data_pocket29_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    29:
+0  - Pocket Score                      : -0.0783
+1  - Drug Score                        : 0.0002
+2  - Number of alpha spheres           :    19
+3  - Mean alpha-sphere radius          : 3.8741
+4  - Mean alpha-sphere Solvent Acc.    : 0.4471
+5  - Mean B-factor of pocket residues  : 0.4733
+6  - Hydrophobicity Score              : 0.6250
+7  - Polarity Score                    :     7
+8  - Amino Acid based volume Score     : 3.7500
+9  - Pocket volume (Monte Carlo)       : 226.9616
+10  -Pocket volume (convex hull)       : 9.2297
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 1.0000
+13 - Number of apolar alpha sphere     :     2
+14 - Proportion of apolar alpha sphere : 0.1053
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    4854     C  CE1 ?  HIS      A 643 ?   16.049   -9.950  -32.100   0.00  0 643 A
+ATOM    5040     O  OE1 ?  GLU      A 669 ?   18.432  -11.967  -34.488   0.00  0 669 A
+ATOM    5009     O  OG1 ?  THR      A 664 ?   19.175  -14.878  -29.328  -4.29  0 664 A
+ATOM    5008     C  CG2 ?  THR      A 664 ?   18.051  -16.955  -29.437   0.00  0 664 A
+ATOM    5041     O  OE2 ?  GLU      A 669 ?   18.721  -11.031  -32.510  -3.21  0 669 A
+ATOM    4853     N  ND1 ?  HIS      A 643 ?   16.065   -9.759  -30.772  -4.37  0 643 A
+ATOM    5006     C   CB ?  THR      A 664 ?   19.270  -16.158  -29.904   0.00  0 664 A
+ATOM    4979     O    O ?  ASP      A 660 ?   18.638  -13.521  -24.643  -3.62  0 660 A
+ATOM    4970     C   CD ?  ARG      A 659 ?   12.928  -12.625  -26.140   0.00  0 659 A
+ATOM    5002     O  OG1 ?  THR      A 663 ?   18.643  -17.267  -25.273  -0.54  0 663 A
+ATOM    4844     O    O ?  SER      A 642 ?   12.844  -10.976  -29.755  -1.48  0 642 A
+ATOM    4972     N  NH1 ?  ARG      A 659 ?   11.193  -12.857  -28.460   0.00  0 659 A
+ATOM    4967     C   CB ?  ARG      A 659 ?   14.845  -11.514  -24.969   0.00  0 659 A
+ATOM    4989     C  CG2 ?  VAL      A 661 ?   20.248   -9.912  -27.110   0.00  0 661 A
+ATOM    4984     C   CA ?  VAL      A 661 ?   20.623  -12.304  -26.288   0.00  0 661 A
+ATOM    4968     O    O ?  ARG      A 659 ?   17.482   -9.834  -24.392  -1.07  0 659 A
+# 

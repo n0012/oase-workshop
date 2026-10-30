@@ -1,0 +1,17 @@
+{
+  "work_order_id": "WO-001",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json",
+      "sha256": "2f0f49eca43b1ae61bbed1f60809415c6f592a46390a6378674ca5d293a1083b"
+    },
+    {
+      "path": "raw/hypotheses/hx-pcsk9-elo-live.hypex.json",
+      "sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca"
+    }
+  ],
+  "content": "Evaluate H-001 (allosteric Pocket #3 small molecule), H-002 (oral macrocycle), and H-003 (PROTAC) via Co-Scientist and Hypex.",
+  "content_sha256": "cd401a4592b3d53cfd5128470d15f41ab1ff99592845af9c8a8889a8635a3fc8",
+  "created_at": "2026-10-30T05:46:06Z"
+}

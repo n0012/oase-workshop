@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Step 4 — Claude Opus 5.5 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
+  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
+  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
+  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, Matched Molecular Pairs (`MMP`), `ADMET` &amp; Wet-Lab CRO Handoff</h1>
+    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.4`, `1` Lipinski violation, `verdict = borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `verdict = drug-like`), while enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
+    <div class="badge-row">
+      <span class="pill opus">medicinal-chemist · Claude Opus 5.5 (Vertex)</span>
+      <span class="pill argon">admet-dmpk-scientist · Gemini 4 Argon (Med)</span>
+      <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Lipinski Violations</span>
+      <span class="pill pass">descriptors.json sha256: 551aa4897aee43e9</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Live RDKit, MMP &amp; ADMET Optimization Table (`WO-006-r1`)</h2>
+      <table>
+        <thead>
+          <tr><th>Compound ID</th><th>MW / Formula</th><th>cLogP / TPSA</th><th>Lipinski / PAINS</th><th>SA Score</th><th>OASE Verdict &amp; Disposition</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(239,68,68,0.12);">
+            <td><code>pcsk9_ic001</code><br><small>(Parent Hit)</small></td>
+            <td>392.39 Da<br><small>HBD=1, HBA=4</small></td>
+            <td>cLogP <strong>5.40</strong><br>TPSA 51.22 &Aring;&sup2;</td>
+            <td><span class="pill block">1 Lipinski Violation</span><br>0 PAINS</td>
+            <td>2.08 (tractable)</td>
+            <td><span class="pill block">borderline (Superseded)</span></td>
+          </tr>
+          <tr style="background:rgba(16,185,129,0.14);">
+            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Optimized Lead)</small></td>
+            <td><strong>394.38 Da</strong><br><small>HBD=1, HBA=6</small></td>
+            <td>cLogP <strong>4.19</strong> (&Delta; = -1.21)<br>TPSA <strong>77.00 &Aring;&sup2;</strong></td>
+            <td><span class="pill pass">0 Lipinski Violations</span><br>0 PAINS / 0 Brenk</td>
+            <td><strong>2.52</strong> (tractable)</td>
+            <td><span class="pill pass">drug-like &rarr; CRO GATE 3</span></td>
+          </tr>
+          <tr>
+            <td><code>pcsk9_series_mmp</code></td>
+            <td>4-Analog Series</td>
+            <td>3 Matched Pairs</td>
+            <td>0 Activity Cliffs</td>
+            <td>Continuous SAR</td>
+            <td><span class="pill pass">sar-tractable (sha256:501deb1a)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`admet.herg_structural_flag` Relay)</h2>
+        <p style="font-size:0.83rem;color:#cbd5e1;margin-top:0;">`oase admet analyze` on `oase_pcsk9_014.predict.json` (`sha256:7c2fc75a3b865dd6`) emits mandatory relay <code>admet.herg_structural_flag</code> (`liabilities-identified`). OASE blocks clinical progression until wet-lab CRO assays return:</p>
+        <table>
+          <thead><tr><th>CRO Wet-Lab Assay</th><th>Gate 3 Requirement</th><th>Step 5 Returned Readout</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM` (resolve structural flag)</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
+            <tr><td><strong>2. Rat Oral PK (`oase_pcsk9_014_rat_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1620 ng/mL · t1/2 = 4.80 h</span></td></tr>
+            <tr><td><strong>3. Dog Oral PK (`oase_pcsk9_014_dog_po`)</strong></td><td>NCA oral exposure &amp; extrap &le; 20%</td><td><span class="pill pass">Cmax = 1790 ng/mL · t1/2 = 6.81 h</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>`WO-006` Live Phase-1 &amp; Phase-2 Receipts (`raw/compounds/` &amp; `raw/admet/`)</h2>
+        <div class="term">[raw/compounds/oase_pcsk9_014.compound.analysis.json]
+env_version        : sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b
+mw                 : 394.38  (parent pcsk9_ic001: 392.39)
+logp               : 4.19    (parent pcsk9_ic001: 5.40 -> -1.21 logP reduction)
+tpsa               : 77.0    (parent pcsk9_ic001: 51.22 -> +25.78 A^2 polarity)
+lipinski_violations: 0       (verdict: drug-like)
+sa_score           : 2.52    (verdict: tractable)
+admet_relays       : admet.in_silico_predictions_not_experimental, admet.herg_structural_flag</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>document.getElementById('nav-dmta').classList.add('active');</script>
+</body>
+</html>

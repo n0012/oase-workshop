@@ -1,0 +1,44 @@
+{
+  "record_type": "analysis",
+  "source": "raw/pk/oase_pcsk9_014_dog_po.pk-nca.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:57:07Z",
+  "threshold_set": "pk-parameters@1.0+program",
+  "thresholds_applied": {
+    "scaling_confidence_single": "low",
+    "scaling_confidence_multi": "moderate",
+    "auc_extrapolation_limit": 20.0,
+    "ddi_r_possible_interaction": 1.25,
+    "ddi_r_clinical_study": 2.0,
+    "therapeutic_exposure_adequacy": 1.0
+  },
+  "metrics": {
+    "analysis_type": "nca",
+    "auc_extrapolation_pct": 9.82,
+    "auc_extrapolation_limit": 20.0,
+    "cmax": 1790.0,
+    "half_life": 6.8094,
+    "auc_0_inf": 19510.2024
+  },
+  "assessment": {
+    "auc_extrapolation": {
+      "status": "acceptable",
+      "message": "AUC extrapolation (9.8%) within 20.0% limit"
+    },
+    "verdict": "acceptable"
+  },
+  "threshold_sources": {
+    "scaling_confidence_single": "default",
+    "scaling_confidence_multi": "default",
+    "auc_extrapolation_limit": "program",
+    "ddi_r_possible_interaction": "program",
+    "ddi_r_clinical_study": "program",
+    "therapeutic_exposure_adequacy": "program"
+  },
+  "threshold_provenance": "FDA Guidance for Industry: Safety Testing of Drug Metabolites (2020 revision), AUC extrapolation limit. FDA In Vitro Drug Interaction Studies guidance (2020) R-value cutoffs for DDI risk classification. Scaling confidence classes are operational defaults based on Mahmood & Balian 1996 rule of exponents. Therapeutic exposure adequacy is program-specific with no universal default.",
+  "written_by": "admet-dmpk-scientist",
+  "work_order_id": "WO-007",
+  "source_sha256": "6756380315ffeee4e1f499ae9f29c2656300c7fe0c320741a0d724417b2f0427"
+}

@@ -1,0 +1,50 @@
+{
+  "tool": "pk",
+  "subcommand": "scale",
+  "schema": "oase.pk-scaling.v1",
+  "species_used": [
+    "rat",
+    "dog"
+  ],
+  "scaling_method": "simple_allometry",
+  "human_body_weight_kg": 70.0,
+  "predicted_human": {
+    "clearance": 0.009974,
+    "clearance_units": "mg / (ng/mL * h) (apparent)",
+    "vd": 0.117741,
+    "vd_units": "mg / ng/mL (apparent)",
+    "half_life": 8.1805,
+    "half_life_units": "h"
+  },
+  "scaling_details": {
+    "cl_exponent": 0.698297,
+    "vd_exponent": 0.792736,
+    "cl_coefficient": 0.000513,
+    "vd_coefficient": 0.004057,
+    "r_squared_cl": 1.0,
+    "r_squared_vd": 1.0
+  },
+  "confidence_class": "moderate",
+  "projected_dose": {
+    "target_metric": "AUC",
+    "target_value": 12000.0,
+    "projected_dose": 119.6904,
+    "dose_units": "mg (absolute, for 70.0 kg human)"
+  },
+  "species_input": [
+    {
+      "species": "rat",
+      "body_weight_kg": 0.25,
+      "clearance": 0.000195,
+      "vd": 0.001352,
+      "source_file": "oase_pcsk9_014_rat_po.pk-nca.json"
+    },
+    {
+      "species": "dog",
+      "body_weight_kg": 10.0,
+      "clearance": 0.002563,
+      "vd": 0.025176,
+      "source_file": "oase_pcsk9_014_dog_po.pk-nca.json"
+    }
+  ]
+}

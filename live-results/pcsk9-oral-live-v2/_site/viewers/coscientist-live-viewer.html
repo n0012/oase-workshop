@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Step 1 — Co-Scientist &amp; 7-Agent Hypex Elo Tournament Viewer</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
+  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
+  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
+  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
+    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 4 Argon (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 5.5</strong>.</p>
+    <div class="badge-row">
+      <span class="pill argon">oase coscientist · verdict: clear-leader (+54.5 Elo)</span>
+      <span class="pill argon">oase hypex · verdict: leader-with-advisories (+130.5 Elo)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
+      <span class="pill pass">export.json sha256: efb254b442e22d96</span>
+      <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+        <h2 style="margin:0;">Live Co-Scientist &amp; Hypex Tournament Standings (`WO-001-r1`)</h2>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+          <button class="btn active" onclick="filterMatches('all', this)">All Rounds (24)</button>
+          <button class="btn" onclick="filterMatches('r1', this)">Co-Scientist Export</button>
+          <button class="btn" onclick="filterMatches('r2', this)">Hypex Elo Engine</button>
+          <button class="btn" onclick="filterMatches('opus', this)">Claude Opus 5.5 Critiques</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Rank</th><th>Hypothesis ID</th><th>Mechanism &amp; Pocket Target</th><th>Co-Scientist / Hypex Elo</th><th>Win Rate</th><th>Subway Route</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(16,185,129,0.12);">
+            <td><strong>#1</strong></td>
+            <td><code>H-001</code> / <code>H-0001</code><br><small>(<code>pcsk9_ic001</code>)</small></td>
+            <td><strong>Cryptic Allosteric Groove Small Molecule</strong><br><small style="color:#94a3b8;">Catalytic/EGF-A groove (`Asp374`/`Phe379`/`Ser381`), Rule-of-5 oral scaffold (`MW = 392.39 Da`)</small></td>
+            <td><span class="pill pass">1642.5 Elo (+54.5 / +130.5)</span></td>
+            <td><strong>78.0%</strong> (clear-leader)</td>
+            <td><span class="pill pass">PRIMARY GREEN LINE</span></td>
+          </tr>
+          <tr>
+            <td><strong>#2</strong></td>
+            <td><code>H-002</code><br><small>(<code>IC-002</code>)</small></td>
+            <td><strong>Oral Tricyclic Macrocycle Peptidomimetic</strong><br><small style="color:#94a3b8;">Flat EGF-A surface (`MW ~ 820 Da`, parked behind Caco-2 permeability gate)</small></td>
+            <td><span class="pill opus">1588.0 Elo (Co-Scientist)</span></td>
+            <td>58.3%</td>
+            <td><span class="pill opus">AMBER BACKUP LINE</span></td>
+          </tr>
+          <tr>
+            <td>#3</td>
+            <td><code>H-0002</code> (Hypex)</td>
+            <td>Secondary Allosteric Pocket Peptidomimetic<br><small style="color:#94a3b8;">Hypex runner-up (`1512.0 Elo`, `-130.5 Elo` behind `H-0001`)</small></td>
+            <td>1512.0 Elo</td>
+            <td>45.8%</td>
+            <td><span class="pill block">SECONDARY / PRUNED</span></td>
+          </tr>
+          <tr>
+            <td>#4</td>
+            <td><code>H-003</code> / <code>H-0003</code></td>
+            <td>Covalent Catalytic-Triad Ser386 Warhead<br><small style="color:#94a3b8;">Eliminated: extrahepatic serine protease cross-reactivity risk (`1445.0 Elo`)</small></td>
+            <td>1445.0 Elo</td>
+            <td>25.0%</td>
+            <td><span class="pill block">PRUNED (ROUND 1)</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="match-feed" style="margin-top:0.9rem;"></div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Phase-1 &amp; Phase-2 Provenance Receipts (`raw/hypotheses/`)</h2>
+        <div class="term">[1] raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json
+cli_version          : 0.3.0 (env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b)
+verdict              : clear-leader
+hypothesis_count     : 3
+top_elo              : 1642.5 (H-001) vs runner-up 1588.0 (H-002)
+elo_gap_to_runner_up : 54.5 (>= 50.0 decisive threshold -> PASS)
+mandatory_relay      : hypothesis.adopted_not_generated
+
+[2] raw/hypotheses/hx-pcsk9-elo-live.analysis.json
+verdict              : leader-with-advisories
+hypothesis_count     : 3 (total_matches: 12)
+top_elo              : 1642.5 (H-0001) vs runner-up 1512.0 (H-0002)
+elo_gap_to_runner_up : 130.5
+mandatory_relays     : hypex.adopted_not_generated, hypex.reflection_notes_unverified</div>
+      </div>
+      <div class="card">
+        <h2>5 Human Scientists &harr; AI Wingman Pairings (`pcsk9-oral-live-v2`)</h2>
+        <table>
+          <thead><tr><th>Human Scientist</th><th>AI Wingman Container</th><th>Active Model Tier</th></tr></thead>
+          <tbody>
+            <tr><td>Dr. Sarah Chen (Lead)</td><td><code>@science-program-lead</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td></tr>
+            <tr><td>Dr. Marcus Vance (Genetics)</td><td><code>@computational-biologist</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td></tr>
+            <tr><td>Dr. Elena Rostova (Structure)</td><td><code>@structural-biologist</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td></tr>
+            <tr><td>Dr. Raj Patel (Med Chem)</td><td><code>@medicinal-chemist</code></td><td><span class="pill opus">Claude Opus 5.5</span></td></tr>
+            <tr><td>Dr. Claire Moreau (DMPK)</td><td><code>@admet-dmpk-scientist</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td></tr>
+            <tr><td>Independent Peer Audit</td><td><code>@scientific-reviewer</code></td><td><span class="pill opus">Claude Opus 5.5</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('nav-cosci').classList.add('active');
+const MATCHES = [
+  { tag: 'r1', model: 'oase coscientist (Gemini 4 Argon)', title: 'cs-daedalis-20261028-pcsk9-oral · H-001 vs H-002', body: 'H-001 (1642.5 Elo) leads H-002 (1588.0 Elo) by +54.5 Elo across 24 pairwise matches; verdict = clear-leader.' },
+  { tag: 'r2', model: 'oase hypex (7-Agent Bracket)', title: 'hx-pcsk9-elo-live · H-0001 vs H-0002', body: 'Hypex archive verified (sha256:6dea9aaff73e112d): H-0001 achieves 1642.5 Elo with a +130.5 Elo margin over H-0002 (1512.0).' },
+  { tag: 'opus', model: 'Claude Opus 5.5 (Reflection)', title: 'Epistemic Relay Audit · hypex.reflection_notes_unverified', body: 'Enforced mandatory relays hypothesis.adopted_not_generated and hypex.reflection_notes_unverified: H-001 must pass live AlphaGenome, AlphaFold 3, fpocket, and Vina gates in Steps 2–3.' },
+  { tag: 'opus', model: 'oase cite verify (Europe PMC)', title: 'Literature Grounding · 3 Peer-Reviewed Citations Verified', body: 'Verified PMID 16554528 (Cohen et al. NEJM 2006 PCSK9 LoF), PMID 17460032 (Cunningham et al. Nat Struct Mol Biol 2007), and PMID 32972995.' }
+];
+function filterMatches(mode, btn) {
+  document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const rows = MATCHES.filter(m => mode === 'all' || m.tag === mode);
+  document.getElementById('match-feed').innerHTML = rows.map(r => `
+    <div style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.7rem 0.9rem;margin-bottom:0.55rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">
+        <strong style="color:#f8fafc;font-size:0.84rem;">${r.title}</strong>
+        <span class="pill ${r.model.includes('Opus') ? 'opus' : 'argon'}">${r.model}</span>
+      </div>
+      <div style="color:#cbd5e1;font-size:0.8rem;">${r.body}</div>
+    </div>
+  `).join('');
+}
+filterMatches('all');
+</script>
+</body>
+</html>

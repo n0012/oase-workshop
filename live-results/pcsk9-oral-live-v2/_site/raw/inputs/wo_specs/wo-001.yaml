@@ -1,0 +1,30 @@
+decision_question: Which oral PCSK9 inhibition hypothesis ranks highest across independent
+  Co-Scientist and Hypex Elo tournaments?
+requested_role: computational-biologist
+stage: stage1-intervention-validation
+cycle: cycle-1
+context:
+  content: 'Evaluate H-001 (allosteric Pocket #3 small molecule), H-002 (oral macrocycle),
+    and H-003 (PROTAC) via Co-Scientist and Hypex.'
+  artifact_links:
+  - path: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.tournament.json
+  - path: raw/hypotheses/hx-pcsk9-elo-live.hypex.json
+dependencies: []
+capabilities:
+- oase.coscientist
+- oase.hypex
+deliverables:
+  layer_0_classes:
+  - oase.hypotheses
+  layer_1:
+  - findings/computational-biology/wo-001-hypothesis-tournament.md
+acceptance_criteria:
+- Co-Scientist and Hypex tournament artifacts ingested and analyzed with zero integrity
+  issues
+- All mandatory relays addressed in Layer 1 finding
+alert_policy:
+  mode: block_on_contradicted_claims
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

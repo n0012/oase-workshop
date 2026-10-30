@@ -1,0 +1,85 @@
+{
+  "record_type": "analysis",
+  "source": "raw/structures/AF-Q8NBP7-F1.meta.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:53:48Z",
+  "threshold_set": "alphafold@1.0",
+  "thresholds_applied": {
+    "plddt_confident": 0.7,
+    "plddt_moderate": 0.4,
+    "disorder_notable": 0.15,
+    "disorder_mixed": 0.3,
+    "disorder_mostly": 0.5,
+    "pae_domain_cutoff": 7.0,
+    "pae_min_domain_size": 40,
+    "pae_merge_cutoff": 15.0,
+    "pae_min_global_domain": 50,
+    "pae_confident_pair": 5.0
+  },
+  "metrics": {
+    "plddt": {
+      "global_plddt": 85.19,
+      "fraction_very_low": 0.136,
+      "fraction_low": 0.048,
+      "fraction_confident": 0.147,
+      "fraction_very_high": 0.669,
+      "fraction_confident_total": 0.816
+    },
+    "pae": {
+      "matrix_size": [
+        692,
+        692
+      ],
+      "mean_pae": 10.936,
+      "min_pae": 0,
+      "max_pae": 31,
+      "fraction_confident_pairs": 0.4183
+    },
+    "coverage": {
+      "canonical_length": 692,
+      "modelled_length": 692,
+      "fraction": 1.0
+    }
+  },
+  "assessment": {
+    "verdict": "confident",
+    "statement": "Confidently predicted and likely fully ordered.",
+    "domain_verdict": "single-domain",
+    "ordered_domains": [
+      [
+        58,
+        542
+      ]
+    ],
+    "advisories": [],
+    "relayed_fetch_warnings": []
+  },
+  "mandatory_relays": [
+    {
+      "code": "afdb.confidence_is_not_accuracy",
+      "message": "pLDDT 85.19 for AF-Q8NBP7-F1 is prediction self-confidence, not agreement with experiment and not confirmation of the biological conformation."
+    },
+    {
+      "code": "afdb.model_is_not_docking_ready",
+      "message": "AF-Q8NBP7-F1 is a predicted fold, not an experimental structure; side-chain and loop conformations \u2014 what docking depends on \u2014 are the parts pLDDT is least informative about."
+    }
+  ],
+  "threshold_sources": {
+    "plddt_confident": "default",
+    "plddt_moderate": "default",
+    "disorder_notable": "default",
+    "disorder_mixed": "default",
+    "disorder_mostly": "default",
+    "pae_domain_cutoff": "default",
+    "pae_min_domain_size": "default",
+    "pae_merge_cutoff": "default",
+    "pae_min_global_domain": "default",
+    "pae_confident_pair": "default"
+  },
+  "threshold_provenance": "science-skills alphafold_database_fetch_and_analyze: analyze_plddt.py and analyze_pae.py module constants",
+  "written_by": "structural-biologist",
+  "work_order_id": "WO-004",
+  "source_sha256": "2797a932a5cfa7d9eb774138850e1f46944ec44a850844e3df10dd1bec0e2e6b"
+}

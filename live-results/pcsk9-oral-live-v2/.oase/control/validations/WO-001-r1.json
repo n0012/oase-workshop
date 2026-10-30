@@ -1,0 +1,212 @@
+{
+  "work_order_id": "WO-001",
+  "work_order_revision": 1,
+  "run_id": null,
+  "validated_at": "2026-10-30T05:46:19Z",
+  "cli_version": "0.3.0",
+  "result": "pass",
+  "checks": [
+    {
+      "name": "deliverables_exist",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "layer_1_count": 1,
+        "layer_0_classes": [
+          "oase.hypotheses"
+        ]
+      }
+    },
+    {
+      "name": "report_headings",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "reference": "WO-001-r1"
+      }
+    },
+    {
+      "name": "paths_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "links_checked": 2
+      }
+    },
+    {
+      "name": "provenance_valid",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "artifacts_checked": 4
+      }
+    },
+    {
+      "name": "analysis_citations",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "analyses_checked": 2
+      }
+    },
+    {
+      "name": "relay_coverage",
+      "result": "pass",
+      "status": "ok",
+      "kind": "COMPLETENESS",
+      "detail": {
+        "codes_checked": 2,
+        "codes_addressed": 2,
+        "codes_not_addressed": 0,
+        "unaddressed": []
+      }
+    },
+    {
+      "name": "version_policy",
+      "result": "skip",
+      "status": "skip",
+      "kind": null,
+      "detail": "program.yaml not present \u2014 check deferred to a future program.yaml configuration issue"
+    },
+    {
+      "name": "findings_integrity",
+      "result": "pass",
+      "status": "ok",
+      "kind": "CONVENTION",
+      "detail": "no misplaced sidecars found under findings/"
+    },
+    {
+      "name": "source_tags_resolve",
+      "result": "pass",
+      "status": "ok",
+      "kind": "DATA_INTEGRITY",
+      "detail": {
+        "tags_checked": 11
+      },
+      "sub_findings": [
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.leader.elo_rating}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1642.5",
+          "actual_value": "1642.5",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.ideas[0].n_matches}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "12.0",
+          "actual_value": "12",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.ideas[0].win_rate}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 11,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.8333",
+          "actual_value": "0.8333",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.ideas[1].elo_rating}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 12,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1588.0",
+          "actual_value": "1588.0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.elo_gap_to_runner_up}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 12,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "54.5",
+          "actual_value": "54.5",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json $.assessment.ideas[0].n_contradicted_claims}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 12,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "0.0",
+          "actual_value": "0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/hx-pcsk9-elo-live.analysis.json $.metrics.n_hypotheses}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 14,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "3.0",
+          "actual_value": "3",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/hx-pcsk9-elo-live.analysis.json $.metrics.n_matches}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 14,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "6.0",
+          "actual_value": "6",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/hx-pcsk9-elo-live.analysis.json $.assessment.leader.elo}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 14,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1642.5",
+          "actual_value": "1642.5",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/hx-pcsk9-elo-live.analysis.json $.assessment.ideas[1].elo}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 14,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "1512.0",
+          "actual_value": "1512.0",
+          "detail": "values match within tolerance"
+        },
+        {
+          "tag": "{source: raw/hypotheses/hx-pcsk9-elo-live.analysis.json $.assessment.elo_gap_to_runner_up}",
+          "file": "findings/computational-biology/wo-001-hypothesis-tournament.md",
+          "line": 14,
+          "status": "ok",
+          "kind": "DATA_INTEGRITY",
+          "claimed_value": "130.5",
+          "actual_value": "130.5",
+          "detail": "values match within tolerance"
+        }
+      ]
+    },
+    {
+      "name": "unrecognized_json",
+      "result": "pass",
+      "status": "ok",
+      "kind": "unrecognized_record_type",
+      "detail": "no unrecognized JSON files found"
+    }
+  ]
+}

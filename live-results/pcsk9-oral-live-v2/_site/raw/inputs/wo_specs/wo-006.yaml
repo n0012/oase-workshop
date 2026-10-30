@@ -1,0 +1,34 @@
+decision_question: Does BRICS MMP lead optimization (pcsk9_ic001 -> oase_pcsk9_014)
+  resolve lipophilicity while maintaining Rule-of-5 drug-likeness and transparent
+  ADMET relay tracking?
+requested_role: medicinal-chemist
+stage: stage3-candidate-nomination
+cycle: cycle-1
+context:
+  content: Profile pcsk9_ic001 and oase_pcsk9_014 with RDKit, run BRICS MMP analysis
+    on the 4-compound series, and evaluate ADMET endpoints.
+  artifact_links:
+  - path: raw/compounds/oase_pcsk9_014.descriptors.json
+  - path: raw/compounds/pcsk9_series_mmp.mmp-pairs.json
+  - path: raw/admet/oase_pcsk9_014.predict.json
+dependencies:
+- WO-005
+capabilities:
+- oase.compound
+- oase.mmp
+- oase.admet
+deliverables:
+  layer_0_classes:
+  - oase.compounds
+  - oase.admet
+  layer_1:
+  - findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md
+acceptance_criteria:
+- Lead oase_pcsk9_014 passes Lipinski, Veber, PAINS, Brenk, and SA-score thresholds
+- admet.herg_structural_flag and mmp.small_pair_count relays explicitly addressed
+alert_policy:
+  mode: require_herg_mitigation_plan
+  escalate_to: science-program-lead
+priority: high
+resource_class: cpu-standard
+report_to: science-program-lead

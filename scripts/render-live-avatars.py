@@ -261,34 +261,38 @@ async def synthesize_live_chunk(
         video_buf = bytearray()
         transcripts: list[str] = []
         try:
-            async with client.aio.live.connect(model="gemini-3.8-live", config=config) as session:
-                await session.send_realtime_input(text=prompt)
-                speech_done_at: float | None = None
-                async for msg in session.receive():
-                    sc = getattr(msg, "server_content", None)
-                    if not sc:
-                        continue
-                    turn = getattr(sc, "model_turn", None)
-                    for part in getattr(turn, "parts", None) or []:
-                        inline = getattr(part, "inline_data", None)
-                        if inline and inline.data and "video/mp4" in (inline.mime_type or ""):
-                            video_buf.extend(inline.data)
-                    tr = getattr(sc, "output_transcription", None)
-                    if tr and getattr(tr, "text", None):
-                        transcripts.append(tr.text)
-                        spoken_words = re.findall(r"[a-z0-9]+", "".join(transcripts).lower())
-                        spoken_norm = " ".join(spoken_words)
-                        if (
-                            tail_phrase
-                            and len(spoken_words) >= max(1, len(expected_words) - 3)
-                            and tail_phrase in spoken_norm
-                            and speech_done_at is None
-                        ):
-                            speech_done_at = time.monotonic()
-                    if getattr(sc, "turn_complete", False):
-                        break
-                    if speech_done_at and (time.monotonic() - speech_done_at) > 2.0:
-                        break
+            async def _stream_once() -> None:
+                nonlocal speech_done_at
+                async with client.aio.live.connect(model="gemini-3.8-live", config=config) as session:
+                    await session.send_realtime_input(text=prompt)
+                    async for msg in session.receive():
+                        sc = getattr(msg, "server_content", None)
+                        if not sc:
+                            continue
+                        turn = getattr(sc, "model_turn", None)
+                        for part in getattr(turn, "parts", None) or []:
+                            inline = getattr(part, "inline_data", None)
+                            if inline and inline.data and "video/mp4" in (inline.mime_type or ""):
+                                video_buf.extend(inline.data)
+                        tr = getattr(sc, "output_transcription", None)
+                        if tr and getattr(tr, "text", None):
+                            transcripts.append(tr.text)
+                            spoken_words = re.findall(r"[a-z0-9]+", "".join(transcripts).lower())
+                            spoken_norm = " ".join(spoken_words)
+                            if (
+                                tail_phrase
+                                and len(spoken_words) >= max(1, len(expected_words) - 3)
+                                and tail_phrase in spoken_norm
+                                and speech_done_at is None
+                            ):
+                                speech_done_at = time.monotonic()
+                        if getattr(sc, "turn_complete", False):
+                            break
+                        if speech_done_at and (time.monotonic() - speech_done_at) > 2.0:
+                            break
+
+            speech_done_at: float | None = None
+            await asyncio.wait_for(_stream_once(), timeout=45.0)
 
             if not video_buf:
                 raise RuntimeError(f"Empty video stream returned for {avatar_name}/{voice_id}")
@@ -311,7 +315,8 @@ async def synthesize_live_chunk(
             )
             m_mean = MEAN_VOL_RE.search(vproc.stderr or "")
             mean_db = float(m_mean.group(1)) if m_mean else -91.0
-            if mean_db < -34.0 or spoken_span < 4.5 or spoken_span > 16.5:
+            min_span_s = max(2.2, min(4.2, len(expected_words) * 0.20))
+            if mean_db < -34.0 or spoken_span < min_span_s or spoken_span > 26.5:
                 raise RuntimeError(
                     f"Audio quality gate failed (mean_db={mean_db:.1f} dB, spoken_span={spoken_span:.2f}s, full={full_dur:.2f}s)"
                 )
@@ -326,6 +331,7 @@ async def synthesize_live_chunk(
                 project=gcp_project,
                 location="global",
                 credentials=GcloudTokenCredentials(gcloud_config),
+                http_options=types.HttpOptions(timeout=30000),
             )
             qa_resp = qa_client.models.generate_content(
                 model="gemini-3.1-pro-preview",
@@ -430,7 +436,7 @@ def render_single_human_turn(
 
     clean_text = re.sub(r"<[^>]+>", " ", raw_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    chunks = split_for_avatar(clean_text, max_words=24)
+    chunks = split_for_avatar(clean_text, max_words=32)
 
     turn_work = work_dir / tid
     turn_work.mkdir(parents=True, exist_ok=True)
@@ -557,7 +563,7 @@ def render_single_human_turn(
         ],
         check=True,
     )
-    muxed_mp4.replace(out_mp4)
+    shutil.move(str(muxed_mp4), str(out_mp4))
 
     actual_frames = ffprobe_video_frames(out_mp4)
     assert actual_frames == slot_frames, f"{tid}: expected {slot_frames} frames, got {actual_frames}"

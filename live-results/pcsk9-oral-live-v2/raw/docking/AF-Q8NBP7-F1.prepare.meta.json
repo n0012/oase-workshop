@@ -1,0 +1,66 @@
+{
+  "tool": "docking",
+  "subcommand": "prepare",
+  "work_order_id": "WO-005",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "structure": "AF-Q8NBP7-F1.cif",
+    "pocket_record": "AF-Q8NBP7-F1.pockets.json",
+    "pocket_rank": 3,
+    "altloc": "A",
+    "protein_only": true
+  },
+  "timestamp": "2026-10-30T04:55:07Z",
+  "completed": "2026-10-30T04:55:11Z",
+  "outputs": [
+    {
+      "path": "AF-Q8NBP7-F1.receptor.pdbqt",
+      "sha256": "b15ec6a16343ff988241d966f303aaa699f74b8e7aaa5c88ffa3b2082ae59f7e",
+      "bytes": 509680
+    },
+    {
+      "path": "AF-Q8NBP7-F1.gridbox.json",
+      "sha256": "2fcd93cea5e86ad9ff40c5c7aee47686599003038326a1a82d31a1a4893285be",
+      "bytes": 229
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [
+    {
+      "code": "fpocket.conformation_dependent",
+      "message": "AF-Q8NBP7-F1.cif is not established as an experimental structure (no EXPDTA/_exptl.method record). Druggability scores are conformation-dependent and were trained on crystal structures; a low score on a predicted or modelled conformation is not evidence that the site is undruggable."
+    },
+    {
+      "code": "fpocket.druggability_is_not_affinity",
+      "message": "0.788 is cavity shape in AF-Q8NBP7-F1.cif; not an affinity, not a potency, not evidence a compound binds."
+    }
+  ],
+  "structure_sha256": "d9ab366370cf4cbc480b997dcf1bad1efb260422ebd7c553b00d0d12fe82d8ef",
+  "pocket_record_path": "/workspace/raw/structures/AF-Q8NBP7-F1.pockets.json",
+  "pocket_rank": 3,
+  "pocket_druggability_score": 0.788,
+  "grid_box": {
+    "center": [
+      4.958,
+      22.796,
+      4.298
+    ],
+    "size": [
+      32.192,
+      34.117,
+      28.472
+    ],
+    "pocket_rank": 3,
+    "pocket_source": "/workspace/raw/structures/AF-Q8NBP7-F1.pockets.json",
+    "padding_angstrom": 10.0
+  },
+  "protein_only": true,
+  "removed_chains": [],
+  "removed_residue_types": [],
+  "removed_atom_count": 0,
+  "meeko_version": "0.8.0"
+}

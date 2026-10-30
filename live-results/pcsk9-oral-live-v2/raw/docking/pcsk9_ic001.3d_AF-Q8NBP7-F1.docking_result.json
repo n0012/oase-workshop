@@ -1,0 +1,31 @@
+{
+  "tool": "docking",
+  "subcommand": "run",
+  "receptor": "AF-Q8NBP7-F1.receptor.pdbqt",
+  "receptor_id": "AF-Q8NBP7-F1",
+  "ligand": "pcsk9_ic001.3d.sdf",
+  "docking_mode": "rigid",
+  "n_poses": 3,
+  "exhaustiveness": 2,
+  "poses": [
+    {
+      "rank": 1,
+      "affinity_kcalmol": -7.991,
+      "rmsd_lb": 0.0,
+      "rmsd_ub": 0.0
+    },
+    {
+      "rank": 2,
+      "affinity_kcalmol": -7.902,
+      "rmsd_lb": 5.742,
+      "rmsd_ub": 10.365
+    },
+    {
+      "rank": 3,
+      "affinity_kcalmol": -6.923,
+      "rmsd_lb": 3.862,
+      "rmsd_ub": 5.841
+    }
+  ],
+  "best_score": -7.991
+}

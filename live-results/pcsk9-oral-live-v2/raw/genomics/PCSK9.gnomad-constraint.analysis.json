@@ -1,0 +1,47 @@
+{
+  "record_type": "analysis",
+  "source": "raw/genomics/PCSK9.gnomad-constraint.json",
+  "cli_version": "0.3.0",
+  "cli_integrity": "bc8db94",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "timestamp": "2026-10-30T04:52:06Z",
+  "threshold_set": "gnomad-constraint@1.0+program",
+  "thresholds_applied": {
+    "lof_intolerant_pli": 0.9,
+    "pli_indeterminate_floor": 0.1,
+    "loeuf_constrained": 0.35,
+    "loeuf_unreliable_min_expected_lof": 10.0
+  },
+  "metrics": {
+    "pLI": 2.765187110917756e-18,
+    "loeuf": 1.1441346736692857,
+    "oe_lof": 0.9176378304213768,
+    "oe_lof_ci90": [
+      0.7416265467075939,
+      1.1441346736692857
+    ],
+    "oe_lof_percentile": 71,
+    "oe_mis": 0.906450937101462,
+    "exp_lof": 62.116009290752274,
+    "obs_lof": 57,
+    "flags": []
+  },
+  "assessment": {
+    "verdict": "lof_tolerant",
+    "symbol": "PCSK9",
+    "gene_id": "ENSG00000169174",
+    "warnings": [],
+    "verdict_by_pli": "tolerant",
+    "verdict_by_loeuf": "tolerant"
+  },
+  "threshold_sources": {
+    "lof_intolerant_pli": "program",
+    "pli_indeterminate_floor": "program",
+    "loeuf_constrained": "program",
+    "loeuf_unreliable_min_expected_lof": "program"
+  },
+  "threshold_provenance": "gnomAD published constraint guidance, gnomad.broadinstitute.org/help/constraint (gnomad-browser browser/help/topics/constraint.md): pLI > 0.9 for LoF intolerance, LOEUF < 0.45 as the v4 hard threshold, intermediate pLI 0.1-0.9 as too small to categorise. No expected-LoF floor is published.",
+  "written_by": "computational-biologist",
+  "work_order_id": "WO-002",
+  "source_sha256": "e86f2c5c55429749cd0decc47f82ff68a7f958b0de756bf352db2c39e4a4211d"
+}

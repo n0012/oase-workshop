@@ -1,0 +1,56 @@
+data_pocket11_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    11:
+0  - Pocket Score                      : 0.0115
+1  - Drug Score                        : 0.0010
+2  - Number of alpha spheres           :    18
+3  - Mean alpha-sphere radius          : 3.9982
+4  - Mean alpha-sphere Solvent Acc.    : 0.6546
+5  - Mean B-factor of pocket residues  : 0.0677
+6  - Hydrophobicity Score              : 5.6667
+7  - Polarity Score                    :     2
+8  - Amino Acid based volume Score     : 4.3333
+9  - Pocket volume (Monte Carlo)       : 317.4555
+10  -Pocket volume (convex hull)       : 5.5392
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 6.0000
+13 - Number of apolar alpha sphere     :     7
+14 - Proportion of apolar alpha sphere : 0.3889
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    233      C   CB ?  GLN      A 31 ?  -69.972   -8.608   32.236   0.00  0 31 A
+ATOM    238      O  OE1 ?  GLN      A 31 ?  -68.839   -7.965   34.843  -0.54  0 31 A
+ATOM    218      O    O ?  ARG      A 29 ?  -74.238   -4.550   31.477  -0.14  0 29 A
+ATOM    228      C   CB ?  ALA      A 30 ?  -73.707   -7.528   30.479   0.00  0 30 A
+ATOM    217      C   CB ?  ARG      A 29 ?  -72.072   -2.623   31.888   0.00  0 29 A
+ATOM    220      C   CD ?  ARG      A 29 ?  -70.578   -1.421   33.442   0.00  0 29 A
+ATOM    230      N    N ?  GLN      A 31 ?  -70.178   -7.820   29.808   0.00  0 31 A
+ATOM    227      C    C ?  ALA      A 30 ?  -71.370   -7.300   29.503   0.00  0 30 A
+ATOM    225      N    N ?  ALA      A 30 ?  -72.592   -5.340   30.129  -2.19  0 30 A
+ATOM    229      O    O ?  ALA      A 30 ?  -71.544   -7.008   28.324   0.00  0 30 A
+ATOM    226      C   CA ?  ALA      A 30 ?  -72.386   -6.749   30.534   0.00  0 30 A
+ATOM    219      C   CG ?  ARG      A 29 ?  -71.003   -1.525   31.961   0.00  0 29 A
+ATOM    221      N   NE ?  ARG      A 29 ?  -69.323   -0.671   33.648   0.00  0 29 A
+ATOM    215      C   CA ?  ARG      A 29 ?  -72.780   -2.929   30.545   0.00  0 29 A
+# 

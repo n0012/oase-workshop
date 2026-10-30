@@ -1,0 +1,415 @@
+{
+  "chapters": {
+    "ch1": {
+      "chapter": "ch1",
+      "number": 1,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 1 \u2014 Live Co-Scientist & Hypex Tournament (WO-001 \u00b7 +130.5 Elo)",
+      "video_filename": "chapter-01.mp4",
+      "duration_s": 101.1,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "brief_kickoff",
+          "label": "1. Live Grove Kickoff",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        },
+        {
+          "key": "prompt_genetics",
+          "label": "2. Genetics & AlphaGenome Clause",
+          "time_s": 14.6,
+          "timecode": "0:15",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Comp Biology \u00b7 GOLD-2",
+          "voice_id": "Sadaltager"
+        },
+        {
+          "key": "prompt_structure",
+          "label": "3. Live AF3 Co-Fold & Pocket Rule",
+          "time_s": 28.13,
+          "timecode": "0:28",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Bio \u00b7 GOLD-3",
+          "voice_id": "Kore"
+        },
+        {
+          "key": "coscientist_launch",
+          "label": "4. Execute WO-001 Co-Scientist + Hypex",
+          "time_s": 40.73,
+          "timecode": "0:41",
+          "speaker": "Dr. Raj Patel",
+          "role": "Med Chemistry \u00b7 GOLD-4",
+          "voice_id": "Alnilam"
+        },
+        {
+          "key": "tournament_readout",
+          "label": "5. Live Hypex +130.5 Elo Readout",
+          "time_s": 53.3,
+          "timecode": "0:53",
+          "speaker": "Grove-1 \u00b7 AI Program Lead",
+          "role": "@science-program-lead [SP]",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "subway_routing",
+          "label": "6. Inspect Bracket & Wingman Roster",
+          "time_s": 66.33,
+          "timecode": "1:06",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety \u00b7 GOLD-5",
+          "voice_id": "Pulcherrima"
+        },
+        {
+          "key": "wingman_roster",
+          "label": "7. Multi-Model Roster Confirmed",
+          "time_s": 78.6,
+          "timecode": "1:19",
+          "speaker": "Helix-2 \u00b7 AI Comp Bio",
+          "role": "@computational-biologist [CB]",
+          "voice_id": "en-us-advisor-8"
+        },
+        {
+          "key": "mission_launch",
+          "label": "8. WO-001 Accepted & Step 2 Launch",
+          "time_s": 90.33,
+          "timecode": "1:30",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    },
+    "ch2": {
+      "chapter": "ch2",
+      "number": 2,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 2 \u2014 gnomAD, GTEx & Live 1P AlphaGenome A100 Scoring (WO-002..003)",
+      "video_filename": "chapter-02.mp4",
+      "duration_s": 57.67,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "1. Dispatch gnomAD, GTEx & AlphaGenome",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Comp Biology \u00b7 GOLD-2",
+          "voice_id": "Sadaltager"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "2. Live 1P AlphaGenome 0.9996 Quantile",
+          "time_s": 16.57,
+          "timecode": "0:17",
+          "speaker": "Helix-2 \u00b7 AI Comp Bio",
+          "role": "@computational-biologist [CB]",
+          "voice_id": "en-us-advisor-8"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "3. Inspect 396 Tracks & Risk Relay",
+          "time_s": 30.3,
+          "timecode": "0:30",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety \u00b7 GOLD-5",
+          "voice_id": "Pulcherrima"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "4. Stage Gate 1 Co-Signed",
+          "time_s": 43.07,
+          "timecode": "0:43",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    },
+    "ch3": {
+      "chapter": "ch3",
+      "number": 3,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 3 \u2014 Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
+      "video_filename": "chapter-03.mp4",
+      "duration_s": 63.37,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "1. Launch 1P AlphaFold 3 & Vina",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Bio \u00b7 GOLD-3",
+          "voice_id": "Kore"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "2. Live 588-Atom AF3 Co-Fold & Vina",
+          "time_s": 14.4,
+          "timecode": "0:14",
+          "speaker": "Fold-3 \u00b7 AI Structural Bio",
+          "role": "@structural-biologist [SB]",
+          "voice_id": "en-gb-tutor-17"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "3. Inspect 3D Contacts & cLogP 5.4 Flag",
+          "time_s": 32.3,
+          "timecode": "0:32",
+          "speaker": "Dr. Raj Patel",
+          "role": "Med Chemistry \u00b7 GOLD-4",
+          "voice_id": "Alnilam"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "4. Stage Gate 2 Co-Signed",
+          "time_s": 50.27,
+          "timecode": "0:50",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Bio \u00b7 GOLD-3",
+          "voice_id": "Kore"
+        }
+      ]
+    },
+    "ch4": {
+      "chapter": "ch4",
+      "number": 4,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 4 \u2014 Opus 5.5 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
+      "video_filename": "chapter-04.mp4",
+      "duration_s": 58.87,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "1. Run RDKit, MMP & ADMET on WO-006",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Raj Patel",
+          "role": "Med Chemistry \u00b7 GOLD-4",
+          "voice_id": "Alnilam"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "2. Opus 5.5 Readout: cLogP 4.19 & 0 Violations",
+          "time_s": 14.67,
+          "timecode": "0:15",
+          "speaker": "Spark-4 \u00b7 AI Med Chemist",
+          "role": "@medicinal-chemist [MC]",
+          "voice_id": "en-in-tutor-12"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "3. Enforce Mandatory hERG Wet-Lab Gate",
+          "time_s": 29.83,
+          "timecode": "0:30",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety \u00b7 GOLD-5",
+          "voice_id": "Pulcherrima"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "4. Stage Gate 3 & CRO Wet-Lab Dispatch",
+          "time_s": 44.27,
+          "timecode": "0:44",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    },
+    "ch5": {
+      "chapter": "ch5",
+      "number": 5,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 5 \u2014 Rat/Dog NCA, Human PK Scaling & 450 Clinical Trials (WO-007..008)",
+      "video_filename": "chapter-05.mp4",
+      "duration_s": 55.6,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "1. Run Rat/Dog NCA & Human Allometry",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety \u00b7 GOLD-5",
+          "voice_id": "Pulcherrima"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "2. Human t1/2 = 8.18 h & 450 Trials",
+          "time_s": 13.1,
+          "timecode": "0:13",
+          "speaker": "Shield-5 \u00b7 AI Safety & PK",
+          "role": "@admet-dmpk-scientist [AD]",
+          "voice_id": "en-ie-advisor-4"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "3. Verify All 28 SHA-256 Receipts",
+          "time_s": 29.43,
+          "timecode": "0:29",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Comp Biology \u00b7 GOLD-2",
+          "voice_id": "Sadaltager"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "4. Stage Gate 4 Candidate Nomination",
+          "time_s": 42.03,
+          "timecode": "0:42",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    },
+    "ch6": {
+      "chapter": "ch6",
+      "number": 6,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 6 \u2014 Live Red-Team Tamper Drills (DRILL-01..03) & Audited Override",
+      "video_filename": "chapter-06.mp4",
+      "duration_s": 50.57,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "human_prompt",
+          "label": "1. Fire 3 Live Red-Team Tamper Drills",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        },
+        {
+          "key": "agent_analysis",
+          "label": "2. All 3 Tamper Drills Blocked (Exit Code 1)",
+          "time_s": 13.67,
+          "timecode": "0:14",
+          "speaker": "Aegis-6 \u00b7 AI Validator",
+          "role": "@finding-validator [FV]",
+          "voice_id": "en-us-advisor-10"
+        },
+        {
+          "key": "validator_verdict",
+          "label": "3. Inspect Tamper JSON & Signed Override",
+          "time_s": 27.63,
+          "timecode": "0:28",
+          "speaker": "Dr. Raj Patel",
+          "role": "Med Chemistry \u00b7 GOLD-4",
+          "voice_id": "Alnilam"
+        },
+        {
+          "key": "gate_signoff",
+          "label": "4. Governance Audit Signed",
+          "time_s": 39.77,
+          "timecode": "0:40",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    },
+    "ch7": {
+      "chapter": "ch7",
+      "number": 7,
+      "slug": "pcsk9-oral-live-v2",
+      "title": "Step 7 \u2014 Live Campaign Closeout, 35-Page Portal & Portfolio Sign-Off",
+      "video_filename": "chapter-07.mp4",
+      "duration_s": 86.47,
+      "resolution": "1920x1080",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+      "markers": [
+        {
+          "key": "debrief_open",
+          "label": "1. Open Live v2 Campaign Debrief",
+          "time_s": 0.0,
+          "timecode": "0:00",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        },
+        {
+          "key": "ledger_readout",
+          "label": "2. 8/8 WOs, 28 Receipts & 35 Pages Verified",
+          "time_s": 10.93,
+          "timecode": "0:11",
+          "speaker": "Grove-1 \u00b7 AI Program Lead",
+          "role": "@science-program-lead [SP]",
+          "voice_id": "en-us-techagent-3"
+        },
+        {
+          "key": "debrief_compbio",
+          "label": "3. Comp Bio + Helix-2 Debrief",
+          "time_s": 24.3,
+          "timecode": "0:24",
+          "speaker": "Dr. Marcus Vance",
+          "role": "Comp Biology \u00b7 GOLD-2",
+          "voice_id": "Sadaltager"
+        },
+        {
+          "key": "debrief_structbio",
+          "label": "4. Structural Bio + Fold-3 Debrief",
+          "time_s": 37.87,
+          "timecode": "0:38",
+          "speaker": "Dr. Elena Rostova",
+          "role": "Structural Bio \u00b7 GOLD-3",
+          "voice_id": "Kore"
+        },
+        {
+          "key": "debrief_medchem",
+          "label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
+          "time_s": 51.63,
+          "timecode": "0:52",
+          "speaker": "Dr. Raj Patel",
+          "role": "Med Chemistry \u00b7 GOLD-4",
+          "voice_id": "Alnilam"
+        },
+        {
+          "key": "debrief_dmpk",
+          "label": "6. DMPK + Shield-5 Debrief",
+          "time_s": 63.1,
+          "timecode": "1:03",
+          "speaker": "Dr. Claire Moreau",
+          "role": "DMPK & Safety \u00b7 GOLD-5",
+          "voice_id": "Pulcherrima"
+        },
+        {
+          "key": "portfolio_handoff",
+          "label": "7. Final Portfolio Hand-Off",
+          "time_s": 74.2,
+          "timecode": "1:14",
+          "speaker": "Dr. Sarah Chen",
+          "role": "Program Lead \u00b7 GOLD-1",
+          "voice_id": "Leda"
+        }
+      ]
+    }
+  },
+  "full_walkthrough": {
+    "video_filename": "full-pilot-walkthrough.mp4",
+    "duration_s": 473.63,
+    "resolution": "1920x1080"
+  }
+}

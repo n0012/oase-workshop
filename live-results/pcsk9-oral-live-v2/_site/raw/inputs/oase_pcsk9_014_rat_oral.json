@@ -1,0 +1,13 @@
+{
+  "schema": "oase.pk-study.v1",
+  "study_id": "oase_pcsk9_014_rat_po",
+  "compound_id": "OASE-PCSK9-014",
+  "species": "rat",
+  "body_weight_kg": 0.25,
+  "route": "oral",
+  "dose_mg_kg": 10.0,
+  "time_units": "h",
+  "concentration_units": "ng/mL",
+  "time_points": [0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 12.0, 24.0],
+  "concentrations": [420.0, 890.0, 1450.0, 1620.0, 1180.0, 640.0, 310.0, 68.0]
+}

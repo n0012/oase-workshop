@@ -76,7 +76,7 @@
       "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · Gemini 4 Argon + Claude Opus 5.5 · Dedicated Vertex AI A100 Endpoints · 78/78 oase doctor",
       "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
       "static_video_prefix": "assets/videos",
-      "video_manifest": "assets/video-chapters-manifest.json",
+      "video_manifest": "assets/video-chapters-live-v2-manifest.json",
       "portal_prefix": "",
       "kpis": [
         { "val": "Argon + Opus 5.5", "lbl": "Multi-Model Frontier Squadron" },

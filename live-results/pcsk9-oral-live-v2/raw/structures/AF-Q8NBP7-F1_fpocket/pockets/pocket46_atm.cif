@@ -1,0 +1,56 @@
+data_pocket46_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    46:
+0  - Pocket Score                      : -0.1639
+1  - Drug Score                        : 0.0257
+2  - Number of alpha spheres           :    18
+3  - Mean alpha-sphere radius          : 3.7544
+4  - Mean alpha-sphere Solvent Acc.    : 0.4548
+5  - Mean B-factor of pocket residues  : 0.7204
+6  - Hydrophobicity Score              : 32.0000
+7  - Polarity Score                    :     2
+8  - Amino Acid based volume Score     : 5.2500
+9  - Pocket volume (Monte Carlo)       : 200.8347
+10  -Pocket volume (convex hull)       : 4.3433
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 15.0000
+13 - Number of apolar alpha sphere     :    16
+14 - Proportion of apolar alpha sphere : 0.8889
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    4315     C   CB ?  ASP      A 570 ?   -3.185  -14.855  -34.998   0.00  0 570 A
+ATOM    3916     C  CE2 ?  PHE      A 515 ?   -2.604  -19.550  -32.049   0.00  0 515 A
+ATOM    4316     O    O ?  ASP      A 570 ?   -1.229  -16.099  -37.056   0.00  0 570 A
+ATOM    3914     C  CD2 ?  PHE      A 515 ?   -2.435  -18.167  -31.862   0.00  0 515 A
+ATOM    4325     C   CG ?  LEU      A 571 ?   -4.929  -17.926  -38.405   0.00  0 571 A
+ATOM    3570     N   NE ?  ARG      A 469 ?   -7.354  -16.646  -31.532  -3.70  0 469 A
+ATOM    4327     C  CD2 ?  LEU      A 571 ?   -4.330  -19.336  -38.422   0.00  0 571 A
+ATOM    3915     C  CE1 ?  PHE      A 515 ?   -0.192  -19.811  -32.281   0.00  0 515 A
+ATOM    3917     C   CZ ?  PHE      A 515 ?   -1.482  -20.372  -32.259   0.00  0 515 A
+ATOM    3569     C   CD ?  ARG      A 469 ?   -6.031  -16.580  -30.877   0.00  0 469 A
+ATOM    4326     C  CD1 ?  LEU      A 571 ?   -6.447  -18.063  -38.520   0.00  0 571 A
+ATOM    3573     C   CZ ?  ARG      A 469 ?   -7.858  -15.769  -32.390   0.00  0 469 A
+ATOM    3571     N  NH1 ?  ARG      A 469 ?   -7.179  -14.784  -32.904  -2.35  0 469 A
+ATOM    3572     N  NH2 ?  ARG      A 469 ?   -9.105  -15.869  -32.758   0.00  0 469 A
+# 

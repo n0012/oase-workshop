@@ -1,0 +1,17 @@
+{
+  "work_order_id": "WO-005",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.docking_result.json",
+      "sha256": "67621d091bd46b06ec06603a4ac4d9a4227263e555049618dd118e5f3c5a8c8b"
+    },
+    {
+      "path": "raw/docking/pcsk9_ic001.3d_AF-Q8NBP7-F1.poses.pdbqt",
+      "sha256": "2242b1c07c36d4902d30f92b53fe4dd1330f7588ec6d5ed6c560740ea2aabf4f"
+    }
+  ],
+  "content": "Prepare receptor grid box on PCSK9 Pocket #3 and dock 3D conformer pcsk9_ic001.3d.sdf using AutoDock Vina.",
+  "content_sha256": "22119e8c6232fef1f59d161d9edf492e1c26f43c61d3ec6108e3e6b4d8743803",
+  "created_at": "2026-10-30T05:46:09Z"
+}

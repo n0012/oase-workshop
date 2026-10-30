@@ -1,0 +1,27 @@
+{
+  "variant": {
+    "chromosome": "chr1",
+    "position": 55039974,
+    "referenceBases": "G",
+    "alternateBases": "T"
+  },
+  "interval": {
+    "chromosome": "chr1",
+    "start": 54515686,
+    "end": 55564262,
+    "strand": "STRAND_POSITIVE"
+  },
+  "organism": "ORGANISM_HOMO_SAPIENS",
+  "variantScorers": [
+    {
+      "geneMask": {
+        "requestedOutput": "OUTPUT_TYPE_RNA_SEQ"
+      }
+    },
+    {
+      "geneMask": {
+        "requestedOutput": "OUTPUT_TYPE_ATAC"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "tool": "alphagenome-vertex",
+  "subcommand": "score-variant",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "bc8db94",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": "https://mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5.us-central1-366080227052.prediction.vertexai.goog/v1/projects/losiern-oase-workshop/locations/us-central1/endpoints/mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5:rawPredict",
+  "parameters": {
+    "variant": "chr1:55039974G>T",
+    "window_requested": 1048576,
+    "window_used": 1048576,
+    "interval": "chr1:54515686-55564262",
+    "interval_strand": "STRAND_POSITIVE",
+    "organism": "ORGANISM_HOMO_SAPIENS",
+    "scorer": "geneMask",
+    "output_types": [
+      "OUTPUT_TYPE_RNA_SEQ",
+      "OUTPUT_TYPE_ATAC"
+    ],
+    "backend": "vertex"
+  },
+  "timestamp": "2026-10-30T04:34:11Z",
+  "completed": "2026-10-30T04:34:14Z",
+  "outputs": [
+    {
+      "path": "chr1-55039974-G-T.response.ndjson",
+      "sha256": "9fb08cf573947868537f17f277b896a2f6c25b70336ad0fa30f41a2a848b7cc4",
+      "bytes": 422953
+    },
+    {
+      "path": "chr1-55039974-G-T.scores.json",
+      "sha256": "1daca492e0ffed30dfb2322d6e701ded35762cbdce5415d2681ec0caeb99e10c",
+      "bytes": 603051
+    },
+    {
+      "path": "chr1-55039974-G-T.request.json",
+      "sha256": "04dd8eb47c44be036220664c0d5011a629d163d6ecf9d7c0bd1938c60c04d325",
+      "bytes": 493
+    }
+  ],
+  "warnings": [
+    "Magnitude bands are RNA-seq-derived; scores here come from ATAC.",
+    "No quantile scores were returned for ATAC; the guide's significance rule cannot be applied to those."
+  ],
+  "mandatory_relays": [
+    {
+      "code": "alphagenome.band_modality_mismatch",
+      "message": "Magnitude bands are RNA-seq-derived; scores here come from ATAC."
+    },
+    {
+      "code": "alphagenome.no_quantile_scores",
+      "message": "No quantile scores were returned for ATAC; the guide's significance rule cannot be applied to those."
+    }
+  ],
+  "interval_strand_note": "The Interval requires a strand and rejects STRAND_UNSPECIFIED. Its effect on the returned scores has not been characterised; gene-level strand handling is driven by geneMetadata, not by this field.",
+  "credential_source": "application-default-credentials",
+  "attempts": 1,
+  "blocks": [
+    "OUTPUT_TYPE_RNA_SEQ",
+    "OUTPUT_TYPE_ATAC"
+  ],
+  "tensor_shapes": [
+    [
+      2,
+      31,
+      667
+    ],
+    [
+      1,
+      31,
+      167
+    ]
+  ]
+}

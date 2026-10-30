@@ -1,0 +1,13 @@
+{
+  "work_order_id": "WO-003",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/genomics/chr1-55039974-G-T.scores.json",
+      "sha256": "1daca492e0ffed30dfb2322d6e701ded35762cbdce5415d2681ec0caeb99e10c"
+    }
+  ],
+  "content": "Score chr1:55039974:G>T across RNA_SEQ and ATAC tracks on the live Vertex AI AlphaGenome A100-80GB endpoint.",
+  "content_sha256": "cd5c4c4814d9a9508d322598cac96cebc78b9a901616b86a9abddd9437f2ff39",
+  "created_at": "2026-10-30T05:46:07Z"
+}

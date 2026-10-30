@@ -1,0 +1,82 @@
+{
+  "schema": "oase.dossier-check.v1",
+  "scope_caveat": "A complete checklist means the required evidence types are present; it does not mean the evidence meets regulatory standards, that the studies are GLP-compliant, or that the dossier is ready for filing.",
+  "checklist": [
+    {
+      "section": "pharmacology.primary",
+      "label": "Primary Pharmacodynamics",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "pharmacology.secondary",
+      "label": "Secondary Pharmacodynamics",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "pharmacology.safety",
+      "label": "Safety Pharmacology",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "pk.adme",
+      "label": "PK/ADME",
+      "status": "missing",
+      "findings": [],
+      "artifacts": [
+        "raw/pk/oase_pcsk9_014_dog_po.pk-nca.json",
+        "raw/pk/oase_pcsk9_014_dog_po.pk-study.json",
+        "raw/pk/oase_pcsk9_014_rat_po.pk-nca.json",
+        "raw/pk/oase_pcsk9_014_rat_po.pk-study.json",
+        "raw/pk/scaling-dog-rat.pk-scaling.json"
+      ]
+    },
+    {
+      "section": "pk.ddi",
+      "label": "Drug-Drug Interaction Studies",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "tox.repeat_dose",
+      "label": "Repeat-Dose Toxicity",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "tox.safety_pharm",
+      "label": "Safety Pharmacology (Toxicology)",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "tox.genotox",
+      "label": "Genotoxicity",
+      "status": "missing",
+      "findings": [],
+      "artifacts": []
+    },
+    {
+      "section": "tox.repro",
+      "label": "Reproductive Toxicology",
+      "status": "missing",
+      "findings": [],
+      "artifacts": [],
+      "note": "May be deferred for first-in-human IND"
+    }
+  ],
+  "summary": {
+    "total_sections": 9,
+    "covered": 0,
+    "finding_only": 0,
+    "missing": 9
+  }
+}

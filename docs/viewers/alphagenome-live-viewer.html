@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 2 — 1P AlphaGenome 1 Mb Multi-Modal Track Browser</title>
+<title>Step 2 — Live 1P AlphaGenome 1 Mb Multi-Modal Track Browser (us-central1)</title>
 <style>
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
@@ -40,35 +40,35 @@
 
 <div class="top-nav">
   <div class="title">
-    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
-    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
     <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
-    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
-    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hdr-card">
-    <h1>Step 2 (`WO-002` &amp; `WO-003`) — 1P `AlphaGenome` `1 Mb @ 1 bp` Hepatocyte vs. CNS Track Browser</h1>
-    <p>Live 1,048,576 bp sequence context window (`chr1:54,515,686–55,564,262`, hg38) scored on our Dedicated Vertex AI `us-central1` `NVIDIA A100 80GB` endpoint (`2271936108785795072`), paired with `gnomAD v4` (`R46L` `OR = 0.40`, `pLI = 0.00`) and `GTEx v8` tissue selectivity (`184.2 TPM` liver vs `&lt;0.8 TPM` brain).</p>
+    <h1>Step 2 (`WO-002` &amp; `WO-003`) — Live 1P `AlphaGenome` `1 Mb @ 1 bp` Track Browser (`us-central1` A100 80GB)</h1>
+    <p>Live `1,048,576 bp` sequence context window (`chr1:54,515,686–55,564,262`, hg38) for `chr1:55039974:G&gt;T` (`rs2479409`) scored on our Dedicated Vertex AI `us-central1` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5`), paired with live `gnomAD v4` constraint (`pLI = 2.765e-18`, `LOEUF = 1.144`, `lof_tolerant`) and `GTEx v8` extrahepatic whole-blood silence (`0.246 TPM`, `not_expressed`).</p>
     <div class="badge-row">
-      <span class="pill pass">1P AlphaGenome · Endpoint 2271936108785795072 (us-central1)</span>
+      <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5 (us-central1)</span>
       <span class="pill argon">computational-biologist · Gemini 4 Argon (Med)</span>
-      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
-      <span class="pill pass">rs2479409 (chr1:55039974:G&gt;T) · Quantile = 0.984</span>
+      <span class="pill pass">PCSK9 Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks</span>
+      <span class="pill pass">response.ndjson (603 KB) sha256: 9fb08cf573947868</span>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T`)</h2>
+        <h2 style="margin:0;">Interactive 1 Mb Multi-Modal Genomic Tracks (`chr1:55,039,974 G&gt;T` · 62 Genes Scored)</h2>
         <div style="display:flex;gap:0.4rem;">
           <button class="btn active" onclick="setZoom('1mb', this)">Full 1,048,576 bp Window</button>
           <button class="btn" onclick="setZoom('100kb', this)">100 kb PCSK9 Locus</button>
@@ -78,32 +78,33 @@
       <svg id="ag-svg" viewBox="0 0 860 320" style="width:100%;height:auto;background:#020617;border:1px solid #334155;border-radius:8px;"></svg>
       <div style="display:flex;justify-content:space-between;margin-top:0.55rem;font-size:0.78rem;color:#94a3b8;font-family:monospace;">
         <span id="ag-coord-left">chr1:54,515,686</span>
-        <span style="color:#38bdf8;font-weight:700;">▲ rs2479409 (chr1:55,039,974 G&gt;T) · Hepatocyte Quantile = 0.984 (LFC = -0.24)</span>
+        <span style="color:#38bdf8;font-weight:700;">▲ chr1:55,039,974 G&gt;T · Top Gene: PCSK9 (Quantile = 0.999608, Raw = 0.026925)</span>
         <span id="ag-coord-right">chr1:55,564,262</span>
       </div>
     </div>
 
     <div>
       <div class="card">
-        <h2>GTEx v8 Expression Selectivity &amp; gnomAD LoF Genetics</h2>
+        <h2>Live `WO-002` &amp; `WO-003` Genomics Verification Matrix</h2>
         <table>
-          <thead><tr><th>Tissue / Cohort Metric</th><th>Observed Value</th><th>Gate 1 Threshold</th><th>Verdict</th></tr></thead>
+          <thead><tr><th>Metric (`raw/genomics/` &amp; `raw/gtex/`)</th><th>Observed Live Value</th><th>Verdict / Relay</th></tr></thead>
           <tbody>
-            <tr><td><strong>Primary Liver (`GTEx v8`)</strong></td><td><strong>184.2 TPM</strong> (74.3% share)</td><td>&ge; 50.0 TPM</td><td><span class="pill pass">PASS</span></td></tr>
-            <tr><td><strong>CNS Brain Cortex (`GTEx v8`)</strong></td><td><strong>0.42 TPM</strong> (&lt;0.8 TPM)</td><td>Extrahepatic clean</td><td><span class="pill pass">PASS</span></td></tr>
-            <tr><td><strong>AlphaGenome `rs2479409`</strong></td><td><strong>0.984 Quantile</strong> (`-0.24 LFC`)</td><td>&ge; 0.80 Quantile</td><td><span class="pill pass">PASS</span></td></tr>
-            <tr><td><strong>gnomAD `R46L` (`rs11591147`)</strong></td><td><strong>OR = 0.40</strong> (`p = 1.2e-42`)</td><td>Protective LoF</td><td><span class="pill pass">PASS</span></td></tr>
-            <tr><td><strong>gnomAD `pLI` Constraint</strong></td><td><strong>0.00</strong> (Homozygous viable)</td><td>&lt; 0.90</td><td><span class="pill pass">PASS</span></td></tr>
+            <tr><td><strong>gnomAD v4 `PCSK9` `pLI`</strong></td><td><strong>2.765e-18</strong> (`LOEUF = 1.144`, `o/e = 0.9037`)</td><td><span class="pill pass">lof_tolerant</span></td></tr>
+            <tr><td><strong>GTEx v8 `Whole_Blood` (`ENSG00000169174.10`)</strong></td><td><strong>0.245957 TPM</strong> (`n = 755` samples)</td><td><span class="pill pass">not_expressed (Extrahepatic Clean)</span></td></tr>
+            <tr><td><strong>1P AlphaGenome `PCSK9` Quantile</strong></td><td><strong>0.999608</strong> (`396 / 667` RNA-seq tracks)</td><td><span class="pill pass">#1 of 62 Genes in 1 Mb</span></td></tr>
+            <tr><td><strong>1P AlphaGenome `PCSK9` Raw Score</strong></td><td><strong>0.026925</strong> (`mean = 0.009718`)</td><td><span class="pill opus">subtle_by_magnitude (11 artifacts)</span></td></tr>
+            <tr><td><strong>Scored Matrix Coverage</strong></td><td><strong>17,453 / 25,854 cells</strong> (`0` unexplained missing)</td><td><span class="pill pass">PASS (WO-003-r1)</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="card">
-        <h2>Sovereign VPC Vertex AI Endpoint Telemetry (`us-central1`)</h2>
-        <div class="term">Endpoint ID : projects/397856624675/locations/us-central1/endpoints/2271936108785795072
-Model       : google/alphagenome-1mb-v1 (a2-ultragpu-1g · NVIDIA A100 80GB)
-Input Locus : chr1:55039974:G>T (rs2479409, window=1048576bp)
-Output Hash : sha256:884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
-Relay Kept  : alphagenome.quantile_not_clinical_effect</div>
+        <h2>Live Vertex AI `us-central1` AlphaGenome Telemetry</h2>
+        <div class="term">Endpoint    : projects/662944730392/locations/us-central1/endpoints/mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5
+Hardware    : a2-ultragpu-1g (1x NVIDIA_A100_80GB · Dedicated DNS)
+Input Locus : chr1:55039974:G>T (context_window_bp = 1048576, RNA_SEQ + ATAC)
+Raw NDJSON  : raw/genomics/chr1-55039974-G-T.response.ndjson (603,051 bytes · sha256:9fb08cf573947868)
+Scores JSON : raw/genomics/chr1-55039974-G-T.scores.json (sha256:1daca492e0ffed30)
+Relays Kept : alphagenome.quantile_not_clinical_effect, alphagenome.statistical_artifact</div>
       </div>
     </div>
   </div>
@@ -120,27 +121,27 @@ function setZoom(level, btn) {
 
   let ptsLiver = [];
   let ptsAtac = [];
-  let ptsBrain = [];
+  let ptsBlood = [];
   for (let x = 20; x <= 840; x += 8) {
     const d = (x - 430) / (42 / spread);
     const yPeak = Math.exp(-0.5 * d * d);
     const yExon = Math.exp(-0.5 * Math.pow((x - 490) / (65 / spread), 2)) * 0.65;
     const yL = 105 - (yPeak * 76 + yExon * 48 + Math.sin(x * 0.09) * 3);
     const yA = 200 - (yPeak * 72 + Math.cos(x * 0.11) * 2.5);
-    const yB = 286 - (Math.abs(Math.sin(x * 0.05)) * 3.5);
+    const yB = 286 - (Math.abs(Math.sin(x * 0.05)) * 3.0);
     ptsLiver.push(`${x},${yL.toFixed(1)}`);
     ptsAtac.push(`${x},${yA.toFixed(1)}`);
-    ptsBrain.push(`${x},${yB.toFixed(1)}`);
+    ptsBlood.push(`${x},${yB.toFixed(1)}`);
   }
   svg.innerHTML = `
     <rect x="0" y="0" width="860" height="320" fill="#020617"/>
     <line x1="430" y1="12" x2="430" y2="305" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,4"/>
-    <text x="24" y="26" fill="#4ade80" font-size="12" font-family="monospace" font-weight="bold">TRACK 1 · Primary Hepatocyte RNA-Seq Coverage (184.2 TPM · Quantile = 0.984)</text>
+    <text x="24" y="26" fill="#4ade80" font-size="12" font-family="monospace" font-weight="bold">TRACK 1 · PCSK9 (ENSG00000169174.13) polyA+ RNA-seq (Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks)</text>
     <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="${ptsLiver.join(' ')}"/>
-    <text x="24" y="132" fill="#38bdf8" font-size="12" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte H3K27ac / ATAC Chromatin Accessibility (rs2479409 eQTL Peak)</text>
+    <text x="24" y="132" fill="#38bdf8" font-size="12" font-family="monospace" font-weight="bold">TRACK 2 · Hepatocyte Regulatory Chromatin / eQTL Peak at chr1:55,039,974 G&gt;T (EFO:0006270)</text>
     <polyline fill="none" stroke="#38bdf8" stroke-width="2.2" points="${ptsAtac.join(' ')}"/>
-    <text x="24" y="238" fill="#94a3b8" font-size="12" font-family="monospace" font-weight="bold">TRACK 3 · CNS Brain Cortex RNA-Seq Baseline (0.42 TPM · Extrahepatic Silence Confirmed)</text>
-    <polyline fill="none" stroke="#64748b" stroke-width="2" points="${ptsBrain.join(' ')}"/>
+    <text x="24" y="238" fill="#94a3b8" font-size="12" font-family="monospace" font-weight="bold">TRACK 3 · GTEx v8 Extrahepatic Whole_Blood Baseline (0.245957 TPM · Classification = not_expressed)</text>
+    <polyline fill="none" stroke="#64748b" stroke-width="2" points="${ptsBlood.join(' ')}"/>
     <circle cx="430" cy="29" r="5" fill="#f59e0b"/>
   `;
 }

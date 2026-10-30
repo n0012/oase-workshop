@@ -1,0 +1,56 @@
+data_pocket40_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    40:
+0  - Pocket Score                      : -0.1310
+1  - Drug Score                        : 0.0011
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 4.2505
+4  - Mean alpha-sphere Solvent Acc.    : 0.4656
+5  - Mean B-factor of pocket residues  : 0.6008
+6  - Hydrophobicity Score              : 45.7500
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 4.1250
+9  - Pocket volume (Monte Carlo)       : 314.8430
+10  -Pocket volume (convex hull)       : 8.7838
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 8.0000
+13 - Number of apolar alpha sphere     :     9
+14 - Proportion of apolar alpha sphere : 0.5294
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    1338     C   CB ?  ALA      A 168 ?    9.632   22.741   12.369   0.00  0 168 A
+ATOM    1914     C   CE ?  LYS      A 243 ?    4.977   16.840   16.458   0.00  0 243 A
+ATOM    1913     C   CD ?  LYS      A 243 ?    3.985   18.009   16.384   0.00  0 243 A
+ATOM    1322     O   OH ?  TYR      A 166 ?    6.707   20.176    9.864   0.00  0 166 A
+ATOM    1915     N   NZ ?  LYS      A 243 ?    5.814   16.909   17.675   0.00  0 243 A
+ATOM    1899     O    O ?  VAL      A 241 ?    2.621   16.197   11.979  -2.28  0 241 A
+ATOM    1900     C  CG1 ?  VAL      A 241 ?    2.772   13.489    9.588   0.00  0 241 A
+ATOM    1279     C  CD1 ?  ILE      A 161 ?    6.625   11.847   10.037   0.00  0 161 A
+ATOM    3379     C  CD1 ?  LEU      A 444 ?    6.263   16.346    7.520   0.00  0 444 A
+ATOM    1896     C   CA ?  VAL      A 241 ?    2.754   13.795   12.121   0.00  0 241 A
+ATOM    1320     C  CE1 ?  TYR      A 166 ?    9.060   19.756   10.139   0.00  0 166 A
+ATOM    1323     C   CZ ?  TYR      A 166 ?    7.921   19.907    9.317   0.00  0 166 A
+ATOM    1286     O  OG1 ?  THR      A 162 ?   11.153   14.005   10.280  -3.21  0 162 A
+ATOM    1894     O    O ?  GLY      A 240 ?    3.679   14.560   14.699   0.00  0 240 A
+# 

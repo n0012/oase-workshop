@@ -1,0 +1,21 @@
+{
+  "work_order_id": "WO-004",
+  "revision": 1,
+  "artifact_links": [
+    {
+      "path": "raw/structures/AF-Q8NBP7-F1.cif",
+      "sha256": "d9ab366370cf4cbc480b997dcf1bad1efb260422ebd7c553b00d0d12fe82d8ef"
+    },
+    {
+      "path": "raw/structures/AF-Q8NBP7-F1.pockets.json",
+      "sha256": "2054e86483f7b9e319d1a3f1097907ba671236ef83a8942168dde0ce6b8fa3e5"
+    },
+    {
+      "path": "raw/structures/AF3-pcsk9_ic001_complex.cif",
+      "sha256": "093bfe32e46d827fa0eeefb0707181783e5d03905f6ca9340362b1ed4207d2de"
+    }
+  ],
+  "content": "Fetch AlphaFold DB Q8NBP7 structure, run fpocket cavity detection, and execute live 1P AlphaFold 3 protein-ligand co-folding on Vertex AI.",
+  "content_sha256": "f279192e9a628de603dd47fed81fc7d919851b69f0184a5aed6d1d70b4b4cc12",
+  "created_at": "2026-10-30T05:46:08Z"
+}

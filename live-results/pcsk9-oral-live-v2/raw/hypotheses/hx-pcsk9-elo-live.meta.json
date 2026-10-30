@@ -1,0 +1,32 @@
+{
+  "tool": "hypex",
+  "subcommand": "ingest",
+  "work_order_id": null,
+  "cli_version": "0.3.0",
+  "cli_integrity": "unknown",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "run_dir": "/workspace/raw/hypex_runs/pcsk9-elo-live"
+  },
+  "timestamp": "2026-10-30T05:24:33Z",
+  "completed": "2026-10-30T05:24:33Z",
+  "outputs": [
+    {
+      "path": "hx-pcsk9-elo-live.run.tar.zst",
+      "sha256": "6dea9aaff73e112d2ef53572cff8c25614e8675131727a58e64fde903e32619d",
+      "bytes": 3747
+    },
+    {
+      "path": "hx-pcsk9-elo-live.hypex.json",
+      "sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca",
+      "bytes": 5557
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "hypex_run_id": "pcsk9-elo-live",
+  "source_sha256": "9e5066e535c82799d9047562758b8fa5f2db910a293ebb930ae5e50aae285eca",
+  "archive_sha256": "6dea9aaff73e112d2ef53572cff8c25614e8675131727a58e64fde903e32619d"
+}

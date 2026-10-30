@@ -1,0 +1,57 @@
+data_pocket17_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    17:
+0  - Pocket Score                      : -0.0190
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.9536
+4  - Mean alpha-sphere Solvent Acc.    : 0.5520
+5  - Mean B-factor of pocket residues  : 0.5967
+6  - Hydrophobicity Score              : -3.4000
+7  - Polarity Score                    :     4
+8  - Amino Acid based volume Score     : 5.2000
+9  - Pocket volume (Monte Carlo)       : 226.0238
+10  -Pocket volume (convex hull)       : 7.7228
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 4.0000
+13 - Number of apolar alpha sphere     :     5
+14 - Proportion of apolar alpha sphere : 0.3125
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    4325     C   CG ?  LEU      A 571 ?   -4.929  -17.926  -38.405   0.00  0 571 A
+ATOM    4326     C  CD1 ?  LEU      A 571 ?   -6.447  -18.063  -38.520   0.00  0 571 A
+ATOM    4315     C   CB ?  ASP      A 570 ?   -3.185  -14.855  -34.998   0.00  0 570 A
+ATOM    4320     N    N ?  LEU      A 571 ?   -3.018  -15.487  -38.270   0.00  0 571 A
+ATOM    4309     C   CD ?  GLU      A 569 ?   -7.181  -11.493  -40.572   0.00  0 569 A
+ATOM    3571     N  NH1 ?  ARG      A 469 ?   -7.179  -14.784  -32.904  -2.35  0 469 A
+ATOM    4306     C   CB ?  GLU      A 569 ?   -5.013  -11.872  -39.271   0.00  0 569 A
+ATOM    4311     O  OE2 ?  GLU      A 569 ?   -6.862  -12.483  -41.268   0.00  0 569 A
+ATOM    4310     O  OE1 ?  GLU      A 569 ?   -8.325  -10.990  -40.527   0.00  0 569 A
+ATOM    4308     C   CG ?  GLU      A 569 ?   -6.105  -10.865  -39.672   0.00  0 569 A
+ATOM    3773     N  NH2 ?  ARG      A 496 ?   -4.610   -7.624  -34.181  -0.84  0 496 A
+ATOM    3772     N  NH1 ?  ARG      A 496 ?   -5.297   -9.391  -32.988  -3.03  0 496 A
+ATOM    4304     C   CA ?  GLU      A 569 ?   -3.995  -11.301  -38.270   0.00  0 569 A
+ATOM    4312     N    N ?  ASP      A 570 ?   -3.308  -13.119  -36.765  -3.28  0 570 A
+ATOM    4319     O  OD2 ?  ASP      A 570 ?   -4.532  -14.180  -33.144   0.00  0 570 A
+# 

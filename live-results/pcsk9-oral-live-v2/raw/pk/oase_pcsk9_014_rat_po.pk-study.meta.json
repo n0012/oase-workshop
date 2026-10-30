@@ -1,0 +1,32 @@
+{
+  "tool": "pk",
+  "subcommand": "ingest",
+  "work_order_id": "WO-007",
+  "cli_version": "0.3.0",
+  "cli_integrity": "6f1a174",
+  "env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b",
+  "interpreter": "py3.13-x86_64",
+  "endpoint": null,
+  "parameters": {
+    "input_file": "oase_pcsk9_014_rat_oral.json",
+    "study_id": "oase_pcsk9_014_rat_po",
+    "species": "rat",
+    "route": "oral"
+  },
+  "timestamp": "2026-10-30T04:56:55Z",
+  "completed": "2026-10-30T04:56:55Z",
+  "outputs": [
+    {
+      "path": "oase_pcsk9_014_rat_po.pk-study.json",
+      "sha256": "888ce988951964b51442a8dc607da36e9f8943ec67d59d168d3b35089aa0dfbd",
+      "bytes": 493
+    }
+  ],
+  "warnings": [],
+  "mandatory_relays": [],
+  "input_sha256": "e88424cda48d50892bea77e0c0b75949a42515917058931e1ea309e5353e76e0",
+  "n_time_points": 8,
+  "species": "rat",
+  "route": "oral",
+  "dose_mg_kg": 10.0
+}

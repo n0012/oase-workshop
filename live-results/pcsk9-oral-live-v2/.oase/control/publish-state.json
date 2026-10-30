@@ -1,0 +1,16 @@
+{
+  "last_build_at": "2026-10-30T05:46:11Z",
+  "accepted_revisions": [
+    "WO-001-r1",
+    "WO-002-r1",
+    "WO-003-r1",
+    "WO-004-r1",
+    "WO-005-r1",
+    "WO-006-r1",
+    "WO-007-r1",
+    "WO-008-r1"
+  ],
+  "output_dir": "_site",
+  "cli_version": "0.3.0",
+  "pages_rendered": 35
+}

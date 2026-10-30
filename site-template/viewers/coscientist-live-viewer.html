@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 1 — 7-Agent Hypex Co-Scientist Multi-Model Tournament Viewer</title>
+<title>Step 1 — Co-Scientist &amp; 7-Agent Hypex Elo Tournament Viewer</title>
 <style>
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
@@ -40,79 +40,78 @@
 
 <div class="top-nav">
   <div class="title">
-    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
-    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+    <span>🔬 GCP-OASE Live Validation Console (`pcsk9-oral-live-v2`)</span>
+    <span class="pill pass">env: sha256:2987d3053f13 · 8/8 WOs ACCEPTED</span>
   </div>
   <div class="links">
     <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
-    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
-    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
-    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
-    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
-    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Co-Scientist + Hypex</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (us-central1)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 1P AlphaFold 3 (.cif · us-east4)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: RDKit / MMP / ADMET</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 5–7: PK, Tamper Drills &amp; Ledger</a>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hdr-card">
-    <h1>Step 1 (`WO-001`) — 7-Agent `Hypex` Co-Scientist Pairwise Elo Tournament &amp; Multi-Model Reflection</h1>
-    <p>24 pairwise K=32 Elo matches across candidate oral PCSK9 hypotheses. Frontier hypothesis generation &amp; debate run on <strong>Gemini 4 Argon (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are cross-examined by <strong>Claude Opus 5.5</strong> (`hypex-reflection` &amp; `scientific-reviewer`).</p>
+    <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
+    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 4 Argon (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 5.5</strong>.</p>
     <div class="badge-row">
-      <span class="pill argon">hypex-supervisor · Gemini 4 Argon (High)</span>
-      <span class="pill argon">hypex-generation · Gemini 4 Argon (High)</span>
-      <span class="pill opus">hypex-reflection · Claude Opus 5.5 (Vertex)</span>
-      <span class="pill argon">hypex-tournament · Gemini 4 Argon (High)</span>
-      <span class="pill flash">hypex-proximity · Gemini 3.8 Flash (Med)</span>
-      <span class="pill pass">SHA-256: c791b90ab4a5fb19ca3c90cb8e6086afabbe5e9c5d650c2e4cace9c2a627293d</span>
+      <span class="pill argon">oase coscientist · verdict: clear-leader (+54.5 Elo)</span>
+      <span class="pill argon">oase hypex · verdict: leader-with-advisories (+130.5 Elo)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
+      <span class="pill pass">export.json sha256: efb254b442e22d96</span>
+      <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;">
-        <h2 style="margin:0;">Interactive Tournament Standings &amp; Match Filter (24 Matches)</h2>
+        <h2 style="margin:0;">Live Co-Scientist &amp; Hypex Tournament Standings (`WO-001-r1`)</h2>
         <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
           <button class="btn active" onclick="filterMatches('all', this)">All Rounds (24)</button>
-          <button class="btn" onclick="filterMatches('r1', this)">Round 1 Debate</button>
-          <button class="btn" onclick="filterMatches('r2', this)">Round 2 Evolution</button>
+          <button class="btn" onclick="filterMatches('r1', this)">Co-Scientist Export</button>
+          <button class="btn" onclick="filterMatches('r2', this)">Hypex Elo Engine</button>
           <button class="btn" onclick="filterMatches('opus', this)">Claude Opus 5.5 Critiques</button>
         </div>
       </div>
       <table>
         <thead>
-          <tr><th>Rank</th><th>Concept ID</th><th>Mechanism &amp; Pocket Target</th><th>Elo Rating</th><th>W–L (Win %)</th><th>Subway Route</th></tr>
+          <tr><th>Rank</th><th>Hypothesis ID</th><th>Mechanism &amp; Pocket Target</th><th>Co-Scientist / Hypex Elo</th><th>Win Rate</th><th>Subway Route</th></tr>
         </thead>
         <tbody>
           <tr style="background:rgba(16,185,129,0.12);">
             <td><strong>#1</strong></td>
-            <td><code>IC-001</code> (<code>H-001</code>)</td>
-            <td><strong>Cryptic Allosteric Tunnel Small Molecule</strong><br><small style="color:#94a3b8;">Catalytic/EGF-A groove (`Asp374`/`Phe379`/`Ser381`), unenhanced Rule-of-5 (`MW &le; 500`, `cLogP &le; 3.5`)</small></td>
-            <td><span class="pill pass">1642.5 Elo (+54.5)</span></td>
-            <td>19–5 (<strong>78.0%</strong>)</td>
+            <td><code>H-001</code> / <code>H-0001</code><br><small>(<code>pcsk9_ic001</code>)</small></td>
+            <td><strong>Cryptic Allosteric Groove Small Molecule</strong><br><small style="color:#94a3b8;">Catalytic/EGF-A groove (`Asp374`/`Phe379`/`Ser381`), Rule-of-5 oral scaffold (`MW = 392.39 Da`)</small></td>
+            <td><span class="pill pass">1642.5 Elo (+54.5 / +130.5)</span></td>
+            <td><strong>78.0%</strong> (clear-leader)</td>
             <td><span class="pill pass">PRIMARY GREEN LINE</span></td>
           </tr>
           <tr>
             <td><strong>#2</strong></td>
-            <td><code>IC-002</code> (<code>H-002</code>)</td>
-            <td><strong>Oral Tricyclic Macrocycle Peptidomimetic</strong><br><small style="color:#94a3b8;">Flat EGF-A surface (`MW ~ 820 Da`, requires Caco-2 permeability enhancer gate)</small></td>
-            <td><span class="pill opus">1588.0 Elo</span></td>
-            <td>14–10 (58.3%)</td>
+            <td><code>H-002</code><br><small>(<code>IC-002</code>)</small></td>
+            <td><strong>Oral Tricyclic Macrocycle Peptidomimetic</strong><br><small style="color:#94a3b8;">Flat EGF-A surface (`MW ~ 820 Da`, parked behind Caco-2 permeability gate)</small></td>
+            <td><span class="pill opus">1588.0 Elo (Co-Scientist)</span></td>
+            <td>58.3%</td>
             <td><span class="pill opus">AMBER BACKUP LINE</span></td>
           </tr>
           <tr>
             <td>#3</td>
-            <td><code>IC-003</code></td>
-            <td>Covalent Catalytic-Triad Ser386 Warhead<br><small style="color:#94a3b8;">Eliminated: extrahepatic serine protease cross-reactivity risk</small></td>
-            <td>1462.0 Elo</td>
-            <td>8–16 (33.3%)</td>
-            <td><span class="pill block">PRUNED (ROUND 1)</span></td>
+            <td><code>H-0002</code> (Hypex)</td>
+            <td>Secondary Allosteric Pocket Peptidomimetic<br><small style="color:#94a3b8;">Hypex runner-up (`1512.0 Elo`, `-130.5 Elo` behind `H-0001`)</small></td>
+            <td>1512.0 Elo</td>
+            <td>45.8%</td>
+            <td><span class="pill block">SECONDARY / PRUNED</span></td>
           </tr>
           <tr>
             <td>#4</td>
-            <td><code>IC-004</code></td>
-            <td>Prodomain Chaperone Folding Disruptor<br><small style="color:#94a3b8;">Eliminated: lacks recombinant SPR competition assay readout (`FP-003`)</small></td>
-            <td>1419.5 Elo</td>
-            <td>5–19 (20.8%)</td>
+            <td><code>H-003</code> / <code>H-0003</code></td>
+            <td>Covalent Catalytic-Triad Ser386 Warhead<br><small style="color:#94a3b8;">Eliminated: extrahepatic serine protease cross-reactivity risk (`1445.0 Elo`)</small></td>
+            <td>1445.0 Elo</td>
+            <td>25.0%</td>
             <td><span class="pill block">PRUNED (ROUND 1)</span></td>
           </tr>
         </tbody>
@@ -123,25 +122,26 @@
 
     <div>
       <div class="card">
-        <h2>Multi-Model Agent Architecture &amp; Kill Criteria</h2>
-        <div class="term">[WO-001 Phase-2 Receipt: raw/hypotheses/pcsk9_seed.analysis.json]
-threshold_set     : coscientist@1.0
-elo_decisive_gap  : 50.0  (observed: +54.5 Elo -> PASS)
-min_win_rate      : 0.60  (observed: 0.78  -> PASS)
-primary_concept   : IC-001 (Cryptic EGF-A Groove Small Molecule)
-backup_concept    : IC-002 (Oral Tricyclic Macrocycle)
-mandatory_relay   : hypothesis.adopted_not_generated
+        <h2>Phase-1 &amp; Phase-2 Provenance Receipts (`raw/hypotheses/`)</h2>
+        <div class="term">[1] raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.analysis.json
+cli_version          : 0.3.0 (env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b)
+verdict              : clear-leader
+hypothesis_count     : 3
+top_elo              : 1642.5 (H-001) vs runner-up 1588.0 (H-002)
+elo_gap_to_runner_up : 54.5 (>= 50.0 decisive threshold -> PASS)
+mandatory_relay      : hypothesis.adopted_not_generated
 
-[Claude Opus 5.5 (hypex-reflection) Falsification Gate FP-001]:
-"Flat EGF-A surfaces frequently yield false-positive docking hits.
-IC-001 is conditional on Step 3 fpocket druggability >= 0.50 and
-1P AlphaFold 3 ligand ipTM >= 0.70. If Pocket #1 druggability < 0.30,
-immediately trigger Subway Map reroute to IC-002 macrocycle."</div>
+[2] raw/hypotheses/hx-pcsk9-elo-live.analysis.json
+verdict              : leader-with-advisories
+hypothesis_count     : 3 (total_matches: 12)
+top_elo              : 1642.5 (H-0001) vs runner-up 1512.0 (H-0002)
+elo_gap_to_runner_up : 130.5
+mandatory_relays     : hypex.adopted_not_generated, hypex.reflection_notes_unverified</div>
       </div>
       <div class="card">
-        <h2>5 Human Scientists &harr; AI Wingman Pairings</h2>
+        <h2>5 Human Scientists &harr; AI Wingman Pairings (`pcsk9-oral-live-v2`)</h2>
         <table>
-          <thead><tr><th>Human Scientist</th><th>AI Wingman</th><th>Active Model Tier</th></tr></thead>
+          <thead><tr><th>Human Scientist</th><th>AI Wingman Container</th><th>Active Model Tier</th></tr></thead>
           <tbody>
             <tr><td>Dr. Sarah Chen (Lead)</td><td><code>@science-program-lead</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td></tr>
             <tr><td>Dr. Marcus Vance (Genetics)</td><td><code>@computational-biologist</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td></tr>
@@ -158,10 +158,10 @@ immediately trigger Subway Map reroute to IC-002 macrocycle."</div>
 <script>
 document.getElementById('nav-cosci').classList.add('active');
 const MATCHES = [
-  { tag: 'r1', model: 'Gemini 4 Argon (High)', title: 'Match #04 · IC-001 vs IC-003', body: 'IC-001 wins (+18.4 Elo): Reversible Asp374/Phe379 H-bond network avoids off-target hepatic protease modification.' },
-  { tag: 'opus', model: 'Claude Opus 5.5 (Reflection)', title: 'Reflection Audit #09 · Pre-Registered Kill Switch FP-001', body: 'Enforced strict structural falsification criteria: IC-001 must prove fpocket >= 0.50 and AF3 ipTM >= 0.70 in Step 3 or yield to IC-002.' },
-  { tag: 'r2', model: 'Gemini 4 Argon (High)', title: 'Match #19 · IC-001 vs IC-002 (Round 2 Evolved)', body: 'IC-001 wins (+14.2 Elo): Unenhanced Rule-of-5 oral tablet profile (MW < 480 Da, cLogP <= 3.5) outperforms MW 820 Da macrocycle on gut absorption.' },
-  { tag: 'opus', model: 'Claude Opus 5.5 (Peer Reviewer)', title: 'Match #24 · Final Tournament Verification', body: 'Verified +54.5 Elo margin (1642.5 vs 1588.0) and retained hypothesis.adopted_not_generated relay in WO-001.' }
+  { tag: 'r1', model: 'oase coscientist (Gemini 4 Argon)', title: 'cs-daedalis-20261028-pcsk9-oral · H-001 vs H-002', body: 'H-001 (1642.5 Elo) leads H-002 (1588.0 Elo) by +54.5 Elo across 24 pairwise matches; verdict = clear-leader.' },
+  { tag: 'r2', model: 'oase hypex (7-Agent Bracket)', title: 'hx-pcsk9-elo-live · H-0001 vs H-0002', body: 'Hypex archive verified (sha256:6dea9aaff73e112d): H-0001 achieves 1642.5 Elo with a +130.5 Elo margin over H-0002 (1512.0).' },
+  { tag: 'opus', model: 'Claude Opus 5.5 (Reflection)', title: 'Epistemic Relay Audit · hypex.reflection_notes_unverified', body: 'Enforced mandatory relays hypothesis.adopted_not_generated and hypex.reflection_notes_unverified: H-001 must pass live AlphaGenome, AlphaFold 3, fpocket, and Vina gates in Steps 2–3.' },
+  { tag: 'opus', model: 'oase cite verify (Europe PMC)', title: 'Literature Grounding · 3 Peer-Reviewed Citations Verified', body: 'Verified PMID 16554528 (Cohen et al. NEJM 2006 PCSK9 LoF), PMID 17460032 (Cunningham et al. Nat Struct Mol Biol 2007), and PMID 32972995.' }
 ];
 function filterMatches(mode, btn) {
   document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));

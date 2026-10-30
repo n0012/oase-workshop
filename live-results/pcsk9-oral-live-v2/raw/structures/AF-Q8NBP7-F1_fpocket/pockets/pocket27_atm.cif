@@ -1,0 +1,60 @@
+data_pocket27_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    27:
+0  - Pocket Score                      : -0.0726
+1  - Drug Score                        : 0.0083
+2  - Number of alpha spheres           :    23
+3  - Mean alpha-sphere radius          : 4.0231
+4  - Mean alpha-sphere Solvent Acc.    : 0.5096
+5  - Mean B-factor of pocket residues  : 0.5587
+6  - Hydrophobicity Score              : 22.7273
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 3.6364
+9  - Pocket volume (Monte Carlo)       : 306.1220
+10  -Pocket volume (convex hull)       : 14.0777
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 11.0000
+13 - Number of apolar alpha sphere     :    12
+14 - Proportion of apolar alpha sphere : 0.5217
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    3371     C   CB ?  ALA      A 443 ?    9.110   12.437    2.212   0.00  0 443 A
+ATOM    3186     C   CB ?  ALA      A 420 ?   12.334    8.888   -0.408   0.00  0 420 A
+ATOM    1288     C   CA ?  PRO      A 163 ?   12.722   15.106    4.573   0.00  0 163 A
+ATOM    1284     O    O ?  THR      A 162 ?   13.200   13.252    6.588  -2.69  0 162 A
+ATOM    1269     N  NH1 ?  ARG      A 160 ?   15.084    5.851    5.569   0.00  0 160 A
+ATOM    1267     C   CD ?  ARG      A 160 ?   13.270    7.327    7.297   0.00  0 160 A
+ATOM    1276     O    O ?  ILE      A 161 ?    9.526   12.166    6.387   0.00  0 161 A
+ATOM    3183     N    N ?  ALA      A 420 ?   10.295    9.790   -1.402   0.00  0 420 A
+ATOM    3170     O    O ?  PHE      A 418 ?    8.873   13.164   -1.366  -1.62  0 418 A
+ATOM    3184     C   CA ?  ALA      A 420 ?   11.624    9.268   -1.712   0.00  0 420 A
+ATOM    1300     C   CD ?  PRO      A 164 ?   15.264   14.929    3.007   0.00  0 164 A
+ATOM    1290     C   CB ?  PRO      A 163 ?   11.829   15.843    3.569   0.00  0 163 A
+ATOM    1273     C   CA ?  ILE      A 161 ?    9.457   10.255    7.881   0.00  0 161 A
+ATOM    3367     O    O ?  ALA      A 442 ?    7.891    9.458    3.556  -2.14  0 442 A
+ATOM    1266     C   CG ?  ARG      A 160 ?   11.884    6.692    7.456   0.00  0 160 A
+ATOM    1274     C    C ?  ILE      A 161 ?    9.977   11.648    7.410   0.00  0 161 A
+ATOM    3361     C  CG1 ?  VAL      A 441 ?    9.561    5.830    2.900   0.00  0 441 A
+ATOM    2633     O  OD1 ?  ASP      A 343 ?   13.796    4.302    3.639  -0.40  0 343 A
+# 

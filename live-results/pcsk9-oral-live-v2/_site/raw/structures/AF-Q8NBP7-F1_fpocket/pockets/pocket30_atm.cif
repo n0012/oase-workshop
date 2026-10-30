@@ -1,0 +1,53 @@
+data_pocket30_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    30:
+0  - Pocket Score                      : -0.0857
+1  - Drug Score                        : 0.0006
+2  - Number of alpha spheres           :    16
+3  - Mean alpha-sphere radius          : 3.9784
+4  - Mean alpha-sphere Solvent Acc.    : 0.6280
+5  - Mean B-factor of pocket residues  : 0.9893
+6  - Hydrophobicity Score              : 42.1667
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 5.1667
+9  - Pocket volume (Monte Carlo)       : 119.3350
+10  -Pocket volume (convex hull)       : 0.3074
+11 - Charge Score                      :     1
+12 - Local hydrophobic density Score   : 6.0000
+13 - Number of apolar alpha sphere     :     7
+14 - Proportion of apolar alpha sphere : 0.4375
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    2105     C  CD2 ?  PHE      A 270 ?  -22.740    8.093   12.479   0.00  0 270 A
+ATOM    2075     C  CG2 ?  ILE      A 266 ?  -23.925    1.475   10.276   0.00  0 266 A
+ATOM    2101     C   CB ?  PHE      A 270 ?  -21.722    6.953   10.455   0.00  0 270 A
+ATOM    1633     C  CE2 ?  PHE      A 205 ?  -21.745    3.757   12.589   0.00  0 205 A
+ATOM    2097     O  OE2 ?  GLU      A 269 ?  -26.367    4.250    6.823   0.00  0 269 A
+ATOM    2136     N   NZ ?  LYS      A 273 ?  -27.903    6.381    7.212  -0.17  0 273 A
+ATOM    894      C  CE1 ?  HIS      A 113 ?  -27.859    1.975    8.811   0.00  0 113 A
+ATOM    2073     O    O ?  ILE      A 266 ?  -22.013    3.734    8.939   0.00  0 266 A
+ATOM    2099     C   CA ?  PHE      A 270 ?  -22.181    7.554    9.119   0.00  0 270 A
+ATOM    2134     C   CD ?  LYS      A 273 ?  -26.485    8.415    7.418   0.00  0 273 A
+ATOM    2098     N    N ?  PHE      A 270 ?  -22.145    6.528    8.074   0.00  0 270 A
+# 

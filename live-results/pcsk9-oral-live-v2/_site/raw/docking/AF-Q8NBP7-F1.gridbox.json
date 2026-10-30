@@ -1,0 +1,15 @@
+{
+  "center": [
+    4.958,
+    22.796,
+    4.298
+  ],
+  "size": [
+    32.192,
+    34.117,
+    28.472
+  ],
+  "pocket_rank": 3,
+  "pocket_source": "/workspace/raw/structures/AF-Q8NBP7-F1.pockets.json",
+  "padding_angstrom": 10.0
+}

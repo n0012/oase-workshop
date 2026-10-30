@@ -1,0 +1,55 @@
+data_pocket20_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    20:
+0  - Pocket Score                      : -0.0331
+1  - Drug Score                        : 0.0003
+2  - Number of alpha spheres           :    17
+3  - Mean alpha-sphere radius          : 3.7725
+4  - Mean alpha-sphere Solvent Acc.    : 0.4878
+5  - Mean B-factor of pocket residues  : 0.7851
+6  - Hydrophobicity Score              : 17.1250
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 4.0000
+9  - Pocket volume (Monte Carlo)       : 81.0500
+10  -Pocket volume (convex hull)       : 0.4100
+11 - Charge Score                      :     0
+12 - Local hydrophobic density Score   : 2.0000
+13 - Number of apolar alpha sphere     :     3
+14 - Proportion of apolar alpha sphere : 0.1765
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    3449     O    O ?  GLN      A 454 ?    1.510   20.336  -12.318  -2.14  0 454 A
+ATOM    4002     C   CB ?  LEU      A 528 ?   -2.647   16.772  -12.425   0.00  0 528 A
+ATOM    4020     C   CG ?  PRO      A 530 ?   -2.801   22.592  -13.982   0.00  0 530 A
+ATOM    4021     C   CD ?  PRO      A 530 ?   -2.237   21.538  -14.931   0.00  0 530 A
+ATOM    3099     O  OE1 ?  GLU      A 410 ?   -4.804   20.848   -7.673  -4.69  0 410 A
+ATOM    3430     O    O ?  GLY      A 452 ?   -1.423   24.145  -10.847  -2.55  0 452 A
+ATOM    3137     N  NH1 ?  ARG      A 414 ?   -1.635   19.749   -6.427   0.00  0 414 A
+ATOM    4005     C  CD1 ?  LEU      A 528 ?   -3.269   16.172  -10.117   0.00  0 528 A
+ATOM    3426     O    O ?  ALA      A 451 ?    1.514   22.482   -8.673   0.00  0 451 A
+ATOM    3428     C   CA ?  GLY      A 452 ?   -0.777   24.112   -8.545   0.00  0 452 A
+ATOM    3471     C  CE2 ?  PHE      A 456 ?    1.688   19.154   -8.955   0.00  0 456 A
+ATOM    3469     C  CD2 ?  PHE      A 456 ?    1.283   18.093   -9.781   0.00  0 456 A
+ATOM    3097     C   CG ?  GLU      A 410 ?   -4.805   18.502   -7.782   0.00  0 410 A
+# 

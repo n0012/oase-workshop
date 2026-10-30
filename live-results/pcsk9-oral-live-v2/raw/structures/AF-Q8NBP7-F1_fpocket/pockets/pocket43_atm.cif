@@ -1,0 +1,60 @@
+data_pocket43_atm
+# 
+loop_
+_struct.pdbx_descriptor
+This is a mmcif format file writen by the programm fpocket.                 
+It represents the atoms contacted by the voronoi vertices of the pocket.  
+                                                                           
+Information about the pocket    43:
+0  - Pocket Score                      : -0.1355
+1  - Drug Score                        : 0.0071
+2  - Number of alpha spheres           :    22
+3  - Mean alpha-sphere radius          : 4.0252
+4  - Mean alpha-sphere Solvent Acc.    : 0.5886
+5  - Mean B-factor of pocket residues  : 0.9900
+6  - Hydrophobicity Score              : 23.0000
+7  - Polarity Score                    :     3
+8  - Amino Acid based volume Score     : 4.3333
+9  - Pocket volume (Monte Carlo)       : 288.6921
+10  -Pocket volume (convex hull)       : 8.1266
+11 - Charge Score                      :     2
+12 - Local hydrophobic density Score   : 9.0000
+13 - Number of apolar alpha sphere     :    10
+14 - Proportion of apolar alpha sphere : 0.4545
+# 
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+ATOM    864      C   CB ?  LYS      A 110 ?  -33.257  -10.094   11.957   0.00  0 110 A
+ATOM    851      C   CG ?  LEU      A 108 ?  -36.716  -15.187   12.768   0.00  0 108 A
+ATOM    850      O    O ?  LEU      A 108 ?  -34.880  -15.893    9.455  -0.95  0 108 A
+ATOM    985      O    O ?  LYS      A 125 ?  -31.758  -12.661    8.786  -3.21  0 125 A
+ATOM    986      C   CG ?  LYS      A 125 ?  -28.767  -12.954   11.108   0.00  0 125 A
+ATOM    991      C   CA ?  MET      A 126 ?  -31.043  -14.949    7.228   0.00  0 126 A
+ATOM    990      N    N ?  MET      A 126 ?  -30.163  -13.920    7.806  -1.09  0 126 A
+ATOM    987      C   CD ?  LYS      A 125 ?  -28.718  -12.833   12.640   0.00  0 125 A
+ATOM    853      C  CD2 ?  LEU      A 108 ?  -36.317  -15.573   14.190   0.00  0 108 A
+ATOM    988      C   CE ?  LYS      A 125 ?  -28.056  -14.057   13.296   0.00  0 125 A
+ATOM    867      C   CD ?  LYS      A 110 ?  -32.485   -9.004   14.131   0.00  0 110 A
+ATOM    861      N    N ?  LYS      A 110 ?  -34.068  -11.180    9.909   0.00  0 110 A
+ATOM    855      C   CA ?  THR      A 109 ?  -35.198  -13.136    8.981   0.00  0 109 A
+ATOM    591      O    O ?  GLY      A 76 ?  -27.246  -14.103    8.309  -1.07  0 76 A
+ATOM    589      C   CA ?  GLY      A 76 ?  -25.879  -15.959    7.700   0.00  0 76 A
+ATOM    989      N   NZ ?  LYS      A 125 ?  -26.590  -14.109   13.048   0.00  0 125 A
+ATOM    994      O    O ?  MET      A 126 ?  -29.061  -16.256    6.921   0.00  0 126 A
+ATOM    992      C    C ?  MET      A 126 ?  -30.288  -16.261    6.955   0.00  0 126 A
+# 

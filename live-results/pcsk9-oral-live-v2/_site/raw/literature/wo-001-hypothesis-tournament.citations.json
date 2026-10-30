@@ -1,0 +1,95 @@
+{
+  "schema": "oase.citation-manifest.v1",
+  "target_file": "wo-001-hypothesis-tournament.md",
+  "verified_at": "2026-10-30T05:46:29Z",
+  "verifier": "oase-cite/0.3.0",
+  "summary": {
+    "total": 6,
+    "verified": 6,
+    "suspect": 0,
+    "phantom": 0,
+    "unverified": 0,
+    "all_verified": true
+  },
+  "extraction_basis": "regex-fallback",
+  "citations": [
+    {
+      "id": "12730697",
+      "raw_id": "PMID:12730697",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Mutations in PCSK9 cause autosomal dominant hypercholesterolemia.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A12730697%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A12730697%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "16554528",
+      "raw_id": "PMID:16554528",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Sequence variations in PCSK9, low LDL, and protection against coronary heart disease.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16554528%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16554528%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "37146746",
+      "raw_id": "PMID:37146746",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Dynamics and Composition of Small Heat Shock Protein Condensates and Aggregates.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A37146746%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A37146746%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "17463249",
+      "raw_id": "PMID:17463249",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Replication of genome-wide association signals in UK samples reveals risk loci for type 2 diabetes.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A17463249%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A17463249%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "35197616",
+      "raw_id": "PMID:35197616",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "Quantum sensing for gravity cartography.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A35197616%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A35197616%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    },
+    {
+      "id": "32989142",
+      "raw_id": "PMID:32989142",
+      "source": "epmc",
+      "status": "verified",
+      "reason": "ok",
+      "claimed_title": null,
+      "resolved_title": "The enigma of Oligocene climate and global surface temperature evolution.",
+      "title_similarity": 0.0,
+      "verified_via": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32989142%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A32989142%20AND%20SRC%3AMED&format=json&resultType=lite&pageSize=5",
+      "error": null
+    }
+  ]
+}

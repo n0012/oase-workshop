@@ -1,0 +1,33 @@
+{
+  "schema": "oase.pk-study.v1",
+  "study_id": "oase_pcsk9_014_dog_po",
+  "species": "dog",
+  "route": "oral",
+  "dose_mg_kg": 5.0,
+  "dose_units": "mg/kg",
+  "time_units": "h",
+  "concentration_units": "ng/mL",
+  "time_points": [
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    12.0,
+    24.0
+  ],
+  "concentrations": [
+    310.0,
+    740.0,
+    1380.0,
+    1790.0,
+    1490.0,
+    960.0,
+    580.0,
+    195.0
+  ],
+  "blq_value": null,
+  "body_weight_kg": 10.0,
+  "notes": null
+}
