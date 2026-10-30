@@ -486,6 +486,201 @@ def update_template_models(
     return updated
 
 
+SYSTEM_PROMPT_EPISTEMIC_BLOCK = """
+
+## Operational & Epistemic Invariants (OASE v0.3.0)
+- **Provenance & Evidence Discipline:** Every numerical or factual claim in a Layer 1 finding, review, or decision MUST carry a machine-verifiable `[src:<run_id>:<json_pointer>]` or `[src:lit:<id>]` provenance tag backed by a stored Layer 0 artifact and `.provenance.json` sidecar. Never fabricate, interpolate, or extrapolate unmeasured values.
+- **Shared OASE Toolchain:** Always activate `/workspace/.scion-volumes/tools/env.sh` before running `oase` or `prox` CLI commands (`oase doctor`, `oase validate`, `oase workorder`, `oase state`, `oase struct`, `oase chem`, `oase admet`, `oase variant`).
+- **Scion Webchat Reply Contract:** Whenever an incoming message contains `"channel": "web"` or `"conversation": { "id": "<UUID>" }`, humans in Scion Webchat cannot see terminal stdout — you MUST send your response via `scion message "conv:<conversation.id>" - <<'MSG' ... MSG` followed by `sciontool status ask_user`.
+"""
+
+AGENTS_MD_WEBCHAT_BLOCK = (
+    "\n\n## MANDATORY WEBCHAT REPLY RULE (CRITICAL — ZERO EXCEPTIONS)\n"
+    "Whenever an incoming message contains `\"channel\": \"web\"` or `\"conversation\": { \"id\": \"<UUID>\" }` "
+    "inside `---BEGIN SCION MESSAGE---`:\n"
+    "1. **Humans in Scion Webchat CANNOT see your terminal stdout!**\n"
+    "2. You MUST ALWAYS execute `scion message \"conv:<conversation.id>\" - <<'MSG' ... MSG` "
+    "followed by `sciontool status ask_user` so your grounded 2–3 bullet response renders live in Webchat.\n"
+)
+
+
+def _rewrite_skill_uris_yaml(yaml_text: str) -> str:
+    lines = []
+    for line in yaml_text.splitlines():
+        if "gh://scion-frontiers/agent-team/" in line:
+            continue
+        m = re.search(
+            r'https://github\.com/GoogleCloudPlatform/LifeSciences/tree/main/applications/open-agentic-science-engine/skills/([a-z0-9-]+)',
+            line,
+        )
+        if m:
+            line = re.sub(r'https://[^\s"]+', f"skill://{m.group(1)}", line)
+        lines.append(line)
+    return "\n".join(lines) + "\n"
+
+
+def hydrate_and_repair_templates(hub_dir: Path, dry_run: bool) -> dict:
+    """Ensure all 22 specialist templates have rich system-prompt.md + agents.md in .blobs, cache, and agent homes."""
+    src_tpl_root = hub_dir / "projects" / "open-agentic-science-engine" / "templates"
+    if not src_tpl_root.exists():
+        return {"status": "skipped", "reason": f"{src_tpl_root} not found"}
+    if dry_run:
+        return {"status": "dry-run", "templates_root": str(src_tpl_root)}
+
+    db_path = hub_dir / "hub.db"
+    ws_root = hub_dir / "workspace-storage"
+    cache_root = hub_dir / "cache" / "templates"
+    cache_root.mkdir(parents=True, exist_ok=True)
+    index_path = cache_root / "index.json"
+    try:
+        cache_index = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else {"entries": {}}
+    except Exception:
+        cache_index = {"entries": {}}
+    if "entries" not in cache_index or not isinstance(cache_index["entries"], dict):
+        cache_index["entries"] = {}
+
+    now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Build canonical enriched files per template slug
+    canonical_by_slug: dict[str, dict] = {}
+    for tpl_dir in sorted(src_tpl_root.iterdir()):
+        if not tpl_dir.is_dir():
+            continue
+        slug = tpl_dir.name
+        ag_path = tpl_dir / "agents.md"
+        sp_path = tpl_dir / "system-prompt.md"
+        ya_path = tpl_dir / "scion-agent.yaml"
+        if not (ag_path.exists() and sp_path.exists() and ya_path.exists()):
+            continue
+
+        ag_text = ag_path.read_text(encoding="utf-8")
+        if "MANDATORY WEBCHAT REPLY RULE" not in ag_text:
+            ag_text = ag_text.rstrip() + AGENTS_MD_WEBCHAT_BLOCK
+
+        sp_text = sp_path.read_text(encoding="utf-8").strip()
+        if "Operational & Epistemic Invariants" not in sp_text:
+            sp_text = sp_text + "\n" + SYSTEM_PROMPT_EPISTEMIC_BLOCK.strip() + "\n"
+            sp_path.write_text(sp_text, encoding="utf-8")
+        else:
+            sp_text = sp_text + "\n"
+
+        ya_text = _rewrite_skill_uris_yaml(ya_path.read_text(encoding="utf-8"))
+
+        files_bytes = {
+            "agents.md": ag_text.encode("utf-8"),
+            "scion-agent.yaml": ya_text.encode("utf-8"),
+            "system-prompt.md": sp_text.encode("utf-8"),
+        }
+        manifest = []
+        for fname in ("agents.md", "scion-agent.yaml", "system-prompt.md"):
+            b = files_bytes[fname]
+            fhex = hashlib.sha256(b).hexdigest()
+            manifest.append({"path": fname, "size": len(b), "hash": f"sha256:{fhex}", "mode": "0644"})
+        h = hashlib.sha256()
+        for item in manifest:
+            h.update(item["hash"].encode("utf-8"))
+        content_hash = f"sha256:{h.hexdigest()}"
+
+        # Populate /home/scion/.scion/cache/templates/<content_hash>/
+        cdir = cache_root / content_hash
+        cdir.mkdir(parents=True, exist_ok=True)
+        total_sz = 0
+        for fname, b in files_bytes.items():
+            (cdir / fname).write_bytes(b)
+            total_sz += len(b)
+        cache_index["entries"][content_hash] = {"lastUsed": now_iso, "size": total_sz}
+
+        canonical_by_slug[slug] = {
+            "files_bytes": files_bytes,
+            "manifest": manifest,
+            "files_json": json.dumps(manifest, separators=(",", ":")),
+            "content_hash": content_hash,
+        }
+
+    index_path.write_text(json.dumps(cache_index, indent=2) + "\n", encoding="utf-8")
+
+    conn = sqlite3.connect(str(db_path), timeout=30)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT id, slug, storage_path FROM templates")
+    rows = cur.fetchall()
+    rows_repaired = 0
+    for r in rows:
+        slug = r["slug"]
+        info = canonical_by_slug.get(slug)
+        if not info:
+            continue
+        rel = (r["storage_path"] or "").lstrip("/")
+        if rel:
+            plain_dir = ws_root / rel
+            blobs_dir = ws_root / f"{rel}.blobs"
+            plain_dir.mkdir(parents=True, exist_ok=True)
+            blobs_dir.mkdir(parents=True, exist_ok=True)
+            for item in info["manifest"]:
+                fname = item["path"]
+                fhex = item["hash"].split(":", 1)[1]
+                data = info["files_bytes"][fname]
+                (plain_dir / fname).write_bytes(data)
+                (plain_dir / fhex).write_bytes(data)
+                (blobs_dir / fhex).write_bytes(data)
+
+        cur.execute(
+            "UPDATE templates SET content_hash = ?, files = ?, layout = 'blobs' WHERE id = ?",
+            (info["content_hash"], info["files_json"], r["id"]),
+        )
+        rows_repaired += 1
+
+    conn.commit()
+    conn.close()
+
+    # Also hydrate existing agent homes on disk so running & stopped chapter agents have full instructions + system-prompt
+    agents_hydrated = 0
+    cfg_dir = hub_dir / "project-configs"
+    if cfg_dir.exists():
+        for pcfg in sorted(cfg_dir.iterdir()):
+            ag_root = pcfg / ".scion" / "agents"
+            if not ag_root.exists():
+                continue
+            for ag_dir in sorted(ag_root.iterdir()):
+                ag_home = ag_dir / "home"
+                if not ag_home.is_dir():
+                    continue
+                ag_slug = ag_dir.name
+                info = canonical_by_slug.get(ag_slug)
+                if not info:
+                    continue
+                inp_dir = ag_home / ".scion" / "harness" / "inputs"
+                inp_dir.mkdir(parents=True, exist_ok=True)
+                ag_bytes = info["files_bytes"]["agents.md"]
+                sp_bytes = info["files_bytes"]["system-prompt.md"]
+                (inp_dir / "instructions.md").write_bytes(ag_bytes)
+                (inp_dir / "system-prompt.md").write_bytes(sp_bytes)
+                gem_dir = ag_home / ".gemini"
+                if gem_dir.exists():
+                    combined = sp_bytes.decode("utf-8").rstrip() + "\n\n" + ag_bytes.decode("utf-8")
+                    (gem_dir / "GEMINI.md").write_text(combined, encoding="utf-8")
+                    (ag_home / "GEMINI.md").write_bytes(sp_bytes)
+                claude_dir = ag_home / ".claude"
+                if claude_dir.exists():
+                    (claude_dir / "CLAUDE.md").write_bytes(ag_bytes)
+                    (claude_dir / "system-prompt.md").write_bytes(sp_bytes)
+                agents_hydrated += 1
+
+    for fix_dir in (ws_root, cache_root):
+        if fix_dir.exists():
+            subprocess.run(["chown", "-R", "scion:scion", str(fix_dir)], check=False)
+    if cfg_dir.exists():
+        for pcfg in cfg_dir.iterdir():
+            if (pcfg / ".scion").exists():
+                subprocess.run(["chown", "-R", "scion:scion", str(pcfg / ".scion")], check=False)
+
+    return {
+        "canonical_templates": len(canonical_by_slug),
+        "db_template_rows_repaired": rows_repaired,
+        "agent_homes_hydrated": agents_hydrated,
+    }
+
+
 def provision_live_v2_grove(
     hub_dir: Path,
     hub_api: str,
@@ -733,8 +928,20 @@ def provision_live_v2_grove(
         subprocess.run(["git", "-C", str(dst_ws), "checkout", "-f", "ch0"], check=False, capture_output=True)
         subprocess.run(["chown", "-R", "scion:scion", str(dst_ws)], check=False)
 
-    # Ensure template models in the new grove match our plan
+    # Ensure dst_ws/.scion/project-id and settings.yaml point to live_slug's pid (not ch0_pid)
+    scion_meta = dst_ws / ".scion"
+    if scion_meta.exists():
+        (scion_meta / "project-id").write_text(f"{pid}\n", encoding="utf-8")
+        sy = scion_meta / "settings.yaml"
+        if sy.exists():
+            stext = sy.read_text(encoding="utf-8")
+            stext = re.sub(r"project_id:\s*[0-9a-f-]+", f"project_id: {pid}", stext)
+            sy.write_text(stext, encoding="utf-8")
+        subprocess.run(["chown", "-R", "scion:scion", str(scion_meta)], check=False)
+
+    # Ensure template models and blob/cache files in the new grove match our plan
     update_template_models(db_path, plan=plan, target_project_slug=live_slug, dry_run=False)
+    hydrate_and_repair_templates(hub_dir, dry_run=False)
 
     # Boot live Gemini 4 Argon (science-program-lead) + Claude Opus 5.5 (scientific-reviewer)
     launched: dict[str, dict] = {}
@@ -744,9 +951,37 @@ def provision_live_v2_grove(
 
     for ag_slug in ("science-program-lead", "scientific-reviewer"):
         ex = existing_agents.get(ag_slug)
+        cname = f"{live_slug}--{ag_slug}"
+        needs_recreate = False
         if ex and ex.get("phase") == "running":
-            launched[ag_slug] = {"id": ex["id"], "status": "already_running", "harness": plan[ag_slug][0], "model": plan[ag_slug][1]}
-            continue
+            chk = subprocess.run(
+                [
+                    "docker",
+                    "exec",
+                    cname,
+                    "bash",
+                    "-lc",
+                    "ps aux; echo ===; ls -la /home/scion/.scion/harness/inputs/",
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            mnt = subprocess.run(
+                ["docker", "inspect", cname, "--format", "{{json .Mounts}}"],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if (
+                "# Placeholder" in chk.stdout
+                or "resolved-skills.json" not in chk.stdout
+                or f"/projects/{live_slug}\"" not in mnt.stdout
+            ):
+                needs_recreate = True
+            else:
+                launched[ag_slug] = {"id": ex["id"], "status": "already_running", "harness": plan[ag_slug][0], "model": plan[ag_slug][1]}
+                continue
         if ex and ex.get("id"):
             api_call(hub_api, "DELETE", f"/api/v1/agents/{ex['id']}", token)
             time.sleep(2)
@@ -766,6 +1001,7 @@ def provision_live_v2_grove(
         launched[ag_slug] = {
             "http_status": st,
             "id": aobj.get("id"),
+            "recreated_from_placeholder": needs_recreate,
             "harness": plan[ag_slug][0],
             "model": plan[ag_slug][1],
         }
@@ -873,6 +1109,7 @@ def main() -> int:
         target_project_slug=args.target_project_slug,
         dry_run=args.dry_run,
     )
+    tpl_hydration = hydrate_and_repair_templates(hub_dir, dry_run=args.dry_run)
 
     live_grove_summary = None
     if args.provision_live_grove:
@@ -884,8 +1121,9 @@ def main() -> int:
             plan=plan,
             dry_run=args.dry_run,
         )
-        # Re-run repair_shared_oase_volumes in case new grove tools volume was hardlinked
+        # Re-run repair_shared_oase_volumes and hydrate_and_repair_templates in case new grove was created
         repair_shared_oase_volumes(hub_dir, dry_run=args.dry_run)
+        tpl_hydration = hydrate_and_repair_templates(hub_dir, dry_run=args.dry_run)
 
     doctor_checks = []
     if not args.dry_run:
@@ -903,6 +1141,7 @@ def main() -> int:
         "shared_tools_repair": tools_summary,
         "hub_env_vars_upserted": env_count,
         "templates_updated": tpl_updated,
+        "template_hydration": tpl_hydration,
         "template_model_plan": {k: {"harness": v[0], "model": v[1]} for k, v in plan.items()},
         "live_grove": live_grove_summary,
         "container_oase_doctor": doctor_checks,

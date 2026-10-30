@@ -21,6 +21,21 @@ Scion routes each specialist agent template to a container harness (`antigravity
 
 > **Why Cross-Family Peer Review (`Gemini 4 Argon` + `Claude Opus 5.5`) Matters**: Routing `scientific-reviewer`, `medicinal-chemist`, and `hypex-reflection` to **Anthropic Claude Opus 5.5** while `science-program-lead`, `structural-biologist`, and `hypex-generation` run on **Gemini 4 Argon (High)** eliminates single-model self-confirmation bias during Two-Phase Peer Review (`oase review record`) and Co-Scientist tournament reflection.
 
+### Specialist Persona Prompts (`system-prompt.md` + `agents.md`) & Template Hydration
+
+Every specialist template in `/home/scion/.scion/projects/open-agentic-science-engine/templates/<slug>/` carries three synchronized artifacts:
+1. **`system-prompt.md` (`900 B – 3,700 B`)**: Role identity, decision authority boundaries, and the **Operational & Epistemic Invariants**:
+   - **Provenance & Evidence Discipline:** Every numerical or factual claim in a Layer 1 finding, review, or decision must carry a machine-verifiable `[src:<run_id>:<json_pointer>]` or `[src:lit:<id>]` provenance tag backed by a stored Layer 0 artifact and `.provenance.json` sidecar.
+   - **Shared OASE Toolchain:** Automatic activation of `/workspace/.scion-volumes/tools/env.sh` before running `oase` or `prox`.
+   - **Scion Webchat Reply Contract:** Mandatory `scion message "conv:<conversation.id>"` + `sciontool status ask_user` response whenever `"channel": "web"` is present.
+2. **`agents.md` (`2.5 KB – 67.8 KB`)**: Full specialist operational runbook (`science-program-lead`: `67.8 KB`; `research-operations-controller`: `33.6 KB`; `scientific-reviewer`: `31.1 KB`; `hypex-reflection`: `16.3 KB`; `hypex-meta-review`: `13.2 KB`; domain specialists: `7.8 KB – 10.4 KB`).
+3. **`scion-agent.yaml`**: Binds the template's domain skills (`skill://<slug>`) from the 43 project-scoped OASE skills.
+
+`hydrate_and_repair_templates()` in `scripts/reconcile-scion-runtime.py` ensures that for all 220 template rows across all groves (`open-agentic-science-engine`, `00..07`, and `pcsk9-oral-live-v2`):
+- Content-addressed blobs are written to `/home/scion/.scion/workspace-storage/<storage_path>.blobs/<sha256_hex>` (`layout = 'blobs'`),
+- Unpacked template directories (`agents.md`, `scion-agent.yaml`, `system-prompt.md`) are populated in `/home/scion/.scion/cache/templates/<content_hash>/` and registered in `/home/scion/.scion/cache/templates/index.json`, and
+- Every provisioned agent home (`home/.scion/harness/inputs/{instructions.md,system-prompt.md}`, `.gemini/GEMINI.md`, and `.claude/{CLAUDE.md,system-prompt.md}`) is hydrated so neither `Gemini 4 Argon` nor `Claude Opus 5.5` ever falls back to `templates/default` (`# Placeholder`).
+
 ---
 
 ## 2. Step-by-Step Repeatable Enablement

@@ -751,6 +751,10 @@ def clone_templates_and_skills(
                         data = fpath.read_bytes()
                     fhex = hashlib.sha256(data).hexdigest()
                     (dst_dir / fhex).write_bytes(data)
+                    (dst_dir / fname).write_bytes(data)
+                    blobs_dir = ws_root / f"{new_rel}.blobs"
+                    blobs_dir.mkdir(parents=True, exist_ok=True)
+                    (blobs_dir / fhex).write_bytes(data)
                     files_manifest.append(
                         {"path": fname, "size": len(data), "hash": f"sha256:{fhex}", "mode": "0644"}
                     )
@@ -758,6 +762,11 @@ def clone_templates_and_skills(
                 for item in files_manifest:
                     h.update(item["hash"].encode("utf-8"))
                 content_hash = f"sha256:{h.hexdigest()}"
+                cache_tpl_dir = hub_dir / "cache" / "templates" / content_hash
+                cache_tpl_dir.mkdir(parents=True, exist_ok=True)
+                for fname in ("agents.md", "scion-agent.yaml", "system-prompt.md"):
+                    if (dst_dir / fname).exists():
+                        shutil.copy2(dst_dir / fname, cache_tpl_dir / fname)
                 files_json = json.dumps(files_manifest, separators=(",", ":"))
             else:
                 content_hash = tpl["content_hash"]
