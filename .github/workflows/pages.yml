@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .git/lfs
-          key: lfs-videos-${{ hashFiles('site-template/assets/videos/*.mp4') }}
+          key: lfs-videos-${{ hashFiles('site-template/assets/videos*/*.mp4') }}
 
       - name: Pull & materialize Git LFS videos
         run: |
