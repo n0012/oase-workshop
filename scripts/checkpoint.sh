@@ -38,7 +38,7 @@ sync_cp_into_dir() {
   local cp="$1"
   local dest="$2"
   mkdir -p "${dest}"
-  rm -rf "${dest}/.oase" "${dest}/raw" "${dest}/findings" "${dest}/program-state" "${dest}/seed" "${dest}/gates" "${dest}/executive"
+  rm -rf "${dest}/.oase" "${dest}/.oase-repo" "${dest}/raw" "${dest}/findings" "${dest}/program-state" "${dest}/seed" "${dest}/gates" "${dest}/executive"
   cp -R "${REPO_ROOT}/checkpoints/${cp}/." "${dest}/"
 }
 
@@ -91,6 +91,7 @@ case "${ACTION}" in
 .scion/
 .scion-volumes/
 .agents/
+.oase-repo
 skills/
 templates/
 __pycache__/

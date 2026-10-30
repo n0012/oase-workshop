@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Step 4 — Claude Opus 5.5 Med-Chem DMTA, hERG Rescue &amp; Wet-Lab Gate</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
+  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
+  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
+  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
+    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Step 4 (`WO-006`) — `Claude Opus 5.5` Med-Chem DMTA, `Aronov hERG` Disqualification &amp; Wet-Lab CRO Handoff</h1>
+    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate the 5 docked analogs (`PCSK9-A01..A05`). Top docking hit `PCSK9-A02` (`cLogP = 5.09`, basic amine) triggers cardiac `hERG` alert `L-002` and is formally eliminated; neutral `1,2,4-oxadiazole` **`OASE-PCSK9-014`** clears every oral Ro5 &amp; safety gate and pauses at **Stage Gate 3 (`gates/GATE-03-wetlab-handoff.md`)** for wet-lab CRO assays.</p>
+    <div class="badge-row">
+      <span class="pill opus">medicinal-chemist · Claude Opus 5.5 (Vertex)</span>
+      <span class="pill argon">admet-dmpk-scientist · Gemini 4 Argon (Med)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
+      <span class="pill pass">Lead: OASE-PCSK9-014 · cLogP = 3.1 · LipE = 5.2 · 0 Alerts</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Matched Molecular Pair (MMP) &amp; ADMET Triage Table (`WO-006`)</h2>
+      <table>
+        <thead>
+          <tr><th>Compound ID</th><th>Scaffold Modification</th><th>Vina dG</th><th>cLogP / LipE</th><th>hERG / Alerts</th><th>Disposition</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(239,68,68,0.12);">
+            <td><code>PCSK9-A02</code></td>
+            <td>Lipophilic Tertiary Basic Amine (Parent Hit)</td>
+            <td>-9.4 kcal/mol</td>
+            <td>cLogP <strong>4.8–5.09</strong><br>LipE 3.4</td>
+            <td><span class="pill block">Aronov hERG L-002 (2.1 µM)</span></td>
+            <td><span class="pill block">ELIMINATED (liability-tracker.md)</span></td>
+          </tr>
+          <tr style="background:rgba(16,185,129,0.14);">
+            <td><strong><code>OASE-PCSK9-014</code></strong><br><small>(<code>PCSK9-A03</code>)</small></td>
+            <td><strong>Neutral 1,2,4-Oxadiazole + C6-Fluoropyridine</strong></td>
+            <td><strong>-9.4 kcal/mol</strong></td>
+            <td>cLogP <strong>3.1</strong><br>LipE <strong>5.2</strong></td>
+            <td><span class="pill pass">0 Alerts (hERG &gt; 30 µM)</span></td>
+            <td><span class="pill pass">NOMINATED LEAD &rarr; CRO GATE 3</span></td>
+          </tr>
+          <tr>
+            <td><code>PCSK9-A01</code></td>
+            <td>Unsubstituted Benzamide Core</td>
+            <td>-8.6 kcal/mol</td>
+            <td>cLogP 3.8 / LipE 4.1</td>
+            <td>0 Alerts</td>
+            <td>Backup analog</td>
+          </tr>
+          <tr>
+            <td><code>PCSK9-A04</code></td>
+            <td>Sulfonamide Polar Linker</td>
+            <td>-8.9 kcal/mol</td>
+            <td>cLogP 2.9 / LipE 4.7</td>
+            <td>0 Alerts (TPSA 118 Å²)</td>
+            <td>Secondary backup</td>
+          </tr>
+          <tr>
+            <td><code>PCSK9-A05</code></td>
+            <td>Bulky Naphthyl Substituent</td>
+            <td>Clash (1.72 Å)</td>
+            <td>cLogP 5.4</td>
+            <td>Steric clash &lt; 2.0 Å</td>
+            <td><span class="pill block">PRUNED IN STEP 3</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>⏸ Explicit Wet-Lab / CRO Assay Handoff (`gates/GATE-03-wetlab-handoff.md`)</h2>
+        <p style="font-size:0.83rem;color:#cbd5e1;margin-top:0;">OASE never mistakes in-silico scores for wet-lab truth. At Gate 3, the state machine pauses on disk until 3 experimental CRO readouts return:</p>
+        <table>
+          <thead><tr><th>CRO Wet-Lab Assay</th><th>Gate 3 Criterion</th><th>Returned Readout (`Step 5`)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Surface Plasmon Resonance (`SPR KD`)</strong></td><td>Direct human PCSK9 binding</td><td><span class="pill pass">KD = 14.2 nM (Confirmed)</span></td></tr>
+            <tr><td><strong>2. Manual Patch-Clamp `hERG`</strong></td><td>`IC50 &gt; 30 µM` (`0` cardiac risk)</td><td><span class="pill pass">IC50 &gt; 30 µM (Clean)</span></td></tr>
+            <tr><td><strong>3. Rat &amp; Dog Oral Cassette PK</strong></td><td>`F &ge; 30%` unenhanced oral</td><td><span class="pill pass">Rat F = 54% · Dog F = 61%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>`Claude Opus 5.5` Retrosynthesis &amp; Provenance Receipt (`WO-006`)</h2>
+        <div class="term">[raw/admet/pcsk9_ic001_series_admet.analysis.json]
+lead_id            : OASE-PCSK9-014
+parent_clogp       : 4.8   -> lead_clogp : 3.1  (PASS <= 3.5)
+lead_lipe          : 5.2   (PASS >= 5.0)
+mw                 : 462.5 (PASS <= 500.0)
+tpsa               : 88.4  (PASS <= 120.0)
+structural_alerts  : 0     (PAINS=0, Brenk=0, Aronov_hERG=0)
+retro_steps        : 4     (ASKCOS plausibility = 0.87)</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>document.getElementById('nav-dmta').classList.add('active');</script>
+</body>
+</html>

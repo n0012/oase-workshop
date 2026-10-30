@@ -1,0 +1,31 @@
+{
+  "tool": "trials",
+  "subcommand": "search",
+  "work_order_id": "WO-008",
+  "cli_version": "0.3.0",
+  "cli_integrity": "707e461",
+  "env_version": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "interpreter": "cpython-3.12",
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "parameters": {
+    "query": "PCSK9 hypercholesterolemia"
+  },
+  "timestamp": "2026-10-28T00:20:00Z",
+  "completed": "2026-10-28T00:20:04Z",
+  "outputs": [
+    {
+      "path": "pcsk9_hypercholesterolemia_trials.json",
+      "sha256": "b1f265cc4bf5d2bfcba5ffb6de778f0c52503865e0915e97090ae763ef2cc651",
+      "bytes": 102
+    }
+  ],
+  "warnings": [
+    "Active Phase 3+ clinical trials exist for this target; name specific comparators and differentiation."
+  ],
+  "mandatory_relays": [
+    {
+      "code": "trials.active_competitor_pipeline",
+      "message": "Active Phase 3+ clinical trials exist for this target; name specific comparators and differentiation."
+    }
+  ]
+}

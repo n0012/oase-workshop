@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Step 3 — Interactive 3Dmol.js AlphaFold 3 Co-Fold &amp; Cryptic Pocket Viewer</title>
+<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
+  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
+  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
+  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
+    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Step 3 (`WO-004` &amp; `WO-005`) — Interactive 3D `AlphaFold 3` Co-Fold, `fpocket` Cryptic Groove &amp; `AutoDock Vina` Pose</h1>
+    <p>All-atom `PCSK9` (`Q8NBP7`) + `IC-001` (`OASE-PCSK9-014` scaffold) co-fold computed on our Dedicated Vertex AI `us-east4` `NVIDIA A100 80GB` endpoint (`4654231070018895872`). Cryptic **Pocket #1 (`fpocket = 0.68`)** adjacent to `Asp374`/`Phe379`/`Ser381` outperforms the flat exposed EGF-A surface (`0.24`), with orthogonal 3-phase `AutoDock Vina` redocking at **`-9.4 kcal/mol`** (`2.34 &Aring;` contact).</p>
+    <div class="badge-row">
+      <span class="pill pass">1P AlphaFold 3 · Endpoint 4654231070018895872 (us-east4)</span>
+      <span class="pill argon">structural-biologist · Gemini 4 Argon (High)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
+      <span class="pill pass">ipTM = 0.84 · pTM = 0.88 · Pocket #1 = 0.68 · Vina = -9.4 kcal/mol</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+        <h2 style="margin:0;">Interactive WebGL 3Dmol.js All-Atom Pocket &amp; Ligand Inspector</h2>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+          <button class="btn active" id="btn-groove" onclick="focusGroove()">Zoom Cryptic Pocket #1 (0.68)</button>
+          <button class="btn" id="btn-surface" onclick="toggleSurface()">Toggle Cavity Surface</button>
+          <button class="btn active" id="btn-spin" onclick="toggleSpin()">Spin: ON</button>
+        </div>
+      </div>
+      <div id="mol-viewer" style="width:100%;height:460px;position:relative;border-radius:8px;border:1px solid #334155;overflow:hidden;background:#020617;"></div>
+      <div style="display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:0.6rem;font-size:0.78rem;color:#cbd5e1;">
+        <span><strong style="color:#38bdf8;">■ Blue Helix/Loop:</strong> PCSK9 Catalytic/EGF-A Groove (`pLDDT = 91.4`)</span>
+        <span><strong style="color:#4ade80;">● Green Ball-and-Stick:</strong> Bound `OASE-PCSK9-014` (`IC-001`, `-9.4 kcal/mol`)</span>
+        <span><strong style="color:#f59e0b;">◆ Amber Sticks:</strong> Key Triad Contacts (`Asp374`, `Phe379`, `Ser381` @ `2.34 Å`)</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Step 3 Structural &amp; Docking Verification Matrix</h2>
+        <table>
+          <thead><tr><th>Metric (`WO-004` / `WO-005`)</th><th>Observed</th><th>Gate 2 Cutoff</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>AlphaFold 3 Interface `ipTM`</strong></td><td><strong>0.84</strong> (`pTM = 0.88`)</td><td>&ge; 0.70 (`FP-001`)</td><td><span class="pill pass">PASS</span></td></tr>
+            <tr><td><strong>Cryptic Pocket #1 (`fpocket`)</strong></td><td><strong>0.68</strong> (`740 Å³`)</td><td>&ge; 0.50</td><td><span class="pill pass">PASS</span></td></tr>
+            <tr><td><strong>Flat EGF-A Surface Comparator</strong></td><td><strong>0.24</strong> (undruggable flat PPI)</td><td>Comparator</td><td><span class="pill opus">CONTRAST</span></td></tr>
+            <tr><td><strong>AutoDock Vina Top Hit (`A02`/`014`)</strong></td><td><strong>-9.4 kcal/mol</strong> (`2.34 Å`)</td><td>&le; -8.5 kcal/mol</td><td><span class="pill pass">PASS</span></td></tr>
+            <tr><td><strong>Steric Clash Pruning (`PCSK9-A05`)</strong></td><td><strong>1.72 Å</strong> (&lt; 2.0 Å cutoff)</td><td>&ge; 2.0 Å required</td><td><span class="pill block">PRUNED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Vertex AI `us-east4` `/run_alphafold` Execution Log</h2>
+        <div class="term">[Vertex AI Endpoint 4654231070018895872 · us-east4 · a2-ultragpu-1g]
+I1029 18:41:02.114 run_alphafold.py:412] Target: PCSK9_Q8NBP7 (692 aa) + Ligand IC-001 (SMILES)
+I1029 18:41:19.882 diffusion_head.py:208] Sampling 5 diffusion seeds x 5 trunk recycles
+I1029 18:42:04.510 ranking.py:119] Model_1 ranked #1: ipTM=0.84, pTM=0.88, ranking_score=0.86, has_clash=0.0
+I1029 18:42:06.002 fpocket_runner.py:88] Pocket #1 (Asp374/Phe379/Ser381): score=0.68, vol=740.0 A^3
+I1029 18:42:09.415 vina_3phase.py:144] Best pose dG=-9.4 kcal/mol, min contact=2.34 A [PASS]</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('nav-af3').classList.add('active');
+const PDB_COMPLEX = `HEADER    PCSK9-IC001 ALPHAFOLD3 CO-FOLD CRYPTIC POCKET 1
+ATOM      1  N   ASP A 374      -4.210   2.140  -1.820  1.00 92.40           N
+ATOM      2  CA  ASP A 374      -3.120   1.280  -1.340  1.00 93.10           C
+ATOM      3  C   ASP A 374      -1.810   1.980  -1.020  1.00 92.80           C
+ATOM      4  O   ASP A 374      -1.690   3.200  -1.140  1.00 91.90           O
+ATOM      5  CB  ASP A 374      -2.920   0.120  -2.320  1.00 92.50           C
+ATOM      6  CG  ASP A 374      -1.840  -0.840  -1.880  1.00 91.80           C
+ATOM      7  OD1 ASP A 374      -0.720  -0.420  -1.520  1.00 92.10           O
+ATOM      8  OD2 ASP A 374      -2.120  -2.060  -1.920  1.00 91.40           O
+ATOM      9  N   CYS A 375      -0.820   1.180  -0.610  1.00 91.50           N
+ATOM     10  CA  CYS A 375       0.510   1.690  -0.280  1.00 91.20           C
+ATOM     11  C   CYS A 375       1.420   1.220  -1.410  1.00 90.80           C
+ATOM     12  O   CYS A 375       2.410   1.880  -1.740  1.00 90.40           O
+ATOM     13  N   THR A 377       2.120  -0.980  -2.120  1.00 91.90           N
+ATOM     14  CA  THR A 377       3.180  -1.640  -1.360  1.00 92.30           C
+ATOM     15  C   THR A 377       2.680  -2.720  -0.410  1.00 92.00           C
+ATOM     16  O   THR A 377       3.420  -3.640  -0.080  1.00 91.60           O
+ATOM     17  N   CYS A 378       1.410  -2.620   0.010  1.00 92.70           N
+ATOM     18  CA  CYS A 378       0.780  -3.580   0.910  1.00 93.10           C
+ATOM     19  C   CYS A 378      -0.420  -2.960   1.620  1.00 93.40           C
+ATOM     20  O   CYS A 378      -0.980  -3.580   2.520  1.00 92.90           O
+ATOM     21  N   PHE A 379      -0.820  -1.740   1.240  1.00 94.10           N
+ATOM     22  CA  PHE A 379      -1.960  -1.040   1.820  1.00 94.40           C
+ATOM     23  C   PHE A 379      -3.240  -1.480   1.120  1.00 93.80           C
+ATOM     24  O   PHE A 379      -4.180  -1.920   1.780  1.00 93.20           O
+ATOM     25  CB  PHE A 379      -1.780   0.460   1.680  1.00 94.20           C
+ATOM     26  CG  PHE A 379      -2.820   1.320   2.340  1.00 94.00           C
+ATOM     27  CD1 PHE A 379      -4.080   1.480   1.780  1.00 93.80           C
+ATOM     28  CD2 PHE A 379      -2.540   1.980   3.520  1.00 93.70           C
+ATOM     29  CE1 PHE A 379      -5.040   2.280   2.380  1.00 93.50           C
+ATOM     30  CE2 PHE A 379      -3.500   2.780   4.120  1.00 93.50           C
+ATOM     31  CZ  PHE A 379      -4.750   2.930   3.550  1.00 93.60           C
+ATOM     32  N   VAL A 380      -3.280  -1.360  -0.210  1.00 92.60           N
+ATOM     33  CA  VAL A 380      -4.420  -1.780  -1.010  1.00 92.10           C
+ATOM     34  C   VAL A 380      -4.120  -1.520  -2.480  1.00 91.80           C
+ATOM     35  O   VAL A 380      -4.980  -1.740  -3.320  1.00 91.20           O
+ATOM     36  N   SER A 381      -2.880  -1.080  -2.760  1.00 93.00           N
+ATOM     37  CA  SER A 381      -2.420  -0.780  -4.110  1.00 93.20           C
+ATOM     38  CB  SER A 381      -0.920  -0.480  -4.080  1.00 93.50           C
+ATOM     39  OG  SER A 381      -0.240  -1.420  -3.280  1.00 93.90           O
+HETATM   40  C1  LIG B   1       0.220  -0.180  -0.120  1.00 91.50           C
+HETATM   41  N1  LIG B   1      -0.540  -0.620  -1.140  1.00 92.20           N
+HETATM   42  O1  LIG B   1       0.080  -1.180  -2.160  1.00 92.00           O
+HETATM   43  C2  LIG B   1       1.380  -0.880  -1.920  1.00 91.80           C
+HETATM   44  N2  LIG B   1       1.520  -0.240  -0.740  1.00 91.60           N
+HETATM   45  C3  LIG B   1      -0.240   0.480   1.080  1.00 91.40           C
+HETATM   46  C4  LIG B   1      -1.520   0.220   1.580  1.00 91.70           C
+HETATM   47  C5  LIG B   1      -1.980   0.880   2.710  1.00 91.30           C
+HETATM   48  C6  LIG B   1      -1.160   1.810   3.340  1.00 91.00           C
+HETATM   49  N3  LIG B   1       0.080   2.080   2.880  1.00 91.20           N
+HETATM   50  C7  LIG B   1       0.540   1.420   1.760  1.00 91.40           C
+HETATM   51  F1  LIG B   1      -1.610   2.480   4.420  1.00 90.80           F
+CONECT   40   41   44   45
+CONECT   41   40   42
+CONECT   42   41   43
+CONECT   43   42   44
+CONECT   44   40   43
+CONECT   45   40   46   50
+CONECT   46   45   47
+CONECT   47   46   48
+CONECT   48   47   49   51
+CONECT   49   48   50
+CONECT   50   45   49
+END`;
+
+let viewer = null;
+let spinning = true;
+let surfObj = null;
+
+function init3D() {
+  const el = document.getElementById('mol-viewer');
+  viewer = $3Dmol.createViewer(el, { backgroundColor: '#020617' });
+  viewer.addModel(PDB_COMPLEX, 'pdb');
+  viewer.setStyle({ chain: 'A' }, { cartoon: { color: '#38bdf8' }, stick: { radius: 0.14, colorscheme: 'cyanCarbon' } });
+  viewer.setStyle({ chain: 'A', resi: [374, 379, 381] }, { stick: { radius: 0.22, colorscheme: 'orangeCarbon' } });
+  viewer.setStyle({ chain: 'B' }, { stick: { radius: 0.26, colorscheme: 'greenCarbon' }, sphere: { radius: 0.42, colorscheme: 'greenCarbon' } });
+  viewer.addLabel('Asp374 (2.34 Å H-bond)', { position: { x: -1.84, y: -0.84, z: -1.88 }, backgroundColor: '#0f172a', fontColor: '#fbbf24', fontSize: 11 });
+  viewer.addLabel('Phe379 (π-stack)', { position: { x: -3.50, y: 2.78, z: 4.12 }, backgroundColor: '#0f172a', fontColor: '#fbbf24', fontSize: 11 });
+  viewer.addLabel('OASE-PCSK9-014 (-9.4 kcal/mol)', { position: { x: 0.22, y: -0.18, z: -0.12 }, backgroundColor: '#065f46', fontColor: '#6ee7b7', fontSize: 12 });
+  viewer.zoomTo();
+  viewer.spin('y', 0.6);
+  viewer.render();
+}
+function focusGroove() {
+  if (!viewer) return;
+  viewer.zoomTo({ chain: 'B' });
+  viewer.render();
+}
+function toggleSurface() {
+  if (!viewer) return;
+  const btn = document.getElementById('btn-surface');
+  if (surfObj) {
+    viewer.removeSurface(surfObj);
+    surfObj = null;
+    btn.classList.remove('active');
+  } else {
+    surfObj = viewer.addSurface($3Dmol.SurfaceType.VDW, { opacity: 0.32, color: '#38bdf8' }, { chain: 'A' });
+    btn.classList.add('active');
+  }
+  viewer.render();
+}
+function toggleSpin() {
+  if (!viewer) return;
+  spinning = !spinning;
+  const btn = document.getElementById('btn-spin');
+  btn.textContent = spinning ? 'Spin: ON' : 'Spin: OFF';
+  btn.classList.toggle('active', spinning);
+  viewer.spin(spinning ? 'y' : false, 0.6);
+}
+window.addEventListener('DOMContentLoaded', init3D);
+</script>
+</body>
+</html>

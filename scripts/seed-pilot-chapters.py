@@ -59,6 +59,8 @@ ALL_11_GROVE_AGENTS = [
     ("hypex-supervisor", "hypex-supervisor", "Co-Scientist Pairwise Elo Tournament Supervisor"),
 ]
 
+CLAUDE_AGENT_SLUGS = {"medicinal-chemist", "scientific-reviewer"}
+
 CHAPTER_SPECS = [
     {
         "chapter": "ch0",
@@ -752,7 +754,7 @@ def clone_templates_and_skills(
                     fhex = hashlib.sha256(data).hexdigest()
                     (dst_dir / fhex).write_bytes(data)
                     (dst_dir / fname).write_bytes(data)
-                    blobs_dir = ws_root / f"{new_rel}.blobs"
+                    blobs_dir = storage_root / f"{new_rel}.blobs"
                     blobs_dir.mkdir(parents=True, exist_ok=True)
                     (blobs_dir / fhex).write_bytes(data)
                     files_manifest.append(
@@ -1037,14 +1039,16 @@ def bind_personas_and_seed_project_db(
     # Ensure all 11 Grove specialist agents exist in the project roster
     agent_ids: dict[str, str] = dict(live_agent_ids)
     for ag_slug, ag_tpl, ag_desc in ALL_11_GROVE_AGENTS:
+        exp_harness = "claude" if ag_slug in CLAUDE_AGENT_SLUGS else "antigravity"
+        exp_image = "scion-claude:latest" if ag_slug in CLAUDE_AGENT_SLUGS else "scion-antigravity:latest"
         cur.execute("SELECT id FROM agents WHERE slug = ? AND project_id = ?", (ag_slug, project_id))
         arow = cur.fetchone()
         if arow:
             aid = arow["id"]
             agent_ids[ag_slug] = aid
             cur.execute(
-                "UPDATE agents SET owner_id = ?, created_by = ? WHERE id = ?",
-                (sarah_id, sarah_id, aid),
+                "UPDATE agents SET owner_id = ?, created_by = ?, harness_config = ?, image = ? WHERE id = ?",
+                (sarah_id, sarah_id, exp_harness, exp_image, aid),
             )
         else:
             aid = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"ag-{project_id}-{ag_slug}"))
@@ -1057,7 +1061,7 @@ def bind_personas_and_seed_project_db(
                     current_model_calls, image, runtime, task_summary, message,
                     harness_config, created, updated, last_seen, project_id
                 ) VALUES (?, ?, ?, ?, 'stopped', ?, ?, 'project', 'stopped', '', 0, 6, 12,
-                          'scion-antigravity:latest', 'docker', ?, 'Ready at checkpoint ' || ?, 'antigravity', ?, ?, ?, ?)
+                          ?, 'docker', ?, 'Ready at checkpoint ' || ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     aid,
@@ -1066,8 +1070,10 @@ def bind_personas_and_seed_project_db(
                     ag_tpl,
                     sarah_id,
                     sarah_id,
+                    exp_image,
                     f"{ag_desc} ({spec['chapter']})",
                     spec["chapter"],
+                    exp_harness,
                     now_sql,
                     now_sql,
                     now_sql,
@@ -1255,6 +1261,7 @@ def main() -> int:
         help="Path to oase-workshop repository containing checkpoints/ and scripts/checkpoint.sh",
     )
     parser.add_argument("--reseed-messages", action="store_true", help="Reset seed messages even if messages exist")
+    parser.add_argument("--recreate-agents", action="store_true", help="Recreate running specialist agent containers")
     parser.add_argument("--skip-live-agents", action="store_true", help="Do not start Docker agent containers")
     parser.add_argument("--stop-legacy-containers", action="store_true", help="Stop idle legacy single-project containers")
     parser.add_argument("--dry-run", action="store_true", help="Validate inputs and print planned 7-chapter actions")
@@ -1406,7 +1413,13 @@ def main() -> int:
 
             for ag_slug in spec["live_agents"]:
                 tpl = dict((s, t) for s, t, _ in ALL_11_GROVE_AGENTS)[ag_slug]
+                exp_harness = "claude" if ag_slug in CLAUDE_AGENT_SLUGS else "antigravity"
                 existing_ag = existing_agents.get(ag_slug)
+                cur_harness = (existing_ag or {}).get("harnessConfig") or (existing_ag or {}).get("harness_config") or ""
+                if existing_ag and existing_ag.get("id") and (args.recreate_agents or (cur_harness and cur_harness != exp_harness)):
+                    api_call(args.hub_api, "DELETE", f"/api/v1/agents/{existing_ag['id']}", token)
+                    print(f"  [Agent] Deleted stale {ag_slug} ({existing_ag['id']}, harness={cur_harness} -> {exp_harness})")
+                    existing_ag = None
                 if existing_ag and existing_ag.get("phase") == "running":
                     live_agent_ids[ag_slug] = existing_ag["id"]
                     print(f"  [Agent] {ag_slug} already running ({existing_ag['id']})")

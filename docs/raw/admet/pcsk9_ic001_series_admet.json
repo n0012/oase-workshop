@@ -1,0 +1,11 @@
+{
+  "lead_id": "OASE-PCSK9-014",
+  "parent_clogp": 4.8,
+  "lead_clogp": 3.1,
+  "lead_lipe": 5.2,
+  "mw": 462.5,
+  "tpsa": 88.4,
+  "structural_alerts": 0,
+  "retro_steps": 4,
+  "retro_plausibility": 0.87
+}

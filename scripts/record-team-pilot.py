@@ -764,7 +764,8 @@ def build_pip_overlay_clip(
 
     if is_agent:
         hdr_txt = escape_drawtext(f"COMMS // {vmeta.get('callsign', 'AI')} · AI WINGMAN")
-        line3 = escape_drawtext(f"Gemini 3.8 TTS ({voice_id}) | [{vmeta.get('badge_code', 'AI')}]")
+        model_lbl = vmeta.get("model_label", "Gemini 4 Argon")
+        line3 = escape_drawtext(f"{model_lbl} · TTS ({voice_id}) | [{vmeta.get('badge_code', 'AI')}]")
         fc = (
             f"color=c=0x050b1a:s=288x288:r={FPS}:d={slot_dur_s:.4f},"
             f"drawgrid=w=36:h=36:t=1:c=0x1e293b@0.55,"

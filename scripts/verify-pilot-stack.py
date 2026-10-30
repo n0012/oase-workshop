@@ -97,7 +97,7 @@ def main() -> int:
                 args.overview_screenshot_out.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.overview_screenshot_out), quality=90, type="jpeg")
             page.evaluate("() => window.oaseSelectCampaign('pcsk9-live-argolis')")
-            page.wait_for_selector("#oase-staging-banner", state="visible", timeout=10000)
+            page.wait_for_selector("#cockpit-full-walkthrough-card, #oase-staging-banner", state="visible", timeout=10000)
             time.sleep(0.4)
             if args.staging_screenshot_out:
                 args.staging_screenshot_out.parent.mkdir(parents=True, exist_ok=True)
@@ -108,6 +108,17 @@ def main() -> int:
             )
             page.evaluate("() => window.oaseSelectCampaign('pcsk9-pilot-v1')")
             time.sleep(0.8)
+
+            viewer_statuses = {}
+            for vw in (
+                "coscientist-live-viewer.html",
+                "alphagenome-live-viewer.html",
+                "af3-live-viewer.html",
+                "dmta-live-viewer.html",
+                "flight-recorder-viewer.html",
+            ):
+                rv = ctx.request.get(f"{story_url}/viewers/{vw}")
+                viewer_statuses[vw] = rv.status
 
             range_statuses = {}
             for vname in ("chapter-01.mp4", "chapter-07.mp4", "full-pilot-walkthrough.mp4"):
@@ -181,7 +192,8 @@ def main() -> int:
                 "campaigns_ids": campaigns_ids,
                 "menu_items_count": menu_items_count,
                 "staging_switch_url": staging_url,
-                "staging_state_status": staging_cfg.get("state", {}).get("status"),
+                "live_v2_state_ok": staging_cfg.get("state", {}).get("ok"),
+                "viewer_statuses": viewer_statuses,
                 "whatif_char_length": whatif_len,
                 "state_ok": cfg.get("state", {}).get("ok"),
                 "admin_rows_count": cfg.get("state", {}).get("admin_rows_count"),
@@ -203,7 +215,8 @@ def main() -> int:
             assert "pcsk9-pilot-v1" in campaigns_ids and "pcsk9-live-argolis" in campaigns_ids
             assert menu_items_count >= 2
             assert "campaign=pcsk9-live-argolis" in staging_url
-            assert staging_cfg.get("state", {}).get("status") == "staging"
+            assert staging_cfg.get("state", {}).get("ok") is True
+            assert all(s == 200 for s in viewer_statuses.values())
             assert whatif_len < 780, f"Expected simplified whatif_hero (<780 chars), got {whatif_len}"
             for pt in ("Multiplayer Science", "Model Optionality", "Verified Stage Gates"):
                 assert pt.lower() in whatif_text.lower(), f"Missing '{pt}' in #whatif-hero"

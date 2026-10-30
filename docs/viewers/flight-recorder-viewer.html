@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Steps 6–7 — Live Multi-Model Flight Recorder &amp; Red-Team Governance Ledger</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
+  .top-nav { background: #020617; border-bottom: 2px solid #2563eb; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .top-nav .title { font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.6rem; }
+  .top-nav .links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .top-nav a { color: #93c5fd; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: #1e293b; border: 1px solid #334155; padding: 0.32rem 0.7rem; border-radius: 6px; }
+  .top-nav a:hover, .top-nav a.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .wrap { max-width: 1320px; margin: 1.25rem auto; padding: 0 1.5rem 2.5rem; }
+  .hdr-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 10px; padding: 1.15rem 1.4rem; margin-bottom: 1.15rem; }
+  .hdr-card h1 { margin: 0 0 0.35rem 0; font-size: 1.3rem; color: #ffffff; }
+  .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.88rem; line-height: 1.45; }
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .pill { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; }
+  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
+  .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
+  .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+  .pill.block { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45); }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.15rem; align-items: start; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.1rem; }
+  .card h2 { margin: 0 0 0.65rem 0; font-size: 1.02rem; color: #38bdf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #334155; vertical-align: top; }
+  th { background: #0f172a; color: #94a3b8; font-weight: 700; }
+  .btn { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 0.38rem 0.78rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+  .btn:hover, .btn.active { background: #2563eb; color: #ffffff; border-color: #60a5fa; }
+  .term { background: #020617; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem 1rem; font-family: ui-monospace, monospace; font-size: 0.77rem; line-height: 1.48; overflow-x: auto; white-space: pre-wrap; }
+  @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="title">
+    <span>🔬 GCP-OASE Multi-Model Live Telemetry Inspector</span>
+    <span class="pill pass">pcsk9-oral-live-v2 · VERIFIED</span>
+  </div>
+  <div class="links">
+    <a href="../chapters.html?campaign=pcsk9-live-argolis">← Back to Story Arc Cockpit</a>
+    <a href="coscientist-live-viewer.html" id="nav-cosci">Step 1: Hypex Co-Scientist</a>
+    <a href="alphagenome-live-viewer.html" id="nav-ag">Step 2: 1P AlphaGenome (1 Mb)</a>
+    <a href="af3-live-viewer.html" id="nav-af3">Step 3: 3D AlphaFold 3 (.cif)</a>
+    <a href="dmta-live-viewer.html" id="nav-dmta">Step 4: Opus 5.5 DMTA &amp; hERG</a>
+    <a href="flight-recorder-viewer.html" id="nav-fr">Step 6–7: Flight Recorder &amp; Audit</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hdr-card">
+    <h1>Steps 6–7 — Multi-Model Flight Recorder, `78/78` `oase doctor` &amp; Adversarial Tamper Ledger</h1>
+    <p>Complete reproducibility &amp; governance record from `pcsk9-oral-live-v2` (`dfe725e0-2c33-4569-84b2-1af9bb7b96fa`): every `Gemini 4 Argon (High/Med)`, `Claude Opus 5.5`, and `Gemini 3.8 Flash` audit turn, all 3 mechanically blocked Red-Team Tamper Drills (`DRILL-01..03`), and the co-signed human override (`DEC-OVERRIDE-001`).</p>
+    <div class="badge-row">
+      <span class="pill pass">oase doctor: 78 / 78 PASS (0 Failures)</span>
+      <span class="pill block">3 / 3 Adversarial Tamper Drills BLOCKED</span>
+      <span class="pill pass">1 Co-Signed Override (DEC-OVERRIDE-001)</span>
+      <span class="pill argon">Gemini 4 Argon (High/Med)</span>
+      <span class="pill opus">Claude Opus 5.5 (Vertex)</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Step 6 Red-Team Tamper Drills &amp; Audited Human Override</h2>
+      <table>
+        <thead><tr><th>Drill / Event ID</th><th>Injected Failure Mode</th><th>Validator Exit Code &amp; Rule</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>DRILL-01</code></td>
+            <td>Fabricated Vina score (<code>-11.8 kcal/mol</code>) in prose without Phase-1/2 sidecar receipt</td>
+            <td><code>MISSING_PROVENANCE_SIDECAR</code> (exit <code>1</code>)</td>
+            <td><span class="pill block">BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td><code>DRILL-02</code></td>
+            <td>Silent edit to <code>.oase/thresholds.yaml</code> to relax hERG cutoff for <code>PCSK9-A02</code></td>
+            <td><code>IMMUTABLE_THRESHOLD_TAMPER</code> (exit <code>1</code>)</td>
+            <td><span class="pill block">BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td><code>DRILL-03</code></td>
+            <td>Truncated <code>executive/CANDIDATE-SUMMARY.md</code> omitting mandatory risk table</td>
+            <td><code>REPORT_HEADINGS_MISSING</code> (exit <code>1</code>)</td>
+            <td><span class="pill block">BLOCKED</span></td>
+          </tr>
+          <tr style="background:rgba(16,185,129,0.12);">
+            <td><code>DEC-OVERRIDE-001</code></td>
+            <td>Bounded exploratory override for backup macrocycle <code>PCSK9-B07</code> (<code>IC-002</code>)</td>
+            <td>Co-signed by <code>Dr. Raj Patel</code> &amp; <code>Dr. Sarah Chen</code> via <code>oase workorder override</code></td>
+            <td><span class="pill pass">LOGGED IN EVENTS.NDJSON</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Live Multi-Model Grove Roster (`pcsk9-oral-live-v2`)</h2>
+      <table>
+        <thead><tr><th>Agent Container</th><th>Harness Image</th><th>Active Model</th><th>Doctor</th></tr></thead>
+        <tbody>
+          <tr><td><code>science-program-lead</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>scientific-reviewer</code></td><td><code>scion-claude:latest</code></td><td><span class="pill opus">Claude Opus 5.5</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>medicinal-chemist</code></td><td><code>scion-claude:latest</code></td><td><span class="pill opus">Claude Opus 5.5</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>structural-biologist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (High)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>computational-biologist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>admet-dmpk-scientist</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill argon">Gemini 4 Argon (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>finding-validator</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill flash">Gemini 3.8 Flash (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
+          <tr><td><code>controller</code></td><td><code>scion-antigravity:latest</code></td><td><span class="pill flash">Gemini 3.8 Flash (Med)</span></td><td><span class="pill pass">78/78</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Immutable `.oase/events.ndjson` &amp; Multi-Model Flight Recorder Excerpt</h2>
+    <div class="term">{"event":"campaign_initialized","campaign":"pcsk9-oral","target":"PCSK9 (ENSG00000169174 / Q8NBP7)","env_version":"sha256:61020936449a"}
+{"event":"workorder_scientifically_accepted","work_order_id":"WO-001","primary_model":"gemini-4-argon-high","reviewer_model":"claude-opus-5-5","top_elo":1642.5}
+{"event":"stage_gate_signed","gate":"GATE-01","workorders":["WO-002","WO-003"],"alphagenome_endpoint":"2271936108785795072","rs2479409_quantile":0.984}
+{"event":"stage_gate_signed","gate":"GATE-02","workorders":["WO-004","WO-005"],"af3_endpoint":"4654231070018895872","iptm":0.84,"pocket1_druggability":0.68,"vina_dg":-9.4}
+{"event":"stage_gate_signed","gate":"GATE-03-WETLAB-HANDOFF","workorders":["WO-006"],"medchem_model":"claude-opus-5-5","disqualified":"PCSK9-A02 (hERG L-002)","nominated_lead":"OASE-PCSK9-014"}
+{"event":"stage_gate_signed","gate":"GATE-04-CANDIDATE-NOMINATION","workorders":["WO-007","WO-008"],"human_oral_f_pct":52.0,"half_life_h":14.8,"qd_dose_mg":40.0}
+{"event":"governance_tamper_drills_verified","drills_blocked":["DRILL-01:MISSING_PROVENANCE_SIDECAR","DRILL-02:IMMUTABLE_THRESHOLD_TAMPER","DRILL-03:REPORT_HEADINGS_MISSING"]}
+{"event":"governance_override_cosigned","decision_id":"DEC-OVERRIDE-001","compound":"PCSK9-B07","cosigners":["oase-raj@losiern-1.altostrat.com","oase-sarah@losiern-1.altostrat.com"],"condition":"14-day manual patch-clamp hERG gate"}</div>
+  </div>
+</div>
+<script>document.getElementById('nav-fr').classList.add('active');</script>
+</body>
+</html>

@@ -2163,6 +2163,20 @@ def main() -> int:
 """
         (site_dir / "plan.html").write_text(plan_html, encoding="utf-8")
 
+    # Build the 5 interactive live viewers into _site/viewers/
+    try:
+        import importlib.util
+
+        bv_path = repo_root / "scripts" / "build-live-viewers.py"
+        if bv_path.is_file():
+            spec = importlib.util.spec_from_file_location("build_live_viewers", bv_path)
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                mod.build_viewers(site_dir)
+    except Exception as exc:
+        print(f"[warn] Could not build live viewers: {exc}", file=sys.stderr)
+
     subpages = {}
     for html_file in sorted(site_dir.glob("*.html")):
         if html_file.name == "chapters.html":
