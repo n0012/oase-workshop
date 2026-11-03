@@ -109,10 +109,17 @@ oase-workshop/
 ├── live-results/
 │   └── pcsk9-oral/                           # Real un-mocked Phase-1/Phase-2 outputs (gnomAD, OpenTargets, GTEx, HPA, fpocket, Vina, ADMET)
 ├── prompts/                                  # Complete prompt registry (Gemini 3.8 Live Avatar, 11 Grove agents, 28 turns, visuals)
+├── .agent/
+│   └── skills/
+│       └── scion-oase-bridge/SKILL.md        # Antigravity (agy) / Gemini CLI Scion Hub MCP & CLI bridge skill
 ├── services/
-│   ├── state-controller/                     # FastAPI <2s Git + SQLite snapshot reset daemon (:8780)
+│   ├── state-controller/                     # FastAPI <2s Git + SQLite snapshot reset & /api/scion/* bridge (:8780)
 │   └── story-arc/                            # Cloud Run IAP Presenter Cockpit, HTTP 206 video streamer & role switcher
 ├── scripts/
+│   ├── scion_mcp_server.py                   # Host-side Scion / OASE MCP server (stdio + --cli) for Antigravity (agy)
+│   ├── setup-sarah-cloudshell.sh             # 1-command Google Cloud Shell setup for Dr. Sarah Chen (agy + 41 skills)
+│   ├── record-cloudshell-agy-video.py        # 1080p Cloud Shell + Antigravity (agy) <-> Scion walkthrough video builder
+│   ├── populate-scion-agent-graph.py         # Populates 17-node 4-tier Scion agent graph DAG & Cloud Logging messages
 │   ├── deploy-pilot-stack.sh                 # Turnkey 4-var .env deployer (8-checkpoint Hub + Cockpit + IAP)
 │   ├── verify-pilot-stack.py                 # Playwright E2E verifier for HTTP 206 streaming, 8 checkpoints & <2s reset
 │   ├── render-live-avatars.py                # Native gemini-3.8-live (BidiGenerateContent) + gemini-3.8-flash-tts synthesizer
@@ -161,3 +168,25 @@ cp overlays/customer-overlay.env.example overlays/acme-bio.local.env
 ```
 
 Rendered bundles are written to `overlays/customers/<slug>/` (gitignored) and automatically checked by `./scripts/preflight.sh --check-hygiene`.
+
+---
+
+## Google Cloud Shell + Antigravity (`AGY`) ↔ Scion Hub Bridge
+
+To drive the 17-agent Scion Grove directly from **Google Cloud Shell** (or any workstation) using **Antigravity (`agy`)** or **Gemini CLI**:
+
+```bash
+# 1. Link the scion-oase-bridge skill and configure your GCP project
+./scripts/setup-sarah-cloudshell.sh
+
+# 2. Initiate / bootstrap a campaign and verify the 17-agent 4-tier hierarchy
+python3 scripts/scion_mcp_server.py --cli bootstrap_campaign --project io-cold-to-hot
+python3 scripts/scion_mcp_server.py --cli list_agents --project io-cold-to-hot
+
+# 3. Analyze a completed program run & dispatch a live directive to @science-program-lead
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path reports/wet-lab-wall-readiness.md
+python3 scripts/scion_mcp_server.py --cli send_message \
+  --project io-cold-to-hot \
+  --agent science-program-lead \
+  --message "Audit why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+```
