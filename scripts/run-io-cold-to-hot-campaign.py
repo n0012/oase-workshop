@@ -563,6 +563,10 @@ def main() -> int:
         encoding="utf-8",
     )
 
+    graph_script = Path(__file__).resolve().parent / "populate-scion-agent-graph.py"
+    if graph_script.exists():
+        subprocess.run(["python3", str(graph_script)], check=False)
+
     snap_dir = hub_dir / "snapshots" / CAMPAIGN_ID
     snap_dir.mkdir(parents=True, exist_ok=True)
     golden_db = snap_dir / "golden-hub.db"

@@ -683,6 +683,10 @@ def main() -> int:
         star_uid=sarah_id,
     )
 
+    graph_script = Path(__file__).resolve().parent / "populate-scion-agent-graph.py"
+    if graph_script.exists():
+        subprocess.run(["python3", str(graph_script)], check=False)
+
     for snap_sub in (CAMPAIGN_ID, "golden-pilot"):
         snap_dir = hub_dir / "snapshots" / snap_sub
         snap_dir.mkdir(parents=True, exist_ok=True)

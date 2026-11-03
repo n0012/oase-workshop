@@ -1926,6 +1926,15 @@ selectStation('s3');
     }
     const isStaging = activeCamp && activeCamp.status !== 'ready';
     const liveGroveUrl = (activeCamp && activeCamp.live_grove_url) || 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects';
+    const scionBaseUrl = (cfg && cfg.scion_hub_url) || 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app';
+    const wsDomain = (cfg && cfg.workshop_domain) || 'losiern-1.altostrat.com';
+    const st = (cfg && cfg.state) || {};
+    const ch0 = (st.chapters || {}).ch0;
+    const projId = (ch0 && ch0.project_id) || ((activeCamp && activeCamp.id === 'io-cold-to-hot')
+      ? 'ab3d65d5-f32c-463e-be48-d535034de34f'
+      : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
+    const agentGraphUrl = `${scionBaseUrl}/agents/graph?project=${projId}&authuser=oase-sarah@${wsDomain}`;
+    const projectDashUrl = `${scionBaseUrl}/projects/${projId}?authuser=oase-sarah@${wsDomain}`;
     const gcpEndpointsUrl = 'https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop';
     const gcpVmUrl = 'https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop';
     const gcpLogsUrl = 'https://console.cloud.google.com/logs/query?project=losiern-oase-workshop';
@@ -1937,6 +1946,8 @@ selectStation('s3');
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
           <a class="cockpit-btn primary" href="${liveGroveUrl}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Grove ↗</a>
+          <a id="oase-topbar-graph-link" class="cockpit-btn" href="${agentGraphUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🕸 Live Scion Agent Graph ↗</a>
+          <a id="oase-topbar-project-link" class="cockpit-btn" href="${projectDashUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📋 Scion Project &amp; Messages ↗</a>
           <a class="cockpit-btn" href="${gcpEndpointsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🧬 GCP Vertex AI 1P GPUs ↗</a>
           <a class="cockpit-btn" href="${gcpVmUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🖥 GCP Compute VM ↗</a>
           <a class="cockpit-btn" href="${gcpLogsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📜 GCP Logs ↗</a>
@@ -1945,7 +1956,6 @@ selectStation('s3');
       return;
     }
 
-    const st = cfg.state || {};
     const chCount = Object.keys(st.chapters || {}).length;
     const statusText = isStaging
       ? `⚡ Staging Pilot (${activeCamp.nav_slug || activeCamp.id}) · Provisioned & Ready for Live Run`
@@ -1953,7 +1963,6 @@ selectStation('s3');
           ? `● Live Grove Connected (${activeCamp.nav_slug || activeCamp.id}) · ${chCount} Chapters Ready · Admin Leaks: ${st.admin_rows_count ?? 0}`
           : `● Static Replay Mode (State Controller unreachable)`);
 
-    const ch0 = (st.chapters || {}).ch0;
     const ch0Url = (cfg.scion_hub_url && ch0 && cfg.workshop_domain)
       ? `${cfg.scion_hub_url}/chat/${ch0.slug}/${ch0.general_topic_id}?authuser=oase-sarah@${cfg.workshop_domain}`
       : liveGroveUrl;
@@ -1965,6 +1974,8 @@ selectStation('s3');
       </div>
       <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
         ${(!isStaging && ch0Url !== '#') ? `<a class="cockpit-btn primary" href="${ch0Url}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Webchat ↗</a>` : ''}
+        <a id="oase-topbar-graph-link" class="cockpit-btn" href="${agentGraphUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🕸 Live Scion Agent Graph ↗</a>
+        <a id="oase-topbar-project-link" class="cockpit-btn" href="${projectDashUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📋 Scion Project &amp; Messages ↗</a>
         <a class="cockpit-btn" href="${gcpEndpointsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🧬 GCP Vertex AI GPUs ↗</a>
         <a class="cockpit-btn" href="${gcpVmUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🖥 GCP Compute VM ↗</a>
         <a class="cockpit-btn" href="${gcpLogsUrl}" target="_blank" rel="noopener" style="text-decoration:none;">📜 GCP Logs ↗</a>
