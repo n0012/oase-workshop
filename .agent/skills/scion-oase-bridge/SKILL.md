@@ -17,49 +17,67 @@ This skill connects **Antigravity (`agy`)**, **Gemini CLI**, or **Jetski** to th
 
 ---
 
-## 2. How to Call Scion Tools (MCP or CLI)
+## 2. One-Command Setup in Google Cloud Shell or Local Terminal
 
-If the `scion` MCP server (`scripts/scion_mcp_server.py`) is registered in your MCP configuration, call its tools directly (`hub_status`, `list_projects`, `list_agents`, `dav_list`, `dav_read`, `get_messages`, `send_message`).
+Run `bash scripts/setup-sarah-cloudshell.sh` from the repository root (`oase-workshop`) to:
+1. Set `GCP_PROJECT_ID=losiern-oase-workshop`, `OASE_GCP_ZONE=us-central1-c`, and `OASE_GCE_INSTANCE=scion-hub-oase`.
+2. Symlink `scion-oase-bridge` into `~/.gemini/skills/`, `~/.gemini/antigravity/skills/`, and `~/.claude/skills/`.
+3. Register the `scion` stdio MCP server (`scripts/scion_mcp_server.py`) in `~/.gemini/antigravity/mcp_config.json` and `~/.gemini/config/mcp_config.json`.
 
-You can also invoke any tool directly via the `--cli` bridge from `/usr/local/google/home/losiern/dev/github/n0012/oase-workshop`:
+---
+
+## 3. How to Call Scion Tools (MCP or CLI)
+
+If the `scion` MCP server (`scripts/scion_mcp_server.py`) is registered in your MCP configuration, call its tools directly (`hub_status`, `bootstrap_campaign`, `list_projects`, `list_agents`, `dav_list`, `dav_read`, `get_messages`, `send_message`).
+
+You can also invoke any tool directly via the `--cli` bridge from the `oase-workshop` repository root:
 
 ```bash
 # 1. Verify Hub connectivity, persona (Dr. Sarah Chen), and all 3 projects
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli hub_status
+python3 scripts/scion_mcp_server.py --cli hub_status
 
-# 2. List the 17-agent 4-tier hierarchy for Cold-to-Hot IO (or pcsk9-oral-live-v2)
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli list_agents --project io-cold-to-hot
+# 2. Initiate / bootstrap a Science Agent campaign & verify oase doctor (78/78 checks)
+python3 scripts/scion_mcp_server.py --cli bootstrap_campaign --project io-cold-to-hot
 
-# 3. List workspace artifacts or read a specific report / Work Order / decision log
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli dav_list --project io-cold-to-hot --path reports
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path decision-log.md
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path reports/wet-lab-wall-readiness.md
+# 3. List the 17-agent 4-tier hierarchy for Cold-to-Hot IO (or pcsk9-oral-live-v2)
+python3 scripts/scion_mcp_server.py --cli list_agents --project io-cold-to-hot
 
-# 4. Dispatch a live instruction to @science-program-lead (logs live into Scion Web UI + Cloud Logging and returns the grounded reply)
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli send_message \
+# 4. List workspace artifacts or read a specific report / Work Order / decision log
+python3 scripts/scion_mcp_server.py --cli dav_list --project io-cold-to-hot --path reports
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path decision-log.md
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path reports/wet-lab-wall-readiness.md
+
+# 5. Dispatch a live instruction to @science-program-lead (returns grounded reply in CLI AND logs live into Scion Web UI + Cloud Logging)
+python3 scripts/scion_mcp_server.py --cli send_message \
   --project io-cold-to-hot \
   --agent science-program-lead \
   --message "Summarize why extracellular ENPP1 (IC-101) beat intracellular Trex1 (IC-102) in WO-001 and how Series B (oase_enpp1_019) resolved the DEC-008 Wet-Lab Wall."
 
-# 5. Read the live Project Messages feed from Scion Hub
-python3 /usr/local/google/home/losiern/dev/github/n0012/oase-workshop/scripts/scion_mcp_server.py --cli get_messages --project io-cold-to-hot --limit 10
+# 6. Read the live Project Messages feed from Scion Hub
+python3 scripts/scion_mcp_server.py --cli get_messages --project io-cold-to-hot --limit 10
 ```
 
 > **Tip for Sub-100ms Latency During Live Demos:**
 > Start a background IAP port-forward on port `18780` before the session so every MCP/CLI call completes in `<100ms`:
 > ```bash
-> CLOUDSDK_CORE_ACCOUNT=claude-vertex@losiern-vibe.iam.gserviceaccount.com \
->   gcloud compute start-iap-tunnel scion-hub-oase 8780 \
+> gcloud compute start-iap-tunnel scion-hub-oase 8780 \
 >   --local-host-port=127.0.0.1:18780 \
 >   --project=losiern-oase-workshop --zone=us-central1-c &
 > ```
 
 ---
 
-## 3. Canonical 2-Prompt Live Demo Script (Antigravity × Scion Web UI)
+## 4. Canonical 2-Prompt Live Demo Script (Feedback in `agy` CLI → Scion Web UI Reacts)
 
-1. **Prompt 1 — Connect & Inspect the 17-Agent Grove:**
-   > *"Use the `scion-oase-bridge` skill to connect to our Argolis Scion Hub, verify all 3 OASE projects, and show the 4-tier 17-agent hierarchy and stage-gate status for `io-cold-to-hot`."*
-2. **Prompt 2 — Live Directive to `@science-program-lead` & Wet-Lab Wall Audit:**
-   > *"Send a live message to `@science-program-lead` in `io-cold-to-hot` asking why `oase_enpp1_009` hit the `DEC-008` Wet-Lab Wall and how Series B (`oase_enpp1_019`) recovered oral absorption, then show me the live Scion project link."*
-   - After running Prompt 2, open `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f` (Project Messages & Agent Graph) to show the live message and reply logged inside Scion.
+1. **Prompt 1 — Initiate Campaign & See Kickoff Feedback in `agy` CLI (`cs2_t1` → `cs2_t2`):**
+   ```bash
+   agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead's live kickoff feedback."
+   ```
+   - **In `agy` CLI:** Displays `oase doctor` (`78/78 PASS`), the 17-agent 4-tier roster, and `@science-program-lead`'s `DEC-001` / `WO-001` kickoff confirmation right inside the terminal.
+   - **In Scion Web UI:** Open `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f` (`Graph View` + `Show users` ON) to watch the 17-node 4-tier DAG react live.
+2. **Prompt 2 — Analyze Completed Program Run & Audit the `DEC-008` Wet-Lab Wall (`cs2_t3` → `cs2_t4`):**
+   ```bash
+   agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+   ```
+   - **In `agy` CLI:** Displays `@science-program-lead`'s grounded reply and the side-by-side `Series A (oase_enpp1_009)` vs `Series B (oase_enpp1_019)` Wet-Lab Wall table directly in the terminal.
+   - **In Scion Web UI:** Scroll to **Messages** on `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f` to see both `[Cloud Shell · Antigravity (agy) CLI Feedback]` and `[Grounded Science Agent Reply -> agy CLI]` logged live at the top of the project message stream.

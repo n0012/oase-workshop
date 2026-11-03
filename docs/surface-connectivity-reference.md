@@ -1,6 +1,18 @@
 # Surface-to-OASE Connectivity Reference (`GA` & `AGY` ↔ `OASE`)
 
-> **Purpose:** Architectural and operational reference for connecting **Gemini Agent (`GA`)**, **Antigravity (`AGY`)**, and **Jetski** to the **Open Agentic Science Engine (`OASE v0.3.0`)** on **Scion Hub**, initiating projects and campaigns as the **Project Owner**, assigning R&D team members, staging 7-part seed packages, and collaborating live across surfaces.
+> **Purpose:** Architectural and operational reference for connecting **Gemini Agent (`GA`)**, **Antigravity (`AGY` / `agy` CLI)**, and **Jetski** to the **Open Agentic Science Engine (`OASE v0.3.0` / Science Agent)** on **Scion Hub**, initiating projects and campaigns as the **Project Owner**, assigning R&D team members, staging 7-part seed packages, and collaborating live across surfaces.
+>
+> **Quickstart for Google Cloud Shell & `agy` CLI in This Workshop:**
+> ```bash
+> # 1. One-command setup (sets GCP project, symlinks scion-oase-bridge skill, registers scion MCP server)
+> bash scripts/setup-sarah-cloudshell.sh
+>
+> # 2. Initiate a Science Agent campaign & see live kickoff feedback in agy CLI -> Scion Graph reacts
+> agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead's live kickoff feedback."
+>
+> # 3. Analyze a completed program run & send live feedback in agy CLI -> Scion Messages reacts
+> agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+> ```
 
 ---
 

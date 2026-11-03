@@ -70,6 +70,11 @@ _NUM_WORDS = {
 }
 
 _BIOPHARMA_PHONETIC_RULES: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"\bOASE[-_]ENPP1[-_]0*19\b", re.IGNORECASE), "Science Agent E-N-P-P-one nineteen"),
+    (re.compile(r"\bOASE[-_]ENPP1[-_]0*9\b", re.IGNORECASE), "Science Agent E-N-P-P-one zero-nine"),
+    (re.compile(r"\bOASE[-_]PCSK9[-_]0*14\b", re.IGNORECASE), "Science Agent P-C-S-K-nine fourteen"),
+    (re.compile(r"\bGCP[-_]OASE\b", re.IGNORECASE), "Open Agentic Science Engine"),
+    (re.compile(r"\bOASE\b", re.IGNORECASE), "Science Agent"),
     (re.compile(r"\bADMET\b"), "add-met"),
     (re.compile(r"\bDMPK\b"), "D-M-P-K"),
     (re.compile(r"\bhERG\b", re.IGNORECASE), "herg"),

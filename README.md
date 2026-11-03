@@ -171,22 +171,60 @@ Rendered bundles are written to `overlays/customers/<slug>/` (gitignored) and au
 
 ---
 
-## Google Cloud Shell + Antigravity (`AGY`) ↔ Scion Hub Bridge
+## Google Cloud Shell + Antigravity (`agy` CLI) ↔ Scion Hub Bridge
 
-To drive the 17-agent Scion Grove directly from **Google Cloud Shell** (or any workstation) using **Antigravity (`agy`)** or **Gemini CLI**:
+You can drive the 17-agent Science Agent Grove directly from **Google Cloud Shell** (or any local terminal) using the **Antigravity CLI (`agy`)**, **Gemini CLI**, or the standalone `scripts/scion_mcp_server.py` bridge. Every command or `agy -p` prompt returns live feedback directly inside your terminal **first**, and immediately updates the live Scion Hub **Agent Graph** and **Messages** feed (`scion-messages` in Cloud Logging).
+
+### Step 1 — One-Command Cloud Shell & `agy` CLI Setup
+
+Run [`scripts/setup-sarah-cloudshell.sh`](scripts/setup-sarah-cloudshell.sh) inside Google Cloud Shell (or locally) to configure the GCP project (`losiern-oase-workshop`), symlink the [`scion-oase-bridge`](.agent/skills/scion-oase-bridge/SKILL.md) skill into `~/.gemini/skills/`, `~/.gemini/antigravity/skills/`, and `~/.claude/skills/`, and register the `scion` MCP server (`scripts/scion_mcp_server.py`) in `~/.gemini/antigravity/mcp_config.json`:
 
 ```bash
-# 1. Link the scion-oase-bridge skill and configure your GCP project
-./scripts/setup-sarah-cloudshell.sh
+# 1. Configure GCP project, symlink scion-oase-bridge skill, and register MCP server for agy CLI
+bash scripts/setup-sarah-cloudshell.sh
 
-# 2. Initiate / bootstrap a campaign and verify the 17-agent 4-tier hierarchy
+# 2. (Optional) Start a persistent IAP tunnel in the background for <100ms CLI/MCP latency
+gcloud compute start-iap-tunnel scion-hub-oase 8780 \
+  --local-host-port=127.0.0.1:18780 \
+  --project=losiern-oase-workshop --zone=us-central1-c &
+
+# 3. Verify Hub connectivity, persona (Dr. Sarah Chen), and all 3 active Science Agent Groves
+python3 scripts/scion_mcp_server.py --cli hub_status
+```
+
+### Step 2 — Initiate a New Science Agent Campaign from `agy` CLI (Feedback in CLI → Scion Reacts)
+
+Launch an interactive `agy` session or pass a one-shot `-p` prompt to bootstrap a campaign, verify `oase doctor` (`78/78` checks), and dispatch the kickoff directive to `@science-program-lead`:
+
+```bash
+# Interactive Antigravity CLI prompt (calls scion:bootstrap_campaign, scion:list_agents, scion:send_message)
+agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead's live kickoff feedback."
+
+# Equivalent direct MCP CLI calls:
 python3 scripts/scion_mcp_server.py --cli bootstrap_campaign --project io-cold-to-hot
 python3 scripts/scion_mcp_server.py --cli list_agents --project io-cold-to-hot
+```
+- **What happens in `agy` CLI:** `@controller` and `@science-program-lead` return live initialization feedback (`DEC-001` co-signed, `WO-001` dispatched across `ENPP1` `IC-101`, `Trex1` `IC-102`, and `ADAR1` `IC-103`) directly in your Cloud Shell terminal.
+- **How Scion Hub reacts:** Open the live Scion Project [**Agent Graph**](https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f) (`Graph View` + `Show users` ON) to watch the 4-tier 17-agent DAG (`oase-sarah` → `controller` → 4 Stage Leads → 12 Specialists) transition into active execution.
 
-# 3. Analyze a completed program run & dispatch a live directive to @science-program-lead
+### Step 3 — Analyze a Completed Program Run & Send Live Feedback from `agy` CLI
+
+Query WebDAV workspace artifacts (`decision-log.md`, `reports/wet-lab-wall-readiness.md`, `WO-001`..`WO-008`) and send live review instructions or stage-gate feedback to `@science-program-lead`:
+
+```bash
+# Analyze WO-001..WO-008 and audit the DEC-008 Wet-Lab Wall directly in agy CLI
+agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+
+# Equivalent direct MCP CLI calls:
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path decision-log.md
 python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path reports/wet-lab-wall-readiness.md
 python3 scripts/scion_mcp_server.py --cli send_message \
   --project io-cold-to-hot \
   --agent science-program-lead \
   --message "Audit why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+python3 scripts/scion_mcp_server.py --cli get_messages --project io-cold-to-hot --limit 10
 ```
+- **What happens in `agy` CLI:** `@science-program-lead` streams a grounded synthesis table right into your terminal (`Series A oase_enpp1_009`: `IC50 = 1.8 nM`, `Papp = 0.7×10⁻⁶ cm/s`, `ER = 19.2`, `F = 5.4%` **HOLD** vs. `Series B oase_enpp1_019`: `IC50 = 3.9 nM`, `Papp = 9.8×10⁻⁶ cm/s`, `ER = 1.6`, `F = 51%` **GO**, `75 mg QD` oral).
+- **How Scion Hub reacts:** Both your outbound `[Cloud Shell · Antigravity (agy) CLI Feedback]` (`user:oase-sarah → agent:science-program-lead`) and `@science-program-lead`'s `[Grounded Science Agent Reply -> agy CLI]` (`agent:science-program-lead → user:oase-sarah`) are written to `hub.db` and `scion-messages` in Cloud Logging, appearing immediately at the top of the Scion Hub **Messages** panel.
+
+See [**`.agent/skills/scion-oase-bridge/SKILL.md`**](.agent/skills/scion-oase-bridge/SKILL.md) and [**`docs/surface-connectivity-reference.md`**](docs/surface-connectivity-reference.md) for the complete MCP tool schema and CLI reference.

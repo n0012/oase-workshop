@@ -76,48 +76,51 @@ VOICES: dict[str, dict[str, Any]] = {
 
 TURNS: list[dict[str, Any]] = [
     {
-        "turn_id": "cs_t1",
+        "turn_id": "cs2_t1",
         "turn_num": 1,
         "speaker": "sarah",
         "scrub_key": "bootstrap",
-        "scrub_label": "1. Cloud Shell (agy): Initiate New Campaign",
+        "scrub_label": "1. Cloud Shell (agy CLI): Initiate Campaign & Live CLI Feedback",
         "tts_text": (
-            "From Google Cloud Shell as Doctor Sarah Chen, I launch Antigravity with our forty-one OASE skills "
-            "and Scion MCP bridge to initialize the Cold-to-Hot Immuno-Oncology campaign and dispatch Work Order One."
+            "From Google Cloud Shell as Doctor Sarah Chen, I launch the Antigravity CLI with our forty-one "
+            "Open Agentic Science Engine skills and Scion MCP bridge—initializing the Cold-to-Hot Immuno-Oncology "
+            "campaign and receiving immediate stage-gate feedback right in the terminal."
         ),
     },
     {
-        "turn_id": "cs_t2",
+        "turn_id": "cs2_t2",
         "turn_num": 2,
         "speaker": "science-program-lead",
         "scrub_key": "graph",
-        "scrub_label": "2. Scion Hub: 4-Tier 17-Agent Graph Live",
+        "scrub_label": "2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001",
         "tts_text": (
-            "Grove-One online! Seventy-eight of seventy-eight OASE doctor checks pass. "
-            "The four-tier Scion agent graph is active—HypEx Supervisor is running the three-target Elo tournament "
-            "while I coordinate all eight domain specialists."
+            "Grove-One online! Seventy-eight of seventy-eight Science Agent doctor checks pass. "
+            "Scion is reacting to your Cloud Shell directive—the four-tier agent graph is active, HypEx Supervisor "
+            "is running the three-target Elo tournament, and all eight domain specialists are coordinated."
         ),
     },
     {
-        "turn_id": "cs_t3",
+        "turn_id": "cs2_t3",
         "turn_num": 3,
         "speaker": "sarah",
         "scrub_key": "analyze",
-        "scrub_label": "3. Cloud Shell (agy): Analyze Run & Wet-Lab Wall",
+        "scrub_label": "3. Cloud Shell (agy CLI): Program Run Audit & Series B Feedback",
         "tts_text": (
-            "We can also use Antigravity in Cloud Shell to analyze a completed program run—reading the decision log "
-            "and messaging Science Program Lead to audit why Series A hit the Decision Eight Wet-Lab Wall."
+            "Back in the Antigravity CLI, I analyze the completed Science Agent run—reading the decision log, "
+            "sending feedback to Science Program Lead to audit why Series A hit the Decision Eight Wet-Lab Wall, "
+            "and reviewing the Series B recovery right in Cloud Shell."
         ),
     },
     {
-        "turn_id": "cs_t4",
+        "turn_id": "cs2_t4",
         "turn_num": 4,
         "speaker": "admet-dmpk-scientist",
         "scrub_key": "verify",
-        "scrub_label": "4. Scion Project Messages: Series B Pivot Verified",
+        "scrub_label": "4. Scion Reacting: Live Project Messages & Series B Pivot",
         "tts_text": (
-            "Shield-Five confirming in Scion! Series A failed MDCK permeability and P-gp efflux gates at Decision Eight, "
-            "triggering the Series B pivot to OASE-ENPP1-019 with fifty-two percent oral bioavailability."
+            "Shield-Five confirming in Scion! Your Antigravity CLI feedback is logged in Scion Project Messages—Series A "
+            "failed MDCK permeability and P-gp efflux gates at Decision Eight, and the Science Agent team pivoted to "
+            "Series B lead E-N-P-P-one nineteen with fifty-two percent oral bioavailability."
         ),
     },
 ]
@@ -169,57 +172,62 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
         body = f"""
         {hud_bar}
         {gcp_topbar}
-        <div style="display:grid;grid-template-columns:1160px 712px;gap:16px;padding:16px;height:962px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
-          <!-- Left: Google Cloud Shell Terminal running agy -->
+        <div style="display:grid;grid-template-columns:1260px 612px;gap:16px;padding:16px;height:962px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
+          <!-- Left: Google Cloud Shell Terminal running agy CLI with live Scion Agent Feedback -->
           <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);">
             <div style="height:36px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px;color:#94a3b8;font-family:monospace;">
-              <div><span style="color:#10b981;font-weight:700;">●</span> Cloud Shell Terminal — <code>oase-sarah@cloudshell:~/oase-workshop (losiern-oase-workshop)</code></div>
-              <div style="color:#38bdf8;">MCP: <code>scion-oase-mcp</code> (CONNECTED) · 41 OASE Skills Loaded</div>
+              <div><span style="color:#10b981;font-weight:700;">●</span> Google Cloud Shell Terminal — <code>oase-sarah@cloudshell:~/oase-workshop (losiern-oase-workshop)</code></div>
+              <div style="color:#38bdf8;">MCP: <code>scion-oase-mcp</code> (CONNECTED) · 41 Science Agent Skills</div>
             </div>
-            <div style="padding:18px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13.2px;line-height:1.58;color:#e2e8f0;flex:1;">
+            <div style="padding:16px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.8px;line-height:1.52;color:#e2e8f0;flex:1;">
               <div><span style="color:#34d399;">oase-sarah@cloudshell</span>:<span style="color:#60a5fa;">~/oase-workshop</span> <span style="color:#fbbf24;">(losiern-oase-workshop)</span>$ <span style="color:#fff;font-weight:700;">agy --model gemini-4-argon</span></div>
-              <div style="margin-top:8px;padding:10px 14px;background:rgba(37,99,235,0.12);border-left:3px solid #38bdf8;border-radius:4px;color:#bae6fd;font-size:12.4px;">
-                <strong>Antigravity (agy) · Vertex AI (losiern-oase-workshop)</strong><br>
-                ✓ Loaded <strong>41 OASE domain verification skills</strong> + <strong>pharma_skills (Stages 1–4)</strong> + <strong>scion-oase-bridge</strong><br>
-                ✓ Connected to Scion Hub MCP (<code>scion-hub-oase</code> · authenticated as <code>oase-sarah@losiern-1.altostrat.com</code>)
+              <div style="margin-top:7px;padding:8px 12px;background:rgba(37,99,235,0.12);border-left:3px solid #38bdf8;border-radius:4px;color:#bae6fd;font-size:12px;">
+                <strong>Antigravity CLI (agy) · Open Agentic Science Engine (Science Agent)</strong><br>
+                ✓ Loaded <strong>41 domain verification skills</strong> + <strong>pharma_skills (Stages 1–4)</strong> + <strong>scion-oase-bridge</strong><br>
+                ✓ Authenticated to Scion Hub (<code>scion-hub-oase</code>) as <code>oase-sarah@losiern-1.altostrat.com</code> (Dr. Sarah Chen)
               </div>
-              <div style="margin-top:14px;color:#f8fafc;">
+              <div style="margin-top:11px;color:#f8fafc;">
                 <span style="color:#10b981;font-weight:700;">sarah &gt;</span> Initialize a new Cold-to-Hot Immuno-Oncology campaign (<code>io-cold-to-hot</code>) on Scion Hub from <code>seed/io-cold-to-hot/campaign-seed.json</code>, verify <code>oase doctor</code> (78/78 checks), and dispatch <code>WO-001</code> (3-target Co-Scientist Elo tournament: <code>ENPP1</code> vs <code>Trex1</code> vs <code>ADAR1</code>) to <code>@controller</code>.
               </div>
-              <div style="margin-top:12px;padding:10px 14px;background:#0f172a;border:1px solid #1e293b;border-radius:6px;font-size:12.3px;">
+              <div style="margin-top:10px;padding:9px 13px;background:#0f172a;border:1px solid #1e293b;border-radius:6px;font-size:11.9px;">
                 <div style="color:#38bdf8;font-weight:700;">⚡ Tool Call 1/3: <code>scion:bootstrap_campaign(project="io-cold-to-hot")</code></div>
-                <div style="color:#a7f3d0;margin-top:4px;">  ✓ Seed: <code>seed/io-cold-to-hot/campaign-seed.json</code> (<code>ENV_VERSION = sha256:61020936449a</code>)</div>
-                <div style="color:#a7f3d0;">  ✓ <code>oase doctor</code>: <strong>78/78 PASS</strong> · Binaries: <code>AutoDock Vina 1.2.5</code>, <code>fpocket 4.2.2</code>, <code>RDKit</code>, <code>AlphaFold 3</code>, <code>AlphaGenome</code></div>
-                <div style="color:#a7f3d0;">  ✓ Governance Thresholds: <strong>36/36 rules staged</strong> in <code>.oase/thresholds.yaml</code></div>
-                <div style="color:#38bdf8;font-weight:700;margin-top:8px;">⚡ Tool Call 2/3: <code>scion:list_agents(project="io-cold-to-hot")</code></div>
-                <div style="color:#a7f3d0;margin-top:4px;">  ✓ Verified <strong>17/17 running agents</strong> across 4 tiers (<code>17</code> active delegation edges · <code>0</code> stopped/stalled)</div>
-                <div style="color:#38bdf8;font-weight:700;margin-top:8px;">⚡ Tool Call 3/3: <code>scion:send_message(project="io-cold-to-hot", agent="controller", type="instruction")</code></div>
-                <div style="color:#a7f3d0;margin-top:4px;">  ✓ Dispatched <code>WO-001</code> (<code>RUN-001</code> Pairwise Elo Tournament) -&gt; <code>@controller</code> -&gt; <code>@hypex-supervisor</code></div>
+                <div style="color:#a7f3d0;margin-top:2px;">  ✓ Seed: <code>seed/io-cold-to-hot/campaign-seed.json</code> (<code>ENV_VERSION = sha256:61020936449a</code>) · <code>oase doctor</code>: <strong>78/78 PASS</strong></div>
+                <div style="color:#38bdf8;font-weight:700;margin-top:6px;">⚡ Tool Call 2/3: <code>scion:list_agents(project="io-cold-to-hot")</code></div>
+                <div style="color:#a7f3d0;margin-top:2px;">  ✓ Verified <strong>17/17 running Science Agent nodes</strong> across 4 tiers (<code>17</code> active delegation edges · <code>0</code> stalled)</div>
+                <div style="color:#38bdf8;font-weight:700;margin-top:6px;">⚡ Tool Call 3/3: <code>scion:send_message(project="io-cold-to-hot", agent="controller", type="instruction")</code></div>
+                <div style="color:#a7f3d0;margin-top:2px;">  ✓ Dispatched directive <code>9e81c402</code> -&gt; <code>@controller</code> &amp; received live Scion callback in <code>agy</code> CLI</div>
               </div>
-              <div style="margin-top:12px;padding:12px 14px;background:rgba(16,185,129,0.10);border:1px solid rgba(16,185,129,0.35);border-radius:6px;">
-                <div style="color:#34d399;font-weight:700;margin-bottom:4px;">● Antigravity Response — Campaign Initialized &amp; Running in Scion</div>
-                <div style="font-size:12.3px;color:#e2e8f0;">
-                  <code>io-cold-to-hot</code> (<code>ab3d65d5-f32c-463e-be48-d535034de34f</code>) is live on Scion Hub. <code>@controller</code> has verified the shared Grove via <code>@bootstrapper</code> and delegated <code>WO-001</code> across <code>@hypex-supervisor</code> (<code>rank-1..3</code>, <code>hypex-reflection</code>) and <code>@science-program-lead</code>.
+              <div style="margin-top:10px;padding:11px 14px;background:rgba(16,185,129,0.11);border:1px solid rgba(16,185,129,0.42);border-radius:6px;">
+                <div style="color:#34d399;font-weight:700;margin-bottom:4px;">● Live Scion Feedback in agy CLI — @controller &amp; @science-program-lead</div>
+                <div style="font-size:12px;color:#e2e8f0;line-height:1.48;">
+                  <code>[agent:controller -&gt; user:oase-sarah]</code> Shared Grove verified via <code>@bootstrapper</code> (<code>78/78 PASS</code>, <code>36/36</code> thresholds staged).<br>
+                  <code>[agent:hypex-supervisor -&gt; agent:controller]</code> Launching <code>WO-001</code> 3-target Elo tournament across <code>rank-1..3</code> &amp; <code>hypex-reflection</code>: <strong>IC-101 (ENPP1)</strong> vs <strong>IC-102 (Trex1)</strong> vs <strong>IC-103 (ADAR1)</strong>.<br>
+                  <code>[agent:science-program-lead -&gt; user:oase-sarah]</code> 8 domain specialists standing by for Stage Gate 1 (<code>DEC-002</code>) target lock.
                 </div>
               </div>
             </div>
           </div>
-          <!-- Right: Live Scion Hub Preview + Skill Stack -->
+          <!-- Right: Step 1 -> Step 2 Flow Callout -->
           <div style="display:flex;flex-direction:column;gap:14px;">
-            <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:14px 16px;color:#f8fafc;">
-              <div style="font-size:12px;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;">Why Antigravity (AGY) in Cloud Shell + Scion Hub</div>
-              <div style="font-size:12.5px;color:#cbd5e1;margin-top:6px;line-height:1.5;">
-                • <strong>100% Argolis / Customer-Native:</strong> Runs as <code>oase-sarah@losiern-1.altostrat.com</code> inside <code>losiern-oase-workshop</code> with zero corporate proxy dependencies.<br>
-                • <strong>41 OASE Skills + Pharma Stage Skills:</strong> Every prompt in <code>agy</code> invokes deterministic Scion MCP tools (<code>bootstrap_campaign</code>, <code>list_agents</code>, <code>dav_read</code>, <code>send_message</code>).<br>
-                • <strong>Live Bidirectional Sync:</strong> Instructions sent from Cloud Shell immediately log into Scion's SQLite DB &amp; Cloud Logging.
+            <div style="background:#0f172a;border:1px solid #38bdf8;border-radius:10px;padding:16px;color:#f8fafc;">
+              <div style="font-size:12px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;">Step 1: Feedback in Antigravity (agy) CLI</div>
+              <div style="font-size:12.5px;color:#cbd5e1;margin-top:8px;line-height:1.55;">
+                1. <strong>Prompt in Cloud Shell:</strong> Dr. Sarah Chen runs <code>agy</code> as <code>oase-sarah@losiern-1.altostrat.com</code>.<br>
+                2. <strong>Deterministic MCP Execution:</strong> <code>agy</code> calls <code>scion:bootstrap_campaign</code>, <code>scion:list_agents</code>, and <code>scion:send_message</code>.<br>
+                3. <strong>Immediate CLI Feedback:</strong> <code>@controller</code> and <code>@science-program-lead</code> return structured stage-gate status directly into the <code>agy</code> terminal before we switch to Scion Web UI.
               </div>
             </div>
-            <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;overflow:hidden;flex:1;display:flex;flex-direction:column;">
-              <div style="padding:8px 14px;background:#1e293b;font-size:11.5px;font-weight:700;color:#93c5fd;font-family:monospace;">
-                Live Scion Hub 4-Tier Agent Graph · /projects/ab3d65d5... (Graph View)
-              </div>
-              <div style="flex:1;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <img src="{graph_uri}" style="width:100%;height:100%;object-fit:cover;object-position:bottom right;">
+            <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:16px;color:#f8fafc;flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="font-size:12px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:0.05em;">Live CLI Session Telemetry</div>
+                <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11.8px;color:#e2e8f0;line-height:1.6;">
+                  • <strong>Identity:</strong> <code>oase-sarah@losiern-1.altostrat.com</code><br>
+                  • <strong>GCP Project:</strong> <code>losiern-oase-workshop</code><br>
+                  • <strong>Scion Hub VM:</strong> <code>scion-hub-oase (us-central1-c)</code><br>
+                  • <strong>Active Grove:</strong> <code>io-cold-to-hot (ab3d65d5...)</code><br>
+                  • <strong>Doctor Gate:</strong> <code>78/78 PASS (sha256:61020936449a)</code><br>
+                  • <strong>Next Scene:</strong> Watch Scion's 4-Tier Graph react live &rarr;
+                </div>
               </div>
             </div>
           </div>
@@ -230,13 +238,13 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
         {hud_bar}
         <div style="margin-top:42px;height:1038px;background:#0f172a;position:relative;overflow:hidden;font-family:'Inter',system-ui,sans-serif;">
           <img src="{graph_uri}" style="width:1920px;height:1038px;object-fit:contain;background:#f8fafc;">
-          <div style="position:absolute;top:18px;left:24px;width:540px;background:rgba(15,23,42,0.94);border:1px solid #38bdf8;border-radius:10px;padding:14px 18px;color:#f8fafc;box-shadow:0 12px 28px rgba(0,0,0,0.45);">
-            <div style="font-size:11.5px;font-weight:800;color:#38bdf8;letter-spacing:0.05em;text-transform:uppercase;">Live Scion 4-Tier 17-Agent Discovery Hierarchy (io-cold-to-hot)</div>
-            <div style="font-size:12.5px;color:#e2e8f0;margin-top:6px;line-height:1.5;">
-              • <strong>Tier 0 (Human Lead):</strong> <code>oase-sarah@losiern-1.altostrat.com</code> (Dr. Sarah Chen)<br>
-              • <strong>Tier 1 (Orchestrator):</strong> <code>controller</code> (Research Operations Controller)<br>
+          <div style="position:absolute;top:18px;left:24px;width:560px;background:rgba(15,23,42,0.95);border:1px solid #38bdf8;border-radius:10px;padding:14px 18px;color:#f8fafc;box-shadow:0 12px 28px rgba(0,0,0,0.45);">
+            <div style="font-size:11.5px;font-weight:800;color:#34d399;letter-spacing:0.05em;text-transform:uppercase;">⚡ Scion Reacting to agy CLI Directive (io-cold-to-hot)</div>
+            <div style="font-size:12.4px;color:#e2e8f0;margin-top:6px;line-height:1.5;">
+              • <strong>Tier 0 (Human Lead):</strong> <code>oase-sarah@losiern-1.altostrat.com</code> (Dr. Sarah Chen · Cloud Shell <code>agy</code>)<br>
+              • <strong>Tier 1 (Orchestrator):</strong> <code>controller</code> receives <code>WO-001</code> from <code>agy</code> CLI<br>
               • <strong>Tier 2 (Stage Leads):</strong> <code>bootstrapper</code> · <code>head-of-discovery</code> · <code>hypex-supervisor</code> · <code>science-program-lead</code><br>
-              • <strong>Tier 3 (12 Specialists):</strong> <code>rank-1..3</code> + <code>hypex-reflection</code> (Elo Tournament: <code>ENPP1 1658.0</code> &gt; <code>Trex1 1604.0</code> &gt; <code>ADAR1 1561.0</code>) + 8 Domain Specialists (<code>WO-002..WO-008</code>)
+              • <strong>Tier 3 (12 Specialists):</strong> <code>rank-1..3</code> + <code>hypex-reflection</code> (<code>ENPP1 1658.0</code> &gt; <code>Trex1 1604.0</code> &gt; <code>ADAR1 1561.0</code>) + 8 Domain Specialists
             </div>
           </div>
         </div>
@@ -245,67 +253,67 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
         body = f"""
         {hud_bar}
         {gcp_topbar}
-        <div style="display:grid;grid-template-columns:1220px 652px;gap:16px;padding:16px;height:962px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
-          <!-- Left: Google Cloud Shell Terminal analyzing program run -->
+        <div style="display:grid;grid-template-columns:1260px 612px;gap:16px;padding:16px;height:962px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
+          <!-- Left: Google Cloud Shell Terminal analyzing program run & receiving feedback in agy CLI -->
           <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);">
             <div style="height:36px;background:#0f172a;border-bottom:1px solid #1e293b;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px;color:#94a3b8;font-family:monospace;">
-              <div><span style="color:#10b981;font-weight:700;">●</span> Cloud Shell Terminal — <code>oase-sarah@cloudshell:~/oase-workshop (losiern-oase-workshop)</code></div>
-              <div style="color:#38bdf8;">Mode: Program Run Analysis &amp; Wet-Lab Wall Audit</div>
+              <div><span style="color:#10b981;font-weight:700;">●</span> Google Cloud Shell Terminal — <code>oase-sarah@cloudshell:~/oase-workshop (losiern-oase-workshop)</code></div>
+              <div style="color:#38bdf8;">Mode: Science Agent Run Analysis &amp; Wet-Lab Wall Feedback</div>
             </div>
-            <div style="padding:18px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.52;color:#e2e8f0;flex:1;">
+            <div style="padding:16px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.6px;line-height:1.5;color:#e2e8f0;flex:1;">
               <div style="color:#f8fafc;">
-                <span style="color:#10b981;font-weight:700;">sarah &gt;</span> Analyze the <code>io-cold-to-hot</code> program run across <code>WO-001..WO-008</code>: pull <code>decision-log.md</code> and <code>reports/wet-lab-wall-readiness.md</code>, and ask <code>@science-program-lead</code> why Series A (<code>oase_enpp1_009</code>) hit the <code>DEC-008</code> Wet-Lab Wall and how Series B (<code>oase_enpp1_019</code>) recovered oral absorption.
+                <span style="color:#10b981;font-weight:700;">sarah &gt;</span> Analyze the <code>io-cold-to-hot</code> Science Agent run across <code>WO-001..WO-008</code>: pull <code>decision-log.md</code> and <code>reports/wet-lab-wall-readiness.md</code>, and ask <code>@science-program-lead</code> why Series A (<code>oase_enpp1_009</code>) hit the <code>DEC-008</code> Wet-Lab Wall and how Series B (<code>oase_enpp1_019</code>) recovered oral absorption.
               </div>
-              <div style="margin-top:10px;padding:10px 14px;background:#0f172a;border:1px solid #1e293b;border-radius:6px;font-size:12.1px;">
+              <div style="margin-top:9px;padding:9px 13px;background:#0f172a;border:1px solid #1e293b;border-radius:6px;font-size:11.8px;">
                 <div style="color:#38bdf8;font-weight:700;">⚡ Tool Call 1/3: <code>scion:dav_read(project="io-cold-to-hot", path="decision-log.md")</code></div>
                 <div style="color:#a7f3d0;">  ✓ Read 10 co-signed Stage Gate decisions (<code>DEC-001</code>..<code>DEC-010</code> · <code>sha256:61020936449a</code>)</div>
-                <div style="color:#38bdf8;font-weight:700;margin-top:5px;">⚡ Tool Call 2/3: <code>scion:dav_read(project="io-cold-to-hot", path="reports/wet-lab-wall-readiness.md")</code></div>
+                <div style="color:#38bdf8;font-weight:700;margin-top:4px;">⚡ Tool Call 2/3: <code>scion:dav_read(project="io-cold-to-hot", path="reports/wet-lab-wall-readiness.md")</code></div>
                 <div style="color:#a7f3d0;">  ✓ Extracted experimental CRO wet-lab assay receipts (<code>WO-006</code> Series A failure -&gt; <code>DEC-008</code> Series B pivot)</div>
-                <div style="color:#38bdf8;font-weight:700;margin-top:5px;">⚡ Tool Call 3/3: <code>scion:send_message(project="io-cold-to-hot", agent="science-program-lead")</code></div>
-                <div style="color:#a7f3d0;">  ✓ Logged directive <code>5b3b2016</code> &amp; received grounded audit <code>8526af35</code> from <code>@science-program-lead</code></div>
+                <div style="color:#38bdf8;font-weight:700;margin-top:4px;">⚡ Tool Call 3/3: <code>scion:send_message(project="io-cold-to-hot", agent="science-program-lead")</code></div>
+                <div style="color:#a7f3d0;">  ✓ Sent feedback <code>f541212d</code> &amp; received grounded reply <code>ae096d6e</code> from <code>@science-program-lead</code> in <code>agy</code> CLI</div>
               </div>
-              <!-- Rendered Audit Table in Antigravity -->
-              <div style="margin-top:12px;padding:12px 14px;background:rgba(15,23,42,0.9);border:1px solid #334155;border-radius:6px;">
-                <div style="color:#fbbf24;font-weight:700;font-size:12.6px;margin-bottom:8px;">📊 Antigravity (agy) Program Run Audit — DEC-008 Wet-Lab Wall &amp; Series B Recovery</div>
-                <table style="width:100%;border-collapse:collapse;font-size:11.8px;color:#e2e8f0;">
+              <!-- Live Agent Reply + Audit Table inside agy CLI -->
+              <div style="margin-top:10px;padding:11px 14px;background:rgba(16,185,129,0.10);border:1px solid rgba(16,185,129,0.4);border-radius:6px;">
+                <div style="color:#34d399;font-weight:700;font-size:12.2px;margin-bottom:6px;">● Live @science-program-lead Feedback in agy CLI — DEC-008 Wet-Lab Wall &amp; Series B Recovery</div>
+                <table style="width:100%;border-collapse:collapse;font-size:11.6px;color:#e2e8f0;">
                   <thead>
                     <tr style="border-bottom:1px solid #334155;color:#93c5fd;text-align:left;">
-                      <th style="padding:5px 8px;">Assay / Gate Metric</th>
-                      <th style="padding:5px 8px;">Threshold</th>
-                      <th style="padding:5px 8px;">Series A: oase_enpp1_009</th>
-                      <th style="padding:5px 8px;">Series B: oase_enpp1_019</th>
+                      <th style="padding:4px 8px;">Assay / Gate Metric</th>
+                      <th style="padding:4px 8px;">Threshold</th>
+                      <th style="padding:4px 8px;">Series A: oase_enpp1_009</th>
+                      <th style="padding:4px 8px;">Series B: oase_enpp1_019</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr style="border-bottom:1px solid #1e293b;">
-                      <td style="padding:5px 8px;">Zinc-Binding Scaffold</td>
-                      <td style="padding:5px 8px;">tPSA &lt; 95 Å²</td>
-                      <td style="padding:5px 8px;color:#fca5a5;">Bare Sulfamide (114.0 Å²)</td>
-                      <td style="padding:5px 8px;color:#6ee7b7;">Masked Monoester (79.4 Å²)</td>
+                      <td style="padding:4px 8px;">Zinc-Binding Scaffold</td>
+                      <td style="padding:4px 8px;">tPSA &lt; 95 Å²</td>
+                      <td style="padding:4px 8px;color:#fca5a5;">Bare Sulfamide (114.0 Å²)</td>
+                      <td style="padding:4px 8px;color:#6ee7b7;">Masked Monoester (79.4 Å²)</td>
                     </tr>
                     <tr style="border-bottom:1px solid #1e293b;">
-                      <td style="padding:5px 8px;">ENPP1 IC50 / SPR KD</td>
-                      <td style="padding:5px 8px;">&lt; 100 nM</td>
-                      <td style="padding:5px 8px;color:#6ee7b7;">18 nM / 14 nM (PASS)</td>
-                      <td style="padding:5px 8px;color:#6ee7b7;">31 nM / 24 nM (PASS)</td>
+                      <td style="padding:4px 8px;">ENPP1 IC50 / SPR KD</td>
+                      <td style="padding:4px 8px;">&lt; 100 nM</td>
+                      <td style="padding:4px 8px;color:#6ee7b7;">18 nM / 14 nM (PASS)</td>
+                      <td style="padding:4px 8px;color:#6ee7b7;">31 nM / 24 nM (PASS)</td>
                     </tr>
                     <tr style="border-bottom:1px solid #1e293b;">
-                      <td style="padding:5px 8px;">MDCK-MDR1 Papp (A-&gt;B)</td>
-                      <td style="padding:5px 8px;">&gt;= 5.0e-6 cm/s</td>
-                      <td style="padding:5px 8px;color:#f87171;font-weight:700;">1.1e-6 cm/s (FAIL — WALL)</td>
-                      <td style="padding:5px 8px;color:#34d399;font-weight:700;">12.4e-6 cm/s (PASS)</td>
+                      <td style="padding:4px 8px;">MDCK-MDR1 Papp (A-&gt;B)</td>
+                      <td style="padding:4px 8px;">&gt;= 5.0e-6 cm/s</td>
+                      <td style="padding:4px 8px;color:#f87171;font-weight:700;">1.1e-6 cm/s (FAIL — WALL)</td>
+                      <td style="padding:4px 8px;color:#34d399;font-weight:700;">12.4e-6 cm/s (PASS)</td>
                     </tr>
                     <tr style="border-bottom:1px solid #1e293b;">
-                      <td style="padding:5px 8px;">P-gp Efflux Ratio (ER)</td>
-                      <td style="padding:5px 8px;">&lt; 2.5</td>
-                      <td style="padding:5px 8px;color:#f87171;font-weight:700;">18.4 (FAIL — WALL)</td>
-                      <td style="padding:5px 8px;color:#34d399;font-weight:700;">1.6 (PASS)</td>
+                      <td style="padding:4px 8px;">P-gp Efflux Ratio (ER)</td>
+                      <td style="padding:4px 8px;">&lt; 2.5</td>
+                      <td style="padding:4px 8px;color:#f87171;font-weight:700;">18.4 (FAIL — WALL)</td>
+                      <td style="padding:4px 8px;color:#34d399;font-weight:700;">1.6 (PASS)</td>
                     </tr>
                     <tr>
-                      <td style="padding:5px 8px;">Oral F% / hERG Margin</td>
-                      <td style="padding:5px 8px;">F &gt;= 30%, &gt;30x</td>
-                      <td style="padding:5px 8px;color:#94a3b8;">Halted at DEC-008</td>
-                      <td style="padding:5px 8px;color:#34d399;font-weight:700;">F = 52% · hERG &gt; 48x (DEC-010)</td>
+                      <td style="padding:4px 8px;">Oral F% / hERG Margin</td>
+                      <td style="padding:4px 8px;">F &gt;= 30%, &gt;30x</td>
+                      <td style="padding:4px 8px;color:#94a3b8;">Halted at DEC-008</td>
+                      <td style="padding:4px 8px;color:#34d399;font-weight:700;">F = 52% · hERG &gt; 48x (DEC-010)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -314,7 +322,7 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
           </div>
           <!-- Right: Stage Gate Progression Summary -->
           <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;padding:16px;color:#f8fafc;display:flex;flex-direction:column;gap:10px;">
-            <div style="font-size:12px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;">Grove Stage-Gate Audit (WO-001 .. WO-008)</div>
+            <div style="font-size:12px;font-weight:800;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;">Science Agent Stage-Gate Audit (WO-001 .. WO-008)</div>
             <div style="padding:10px 12px;background:#1e293b;border-left:3px solid #10b981;border-radius:4px;font-size:12px;">
               <strong>WO-001 (Co-Scientist Elo Tournament):</strong><br>
               <code>IC-101</code> (<code>ENPP1</code>, <code>1658.0 Elo</code>) beats <code>IC-102</code> (<code>Trex1</code>, <code>1604.0</code>, myocarditis risk) &amp; <code>IC-103</code> (<code>ADAR1</code>, <code>1561.0</code>, <code>pLI=1.00</code>).
@@ -329,7 +337,7 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
             </div>
             <div style="padding:10px 12px;background:rgba(16,185,129,0.14);border-left:3px solid #10b981;border-radius:4px;font-size:12px;">
               <strong>WO-007..008 / DEC-010 (Series B Nomination):</strong><br>
-              <code>oase_enpp1_019</code> restores permeability (<code>12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>Ctrough,free = 6.4x IC50</code>) · <code>10/10 oase validate check PASS</code>.
+              <code>oase_enpp1_019</code> restores permeability (<code>12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>Ctrough,free = 6.4x IC50</code>) · <code>10/10 validate PASS</code>.
             </div>
           </div>
         </div>
@@ -337,11 +345,11 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
     else:
         body = f"""
         {hud_bar}
-        <div style="margin-top:42px;display:grid;grid-template-columns:1140px 740px;gap:16px;padding:16px;height:1006px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
-          <!-- Left: Real Scion Hub Project Messages Screenshot -->
+        <div style="margin-top:42px;display:grid;grid-template-columns:1160px 720px;gap:16px;padding:16px;height:1006px;box-sizing:border-box;background:#020617;font-family:'Inter',system-ui,sans-serif;">
+          <!-- Left: Real Scion Hub Project Messages Screenshot showing agy CLI feedback at top -->
           <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
             <div style="height:38px;background:#1e293b;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px;font-weight:700;color:#93c5fd;font-family:monospace;">
-              <span>Scion Hub Web UI — Project Messages &amp; Audit Trail (/projects/ab3d65d5...)</span>
+              <span>⚡ Scion Hub Reacting — Project Messages &amp; Audit Trail (/projects/ab3d65d5...)</span>
               <span style="color:#34d399;">● Cloud Logging scion-messages Synced</span>
             </div>
             <div style="flex:1;background:#f8fafc;overflow:hidden;">
@@ -349,27 +357,27 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
             </div>
           </div>
           <!-- Right: Live Message Exchange Receipt -->
-          <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;padding:18px;color:#e2e8f0;font-family:'JetBrains Mono',monospace;font-size:12.3px;line-height:1.55;display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;padding:18px;color:#e2e8f0;font-family:'JetBrains Mono',monospace;font-size:12.2px;line-height:1.55;display:flex;flex-direction:column;gap:12px;">
             <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#34d399;text-transform:uppercase;letter-spacing:0.04em;">
-              ✓ Bidirectional Cloud Shell (agy) ↔ Scion Hub Proof
+              ✓ Scion Hub Reacting to Antigravity (agy) CLI Feedback
             </div>
             <div style="padding:12px;background:#0f172a;border-left:3px solid #38bdf8;border-radius:6px;">
-              <div style="color:#93c5fd;font-weight:700;">[DISPATCHED FROM CLOUD SHELL (AGY)]</div>
+              <div style="color:#93c5fd;font-weight:700;">[1. SENT FROM CLOUD SHELL (AGY CLI)]</div>
               <div style="color:#cbd5e1;margin-top:4px;">
                 <strong>Sender:</strong> <code>user:oase-sarah@losiern-1.altostrat.com</code><br>
                 <strong>Recipient:</strong> <code>agent:science-program-lead</code><br>
-                <strong>Type:</strong> <code>instruction</code> (<code>id: 5b3b2016-d119</code>)<br>
+                <strong>Type:</strong> <code>instruction</code> (logged in Scion SQLite &amp; Cloud Logging)<br>
                 <strong>Directive:</strong> Audit <code>DEC-008</code> Wet-Lab Wall pivot from <code>oase_enpp1_009</code> to <code>oase_enpp1_019</code>.
               </div>
             </div>
             <div style="padding:12px;background:rgba(16,185,129,0.10);border-left:3px solid #10b981;border-radius:6px;">
-              <div style="color:#6ee7b7;font-weight:700;">[GROUNDED SCION AGENT REPLY]</div>
+              <div style="color:#6ee7b7;font-weight:700;">[2. SCION REACTION &amp; SERIES B PIVOT CONFIRMED]</div>
               <div style="color:#e2e8f0;margin-top:4px;">
-                <strong>Sender:</strong> <code>agent:science-program-lead</code><br>
+                <strong>Sender:</strong> <code>agent:science-program-lead</code> &amp; <code>agent:admet-dmpk-scientist</code><br>
                 <strong>Recipient:</strong> <code>user:oase-sarah@losiern-1.altostrat.com</code><br>
-                <strong>Summary:</strong><br>
-                1. Series A <code>oase_enpp1_009</code> confirmed biochemical potency (<code>IC50 = 18 nM</code>) but failed oral absorption gates (<code>MDCK Papp = 1.1e-6 cm/s</code>, <code>P-gp ER = 18.4</code>).<br>
-                2. Series B <code>oase_enpp1_019</code> masked monoester restored permeability (<code>12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>hERG &gt; 48x</code>) and passed <code>10/10 oase validate check</code> gates for <code>DEC-010</code>.
+                <strong>Verified Outcome:</strong><br>
+                1. Series A <code>oase_enpp1_009</code> failed oral absorption gates (<code>MDCK Papp = 1.1e-6 cm/s</code>, <code>P-gp ER = 18.4</code>) at <code>DEC-008</code>.<br>
+                2. Science Agent pivoted to Series B <code>oase_enpp1_019</code> (<code>12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>hERG &gt; 48x</code>, <code>10/10 validate PASS</code>).
               </div>
             </div>
           </div>
@@ -537,8 +545,9 @@ def main() -> int:
         vseg_files.append(vseg_mp4)
 
         cursor_s = cursor_frames / float(FPS)
-        mm = int(cursor_s // 60)
-        ss = int(round(cursor_s % 60))
+        total_sec = int(round(cursor_s))
+        mm = total_sec // 60
+        ss = total_sec % 60
         scrub_markers.append(
             {
                 "key": t["scrub_key"],

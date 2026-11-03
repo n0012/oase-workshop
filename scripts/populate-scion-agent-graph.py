@@ -396,6 +396,18 @@ PCSK9_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "state-change",
         "Agent `'project-curator'` is waiting for input: Built static evidence site `_site/index.html` (`13/13` Scion artifacts published) for Pre-Candidate Nomination (`DEC-010`).",
     ),
+    (
+        "user",
+        "science-program-lead",
+        "instruction",
+        "**[Cloud Shell · Antigravity (`agy`) CLI Feedback]** Audit `WO-006`..`WO-008`: verify why neutral 1,2,4-oxadiazole `oase_pcsk9_014` cleared the Aronov hERG gate (`IC50 > 30 µM`) and confirm `DEC-010` nomination readiness.",
+    ),
+    (
+        "science-program-lead",
+        "user",
+        "state-change",
+        "**[Grounded Science Agent Reply -> `agy` CLI]** Verified `oase_pcsk9_014` (`cLogP = 3.01`, `0` hERG alerts, `TR-FRET IC50 = 142 nM`, `SPR KD = 118 nM`, `Caco-2 Papp = 14.8e-6 cm/s`, `F = 58%`, `10/10 oase validate check PASS` for `DEC-010`).",
+    ),
 ]
 
 
@@ -531,6 +543,18 @@ IO_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "head-of-discovery",
         "state-change",
         "Agent `'project-curator'` is waiting for input: Built static evidence site `_site/index.html` (`13/13` Scion artifacts published) for Series B Pre-Candidate Nomination (`DEC-010`).",
+    ),
+    (
+        "user",
+        "science-program-lead",
+        "instruction",
+        "**[Cloud Shell · Antigravity (`agy`) CLI Feedback]** Audit the `DEC-008` Wet-Lab Wall: verify why Series A (`oase_enpp1_009`) failed oral absorption gates and confirm Series B (`oase_enpp1_019`) recovery for `DEC-010`.",
+    ),
+    (
+        "science-program-lead",
+        "user",
+        "state-change",
+        "**[Grounded Science Agent Reply -> `agy` CLI]** Series A `oase_enpp1_009` hit `DEC-008` Wet-Lab Wall (`MDCK Papp = 1.1e-6 cm/s`, `P-gp ER = 18.4`); Series B `oase_enpp1_019` masked monoester restored oral absorption (`12.4e-6 cm/s`, `ER = 1.6`, `F = 52%`, `10/10 validate PASS`).",
     ),
 ]
 
@@ -781,8 +805,16 @@ def populate_project_hierarchy_and_messages(
         else:
             sender_str = f"agent:{s_slug}"
             sender_id = slug_to_id[s_slug]
-        recipient_str = f"agent:{r_slug}"
-        recipient_id = slug_to_id[r_slug]
+        if r_slug == "user":
+            recipient_str = f"user:{sarah_email}"
+            recipient_id = sarah_id
+            agent_col_id = sender_id
+            addr_kind = "user"
+        else:
+            recipient_str = f"agent:{r_slug}"
+            recipient_id = slug_to_id[r_slug]
+            agent_col_id = recipient_id
+            addr_kind = "agent"
 
         cur.execute(
             """
@@ -802,7 +834,7 @@ def populate_project_hierarchy_and_messages(
                 recipient_id,
                 body,
                 m_type,
-                recipient_id,
+                agent_col_id,
                 project_id,
                 project_id,
                 sarah_id,
@@ -813,9 +845,9 @@ def populate_project_hierarchy_and_messages(
             """
             INSERT INTO message_addressees (
                 id, message_id, principal_kind, principal_id, via, delivery_state
-            ) VALUES (?, ?, 'agent', ?, 'direct', 'delivered')
+            ) VALUES (?, ?, ?, ?, 'direct', 'delivered')
             """,
-            (str(uuid.uuid4()), msg_id, recipient_id),
+            (str(uuid.uuid4()), msg_id, addr_kind, recipient_id),
         )
 
     return slug_to_id
@@ -855,8 +887,14 @@ def write_cloud_logging_messages(
         else:
             sender_str = f"agent:{s_slug}"
             sender_id = slug_to_id[s_slug]
-        recipient_str = f"agent:{r_slug}"
-        recipient_id = slug_to_id[r_slug]
+        if r_slug == "user":
+            recipient_str = f"user:{sarah_email}"
+            recipient_id = sarah_id
+            agent_col_id = sender_id
+        else:
+            recipient_str = f"agent:{r_slug}"
+            recipient_id = slug_to_id[r_slug]
+            agent_col_id = recipient_id
         labels = {
             "component": "scion-server",
             "hub": HUB_NAME,
@@ -865,7 +903,7 @@ def write_cloud_logging_messages(
             "sender_id": sender_id,
             "recipient": recipient_str,
             "recipient_id": recipient_id,
-            "agent_id": recipient_id,
+            "agent_id": agent_col_id,
             "msg_type": m_type,
             "urgent": "false",
             "broadcasted": "false",
@@ -890,7 +928,7 @@ def write_cloud_logging_messages(
                 "resource": {"type": "global", "labels": {"project_id": GCP_PROJECT}},
                 "timestamp": ts,
                 "severity": "INFO",
-                "insertId": f"oase-{project_slug}-msg-{idx:03d}-v2",
+                "insertId": f"oase-{project_slug}-msg-{idx:03d}-v3",
                 "labels": labels,
                 "jsonPayload": payload,
             }
