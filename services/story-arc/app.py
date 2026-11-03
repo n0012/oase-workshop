@@ -665,8 +665,8 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
         const sarahEmail = cfg.workshop_domain ? `oase-sarah@${cfg.workshop_domain}` : 'oase-sarah@losiern-1.altostrat.com';
         const cloudShellUrl = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(sarahEmail)}`;
         const scionGraphUrl = cfg.scion_hub_url
-          ? `${cfg.scion_hub_url}/projects/ab3d65d5-f32c-463e-be48-d535034de34f/agents?view=graph`
-          : 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f/agents?view=graph';
+          ? `${cfg.scion_hub_url}/projects/ab3d65d5-f32c-463e-be48-d535034de34f`
+          : 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f';
         const p1 = 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), and list the 17-agent 4-tier discovery team."';
         const p2 = 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."';
         agyCard.innerHTML = `
