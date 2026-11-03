@@ -355,7 +355,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
           <span style="font-size:0.76rem;color:#94a3b8;">Each human scientist co-pilots a mirrored specialist AI Wingman inside the shared Scion Grove</span>
         </div>
         <div class="arcade-roster-grid">
-          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch4', false)">
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch4', false); setTimeout(() => oaseSelectStepPersona('ch4', 'raj'), 80);">
             <div class="arcade-pilot-top">
               <img src="assets/avatars/raj.jpg" alt="Dr. Raj Patel">
               <div>
@@ -368,7 +368,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 4 (WO-006)</strong>: Flags hERG alert on A02 &amp; designs oxadiazole lead <code>OASE-PCSK9-014</code>.</div>
           </button>
 
-          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch2', false)">
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch2', false); setTimeout(() => oaseSelectStepPersona('ch2', 'marcus'), 80);">
             <div class="arcade-pilot-top">
               <img src="assets/avatars/marcus.jpg" alt="Dr. Marcus Vance">
               <div>
@@ -381,7 +381,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 2 (WO-002..003)</strong>: Human LoF genetics, GTEx liver expression &amp; 1 Mb AlphaGenome tracks.</div>
           </button>
 
-          <button type="button" class="arcade-pilot-card" style="border-top-color:#fbbf24;background:rgba(30,27,75,0.85);" onclick="oaseLaunchMission(null, 'ch1', false)">
+          <button type="button" class="arcade-pilot-card" style="border-top-color:#fbbf24;background:rgba(30,27,75,0.85);" onclick="oaseLaunchMission(null, 'ch1', false); setTimeout(() => oaseSelectStepPersona('ch1', 'sarah'), 80);">
             <div class="arcade-pilot-top">
               <img src="assets/avatars/sarah.jpg" alt="Dr. Sarah Chen" style="border-color:#fbbf24;">
               <div>
@@ -394,7 +394,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 1 &amp; Step 7</strong>: Co-Scientist tournament brief, 4 Stage Gate co-signs &amp; portfolio handoff.</div>
           </button>
 
-          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch3', false)">
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch3', false); setTimeout(() => oaseSelectStepPersona('ch3', 'elena'), 80);">
             <div class="arcade-pilot-top">
               <img src="assets/avatars/elena.jpg" alt="Dr. Elena Rostova">
               <div>
@@ -407,7 +407,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 3 (WO-004..005)</strong>: 1P AlphaFold 3 co-folding (<code>ipTM=0.90</code>), <code>fpocket</code> &amp; Vina docking.</div>
           </button>
 
-          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch5', false)">
+          <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch5', false); setTimeout(() => oaseSelectStepPersona('ch5', 'claire'), 80);">
             <div class="arcade-pilot-top">
               <img src="assets/avatars/claire.jpg" alt="Dr. Claire Moreau">
               <div>
@@ -1586,31 +1586,76 @@ selectStation('s3');
     background: #1e293b;
     color: #f8fafc;
     text-decoration: none;
-    padding: 0.38rem 0.75rem;
+    padding: 0.42rem 0.8rem;
     border-radius: 8px;
-    border: 1px solid #475569;
+    border: 1.5px solid #475569;
     font-size: 0.8rem;
     font-weight: 600;
+    cursor: pointer;
     transition: all 0.15s;
   }
-  a.role-link:hover { background: #2563eb; border-color: #60a5fa; color: #fff; }
-  .role-link.lead { border-color: #10b981; background: rgba(16, 185, 129, 0.18); }
-  .role-link img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1.5px solid #38bdf8; }
+  .role-link:hover { background: #2563eb; border-color: #60a5fa; color: #fff; transform: translateY(-1px); }
+  .role-link.lead { border-color: #10b981; }
+  .role-link.active-persona {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(37, 99, 235, 0.28) 100%);
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.32);
+    color: #ffffff;
+  }
+  .role-link img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1.5px solid #38bdf8; }
+  .persona-prompt-deck {
+    margin-top: 0.7rem;
+    background: rgba(2, 6, 23, 0.65);
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.78rem 0.95rem;
+  }
+  .persona-deck-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  }
+  .prompt-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.45rem;
+    margin-top: 0.45rem;
+  }
   .prompt-chip {
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(15, 23, 42, 0.85);
     border: 1px dashed #475569;
     color: #cbd5e1;
-    padding: 0.42rem 0.7rem;
+    padding: 0.44rem 0.72rem;
     border-radius: 6px;
     font-family: ui-monospace, monospace;
     font-size: 0.76rem;
     cursor: pointer;
-    margin-top: 0.45rem;
     display: block;
     text-align: left;
-    width: 100%;
+    flex: 1;
+    line-height: 1.38;
   }
-  .prompt-chip:hover { border-color: #38bdf8; color: #ffffff; }
+  .prompt-chip:hover { border-color: #38bdf8; color: #ffffff; background: rgba(30, 41, 59, 0.95); }
+  .prompt-launch-btn {
+    background: #0284c7;
+    color: #ffffff;
+    border: 1px solid #38bdf8;
+    border-radius: 6px;
+    padding: 0.38rem 0.68rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .prompt-launch-btn:hover { background: #0369a1; border-color: #7dd3fc; }
   .wetlab-callout {
     margin-top: 0.9rem;
     background: rgba(245, 158, 11, 0.14);
@@ -2213,29 +2258,15 @@ selectStation('s3');
 
       const rolesHtml = personas.map(p => {
         const isLead = p.key === leadKey;
-        if (isLive) {
-          const email = cfg.workshop_domain ? `${p.prefix}@${cfg.workshop_domain}` : '';
-          const liveHref = (cfg.scion_hub_url && cstate.slug && cstate.general_topic_id && email)
-            ? `${cfg.scion_hub_url}/chat/${cstate.slug}/${cstate.general_topic_id}?authuser=${encodeURIComponent(email)}`
-            : (cfg.scion_hub_url ? `${cfg.scion_hub_url}/chat` : '#');
-          return `
-            <a class="role-link ${isLead ? 'lead' : ''}" href="${liveHref}" target="_blank" rel="noopener" onclick="oasePauseVideoOnly('${chId}')">
-              <img src="${p.avatar}" alt="${p.name}">
-              <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · LEAD' : ''})</small></span>
-            </a>
-          `;
-        }
+        const selectedKey = (window.oaseStepPersonas && window.oaseStepPersonas[chId]) || leadKey;
+        const isSel = p.key === selectedKey;
         return `
-          <span class="role-link ${isLead ? 'lead' : ''}" title="Deploy or open the Cloud Run Story Arc Cockpit to jump live into Scion Hub as ${p.name}">
+          <button type="button" id="role-btn-${chId}-${p.key}" class="role-link ${isLead ? 'lead' : ''} ${isSel ? 'active-persona' : ''}" onclick="oaseSelectStepPersona('${chId}', '${p.key}')">
             <img src="${p.avatar}" alt="${p.name}">
-            <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · LEAD' : ''})</small></span>
-          </span>
+            <span>${p.name} <small style="color:#94a3b8;">(${p.role}${isLead ? ' · ★ LEAD' : ''})</small></span>
+          </button>
         `;
       }).join('');
-
-      const promptsHtml = (promptsMap[chId] || []).map(pr =>
-        `<button class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(pr)})'>📋 Copy Live Follow-Up Prompt: "${pr}"</button>`
-      ).join('');
 
       const wetlabHtml = chId === 'ch4'
         ? `<div class="wetlab-callout"><strong>⏸ Explicit Future-State Wet-Lab / CRO Assay Handoff Slot:</strong> Campaign pauses on disk at <code>WO-006</code> (<code>gates/GATE-03-wetlab-handoff.md</code>) after disqualifying <code>PCSK9-A02</code> on cardiac hERG—awaiting experimental SPR <code>K<sub>D</sub></code>, manual patch-clamp hERG (<code>&gt;30 µM</code>), and rat/dog cassette PK before <code>WO-007</code> unlocks.</div>`
@@ -2250,9 +2281,7 @@ selectStation('s3');
       const resetBtnHtml = isLive
         ? `<button class="cockpit-btn" onclick="oaseResetChapter('${chId}')">↺ Reset ${chId.toUpperCase()} (&lt;2s)</button>`
         : '';
-      const roleHeader = isLive
-        ? `🚀 Pause &amp; Join Live Scion Grove As Any of the 5 Discovery Pod Scientists (Zero Admin Noise):`
-        : `👩‍🔬 5-Scientist Human Discovery Pod Roster &amp; Follow-Up Q&amp;A Prompts (Live Webchat Active on Cloud Run):`;
+      const roleHeader = `👩‍🔬 Select a Discovery Pod Persona / Avatar to View Tailored Scion &amp; Cloud Shell Prompts for ${activeCamp.short_label || cid} (${chId.toUpperCase()}):`;
 
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
@@ -2272,13 +2301,118 @@ selectStation('s3');
         ${wetlabHtml}
         <div class="role-bar">
           <div style="font-size:0.83rem;font-weight:700;color:#e2e8f0;">${roleHeader}</div>
-          <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.15rem;">Note: Inside Scion Webchat, the right-hand <code>PEOPLE — 4</code> list displays your 4 co-pilots alphabetically while your active signed-in seat appears under <code>Profile</code>.</div>
+          <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.15rem;">Click any scientist avatar below to switch their role-specific interactive Scion Webchat &amp; Cloud Shell (<code>agy</code> CLI) prompts for this step and pilot:</div>
           <div class="role-grid">${rolesHtml}</div>
-          <div style="margin-top:0.55rem;">${promptsHtml}</div>
+          <div id="persona-prompt-deck-${chId}" class="persona-prompt-deck"></div>
         </div>
       `;
+      window.oaseRenderStepPersonaDeck(chId, (window.oaseStepPersonas && window.oaseStepPersonas[chId]) || leadKey, cfg, isLive, activeCamp);
     });
   }
+
+  window.oaseStepPersonas = window.oaseStepPersonas || {};
+  window.oaseLastCockpitArgs = null;
+
+  window.oaseCopyAndOpenScion = function(chId, promptText, scionUrl) {
+    window.oasePauseVideoOnly(chId);
+    navigator.clipboard.writeText(promptText).then(() => {
+      showToast('Copied prompt to clipboard & opening Scion Hub...');
+      if (scionUrl && scionUrl !== '#') {
+        window.open(scionUrl, '_blank', 'noopener');
+      }
+    }).catch(() => {
+      if (scionUrl && scionUrl !== '#') {
+        window.open(scionUrl, '_blank', 'noopener');
+      }
+    });
+  };
+
+  window.oaseRenderStepPersonaDeck = function(chId, personaKey, cfg, isLive, activeCamp) {
+    const deckEl = document.getElementById('persona-prompt-deck-' + chId);
+    if (!deckEl) return;
+    const camp = activeCamp || getCampaignObj(cfg && cfg.campaigns_registry, activeCampaignId);
+    const personas = (cfg && cfg.personas) || DEFAULT_PERSONAS;
+    const pObj = personas.find(p => p.key === personaKey) || personas[0];
+    const leadKey = DEFAULT_LEADS[chId] || 'sarah';
+    const isLead = pObj.key === leadKey;
+
+    const domain = (cfg && cfg.workshop_domain) || 'losiern-1.altostrat.com';
+    const email = `${pObj.prefix}@${domain}`;
+    const scionBase = (cfg && cfg.scion_hub_url) || (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.scion_hub_url) || 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app';
+    const cstate = (cfg && cfg.state && cfg.state.chapters && cfg.state.chapters[chId]) || {};
+    const groveSlug = camp.grove_slug || (camp.id === 'io-cold-to-hot' ? 'io-cold-to-hot' : 'pcsk9-oral-live-v2');
+    const scionHref = (cstate.slug && cstate.general_topic_id)
+      ? `${scionBase}/chat/${cstate.slug}/${cstate.general_topic_id}?authuser=${encodeURIComponent(email)}`
+      : `${scionBase}/projects/${groveSlug}?authuser=${encodeURIComponent(email)}`;
+    const cloudShellHref = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(email)}`;
+
+    const campPersonaPrompts = (camp && camp.persona_prompts && camp.persona_prompts[chId] && camp.persona_prompts[chId][pObj.key]) || null;
+    const fallbackPrompts = (cfg && cfg.followup_prompts && cfg.followup_prompts[chId]) || DEFAULT_PROMPTS[chId] || [];
+    const scionPrompts = (campPersonaPrompts && campPersonaPrompts.scion_prompts) || fallbackPrompts;
+    const agyPrompt = (campPersonaPrompts && campPersonaPrompts.agy_prompt) || '';
+    const wingman = (campPersonaPrompts && campPersonaPrompts.wingman) || '@science-program-lead';
+    const focus = (campPersonaPrompts && campPersonaPrompts.focus) || `${pObj.role} Interactive Stage-Gate Verification`;
+
+    const promptRowsHtml = scionPrompts.map((pr, idx) => `
+      <div class="prompt-row">
+        <button type="button" class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(pr)})'>
+          <strong style="color:#38bdf8;">📋 Scion Prompt ${idx + 1} (${pObj.name.split(" ").pop()}):</strong> "${pr}"
+        </button>
+        <button type="button" class="prompt-launch-btn" onclick='oaseCopyAndOpenScion(${JSON.stringify(chId)}, ${JSON.stringify(pr)}, ${JSON.stringify(scionHref)})'>
+          🚀 Copy &amp; Ask in Scion ↗
+        </button>
+      </div>
+    `).join('');
+
+    const agyRowHtml = agyPrompt ? `
+      <div class="prompt-row" style="margin-top:0.55rem;padding-top:0.45rem;border-top:1px dashed rgba(148,163,184,0.2);">
+        <button type="button" class="prompt-chip" style="border-color:#10b981;color:#a7f3d0;" onclick='oaseCopyPrompt(${JSON.stringify(agyPrompt)})'>
+          <strong style="color:#34d399;">☁️ Cloud Shell (agy CLI) Command:</strong> ${agyPrompt}
+        </button>
+      </div>
+    ` : '';
+
+    deckEl.innerHTML = `
+      <div class="persona-deck-hdr">
+        <div>
+          <span style="font-size:0.82rem;font-weight:700;color:#ffffff;">
+            Speaking as <span style="color:#38bdf8;">${pObj.name}</span> (${pObj.role}${isLead ? ' · ★ Step Lead' : ''})
+          </span>
+          <span style="font-size:0.75rem;color:#94a3b8;margin-left:0.45rem;font-family:ui-monospace,monospace;">
+            Login: <code>${email}</code> · Paired AI Wingman: <strong style="color:#fbbf24;">${wingman}</strong>
+          </span>
+          <div style="font-size:0.76rem;color:#cbd5e1;margin-top:0.18rem;">
+            <strong>Step Focus (${camp.nav_slug || camp.id} · ${chId.toUpperCase()}):</strong> ${focus}
+          </div>
+        </div>
+        <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+          <a class="cockpit-btn primary" href="${scionHref}" target="_blank" rel="noopener" onclick="oasePauseVideoOnly('${chId}')" style="text-decoration:none;font-size:0.75rem;padding:0.32rem 0.68rem;">
+            💬 Open Scion as ${pObj.name.split(' ').slice(0, 2).join(' ')} ↗
+          </a>
+          <a class="cockpit-btn" href="${cloudShellHref}" target="_blank" rel="noopener" onclick="oasePauseVideoOnly('${chId}')" style="text-decoration:none;font-size:0.75rem;padding:0.32rem 0.68rem;">
+            ☁️ Cloud Shell (agy) ↗
+          </a>
+        </div>
+      </div>
+      ${promptRowsHtml}
+      ${agyRowHtml}
+    `;
+  };
+
+  window.oaseSelectStepPersona = function(chId, personaKey) {
+    window.oaseStepPersonas = window.oaseStepPersonas || {};
+    window.oaseStepPersonas[chId] = personaKey;
+    const personas = (window.oaseLastCockpitArgs && window.oaseLastCockpitArgs.cfg && window.oaseLastCockpitArgs.cfg.personas) || DEFAULT_PERSONAS;
+    personas.forEach(p => {
+      const btn = document.getElementById(`role-btn-${chId}-${p.key}`);
+      if (btn) {
+        if (p.key === personaKey) btn.classList.add('active-persona');
+        else btn.classList.remove('active-persona');
+      }
+    });
+    const args = window.oaseLastCockpitArgs || {};
+    window.oaseRenderStepPersonaDeck(chId, personaKey, args.cfg || null, !!args.isLive, args.activeCamp || null);
+  };
 
   async function refreshCockpit() {
     try {
@@ -2286,12 +2420,14 @@ selectStation('s3');
       if (r.ok) {
         const cfg = await r.json();
         const activeCamp = renderCampaignChrome(cfg.campaigns_registry || STATIC_CAMPAIGNS_REGISTRY, cfg.active_campaign || activeCampaignId);
+        window.oaseLastCockpitArgs = { cfg, isLive: true, activeCamp };
         buildTopBar(cfg, true, activeCamp);
         injectChapterCards(cfg, true, activeCamp);
         return;
       }
     } catch (_) {}
     const activeCamp = renderCampaignChrome(STATIC_CAMPAIGNS_REGISTRY, activeCampaignId);
+    window.oaseLastCockpitArgs = { cfg: null, isLive: false, activeCamp };
     buildTopBar(null, false, activeCamp);
     injectChapterCards(null, false, activeCamp);
   }
