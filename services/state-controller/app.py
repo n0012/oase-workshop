@@ -151,6 +151,8 @@ def _restore_projects_from_golden(
         art_cols = _shared_columns(cur, "artifact")
         ver_cols = _shared_columns(cur, "artifact_version")
         file_cols = _shared_columns(cur, "artifact_file")
+        agent_cols = _shared_columns(cur, "agents")
+        edge_cols = _shared_columns(cur, "delegation_edges")
 
         for pid in project_ids:
             # 1. Restore Webchat & conversation state (never touching users or user_access_tokens)
@@ -256,6 +258,19 @@ def _restore_projects_from_golden(
                 f"SELECT {file_cols} FROM golden.artifact_file "
                 f"WHERE version_id IN (SELECT id FROM golden.artifact_version WHERE artifact_id IN ("
                 f"SELECT id FROM golden.artifact WHERE scope_kind = 'project' AND scope_ref = ?))",
+                (pid,),
+            )
+
+            # 3. Restore 4-tier Agent Graph hierarchy (agents + delegation_edges)
+            cur.execute("DELETE FROM main.delegation_edges WHERE scope_type = 'project' AND scope_id = ?", (pid,))
+            cur.execute(
+                f"INSERT OR REPLACE INTO main.agents ({agent_cols}) "
+                f"SELECT {agent_cols} FROM golden.agents WHERE project_id = ?",
+                (pid,),
+            )
+            cur.execute(
+                f"INSERT OR REPLACE INTO main.delegation_edges ({edge_cols}) "
+                f"SELECT {edge_cols} FROM golden.delegation_edges WHERE scope_type = 'project' AND scope_id = ?",
                 (pid,),
             )
 
