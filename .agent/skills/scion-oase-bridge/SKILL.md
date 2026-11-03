@@ -43,9 +43,9 @@ python3 scripts/scion_mcp_server.py --cli bootstrap_campaign --project io-cold-t
 python3 scripts/scion_mcp_server.py --cli list_agents --project io-cold-to-hot
 
 # 4. List workspace artifacts or read a specific report / Work Order / decision log
-python3 scripts/scion_mcp_server.py --cli dav_list --project io-cold-to-hot --path reports
-python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path decision-log.md
-python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path reports/wet-lab-wall-readiness.md
+python3 scripts/scion_mcp_server.py --cli dav_list --project io-cold-to-hot --path executive
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path program-state/decision-log.md
+python3 scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path executive/CANDIDATE-SUMMARY.md
 
 # 5. Dispatch a live instruction to @science-program-lead (returns grounded reply in CLI AND logs live into Scion Web UI + Cloud Logging)
 python3 scripts/scion_mcp_server.py --cli send_message \
@@ -71,13 +71,13 @@ python3 scripts/scion_mcp_server.py --cli get_messages --project io-cold-to-hot 
 
 1. **Prompt 1 — Initiate Campaign & See Kickoff Feedback in `agy` CLI (`cs2_t1` → `cs2_t2`):**
    ```bash
-   agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead's live kickoff feedback."
+   agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead's live kickoff feedback."
    ```
    - **In `agy` CLI:** Displays `oase doctor` (`78/78 PASS`), the 17-agent 4-tier roster, and `@science-program-lead`'s `DEC-001` / `WO-001` kickoff confirmation right inside the terminal.
    - **In Scion Web UI:** Open `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f` (`Graph View` + `Show users` ON) to watch the 17-node 4-tier DAG react live.
 2. **Prompt 2 — Analyze Completed Program Run & Audit the `DEC-008` Wet-Lab Wall (`cs2_t3` → `cs2_t4`):**
    ```bash
-   agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
+   agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."
    ```
    - **In `agy` CLI:** Displays `@science-program-lead`'s grounded reply and the side-by-side `Series A (oase_enpp1_009)` vs `Series B (oase_enpp1_019)` Wet-Lab Wall table directly in the terminal.
    - **In Scion Web UI:** Scroll to **Messages** on `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f` to see both `[Cloud Shell · Antigravity (agy) CLI Feedback]` and `[Grounded Science Agent Reply -> agy CLI]` logged live at the top of the project message stream.

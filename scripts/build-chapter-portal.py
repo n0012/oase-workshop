@@ -404,7 +404,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
               </div>
             </div>
             <span class="arcade-wingman-tag">&#8644; Wingman: Fold-3 (1P AlphaFold 3)</span>
-            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 3 (WO-004..005)</strong>: 1P AlphaFold 3 co-folding (<code>ipTM=0.90</code>), <code>fpocket</code> &amp; Vina docking.</div>
+            <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 3 (WO-004..005)</strong>: 1P AlphaFold 3 co-folding (<code>ipTM=0.84</code>), <code>fpocket</code> &amp; Vina docking.</div>
           </button>
 
           <button type="button" class="arcade-pilot-card" onclick="oaseLaunchMission(null, 'ch5', false); setTimeout(() => oaseSelectStepPersona('ch5', 'claire'), 80);">
@@ -1830,6 +1830,7 @@ selectStation('s3');
     document.querySelectorAll('video').forEach(v => { try { v.pause(); } catch (_) {} });
     const fw = document.getElementById('cockpit-full-walkthrough-card');
     if (fw) fw.remove();
+    document.querySelectorAll('#cockpit-cloudshell-agy-card').forEach(el => el.remove());
     const sb = document.getElementById('oase-staging-banner');
     if (sb) sb.remove();
     ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
@@ -2178,6 +2179,7 @@ selectStation('s3');
           whyPanel.insertBefore(fwCard, hdr.nextSibling);
         }
 
+        document.querySelectorAll('#cockpit-cloudshell-agy-card').forEach(el => el.remove());
         const agyCard = document.createElement('div');
         agyCard.id = 'cockpit-cloudshell-agy-card';
         agyCard.className = 'cockpit-stage-card';
@@ -2187,8 +2189,10 @@ selectStation('s3');
           ? `${cfg.scion_hub_url}/projects/ab3d65d5-f32c-463e-be48-d535034de34f`
           : 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f';
         const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=64`;
-        const p1 = 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
-        const p2 = 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read decision-log.md and reports/wet-lab-wall-readiness.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."';
+        const p1 = 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
+        const p2 = 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."';
+        const escAttr = (v) => JSON.stringify(v).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
+        const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         agyCard.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
             <div>
@@ -2212,8 +2216,8 @@ selectStation('s3');
             <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (1:00) &middot; @admet-dmpk-scientist</button>
           </div>
           <div style="margin-top:0.65rem;">
-            <button class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${p1}</button>
-            <button class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Wet-Lab Wall): ${p2}</button>
+            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>
+            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Wet-Lab Wall): ${escHtml(p2)}</button>
           </div>
         `;
         if (fwCard.parentNode) {
@@ -2353,12 +2357,15 @@ selectStation('s3');
     const wingman = (campPersonaPrompts && campPersonaPrompts.wingman) || '@science-program-lead';
     const focus = (campPersonaPrompts && campPersonaPrompts.focus) || `${pObj.role} Interactive Stage-Gate Verification`;
 
+    const escAttr = (v) => JSON.stringify(v).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
+    const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
     const promptRowsHtml = scionPrompts.map((pr, idx) => `
       <div class="prompt-row">
-        <button type="button" class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(pr)})'>
-          <strong style="color:#38bdf8;">📋 Scion Prompt ${idx + 1} (${pObj.name.split(" ").pop()}):</strong> "${pr}"
+        <button type="button" class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(pr)})'>
+          <strong style="color:#38bdf8;">📋 Scion Prompt ${idx + 1} (${pObj.name.split(" ").pop()}):</strong> "${escHtml(pr)}"
         </button>
-        <button type="button" class="prompt-launch-btn" onclick='oaseCopyAndOpenScion(${JSON.stringify(chId)}, ${JSON.stringify(pr)}, ${JSON.stringify(scionHref)})'>
+        <button type="button" class="prompt-launch-btn" onclick='oaseCopyAndOpenScion(${escAttr(chId)}, ${escAttr(pr)}, ${escAttr(scionHref)})'>
           🚀 Copy &amp; Ask in Scion ↗
         </button>
       </div>
@@ -2366,8 +2373,8 @@ selectStation('s3');
 
     const agyRowHtml = agyPrompt ? `
       <div class="prompt-row" style="margin-top:0.55rem;padding-top:0.45rem;border-top:1px dashed rgba(148,163,184,0.2);">
-        <button type="button" class="prompt-chip" style="border-color:#10b981;color:#a7f3d0;" onclick='oaseCopyPrompt(${JSON.stringify(agyPrompt)})'>
-          <strong style="color:#34d399;">☁️ Cloud Shell (agy CLI) Command:</strong> ${agyPrompt}
+        <button type="button" class="prompt-chip" style="border-color:#10b981;color:#a7f3d0;" onclick='oaseCopyPrompt(${escAttr(agyPrompt)})'>
+          <strong style="color:#34d399;">☁️ Cloud Shell (agy CLI) Command:</strong> ${escHtml(agyPrompt)}
         </button>
       </div>
     ` : '';
@@ -2415,17 +2422,19 @@ selectStation('s3');
   };
 
   async function refreshCockpit() {
-    try {
-      const r = await fetch('/api/cockpit/config?campaign=' + encodeURIComponent(activeCampaignId), { cache: 'no-store' });
-      if (r.ok) {
-        const cfg = await r.json();
-        const activeCamp = renderCampaignChrome(cfg.campaigns_registry || STATIC_CAMPAIGNS_REGISTRY, cfg.active_campaign || activeCampaignId);
-        window.oaseLastCockpitArgs = { cfg, isLive: true, activeCamp };
-        buildTopBar(cfg, true, activeCamp);
-        injectChapterCards(cfg, true, activeCamp);
-        return;
-      }
-    } catch (_) {}
+    if (!window.location.hostname.endsWith('github.io')) {
+      try {
+        const r = await fetch('/api/cockpit/config?campaign=' + encodeURIComponent(activeCampaignId), { cache: 'no-store' });
+        if (r.ok) {
+          const cfg = await r.json();
+          const activeCamp = renderCampaignChrome(cfg.campaigns_registry || STATIC_CAMPAIGNS_REGISTRY, cfg.active_campaign || activeCampaignId);
+          window.oaseLastCockpitArgs = { cfg, isLive: true, activeCamp };
+          buildTopBar(cfg, true, activeCamp);
+          injectChapterCards(cfg, true, activeCamp);
+          return;
+        }
+      } catch (_) {}
+    }
     const activeCamp = renderCampaignChrome(STATIC_CAMPAIGNS_REGISTRY, activeCampaignId);
     window.oaseLastCockpitArgs = { cfg: null, isLive: false, activeCamp };
     buildTopBar(null, false, activeCamp);

@@ -35,7 +35,8 @@ from typing import Any
 GCP_PROJECT = os.environ.get("OASE_GCP_PROJECT", "losiern-oase-workshop")
 GCP_ZONE = os.environ.get("OASE_GCP_ZONE", "us-central1-c")
 GCE_INSTANCE = os.environ.get("OASE_GCE_INSTANCE", "scion-hub-oase")
-SA_ACCOUNT = os.environ.get("OASE_GCLOUD_ACCOUNT", "claude-vertex@losiern-vibe.iam.gserviceaccount.com")
+SA_ACCOUNT = os.environ.get("OASE_GCLOUD_ACCOUNT", "").strip()
+DEFAULT_LAB_SA = "claude-vertex@losiern-vibe.iam.gserviceaccount.com"
 LOCAL_CONTROLLER_URLS = (
     os.environ.get("OASE_STATE_CONTROLLER_URL", "").strip(),
     "http://127.0.0.1:18780",
@@ -43,9 +44,24 @@ LOCAL_CONTROLLER_URLS = (
 )
 
 
+def _has_gcloud_account(acct: str) -> bool:
+    """Return True if `acct` is present in the local gcloud credential store."""
+    if not acct:
+        return False
+    creds_db = os.path.expanduser("~/.config/gcloud/credentials.db")
+    try:
+        if os.path.exists(creds_db):
+            with open(creds_db, "rb") as fh:
+                return acct.encode("utf-8") in fh.read()
+    except Exception:
+        pass
+    return False
+
+
 def _call_bridge(method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
     """Call `/api/scion/...` over local tunnel if active, else via `gcloud compute ssh`."""
     body_bytes = json.dumps(payload).encode("utf-8") if payload is not None else None
+    http_timeout = 18.0 if method.upper() == "POST" else 3.0
     for base_url in LOCAL_CONTROLLER_URLS:
         if not base_url:
             continue
@@ -57,12 +73,12 @@ def _call_bridge(method: str, path: str, payload: dict[str, Any] | None = None) 
             headers={"Content-Type": "application/json"} if body_bytes else {},
         )
         try:
-            with urllib.request.urlopen(req, timeout=2.5) as resp:
+            with urllib.request.urlopen(req, timeout=http_timeout) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except Exception:
             continue
 
-    # Fallback: execute curl directly on scion-hub-oase over IAP using the service account
+    # Fallback: execute curl directly on scion-hub-oase over IAP using active gcloud identity (or lab SA if available)
     remote_url = f"http://127.0.0.1:8780{path}"
     if method.upper() == "GET":
         remote_cmd = f"curl -sS {shlex.quote(remote_url)}"
@@ -76,22 +92,29 @@ def _call_bridge(method: str, path: str, payload: dict[str, Any] | None = None) 
         )
 
     env = dict(os.environ)
-    env["CLOUDSDK_CORE_ACCOUNT"] = SA_ACCOUNT
+    if SA_ACCOUNT:
+        env["CLOUDSDK_CORE_ACCOUNT"] = SA_ACCOUNT
+    elif "CLOUDSDK_CORE_ACCOUNT" not in env and _has_gcloud_account(DEFAULT_LAB_SA):
+        env["CLOUDSDK_CORE_ACCOUNT"] = DEFAULT_LAB_SA
+
     proc = subprocess.run(
         [
             "gcloud",
             "compute",
             "ssh",
             GCE_INSTANCE,
+            "--quiet",
+            "--ssh-flag=-n",
             f"--project={GCP_PROJECT}",
             f"--zone={GCP_ZONE}",
             f"--command={remote_cmd}",
         ],
         env=env,
+        stdin=subprocess.DEVNULL,
         capture_output=True,
         text=True,
         check=False,
-        timeout=45,
+        timeout=55,
     )
     if proc.returncode != 0:
         raise RuntimeError(f"SSH bridge error ({proc.returncode}): {proc.stderr or proc.stdout}")
