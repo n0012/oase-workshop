@@ -610,6 +610,8 @@ def _write_scion_cloud_log(
     msg_type: str,
     body: str,
 ) -> None:
+    import urllib.request
+
     payload = {
         "component": "scion-server",
         "subsystem": "hub.messages",
@@ -624,27 +626,42 @@ def _write_scion_cloud_log(
         "urgent": False,
         "broadcasted": False,
     }
-    labels_arg = (
-        f"component=scion-server,hub=oase,project_id={project_id},"
-        f"sender={sender},sender_id={sender_id},"
-        f"recipient={recipient},recipient_id={recipient_id},"
-        f"agent_id={recipient_id},msg_type={msg_type}"
-    )
+    labels = {
+        "component": "scion-server",
+        "hub": "oase",
+        "project_id": project_id,
+        "sender": sender,
+        "sender_id": sender_id,
+        "recipient": recipient,
+        "recipient_id": recipient_id,
+        "agent_id": recipient_id,
+        "msg_type": msg_type,
+        "urgent": "false",
+        "broadcasted": "false",
+    }
     try:
-        subprocess.Popen(
-            [
-                "gcloud",
-                "logging",
-                "write",
-                "scion-messages",
-                json.dumps(payload),
-                "--payload-type=json",
-                "--project=losiern-oase-workshop",
-                f"--log-labels={labels_arg}",
-            ],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+        req_meta = urllib.request.Request(
+            "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
+            headers={"Metadata-Flavor": "Google"},
         )
+        with urllib.request.urlopen(req_meta, timeout=3) as resp:
+            tok = json.loads(resp.read().decode("utf-8")).get("access_token", "")
+        entry = {
+            "logName": "projects/losiern-oase-workshop/logs/scion-messages",
+            "resource": {"type": "global", "labels": {"project_id": "losiern-oase-workshop"}},
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "severity": "INFO",
+            "labels": labels,
+            "jsonPayload": payload,
+        }
+        req_log = urllib.request.Request(
+            "https://logging.googleapis.com/v2/entries:write",
+            data=json.dumps({"entries": [entry]}).encode("utf-8"),
+            headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req_log, timeout=5) as resp_log:
+            resp_log.read()
     except Exception:
         pass
 

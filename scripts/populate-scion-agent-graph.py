@@ -829,107 +829,86 @@ def write_cloud_logging_messages(
     slug_to_id: dict[str, str],
     inter_agent_msgs: list[tuple[str, str, str, str]],
 ) -> None:
-    """Write structured scion-messages entries to GCP Cloud Logging so
-    `/api/v1/projects/<project_id>/message-logs` renders the Project Messages panel.
+    """Write structured scion-messages entries to GCP Cloud Logging via v2/entries:write
+    so `/api/v1/projects/<project_id>/message-logs` renders the Project Messages panel.
     """
-    try:
-        from google.cloud import logging as gcp_logging  # type: ignore
+    import urllib.request
 
-        client = gcp_logging.Client(project=GCP_PROJECT)
-        logger = client.logger("scion-messages")
-        base_ts = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(minutes=len(inter_agent_msgs) + 2)
-        for idx, (s_slug, r_slug, m_type, body) in enumerate(inter_agent_msgs):
-            ts = base_ts + datetime.timedelta(seconds=idx * 25)
-            if s_slug == "user":
-                sender_str = f"user:{sarah_email}"
-                sender_id = sarah_id
-            else:
-                sender_str = f"agent:{s_slug}"
-                sender_id = slug_to_id[s_slug]
-            recipient_str = f"agent:{r_slug}"
-            recipient_id = slug_to_id[r_slug]
-            labels = {
-                "component": "scion-server",
-                "hub": HUB_NAME,
-                "project_id": project_id,
-                "sender": sender_str,
-                "sender_id": sender_id,
-                "recipient": recipient_str,
-                "recipient_id": recipient_id,
-                "agent_id": recipient_id,
-                "msg_type": m_type,
-                "urgent": "false",
-                "broadcasted": "false",
+    tok = ""
+    try:
+        req_meta = urllib.request.Request(
+            "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
+            headers={"Metadata-Flavor": "Google"},
+        )
+        with urllib.request.urlopen(req_meta, timeout=5) as resp:
+            tok = json.loads(resp.read().decode("utf-8")).get("access_token", "")
+    except Exception:
+        tok = subprocess.check_output(["gcloud", "auth", "print-access-token"], text=True).strip()
+
+    base_ts = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(minutes=len(inter_agent_msgs) + 2)
+    entries = []
+    for idx, (s_slug, r_slug, m_type, body) in enumerate(inter_agent_msgs):
+        ts = (base_ts + datetime.timedelta(seconds=idx * 25)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        if s_slug == "user":
+            sender_str = f"user:{sarah_email}"
+            sender_id = sarah_id
+        else:
+            sender_str = f"agent:{s_slug}"
+            sender_id = slug_to_id[s_slug]
+        recipient_str = f"agent:{r_slug}"
+        recipient_id = slug_to_id[r_slug]
+        labels = {
+            "component": "scion-server",
+            "hub": HUB_NAME,
+            "project_id": project_id,
+            "sender": sender_str,
+            "sender_id": sender_id,
+            "recipient": recipient_str,
+            "recipient_id": recipient_id,
+            "agent_id": recipient_id,
+            "msg_type": m_type,
+            "urgent": "false",
+            "broadcasted": "false",
+        }
+        payload = {
+            "component": "scion-server",
+            "subsystem": "hub.messages",
+            "message": "message dispatched",
+            "message_content": body,
+            "project_id": project_id,
+            "sender": sender_str,
+            "sender_id": sender_id,
+            "recipient": recipient_str,
+            "recipient_id": recipient_id,
+            "msg_type": m_type,
+            "urgent": False,
+            "broadcasted": False,
+        }
+        entries.append(
+            {
+                "logName": f"projects/{GCP_PROJECT}/logs/scion-messages",
+                "resource": {"type": "global", "labels": {"project_id": GCP_PROJECT}},
+                "timestamp": ts,
+                "severity": "INFO",
+                "insertId": f"oase-{project_slug}-msg-{idx:03d}-v2",
+                "labels": labels,
+                "jsonPayload": payload,
             }
-            payload = {
-                "component": "scion-server",
-                "subsystem": "hub.messages",
-                "message": "message dispatched",
-                "message_content": body,
-                "project_id": project_id,
-                "sender": sender_str,
-                "sender_id": sender_id,
-                "recipient": recipient_str,
-                "recipient_id": recipient_id,
-                "msg_type": m_type,
-                "urgent": False,
-                "broadcasted": False,
-            }
-            logger.log_struct(
-                payload,
-                severity="INFO",
-                labels=labels,
-                timestamp=ts,
-                insert_id=f"oase-{project_slug}-msg-{idx:03d}",
-            )
-        print(f"[cloud-logging] Wrote {len(inter_agent_msgs)} scion-messages entries for {project_slug} ({project_id})", flush=True)
-    except Exception as exc:
-        print(f"[cloud-logging] Warning: google-cloud-logging unavailable ({exc}), falling back to gcloud logging write...", flush=True)
-        for idx, (s_slug, r_slug, m_type, body) in enumerate(inter_agent_msgs):
-            if s_slug == "user":
-                sender_str = f"user:{sarah_email}"
-                sender_id = sarah_id
-            else:
-                sender_str = f"agent:{s_slug}"
-                sender_id = slug_to_id[s_slug]
-            recipient_str = f"agent:{r_slug}"
-            recipient_id = slug_to_id[r_slug]
-            payload = {
-                "component": "scion-server",
-                "subsystem": "hub.messages",
-                "message": "message dispatched",
-                "message_content": body,
-                "project_id": project_id,
-                "sender": sender_str,
-                "sender_id": sender_id,
-                "recipient": recipient_str,
-                "recipient_id": recipient_id,
-                "msg_type": m_type,
-                "urgent": False,
-                "broadcasted": False,
-            }
-            labels_arg = (
-                f"component=scion-server,hub={HUB_NAME},project_id={project_id},"
-                f"sender={sender_str},sender_id={sender_id},"
-                f"recipient={recipient_str},recipient_id={recipient_id},"
-                f"agent_id={recipient_id},msg_type={m_type}"
-            )
-            subprocess.run(
-                [
-                    "gcloud",
-                    "logging",
-                    "write",
-                    "scion-messages",
-                    json.dumps(payload),
-                    "--payload-type=json",
-                    f"--project={GCP_PROJECT}",
-                    f"--log-labels={labels_arg}",
-                ],
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-        print(f"[cloud-logging] Wrote {len(inter_agent_msgs)} scion-messages entries via gcloud for {project_slug}", flush=True)
+        )
+
+    body_bytes = json.dumps({"entries": entries}).encode("utf-8")
+    req = urllib.request.Request(
+        "https://logging.googleapis.com/v2/entries:write",
+        data=body_bytes,
+        headers={
+            "Authorization": f"Bearer {tok}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        resp.read()
+    print(f"[cloud-logging] Wrote {len(entries)} scion-messages entries via REST API for {project_slug} ({project_id})", flush=True)
 
 
 def main() -> int:

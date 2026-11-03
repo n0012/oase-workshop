@@ -216,10 +216,10 @@ def _build_scene_html(turn_idx: int, graph_uri: str, msgs_uri: str) -> str:
             </div>
             <div style="background:#0f172a;border:1px solid #334155;border-radius:10px;overflow:hidden;flex:1;display:flex;flex-direction:column;">
               <div style="padding:8px 14px;background:#1e293b;font-size:11.5px;font-weight:700;color:#93c5fd;font-family:monospace;">
-                Live Scion Hub 4-Tier Agent Graph · /projects/ab3d65d5.../agents?view=graph
+                Live Scion Hub 4-Tier Agent Graph · /projects/ab3d65d5... (Graph View)
               </div>
               <div style="flex:1;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                <img src="{graph_uri}" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+                <img src="{graph_uri}" style="width:100%;height:100%;object-fit:cover;object-position:bottom right;">
               </div>
             </div>
           </div>
@@ -405,14 +405,24 @@ def main() -> int:
     rtp = _load_module("record_team_pilot", REPO_ROOT / "scripts" / "record-team-pilot.py")
 
     gcp_project = "losiern-oase-workshop"
-    tok = rla.gcloud_access_token(None)
-
-    # 1. Synthesize the 4 turns (2 Sarah Gemini 3.8 Live Avatar turns + 2 AI wingman turns)
+    # 1. Synthesize or reuse cached 4 turns (2 Sarah Gemini 3.8 Live Avatar turns + 2 AI wingman turns)
     turn_meta: dict[str, dict[str, Any]] = {}
     for t in TURNS:
         tid = t["turn_id"]
         sp = t["speaker"]
         vmeta = VOICES[sp]
+        cached_wav = audio_dir / f"{tid}.wav"
+        cached_mp4 = live_dir / f"{tid}.mp4"
+        if cached_wav.exists() and cached_wav.stat().st_size > 10000 and (vmeta["is_agent"] or cached_mp4.exists()):
+            dur = float(rtp.ffprobe_duration(cached_wav))
+            turn_meta[tid] = {
+                "turn_id": tid,
+                "wav": str(cached_wav),
+                "duration_s": round(dur, 4),
+                "slot_frames": int(round((dur + BREATH_GAP_S) * FPS)),
+            }
+            continue
+        tok = rla.gcloud_access_token(None)
         if vmeta["is_agent"]:
             job = {
                 "turn_id": tid,
