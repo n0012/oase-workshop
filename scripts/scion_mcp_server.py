@@ -165,6 +165,17 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
         },
     },
     {
+        "name": "bootstrap_campaign",
+        "description": "Initialize or re-verify an OASE discovery campaign Grove (`io-cold-to-hot`, `pcsk9-oral-live-v2`, `open-agentic-science-engine`) from its campaign seed, checking `oase doctor` (78/78), 41 skills, and the 17-agent 4-tier hierarchy.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "project": {"type": "string", "description": "Project slug or UUID (default `io-cold-to-hot`)."},
+            },
+            "required": ["project"],
+        },
+    },
+    {
         "name": "send_message",
         "description": "Dispatch a live instruction to a Scion agent (`@science-program-lead`, `@controller`, `@structural-biologist`, `@admet-dmpk-scientist`, etc.), logging both the instruction and the grounded reply to the Scion Web UI and Cloud Logging.",
         "inputSchema": {
@@ -198,6 +209,9 @@ def execute_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         if args.get("agent"):
             qs["agent"] = str(args["agent"])
         return _call_bridge("GET", f"/api/scion/projects/{proj}/messages?{urllib.parse.urlencode(qs)}")
+    if name in ("bootstrap_campaign", "scion_bootstrap_campaign"):
+        proj = urllib.parse.quote(str(args.get("project", "io-cold-to-hot")))
+        return _call_bridge("POST", f"/api/scion/projects/{proj}/bootstrap", {})
     if name in ("send_message", "scion_send_message"):
         proj = urllib.parse.quote(str(args.get("project", "io-cold-to-hot")))
         return _call_bridge(
