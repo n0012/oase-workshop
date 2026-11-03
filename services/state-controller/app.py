@@ -671,7 +671,14 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
 
     # 1. Read live workspace files from ws_path for genuine file-grounded context
     context_snippets: list[str] = []
-    for rel_file in ("program-state/decision-log.md", "executive/CANDIDATE-SUMMARY.md", "findings/regulatory/WO-008.md"):
+    for rel_file in (
+        "program-state/decision-log.md",
+        "executive/CANDIDATE-SUMMARY.md",
+        "executive/program-summary.md",
+        "findings/admet-dmpk/wo-007-wetlab-request-package.md",
+        "findings/regulatory/WO-008.md",
+        "findings/regulatory/wo-008-clinical-landscape-dossier.md",
+    ):
         fpath = ws_path / rel_file
         if fpath.is_file():
             try:
@@ -870,31 +877,51 @@ def scion_dav_access(
         raise HTTPException(status_code=400, detail="Invalid relative path")
 
     # Resolve friendly path aliases used in CLI / skill documentation
-    PATH_ALIASES = {
-        "decision-log.md": "program-state/decision-log.md",
-        "reports/wet-lab-wall-readiness.md": "executive/CANDIDATE-SUMMARY.md",
-        "reports/candidate-summary.md": "executive/CANDIDATE-SUMMARY.md",
-        "reports": "executive",
-        ".oase/workorders": "findings",
-        "seed/io-cold-to-hot/campaign-seed.json": ".oase/thresholds.yaml",
-        "seed/campaign-seed.json": ".oase/thresholds.yaml",
+    PATH_ALIASES: dict[str, tuple[str, ...]] = {
+        "decision-log.md": ("program-state/decision-log.md",),
+        "reports/wet-lab-wall-readiness.md": (
+            "executive/CANDIDATE-SUMMARY.md",
+            "findings/admet-dmpk/wo-007-wetlab-request-package.md",
+            "executive/program-summary.md",
+        ),
+        "executive/CANDIDATE-SUMMARY.md": (
+            "executive/CANDIDATE-SUMMARY.md",
+            "executive/program-summary.md",
+        ),
+        "reports/candidate-summary.md": (
+            "executive/CANDIDATE-SUMMARY.md",
+            "executive/program-summary.md",
+        ),
+        "reports": ("executive", "findings"),
+        ".oase/workorders": ("findings", ".oase/control/work-orders"),
+        "seed/io-cold-to-hot/campaign-seed.json": (
+            "seed/io-cold-to-hot/coscientist-export.json",
+            ".oase/thresholds.yaml",
+        ),
+        "seed/campaign-seed.json": (
+            "seed/pcsk9-oral/coscientist-export.json",
+            "seed/io-cold-to-hot/coscientist-export.json",
+            ".oase/thresholds.yaml",
+        ),
     }
     if not target.exists() and rel in PATH_ALIASES:
-        aliased_rel = PATH_ALIASES[rel]
-        aliased_target = (base_ws / aliased_rel).resolve()
-        if str(aliased_target).startswith(str(base_ws)) and aliased_target.exists():
-            rel = aliased_rel
-            target = aliased_target
+        for aliased_rel in PATH_ALIASES[rel]:
+            aliased_target = (base_ws / aliased_rel).resolve()
+            if str(aliased_target).startswith(str(base_ws)) and aliased_target.exists():
+                rel = aliased_rel
+                target = aliased_target
+                break
 
     # Fallback to pcsk9-oral-live-v2 workspace if inspecting open-agentic-science-engine for campaign artifacts
     if not target.exists() and pinfo["slug"] == "open-agentic-science-engine":
         alt_ws = (HUB_DIR / "projects" / "pcsk9-oral-live-v2" / "workspace").resolve()
-        alt_rel = PATH_ALIASES.get(rel, rel)
-        alt_target = (alt_ws / alt_rel).resolve()
-        if str(alt_target).startswith(str(alt_ws)) and alt_target.exists():
-            base_ws = alt_ws
-            rel = alt_rel
-            target = alt_target
+        for alt_rel in PATH_ALIASES.get(rel, (rel,)):
+            alt_target = (alt_ws / alt_rel).resolve()
+            if str(alt_target).startswith(str(alt_ws)) and alt_target.exists():
+                base_ws = alt_ws
+                rel = alt_rel
+                target = alt_target
+                break
 
     if not target.exists():
         raise HTTPException(status_code=404, detail=f"Artifact path '{rel}' not found in {pinfo['slug']}")
