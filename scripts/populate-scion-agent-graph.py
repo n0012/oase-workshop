@@ -25,6 +25,7 @@ HUB_NAME = "oase"
 
 PCSK9_PID = "dfe725e0-2c33-4569-84b2-1af9bb7b96fa"
 IO_PID = "ab3d65d5-f32c-463e-be48-d535034de34f"
+OASE_BASE_PID = "4df4c1ab-2091-4bd6-944b-da423d69fd3d"
 
 BOUNDED_PERMS = json.dumps(
     [
@@ -561,6 +562,7 @@ def populate_project_hierarchy_and_messages(
     sarah_id: str,
     sarah_email: str,
     inter_agent_msgs: list[tuple[str, str, str, str]],
+    force_no_container: bool = False,
 ) -> dict[str, str]:
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S.000000000 +0000 UTC")
 
@@ -572,9 +574,16 @@ def populate_project_hierarchy_and_messages(
     col_names = [d[0] for d in cur.description]
     base_dict = dict(zip(col_names, base_row))
 
-    # Map existing agents in this project
-    cur.execute("SELECT slug, id FROM agents WHERE project_id = ? AND deleted_at IS NULL", (project_id,))
-    slug_to_id: dict[str, str] = {r[0]: r[1] for r in cur.fetchall()}
+    # Map existing agents in this project and remove any non-canonical legacy agent rows
+    canonical_slugs = {spec["slug"] for spec in AGENT_SPECS}
+    cur.execute("SELECT slug, id FROM agents WHERE project_id = ?", (project_id,))
+    slug_to_id: dict[str, str] = {}
+    for slug_val, id_val in cur.fetchall():
+        if slug_val not in canonical_slugs:
+            cur.execute("DELETE FROM delegation_edges WHERE delegator_id = ? OR delegate_id = ?", (id_val, id_val))
+            cur.execute("DELETE FROM agents WHERE id = ?", (id_val,))
+        else:
+            slug_to_id[slug_val] = id_val
 
     # 1. Ensure all 17 agents exist
     for spec in AGENT_SPECS:
@@ -626,7 +635,7 @@ def populate_project_hierarchy_and_messages(
             ancestry = [sarah_id, slug_to_id["controller"], slug_to_id[parent_key]]
 
         ancestry_json = json.dumps(ancestry)
-        has_container = spec["has_container"]
+        has_container = False if force_no_container else spec["has_container"]
         try:
             cur.execute("SELECT applied_config FROM agents WHERE id = ?", (aid,))
             r_ac = cur.fetchone()
@@ -924,6 +933,9 @@ def write_cloud_logging_messages(
 
 
 def main() -> int:
+    import sys
+
+    skip_logging = "--skip-cloud-logging" in sys.argv
     stop_orphaned_containers()
 
     conn = sqlite3.connect(str(DB_PATH), timeout=30.0)
@@ -952,10 +964,24 @@ def main() -> int:
         sarah_email=sarah_email,
         inter_agent_msgs=IO_INTER_AGENT_MESSAGES,
     )
+    oase_base_map = populate_project_hierarchy_and_messages(
+        cur=cur,
+        project_id=OASE_BASE_PID,
+        project_slug="open-agentic-science-engine",
+        sarah_id=sarah_id,
+        sarah_email=sarah_email,
+        inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
+        force_no_container=True,
+    )
 
     conn.commit()
     conn.close()
-    print(f"[sqlite] Updated 17-node 4-tier hierarchy + delegation_edges + messages for pcsk9-oral-live-v2 ({len(pcsk9_map)}) and io-cold-to-hot ({len(io_map)})", flush=True)
+    print(
+        f"[sqlite] Updated 17-node 4-tier hierarchy + delegation_edges + messages for "
+        f"pcsk9-oral-live-v2 ({len(pcsk9_map)}), io-cold-to-hot ({len(io_map)}), and "
+        f"open-agentic-science-engine ({len(oase_base_map)})",
+        flush=True,
+    )
 
     # Refresh golden snapshots so <2s state resets preserve the 4-tier DAG and messages
     for snap_sub in ("pcsk9-live-argolis", "io-cold-to-hot", "golden-pilot"):
@@ -969,22 +995,31 @@ def main() -> int:
         src_conn.close()
         print(f"[snapshot] Updated golden snapshot -> {golden_db}", flush=True)
 
-    write_cloud_logging_messages(
-        project_id=PCSK9_PID,
-        project_slug="pcsk9-oral-live-v2",
-        sarah_id=sarah_id,
-        sarah_email=sarah_email,
-        slug_to_id=pcsk9_map,
-        inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
-    )
-    write_cloud_logging_messages(
-        project_id=IO_PID,
-        project_slug="io-cold-to-hot",
-        sarah_id=sarah_id,
-        sarah_email=sarah_email,
-        slug_to_id=io_map,
-        inter_agent_msgs=IO_INTER_AGENT_MESSAGES,
-    )
+    if not skip_logging:
+        write_cloud_logging_messages(
+            project_id=PCSK9_PID,
+            project_slug="pcsk9-oral-live-v2",
+            sarah_id=sarah_id,
+            sarah_email=sarah_email,
+            slug_to_id=pcsk9_map,
+            inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
+        )
+        write_cloud_logging_messages(
+            project_id=IO_PID,
+            project_slug="io-cold-to-hot",
+            sarah_id=sarah_id,
+            sarah_email=sarah_email,
+            slug_to_id=io_map,
+            inter_agent_msgs=IO_INTER_AGENT_MESSAGES,
+        )
+        write_cloud_logging_messages(
+            project_id=OASE_BASE_PID,
+            project_slug="open-agentic-science-engine",
+            sarah_id=sarah_id,
+            sarah_email=sarah_email,
+            slug_to_id=oase_base_map,
+            inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
+        )
 
     return 0
 

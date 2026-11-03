@@ -15,3 +15,8 @@ __pycache__/
 
 # Internal PRFAQ evaluation scratch
 .beagle/
+
+# Local skill symlinks (keep scion-oase-bridge tracked)
+.agent/skills/*
+!.agent/skills/scion-oase-bridge/
+!.agent/skills/scion-oase-bridge/**
