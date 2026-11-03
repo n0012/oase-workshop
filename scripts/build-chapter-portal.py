@@ -198,7 +198,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="hero">
   <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
-  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs</div>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude 4.6 Opus + 1P GPUs</div>
   <div class="kpi-strip" id="hero-kpi-strip">
     <div class="kpi-card"><div class="kpi-val">Argon + Opus 5.5</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
     <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">41 Skills · oase doctor Live</div></div>
@@ -273,7 +273,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div class="arcade-mission-title">PCSK9 Oral Small Molecule — Full Stage 1–4 Pre-IND Campaign</div>
             <p class="arcade-mission-desc">Complete 8-Work-Order campaign in Google Cloud (<code>losiern-oase-workshop</code>) from Co-Scientist tournament through wet-lab rat/dog PK and 40 mg QD human oral candidate nomination (<code>OASE-PCSK9-014</code>).</p>
             <ul class="arcade-spec-list">
-              <li><strong>Frontier LLMs:</strong> Gemini 4 Argon (High/Med) + Claude Opus 5.5</li>
+              <li><strong>Frontier LLMs:</strong> Gemini 2.5 Pro (High/Med) + Claude 4.6 Opus</li>
               <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome A100 + AlphaFold 3 A100</li>
               <li><strong>Live 3D &amp; Omics Viewers:</strong> 588-atom 3D <code>.cif</code> canvas + 1 Mb SVG tracks</li>
               <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
@@ -364,7 +364,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
                 <div style="font-size:0.72rem;color:#94a3b8;">Medicinal Chemistry</div>
               </div>
             </div>
-            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude Opus 5.5)</span>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude 4.6 Opus)</span>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 4 (WO-006)</strong>: Flags hERG alert on A02 &amp; designs oxadiazole lead <code>OASE-PCSK9-014</code>.</div>
           </button>
 
@@ -390,7 +390,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
                 <div style="font-size:0.72rem;color:#94a3b8;">Science Program Lead</div>
               </div>
             </div>
-            <span class="arcade-wingman-tag">&#8644; Wingman: Grove-1 (Gemini 4 Argon)</span>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Grove-1 (Gemini 2.5 Pro)</span>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 1 &amp; Step 7</strong>: Co-Scientist tournament brief, 4 Stage Gate co-signs &amp; portfolio handoff.</div>
           </button>
 
@@ -611,7 +611,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <!-- CHAPTER 1 -->
   <section class="chapter-panel" id="panel-ch1">
     <div class="chapter-header">
-      <h2>Step 1 — Pre-Mission Brief, Co-Scientist Prompt Co-Design &amp; Wingman Roster (`WO-001`)</h2>
+      <h2>Step 1 — Pre-Mission Brief, Co-Scientist Prompt Co-Design &amp; Wingman Roster (WO-001)</h2>
       <span class="stage-pill">Pre-Mission Brief · 8-Turn Squadron Outset · checkpoints/ch0 &rarr; ch1</span>
     </div>
     <div class="stack-full">
@@ -687,7 +687,7 @@ Flagged ideas: 0</div>
   <!-- CHAPTER 2 -->
   <section class="chapter-panel" id="panel-ch2">
     <div class="chapter-header">
-      <h2>Act II (Chapter 2) — Stage 1 Target Validation: Human Genetics, GWAS &amp; Expression (`WO-002`..`WO-003`)</h2>
+      <h2>Act II (Chapter 2) — Stage 1 Target Validation: Human Genetics, GWAS &amp; Expression (WO-002..WO-003)</h2>
       <span class="stage-pill">Stage 1 &rarr; Gate 1 · checkpoints/ch2</span>
     </div>
     <div class="grid-2">
@@ -729,7 +729,7 @@ highest: liver 47.5 nTPM</div>
   <!-- CHAPTER 3 -->
   <section class="chapter-panel" id="panel-ch3">
     <div class="chapter-header">
-      <h2>Act II (Chapter 3) — Stage 2 Structural Biology, AlphaFold &amp; Pocket/Docking Analysis (`WO-004`..`WO-005`)</h2>
+      <h2>Act II (Chapter 3) — Stage 2 Structural Biology, AlphaFold &amp; Pocket/Docking Analysis (WO-004..WO-005)</h2>
       <span class="stage-pill">Stage 2 &rarr; Gate 2 · checkpoints/ch3</span>
     </div>
     <div class="grid-2">
@@ -769,7 +769,7 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
   <!-- CHAPTER 4: STEP 4 & LAB GATE -->
   <section class="chapter-panel" id="panel-ch4">
     <div class="chapter-header">
-      <h2>Step 4 &amp; &#9208; Lab Gate — Multiparameter Chemistry, ADMET Filtering &amp; Wet-Lab Handoff (`WO-006`)</h2>
+      <h2>Step 4 &amp; &#9208; Lab Gate — Multiparameter Chemistry, ADMET Filtering &amp; Wet-Lab Handoff (WO-006)</h2>
       <span class="stage-pill">Stage 3 &rarr; Gate 3 &rarr; Lab Gate · checkpoints/ch4</span>
     </div>
     <div class="grid-2">
@@ -806,7 +806,7 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
   <!-- CHAPTER 5: STEP 5 HUMAN DOSE, DOSSIER & GATE 4 + COMPLETE PICTURE -->
   <section class="chapter-panel" id="panel-ch5">
     <div class="chapter-header">
-      <h2>Step 5 — Human Oral Dose Projection, Candidate Dossier &amp; Gate 4 (`WO-007`..`WO-008`)</h2>
+      <h2>Step 5 — Human Oral Dose Projection, Candidate Dossier &amp; Gate 4 (WO-007..WO-008)</h2>
       <span class="stage-pill">Stage 4 &rarr; Gate 4 (AI + Human Co-Sign) · checkpoints/ch5</span>
     </div>
     <div class="stack-full">
@@ -1113,7 +1113,7 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
   <!-- 2.5-HOUR (150-MINUTE) GUIDED WORKSHOP & HANDS-ON LAB PANEL -->
   <section class="chapter-panel" id="panel-lab">
     <div class="chapter-header">
-      <h2>2.5-Hour (150-Minute) Guided Workshop &amp; Hands-On Lab Playbook (`pcsk9-oral`)</h2>
+      <h2>2.5-Hour (150-Minute) Guided Workshop &amp; Hands-On Lab Playbook (pcsk9-oral)</h2>
       <span class="stage-pill">0:00&ndash;2:30 · 3 "What Ifs" · 5 Scientist Seats · 6 Hands-On Blocks</span>
     </div>
     <div class="stack-full">
@@ -1786,7 +1786,7 @@ selectStation('s3');
       }
       if (withVoice && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance("Gold Squadron all-range mode engaged. Select your OASE campaign mission.");
+        const u = new SpeechSynthesisUtterance("Gold Squadron all-range mode engaged. Select your Open Agentic Science Engine campaign mission.");
         u.rate = 1.04;
         u.pitch = 0.96;
         window.speechSynthesis.speak(u);
@@ -1979,8 +1979,8 @@ selectStation('s3');
     const projId = (activeCamp && activeCamp.scion_project_id) || (ch0 && ch0.project_id) || ((activeCamp && activeCamp.id === 'io-cold-to-hot')
       ? 'ab3d65d5-f32c-463e-be48-d535034de34f'
       : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
-    const agentGraphUrl = `${scionBaseUrl}/agents/graph?project=${projId}&authuser=oase-sarah@${wsDomain}`;
-    const projectDashUrl = `${scionBaseUrl}/projects/${projId}?authuser=oase-sarah@${wsDomain}`;
+    const agentGraphUrl = `${scionBaseUrl}/projects/${projId}/agents?view=graph`;
+    const projectDashUrl = `${scionBaseUrl}/projects/${projId}`;
     const gcpEndpointsUrl = 'https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop';
     const gcpVmUrl = 'https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop';
     const gcpLogsUrl = 'https://console.cloud.google.com/logs/query?project=losiern-oase-workshop';
@@ -2183,20 +2183,26 @@ selectStation('s3');
         agyCard.className = 'cockpit-stage-card';
         const sarahEmail = (cfg && cfg.workshop_domain) ? `oase-sarah@${cfg.workshop_domain}` : 'oase-sarah@losiern-1.altostrat.com';
         const cloudShellUrl = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(sarahEmail)}`;
+        const activeProjUuid = (activeCamp && activeCamp.scion_project_id) || (cid === 'io-cold-to-hot' ? 'ab3d65d5-f32c-463e-be48-d535034de34f' : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
         const scionGraphUrl = (cfg && cfg.scion_hub_url)
-          ? `${cfg.scion_hub_url}/projects/ab3d65d5-f32c-463e-be48-d535034de34f`
-          : 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f';
+          ? `${cfg.scion_hub_url}/projects/${activeProjUuid}`
+          : `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/${activeProjUuid}`;
         const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=64`;
-        const p1 = 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
-        const p2 = 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."';
+        const isIoCamp = cid === 'io-cold-to-hot';
+        const p1 = isIoCamp
+          ? 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."'
+          : 'agy -p "Use scion-oase-bridge to bootstrap the pcsk9-oral-live-v2 campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
+        const p2 = isIoCamp
+          ? 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."'
+          : 'agy -p "Use scion-oase-bridge to analyze pcsk9-oral-live-v2 across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why PCSK9-A02 was disqualified on hERG at DEC-005 and how OASE-PCSK9-014 cleared Gate 4."';
         const escAttr = (v) => JSON.stringify(v).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
         const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         agyCard.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
             <div>
-              <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 81s &middot; 1080p)</strong>
+              <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 65s &middot; 1080p)</strong>
               <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
-                Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a new campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run &amp; DEC-008 Wet-Lab Wall in the CLI &rarr; Scion Project Messages reacting</strong>.
+                Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run in the CLI &rarr; Scion Project Messages reacting</strong>.
               </div>
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
@@ -2210,12 +2216,12 @@ selectStation('s3');
           <div class="scrub-bar">
             <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) &middot; Dr. Sarah Chen</button>
             <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 23.1)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:23) &middot; @science-program-lead</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:39) &middot; Dr. Sarah Chen</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (1:00) &middot; @admet-dmpk-scientist</button>
+            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series Feedback (0:39) &middot; Dr. Sarah Chen</button>
+            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Gate Sign-Off (1:00) &middot; @admet-dmpk-scientist</button>
           </div>
           <div style="margin-top:0.65rem;">
             <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>
-            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Wet-Lab Wall): ${escHtml(p2)}</button>
+            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Stage Gates): ${escHtml(p2)}</button>
           </div>
         `;
         if (fwCard.parentNode) {
@@ -2228,6 +2234,21 @@ selectStation('s3');
       const panel = document.getElementById('panel-' + chId);
       if (!panel) return;
       const vmeta = videos[chId];
+      const hdrH2 = panel.querySelector('.chapter-header h2');
+      if (hdrH2) {
+        if (!hdrH2.dataset.defaultTitle) {
+          hdrH2.dataset.defaultTitle = hdrH2.textContent.replace(/`/g, '');
+        }
+        if (cid === 'io-cold-to-hot' && vmeta && vmeta.title) {
+          hdrH2.textContent = vmeta.title.replace(/`/g, '');
+        } else {
+          hdrH2.textContent = hdrH2.dataset.defaultTitle;
+        }
+      }
+      const staticStack = panel.querySelector('.stack-full');
+      if (staticStack) {
+        staticStack.style.display = (cid === 'io-cold-to-hot') ? 'none' : '';
+      }
       const cstate = stChapters[chId] || {};
       const leadKey = cstate.lead_human || DEFAULT_LEADS[chId] || 'sarah';
       let card = document.getElementById('cockpit-card-' + chId);
@@ -2270,8 +2291,12 @@ selectStation('s3');
         `;
       }).join('');
 
-      const wetlabHtml = chId === 'ch4'
-        ? `<div class="wetlab-callout"><strong>⏸ Explicit Future-State Wet-Lab / CRO Assay Handoff Slot:</strong> Campaign pauses on disk at <code>WO-006</code> (<code>gates/GATE-03-wetlab-handoff.md</code>) after disqualifying <code>PCSK9-A02</code> on cardiac hERG—awaiting experimental SPR <code>K<sub>D</sub></code>, manual patch-clamp hERG (<code>&gt;30 µM</code>), and rat/dog cassette PK before <code>WO-007</code> unlocks.</div>`
+      const wetlabHtml = (chId === 'ch4' || chId === 'ch5')
+        ? (cid === 'io-cold-to-hot'
+            ? `<div class="wetlab-callout"><strong>⏸ Explicit Wet-Lab Wall &amp; Series B Pivot (<code>DEC-003</code> &rarr; <code>DEC-008</code>):</strong> Series A acylsulfonamide <code>oase_enpp1_009</code> halts at the Wet-Lab Wall on low MDCK permeability (<code>1.1e-6 cm/s</code>) and high P-gp efflux (<code>ER = 18.4</code>), triggering a logged medicinal-chemistry pivot to Series B <code>oase_enpp1_019</code> (<code>MDCK Papp = 12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>Projected F = 52%</code>) before <code>DEC-010</code> nomination.</div>`
+            : (chId === 'ch4'
+                ? `<div class="wetlab-callout"><strong>⏸ Explicit Future-State Wet-Lab / CRO Assay Handoff Slot:</strong> Campaign pauses on disk at <code>WO-006</code> (<code>gates/GATE-03-wetlab-handoff.md</code>) after disqualifying <code>PCSK9-A02</code> on cardiac hERG—awaiting seeded CRO SPR <code>K<sub>D</sub></code>, manual patch-clamp hERG (<code>&gt;30 µM</code>), and rat/dog cassette PK before <code>WO-007</code> unlocks.</div>`
+                : ''))
         : '';
 
       const videoFilename = vmeta ? vmeta.video_filename : `chapter-0${chId.slice(2)}.mp4`;
@@ -2471,9 +2496,9 @@ def main() -> int:
             copied_imgs += 1
 
     proj_badge = os.environ.get(
-        "OASE_PROJECT_BADGE", "gcp-oase-workshop (Google Cloud)"
+        "OASE_PROJECT_BADGE", "losiern-oase-workshop (Google Cloud)"
     )
-    env_sha = "sha256:61020936449a"
+    env_sha = "sha256:2987d3053f13"
     tools_home = os.environ.get("OASE_TOOLS_HOME", "")
     if tools_home:
         ev_file = pathlib.Path(tools_home) / "ENV_VERSION"

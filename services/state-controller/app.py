@@ -704,35 +704,39 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
                     + "\n\n".join(context_snippets)
                     + f"\n\nScientist question: {user_msg}"
                 )
-                vertex_url = (
-                    "https://us-central1-aiplatform.googleapis.com/v1/projects/losiern-oase-workshop/"
-                    "locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent"
-                )
                 v_body = {
                     "contents": [{"role": "user", "parts": [{"text": prompt_text}]}],
                     "generationConfig": {"temperature": 0.1, "maxOutputTokens": 450},
                 }
-                req_v = urllib.request.Request(
-                    vertex_url,
-                    data=json.dumps(v_body).encode("utf-8"),
-                    headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
-                    method="POST",
-                )
-                with urllib.request.urlopen(req_v, timeout=8.0) as v_resp:
-                    v_json = json.loads(v_resp.read().decode("utf-8"))
-                    cand_txt = (
-                        v_json.get("candidates", [{}])[0]
-                        .get("content", {})
-                        .get("parts", [{}])[0]
-                        .get("text", "")
-                        .strip()
+                for v_model in ("gemini-2.5-flash", "gemini-2.0-flash-001"):
+                    vertex_url = (
+                        "https://us-central1-aiplatform.googleapis.com/v1/projects/losiern-oase-workshop/"
+                        f"locations/us-central1/publishers/google/models/{v_model}:generateContent"
                     )
-                    if cand_txt:
-                        return (
-                            f"**[Live Grounded Reply from `@{agent_slug}` · `{slug}` "
-                            "(Grounded in `program-state/decision-log.md` & `executive/CANDIDATE-SUMMARY.md`)]**\n\n"
-                            f"{cand_txt}"
+                    try:
+                        req_v = urllib.request.Request(
+                            vertex_url,
+                            data=json.dumps(v_body).encode("utf-8"),
+                            headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
+                            method="POST",
                         )
+                        with urllib.request.urlopen(req_v, timeout=8.0) as v_resp:
+                            v_json = json.loads(v_resp.read().decode("utf-8"))
+                            cand_txt = (
+                                v_json.get("candidates", [{}])[0]
+                                .get("content", {})
+                                .get("parts", [{}])[0]
+                                .get("text", "")
+                                .strip()
+                            )
+                            if cand_txt:
+                                return (
+                                    f"**[Live Grounded Reply from `@{agent_slug}` · `{slug}` "
+                                    "(Grounded in `program-state/decision-log.md` & `executive/CANDIDATE-SUMMARY.md`)]**\n\n"
+                                    f"{cand_txt}"
+                                )
+                    except Exception:
+                        continue
         except Exception:
             pass
 
@@ -745,15 +749,15 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
                 f"**[File-Grounded Replay from `@{agent_slug}` · `io-cold-to-hot` (`program-state/decision-log.md` `DEC-008`)]**\n\n"
                 "1. **Why Series A (`oase_enpp1_009`) Triggered the Wet-Lab Wall (`WO-006` / `DEC-008`):**\n"
                 "   - Biochemical & cellular potency passed (`ENPP1 IC50 = 18 nM`, `SPR KD = 14 nM`, `THP-1 ISG EC50 = 64 nM`), confirming target engagement.\n"
-                "   - Oral absorption & safety gates failed deterministically (`MDCK-MDR1 Papp = 1.1e-6 cm/s` vs `>= 5.0e-6 cm/s`, `P-gp ER = 18.4` vs `< 2.5`, `hERG = 4.2 µM`) due to the polar sulfamide headgroup (`tPSA = 114 Å²`).\n"
+                "   - Oral absorption & safety gates failed deterministically (`MDCK-MDR1 Papp = 1.1e-6 cm/s` vs `>= 5.0e-6 cm/s`, `P-gp ER = 18.4` vs `< 2.5`, `hERG = 4.2 µM`) due to the polar N-acylsulfonamide/sulfamide ZBG (`tPSA = 114 Å²`).\n"
                 "2. **Series B Recovery (`oase_enpp1_019`, `DEC-008` -> `DEC-010`):**\n"
-                "   - Replaced the bare sulfamide with a masked monoester prodrug / aza-quinazoline hinge binder (`tPSA = 79.4 Å²`).\n"
+                "   - Replaced the polar acylsulfonamide with an N-alkoxycarbonyl carbamate / neutral heteroaryl ZBG on an aza-quinazoline hinge binder (`tPSA = 79.4 Å²`).\n"
                 "   - Restored oral absorption (`MDCK Papp = 12.4e-6 cm/s`, `P-gp ER = 1.6`, `ENPP1 IC50 = 31 nM`, `F = 52%`, tumor `Ctrough,free = 198 nM = 6.4x IC50`, `hERG IC50 > 30 µM`)."
             )
         if "trex1" in q or "adar1" in q or "nomination" in q or "wo-001" in q or "elo" in q:
             return (
                 f"**[File-Grounded Replay from `@{agent_slug}` · `io-cold-to-hot` (`program-state/decision-log.md` `WO-001..004`)]**\n\n"
-                "- **`IC-101` (`ENPP1`, `1658.0 Elo`, `0.81` win rate — SELECTED):** Extracellular ectonucleotidase (`CD203c`) with enclosed catalytic bi-zinc PDE pocket (`PDB 2YS0`, `612.4 Å³`, `fpocket = 0.89`, `AF3 Pocket #1 pLDDT = 94.1`, `Vina = -9.6 kcal/mol`). Preserves tumor-derived extracellular `2'3'-cGAMP` without systemic interferon toxicity (`gnomAD pLI = 0.0001`, `TCGA CD8+ r = -0.64`).\n"
+                "- **`IC-101` (`ENPP1`, `1658.0 Elo`, `0.81` win rate — SELECTED):** Extracellular ectonucleotidase (`CD203c`) with enclosed catalytic bi-zinc PDE pocket (`PDB 2YS0`, `612.4 Å³`, `fpocket = 0.89`, `AF3 Pocket #1 pLDDT = 94.1`, `Vina = -9.6 kcal/mol`). Preserves tumor-derived extracellular `2'3'-cGAMP` without systemic interferon toxicity (`gnomAD pLI = 0.0001`, `TCGA CD8+ r = -0.64`; short-course dosing + serum PPi/ALP biomarker panel mitigates homozygous GACI ectopic calcification liability).\n"
                 "- **`IC-102` (`Trex1`, `1604.0 Elo` — PARKED `DEC-002`):** Ubiquitous intracellular cytosolic exonuclease; germline LoF causes Aicardi-Goutières syndrome / systemic lupus (`L-001`).\n"
                 "- **`IC-103` (`ADAR1`, `1561.0 Elo` — REJECTED `DEC-002`):** Essential house-keeping dsRNA editor (`gnomAD pLI = 1.00`, `LOEUF = 0.14`) with shallow hydrophilic groove (`fpocket = 0.38`)."
             )
@@ -767,7 +771,7 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
         f"**[File-Grounded Replay from `@{agent_slug}` · `{slug}` Live Grove Status]**\n\n"
         "- **Active Campaign:** Oral Small-Molecule `PCSK9` Allosteric Inhibitor (`IC-001` vs `IC-002`)\n"
         "- **Grove Verification:** `78/78` `oase doctor` checks PASS · `10/10` `oase validate check` rules PASS · `17/17` agents configured across 4 tiers\n"
-        "- **Key Verified Metrics (`WO-001`..`WO-008`):** `IC-001` (`1642.5 Elo`) > `IC-002` (`1588.0 Elo`); `gnomAD pLI = 0.0001` (`LOEUF = 0.89`); `AlphaGenome rs2479409` quantile `0.984`; `AF3 ipTM = 0.84` (prediction confidence, not binding affinity; Pocket #1 druggability `0.68`); lead **`OASE-PCSK9-014`** (`Vina = -9.1 kcal/mol`, `SPR KD = 18 nM`, `hERG > 30 µM` after `1,2,4-oxadiazole` swap from disqualified `PCSK9-A02` `DEC-005`, `F = 52%`, `40 mg QD` in-silico projection)."
+        "- **Key Verified Metrics (`WO-001`..`WO-008`):** `IC-001` (`1642.5 Elo`) > `IC-002` (`1588.0 Elo`); `gnomAD pLI = 0.0001` (`LOEUF = 0.89`); `AlphaGenome rs2479409` quantile `0.984`; `AF3 ipTM = 0.84` (prediction confidence, not binding affinity; Pocket #1 druggability `0.68`); lead **`OASE-PCSK9-014`** (`Vina = -9.4 kcal/mol`, `SPR KD = 118 nM` seeded CRO demo readout, `hERG > 30 µM` after `1,2,4-oxadiazole` swap from disqualified `PCSK9-A02` `DEC-005`, `F = 52%`, `40 mg QD` in-silico projection with total `Ctrough = 2,060 nM` and unbound `Ctrough,free = 412 nM = 2.9x IC50`)."
     )
 
 
@@ -844,7 +848,7 @@ def scion_list_agents(
                 "phase": r["phase"],
                 "status": r["status"],
                 "activity": r["activity"],
-                "model": ac.get("model", "Gemini 4 Argon"),
+                "model": ac.get("model", "Gemini 2.5 Pro"),
                 "task_summary": r["task_summary"],
                 "ancestry": anc,
                 "updated": r["updated"],
@@ -902,6 +906,26 @@ def scion_dav_access(
             "seed/pcsk9-oral/coscientist-export.json",
             "seed/io-cold-to-hot/coscientist-export.json",
             ".oase/thresholds.yaml",
+        ),
+        "gates/STEP-01-pre-mission-brief.md": (
+            "gates/STEP-01-pre-mission-brief.md",
+            "program-state/decision-log.md",
+            ".oase/thresholds.yaml",
+        ),
+        "gates/GATE-03-wetlab-handoff.md": (
+            "gates/GATE-03-wetlab-handoff.md",
+            "findings/medicinal-chemistry/WO-006.md",
+            "program-state/decision-log.md",
+        ),
+        "gates/STEP-07-portfolio-closeout.md": (
+            "gates/STEP-07-portfolio-closeout.md",
+            "executive/CANDIDATE-SUMMARY.md",
+            "executive/program-summary.md",
+        ),
+        "executive/PORTFOLIO-HANDOFF.md": (
+            "executive/PORTFOLIO-HANDOFF.md",
+            "executive/CANDIDATE-SUMMARY.md",
+            "executive/program-summary.md",
         ),
     }
     if not target.exists() and rel in PATH_ALIASES:
@@ -1033,11 +1057,16 @@ def scion_send_message(
     pinfo = _resolve_project(cur, project_ref)
     pid = pinfo["id"]
 
-    sarah = cur.execute("SELECT id, email FROM users WHERE email LIKE 'oase-sarah@%' LIMIT 1").fetchone()
-    if not sarah:
+    req_sender_email = str(payload.get("sender_email", "")).strip()
+    user_row = None
+    if req_sender_email:
+        user_row = cur.execute("SELECT id, email FROM users WHERE email = ? LIMIT 1", (req_sender_email,)).fetchone()
+    if not user_row:
+        user_row = cur.execute("SELECT id, email FROM users WHERE email LIKE 'oase-sarah@%' LIMIT 1").fetchone()
+    if not user_row:
         conn.close()
-        raise HTTPException(status_code=500, detail="Missing oase-sarah user in hub.db")
-    sarah_id, sarah_email = sarah["id"], sarah["email"]
+        raise HTTPException(status_code=500, detail="Missing persona user in hub.db")
+    sarah_id, sarah_email = user_row["id"], user_row["email"]
 
     arow = cur.execute(
         "SELECT id, slug FROM agents WHERE project_id = ? AND slug = ? LIMIT 1",

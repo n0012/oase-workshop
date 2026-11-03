@@ -42,10 +42,10 @@
       "grove_slug": "pcsk9-oral-live-v2",
       "short_label": "PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign",
       "nav_slug": "pcsk9-oral · Argon+Opus",
-      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs",
+      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 2.5 Pro + Claude 4.6 Opus + 1P GPUs",
       "status": "ready",
       "badge": "LIVE · 78/78 DOCTOR · FULL PRE-IND",
-      "target": "PCSK9 (Q8NBP7) · Gemini 4 Argon (High/Med) + Claude Opus 5.5 + 1P AlphaGenome & AlphaFold 3",
+      "target": "PCSK9 (Q8NBP7) · Gemini 2.5 Pro (High/Med) + Claude 4.6 Opus + 1P AlphaGenome & AlphaFold 3",
       "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · All 41 Verification Skills Active (78/78 PASS) · Dedicated Vertex AI A100 Endpoints · 8/8 Work Orders Accepted",
       "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
       "static_video_prefix": "assets/videos",
@@ -147,7 +147,7 @@
         ],
         "ch4": [
           {
-            "label": "💊 Claude Opus 5.5 Med-Chem DMTA & Wet-Lab Gate",
+            "label": "💊 Claude 4.6 Opus Med-Chem DMTA & Wet-Lab Gate",
             "href": "viewers/dmta-live-viewer.html",
             "mode": "tab"
           },
@@ -273,7 +273,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @medicinal-chemist how IC-001's oral Rule-of-5 design window compares against macrocyclic PCSK9 inhibitors.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / @1 / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "Pre-Registered ADMET, hERG & Oral PK Stage-Gate Cutoffs",
             "scion_prompts": [
               "@admet-dmpk-scientist Walk through the pre-registered cardiac hERG (admet-endpoints@1.0), CYP3A4 DDI, and oral bioavailability (F >= 30%) cutoffs locked at Stage 0 in .oase/thresholds.yaml.",
@@ -320,7 +320,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @medicinal-chemist how hepatocyte-specific PCSK9 expression informs our TPSA and CNS-exclusion design criteria.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "Genetic Safety Pharmacology vs. Acute Small-Molecule Off-Target Risk",
             "scion_prompts": [
               "@admet-dmpk-scientist Explain why gnomAD LOF_TOLERANT (pLI = 0.0) de-risks on-target PCSK9 mechanism toxicity but still requires full off-target hERG and hepatotoxicity screening in Stage 3.",
@@ -367,7 +367,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @medicinal-chemist which vector on PCSK9-A02 (-9.4 kcal/mol) is solvent-exposed for polar heterocycle substitution.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "Mandatory Structural Epistemic Relays & Early Lipophilicity Red Flags",
             "scion_prompts": [
               "@admet-dmpk-scientist Why does PCSK9-A02's cLogP of 5.09 combined with a basic tertiary amine immediately flag cardiac hERG and CYP3A4 risk heading into Step 4?",
@@ -414,7 +414,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to read findings/medicinal-chemistry/WO-006.md and ask @medicinal-chemist how OASE-PCSK9-014 resolved the Aronov hERG alert.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / @1",
+            "wingman": "Shield-5 (@admet-dmpk-scientist)",
             "focus": "Aronov hERG Disqualification Gate & CRO Wet-Lab Assay Package",
             "scion_prompts": [
               "@admet-dmpk-scientist List the exact 3 ADMET liabilities that disqualified PCSK9-A02 under admet-endpoints@1.0 and the experimental CRO assays required at Gate 3 before Step 5 unlocks.",
@@ -464,7 +464,7 @@
             "wingman": "Shield-5 (@admet-dmpk-scientist)",
             "focus": "1-Compartment Human Oral PK (F = 52%, t1/2 = 14.8 h, 40 mg QD) & Safety Margin",
             "scion_prompts": [
-              "@admet-dmpk-scientist How does OASE-PCSK9-014 (40 mg QD oral tablet, F = 52%, t1/2 = 14.8 h, Ctrough = 214 nM) compare against macrocyclic PCSK9 comparators in WO-007?",
+              "@admet-dmpk-scientist How does OASE-PCSK9-014 (40 mg QD oral tablet, F = 52%, t1/2 = 14.8 h, total Ctrough = 2,060 nM (unbound Ctrough,free = 412 nM, 2.9x IC50)) compare against macrocyclic PCSK9 comparators in WO-007?",
               "@admet-dmpk-scientist Why is the pk.allometry_uncertainty relay required in WO-007.md and WO-008.md before initiating 14-day rat and dog DRF toxicology?"
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to read findings/admet-dmpk/WO-007.md and ask @admet-dmpk-scientist to walk through the 40 mg QD oral PK projection.\""
@@ -499,7 +499,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @finding-validator which exact rule blocked Drill 2 when docking.score_is_not_affinity was omitted.\""
           },
           "raj": {
-            "wingman": "Spark-4 (@medicinal-chemist) / Aegis-6 (@finding-validator)",
+            "wingman": "Spark-4 (@medicinal-chemist) + Aegis-6 (@finding-validator)",
             "focus": "Drill 4: Co-Signed Lipinski Rule-of-5 Exception for Macrocycle Comparator",
             "scion_prompts": [
               "@medicinal-chemist When evaluating beyond-Rule-of-5 macrocycle comparator PCSK9-B07 (MW = 542 Da), what experimental permeability evidence is required to request DEC-OVERRIDE-001?",
@@ -519,7 +519,7 @@
         },
         "ch7": {
           "sarah": {
-            "wingman": "Grove-1 (@science-program-lead) / @project-curator",
+            "wingman": "Grove-1 (@science-program-lead) + @project-curator",
             "focus": "Executive Portfolio Closeout, 5-Pod Debrief & GLP Tox Handoff",
             "scion_prompts": [
               "@science-program-lead Walk through our 5 Doctor-to-AI Wingman post-mission debrief outcomes in gates/STEP-07-portfolio-closeout.md and executive/PORTFOLIO-HANDOFF.md.",
@@ -528,7 +528,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to read gates/STEP-07-portfolio-closeout.md and ask @science-program-lead for the executive portfolio debrief.\""
           },
           "marcus": {
-            "wingman": "@project-curator / Helix-2 (@computational-biologist)",
+            "wingman": "@project-curator + Helix-2 (@computational-biologist)",
             "focus": "End-to-End Human Genetics & 1P AlphaGenome Provenance in the Final Dossier",
             "scion_prompts": [
               "@project-curator Trace how every human genetic claim (gnomAD, OpenTargets, GTEx, 1P AlphaGenome rs2479409) in the final portfolio handoff links back to its SHA-256 sidecar.",
@@ -537,7 +537,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @project-curator to trace the genetics and AlphaGenome provenance chain in WO-008.\""
           },
           "elena": {
-            "wingman": "@project-curator / Fold-3 (@structural-biologist)",
+            "wingman": "@project-curator + Fold-3 (@structural-biologist)",
             "focus": "Structural Biology & 1P AlphaFold 3 Co-Crystal Handoff Package",
             "scion_prompts": [
               "@project-curator Which 1P AlphaFold 3 (.cif) and AutoDock Vina 1.2.5 coordinate files are packaged in the portfolio handoff for X-ray crystallography soaked co-structures?",
@@ -546,7 +546,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @project-curator which AF3 and Vina coordinate artifacts are included in the portfolio handoff.\""
           },
           "raj": {
-            "wingman": "@project-curator / Spark-4 (@medicinal-chemist)",
+            "wingman": "@project-curator + Spark-4 (@medicinal-chemist)",
             "focus": "Lead & Backup Series Chemical Lineage (OASE-PCSK9-014 + Backup Series)",
             "scion_prompts": [
               "@project-curator Which dynamic Subway Map detours (disqualifying PCSK9-A02 on hERG, promoting OASE-PCSK9-014) were decisive in reaching candidate nomination?",
@@ -555,7 +555,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @project-curator which Subway Map detours were decisive in nominating OASE-PCSK9-014.\""
           },
           "claire": {
-            "wingman": "@project-curator / Shield-5 (@admet-dmpk-scientist)",
+            "wingman": "@project-curator + Shield-5 (@admet-dmpk-scientist)",
             "focus": "Final Governance Scorecard (78/78 Doctor, 10/10 Validator, 7/7 Relays)",
             "scion_prompts": [
               "@project-curator Confirm that all 7 epistemic risk relays, 8 VAL-WO-*.json validation receipts, and 36/36 threshold schemas are published in the compiled Evidence Portal (_site/index.html).",
@@ -621,7 +621,7 @@
             "mode": "tab"
           },
           {
-            "label": "🗺 David's 29-Agent venter-scion DAG Map",
+            "label": "🗺 David's Scion Multi-Agent Grove Topology",
             "href": "assets/io-cold-to-hot-provenance/02_oase_agent_map.png",
             "mode": "tab"
           },
@@ -768,7 +768,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how we design oral non-nucleotide Zn2+ binders for ENPP1 while controlling tPSA and P-gp efflux.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "Extracellular Tumor STING Window vs. Systemic Cytokine-Release Safety",
             "scion_prompts": [
               "@admet-dmpk-scientist Why does inhibiting extracellular ENPP1 (preserving endogenous tumor cGAMP) avoid the systemic cytokine-release toxicity seen with direct small-molecule STING agonists?",
@@ -815,7 +815,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how clinical ENPP1 benchmarks in WO-003 inform our oral quinazoline series.\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "Pyrophosphate (PPi) / Bone Mineralization On-Target Safety Window",
             "scion_prompts": [
               "@admet-dmpk-scientist Because congenital bi-allelic ENPP1 null mutations affect inorganic pyrophosphate (PPi) levels, what dosing schedule and PPi biomarker monitoring are flagged in WO-002?",
@@ -830,7 +830,7 @@
             "focus": "Stage Gate 2 Approval of ENPP1 Pocket #1 & Series A Lead oase_enpp1_009",
             "scion_prompts": [
               "@science-program-lead Summarize the Stage Gate 2 structural package (WO-004..005): why did Series A lead oase_enpp1_009 (-10.2 kcal/mol) advance into Stage 3 DMTA?",
-              "@science-program-lead Which polarity and efflux risk on the bare sulfamide warhead of oase_enpp1_009 (TPSA = 114.0 Å²) was flagged for wet-lab verification?"
+              "@science-program-lead Which polarity and efflux risk on the polar acylsulfonamide warhead of oase_enpp1_009 (TPSA = 114.0 Å²) was flagged for wet-lab verification?"
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @science-program-lead why oase_enpp1_009 (-10.2 kcal/mol) advanced at Stage Gate 2 and what risk was flagged.\""
           },
@@ -856,13 +856,13 @@
             "wingman": "Spark-4 (@medicinal-chemist)",
             "focus": "Quinazoline Sulfamide Warhead Geometry vs. Topological Polar Surface Area",
             "scion_prompts": [
-              "@medicinal-chemist Looking at the 3D pose of oase_enpp1_009 in WO-005, why does the bare terminal sulfamide (-SO2NH2) drive strong Zn2+ chelation (-10.2 kcal/mol) but push TPSA to 114.0 Å²?",
+              "@medicinal-chemist Looking at the 3D pose of oase_enpp1_009 in WO-005, why does the polar N-acylsulfonamide/sulfamide ZBG (-SO2NH-) drive strong Zn2+ chelation (-10.2 kcal/mol) but push TPSA to 114.0 Å²?",
               "@medicinal-chemist Which prodrug or bioisosteric masking vector in the solvent channel can reduce H-bond donor count without disrupting the adenine-pocket pi-stacking?"
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how the bare sulfamide warhead in oase_enpp1_009 trades off Zn2+ affinity against TPSA (114.0 Å²).\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how the polar acylsulfonamide warhead in oase_enpp1_009 trades off Zn2+ affinity against TPSA (114.0 Å²).\""
           },
           "claire": {
-            "wingman": "Shield-5 (@admet-dmpk-scientist) / Aegis-6 (@finding-validator)",
+            "wingman": "Shield-5 (@admet-dmpk-scientist) + Aegis-6 (@finding-validator)",
             "focus": "In-Silico Docking Score vs. Gut Permeability & P-gp Efflux Risk",
             "scion_prompts": [
               "@admet-dmpk-scientist Why does oase_enpp1_009's high topological polar surface area (114.0 Å²) and NH2 donor count create a high risk of P-gp efflux in MDCK-MDR1 monolayers despite its -10.2 kcal/mol docking score?",
@@ -873,11 +873,11 @@
         },
         "ch4": {
           "sarah": {
-            "wingman": "Grove-1 (@science-program-lead) / Spark-4 (@medicinal-chemist) / Shield-5 (@admet-dmpk-scientist)",
+            "wingman": "Grove-1 (@science-program-lead) + Spark-4 (@medicinal-chemist) + Shield-5 (@admet-dmpk-scientist)",
             "focus": "WO-006 DMTA Profiling & Triggering the DEC-008 / DEC-003 Wet-Lab Wall",
             "scion_prompts": [
               "@science-program-lead Explain why Series A lead oase_enpp1_009 passed biochemical potency (ENPP1 IC50 = 18 nM, SPR KD = 14 nM) in WO-006 but triggered the DEC-008 Wet-Lab Wall on oral absorption.",
-              "@science-program-lead How did @medicinal-chemist and @admet-dmpk-scientist coordinate the Series B pivot to masked monoester oase_enpp1_019?"
+              "@science-program-lead How did @medicinal-chemist and @admet-dmpk-scientist coordinate the Series B pivot to N-alkoxycarbonyl carbamate oase_enpp1_019?"
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to read reports/wet-lab-wall-readiness.md and ask @science-program-lead why oase_enpp1_009 triggered the Wet-Lab Wall.\""
           },
@@ -894,7 +894,7 @@
             "wingman": "Fold-3 (@structural-biologist)",
             "focus": "Series B Masked Monoester (oase_enpp1_019) Binding Mode & Zn2+ Retention",
             "scion_prompts": [
-              "@structural-biologist How does the Series B aza-quinazoline masked monoester (oase_enpp1_019) maintain sub-35 nM ENPP1 potency (IC50 = 31 nM, SPR KD = 24 nM) while lowering tPSA from 114.0 to 79.4 Å²?",
+              "@structural-biologist How does the Series B aza-quinazoline N-alkoxycarbonyl carbamate (oase_enpp1_019) maintain sub-35 nM ENPP1 potency (IC50 = 31 nM, SPR KD = 24 nM) while lowering tPSA from 114.0 to 79.4 Å²?",
               "@structural-biologist Compare the 3D catalytic groove contacts of Series A (oase_enpp1_009) and Series B (oase_enpp1_019)."
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @structural-biologist how Series B oase_enpp1_019 preserves catalytic Zn2+ binding at tPSA = 79.4 Å².\""
@@ -903,10 +903,10 @@
             "wingman": "Spark-4 (@medicinal-chemist)",
             "focus": "Series A -> Series B MMP Pivot: Replacing Bare Sulfamide with Masked Monoester (oase_enpp1_019)",
             "scion_prompts": [
-              "@medicinal-chemist Walk through the medicinal chemistry pivot in DEC-008: how replacing the polar sulfamide in oase_enpp1_009 (tPSA = 114.0 Å²) with the masked monoester/aza-quinazoline in oase_enpp1_019 (tPSA = 79.4 Å²) solved P-gp efflux.",
+              "@medicinal-chemist Walk through the medicinal chemistry pivot in DEC-008: how replacing the polar acylsulfonamide in oase_enpp1_009 (tPSA = 114.0 Å²) with the N-alkoxycarbonyl carbamate/aza-quinazoline in oase_enpp1_019 (tPSA = 79.4 Å²) solved P-gp efflux.",
               "@medicinal-chemist Compare Series A (oase_enpp1_009), Series B (oase_enpp1_019), and the backup PTPN2 series across potency, tPSA, MDCK Papp, P-gp ER, and hERG."
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how the masked monoester swap in oase_enpp1_019 lowered tPSA to 79.4 Å² and solved P-gp efflux.\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how the N-alkoxycarbonyl carbamate swap in oase_enpp1_019 lowered tPSA to 79.4 Å² and solved P-gp efflux.\""
           },
           "claire": {
             "wingman": "Shield-5 (@admet-dmpk-scientist)",
@@ -950,10 +950,10 @@
             "wingman": "Spark-4 (@medicinal-chemist)",
             "focus": "Series B oase_enpp1_019 Scale-Up & Backup PTPN2 Series Readiness",
             "scion_prompts": [
-              "@medicinal-chemist Summarize how the masked monoester prodrug oase_enpp1_019 converts cleanly after gut absorption while avoiding intestinal P-gp efflux.",
+              "@medicinal-chemist Summarize how the N-alkoxycarbonyl carbamate / neutral heteroaryl ZBG oase_enpp1_019 converts cleanly after gut absorption while avoiding intestinal P-gp efflux.",
               "@medicinal-chemist Under what wet-lab failure condition in EXP-01..04 would we activate the backup PTPN2 series stored in program-state/active-series.md?"
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how oase_enpp1_019's masked monoester bypasses intestinal P-gp efflux.\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how oase_enpp1_019's N-alkoxycarbonyl carbamate bypasses intestinal P-gp efflux.\""
           },
           "claire": {
             "wingman": "Shield-5 (@admet-dmpk-scientist)",
@@ -976,10 +976,10 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to read decision-log.md and ask @science-program-lead how DEC-008 blocked premature nomination of oase_enpp1_009.\""
           },
           "marcus": {
-            "wingman": "@scientific-reviewer / Aegis-6 (@finding-validator)",
-            "focus": "Cross-Model Peer Review (Gemini 4 Argon + Claude Opus 5.5) & Citation Gate",
+            "wingman": "@scientific-reviewer + Aegis-6 (@finding-validator)",
+            "focus": "Cross-Model Peer Review (Gemini 2.5 Pro + Claude 4.6 Opus) & Citation Gate",
             "scion_prompts": [
-              "@scientific-reviewer Summarize your independent Claude Opus 5.5 peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
+              "@scientific-reviewer Summarize your independent Claude 4.6 Opus peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
               "@finding-validator Confirm that all 6/6 mandatory epistemic relays and +/-1% JSONPath citations passed across WO-001..WO-008."
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @scientific-reviewer for its independent peer review of the DEC-008 Wet-Lab Wall pivot.\""
@@ -994,7 +994,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @finding-validator how DRILL-01..03 were deterministically blocked in io-cold-to-hot.\""
           },
           "raj": {
-            "wingman": "Spark-4 (@medicinal-chemist) / Aegis-6 (@finding-validator)",
+            "wingman": "Spark-4 (@medicinal-chemist) + Aegis-6 (@finding-validator)",
             "focus": "Liability Tracker Audit: L-001 (TREX1 Eliminated) & L-002 (Series A Efflux Mitigated)",
             "scion_prompts": [
               "@medicinal-chemist Show how liability L-002 (Series A sulfamide P-gp efflux ER = 18.4) in program-state/liability-tracker.md transitioned from ACTIVE_BLOCKER at DEC-008 to MITIGATED by oase_enpp1_019 at DEC-010.",
@@ -1003,7 +1003,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how L-002 in liability-tracker.md was mitigated by Series B oase_enpp1_019.\""
           },
           "claire": {
-            "wingman": "Aegis-6 (@finding-validator) / Shield-5 (@admet-dmpk-scientist)",
+            "wingman": "Aegis-6 (@finding-validator) + Shield-5 (@admet-dmpk-scientist)",
             "focus": "Cryptographic Provenance Verification Across 13 Published Scion Artifacts",
             "scion_prompts": [
               "@finding-validator Verify that every wet-lab CRO receipt (MDCK Papp = 12.4e-6 cm/s, P-gp ER = 1.6, oral F = 52%) in WO-006 and WO-007 matches its SHA-256 sidecar and .oase/events.ndjson.",
@@ -1014,7 +1014,7 @@
         },
         "ch7": {
           "sarah": {
-            "wingman": "Grove-1 (@science-program-lead) / @project-curator",
+            "wingman": "Grove-1 (@science-program-lead) + @project-curator",
             "focus": "Executive Readout: Wet-Lab Wall Governance & Series B Pre-Candidate Nomination (DEC-010)",
             "scion_prompts": [
               "@science-program-lead Summarize the executive story of io-cold-to-hot: from 5-target IO tournament (ENPP1 #1) -> TREX1 genetic elimination -> 1P AlphaFold 3 co-fold -> DEC-008 Wet-Lab Wall -> Series B (oase_enpp1_019) recovery.",
@@ -1023,7 +1023,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @science-program-lead for the executive summary of io-cold-to-hot from WO-001 through DEC-010.\""
           },
           "marcus": {
-            "wingman": "@project-curator / Helix-2 (@computational-biologist)",
+            "wingman": "@project-curator + Helix-2 (@computational-biologist)",
             "focus": "Translational IO Biomarker & Patient Selection Handoff (cGAMP / STING / IFN-beta)",
             "scion_prompts": [
               "@project-curator Summarize the patient enrichment and translational biomarker strategy in WO-008 (cGAS+/ENPP1-high cold solid tumors, serum cGAMP, and tumor IFN-beta/CXCL10 gene signature).",
@@ -1032,7 +1032,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @project-curator for the translational biomarker and patient stratification summary in WO-008.\""
           },
           "elena": {
-            "wingman": "@project-curator / Fold-3 (@structural-biologist)",
+            "wingman": "@project-curator + Fold-3 (@structural-biologist)",
             "focus": "3D Structural & Biophysical Archive (AF3 Co-Folds, Vina Poses & SPR Receipts)",
             "scion_prompts": [
               "@project-curator Confirm that the 1P AlphaFold 3 complex (AF3-enpp1_009_complex.cif), Vina binding modes (WO-005), and SPR KD receipts are linked in the final WO-008 dossier.",
@@ -1041,7 +1041,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @project-curator to list the structural biology and AF3 artifacts archived in WO-008.\""
           },
           "raj": {
-            "wingman": "@project-curator / Spark-4 (@medicinal-chemist)",
+            "wingman": "@project-curator + Spark-4 (@medicinal-chemist)",
             "focus": "Chemical Series Handoff: Series B Lead oase_enpp1_019 + PTPN2 Backup",
             "scion_prompts": [
               "@project-curator Summarize the side-by-side chemical series scorecard in active-series.md comparing halted Series A (oase_enpp1_009), nominated Series B (oase_enpp1_019), and backup PTPN2.",
@@ -1050,7 +1050,7 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @project-curator for the final chemical series scorecard in active-series.md.\""
           },
           "claire": {
-            "wingman": "@project-curator / Shield-5 (@admet-dmpk-scientist)",
+            "wingman": "@project-curator + Shield-5 (@admet-dmpk-scientist)",
             "focus": "DMPK, Wet-Lab Wall Audit Trail & IND-Enabling Toxicology Handoff",
             "scion_prompts": [
               "@project-curator Confirm that the complete Wet-Lab Wall audit trail (DEC-008 hold on Series A -> EXP-01..04 -> DEC-009/DEC-010 Series B pass) and all 6/6 risk relays are preserved in WO-008.",

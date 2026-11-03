@@ -13,7 +13,7 @@
       "markers": [
         {
           "key": "brief_kickoff",
-          "label": "1. Mission 03 Cold-to-Hot Kickoff",
+          "label": "1. Mission 02 Cold-to-Hot Kickoff",
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Sarah Chen",
@@ -116,7 +116,7 @@
         },
         {
           "key": "validator_verdict",
-          "label": "3. Nick & David Tandem Target Review",
+          "label": "3. Target Constraint & Safety Review",
           "time_s": 37.4,
           "timecode": "0:37",
           "speaker": "Dr. Claire Moreau",

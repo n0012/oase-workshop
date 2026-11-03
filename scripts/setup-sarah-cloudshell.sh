@@ -68,9 +68,10 @@ for cfg_path in [
     cfg_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 PY
 
+ACTIVE_PERSONA="$(gcloud config get-value account 2>/dev/null || echo 'oase-sarah@losiern-1.altostrat.com')"
 echo "=============================================================================="
 echo " ✓ Google Cloud Shell + Antigravity (agy CLI) <-> Scion Hub Bridge Ready"
-echo "   Persona    : oase-sarah@losiern-1.altostrat.com (Dr. Sarah Chen, Program Lead)"
+echo "   Persona    : ${ACTIVE_PERSONA}"
 echo "   Project    : ${GCP_PROJECT_ID} (${OASE_GCP_ZONE} / ${OASE_GCE_INSTANCE})"
 echo "   Skill      : scion-oase-bridge (.agent/skills/scion-oase-bridge/SKILL.md)"
 echo "   MCP Server : scion (${REPO_ROOT}/scripts/scion_mcp_server.py)"

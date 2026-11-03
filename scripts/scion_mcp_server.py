@@ -214,6 +214,29 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
 ]
 
 
+def _active_persona_email() -> str:
+    """Return active @losiern-1.altostrat.com persona email if configured in gcloud or env."""
+    for env_key in ("OASE_PERSONA_EMAIL", "OASE_GCLOUD_ACCOUNT", "CLOUDSDK_CORE_ACCOUNT"):
+        val = os.environ.get(env_key, "").strip()
+        if val.endswith("@losiern-1.altostrat.com"):
+            return val
+    try:
+        proc = subprocess.run(
+            ["gcloud", "config", "get-value", "account", "--quiet"],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=3,
+        )
+        acct = (proc.stdout or "").strip()
+        if acct.endswith("@losiern-1.altostrat.com"):
+            return acct
+    except Exception:
+        pass
+    return "oase-sarah@losiern-1.altostrat.com"
+
+
 def execute_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
     if name in ("hub_status", "scion_hub_status"):
         return _call_bridge("GET", "/api/scion/hub-status")
@@ -245,6 +268,7 @@ def execute_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
                 "message": str(args.get("message", "")),
                 "type": str(args.get("type", "instruction")),
                 "auto_reply": bool(args.get("auto_reply", True)),
+                "sender_email": str(args.get("sender_email") or _active_persona_email()),
             },
         )
     raise ValueError(f"Unknown tool: {name}")
