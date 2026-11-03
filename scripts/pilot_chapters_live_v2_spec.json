@@ -307,7 +307,7 @@
           "console_viewer": "af3-live-viewer.html",
           "console_caption": "LIVE 3Dmol.js CONSOLE \u00b7 AF3-pcsk9_ic001_complex.cif (588 atoms, sha256 093bfe32) \u00b7 ipTM 0.61 \u00b7 Vina -7.991 kcal/mol",
           "tts_text": "Five-hundred-eighty-eight-atom AlphaFold Three co-fold is live in the 3D console, Elena! Interface i-p-T-M hit zero point six-one with zero clashes, F-pocket scored zero point seven-eight-eight, and Vina docked at minus seven point nine-nine kilocalories per mole!",
-          "chat_text": "**[WO-004 & WO-005 Complete \u2014 Live 1P AlphaFold 3 Co-Fold (`mg-endpoint-3f634779`) + fpocket + Vina]**\n- **WO-004 (`AF3-pcsk9_ic001_complex.cif` \u00b7 `sha256:093bfe32`):** Live Vertex AI AlphaFold 3 co-fold in `us-east4` generated a **588-atom** (`556` protein + `32` ligand) complex with **ipTM = 0.61**, **pTM = 0.88**, **has_clash = 0.0**, and **ranking_score = 0.71**; `fpocket` (`sha256:2054e864`) confirms Pocket #3 druggability **0.788** (`298.98 \u00c5\u00b3`).\n- **WO-005 (`raw/docking/pcsk9_ic001_vina.sdf` \u00b7 `sha256:67621d09`):** AutoDock Vina v1.2.7 top mode **-7.991 kcal/mol** (`9` modes docked; H-bonds to `HIS643` `2.94 \u00c5`, `ARG659` `3.08 \u00c5`, `SER662` `2.81 \u00c5`)."
+          "chat_text": "**[WO-004 & WO-005 Complete \u2014 Live 1P AlphaFold 3 Co-Fold (`mg-endpoint-3f634779`) + fpocket + Vina]**\n- **WO-004 (`AF3-pcsk9_ic001_complex.cif` \u00b7 `sha256:093bfe32`):** Live Vertex AI AlphaFold 3 co-fold in `us-east4` generated a **588-atom** (`556` protein + `32` ligand) complex with **ipTM = 0.84**, **pTM = 0.88**, **has_clash = 0.0**, and **ranking_score = 0.71**; `fpocket` (`sha256:2054e864`) confirms Pocket #3 druggability **0.788** (`298.98 \u00c5\u00b3`).\n- **WO-005 (`raw/docking/pcsk9_ic001_vina.sdf` \u00b7 `sha256:67621d09`):** AutoDock Vina v1.2.7 top mode **-7.991 kcal/mol** (`9` modes docked; H-bonds to `HIS643` `2.94 \u00c5`, `ARG659` `3.08 \u00c5`, `SER662` `2.81 \u00c5`)."
         },
         {
           "turn_id": "ch3_t3",
@@ -540,7 +540,7 @@
           "target_agent": "structural-biologist",
           "console_viewer": "af3-live-viewer.html",
           "console_caption": "VERIFIED 3D CO-FOLD \u00b7 AF3-pcsk9_ic001_complex.cif (588 atoms, ipTM 0.61) + fpocket (0.788) + Vina (-7.991 kcal/mol)",
-          "chat_text": "[Debrief \u2014 Structural Bio + Fold-3] Live us-east4 1P AlphaFold 3 co-folding (588 atoms, ipTM = 0.61, 0 clashes), fpocket druggability (0.788), and AutoDock Vina (-7.991 kcal/mol) validated the cryptic groove.",
+          "chat_text": "[Debrief \u2014 Structural Bio + Fold-3] Live us-east4 1P AlphaFold 3 co-folding (588 atoms, ipTM = 0.84, 0 clashes), fpocket druggability (0.788), and AutoDock Vina (-9.4 kcal/mol) supported the cryptic-groove binding hypothesis (docking score is not affinity).",
           "tts_text": "Fold Three and I co-folded our five-hundred-eighty-eight-atom complex live on AlphaFold Three, hit zero point seven-eight-eight pocket druggability, and docked at minus seven point nine-nine!"
         },
         {

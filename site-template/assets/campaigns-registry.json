@@ -51,7 +51,7 @@
       "static_video_prefix": "assets/videos",
       "video_manifest": "assets/video-chapters-live-v2-manifest.json",
       "portal_prefix": "",
-      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2",
+      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
       "kpis": [
         {
           "val": "Argon + Opus 5.5",
@@ -87,7 +87,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
             "mode": "tab"
           },
           {
@@ -153,7 +153,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
             "mode": "tab"
           },
           {
@@ -219,7 +219,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (pcsk9-oral-live-v2)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
             "mode": "tab"
           },
           {
@@ -564,7 +564,8 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @project-curator to verify that all 8 validation receipts and 7 risk relays are published in the portal.\""
           }
         }
-      }
+      },
+      "scion_project_id": "dfe725e0-2c33-4569-84b2-1af9bb7b96fa"
     },
     {
       "id": "io-cold-to-hot",
@@ -580,7 +581,7 @@
       "static_video_prefix": "assets/videos-io-cold-to-hot",
       "video_manifest": "assets/video-chapters-io-cold-to-hot-manifest.json",
       "portal_prefix": "",
-      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot",
+      "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f",
       "kpis": [
         {
           "val": "ENPP1 (1658.4 Elo)",
@@ -616,7 +617,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (io-cold-to-hot)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f",
             "mode": "tab"
           },
           {
@@ -672,7 +673,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (io-cold-to-hot)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f",
             "mode": "tab"
           },
           {
@@ -718,7 +719,7 @@
           },
           {
             "label": "💬 Open Live Scion Grove (io-cold-to-hot)",
-            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot",
+            "href": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f",
             "mode": "tab"
           },
           {
@@ -1058,7 +1059,8 @@
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @admet-dmpk-scientist for the final oral PK and safety margin scorecard of oase_enpp1_019 in WO-008.\""
           }
         }
-      }
+      },
+      "scion_project_id": "ab3d65d5-f32c-463e-be48-d535034de34f"
     }
   ]
 }

@@ -135,7 +135,7 @@ STEP_07_CLOSEOUT_MD = """# Step 7 — Post-Mission Debrief, Subway Map Recap & P
 
 - **Campaign:** `pcsk9-oral` (`WO-001`..`WO-008` verified, `GATE-01`..`GATE-04` signed, `STEP-06` audit complete)
 - **Full Pod Debrief Signatories:** **Dr. Sarah Chen** (`GOLD-1`), **Dr. Marcus Vance** (`GOLD-2`), **Dr. Elena Rostova** (`GOLD-3`), **Dr. Raj Patel** (`GOLD-4`), **Dr. Claire Moreau** (`GOLD-5`) + **`Grove-1`** (`@science-program-lead`)
-- **Nominated Clinical Candidate:** **`OASE-PCSK9-014`** (`40.0 mg QD` conventional oral tablet, `F = 52.0%`, `t1/2 = 14.8 h`, `0` hERG/PAINS alerts)
+- **In-Silico Nominated Lead (Demo):** **`OASE-PCSK9-014`** (`40.0 mg QD` conventional oral tablet, `F = 52.0%`, `t1/2 = 14.8 h`, `0` hERG/PAINS alerts)
 
 ## 1. Pair-by-Pair Post-Mission Debrief Against the Step 1 Pre-Mission Brief
 | Doctor <-> AI Wingman Pair | Mission Leg (`Work Orders`) | What the Pair Proved & Dynamic Subway Map Action | Status |

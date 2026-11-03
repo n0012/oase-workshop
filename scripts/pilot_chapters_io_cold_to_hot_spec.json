@@ -254,7 +254,7 @@
           "console_viewer": "io-alphagenome-live-viewer.html",
           "console_caption": "LIVE 1P ALPHAGENOME A100 (us-central1) \u00b7 chr6-131894218-C-T \u00b7 ENPP1 LoF-Tolerant (pLI 2.94e-19) vs TREX1 Rejected (L-001)",
           "tts_text": "Live A100 telemetry is on screen, Marcus! gnome-add confirms E-N-P-P-one is loss-of-function tolerant with p-L-I near zero and G-tex blood expression at zero point zero-three-five T-P-M, while T-rex-one is disqualified for Aicardi-Goutieres autoimmunity!",
-          "chat_text": "**[WO-002 & WO-003 Complete \u2014 Human Genetics, GTEx & Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`ENPP1` Accepted / `TREX1` Rejected `L-001`):** `gnomAD v4` confirms `ENPP1` (`ENSG00000197594`) is fully LoF-tolerant (`pLI = 2.94e-19`, `LOEUF = 0.892`, `43` observed LoF variants), whereas `TREX1` (`ENSG00000213689`) causes Aicardi-Gouti\u00e8res encephalomyelitis and systemic lupus myocarditis (`L-001` disqualified). `GTEx v8` whole-blood `ENPP1` expression is `0.0351 TPM` (`not_expressed`).\n- **WO-003 (`raw/genomics/chr6-131894218-C-T.scores.json`):** Live 1 Mb (`1,048,576 bp`) `AlphaGenome` A100 inference across `RNA_SEQ` and `ATAC` tracks confirms clean cis-regulatory safety across the `ENPP1` locus with all statistical-artifact relays (`alphagenome.quantile_artifact`) audited."
+          "chat_text": "**[WO-002 & WO-003 Complete \u2014 Human Genetics, GTEx & Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`ENPP1` Accepted / `TREX1` Rejected `L-001`):** `gnomAD v4` confirms `ENPP1` (`ENSG00000197594`) is heterozygous LoF-tolerant (monitoring GACI/ARHR2 calcification risk) (`pLI = 2.94e-19`, `LOEUF = 0.892`, `43` observed LoF variants), whereas `TREX1` (`ENSG00000213689`) causes Aicardi-Gouti\u00e8res encephalomyelitis and systemic lupus myocarditis (`L-001` disqualified). `GTEx v8` whole-blood `ENPP1` expression is `0.0351 TPM` (`not_expressed`).\n- **WO-003 (`raw/genomics/chr6-131894218-C-T.scores.json`):** Live 1 Mb (`1,048,576 bp`) `AlphaGenome` A100 inference across `RNA_SEQ` and `ATAC` tracks confirms clean cis-regulatory safety across the `ENPP1` locus with all statistical-artifact relays (`alphagenome.quantile_artifact`) audited."
         },
         {
           "turn_id": "ch2_t3",
@@ -528,7 +528,7 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Debrief \u2014 Comp Bio + Helix-2] Co-Scientist and Hypex ranked ENPP1 #1 at 1658.4 Elo, gnomAD v4 proved human LoF safety while disqualifying TREX1 (L-001), and live 1P AlphaGenome A100 scoring de-risked the chr6:131894218:C>T locus.",
+          "chat_text": "[Debrief \u2014 Comp Bio + Helix-2] Co-Scientist and Hypex ranked ENPP1 #1 at 1658.4 Elo, gnomAD v4 indicates heterozygous LoF tolerance (while biallelic ENPP1 deficiency GACI/ARHR2 defines a mineralization liability to monitor) while disqualifying TREX1 (L-001), and live 1P AlphaGenome A100 scoring de-risked the chr6:131894218:C>T locus.",
           "tts_text": "Helix Two and I locked E-N-P-P-one at sixteen-fifty-eight point four Elo, eliminated T-rex-one on human autoimmune genetics, and verified our chromosome six locus live on the AlphaGenome A100!"
         },
         {

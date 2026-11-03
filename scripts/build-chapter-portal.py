@@ -1976,7 +1976,7 @@ selectStation('s3');
     const wsDomain = (cfg && cfg.workshop_domain) || 'losiern-1.altostrat.com';
     const st = (cfg && cfg.state) || {};
     const ch0 = (st.chapters || {}).ch0;
-    const projId = (ch0 && ch0.project_id) || ((activeCamp && activeCamp.id === 'io-cold-to-hot')
+    const projId = (activeCamp && activeCamp.scion_project_id) || (ch0 && ch0.project_id) || ((activeCamp && activeCamp.id === 'io-cold-to-hot')
       ? 'ab3d65d5-f32c-463e-be48-d535034de34f'
       : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
     const agentGraphUrl = `${scionBaseUrl}/agents/graph?project=${projId}&authuser=oase-sarah@${wsDomain}`;
@@ -2009,9 +2009,7 @@ selectStation('s3');
           ? `● Live Grove Connected (${activeCamp.nav_slug || activeCamp.id}) · ${chCount} Chapters Ready · Admin Leaks: ${st.admin_rows_count ?? 0}`
           : `● Static Replay Mode (State Controller unreachable)`);
 
-    const ch0Url = (cfg.scion_hub_url && ch0 && cfg.workshop_domain)
-      ? `${cfg.scion_hub_url}/chat/${ch0.slug}/${ch0.general_topic_id}?authuser=oase-sarah@${cfg.workshop_domain}`
-      : liveGroveUrl;
+    const ch0Url = projectDashUrl;
 
     bar.innerHTML = `
       <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
@@ -2343,11 +2341,10 @@ selectStation('s3');
     const domain = (cfg && cfg.workshop_domain) || 'losiern-1.altostrat.com';
     const email = `${pObj.prefix}@${domain}`;
     const scionBase = (cfg && cfg.scion_hub_url) || (STATIC_CAMPAIGNS_REGISTRY && STATIC_CAMPAIGNS_REGISTRY.scion_hub_url) || 'https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app';
-    const cstate = (cfg && cfg.state && cfg.state.chapters && cfg.state.chapters[chId]) || {};
-    const groveSlug = camp.grove_slug || (camp.id === 'io-cold-to-hot' ? 'io-cold-to-hot' : 'pcsk9-oral-live-v2');
-    const scionHref = (cstate.slug && cstate.general_topic_id)
-      ? `${scionBase}/chat/${cstate.slug}/${cstate.general_topic_id}?authuser=${encodeURIComponent(email)}`
-      : `${scionBase}/projects/${groveSlug}?authuser=${encodeURIComponent(email)}`;
+    const projUuid = (camp && camp.scion_project_id) || (camp && camp.id === 'io-cold-to-hot'
+      ? 'ab3d65d5-f32c-463e-be48-d535034de34f'
+      : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
+    const scionHref = `${scionBase}/projects/${projUuid}?authuser=${encodeURIComponent(email)}`;
     const cloudShellHref = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(email)}`;
 
     const campPersonaPrompts = (camp && camp.persona_prompts && camp.persona_prompts[chId] && camp.persona_prompts[chId][pObj.key]) || null;

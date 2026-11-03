@@ -346,7 +346,7 @@ PCSK9_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "structural-biologist",
         "science-program-lead",
         "state-change",
-        "Agent `'structural-biologist'` is waiting for input: `WO-004` verified — `AF3` global `pLDDT = 88.4` (`Pocket #1 pLDDT = 92.1`, `iPTM = 0.87`), `fpocket` `Pocket #1 = 439.9 Å³` (`druggability = 0.81`), `Vina` `IC-001 = -8.9 kcal/mol` (`LE = 0.38`) vs `IC-002 = -6.4 kcal/mol` (`DEC-006` co-signed).",
+        "Agent `'structural-biologist'` is waiting for input: `WO-004` verified — `AF3` global `pLDDT = 88.4` (`Pocket #1 pLDDT = 92.1`, `ipTM = 0.84` structural confidence, not affinity), `fpocket` `Pocket #1 = 439.9 Å³` (`druggability = 0.68` vs flat `EGF-A = 0.24`), `Vina` `IC-001 = -9.4 kcal/mol` (`LE = 0.38`, docking score not affinity) vs `IC-002 = -6.4 kcal/mol` (`DEC-006` co-signed).",
     ),
     (
         "science-program-lead",
@@ -358,25 +358,25 @@ PCSK9_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "computational-chemist",
         "medicinal-chemist",
         "state-change",
-        "Agent `'computational-chemist'` is waiting for input: Completed 20-analog MPO & `Vina` rescoring (`WO-005`) — lead `oase_pcsk9_014` scores `-9.4 kcal/mol` (`QED = 0.74`, `MW = 438.5 Da`, `cLogP = 3.1`, `tPSA = 84.2 Å²`, `SA = 2.61`, `0 PAINS`).",
+        "Agent `'computational-chemist'` is waiting for input: Completed 20-analog MPO & `Vina` rescoring (`WO-005`) — lead `OASE-PCSK9-014` scores `-9.4 kcal/mol` (`QED = 0.74`, `MW = 438.5 Da`, `cLogP = 3.1`, `tPSA = 84.2 Å²`, `SA = 2.61`, `0 PAINS`).",
     ),
     (
         "medicinal-chemist",
         "science-program-lead",
         "state-change",
-        "Agent `'medicinal-chemist'` is waiting for input: `WO-005`/`WO-006` verified — Wet-lab validation of `oase_pcsk9_014` confirms `TR-FRET IC50 = 142 nM`, `SPR KD = 118 nM`, `HepG2 LDLR EC50 = 210 nM`, `Caco-2 Papp = 14.8e-6 cm/s` (`ER = 1.3`), `hERG IC50 > 30 µM` (`DEC-008` co-signed).",
+        "Agent `'medicinal-chemist'` is waiting for input: `WO-005`/`WO-006` verified — Seeded CRO wet-lab readout (demo values) for `OASE-PCSK9-014` reports `TR-FRET IC50 = 142 nM`, `SPR KD = 118 nM`, `HepG2 LDLR EC50 = 210 nM`, `Caco-2 Papp = 14.8e-6 cm/s` (`ER = 1.3`), `hERG IC50 > 30 µM` (`DEC-008` co-signed).",
     ),
     (
         "science-program-lead",
         "admet-dmpk-scientist",
         "instruction",
-        "Execute `WO-007`: Run 1-compartment oral PK projection (`30 mg QD`) and 50-fold free `Cmax` safety margin audit for `oase_pcsk9_014`.",
+        "Execute `WO-007`: Run 1-compartment oral PK projection (`Projected 40 mg QD`) and 50-fold free `Cmax` safety margin audit for `OASE-PCSK9-014`.",
     ),
     (
         "admet-dmpk-scientist",
         "science-program-lead",
         "state-change",
-        "Agent `'admet-dmpk-scientist'` is waiting for input: `WO-007` verified — Projected oral `F = 58%`, `t1/2 = 9.4 h`, `Ctrough,free (24h) = 412 nM` (`2.9x IC50`), `hERG` free `Cmax` margin `> 44x` (`PASS`, `DEC-009` co-signed).",
+        "Agent `'admet-dmpk-scientist'` is waiting for input: `WO-007` verified — Projected oral `F = 52%` (rat `54%`, dog `61%` seeded CRO PK), `t1/2 = 14.8 h`, `Projected 40 mg QD` tablet, `Ctrough,free (24h) = 412 nM` (`2.9x IC50`), `hERG` free `Cmax` margin `> 44x` (`PASS`, `DEC-009` co-signed).",
     ),
     (
         "scientific-reviewer",
@@ -394,19 +394,19 @@ PCSK9_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "project-curator",
         "head-of-discovery",
         "state-change",
-        "Agent `'project-curator'` is waiting for input: Built static evidence site `_site/index.html` (`13/13` Scion artifacts published) for Pre-Candidate Nomination (`DEC-010`).",
+        "Agent `'project-curator'` is waiting for input: Built static evidence site `_site/index.html` (`13/13` Scion artifacts published) for In-Silico Nominated Lead (Demo) (`DEC-010`).",
     ),
     (
         "user",
         "science-program-lead",
         "instruction",
-        "**[Cloud Shell · Antigravity (`agy`) CLI Feedback]** Audit `WO-006`..`WO-008`: verify why neutral 1,2,4-oxadiazole `oase_pcsk9_014` cleared the Aronov hERG gate (`IC50 > 30 µM`) and confirm `DEC-010` nomination readiness.",
+        "**[Cloud Shell · Antigravity (`agy`) CLI Feedback]** Audit `WO-006`..`WO-008`: verify why neutral 1,2,4-oxadiazole `OASE-PCSK9-014` cleared the Aronov hERG gate (`IC50 > 30 µM`) and confirm `DEC-010` nomination readiness.",
     ),
     (
         "science-program-lead",
         "user",
         "state-change",
-        "**[Grounded Science Agent Reply -> `agy` CLI]** Verified `oase_pcsk9_014` (`cLogP = 3.01`, `0` hERG alerts, `TR-FRET IC50 = 142 nM`, `SPR KD = 118 nM`, `Caco-2 Papp = 14.8e-6 cm/s`, `F = 58%`, `10/10 oase validate check PASS` for `DEC-010`).",
+        "**[Grounded Science Agent Reply -> `agy` CLI]** Verified `OASE-PCSK9-014` (`cLogP = 3.01`, `0` hERG alerts, seeded CRO demo values: `TR-FRET IC50 = 142 nM`, `SPR KD = 118 nM`, `Caco-2 Papp = 14.8e-6 cm/s`, `Projected F = 52%`, `Projected 40 mg QD`, `10/10 oase validate check PASS` for `DEC-010`).",
     ),
 ]
 
@@ -482,7 +482,7 @@ IO_INTER_AGENT_MESSAGES: list[tuple[str, str, str, str]] = [
         "computational-biologist",
         "science-program-lead",
         "state-change",
-        "Agent `'computational-biologist'` is waiting for input: `WO-002`/`WO-003` verified — `ENPP1` `pLI = 0.0001`, `LOEUF = 0.76`, `OpenTargets = 0.84`, `TCGA` CD8+ signature `r = -0.64` (`p = 1.2e-14`), `AlphaGenome` `rs1044032` myeloid enhancer quantile `0.976` (`LFC = -0.31`, `DEC-004` co-signed).",
+        "Agent `'computational-biologist'` is waiting for input: `WO-002`/`WO-003` verified — `ENPP1` `pLI = 0.0001`, `LOEUF = 0.76` (heterozygous LoF tolerance; biallelic ENPP1 deficiency GACI/ARHR2 logged as mineralization liability to monitor), `OpenTargets = 0.84`, `TCGA` CD8+ signature `r = -0.64` (`p = 1.2e-14`), `AlphaGenome` `rs1044032` myeloid enhancer quantile `0.976` (`LFC = -0.31`, `DEC-004` co-signed).",
     ),
     (
         "science-program-lead",
