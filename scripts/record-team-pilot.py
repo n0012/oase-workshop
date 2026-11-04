@@ -898,7 +898,7 @@ def build_pip_overlay_clip(
 
     if is_agent:
         hdr_txt = escape_drawtext(f"COMMS // {vmeta.get('callsign', 'AI')} · AI WINGMAN")
-        model_lbl = vmeta.get("model_label", "Gemini 2.5 Pro")
+        model_lbl = vmeta.get("model_label", "Gemini 4 Argon")
         line3 = escape_drawtext(f"{model_lbl} · TTS ({voice_id}) | [{vmeta.get('badge_code', 'AI')}]")
         fc = (
             f"color=c=0x050b1a:s=288x288:r={FPS}:d={slot_dur_s:.4f},"
@@ -958,11 +958,11 @@ def build_pip_overlay_clip(
     live_turn_mp4 = talking_heads_dir / "live_turns" / f"{tid}_live30.mp4"
     if not live_turn_mp4.exists():
         raise FileNotFoundError(
-            f"Missing native Gemini Live Avatar clip for {tid}: {live_turn_mp4}"
+            f"Missing native Gemini 3.8 Live Avatar clip for {tid}: {live_turn_mp4}"
         )
 
     hdr_human = escape_drawtext(f"LIVE COMMS // {vmeta.get('callsign', speaker.upper())}")
-    line3 = escape_drawtext(f"Gemini Live Avatar | {avatar_name} ({voice_id})")
+    line3 = escape_drawtext(f"Gemini 3.8 Live Avatar | {avatar_name} ({voice_id})")
     # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream + Squadron Comms HUD
     fc_human = (
         f"[0:v]crop=iw*0.94:iw*0.94:iw*0.03:ih*0.121,scale=288:288,setsar=1,fps={FPS},"
@@ -1047,10 +1047,10 @@ def build_webchat_and_banner_png(
             """
             <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid #2563eb;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:12.4px;color:#1e293b;line-height:1.45;">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-                <div><strong style="color:#0f172a;">@controller (Research Operations Controller)</strong> <span style="background:#e0f2fe;color:#0369a1;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;font-family:monospace;">Gemini 2.5 Flash · System Seed</span></div>
+                <div><strong style="color:#0f172a;">@controller (Research Operations Controller)</strong> <span style="background:#e0f2fe;color:#0369a1;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;font-family:monospace;">Gemini 3.8 Flash · System Seed</span></div>
                 <span style="color:#64748b;font-size:11px;font-family:monospace;">Grove Active · 78/78 Doctor Checks PASS</span>
               </div>
-              <div><strong>Active Multi-Model Roster:</strong> <code>@science-program-lead</code> (<strong>Gemini 2.5 Pro</strong>), <code>@computational-biologist</code> (<strong>Gemini 2.5 Pro</strong> + 1P <strong>AlphaGenome</strong> <code>us-central1</code>), <code>@structural-biologist</code> (<strong>Gemini 2.5 Pro</strong> + 1P <strong>AlphaFold 3</strong> <code>us-east4</code>), <code>@medicinal-chemist</code> (<strong>Claude Opus 4.6</strong>), <code>@admet-dmpk-scientist</code> (<strong>Gemini 2.5 Pro</strong>), <code>@scientific-reviewer</code> (<strong>Claude Opus 4.6</strong>), and <code>@finding-validator</code> (<strong>Gemini 2.5 Flash</strong>).</div>
+              <div><strong>Active Multi-Model Roster:</strong> <code>@science-program-lead</code> (<strong>Gemini 4 Argon (High)</strong>), <code>@computational-biologist</code> (<strong>Gemini 4 Argon (Med)</strong> + 1P <strong>AlphaGenome</strong> <code>us-central1</code>), <code>@structural-biologist</code> (<strong>Gemini 4 Argon (High)</strong> + 1P <strong>AlphaFold 3</strong> <code>us-east4</code>), <code>@medicinal-chemist</code> (<strong>Claude Opus 5.5</strong>), <code>@admet-dmpk-scientist</code> (<strong>Gemini 4 Argon (Med)</strong>), <code>@scientific-reviewer</code> (<strong>Claude Opus 5.5</strong>), and <code>@finding-validator</code> (<strong>Gemini 3.8 Flash</strong>).</div>
             </div>
             """
         )
@@ -1062,7 +1062,7 @@ def build_webchat_and_banner_png(
         ac = "#" + vm.get("accent_hex", "0x10b981").replace("0x", "").replace("#", "")
         disp = _html.escape(vm["display_name"])
         role = _html.escape(vm["role"])
-        mdl = _html.escape(vm.get("model_label", "Gemini Live Avatar" if not is_ag else "Gemini 2.5 Pro"))
+        mdl = _html.escape(vm.get("model_label", "Gemini 3.8 Live Avatar" if not is_ag else "Gemini 4 Argon"))
         badge_bg = "#eff6ff" if is_ag else "#ecfdf5"
         badge_fg = "#1d4ed8" if is_ag else "#047857"
         card_bg = "#ffffff"
@@ -1316,7 +1316,7 @@ def master_chapter_videos(
                 build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=bool(vmeta.get("is_agent", False)))
             aseg_files.append(wav_48k)
 
-            # Build exact `slot_frames`-frame native Gemini Live Avatar / AI Hologram PiP card
+            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar / AI Hologram PiP card
             pip_mp4 = seg_tmp_dir / f"{tid}_pip.mp4"
             if not (pip_mp4.exists() and pip_mp4.stat().st_size > 10_000):
                 build_pip_overlay_clip(
@@ -1482,8 +1482,8 @@ def master_chapter_videos(
             "video_filename": ch["video_filename"],
             "duration_s": round(actual_dur, 2),
             "resolution": "1920x1080",
-            "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-            "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+            "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+            "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
             "markers": scrub_markers,
         }
         if ch.get("summary") or prev_ch.get("summary"):

@@ -1,6 +1,6 @@
 # Turnkey Deployment, Execution & Verification Guide (`DEPLOY_AND_TEST.md`)
 
-This runbook documents every step required to deploy, execute, and verify the **`pcsk9-oral`** GCP-OASE 7-Chapter Pilot across **four clear execution tiers**—from a 60-second local CPU/API run on any Linux workstation up to the full Cloud Run + Scion Hub stack, live Vertex AI GPU endpoints (`AlphaFold 3` & `AlphaGenome`), and full `Gemini Live Avatar` video remastering.
+This runbook documents every step required to deploy, execute, and verify the **`pcsk9-oral`** GCP-OASE 7-Chapter Pilot across **four clear execution tiers**—from a 60-second local CPU/API run on any Linux workstation up to the full Cloud Run + Scion Hub stack, live Vertex AI GPU endpoints (`AlphaFold 3` & `AlphaGenome`), and full `Gemini 3.8 Live Avatar` video remastering.
 
 > **Looking for what ran live vs. what was pre-staged in checkpoints?** See [**`docs/DATA_PROVENANCE.md`**](DATA_PROVENANCE.md) and inspect the committed un-mocked outputs directly in [**`live-results/pcsk9-oral/`**](../live-results/pcsk9-oral/).
 
@@ -77,15 +77,15 @@ cp .env.example .env
 #    systemd oase-state-controller :8780, Cloud Run oase-story-arc, and 5-persona IAP bindings)
 ./scripts/deploy-pilot-stack.sh
 
-# 5. Enable Vertex AI partner models (Claude Opus 4.6) and reconcile Scion multi-model runtime
-#    (Gemini 2.5 Pro + Claude Opus 4.6 + Gemini 2.5 Flash + portable oase v0.3.0 + live-v2 grove)
+# 5. Enable Vertex AI partner models (Claude Opus 5.5) and reconcile Scion multi-model runtime
+#    (Gemini 4 Argon + Claude Opus 5.5 + Gemini 3.8 Flash + portable oase v0.3.0 + live-v2 grove)
 #    See docs/SCION_RUNTIME_AND_MODELS.md for full details.
 python3 scripts/enable-vertex-models.py --project "$GCP_PROJECT_ID"
 gcloud compute scp scripts/reconcile-scion-runtime.py scion-hub-oase:/tmp/reconcile-scion-runtime.py --project="$GCP_PROJECT_ID" --zone=us-central1-c
 gcloud compute ssh scion-hub-oase --project="$GCP_PROJECT_ID" --zone=us-central1-c \
   --command="sudo python3 /tmp/reconcile-scion-runtime.py --gcp-project '$GCP_PROJECT_ID' --enable-claude --provision-live-grove pcsk9-oral-live-v2"
 
-# 6. (Optional) Sync matched 512px & compact 40px Gemini 2.5 portraits into Scion Hub SQLite
+# 6. (Optional) Sync matched 512px & compact 40px Gemini 3.8 portraits into Scion Hub SQLite
 python3 scripts/sync-persona-portraits.py --update-hub-db
 
 # 7. Run automated Playwright E2E verification against the deployed Cloud Run Cockpit
@@ -131,9 +131,9 @@ This executes:
 
 ---
 
-## Tier 4 — Re-Synthesizing `Gemini Live Avatars` & Remastering All 7 Squadron Videos
+## Tier 4 — Re-Synthesizing `Gemini 3.8 Live Avatars` & Remastering All 7 Squadron Videos
 
-To regenerate all 21 native `gemini-2.5-pro` (`BidiGenerateContent`) human scientist video clips, all 7 `gemini-2.5-flash-tts` specialist AI wingman voiceovers, and re-record/master `chapter-01..07.mp4` + `full-pilot-walkthrough.mp4` against live Scion Hub browser sessions:
+To regenerate all 21 native `gemini-3.8-live` (`BidiGenerateContent`) human scientist video clips, all 7 `gemini-3.8-flash-tts` specialist AI wingman voiceovers, and re-record/master `chapter-01..07.mp4` + `full-pilot-walkthrough.mp4` against live Scion Hub browser sessions:
 
 ```bash
 # 1. Ensure 5 Chrome persona profiles (persona-sarah .. persona-claire) are signed into Scion Hub IAP
@@ -155,7 +155,7 @@ All prompts used during synthesis and Grove agent execution are version-controll
 
 ## Tier 5 — Enterprise Deployment Topologies: Option A (100% GCP-Native) vs. Option B (AWS-Hybrid Control Plane)
 
-Because biopharma discovery teams often run core R&D assay lakes (`Benchling`, `CDD Vault`, `S3`) inside AWS while relying on Google Cloud for 1P scientific foundation models (`AlphaFold 3`, `AlphaGenome`, `TxGemma`, `Gemini 2.5 Pro`), OASE + Scion supports two production deployment topologies out of the box:
+Because biopharma discovery teams often run core R&D assay lakes (`Benchling`, `CDD Vault`, `S3`) inside AWS while relying on Google Cloud for 1P scientific foundation models (`AlphaFold 3`, `AlphaGenome`, `TxGemma`, `Gemini 4 Argon`), OASE + Scion supports two production deployment topologies out of the box:
 
 ### Topology Comparison
 
@@ -164,7 +164,7 @@ Because biopharma discovery teams often run core R&D assay lakes (`Benchling`, `
 | **Scion Hub & State Controller** | `GKE Autopilot` or `GCE` + `Cloud SQL` + `Cloud Filestore` inside customer GCP VPC | **`AWS EKS` + `RDS PostgreSQL` + `EFS`** inside customer AWS VPC (colocated with S3 / ELN) |
 | **17 OASE Agent Containers & Compiled Tools** | Runs in `GKE` / `GCE` (`AutoDock Vina 1.2.5`, `fpocket 4.2.2`, `RDKit`, `oase validate check`) | **Runs 100% locally in `AWS EKS`** (`AutoDock Vina`, `fpocket`, `RDKit`, `oase validate check` never leave AWS) |
 | **Internal Assay & ELN MCP Bridges** | Private Service Connect / Cloud VPN to `Benchling`, `CDD Vault`, internal LIMS | **Local AWS VPC endpoints** to `Benchling`, `CDD Vault`, and `S3` assay data lakes |
-| **Frontier Reasoning Models (`Gemini` / `Claude`)** | Vertex AI `Gemini 2.5 Pro` + Vertex Partner `Claude Opus 4.6` (`gcp/claude-sonnet-4-6`) | Vertex AI `Gemini 2.5 Pro` / `AI Co-Scientist` over interconnect; **Claude optionally local on AWS Bedrock** (`CLAUDE_CODE_USE_BEDROCK=1`) |
+| **Frontier Reasoning Models (`Gemini` / `Claude`)** | Vertex AI `Gemini 4 Argon` + Vertex Partner `Claude Opus 5.5` (`gcp/claude-opus-5-5`) | Vertex AI `Gemini 4 Argon` / `AI Co-Scientist` over interconnect; **Claude optionally local on AWS Bedrock** (`CLAUDE_CODE_USE_BEDROCK=1`) |
 | **1P Scientific GPU Models (`AF3`, `AlphaGenome`, `TxGemma`)** | Dedicated Vertex AI `A100`/`H100` endpoints via Private Service Connect (`PSC`) | **Dedicated Vertex AI endpoints in customer GCP VPC-SC spoke** called over AWS Direct Connect / Cloud Interconnect |
 | **Authentication & Data Governance** | Native GCP Workload Identity + `VPC-SC` + `CMEK` + `Zero Data Retention (ZDR)` | **Keyless Workload Identity Federation (`WIF`)** (`sts.googleapis.com`, zero static JSON keys) + `VPC-SC` + `CMEK` + `ZDR` |
 
@@ -177,11 +177,11 @@ When deploying Option B (`OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"`), AWS EKS pods 
 | **1** | `sts.googleapis.com` | `POST /v1/token` (OAuth 2.0 Token Exchange) | Exchanges AWS EKS OIDC / `GetCallerIdentity` token for short-lived federated token |
 | **2** | `iamcredentials.googleapis.com` | `POST /v1/projects/-/serviceAccounts/*:generateAccessToken` | Impersonates least-privilege `oase-agent-sa@<GCP_PROJECT>.iam.gserviceaccount.com` (1 hr TTL) |
 | **3** | `*.prediction.vertexai.goog` | `POST :predict` (`OASE_AF3_*`, `OASE_AG_*`) | Calls dedicated 1P **`AlphaFold 3`** co-folding & **`AlphaGenome`** 1 Mb variant scoring endpoints inside VPC-SC |
-| **4** | `*-aiplatform.googleapis.com` (e.g. `us-central1-aiplatform.googleapis.com`) | `POST :streamGenerateContent` / `:predict` | Calls **`Gemini 2.5 Pro`**, **`AI Co-Scientist`**, and **`TxGemma`** on Vertex AI with Zero Data Retention |
+| **4** | `*-aiplatform.googleapis.com` (e.g. `us-central1-aiplatform.googleapis.com`) | `POST :streamGenerateContent` / `:predict` | Calls **`Gemini 4 Argon`**, **`AI Co-Scientist`**, and **`TxGemma`** on Vertex AI with Zero Data Retention |
 
 
 ### Enterprise Security & Biopharma Crown-Jewel Data Boundary (Option 1 & Option 2)
 
-- **Zero Data Retention & No Foundation Model Training:** Enterprise Vertex AI (`Gemini 2.5 Pro`, `TxGemma`, partner `Claude Opus 4.6`) and dedicated 1P Science APIs (`AlphaFold 3`, `AlphaGenome`) operate under customer data governance with **zero prompt/SMILES/sequence retention for model training**.
+- **Zero Data Retention & No Foundation Model Training:** Enterprise Vertex AI (`Gemini 4 Argon`, `TxGemma`, partner `Claude Opus 5.5`) and dedicated 1P Science APIs (`AlphaFold 3`, `AlphaGenome`) operate under customer data governance with **zero prompt/SMILES/sequence retention for model training**.
 - **VPC Service Controls (`VPC-SC`) & Private Interconnect:** In Option 2 (AWS-Hybrid), AWS EKS pods route over **Cross-Cloud Interconnect / HA VPN** using **Private Google Access (`restricted.googleapis.com`)** directly into a customer-owned GCP VPC-SC perimeter with Customer-Managed Encryption Keys (`CMEK`).
 - **Reproducible Model & Container Pinning:** Every `.meta.json` SHA-256 receipt records both the immutable container image digest (`ENV_VERSION`) and the exact Vertex AI / Bedrock model version ID so stage-gate decisions remain reproducible across model upgrades.

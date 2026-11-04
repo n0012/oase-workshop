@@ -14,9 +14,9 @@ This document provides an explicit, artifact-by-artifact accounting of **what ex
      - **Public Human Genetics & Multi-Omics APIs:** `gnomAD v4` GraphQL (`oase genetics`), `OpenTargets v4` GraphQL (`oase gwas`), `GTEx v8` REST (`oase gtex`), `Human Protein Atlas` (`oase expression`), `AlphaFold Protein Structure Database` (`oase alphafold fetch Q8NBP7` — full `612 KB` mmCIF + `1.13 MB` PAE matrix), and `ClinicalTrials.gov v2` (`oase trials`).
      - **Compiled Local C/C++ & Cheminformatics Binaries:** `fpocket 4.2.2` (`oase pocket` — 48 real 3D cavities detected on `AF-Q8NBP7-F1.cif`), `Meeko` + `AutoDock Vina 1.2.5` (`oase docking prepare` + `oase docking run` — real 3D `.poses.pdbqt` docking of `PCSK9-A02` and `PCSK9-A03` into Pocket #1), `RDKit` (`oase compound` descriptors, Lipinski/PAINS/Brenk alerts, SA score), and `oase admet` (Aronov 2005 `hERG` SMARTS rule disqualifying `PCSK9-A02` at `cLogP = 5.09` while clearing `PCSK9-A03` at `cLogP = 3.01`).
      - **Mechanical Governance & Portal Compiler:** `oase doctor` (`7/7` compiled binaries, `36/36` threshold schemas), `oase validate check` (`8/8` Work Orders `PASS` + `4/4` negative tamper drills caught with `exit=1`), and `oase site build` (`30` static HTML pages + `chapters.html` + `plan.html`).
-   - **Live Cloud Infrastructure, Multi-Model Agents & `Gemini 2.5` Synthesis:**
+   - **Live Cloud Infrastructure, Multi-Model Agents & `Gemini 3.8` Synthesis:**
      - **Scion Hub (`v0.1.50`) on GCE + Cloud Run IAP:** 8 real Scion Hub projects (`00-pcsk9-initial-seed`..`07-pcsk9-mission-closeout`), 5 real Cloud Identity scientist accounts (`oase-sarah`..`oase-claire`), `17` running Docker agent containers (`Gemini`, `Claude`, `OpenAI`), and `<250 ms` FastAPI Git+SQLite resets.
-     - **Native `Gemini 2.5` Audio/Video Synthesis:** All 21 scientist video PiP turns rendered live via `gemini-2.5-pro` (`us-central1` `BidiGenerateContent`) and all 7 specialist AI wingman turns rendered live via `gemini-2.5-flash-tts`.
+     - **Native `Gemini 3.8` Audio/Video Synthesis:** All 21 scientist video PiP turns rendered live via `gemini-3.8-live` (`us-central1` `BidiGenerateContent`) and all 7 specialist AI wingman turns rendered live via `gemini-3.8-flash-tts`.
 
 ---
 

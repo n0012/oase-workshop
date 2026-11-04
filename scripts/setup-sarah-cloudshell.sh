@@ -88,8 +88,8 @@ while [[ $# -gt 0 ]]; do
       shift
       if [[ $# -gt 0 ]]; then
         case "$1" in
-          gemini-2.5-*|gemini-2.0-*|gemini-3.*) ARGS+=("--model" "$1") ;;
-          *) ARGS+=("--model" "gemini-2.5-pro") ;;
+          gemini-4-*|gemini-3.*|gemini-4-argon-*|gemini-2.0-*) ARGS+=("--model" "$1") ;;
+          *) ARGS+=("--model" "gemini-4-argon") ;;
         esac
         shift
       fi

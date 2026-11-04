@@ -8,8 +8,8 @@
       "video_filename": "chapter-01.mp4",
       "duration_s": 114.3,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "brief_kickoff",
@@ -93,8 +93,8 @@
       "video_filename": "chapter-02.mp4",
       "duration_s": 65.73,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -142,8 +142,8 @@
       "video_filename": "chapter-03.mp4",
       "duration_s": 58.97,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -187,12 +187,12 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "io-cold-to-hot",
-      "title": "Step 4 \u2014 Opus 4.6 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
+      "title": "Step 4 \u2014 Opus 5.5 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
       "video_filename": "chapter-04.mp4",
       "duration_s": 58.8,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -205,7 +205,7 @@
         },
         {
           "key": "agent_analysis",
-          "label": "2. Opus 4.6 Readout: oase_enpp1_009 Drug-Like",
+          "label": "2. Opus 5.5 Readout: oase_enpp1_009 Drug-Like",
           "time_s": 13.97,
           "timecode": "0:14",
           "speaker": "Spark-4 \u00b7 AI Med Chemist",
@@ -241,8 +241,8 @@
       "video_filename": "chapter-05.mp4",
       "duration_s": 64.1,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -291,8 +291,8 @@
       "video_filename": "chapter-06.mp4",
       "duration_s": 54.9,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -340,8 +340,8 @@
       "video_filename": "chapter-07.mp4",
       "duration_s": 103.67,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "debrief_open",
@@ -381,7 +381,7 @@
         },
         {
           "key": "debrief_medchem",
-          "label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
+          "label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
           "time_s": 57.5,
           "timecode": "0:58",
           "speaker": "Dr. Raj Patel",
@@ -391,8 +391,8 @@
         {
           "key": "debrief_dmpk",
           "label": "6. Translational + Shield-5 Debrief",
-          "time_s": 70.47,
-          "timecode": "1:10",
+          "time_s": 70.77,
+          "timecode": "1:11",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
@@ -400,7 +400,7 @@
         {
           "key": "portfolio_handoff",
           "label": "7. Dossier Staged Awaiting Wet-Lab Readout",
-          "time_s": 87.6,
+          "time_s": 87.9,
           "timecode": "1:28",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",

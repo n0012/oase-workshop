@@ -41,11 +41,11 @@
       "id": "pcsk9-live-argolis",
       "grove_slug": "pcsk9-oral-live-v2",
       "short_label": "PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign",
-      "nav_slug": "pcsk9-oral · Gemini+Claude",
-      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 2.5 Pro + Claude Opus 4.6 + 1P GPUs",
+      "nav_slug": "pcsk9-oral · Argon+Opus",
+      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs",
       "status": "ready",
       "badge": "LIVE · 78/78 DOCTOR · FULL PRE-IND",
-      "target": "PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude Opus 4.6 + 1P AlphaGenome & AlphaFold 3",
+      "target": "PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P AlphaGenome & AlphaFold 3",
       "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · All 41 Verification Skills Active (78/78 PASS) · Dedicated Vertex AI A100 Endpoints · 8/8 Work Orders Accepted",
       "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
       "static_video_prefix": "assets/videos",
@@ -54,7 +54,7 @@
       "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
       "kpis": [
         {
-          "val": "Gemini + Claude",
+          "val": "Argon + Opus 5.5",
           "lbl": "Multi-Model Frontier Squadron"
         },
         {
@@ -81,7 +81,7 @@
       "pause_links": {
         "ch1": [
           {
-            "label": "🏆 Interactive 7-Agent Hypex Bracket (Gemini 2.5 Pro + Claude Opus 4.6)",
+            "label": "🏆 Interactive 7-Agent Hypex Bracket (Gemini 4 Argon + Claude Opus 5.5)",
             "href": "viewers/coscientist-live-viewer.html",
             "mode": "tab"
           },
@@ -147,7 +147,7 @@
         ],
         "ch4": [
           {
-            "label": "💊 Claude Opus 4.6 Med-Chem DMTA & Wet-Lab Gate",
+            "label": "💊 Claude Opus 5.5 Med-Chem DMTA & Wet-Lab Gate",
             "href": "viewers/dmta-live-viewer.html",
             "mode": "tab"
           },
@@ -977,9 +977,9 @@
           },
           "marcus": {
             "wingman": "@scientific-reviewer + Aegis-6 (@finding-validator)",
-            "focus": "Cross-Model Peer Review (Gemini 2.5 Pro + Claude Opus 4.6) & Citation Gate",
+            "focus": "Cross-Model Peer Review (Gemini 4 Argon + Claude Opus 5.5) & Citation Gate",
             "scion_prompts": [
-              "@scientific-reviewer Summarize your independent Claude Opus 4.6 peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
+              "@scientific-reviewer Summarize your independent Claude Opus 5.5 peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
               "@finding-validator Confirm that all 6/6 mandatory epistemic relays and +/-1% JSONPath citations passed across WO-001..WO-008."
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @scientific-reviewer for its independent peer review of the DEC-008 Wet-Lab Wall pivot.\""

@@ -708,7 +708,7 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
                     "contents": [{"role": "user", "parts": [{"text": prompt_text}]}],
                     "generationConfig": {"temperature": 0.1, "maxOutputTokens": 450},
                 }
-                for v_model in ("gemini-2.5-flash", "gemini-2.0-flash-001"):
+                for v_model in ("gemini-3.8-flash", "gemini-2.0-flash-001"):
                     vertex_url = (
                         "https://us-central1-aiplatform.googleapis.com/v1/projects/losiern-oase-workshop/"
                         f"locations/us-central1/publishers/google/models/{v_model}:generateContent"
@@ -848,7 +848,7 @@ def scion_list_agents(
                 "phase": r["phase"],
                 "status": r["status"],
                 "activity": r["activity"],
-                "model": ac.get("model", "Gemini 2.5 Pro"),
+                "model": ac.get("model", "Gemini 4 Argon"),
                 "task_summary": r["task_summary"],
                 "ancestry": anc,
                 "updated": r["updated"],

@@ -53,7 +53,7 @@ VOICES: dict[str, dict[str, Any]] = {
         "voice_id": "Charon",
         "callsign": "GROVE-1",
         "badge_code": "SPL",
-        "model_label": "Gemini 2.5 Pro",
+        "model_label": "Gemini 4 Argon (High)",
         "accent_hex": "0x38bdf8",
         "wave_colors": "0x38bdf8|0x818cf8",
         "is_agent": True,
@@ -64,7 +64,7 @@ VOICES: dict[str, dict[str, Any]] = {
         "voice_id": "Aoede",
         "callsign": "SHIELD-5",
         "badge_code": "DMPK",
-        "model_label": "Gemini 2.5 Pro",
+        "model_label": "Gemini 4 Argon (Medium)",
         "accent_hex": "0xf59e0b",
         "wave_colors": "0xf59e0b|0x34d399",
         "is_agent": True,
@@ -175,7 +175,7 @@ def _build_scene_html(turn_idx: int) -> str:
             <div style="padding:16px 20px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.6px;line-height:1.52;color:#e2e8f0;flex:1;">
               <div><span style="color:#34d399;">oase-sarah@cloudshell</span>:<span style="color:#60a5fa;">~/oase-workshop</span> <span style="color:#fbbf24;">(losiern-oase-workshop)</span>$ <span style="color:#fff;font-weight:700;">agy -p "Use scion-oase-bridge to bootstrap io-cold-to-hot from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 PASS), and dispatch WO-001 to @controller."</span></div>
               <div style="margin-top:8px;padding:8px 12px;background:rgba(37,99,235,0.12);border-left:3px solid #38bdf8;border-radius:4px;color:#bae6fd;font-size:12px;">
-                <strong>Antigravity CLI (agy · Gemini 2.5 Pro) · Open Agentic Science Engine (Science Agent)</strong><br>
+                <strong>Antigravity CLI (agy · Gemini 4 Argon) · Open Agentic Science Engine (Science Agent)</strong><br>
                 ✓ Loaded <strong>41 domain verification skills</strong> + <strong>pharma_skills (Stages 1–4)</strong> + <strong>scion-oase-bridge</strong><br>
                 ✓ Authenticated to Scion Hub (<code>scion-hub-oase</code>) as <code>oase-sarah@losiern-1.altostrat.com</code> (Dr. Sarah Chen)
               </div>
@@ -250,7 +250,7 @@ def _build_scene_html(turn_idx: int) -> str:
               <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
                 <div style="font-size:10.5px;font-weight:800;color:#38bdf8;letter-spacing:0.08em;text-transform:uppercase;">Tier 1 · Autonomous Campaign Orchestrator (Node 1 / 17)</div>
                 <div style="background:rgba(56,189,248,0.14);border:1.5px solid #38bdf8;border-radius:8px;padding:7px 22px;color:#f8fafc;font-family:monospace;font-size:12px;">
-                  <span style="color:#10b981;">●</span> <strong style="color:#7dd3fc;">@controller</strong> (Research Operations Controller · <code>Gemini 2.5 Flash</code>) — <code>RUNNING · Dispatches WO-001..WO-008</code>
+                  <span style="color:#10b981;">●</span> <strong style="color:#7dd3fc;">@controller</strong> (Research Operations Controller · <code>Gemini 3.8 Flash</code>) — <code>RUNNING · Dispatches WO-001..WO-008</code>
                 </div>
                 <div style="color:#38bdf8;font-size:13px;line-height:1;">▼ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▼ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▼ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ▼</div>
               </div>
@@ -260,22 +260,22 @@ def _build_scene_html(turn_idx: int) -> str:
                 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
                   <div style="background:#0f172a;border:1.5px solid #8b5cf6;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:11.3px;color:#e2e8f0;">
                     <div style="color:#c4b5fd;font-weight:700;"><span style="color:#10b981;">●</span> @bootstrapper</div>
-                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 2.5 Flash · Seed &amp; Doctor</div>
+                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 3.8 Flash · Seed &amp; Doctor</div>
                     <div style="color:#34d399;font-size:10.5px;margin-top:2px;">78/78 Checks PASS</div>
                   </div>
                   <div style="background:#0f172a;border:1.5px solid #8b5cf6;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:11.3px;color:#e2e8f0;">
                     <div style="color:#c4b5fd;font-weight:700;"><span style="color:#10b981;">●</span> @head-of-discovery</div>
-                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 2.5 Pro · Portfolio</div>
+                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 4 Argon (High) · Portfolio</div>
                     <div style="color:#34d399;font-size:10.5px;margin-top:2px;">Stage Gates 1–4 Active</div>
                   </div>
                   <div style="background:#0f172a;border:1.5px solid #8b5cf6;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:11.3px;color:#e2e8f0;">
                     <div style="color:#c4b5fd;font-weight:700;"><span style="color:#10b981;">●</span> @hypex-supervisor</div>
-                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 2.5 Pro · Co-Scientist</div>
+                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 4 Argon (High) · Co-Scientist</div>
                     <div style="color:#34d399;font-size:10.5px;margin-top:2px;">5-Target Elo Tournament</div>
                   </div>
                   <div style="background:#0f172a;border:1.5px solid #38bdf8;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:11.3px;color:#e2e8f0;">
                     <div style="color:#7dd3fc;font-weight:700;"><span style="color:#10b981;">●</span> @science-program-lead</div>
-                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 2.5 Pro · Lead</div>
+                    <div style="color:#94a3b8;font-size:10.5px;margin-top:2px;">Gemini 4 Argon (High) · Lead</div>
                     <div style="color:#34d399;font-size:10.5px;margin-top:2px;">DEC-001..DEC-010 Chair</div>
                   </div>
                 </div>
@@ -309,42 +309,42 @@ def _build_scene_html(turn_idx: int) -> str:
                 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @computational-biologist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Pro + AlphaGenome</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (Med) + AlphaGenome</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">pLI=0.00 · rs1044032=0.976</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @structural-biologist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Pro + AlphaFold 3</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (High) + AlphaFold 3</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">AF3 ipTM=0.36 · 6B2J Anchor</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @comp-chem-scientist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Pro · fpocket/Vina</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (Med) · fpocket/Vina</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">Pocket #1=0.903 · -7.861 kcal</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @medicinal-chemist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Claude Opus 4.6 · RDKit BRICS</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Claude Opus 5.5 · RDKit BRICS</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">Series A 009 -&gt; Series B 019</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @admet-dmpk-scientist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Pro · PK/DMPK</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (Med) · PK/DMPK</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">Papp=12.4e-6 · ER=1.6 · F=52%</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @toxicology-scientist</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Pro · Safety</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (Med) · Safety</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">TREX1 &gt;320x (L-001) · hERG &gt;48x</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @scientific-reviewer</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Claude Opus 4.6 · Peer Review</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Claude Opus 5.5 · Peer Review</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">Independent Cross-Family Gate</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
                     <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @finding-validator</div>
-                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 2.5 Flash · SHA-256</div>
+                    <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 3.8 Flash · SHA-256</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">10/10 Relays · 3/3 Drills</div>
                   </div>
                 </div>
@@ -493,7 +493,7 @@ def _build_scene_html(turn_idx: int) -> str:
               <div style="background:#0f172a;border:1px solid #334155;border-left:4px solid #f59e0b;border-radius:6px;padding:10px 14px;">
                 <div style="display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:4px;">
                   <span><strong style="color:#fbbf24;">agent:admet-dmpk-scientist</strong> &rarr; <strong style="color:#7dd3fc;">agent:science-program-lead</strong></span>
-                  <span>msg_id: <code>81b40e19</code> · type: <code>state-change</code> · model: <code>Gemini 2.5 Pro</code></span>
+                  <span>msg_id: <code>81b40e19</code> · type: <code>state-change</code> · model: <code>Gemini 4 Argon (Medium)</code></span>
                 </div>
                 <div style="color:#f8fafc;">
                   **[WET-LAB WALL TRIGGERED ('DEC-008' · HALT SERIES A)]** — Experimental CRO wet-lab panel falsified Series A lead <code>oase_enpp1_009</code> (polar sulfamide ZBG, <code>MW = 475.50 Da</code>, <code>TPSA = 113.96 Å²</code>): <code>ENPP1 IC50 = 18 nM</code> / <code>SPR KD = 14 nM</code> passed, but <code>MDCK-MDR1 Papp = 1.1e-6 cm/s</code> (&lt; <code>5.0e-6</code> gate) and <code>P-gp ER = 18.4</code> (&gt; <code>2.5</code> gate) blocked oral progression.
@@ -503,7 +503,7 @@ def _build_scene_html(turn_idx: int) -> str:
               <div style="background:#0f172a;border:1px solid #334155;border-left:4px solid #38bdf8;border-radius:6px;padding:10px 14px;">
                 <div style="display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:4px;">
                   <span><strong style="color:#7dd3fc;">agent:medicinal-chemist</strong> &rarr; <strong style="color:#7dd3fc;">agent:science-program-lead</strong></span>
-                  <span>msg_id: <code>c492a710</code> · type: <code>instruction-reply</code> · model: <code>Claude Opus 4.6</code></span>
+                  <span>msg_id: <code>c492a710</code> · type: <code>instruction-reply</code> · model: <code>Claude Opus 5.5</code></span>
                 </div>
                 <div style="color:#f8fafc;">
                   **[SERIES PIVOT EXECUTED ('DEC-008 -&gt; DEC-009')]** — Replaced polar sulfamide (<code>oase_enpp1_009</code>, <code>TPSA = 113.96 Å²</code>) with neutral pyrazole heteroaryl ZBG (<code>oase_enpp1_019</code>, <code>MW = 430.51 Da</code>, <code>cLogP = 3.46</code>, <code>TPSA = 79.40 Å²</code>, <code>ENPP1 IC50 = 31 nM</code>, <code>MDCK Papp = 12.4e-6 cm/s</code>, <code>ER = 1.6</code>, <code>hERG IC50 &gt; 30 µM</code>).
@@ -513,17 +513,17 @@ def _build_scene_html(turn_idx: int) -> str:
               <div style="background:#0f172a;border:1px solid #334155;border-left:4px solid #a78bfa;border-radius:6px;padding:10px 14px;">
                 <div style="display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:4px;">
                   <span><strong style="color:#c4b5fd;">agent:scientific-reviewer</strong> &rarr; <strong style="color:#7dd3fc;">agent:science-program-lead</strong></span>
-                  <span>msg_id: <code>d903e512</code> · type: <code>peer-review</code> · model: <code>Claude Opus 4.6</code></span>
+                  <span>msg_id: <code>d903e512</code> · type: <code>peer-review</code> · model: <code>Claude Opus 5.5</code></span>
                 </div>
                 <div style="color:#f8fafc;">
-                  Independent cross-model peer review ('Claude Opus 4.6') verified DEC-008 Wet-Lab Wall falsification and DEC-010 Series B gate closure (6/6 relays propagated).
+                  Independent cross-model peer review ('Claude Opus 5.5') verified DEC-008 Wet-Lab Wall falsification and DEC-010 Series B gate closure (6/6 relays propagated).
                 </div>
               </div>
               <!-- Message 5: Science Program Lead Grounded Reply to Sarah -->
               <div style="background:rgba(16,185,129,0.10);border:1px solid rgba(16,185,129,0.45);border-left:4px solid #10b981;border-radius:6px;padding:10px 14px;">
                 <div style="display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:4px;">
                   <span><strong style="color:#7dd3fc;">agent:science-program-lead</strong> &rarr; <strong style="color:#6ee7b7;">user:oase-sarah@losiern-1.altostrat.com</strong></span>
-                  <span>msg_id: <code>ae096d6e</code> · type: <code>gate-signoff</code> · model: <code>Gemini 2.5 Pro</code></span>
+                  <span>msg_id: <code>ae096d6e</code> · type: <code>gate-signoff</code> · model: <code>Gemini 4 Argon (High)</code></span>
                 </div>
                 <div style="color:#f8fafc;">
                   **[DEC-010 PRECLINICAL CANDIDATE NOMINATED]** — <code>oase_enpp1_019</code> locked (<code>Oral F = 52%</code>, <code>Ctrough,free = 6.4x IC50</code>, <code>TREX1 IC50 &gt; 10 µM [&gt;320x L-001 PASS]</code>, <code>hERG &gt; 48x</code>, <code>10/10 oase validate PASS</code>).
@@ -548,7 +548,7 @@ def _build_scene_html(turn_idx: int) -> str:
               <div style="color:#6ee7b7;font-weight:700;">[2. SCION REACTION &amp; SERIES B PIVOT CONFIRMED]</div>
               <div style="color:#e2e8f0;margin-top:4px;">
                 1. Series A <code>oase_enpp1_009</code> (<code>MW = 475.50 Da, TPSA = 113.96 Å²</code>) halted at <code>DEC-008</code> (<code>Papp = 1.1e-6</code>, <code>ER = 18.4</code>).<br>
-                2. Series B <code>oase_enpp1_019</code> neutral pyrazole heteroaryl ZBG (<code>MW = 430.51 Da, cLogP = 3.46, TPSA = 79.40 Å²</code>) nominated at <code>DEC-010</code> (<code>Papp = 12.4e-6</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>Claude Opus 4.6</code> peer review PASS).
+                2. Series B <code>oase_enpp1_019</code> neutral pyrazole heteroaryl ZBG (<code>MW = 430.51 Da, cLogP = 3.46, TPSA = 79.40 Å²</code>) nominated at <code>DEC-010</code> (<code>Papp = 12.4e-6</code>, <code>ER = 1.6</code>, <code>F = 52%</code>, <code>Claude Opus 5.5</code> peer review PASS).
               </div>
             </div>
           </div>
@@ -584,7 +584,7 @@ def main() -> int:
     rtp = _load_module("record_team_pilot", REPO_ROOT / "scripts" / "record-team-pilot.py")
 
     gcp_project = "losiern-oase-workshop"
-    # 1. Synthesize or reuse cached 4 turns (2 Sarah Gemini Live Avatar turns + 2 AI wingman turns)
+    # 1. Synthesize or reuse cached 4 turns (2 Sarah Gemini 3.8 Live Avatar turns + 2 AI wingman turns)
     turn_meta: dict[str, dict[str, Any]] = {}
     for t in TURNS:
         tid = t["turn_id"]

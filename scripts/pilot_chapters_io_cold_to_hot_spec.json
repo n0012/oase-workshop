@@ -4,131 +4,136 @@
   "voices": {
     "sarah": {
       "display_name": "Dr. Sarah Chen",
-      "role": "Program Lead \u00b7 GOLD-1",
+      "role": "Program Lead · GOLD-1",
       "callsign": "GOLD-1",
       "is_agent": false,
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar \u00b7 Ingrid (Leda)"
+      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
-      "role": "Comp Biology \u00b7 GOLD-2",
+      "role": "Comp Biology · GOLD-2",
       "callsign": "GOLD-2",
       "is_agent": false,
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar \u00b7 Sam (Sadaltager)"
+      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
-      "role": "Structural Bio \u00b7 GOLD-3",
+      "role": "Structural Bio · GOLD-3",
       "callsign": "GOLD-3",
       "is_agent": false,
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar \u00b7 Kira (Kore)"
+      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
-      "role": "Med Chemistry \u00b7 GOLD-4",
+      "role": "Med Chemistry · GOLD-4",
       "callsign": "GOLD-4",
       "is_agent": false,
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar \u00b7 Jay (Alnilam)"
+      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
-      "role": "DMPK & Translational \u00b7 GOLD-5",
+      "role": "DMPK & Translational · GOLD-5",
       "callsign": "GOLD-5",
       "is_agent": false,
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar \u00b7 Vera (Pulcherrima)"
+      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "ai_lead": {
-      "display_name": "Grove-1 \u00b7 AI Program Lead",
+      "display_name": "Grove-1 · AI Program Lead",
       "role": "@science-program-lead [SP]",
       "callsign": "GROVE-1",
       "badge_code": "SP",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-techagent-3",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro \u00b7 Grove-1 [SP]"
+      "accent_label": "Gemini 4 Argon (High) · Grove-1 [SP]"
     },
     "ai_compbio": {
-      "display_name": "Helix-2 \u00b7 AI Comp Bio",
+      "display_name": "Helix-2 · AI Comp Bio",
       "role": "@computational-biologist [CB]",
       "callsign": "HELIX-2",
       "badge_code": "CB",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-8",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro \u00b7 Helix-2 [CB]"
+      "accent_label": "Gemini 4 Argon (Med) · Helix-2 [CB]"
     },
     "ai_structbio": {
-      "display_name": "Fold-3 \u00b7 AI Structural Bio",
+      "display_name": "Fold-3 · AI Structural Bio",
       "role": "@structural-biologist [SB]",
       "callsign": "FOLD-3",
       "badge_code": "SB",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-gb-tutor-17",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 2.5 Pro \u00b7 Fold-3 [SB]"
+      "accent_label": "Gemini 4 Argon (High) · Fold-3 [SB]"
     },
     "ai_medchem": {
-      "display_name": "Spark-4 \u00b7 AI Med Chemist",
+      "display_name": "Spark-4 · AI Med Chemist",
       "role": "@medicinal-chemist [MC]",
       "callsign": "SPARK-4",
       "badge_code": "MC",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-in-tutor-12",
-      "model_label": "Claude Opus 4.6",
+      "model_label": "Claude Opus 5.5",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 4.6 \u00b7 Spark-4 [MC]"
+      "accent_label": "Claude Opus 5.5 · Spark-4 [MC]"
     },
     "ai_dmpk": {
-      "display_name": "Shield-5 \u00b7 AI Translational",
+      "display_name": "Shield-5 · AI Translational",
       "role": "@admet-dmpk-scientist [AD]",
       "callsign": "SHIELD-5",
       "badge_code": "AD",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-ie-advisor-4",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 2.5 Pro \u00b7 Shield-5 [AD]"
+      "accent_label": "Gemini 4 Argon (Med) · Shield-5 [AD]"
     },
     "ai_validator": {
-      "display_name": "Aegis-6 \u00b7 AI Validator",
+      "display_name": "Aegis-6 · AI Validator",
       "role": "@finding-validator [FV]",
       "callsign": "AEGIS-6",
       "badge_code": "FV",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-10",
-      "model_label": "Gemini 2.5 Flash",
+      "model_label": "Gemini 3.8 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 2.5 Flash \u00b7 Aegis-6 [FV]"
+      "accent_label": "Gemini 3.8 Flash · Aegis-6 [FV]"
     }
   },
   "chapters": [
@@ -136,7 +141,7 @@
       "chapter": "ch1",
       "number": 1,
       "slug": "io-cold-to-hot",
-      "title": "Step 1 \u2014 IO Cold-to-Hot Target Discovery & Elo Tournament (WO-001 \u00b7 ENPP1 #1)",
+      "title": "Step 1 — IO Cold-to-Hot Target Discovery & Elo Tournament (WO-001 · ENPP1 #1)",
       "video_filename": "chapter-01.mp4",
       "turns": [
         {
@@ -146,7 +151,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Mission 02 Kickoff \u2014 io-cold-to-hot] Gold Squadron, we are replaying David's Immuno-Oncology Cold-to-Hot tumor conversion campaign live in our Argolis Grove with all 78 oase doctor checks and 41 verification skills online. Let's execute WO-001!",
+          "chat_text": "[Mission 02 Kickoff — io-cold-to-hot] Gold Squadron, we are replaying David's Immuno-Oncology Cold-to-Hot tumor conversion campaign live in our Argolis Grove with all 78 oase doctor checks and 41 verification skills online. Let's execute WO-001!",
           "tts_text": "Gold Squadron, welcome to Mission Two: Immuno-Oncology Cold-to-Hot! All seventy-eight doctor checks and forty-one verification skills are live. Let's launch Work Order one!"
         },
         {
@@ -156,8 +161,8 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Clause 1 \u2014 Comp Bio] Pitting five innate immune checkpoints head-to-head: ENPP1, ADAR1, PTPN2, LSD1, and TREX1. Any target with severe human germline autoimmune toxicity in gnomAD v4 is immediately disqualified.",
-          "tts_text": "Rule one locked: we are pitting five innate immune targets head-to-head\u2014E-N-P-P-one, ay-dar-one, P-T-P-N-two, L-S-D-one, and T-rex-one\u2014with strict gnome-add human genetic safety gating!"
+          "chat_text": "[Clause 1 — Comp Bio] Pitting five innate immune checkpoints head-to-head: ENPP1, ADAR1, PTPN2, LSD1, and TREX1. Any target with severe human germline autoimmune toxicity in gnomAD v4 is immediately disqualified.",
+          "tts_text": "Rule one locked: we are pitting five innate immune targets head-to-head—E-N-P-P-one, ay-dar-one, P-T-P-N-two, L-S-D-one, and T-rex-one—with strict gnome-add human genetic safety gating!"
         },
         {
           "turn_id": "ch1_t3",
@@ -166,7 +171,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "structural-biologist",
-          "chat_text": "[Clause 2 \u2014 Structural & Epistemic Boundary] Requiring a druggable pocket verified by live 1P AlphaFold 3 co-folding and AutoDock Vina, plus a hard Wet-Lab Wall gate at DEC-003 before any biological tumor-heating claim is accepted.",
+          "chat_text": "[Clause 2 — Structural & Epistemic Boundary] Requiring a druggable pocket verified by live 1P AlphaFold 3 co-folding and AutoDock Vina, plus a hard Wet-Lab Wall gate at DEC-003 before any biological tumor-heating claim is accepted.",
           "tts_text": "Rule two armed: prove a druggable pocket live on AlphaFold Three and Vina, and enforce a hard Wet-Lab Wall at Decision three before anyone claims biological tumor heating!"
         },
         {
@@ -187,9 +192,9 @@
           "action": "wait_agent_reply",
           "target_agent": "science-program-lead",
           "console_viewer": "io-coscientist-live-viewer.html",
-          "console_caption": "LIVE CONSOLE EVIDENCE \u00b7 WO-001 Co-Scientist & Hypex Tournament \u00b7 ENPP1 #1 (1658.4 Elo) vs ADAR1 (1602.0) & PTPN2 (1554.5)",
+          "console_caption": "LIVE CONSOLE EVIDENCE · WO-001 Co-Scientist & Hypex Tournament · ENPP1 #1 (1658.4 Elo) vs ADAR1 (1602.0) & PTPN2 (1554.5)",
           "tts_text": "Telemetry verified, Gold Squadron! Co-Scientist and hype-ex rank extracellular E-N-P-P-one first at sixteen-fifty-eight point four Elo, preserving tumor see-gamp to ignite paracrine STING signaling!",
-          "chat_text": "**[WO-001 Complete \u2014 5-Target Cold-to-Hot Co-Scientist & Hypex Tournament (`DEC-001`)]**\n- **Rank #1 Primary Lead (`ENPP1` \u00b7 `P22413` \u00b7 `1658.4 Elo`):** Extracellular phosphodiesterase pocket blockade preserves exported `2',3'-cGAMP` to activate dendritic-cell STING -> Type I IFN -> `CXCL9`/`CXCL10` T-cell recruitment (`+56.4 Elo` over `ADAR1` `1602.0`; `+103.9 Elo` over `PTPN2` `1554.5` in Hypex).\n- **Portfolio Triage (`DEC-001`):** `PTPN2` (`1554.5 Elo`) retained as intracellular backup (`PTPN2-Backup-Series`); `KDM1A/LSD1` (`1442.0 Elo`) parked on thrombocytopenia (`L-002`); `TREX1` (`1368.0 Elo`) flagged for genetic safety review (`L-001`)."
+          "chat_text": "**[WO-001 Complete — 5-Target Cold-to-Hot Co-Scientist & Hypex Tournament (`DEC-001`)]**\n- **Rank #1 Primary Lead (`ENPP1` · `P22413` · `1658.4 Elo`):** Extracellular phosphodiesterase pocket blockade preserves exported `2',3'-cGAMP` to activate dendritic-cell STING -> Type I IFN -> `CXCL9`/`CXCL10` T-cell recruitment (`+56.4 Elo` over `ADAR1` `1602.0`; `+103.9 Elo` over `PTPN2` `1554.5` in Hypex).\n- **Portfolio Triage (`DEC-001`):** `PTPN2` (`1554.5 Elo`) retained as intracellular backup (`PTPN2-Backup-Series`); `KDM1A/LSD1` (`1442.0 Elo`) parked on thrombocytopenia (`L-002`); `TREX1` (`1368.0 Elo`) flagged for genetic safety review (`L-001`)."
         },
         {
           "turn_id": "ch1_t6",
@@ -199,9 +204,9 @@
           "action": "human_chat",
           "target_agent": "computational-biologist",
           "console_viewer": "io-coscientist-live-viewer.html",
-          "console_caption": "PORTFOLIO TRIAGE (DEC-001) \u00b7 ENPP1 Primary Green Line \u00b7 PTPN2 Backup Amber Line \u00b7 LSD1 Parked \u00b7 TREX1 Flagged",
+          "console_caption": "PORTFOLIO TRIAGE (DEC-001) · ENPP1 Primary Green Line · PTPN2 Backup Amber Line · LSD1 Parked · TREX1 Flagged",
           "chat_text": "@computational-biologist Inspecting the 5-target bracket in the console: ENPP1 avoids systemic STING agonist toxicity by acting strictly where tumors export cGAMP. Confirm our primary/backup routing and citation verification for Step 2.",
-          "tts_text": "Look at that five-target bracket in the console\u2014blocking extracellular E-N-P-P-one localizes see-gamp right inside the tumor! Helix Two, confirm our primary and backup tracks!"
+          "tts_text": "Look at that five-target bracket in the console—blocking extracellular E-N-P-P-one localizes see-gamp right inside the tumor! Helix Two, confirm our primary and backup tracks!"
         },
         {
           "turn_id": "ch1_t7",
@@ -211,7 +216,7 @@
           "action": "wait_agent_reply",
           "target_agent": "computational-biologist",
           "console_viewer": "io-coscientist-live-viewer.html",
-          "console_caption": "CITATION & RELAY VERIFICATION \u00b7 PMID:25344818, PMID:33328268, PMID:28723893, PMID:16845398 Verified",
+          "console_caption": "CITATION & RELAY VERIFICATION · PMID:25344818, PMID:33328268, PMID:28723893, PMID:16845398 Verified",
           "tts_text": "Confirmed, Claire! E-N-P-P-one rides the primary green line, P-T-P-N-two holds our intracellular backup line, and every PubMed citation passed deterministic verification!",
           "chat_text": "**[DEC-001 Routing & Citation Verification Complete]**\n- **Primary vs Backup Tracks:** `ENPP1-Lead-Series-1` (`P22413`) advances as Primary Lead; `PTPN2-Backup-Series` (`P17706`) holds the intracellular backup track.\n- **Deterministic Citation Audit (`oase cite verify`):** All foundational references (`PMID:25344818`, `PMID:33328268`, `PMID:30566885`, `PMID:28723893`, `PMID:16845398`) verified against PubMed (`0` phantom citations)."
         },
@@ -222,7 +227,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[WO-001 Accepted \u2014 DEC-001 Signed] Both cs-venter-20261030-io-cold-to-hot.meta.json and hx-io-cold-to-hot-elo.meta.json passed oase validate check. Marcus and Helix-2, launch Step 2 human genetics and live 1P AlphaGenome!",
+          "chat_text": "[WO-001 Accepted — DEC-001 Signed] Both cs-venter-20261030-io-cold-to-hot.meta.json and hx-io-cold-to-hot-elo.meta.json passed oase validate check. Marcus and Helix-2, launch Step 2 human genetics and live 1P AlphaGenome!",
           "tts_text": "Work Order one and Decision one are sealed in the console! Marcus and Helix Two, take us into Step Two for human genetics and live AlphaGenome scoring!"
         }
       ]
@@ -231,7 +236,7 @@
       "chapter": "ch2",
       "number": 2,
       "slug": "io-cold-to-hot",
-      "title": "Step 2 \u2014 Human Genetics, TREX1 Rejection & Live 1P AlphaGenome (WO-002..003)",
+      "title": "Step 2 — Human Genetics, TREX1 Rejection & Live 1P AlphaGenome (WO-002..003)",
       "video_filename": "chapter-02.mp4",
       "turns": [
         {
@@ -252,9 +257,9 @@
           "action": "wait_agent_reply",
           "target_agent": "computational-biologist",
           "console_viewer": "io-alphagenome-live-viewer.html",
-          "console_caption": "LIVE 1P ALPHAGENOME A100 (us-central1) \u00b7 chr6-131894218-C-T \u00b7 ENPP1 LoF-Tolerant (pLI 2.94e-19) vs TREX1 Rejected (L-001)",
+          "console_caption": "LIVE 1P ALPHAGENOME A100 (us-central1) · chr6-131894218-C-T · ENPP1 LoF-Tolerant (pLI 2.94e-19) vs TREX1 Rejected (L-001)",
           "tts_text": "Live A100 telemetry is on screen, Marcus! gnome-add confirms E-N-P-P-one is loss-of-function tolerant with p-L-I near zero and G-tex blood expression at zero point zero-three-five T-P-M, while T-rex-one is disqualified for Aicardi-Goutieres autoimmunity!",
-          "chat_text": "**[WO-002 & WO-003 Complete \u2014 Human Genetics, GTEx & Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`ENPP1` Accepted / `TREX1` Rejected `L-001`):** `gnomAD v4` confirms `ENPP1` (`ENSG00000197594`) is heterozygous LoF-tolerant (monitoring GACI/ARHR2 calcification risk) (`pLI = 2.94e-19`, `LOEUF = 0.892`, `43` observed LoF variants), whereas `TREX1` (`ENSG00000213689`) causes Aicardi-Gouti\u00e8res encephalomyelitis and systemic lupus myocarditis (`L-001` disqualified). `GTEx v8` whole-blood `ENPP1` expression is `0.0351 TPM` (`not_expressed`).\n- **WO-003 (`raw/genomics/chr6-131894218-C-T.scores.json`):** Live 1 Mb (`1,048,576 bp`) `AlphaGenome` A100 inference across `RNA_SEQ` and `ATAC` tracks confirms clean cis-regulatory safety across the `ENPP1` locus with all statistical-artifact relays (`alphagenome.quantile_artifact`) audited."
+          "chat_text": "**[WO-002 & WO-003 Complete — Human Genetics, GTEx & Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`ENPP1` Accepted / `TREX1` Rejected `L-001`):** `gnomAD v4` confirms `ENPP1` (`ENSG00000197594`) is heterozygous LoF-tolerant (monitoring GACI/ARHR2 calcification risk) (`pLI = 2.94e-19`, `LOEUF = 0.892`, `43` observed LoF variants), whereas `TREX1` (`ENSG00000213689`) causes Aicardi-Goutières encephalomyelitis and systemic lupus myocarditis (`L-001` disqualified). `GTEx v8` whole-blood `ENPP1` expression is `0.0351 TPM` (`not_expressed`).\n- **WO-003 (`raw/genomics/chr6-131894218-C-T.scores.json`):** Live 1 Mb (`1,048,576 bp`) `AlphaGenome` A100 inference across `RNA_SEQ` and `ATAC` tracks confirms clean cis-regulatory safety across the `ENPP1` locus with all statistical-artifact relays (`alphagenome.quantile_artifact`) audited."
         },
         {
           "turn_id": "ch2_t3",
@@ -264,7 +269,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "io-alphagenome-live-viewer.html",
-          "console_caption": "TANDEM COLLABORATION \u00b7 Nick & David Multi-User Review in Same Scion Grove \u00b7 gtex.whole_blood_is_not_peripheral_blood Relayed",
+          "console_caption": "TANDEM COLLABORATION · Nick & David Multi-User Review in Same Scion Grove · gtex.whole_blood_is_not_peripheral_blood Relayed",
           "chat_text": "Reviewing the live AlphaGenome track viewer and David's tandem session provenance: Nick and David challenged @science-program-lead in the same shared thread to lock ENPP1 primary and PTPN2 backup while keeping gtex.whole_blood_is_not_peripheral_blood explicit.",
           "tts_text": "And look at the tandem review provenance in the console: Nick and David jumped into the exact same live thread to pressure-test E-N-P-P-one and lock our G-tex blood proxy caveat!"
         },
@@ -275,7 +280,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[DEC-002 Target Gate Co-Signed \u2014 PASS] Live WO-002 and WO-003 passed oase validate check with 0 errors; TREX1 is permanently retired (L-001) and ENPP1 advances into Step 3 structural biology on our us-east4 AlphaFold 3 A100!",
+          "chat_text": "[DEC-002 Target Gate Co-Signed — PASS] Live WO-002 and WO-003 passed oase validate check with 0 errors; TREX1 is permanently retired (L-001) and ENPP1 advances into Step 3 structural biology on our us-east4 AlphaFold 3 A100!",
           "tts_text": "Work Order two and Work Order three are green, T-rex-one is retired, and Decision two is signed! Elena and Fold Three, fire up the AlphaFold Three A100 for Step Three!"
         }
       ]
@@ -284,7 +289,7 @@
       "chapter": "ch3",
       "number": 3,
       "slug": "io-cold-to-hot",
-      "title": "Step 3 \u2014 Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
+      "title": "Step 3 — Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
       "video_filename": "chapter-03.mp4",
       "turns": [
         {
@@ -305,9 +310,9 @@
           "action": "wait_agent_reply",
           "target_agent": "structural-biologist",
           "console_viewer": "io-af3-live-viewer.html",
-          "console_caption": "LIVE 3D CO-FOLD CONSOLE \u00b7 AF3-enpp1_009_complex.cif (us-east4 A100) + AF-P22413-F1 fpocket + AutoDock Vina",
+          "console_caption": "LIVE 3D CO-FOLD CONSOLE · AF3-enpp1_009_complex.cif (us-east4 A100) + AF-P22413-F1 fpocket + AutoDock Vina",
           "tts_text": "Live AlphaFold Three co-fold is rotating in the 3D console, Elena! Our quinazoline sulfamide locks cleanly into the E-N-P-P-one phosphodiesterase groove with zero steric clashes, corroborated by F-pocket and AutoDock Vina!",
-          "chat_text": "**[WO-004 & WO-005 Complete \u2014 Live 1P AlphaFold 3 Co-Fold (`mg-endpoint-3f634779`) + `fpocket` + AutoDock Vina]**\n- **WO-004 (`AF-P22413-F1.cif` + `AF3-enpp1_009_complex.cif`):** Full-length human `ENPP1` (`P22413`, `925` residues) and `fpocket` identify the catalytic phosphodiesterase groove (`Thr256`/`Asn277`/`Tyr340`); live `us-east4` 1P **AlphaFold 3** co-folding of `oase_enpp1_009` produces a clash-free (`has_clash = 0.0`) 3D protein-ligand complex.\n- **WO-005 (`oase_enpp1_009.3d_AF-P22413-F1.docking_result.json`):** Physics-based **AutoDock Vina** rigid-body docking confirms convergent binding inside the `ENPP1` catalytic pocket with mandatory relay `docking.score_is_not_affinity` preserved."
+          "chat_text": "**[WO-004 & WO-005 Complete — Live 1P AlphaFold 3 Co-Fold (`mg-endpoint-3f634779`) + `fpocket` + AutoDock Vina]**\n- **WO-004 (`AF-P22413-F1.cif` + `AF3-enpp1_009_complex.cif`):** Full-length human `ENPP1` (`P22413`, `925` residues) and `fpocket` identify the catalytic phosphodiesterase groove (`Thr256`/`Asn277`/`Tyr340`); live `us-east4` 1P **AlphaFold 3** co-folding of `oase_enpp1_009` produces a clash-free (`has_clash = 0.0`) 3D protein-ligand complex.\n- **WO-005 (`oase_enpp1_009.3d_AF-P22413-F1.docking_result.json`):** Physics-based **AutoDock Vina** rigid-body docking confirms convergent binding inside the `ENPP1` catalytic pocket with mandatory relay `docking.score_is_not_affinity` preserved."
         },
         {
           "turn_id": "ch3_t3",
@@ -317,9 +322,9 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "io-af3-live-viewer.html",
-          "console_caption": "3D CATALYTIC GROOVE \u00b7 Dimethoxy-Quinazoline AMP-Mimic + Fluorophenyl Sulfamide Zinc-Binding Headgroup",
+          "console_caption": "3D CATALYTIC GROOVE · Dimethoxy-Quinazoline AMP-Mimic + Fluorophenyl Sulfamide Zinc-Binding Headgroup",
           "chat_text": "Inspecting AF3-enpp1_009_complex.cif in the 60fps 3D viewer: the dimethoxy-quinazoline stacks in the cGAMP adenine sub-pocket while the fluorophenyl-sulfamide projects toward the Thr256 catalytic nucleophile without a single clash.",
-          "tts_text": "Look at that rotating 3D helix and pocket view in the console\u2014the dimethoxy-quinazoline mimics the see-gamp adenine ring while the sulfamide anchors right in the catalytic groove!"
+          "tts_text": "Look at that rotating 3D helix and pocket view in the console—the dimethoxy-quinazoline mimics the see-gamp adenine ring while the sulfamide anchors right in the catalytic groove!"
         },
         {
           "turn_id": "ch3_t4",
@@ -328,7 +333,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage 2 Structural Gate Co-Signed \u2014 PASS] Live WO-004 and WO-005 passed oase validate check with afdb.model_is_not_docking_ready and docking.score_is_not_affinity explicitly relayed. Handing off to Raj and Claude Opus 4.6 for Step 4!",
+          "chat_text": "[Stage 2 Structural Gate Co-Signed — PASS] Live WO-004 and WO-005 passed oase validate check with afdb.model_is_not_docking_ready and docking.score_is_not_affinity explicitly relayed. Handing off to Raj and Claude Opus 5.5 for Step 4!",
           "tts_text": "Work Order four and Work Order five are hashed and verified with every structural caveat relayed! Raj and Spark Four, take it into Step Four Med-Chem!"
         }
       ]
@@ -337,7 +342,7 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "io-cold-to-hot",
-      "title": "Step 4 \u2014 Opus 4.6 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
+      "title": "Step 4 — Opus 5.5 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
       "video_filename": "chapter-04.mp4",
       "turns": [
         {
@@ -353,14 +358,14 @@
         {
           "turn_id": "ch4_t2",
           "scrub_key": "agent_analysis",
-          "scrub_label": "2. Opus 4.6 Readout: oase_enpp1_009 Drug-Like",
+          "scrub_label": "2. Opus 5.5 Readout: oase_enpp1_009 Drug-Like",
           "speaker": "ai_medchem",
           "action": "wait_agent_reply",
           "target_agent": "medicinal-chemist",
           "console_viewer": "io-dmta-live-viewer.html",
-          "console_caption": "Step 4 Live DMTA Viewer \u2014 ENPP1 Quinazoline Sulfamide BRICS MMP (oase_enpp1_009: MW = 475.50 Da, cLogP = 2.01, TPSA = 113.96 \u00c5\u00b2, 0 PAINS, 0 CYP/hERG flags)",
+          "console_caption": "Step 4 Live DMTA Viewer — ENPP1 Quinazoline Sulfamide BRICS MMP (oase_enpp1_009: MW = 475.50 Da, cLogP = 2.01, TPSA = 113.96 Å², 0 PAINS, 0 CYP/hERG flags)",
           "tts_text": "Live Work Order six receipts verified, Raj! Replacing the chloro-aniline urea in hit one with the fluorophenyl sulfamide in O-A-S-E E-N-P-P-one-zero-zero-nine cut c-Log-P, cleared all Lipinski, Veber, PAINS, and Brenk filters, and kept synthetic accessibility at two point five!",
-          "chat_text": "[Live Claude Opus 4.6 RDKit + BRICS MMP + ADMET Receipt (`WO-006`)] @priya @sarah \u2014 Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n\u2022 Parent Hit `enpp1_hit_001`: `MW = 441.92 Da`, `cLogP = 3.32`, `TPSA = 74.62 \u00c5\u00b2` (hERG alert `8.5 \u00b5M`)\n\u2022 Series A Lead `oase_enpp1_009` (polar sulfamide ZBG): `MW = 475.50 Da`, `cLogP = 2.01`, `TPSA = 113.96 \u00c5\u00b2`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations\n\u2022 In Silico ADMET (`oase_enpp1_009.admet.json`): `LogS = -4.083`, `0` CYP isoforms flagged, `0` hERG pharmacophore features matched (`0` in silico liabilities; mandatory relay `compound.alerts_not_toxicology` preserved)"
+          "chat_text": "[Live Claude Opus 5.5 RDKit + BRICS MMP + ADMET Receipt (`WO-006`)] @priya @sarah — Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n• Parent Hit `enpp1_hit_001`: `MW = 441.92 Da`, `cLogP = 3.32`, `TPSA = 74.62 Å²` (hERG alert `8.5 µM`)\n• Series A Lead `oase_enpp1_009` (polar sulfamide ZBG): `MW = 475.50 Da`, `cLogP = 2.01`, `TPSA = 113.96 Å²`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations\n• In Silico ADMET (`oase_enpp1_009.admet.json`): `LogS = -4.083`, `0` CYP isoforms flagged, `0` hERG pharmacophore features matched (`0` in silico liabilities; mandatory relay `compound.alerts_not_toxicology` preserved)"
         },
         {
           "turn_id": "ch4_t3",
@@ -370,7 +375,7 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "console_viewer": "io-dmta-live-viewer.html",
-          "console_caption": "Step 4 Live DMTA Viewer \u2014 Extracellular Polarity Lock (TPSA = 113.96 \u00c5\u00b2, cLogP = 2.01) & In Silico ADMET Qualification",
+          "console_caption": "Step 4 Live DMTA Viewer — Extracellular Polarity Lock (TPSA = 113.96 Å², cLogP = 2.01) & In Silico ADMET Qualification",
           "chat_text": "Inspecting oase_enpp1_009 in the DMTA console: we have pushed computational target genetics, 1P AlphaFold 3 co-folding, Vina docking, RDKit, and ADMET to their exact epistemic limit. Next up is the Wet-Lab Wall at DEC-003.",
           "tts_text": "Look at the add-met console: we have pushed computational chemistry and structural biology to their exact epistemic limit! Now we face the Wet-Lab Wall in Step Five!"
         },
@@ -381,7 +386,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[WO-006 Accepted \u2014 Computational Chemistry Complete] Lead candidate oase_enpp1_009 (ENPP1-Lead-Series-1) and intracellular backup PTPN2-Backup-Series are locked with SHA-256 receipts. Claire and Shield-5, convene the DEC-003 Wet-Lab Wall Gate in Step 5!",
+          "chat_text": "[WO-006 Accepted — Computational Chemistry Complete] Lead candidate oase_enpp1_009 (ENPP1-Lead-Series-1) and intracellular backup PTPN2-Backup-Series are locked with SHA-256 receipts. Claire and Shield-5, convene the DEC-003 Wet-Lab Wall Gate in Step 5!",
           "tts_text": "Work Order six is accepted and our lead quinazoline sulfamide is locked! Claire and Shield Five, bring up Decision three and the Wet-Lab Wall Gate!"
         }
       ]
@@ -390,7 +395,7 @@
       "chapter": "ch5",
       "number": 5,
       "slug": "io-cold-to-hot",
-      "title": "Step 5 \u2014 The Wet-Lab Wall Gate (DEC-003 \u00b7 Halted Pending Wet-Lab Validation)",
+      "title": "Step 5 — The Wet-Lab Wall Gate (DEC-003 · Halted Pending Wet-Lab Validation)",
       "video_filename": "chapter-05.mp4",
       "turns": [
         {
@@ -411,9 +416,9 @@
           "action": "wait_agent_reply",
           "target_agent": "admet-dmpk-scientist",
           "console_viewer": "io-wetlab-wall-viewer.html",
-          "console_caption": "DEC-003 WET-LAB WALL GATE \u00b7 Status: HALTED_PENDING_WET_LAB (L-003 Escalated) \u00b7 Zero Fabricated Wet-Lab Numbers",
+          "console_caption": "DEC-003 WET-LAB WALL GATE · Status: HALTED_PENDING_WET_LAB (L-003 Escalated) · Zero Fabricated Wet-Lab Numbers",
           "tts_text": "Enforcing the Wet-Lab Wall at Decision three, Claire! No computational tool can prove paracrine STING activation or CD8 T-cell infiltration in a living tumor. Program status is formally set to halted-pending-wet-lab!",
-          "chat_text": "**[WO-007 & DEC-003 \u2014 Formal Halt at the Wet-Lab Wall (`halted_pending_wet_lab` \u00b7 `L-003` Escalated)]**\n- **Epistemic Boundary Enforced:** Computational evidence ends at target genetics (`WO-002..003`), 3D pocket co-folding/docking (`WO-004..005`), and in silico DMTA/ADMET (`WO-006`). No computational model can establish paracrine `2',3'-cGAMP` preservation in tumor interstitial fluid or `CD8+` T-cell infiltration.\n- **Mandatory Wet-Lab Unlock Criteria (`DEC-003`):**\n  1. **Ex Vivo Primary Human Tumor Slice Assay:** `>= 4-fold` `CXCL9`/`CXCL10` secretion by ELISA + `pIRF3`/`pSTAT1` induction (`EC50 < 100 nM`).\n  2. **In Vivo Syngeneic Efficacy (`MC38` & `CT26` + anti-PD-1):** `>= 2.5-fold` intratumoral `CD8+/Treg` ratio increase and `>= 50%` tumor growth inhibition."
+          "chat_text": "**[WO-007 & DEC-003 — Formal Halt at the Wet-Lab Wall (`halted_pending_wet_lab` · `L-003` Escalated)]**\n- **Epistemic Boundary Enforced:** Computational evidence ends at target genetics (`WO-002..003`), 3D pocket co-folding/docking (`WO-004..005`), and in silico DMTA/ADMET (`WO-006`). No computational model can establish paracrine `2',3'-cGAMP` preservation in tumor interstitial fluid or `CD8+` T-cell infiltration.\n- **Mandatory Wet-Lab Unlock Criteria (`DEC-003`):**\n  1. **Ex Vivo Primary Human Tumor Slice Assay:** `>= 4-fold` `CXCL9`/`CXCL10` secretion by ELISA + `pIRF3`/`pSTAT1` induction (`EC50 < 100 nM`).\n  2. **In Vivo Syngeneic Efficacy (`MC38` & `CT26` + anti-PD-1):** `>= 2.5-fold` intratumoral `CD8+/Treg` ratio increase and `>= 50%` tumor growth inhibition."
         },
         {
           "turn_id": "ch5_t3",
@@ -423,7 +428,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "io-wetlab-wall-viewer.html",
-          "console_caption": "WET-LAB PROTOCOL SPECIFICATION \u00b7 Patient Tumor-Slice CXCL9/CXCL10 ELISA + Syngeneic MC38/CT26 Anti-PD-1 Combo",
+          "console_caption": "WET-LAB PROTOCOL SPECIFICATION · Patient Tumor-Slice CXCL9/CXCL10 ELISA + Syngeneic MC38/CT26 Anti-PD-1 Combo",
           "chat_text": "Inspecting the DEC-003 Wet-Lab Wall viewer on screen: Liability L-003 is escalated to high, and our exact unlock protocol requires >= 4-fold CXCL9 and CXCL10 secretion by ELISA in patient tumor slices plus >= 2.5-fold CD8-to-Treg expansion in MC38 and CT26 mice.",
           "tts_text": "Look at the Wet-Lab Wall protocol in the console: we require at least four-fold C-X-C-L-nine and C-X-C-L-ten secretion by uh-lie-zuh in human tumor slices, plus C-D-eight expansion in M-C-thirty-eight and C-T-twenty-six mice!"
         },
@@ -434,8 +439,8 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[DEC-003 Co-Signed \u2014 Halted Pending Wet Lab] That is scientific honesty in action: zero hallucinated IC50s and zero fake mouse curves. Let's run our live red-team tamper drills in Step 6 to prove the CLI blocks any attempt to fake wet-lab data!",
-          "tts_text": "That is real scientific integrity\u2014halting cleanly at the Wet-Lab Wall with zero fake mouse curves! Now let's run Step Six and watch the validator block anyone who tries to fake them!"
+          "chat_text": "[DEC-003 Co-Signed — Halted Pending Wet Lab] That is scientific honesty in action: zero hallucinated IC50s and zero fake mouse curves. Let's run our live red-team tamper drills in Step 6 to prove the CLI blocks any attempt to fake wet-lab data!",
+          "tts_text": "That is real scientific integrity—halting cleanly at the Wet-Lab Wall with zero fake mouse curves! Now let's run Step Six and watch the validator block anyone who tries to fake them!"
         }
       ]
     },
@@ -443,7 +448,7 @@
       "chapter": "ch6",
       "number": 6,
       "slug": "io-cold-to-hot",
-      "title": "Step 6 \u2014 Live Red-Team Tamper Drills (DRILL-01..03) & Anti-Hallucination Audit",
+      "title": "Step 6 — Live Red-Team Tamper Drills (DRILL-01..03) & Anti-Hallucination Audit",
       "video_filename": "chapter-06.mp4",
       "turns": [
         {
@@ -464,9 +469,9 @@
           "action": "wait_agent_reply",
           "target_agent": "finding-validator",
           "console_viewer": "io-wetlab-wall-viewer.html",
-          "console_caption": "LIVE ANTI-HALLUCINATION AUDIT \u00b7 DRILL-01 (Fabricated Potency), DRILL-02 (PDBQT SHA-256 Tamper), DRILL-03 (Suppressed Relay) -> BLOCKED",
+          "console_caption": "LIVE ANTI-HALLUCINATION AUDIT · DRILL-01 (Fabricated Potency), DRILL-02 (PDBQT SHA-256 Tamper), DRILL-03 (Suppressed Relay) -> BLOCKED",
           "tts_text": "All three tamper drills were blocked deterministically with exit code one, Sarah! Inflating the Vina binding energy, tampering with the docked pose file, and suppressing mandatory relays were all rejected by oase validate check!",
-          "chat_text": "**[Live Adversarial Tamper Drills `DRILL-01..03` \u2014 3/3 Deterministically Blocked (`Exit Code 1`)]**\n- **DRILL-01 (`drill-01-value-mismatch.json`):** Mutated docked binding energy in `wo-005-vina-docking.md` without matching Layer 0 JSON -> **BLOCKED (`Exit Code 1`, `source_attribution` value mismatch)**.\n- **DRILL-02 (`drill-02-sha256-tamper.json`) & DRILL-03 (`drill-03-suppressed-relay.json`):** Appended bytes to `oase_enpp1_009.3d_AF-P22413-F1.poses.pdbqt` -> **BLOCKED (`Exit Code 1`, `sidecar_integrity` SHA-256 mismatch)**; stripped mandatory relay from `wo-006-dmta-admet-mmp.md` -> **BLOCKED (`Exit Code 1`, `mandatory_relays`)**."
+          "chat_text": "**[Live Adversarial Tamper Drills `DRILL-01..03` — 3/3 Deterministically Blocked (`Exit Code 1`)]**\n- **DRILL-01 (`drill-01-value-mismatch.json`):** Mutated docked binding energy in `wo-005-vina-docking.md` without matching Layer 0 JSON -> **BLOCKED (`Exit Code 1`, `source_attribution` value mismatch)**.\n- **DRILL-02 (`drill-02-sha256-tamper.json`) & DRILL-03 (`drill-03-suppressed-relay.json`):** Appended bytes to `oase_enpp1_009.3d_AF-P22413-F1.poses.pdbqt` -> **BLOCKED (`Exit Code 1`, `sidecar_integrity` SHA-256 mismatch)**; stripped mandatory relay from `wo-006-dmta-admet-mmp.md` -> **BLOCKED (`Exit Code 1`, `mandatory_relays`)**."
         },
         {
           "turn_id": "ch6_t3",
@@ -476,7 +481,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "io-wetlab-wall-viewer.html",
-          "console_caption": "FULL TOOL & SKILL COMPLETENESS \u00b7 78/78 oase doctor Checks OK \u00b7 41/41 Verification Skills Active in All 10 Containers",
+          "console_caption": "FULL TOOL & SKILL COMPLETENESS · 78/78 oase doctor Checks OK · 41/41 Verification Skills Active in All 10 Containers",
           "chat_text": "Inspecting the verification ledger in the console: all 78 oase doctor checks pass with zero warnings (including alphagenome, fpocket, vina, hypex, rdkit, meeko, and thresholds.yaml), and all 41 skills are active in every specialist container.",
           "tts_text": "Look at that audit panel in the console: seventy-eight out of seventy-eight doctor checks green, forty-one verification skills active in every container, and every tamper attempt stopped cold!"
         },
@@ -487,7 +492,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Step 6 Governance Audit Complete \u2014 10/10 Validation Checks Green] Clean state restored across WO-001 through WO-008. Let's convene our Step 7 Team Debrief to review the Pre-Wet-Lab Candidate Dossier while we await wet-lab results!",
+          "chat_text": "[Step 6 Governance Audit Complete — 10/10 Validation Checks Green] Clean state restored across WO-001 through WO-008. Let's convene our Step 7 Team Debrief to review the Pre-Wet-Lab Candidate Dossier while we await wet-lab results!",
           "tts_text": "Clean state restored and all ten validation rules are green! Squad, rally for our Step Seven team debrief to review our Pre-Wet-Lab Candidate Dossier!"
         }
       ]
@@ -496,7 +501,7 @@
       "chapter": "ch7",
       "number": 7,
       "slug": "io-cold-to-hot",
-      "title": "Step 7 \u2014 Team Debrief: Pre-Wet-Lab Dossier Ready While Awaiting Wet-Lab Results",
+      "title": "Step 7 — Team Debrief: Pre-Wet-Lab Dossier Ready While Awaiting Wet-Lab Results",
       "video_filename": "chapter-07.mp4",
       "turns": [
         {
@@ -517,9 +522,9 @@
           "action": "wait_agent_reply",
           "target_agent": "science-program-lead",
           "console_viewer": "io-wetlab-wall-viewer.html",
-          "console_caption": "PRE-WET-LAB CANDIDATE DOSSIER (WO-008) \u00b7 8/8 WOs Accepted \u00b7 Ready for Review Awaiting Tumor-Slice ELISA & MC38/CT26 Results",
+          "console_caption": "PRE-WET-LAB CANDIDATE DOSSIER (WO-008) · 8/8 WOs Accepted · Ready for Review Awaiting Tumor-Slice ELISA & MC38/CT26 Results",
           "tts_text": "Pre-Wet-Lab Candidate Dossier is sealed and ready for review, Gold Squadron! Eight of eight work orders are scientifically accepted, our clinical trial benchmark is complete, and the dossier is staged waiting for wet-lab readouts!",
-          "chat_text": "**[Team Debrief \u2014 `io-cold-to-hot` Pre-Wet-Lab Candidate Dossier Ready (`WO-008` \u00b7 Awaiting Wet-Lab Results)]**\n- **Pre-Wet-Lab Candidate Dossier (`oase dossier check` & `oase dossier export WO-008`):** All **8 Work Orders (`WO-001..WO-008`)** are `scientifically_accepted` with `10/10` validation checks passing; `ClinicalTrials.gov` `ENPP1` pipeline benchmark (`raw/pipeline/enpp1.trials-clinicaltrials.artifact.json`) confirms high whitespace for selective oral `ENPP1` small molecules.\n- **Ready for Wet-Lab Re-Entry (`DEC-003`):** Lead **`oase_enpp1_009`** (`ENPP1-Lead-Series-1`) and backup **`PTPN2-Backup-Series`** are packaged in `_site/index.html` awaiting patient tumor-slice `CXCL9`/`CXCL10` ELISA and `MC38`/`CT26` + anti-PD-1 in vivo results."
+          "chat_text": "**[Team Debrief — `io-cold-to-hot` Pre-Wet-Lab Candidate Dossier Ready (`WO-008` · Awaiting Wet-Lab Results)]**\n- **Pre-Wet-Lab Candidate Dossier (`oase dossier check` & `oase dossier export WO-008`):** All **8 Work Orders (`WO-001..WO-008`)** are `scientifically_accepted` with `10/10` validation checks passing; `ClinicalTrials.gov` `ENPP1` pipeline benchmark (`raw/pipeline/enpp1.trials-clinicaltrials.artifact.json`) confirms high whitespace for selective oral `ENPP1` small molecules.\n- **Ready for Wet-Lab Re-Entry (`DEC-003`):** Lead **`oase_enpp1_009`** (`ENPP1-Lead-Series-1`) and backup **`PTPN2-Backup-Series`** are packaged in `_site/index.html` awaiting patient tumor-slice `CXCL9`/`CXCL10` ELISA and `MC38`/`CT26` + anti-PD-1 in vivo results."
         },
         {
           "turn_id": "ch7_t3",
@@ -528,7 +533,7 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Debrief \u2014 Comp Bio + Helix-2] Co-Scientist and Hypex ranked ENPP1 #1 at 1658.4 Elo, gnomAD v4 indicates heterozygous LoF tolerance (while biallelic ENPP1 deficiency GACI/ARHR2 defines a mineralization liability to monitor) while disqualifying TREX1 (L-001), and live 1P AlphaGenome A100 scoring de-risked the chr6:131894218:C>T locus.",
+          "chat_text": "[Debrief — Comp Bio + Helix-2] Co-Scientist and Hypex ranked ENPP1 #1 at 1658.4 Elo, gnomAD v4 indicates heterozygous LoF tolerance (while biallelic ENPP1 deficiency GACI/ARHR2 defines a mineralization liability to monitor) while disqualifying TREX1 (L-001), and live 1P AlphaGenome A100 scoring de-risked the chr6:131894218:C>T locus.",
           "tts_text": "Helix Two and I locked E-N-P-P-one at sixteen-fifty-eight point four Elo, eliminated T-rex-one on human autoimmune genetics, and verified our chromosome six locus live on the AlphaGenome A100!"
         },
         {
@@ -539,19 +544,19 @@
           "action": "human_chat",
           "target_agent": "structural-biologist",
           "console_viewer": "io-af3-live-viewer.html",
-          "console_caption": "VERIFIED 3D CO-FOLD \u00b7 AF3-enpp1_009_complex.cif (us-east4 A100) + AF-P22413-F1 fpocket + AutoDock Vina",
-          "chat_text": "[Debrief \u2014 Structural Bio + Fold-3] Full-length AlphaFold DB P22413, fpocket catalytic groove mapping, live 1P AlphaFold 3 co-folding of oase_enpp1_009 in us-east4, and AutoDock Vina confirmed our 2',3'-cGAMP-competitive binding mode.",
+          "console_caption": "VERIFIED 3D CO-FOLD · AF3-enpp1_009_complex.cif (us-east4 A100) + AF-P22413-F1 fpocket + AutoDock Vina",
+          "chat_text": "[Debrief — Structural Bio + Fold-3] Full-length AlphaFold DB P22413, fpocket catalytic groove mapping, live 1P AlphaFold 3 co-folding of oase_enpp1_009 in us-east4, and AutoDock Vina confirmed our 2',3'-cGAMP-competitive binding mode.",
           "tts_text": "Fold Three and I co-folded O-A-S-E E-N-P-P-one-zero-zero-nine live on our AlphaFold Three A100 and confirmed convergent binding in the see-gamp catalytic groove with F-pocket and Vina!"
         },
         {
           "turn_id": "ch7_t5",
           "scrub_key": "debrief_medchem",
-          "scrub_label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
+          "scrub_label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
-          "chat_text": "[Debrief \u2014 Med Chem + Spark-4] Pairing with Claude Opus 4.6 on WO-006 optimized enpp1_hit_001 into quinazoline-piperazine sulfamide oase_enpp1_009 with 0 Lipinski, Veber, PAINS, or Brenk violations and clean BRICS MMP and ADMET profiles.",
-          "tts_text": "Spark Four on Claude Opus Four-Point-Six helped me optimize our quinazoline sulfamide lead to zero Lipinski, Veber, PAINS, or Brenk violations with clean add-met!"
+          "chat_text": "[Debrief — Med Chem + Spark-4] Pairing with Claude Opus 5.5 on WO-006 optimized enpp1_hit_001 into quinazoline-piperazine sulfamide oase_enpp1_009 with 0 Lipinski, Veber, PAINS, or Brenk violations and clean BRICS MMP and ADMET profiles.",
+          "tts_text": "Spark Four on Claude Opus Five-Point-Five helped me optimize our quinazoline sulfamide lead to zero Lipinski, Veber, PAINS, or Brenk violations with clean add-met!"
         },
         {
           "turn_id": "ch7_t6",
@@ -560,7 +565,7 @@
           "speaker": "claire",
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
-          "chat_text": "[Debrief \u2014 Translational + Shield-5] Halting cleanly at DEC-003 (halted_pending_wet_lab) with our Pre-Wet-Lab Candidate Dossier exported gives the wet-lab team an exact, falsifiable checklist: >= 4-fold CXCL9/CXCL10 ELISA in human tumor slices and MC38/CT26 anti-PD-1 synergy.",
+          "chat_text": "[Debrief — Translational + Shield-5] Halting cleanly at DEC-003 (halted_pending_wet_lab) with our Pre-Wet-Lab Candidate Dossier exported gives the wet-lab team an exact, falsifiable checklist: >= 4-fold CXCL9/CXCL10 ELISA in human tumor slices and MC38/CT26 anti-PD-1 synergy.",
           "tts_text": "And halting cleanly at Decision three with our Pre-Wet-Lab Dossier ready gives the lab an exact checklist: four-fold C-X-C-L-nine and C-X-C-L-ten by uh-lie-zuh in human tumor slices and M-C-thirty-eight mouse synergy!"
         },
         {
@@ -570,7 +575,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Mission 02 Pre-Wet-Lab Dossier Ready \u2014 Awaiting CRO Wet-Lab Results] All 8 Work Orders, DEC-001..003, 3 Tamper Drills, and our compiled Evidence Portal are live in GCP. Explore the 3D co-fold, the provenance gallery, or jump into any live scientist seat below!",
+          "chat_text": "[Mission 02 Pre-Wet-Lab Dossier Ready — Awaiting CRO Wet-Lab Results] All 8 Work Orders, DEC-001..003, 3 Tamper Drills, and our compiled Evidence Portal are live in GCP. Explore the 3D co-fold, the provenance gallery, or jump into any live scientist seat below!",
           "tts_text": "Mission Two's Pre-Wet-Lab Dossier is sealed in GCP and waiting on wet-lab results! Inspect the 3D co-fold, the provenance gallery, or jump into a live scientist seat below!"
         }
       ]

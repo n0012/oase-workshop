@@ -198,9 +198,9 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="hero">
   <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
-  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude Opus 4.6 + 1P GPUs</div>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 4 Argon + Claude Opus 5.5 + 1P GPUs</div>
   <div class="kpi-strip" id="hero-kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">Gemini + Claude</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
+    <div class="kpi-card"><div class="kpi-val">Argon + Opus 5.5</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
     <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">41 Skills · oase doctor Live</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaGenome</div><div class="kpi-lbl">Dedicated A100 (us-central1)</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaFold 3</div><div class="kpi-lbl">Dedicated A100 (us-east4)</div></div>
@@ -274,7 +274,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div class="arcade-mission-title">PCSK9 Oral Small Molecule — Full Stage 1–4 Pre-IND Campaign</div>
             <p class="arcade-mission-desc">Complete 8-Work-Order campaign in Google Cloud (<code>losiern-oase-workshop</code>) from Co-Scientist tournament through wet-lab rat/dog PK and 40 mg QD human oral candidate nomination (<code>OASE-PCSK9-014</code>).</p>
             <ul class="arcade-spec-list">
-              <li><strong>Frontier LLMs:</strong> Gemini 2.5 Pro (High/Med) + Claude Opus 4.6</li>
+              <li><strong>Frontier LLMs:</strong> Gemini 4 Argon (High/Med) + Claude Opus 5.5</li>
               <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome A100 + AlphaFold 3 A100</li>
               <li><strong>Live 3D &amp; Omics Viewers:</strong> 588-atom 3D <code>.cif</code> canvas + 1 Mb SVG tracks</li>
               <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
@@ -365,7 +365,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
                 <div style="font-size:0.72rem;color:#94a3b8;">Medicinal Chemistry</div>
               </div>
             </div>
-            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude Opus 4.6)</span>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude Opus 5.5)</span>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 4 (WO-006)</strong>: Flags hERG alert on A02 &amp; designs oxadiazole lead <code>OASE-PCSK9-014</code>.</div>
           </button>
 
@@ -391,7 +391,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
                 <div style="font-size:0.72rem;color:#94a3b8;">Science Program Lead</div>
               </div>
             </div>
-            <span class="arcade-wingman-tag">&#8644; Wingman: Grove-1 (Gemini 2.5 Pro)</span>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Grove-1 (Gemini 4 Argon)</span>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 1 &amp; Step 7</strong>: Co-Scientist tournament brief, 4 Stage Gate co-signs &amp; portfolio handoff.</div>
           </button>
 
@@ -2031,7 +2031,7 @@ selectStation('s3');
       bar.innerHTML = `
         <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
           <span class="cockpit-status-pill">${isStaging ? '⚡ Staging Pilot Workspace · Queued for Live Sovereign GPU Run' : '● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)'}</span>
-          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini Live Avatars + 6 Specialist AI Wingmen'}</span>
+          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen'}</span>
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
           <a class="cockpit-btn primary" href="${liveGroveUrl}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Grove ↗</a>
@@ -2233,8 +2233,8 @@ selectStation('s3');
       const depCard = document.createElement('div');
       depCard.id = 'cockpit-deployment-options-card';
       depCard.className = 'cockpit-stage-card';
-      const envOptA = 'export OASE_DEPLOYMENT_TOPOLOGY="gcp-native"\nexport GCP_PROJECT_ID="enterprise-oase-vpc-spoke"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"\nexport SCION_HARNESS_REVIEWER="gcp/claude-sonnet-4-6"';
-      const envOptB = 'export OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"\nexport GOOGLE_APPLICATION_CREDENTIALS="/var/run/secrets/gcp-wif/credential-configuration.json"\nexport GCP_WIF_POOL_PROVIDER="projects/<PROJECT_NUM>/locations/global/workloadIdentityPools/aws-eks-pool/providers/aws-eks-oidc"\nexport CLAUDE_CODE_USE_BEDROCK="1"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"';
+      const envOptA = 'export OASE_DEPLOYMENT_TOPOLOGY="gcp-native"\nexport GCP_PROJECT_ID="enterprise-oase-vpc-spoke"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-4-argon"\nexport SCION_HARNESS_REVIEWER="gcp/claude-opus-5-5"';
+      const envOptB = 'export OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"\nexport GOOGLE_APPLICATION_CREDENTIALS="/var/run/secrets/gcp-wif/credential-configuration.json"\nexport GCP_WIF_POOL_PROVIDER="projects/<PROJECT_NUM>/locations/global/workloadIdentityPools/aws-eks-pool/providers/aws-eks-oidc"\nexport CLAUDE_CODE_USE_BEDROCK="1"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-4-argon"';
       depCard.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
           <div>
@@ -2254,7 +2254,7 @@ selectStation('s3');
             <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
               <li><strong>Control Plane &amp; 17 Agents:</strong> <code>GKE Autopilot / GCE</code> + <code>Cloud SQL</code> + <code>Cloud Filestore</code> in customer GCP VPC.</li>
               <li><strong>Local Deterministic Binaries:</strong> <code>AutoDock Vina 1.2.5</code>, <code>fpocket 4.2.2</code>, <code>RDKit</code> &amp; <code>oase validate check</code> run in isolated GKE pods.</li>
-              <li><strong>1P Science &amp; Frontier LLMs:</strong> Private Service Connect (<code>PSC</code>) to dedicated <code>AlphaFold 3</code> &amp; <code>AlphaGenome</code> A100/H100 endpoints + Vertex <code>Gemini 2.5 Pro</code>, <code>TxGemma</code> &amp; Partner <code>Claude Opus 4.6</code>.</li>
+              <li><strong>1P Science &amp; Frontier LLMs:</strong> Private Service Connect (<code>PSC</code>) to dedicated <code>AlphaFold 3</code> &amp; <code>AlphaGenome</code> A100/H100 endpoints + Vertex <code>Gemini 4 Argon</code>, <code>TxGemma</code> &amp; Partner <code>Claude Opus 5.5</code>.</li>
               <li><strong>Security Boundary:</strong> Single <code>VPC Service Controls (VPC-SC)</code> perimeter, <code>CMEK</code>, and <code>Zero Data Retention</code>.</li>
             </ul>
           </div>
@@ -2263,7 +2263,7 @@ selectStation('s3');
             <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
               <li><strong>Stays Local in AWS (<code>EKS + RDS + S3</code>):</strong> Scion Hub, all 17 OASE agent containers, and all 7 compiled tools (<code>Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>).</li>
               <li><strong>Local R&amp;D Data &amp; Bedrock:</strong> Direct AWS VPC access to <code>Benchling</code>, <code>CDD Vault</code> &amp; <code>S3</code> assay lakes; optional local Claude on AWS Bedrock (<code>CLAUDE_CODE_USE_BEDROCK=1</code>).</li>
-              <li><strong>Called in Google Cloud (<code>VPC-SC Spoke</code>):</strong> Only sequence, variant &amp; SMILES payloads for 1P <code>AlphaFold 3</code>, <code>AlphaGenome</code>, <code>Gemini 2.5 Pro</code> / <code>Co-Scientist</code> &amp; <code>TxGemma</code> over Cross-Cloud Interconnect (<code>restricted.googleapis.com</code>, Zero Data Retention).</li>
+              <li><strong>Called in Google Cloud (<code>VPC-SC Spoke</code>):</strong> Only sequence, variant &amp; SMILES payloads for 1P <code>AlphaFold 3</code>, <code>AlphaGenome</code>, <code>Gemini 4 Argon</code> / <code>Co-Scientist</code> &amp; <code>TxGemma</code> over Cross-Cloud Interconnect (<code>restricted.googleapis.com</code>, Zero Data Retention).</li>
               <li><strong>Keyless Auth:</strong> AWS EKS IAM Role &rarr; GCP <strong>Workload Identity Federation (WIF)</strong> (zero static service account JSON keys).</li>
             </ul>
           </div>
@@ -2305,7 +2305,7 @@ selectStation('s3');
                   <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>4</strong></td>
                   <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>*-aiplatform.googleapis.com</code></td>
                   <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :streamGenerateContent</code> / <code>:predict</code></td>
-                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Vertex AI <strong>Gemini 2.5 Pro</strong>, <strong>AI Co-Scientist</strong> &amp; <strong>TxGemma</strong> (Zero Data Retention)</td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Vertex AI <strong>Gemini 4 Argon</strong>, <strong>AI Co-Scientist</strong> &amp; <strong>TxGemma</strong> (Zero Data Retention)</td>
                 </tr>
               </tbody>
             </table>
@@ -2463,7 +2463,7 @@ selectStation('s3');
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
           <div>
-            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini Live Avatars + Multi-Model Grove)</strong>
+            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini 3.8 Live Avatars + Multi-Model Grove)</strong>
             <div id="cockpit-state-badge-${chId}" style="font-size:0.77rem;color:#94a3b8;font-family:monospace;margin-top:0.15rem;">
               ${subBadge}
             </div>
@@ -2833,7 +2833,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 17-Agent 4-Tier Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini Live Avatar</code> (<code>gemini-2.5-pro</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 2.5 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 17-Agent 4-Tier Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 3.8 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>

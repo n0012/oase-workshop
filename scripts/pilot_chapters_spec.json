@@ -8,7 +8,8 @@
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Ingrid (Leda)"
+      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
@@ -18,7 +19,8 @@
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar · Sam (Sadaltager)"
+      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
@@ -28,7 +30,8 @@
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Kira (Kore)"
+      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
@@ -38,7 +41,8 @@
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar · Jay (Alnilam)"
+      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
@@ -48,7 +52,8 @@
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Vera (Pulcherrima)"
+      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "ai_lead": {
       "display_name": "Grove-1 · AI Program Lead",
@@ -58,10 +63,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-techagent-3",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro · Grove-1 [SP]"
+      "accent_label": "Gemini 4 Argon (High) · Grove-1 [SP]"
     },
     "ai_compbio": {
       "display_name": "Helix-2 · AI Comp Bio",
@@ -71,10 +76,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-8",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro · Helix-2 [CB]"
+      "accent_label": "Gemini 4 Argon (Med) · Helix-2 [CB]"
     },
     "ai_structbio": {
       "display_name": "Fold-3 · AI Structural Bio",
@@ -84,10 +89,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-gb-tutor-17",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 2.5 Pro · Fold-3 [SB]"
+      "accent_label": "Gemini 4 Argon (High) · Fold-3 [SB]"
     },
     "ai_medchem": {
       "display_name": "Spark-4 · AI Med Chemist",
@@ -97,10 +102,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-in-tutor-12",
-      "model_label": "Claude Opus 4.6",
+      "model_label": "Claude Opus 5.5",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 4.6 · Spark-4 [MC]"
+      "accent_label": "Claude Opus 5.5 · Spark-4 [MC]"
     },
     "ai_dmpk": {
       "display_name": "Shield-5 · AI Safety & PK",
@@ -110,10 +115,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-ie-advisor-4",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 2.5 Pro · Shield-5 [AD]"
+      "accent_label": "Gemini 4 Argon (Med) · Shield-5 [AD]"
     },
     "ai_validator": {
       "display_name": "Aegis-6 · AI Validator",
@@ -123,10 +128,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-10",
-      "model_label": "Gemini 2.5 Flash",
+      "model_label": "Gemini 3.8 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 2.5 Flash · Aegis-6 [FV]"
+      "accent_label": "Gemini 3.8 Flash · Aegis-6 [FV]"
     }
   },
   "chapters": [

@@ -10,7 +10,8 @@
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Ingrid (Leda)"
+      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
@@ -20,7 +21,8 @@
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar · Sam (Sadaltager)"
+      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
@@ -30,7 +32,8 @@
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Kira (Kore)"
+      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
@@ -40,7 +43,8 @@
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini Live Avatar · Jay (Alnilam)"
+      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
@@ -50,7 +54,8 @@
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini Live Avatar · Vera (Pulcherrima)"
+      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)",
+      "model_label": "Gemini 3.8 Live Avatar"
     },
     "ai_lead": {
       "display_name": "Grove-1 · AI Program Lead",
@@ -60,10 +65,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-techagent-3",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro · Grove-1 [SP]"
+      "accent_label": "Gemini 4 Argon (High) · Grove-1 [SP]"
     },
     "ai_compbio": {
       "display_name": "Helix-2 · AI Comp Bio",
@@ -73,10 +78,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-8",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 2.5 Pro · Helix-2 [CB]"
+      "accent_label": "Gemini 4 Argon (Med) · Helix-2 [CB]"
     },
     "ai_structbio": {
       "display_name": "Fold-3 · AI Structural Bio",
@@ -86,10 +91,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-gb-tutor-17",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (High)",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 2.5 Pro · Fold-3 [SB]"
+      "accent_label": "Gemini 4 Argon (High) · Fold-3 [SB]"
     },
     "ai_medchem": {
       "display_name": "Spark-4 · AI Med Chemist",
@@ -99,10 +104,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-in-tutor-12",
-      "model_label": "Claude Opus 4.6",
+      "model_label": "Claude Opus 5.5",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 4.6 · Spark-4 [MC]"
+      "accent_label": "Claude Opus 5.5 · Spark-4 [MC]"
     },
     "ai_dmpk": {
       "display_name": "Shield-5 · AI Safety & PK",
@@ -112,10 +117,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-ie-advisor-4",
-      "model_label": "Gemini 2.5 Pro",
+      "model_label": "Gemini 4 Argon (Med)",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 2.5 Pro · Shield-5 [AD]"
+      "accent_label": "Gemini 4 Argon (Med) · Shield-5 [AD]"
     },
     "ai_validator": {
       "display_name": "Aegis-6 · AI Validator",
@@ -125,10 +130,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-10",
-      "model_label": "Gemini 2.5 Flash",
+      "model_label": "Gemini 3.8 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 2.5 Flash · Aegis-6 [FV]"
+      "accent_label": "Gemini 3.8 Flash · Aegis-6 [FV]"
     }
   },
   "chapters": [
@@ -146,8 +151,8 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Live Run v2 — Step 1 Kickoff] Gold Squadron, we are live inside pcsk9-oral-live-v2 with Gemini 2.5 Pro, Claude Opus 4.6, and dedicated A100 endpoints online. Let's lock our three falsifiable rules and execute WO-001 Co-Scientist + Hypex tournament!",
-          "tts_text": "Gold Squadron, we are live in Argolis with Gemini Two-Point-Five Pro, Claude Opus Four-Point-Six, and our A100 GPUs hot! Lock your rules for Co-Scientist!",
+          "chat_text": "[Live Run v2 — Step 1 Kickoff] Gold Squadron, we are live inside pcsk9-oral-live-v2 with Gemini 4 Argon, Claude Opus 5.5, and dedicated A100 endpoints online. Let's lock our three falsifiable rules and execute WO-001 Co-Scientist + Hypex tournament!",
+          "tts_text": "Gold Squadron, we are live in Argolis with Gemini Four Argon, Claude Opus Five-Point-Five, and our A100 GPUs hot! Lock your rules for Co-Scientist!",
           "console_caption": ""
         },
         {
@@ -215,8 +220,8 @@
           "action": "wait_agent_reply",
           "target_agent": "computational-biologist",
           "console_viewer": "coscientist-live-viewer.html",
-          "console_caption": "MULTI-MODEL ROSTER · Gemini 2.5 Pro (High/Med) + Claude Opus 4.6 Peer Reflection & MedChem",
-          "tts_text": "Confirmed, Claire! H-zero-zero-one rides the green primary line, macrocycle H-zero-zero-two holds backup, and all five doctor-wingman pairs are locked across Gemini Pro and Claude Opus!",
+          "console_caption": "MULTI-MODEL ROSTER · Gemini 4 Argon (High/Med) + Claude Opus 5.5 Peer Reflection & MedChem",
+          "tts_text": "Confirmed, Claire! H-zero-zero-one rides the green primary line, macrocycle H-zero-zero-two holds backup, and all five doctor-wingman pairs are locked across Argon and Opus!",
           "chat_text": "**[Clause 1 Pre-Check — Human Genetics & AlphaGenome Readiness]**\n- **Target Safety (`WO-002`):** `gnomAD v4` confirms `pLI = 0.0` (`LOEUF = 0.94`) with `R46L` (`rs11591147`) cardioprotective loss-of-function precedent; `GTEx v8` confirms liver-dominant expression (`182.4 TPM` vs `0.25 TPM` whole blood).\n- **1P AlphaGenome Endpoint Ready (`WO-003`):** Dedicated `us-central1` A100 endpoint `mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5` online for 1 Mb regulatory variant scoring on `chr1:55039974:G>T`."
         },
         {
@@ -326,7 +331,7 @@
           "target_agent": "science-program-lead",
           "console_viewer": "af3-live-viewer.html",
           "console_caption": "3D INTERFACE CONTACTS · Asp53 (2.59 A), Val73 (2.23 A), Ser76 (3.59 A) · Seed cLogP 5.4 Flagged for Step 4",
-          "chat_text": "Inspecting AF3-pcsk9_ic001_complex.cif in the 3D viewer: clean hydrogen-bond network to Asp53 (2.59 A), Val73 (2.23 A), and Ser76 (3.59 A) across 9 Vina poses. However, seed pcsk9_ic001 has cLogP = 5.4 — queueing Opus 4.6 oxadiazole MMP redesign in Step 4.",
+          "chat_text": "Inspecting AF3-pcsk9_ic001_complex.cif in the 3D viewer: clean hydrogen-bond network to Asp53 (2.59 A), Val73 (2.23 A), and Ser76 (3.59 A) across 9 Vina poses. However, seed pcsk9_ic001 has cLogP = 5.4 — queueing Opus 5.5 oxadiazole MMP redesign in Step 4.",
           "tts_text": "Check out that rotating 3D co-fold in the console—two point two Angstrom lock on Val-seventy-three! But seed I-C-zero-zero-one sits at c-Log-P five point four, so Spark Four and I will trim that grease in Step Four!"
         },
         {
@@ -336,7 +341,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 2 Co-Signed — PASS] Live WO-004 (AF3 sha256 093bfe32, fpocket 0.788) and WO-005 (Vina -7.991 kcal/mol, sha256 67621d09) accepted with docking.score_not_affinity relayed. Handing off to Raj and Claude Opus 4.6 for Step 4!",
+          "chat_text": "[Stage Gate 2 Co-Signed — PASS] Live WO-004 (AF3 sha256 093bfe32, fpocket 0.788) and WO-005 (Vina -7.991 kcal/mol, sha256 67621d09) accepted with docking.score_not_affinity relayed. Handing off to Raj and Claude Opus 5.5 for Step 4!",
           "tts_text": "Pocket druggability hit zero point seven-eight-eight and our five-hundred-eighty-eight-atom co-fold is locked! Gate Two is signed—Raj and Spark Four, take it into Med-Chem!",
           "console_caption": ""
         }
@@ -347,7 +352,7 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 4 — Opus 4.6 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
+      "title": "Step 4 — Opus 5.5 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
       "video_filename": "chapter-04.mp4",
       "turns": [
         {
@@ -364,14 +369,14 @@
         {
           "turn_id": "ch4_t2",
           "scrub_key": "agent_analysis",
-          "scrub_label": "2. Opus 4.6 Readout: cLogP 4.19 & 0 Violations",
+          "scrub_label": "2. Opus 5.5 Readout: cLogP 4.19 & 0 Violations",
           "speaker": "ai_medchem",
           "action": "wait_agent_reply",
           "target_agent": "medicinal-chemist",
           "console_viewer": "dmta-live-viewer.html",
-          "console_caption": "Step 4 Live DMTA Viewer — Claude Opus 4.6 RDKit + MMP + ADMET (oase_pcsk9_014: Iter 1 1,3-thiazole MW = 394.38 Da, cLogP = 4.19, TPSA = 77.00 Å² -> Iter 2 neutral 1,2,4-oxadiazole cLogP = 3.01, TPSA = 101.04 Å²)",
+          "console_caption": "Step 4 Live DMTA Viewer — Claude Opus 5.5 RDKit + MMP + ADMET (oase_pcsk9_014: Iter 1 1,3-thiazole MW = 394.38 Da, cLogP = 4.19, TPSA = 77.00 Å² -> Iter 2 neutral 1,2,4-oxadiazole cLogP = 3.01, TPSA = 101.04 Å²)",
           "tts_text": "Live Work Order six receipts verified, Raj! Swapping in the polar oxadiazole dropped c-Log-P from five point four to four point one-nine, boosted T-P-S-A to seventy-seven, and cleared all Lipinski and PAINS filters with zero activity cliffs!",
-          "chat_text": "[Live Claude Opus 4.6 RDKit + MMP + ADMET Receipt (`WO-006`)] @priya @sarah — Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n• Parent Hit `pcsk9_ic001`: `MW = 392.39 Da`, `cLogP = 5.40` (1 Lipinski violation, `borderline`)\n• Lead `oase_pcsk9_014` (Iteration 1 1,3-thiazole bis-pyridine): `MW = 394.38 Da`, `cLogP = 4.19`, `TPSA = 77.00 Å²`, `SA-score = 2.52`, `0` Lipinski/PAINS violations (`drug-like`)\n• Iteration 2 BRICS Swap (after `PCSK9-A02` hERG flag): neutral `1,2,4-oxadiazole` (`cLogP = 3.01`, `TPSA = 101.04 Å²`, `hERG IC50 > 30 µM`)\n• Mandatory Relay Enforced: `admet.herg_structural_flag` -> routed to Gate 3 wet-lab manual patch-clamp (`hERG IC50 > 30 µM`)"
+          "chat_text": "[Live Claude Opus 5.5 RDKit + MMP + ADMET Receipt (`WO-006`)] @priya @sarah — Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n• Parent Hit `pcsk9_ic001`: `MW = 392.39 Da`, `cLogP = 5.40` (1 Lipinski violation, `borderline`)\n• Lead `oase_pcsk9_014` (Iteration 1 1,3-thiazole bis-pyridine): `MW = 394.38 Da`, `cLogP = 4.19`, `TPSA = 77.00 Å²`, `SA-score = 2.52`, `0` Lipinski/PAINS violations (`drug-like`)\n• Iteration 2 BRICS Swap (after `PCSK9-A02` hERG flag): neutral `1,2,4-oxadiazole` (`cLogP = 3.01`, `TPSA = 101.04 Å²`, `hERG IC50 > 30 µM`)\n• Mandatory Relay Enforced: `admet.herg_structural_flag` -> routed to Gate 3 wet-lab manual patch-clamp (`hERG IC50 > 30 µM`)"
         },
         {
           "turn_id": "ch4_t3",
@@ -566,12 +571,12 @@
         {
           "turn_id": "ch7_t5",
           "scrub_key": "debrief_medchem",
-          "scrub_label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
+          "scrub_label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
-          "chat_text": "[Debrief — Med Chem + Spark-4] Pairing with Claude Opus 4.6 on WO-006 evolved pcsk9_ic001 (cLogP 5.4) into neutral oxadiazole oase_pcsk9_014 (MW 394.38 Da, cLogP 4.19, TPSA 77.0, 0 Lipinski violations) across 3 tractable MMP pairs.",
-          "tts_text": "Spark Four on Claude Opus Four-Point-Six helped me cut c-Log-P from five point four to four point one-nine with zero Lipinski violations!",
+          "chat_text": "[Debrief — Med Chem + Spark-4] Pairing with Claude Opus 5.5 on WO-006 evolved pcsk9_ic001 (cLogP 5.4) into neutral oxadiazole oase_pcsk9_014 (MW 394.38 Da, cLogP 4.19, TPSA 77.0, 0 Lipinski violations) across 3 tractable MMP pairs.",
+          "tts_text": "Spark Four on Claude Opus Five-Point-Five helped me cut c-Log-P from five point four to four point one-nine with zero Lipinski violations!",
           "console_caption": ""
         },
         {

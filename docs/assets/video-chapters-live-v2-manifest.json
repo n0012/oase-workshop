@@ -6,10 +6,10 @@
       "slug": "pcsk9-oral-live-v2",
       "title": "Step 1 \u2014 Live Co-Scientist & Hypex Tournament (WO-001 \u00b7 +130.5 Elo)",
       "video_filename": "chapter-01.mp4",
-      "duration_s": 100.4,
+      "duration_s": 98.33,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "brief_kickoff",
@@ -23,7 +23,7 @@
         {
           "key": "prompt_genetics",
           "label": "2. Genetics & AlphaGenome Clause",
-          "time_s": 14.23,
+          "time_s": 14.43,
           "timecode": "0:14",
           "speaker": "Dr. Marcus Vance",
           "role": "Comp Biology \u00b7 GOLD-2",
@@ -32,7 +32,7 @@
         {
           "key": "prompt_structure",
           "label": "3. Live AF3 Co-Fold & Pocket Rule",
-          "time_s": 25.5,
+          "time_s": 25.7,
           "timecode": "0:26",
           "speaker": "Dr. Elena Rostova",
           "role": "Structural Bio \u00b7 GOLD-3",
@@ -41,8 +41,8 @@
         {
           "key": "coscientist_launch",
           "label": "4. Execute WO-001 Co-Scientist + Hypex",
-          "time_s": 36.43,
-          "timecode": "0:36",
+          "time_s": 36.63,
+          "timecode": "0:37",
           "speaker": "Dr. Raj Patel",
           "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
@@ -50,7 +50,7 @@
         {
           "key": "tournament_readout",
           "label": "5. Live Hypex +130.5 Elo Readout",
-          "time_s": 49.0,
+          "time_s": 49.2,
           "timecode": "0:49",
           "speaker": "Grove-1 \u00b7 AI Program Lead",
           "role": "@science-program-lead [SP]",
@@ -59,7 +59,7 @@
         {
           "key": "subway_routing",
           "label": "6. Inspect Bracket & Wingman Roster",
-          "time_s": 61.9,
+          "time_s": 62.1,
           "timecode": "1:02",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
@@ -68,7 +68,7 @@
         {
           "key": "wingman_roster",
           "label": "7. Multi-Model Roster Confirmed",
-          "time_s": 74.83,
+          "time_s": 75.03,
           "timecode": "1:15",
           "speaker": "Helix-2 \u00b7 AI Comp Bio",
           "role": "@computational-biologist [CB]",
@@ -77,8 +77,8 @@
         {
           "key": "mission_launch",
           "label": "8. WO-001 Accepted & Step 2 Launch",
-          "time_s": 88.47,
-          "timecode": "1:28",
+          "time_s": 86.4,
+          "timecode": "1:26",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
@@ -93,8 +93,8 @@
       "video_filename": "chapter-02.mp4",
       "duration_s": 57.53,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -142,8 +142,8 @@
       "video_filename": "chapter-03.mp4",
       "duration_s": 66.9,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -188,12 +188,12 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 4 \u2014 Opus 4.6 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
+      "title": "Step 4 \u2014 Opus 5.5 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
       "video_filename": "chapter-04.mp4",
       "duration_s": 61.7,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -206,7 +206,7 @@
         },
         {
           "key": "agent_analysis",
-          "label": "2. Opus 4.6 Readout: cLogP 4.19 & 0 Violations",
+          "label": "2. Opus 5.5 Readout: cLogP 4.19 & 0 Violations",
           "time_s": 15.27,
           "timecode": "0:15",
           "speaker": "Spark-4 \u00b7 AI Med Chemist",
@@ -242,8 +242,8 @@
       "video_filename": "chapter-05.mp4",
       "duration_s": 58.47,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -292,8 +292,8 @@
       "video_filename": "chapter-06.mp4",
       "duration_s": 52.9,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "human_prompt",
@@ -341,8 +341,8 @@
       "video_filename": "chapter-07.mp4",
       "duration_s": 89.43,
       "resolution": "1920x1080",
-      "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
-      "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
+      "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
+      "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
       "markers": [
         {
           "key": "debrief_open",
@@ -382,7 +382,7 @@
         },
         {
           "key": "debrief_medchem",
-          "label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
+          "label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
           "time_s": 53.5,
           "timecode": "0:54",
           "speaker": "Dr. Raj Patel",
@@ -392,7 +392,7 @@
         {
           "key": "debrief_dmpk",
           "label": "6. DMPK + Shield-5 Debrief",
-          "time_s": 64.77,
+          "time_s": 65.13,
           "timecode": "1:05",
           "speaker": "Dr. Claire Moreau",
           "role": "DMPK & Safety \u00b7 GOLD-5",
@@ -401,8 +401,8 @@
         {
           "key": "portfolio_handoff",
           "label": "7. Final Portfolio Hand-Off",
-          "time_s": 76.5,
-          "timecode": "1:16",
+          "time_s": 76.87,
+          "timecode": "1:17",
           "speaker": "Dr. Sarah Chen",
           "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
@@ -413,7 +413,7 @@
   },
   "full_walkthrough": {
     "video_filename": "full-pilot-walkthrough.mp4",
-    "duration_s": 487.33,
+    "duration_s": 485.63,
     "resolution": "1920x1080"
   }
 }
