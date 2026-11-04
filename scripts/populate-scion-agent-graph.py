@@ -1116,11 +1116,32 @@ def remove_project_from_hub_db(cur: sqlite3.Cursor, project_id: str) -> None:
             pass
 
 
+def sync_container_agent_info_files() -> None:
+    """Keep bind-mounted agent-info.json files green so Hosted Broker heartbeats do not revert hub.db."""
+    slug_to_activity = {str(n["slug"]): str(n["activity"]) for n in AGENT_ROSTER}
+    cfg_root = HUB_DIR / "project-configs"
+    if not cfg_root.exists():
+        return
+    for prefix in ("io-cold-to-hot__*", "pcsk9-oral-live-v2__*"):
+        for info_path in sorted(cfg_root.glob(f"{prefix}/.scion/agents/*/home/agent-info.json")):
+            slug = info_path.parent.parent.name
+            target_act = slug_to_activity.get(slug, "completed")
+            try:
+                data = json.loads(info_path.read_text())
+                if data.get("activity") != target_act or data.get("phase") != "running":
+                    data["activity"] = target_act
+                    data["phase"] = "running"
+                    info_path.write_text(json.dumps(data, indent=2) + "\n")
+            except Exception:
+                pass
+
+
 def main() -> int:
     import sys
 
     skip_logging = "--skip-cloud-logging" in sys.argv
     stop_orphaned_containers()
+    sync_container_agent_info_files()
 
     conn = sqlite3.connect(str(DB_PATH), timeout=30.0)
     cur = conn.cursor()
