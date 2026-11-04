@@ -198,9 +198,9 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
 <div class="hero">
   <h1 id="hero-title">GCP-OASE: Team-Based Agentic Drug Discovery on Google Cloud</h1>
   <p id="hero-subtitle">Open-source, multi-user, multi-model drug discovery on Google Cloud—pairing a 5-scientist human pod with specialist AI wingmen and cryptographically verified stage gates.</p>
-  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude 4.6 Opus + 1P GPUs</div>
+  <div class="hero-pilot-tag" id="hero-active-pilot-line">Active Scion Pilot: PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign — PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude Opus 4.6 + 1P GPUs</div>
   <div class="kpi-strip" id="hero-kpi-strip">
-    <div class="kpi-card"><div class="kpi-val">Argon + Opus 5.5</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
+    <div class="kpi-card"><div class="kpi-val">Gemini + Claude</div><div class="kpi-lbl">Multi-Model Frontier Squadron</div></div>
     <div class="kpi-card"><div class="kpi-val">78 / 78 [PASS]</div><div class="kpi-lbl">41 Skills · oase doctor Live</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaGenome</div><div class="kpi-lbl">Dedicated A100 (us-central1)</div></div>
     <div class="kpi-card"><div class="kpi-val">1P AlphaFold 3</div><div class="kpi-lbl">Dedicated A100 (us-east4)</div></div>
@@ -221,6 +221,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
   <button class="chapter-btn" id="btn-ch5" onclick="showChapter('ch5')">Step 5: Human PK &amp; Gate 4 (WO-007..008)</button>
   <button class="chapter-btn" id="btn-ch6" onclick="showChapter('ch6')">Step 6: Tamper &amp; Override Audit</button>
   <button class="chapter-btn" id="btn-ch7" onclick="showChapter('ch7')">Step 7: Post-Debrief &amp; Route Recap</button>
+  <button class="chapter-btn" id="btn-ch8" onclick="showChapter('ch8')">Step 8: Cloud Shell + agy CLI &harr; Scion</button>
 </div>
 
 <div class="container">
@@ -273,7 +274,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
             <div class="arcade-mission-title">PCSK9 Oral Small Molecule — Full Stage 1–4 Pre-IND Campaign</div>
             <p class="arcade-mission-desc">Complete 8-Work-Order campaign in Google Cloud (<code>losiern-oase-workshop</code>) from Co-Scientist tournament through wet-lab rat/dog PK and 40 mg QD human oral candidate nomination (<code>OASE-PCSK9-014</code>).</p>
             <ul class="arcade-spec-list">
-              <li><strong>Frontier LLMs:</strong> Gemini 2.5 Pro (High/Med) + Claude 4.6 Opus</li>
+              <li><strong>Frontier LLMs:</strong> Gemini 2.5 Pro (High/Med) + Claude Opus 4.6</li>
               <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome A100 + AlphaFold 3 A100</li>
               <li><strong>Live 3D &amp; Omics Viewers:</strong> 588-atom 3D <code>.cif</code> canvas + 1 Mb SVG tracks</li>
               <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 8/8 WOs [PASS]</li>
@@ -282,30 +283,30 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
           <div class="arcade-btn-row">
             <button type="button" class="arcade-launch-btn gold" onclick="oaseLaunchMission('pcsk9-live-argolis', 'ch1', false)">&#128640; Launch Step 1 Brief &rarr;</button>
             <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('pcsk9-live-argolis', 'why', true)">&#127916; Full Campaign Reel</button>
-            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
+            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
           </div>
         </div>
 
-        <!-- MISSION 02: IO COLD-TO-HOT TUMOR REPROGRAMMING (HALTED AT WET-LAB WALL DEC-003) -->
+        <!-- MISSION 02: IO COLD-TO-HOT TUMOR REPROGRAMMING (WET-LAB WALL -> SERIES B RECOVERY) -->
         <div class="arcade-mission-card" id="arcade-card-io-cold-to-hot">
           <div>
             <div class="arcade-mission-slot">
-              <span>MISSION 02 · WET-LAB WALL (DEC-003)</span>
+              <span>MISSION 02 · WET-LAB WALL &rarr; SERIES B (DEC-003..010)</span>
               <span class="pilot-badge-pill ready">LIVE · 78/78 DOCTOR</span>
             </div>
-            <div class="arcade-mission-title">IO Cold-to-Hot Tumor Reprogramming — ENPP1 Wet-Lab Wall Dossier</div>
-            <p class="arcade-mission-desc">Live replay of David's <code>venter-scion</code> campaign: 5-target IO tournament (<code>ENPP1</code> vs <code>TREX1/PTPN2/ADAR1</code>), 1P AlphaGenome (<code>chr6</code>), 1P AlphaFold 3 (<code>OASE-ENPP1-009</code>), halting cleanly at the <strong>Wet-Lab Wall (<code>DEC-003</code>)</strong> awaiting CRO assays <code>EXP-01..04</code>.</p>
+            <div class="arcade-mission-title">IO Cold-to-Hot Tumor Reprogramming — ENPP1 Wet-Lab Wall &amp; Series B Recovery</div>
+            <p class="arcade-mission-desc">Two-phase multi-agent campaign: 5-target IO tournament (<code>ENPP1</code> vs <code>TREX1/PTPN2/ADAR1</code>), 1P AlphaGenome (<code>chr6</code>), 1P AlphaFold 3 (<code>OASE-ENPP1-009</code>), halting at the <strong>Wet-Lab Wall (<code>DEC-003 / DEC-008</code>)</strong> on P-gp efflux and recovering oral absorption via neutral pyrazole ZBG <strong><code>oase_enpp1_019</code> (<code>TPSA = 79.40 &Aring;&sup2;</code>, <code>DEC-010</code>)</strong>.</p>
             <ul class="arcade-spec-list">
               <li><strong>Mendelian Safety Gate:</strong> <code>TREX1</code> blocked (Lupus <code>L-001</code>); <code>ENPP1</code> advances</li>
               <li><strong>Dedicated 1P GPUs:</strong> AlphaGenome <code>chr6:131894218C&gt;T</code> + AF3 co-fold</li>
-              <li><strong>Halted at Wet-Lab Wall:</strong> Pre-Wet-Lab Dossier (<code>WO-008</code>) + <code>EXP-01..04</code></li>
+              <li><strong>Wet-Lab Pivot:</strong> Series A efflux halt (<code>ER = 18.4</code>) &rarr; Series B <code>oase_enpp1_019</code> (<code>F = 52%</code>)</li>
               <li><strong>All 41 Skills Verified:</strong> 78/78 <code>oase doctor</code> · 3 tamper drills blocked</li>
             </ul>
           </div>
           <div class="arcade-btn-row">
             <button type="button" class="arcade-launch-btn gold" onclick="oaseLaunchMission('io-cold-to-hot', 'ch1', false)">&#128640; Launch Mission 02 (Step 1) &rarr;</button>
             <button type="button" class="arcade-launch-btn" onclick="oaseLaunchMission('io-cold-to-hot', 'why', true)">&#127916; Full Campaign Reel</button>
-            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
+            <a class="arcade-launch-btn ghost" style="text-decoration:none;" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f" target="_blank" rel="noopener">&#128172; Live Grove &nearr;</a>
           </div>
         </div>
 
@@ -339,8 +340,8 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
           &#9729; LIVE GOOGLE CLOUD CONSOLE &amp; SCION HUB JUMP-OFF LINKS (<code>losiern-oase-workshop</code>):
         </div>
         <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
-          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/pcsk9-oral-live-v2" target="_blank" rel="noopener">&#128172; Scion Grove: pcsk9-oral-live-v2 &nearr;</a>
-          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/io-cold-to-hot" target="_blank" rel="noopener">&#128172; Scion Grove: io-cold-to-hot &nearr;</a>
+          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa" target="_blank" rel="noopener">&#128172; Scion Grove: pcsk9-oral-live-v2 &nearr;</a>
+          <a class="pause-pill" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f" target="_blank" rel="noopener">&#128172; Scion Grove: io-cold-to-hot &nearr;</a>
           <a class="pause-pill" href="https://console.cloud.google.com/vertex-ai/online-prediction/endpoints?project=losiern-oase-workshop" target="_blank" rel="noopener">&#129516; Vertex AI 1P Endpoints (AlphaGenome &amp; AF3) &nearr;</a>
           <a class="pause-pill" href="https://console.cloud.google.com/compute/instancesDetail/zones/us-central1-c/instances/scion-hub-oase?project=losiern-oase-workshop" target="_blank" rel="noopener">&#128421; Compute VM (scion-hub-oase) &nearr;</a>
           <a class="pause-pill" href="https://console.cloud.google.com/logs/query?project=losiern-oase-workshop" target="_blank" rel="noopener">&#128220; Cloud Logging &nearr;</a>
@@ -364,7 +365,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
                 <div style="font-size:0.72rem;color:#94a3b8;">Medicinal Chemistry</div>
               </div>
             </div>
-            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude 4.6 Opus)</span>
+            <span class="arcade-wingman-tag">&#8644; Wingman: Spark-4 (Claude Opus 4.6)</span>
             <div style="font-size:0.72rem;color:#cbd5e1;margin-top:0.35rem;">Leads <strong>Step 4 (WO-006)</strong>: Flags hERG alert on A02 &amp; designs oxadiazole lead <code>OASE-PCSK9-014</code>.</div>
           </button>
 
@@ -437,7 +438,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
           <div class="whatif-card">
             <div class="wi-num">1 · Multiplayer Science</div>
             <div class="wi-q">"What if your whole pod shared one AI workspace?"</div>
-            <p class="wi-a">5 scientists + 11 AI wingmen in one live <strong>Scion Grove</strong>—not isolated chat tabs.</p>
+            <p class="wi-a">5 human scientists + 17-agent OASE Grove in one live <strong>Scion workspace</strong>—not isolated chat tabs.</p>
           </div>
           <div class="whatif-card">
             <div class="wi-num">2 · Model Optionality</div>
@@ -687,7 +688,7 @@ Flagged ideas: 0</div>
   <!-- CHAPTER 2 -->
   <section class="chapter-panel" id="panel-ch2">
     <div class="chapter-header">
-      <h2>Act II (Chapter 2) — Stage 1 Target Validation: Human Genetics, GWAS &amp; Expression (WO-002..WO-003)</h2>
+      <h2>Step 2 — Stage 1 Target Validation: Human Genetics, GWAS &amp; Expression (WO-002..WO-003)</h2>
       <span class="stage-pill">Stage 1 &rarr; Gate 1 · checkpoints/ch2</span>
     </div>
     <div class="grid-2">
@@ -729,7 +730,7 @@ highest: liver 47.5 nTPM</div>
   <!-- CHAPTER 3 -->
   <section class="chapter-panel" id="panel-ch3">
     <div class="chapter-header">
-      <h2>Act II (Chapter 3) — Stage 2 Structural Biology, AlphaFold &amp; Pocket/Docking Analysis (WO-004..WO-005)</h2>
+      <h2>Step 3 — Stage 2 Structural Biology, AlphaFold 3 &amp; Pocket/Docking Analysis (WO-004..WO-005)</h2>
       <span class="stage-pill">Stage 2 &rarr; Gate 2 · checkpoints/ch3</span>
     </div>
     <div class="grid-2">
@@ -1110,6 +1111,29 @@ relay pk.allometric_scaling_is_projection: Two-species projections require clini
     </div>
   </section>
 
+  <!-- CHAPTER 8: STEP 8 POWER-USER CLI EXTENSION (CLOUD SHELL + ANTIGRAVITY agy CLI <-> SCION ENGINE) -->
+  <section class="chapter-panel" id="panel-ch8">
+    <div class="chapter-header">
+      <h2>Step 8 — Power-User CLI Extension: Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine</h2>
+      <span class="stage-pill">Optional Terminal Workflow · 41 Open Science Skills · scion-oase-mcp Bridge</span>
+    </div>
+    <div class="stack-full">
+      <div class="relay-box" style="border-left-color:#10b981;background:#ecfdf5;">
+        <strong>Why Step 8 Comes After Steps 1&ndash;7:</strong> Once your pod has walked through the 7-step team discovery campaign in the browser &amp; Scion Webchat, individual computational scientists and platform engineers can also drive the exact same Scion Grove directly from <strong>Google Cloud Shell</strong> (or any local terminal) using <strong>Antigravity (<code>agy</code> CLI)</strong> and the open-source <code>scion-oase-bridge</code> MCP server.
+      </div>
+      <div id="ch8-agy-mount"></div>
+      <div>
+        <h4 style="margin:0.65rem 0 0.45rem 0;color:#0f172a;">One-Command Google Cloud Shell Bootstrap (Pre-Configured for All 5 Workshop Logins)</h4>
+        <div class="terminal"><span class="cmd"># Run inside Google Cloud Shell (signed in as oase-sarah..oase-claire@losiern-1.altostrat.com):</span>
+$ git clone https://github.com/n0012/oase-workshop.git ~/oase-workshop &amp;&amp; bash ~/oase-workshop/scripts/setup-sarah-cloudshell.sh
+
+<span class="cmd"># Verify Scion Hub status &amp; inspect live Grove artifacts over IAP tunnel (127.0.0.1:18780):</span>
+$ python3 ~/oase-workshop/scripts/scion_mcp_server.py --cli hub_status
+$ python3 ~/oase-workshop/scripts/scion_mcp_server.py --cli dav_read --project io-cold-to-hot --path executive/CANDIDATE-SUMMARY.md</div>
+      </div>
+    </div>
+  </section>
+
   <!-- 2.5-HOUR (150-MINUTE) GUIDED WORKSHOP & HANDS-ON LAB PANEL -->
   <section class="chapter-panel" id="panel-lab">
     <div class="chapter-header">
@@ -1326,12 +1350,16 @@ function bindSubpageLinks(root) {
 
 bindSubpageLinks(document);
 
-const hash = window.location.hash.replace('#', '');
-if (hash === 'subway' || hash === 'recap-subway-section') {
-  jumpToRecapMap();
-} else if (hash && document.getElementById('panel-' + hash)) {
-  showChapter(hash);
+function handleHashNavigation() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'subway' || hash === 'recap-subway-section') {
+    jumpToRecapMap();
+  } else if (hash && document.getElementById('panel-' + hash)) {
+    showChapter(hash);
+  }
 }
+handleHashNavigation();
+window.addEventListener('hashchange', handleHashNavigation);
 
 const SUBWAY_STATIONS = {
   s0: {
@@ -2003,7 +2031,7 @@ selectStation('s3');
       bar.innerHTML = `
         <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
           <span class="cockpit-status-pill">${isStaging ? '⚡ Staging Pilot Workspace · Queued for Live Sovereign GPU Run' : '● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)'}</span>
-          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen'}</span>
+          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini Live Avatars + 6 Specialist AI Wingmen'}</span>
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
           <a class="cockpit-btn primary" href="${liveGroveUrl}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Grove ↗</a>
@@ -2193,150 +2221,159 @@ selectStation('s3');
         } else if (hdr && hdr.nextSibling) {
           whyPanel.insertBefore(fwCard, hdr.nextSibling);
         }
-
-        document.querySelectorAll('#cockpit-cloudshell-agy-card').forEach(el => el.remove());
-    document.querySelectorAll('#cockpit-deployment-options-card').forEach(el => el.remove());
-        const agyCard = document.createElement('div');
-        agyCard.id = 'cockpit-cloudshell-agy-card';
-        agyCard.className = 'cockpit-stage-card';
-        const sarahEmail = (cfg && cfg.workshop_domain) ? `oase-sarah@${cfg.workshop_domain}` : 'oase-sarah@losiern-1.altostrat.com';
-        const cloudShellUrl = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(sarahEmail)}`;
-        const activeProjUuid = (activeCamp && activeCamp.scion_project_id) || (cid === 'io-cold-to-hot' ? 'ab3d65d5-f32c-463e-be48-d535034de34f' : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
-        const scionGraphUrl = (cfg && cfg.scion_hub_url)
-          ? `${cfg.scion_hub_url}/projects/${activeProjUuid}`
-          : `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/${activeProjUuid}`;
-        const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=64`;
-        const isIoCamp = cid === 'io-cold-to-hot';
-        const p1 = isIoCamp
-          ? 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."'
-          : 'agy -p "Use scion-oase-bridge to bootstrap the pcsk9-oral-live-v2 campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
-        const p2 = isIoCamp
-          ? 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."'
-          : 'agy -p "Use scion-oase-bridge to analyze pcsk9-oral-live-v2 across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why PCSK9-A02 was disqualified on hERG at DEC-005 and how OASE-PCSK9-014 cleared Gate 4."';
-        const escAttr = (v) => JSON.stringify(v).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
-        const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        agyCard.innerHTML = `
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
-            <div>
-              <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 65s &middot; 1080p)</strong>
-              <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
-                Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run in the CLI &rarr; Scion Project Messages reacting</strong>.
-              </div>
-            </div>
-            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <a class="cockpit-btn primary" href="${cloudShellUrl}" target="_blank" rel="noopener" style="text-decoration:none;">☁️ Open Cloud Shell as Dr. Sarah Chen ↗</a>
-              <a class="cockpit-btn" href="${scionGraphUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🕸️ Open Scion 4-Tier Agent Graph ↗</a>
-            </div>
-          </div>
-          <div class="cockpit-video-wrap">
-            <video id="video-cloudshell-agy" controls preload="metadata" src="${agyVideoSrc}"></video>
-          </div>
-          <div class="scrub-bar">
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) &middot; Dr. Sarah Chen</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 23.1)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:23) &middot; @science-program-lead</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series Feedback (0:39) &middot; Dr. Sarah Chen</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Gate Sign-Off (1:00) &middot; @admet-dmpk-scientist</button>
-          </div>
-          <div style="margin-top:0.65rem;">
-            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>
-            <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Stage Gates): ${escHtml(p2)}</button>
-          </div>
-        `;
-        if (fwCard.parentNode) {
-          fwCard.parentNode.insertBefore(agyCard, fwCard.nextSibling);
-        }
-
-        document.querySelectorAll('#cockpit-deployment-options-card').forEach(el => el.remove());
-        const depCard = document.createElement('div');
-        depCard.id = 'cockpit-deployment-options-card';
-        depCard.className = 'cockpit-stage-card';
-        const envOptA = 'export OASE_DEPLOYMENT_TOPOLOGY="gcp-native"\nexport GCP_PROJECT_ID="enterprise-oase-vpc-spoke"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"\nexport SCION_HARNESS_REVIEWER="gcp/claude-sonnet-4-6"';
-        const envOptB = 'export OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"\nexport GOOGLE_APPLICATION_CREDENTIALS="/var/run/secrets/gcp-wif/credential-configuration.json"\nexport GCP_WIF_POOL_PROVIDER="projects/<PROJECT_NUM>/locations/global/workloadIdentityPools/aws-eks-pool/providers/aws-eks-oidc"\nexport CLAUDE_CODE_USE_BEDROCK="1"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"';
-        depCard.innerHTML = `
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
-            <div>
-              <strong style="color:#38bdf8;font-size:0.98rem;">🏗️ Enterprise Deployment Topologies: Option A (100% GCP-Native VPC-SC) vs. Option B (AWS-Hybrid Control Plane &rarr; GCP 1P Science Spoke)</strong>
-              <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
-                Deploy the entire Scion + OASE stack inside a customer <strong>Google Cloud VPC-SC perimeter (Option A)</strong>, or run the <strong>Scion Control Plane, all 17 OASE agent containers, compiled C/Python binaries (<code>Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>), and Benchling/CDD/S3 MCP bridges locally on AWS EKS (Option B)</strong> with keyless Workload Identity Federation to Google Cloud&rsquo;s 1P Science Models.
-              </div>
-            </div>
-            <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
-              <span class="pilot-badge-pill ready">ZERO STATIC GCP KEYS (WIF)</span>
-              <span class="pilot-badge-pill ready">VPC-SC + CMEK + ZERO DATA RETENTION</span>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0.85rem;margin-top:0.55rem;">
-            <div style="background:rgba(15,23,42,0.78);border:1px solid #1e40af;border-radius:8px;padding:0.85rem 1rem;">
-              <div style="font-weight:700;color:#60a5fa;font-size:0.88rem;margin-bottom:0.35rem;">Option A — 100% GCP-Native (Single-Cloud VPC-SC)</div>
-              <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
-                <li><strong>Control Plane &amp; 17 Agents:</strong> <code>GKE Autopilot / GCE</code> + <code>Cloud SQL</code> + <code>Cloud Filestore</code> in customer GCP VPC.</li>
-                <li><strong>Local Deterministic Binaries:</strong> <code>AutoDock Vina 1.2.5</code>, <code>fpocket 4.2.2</code>, <code>RDKit</code> &amp; <code>oase validate check</code> run in isolated GKE pods.</li>
-                <li><strong>1P Science &amp; Frontier LLMs:</strong> Private Service Connect (<code>PSC</code>) to dedicated <code>AlphaFold 3</code> &amp; <code>AlphaGenome</code> A100/H100 endpoints + Vertex <code>Gemini 2.5 Pro</code>, <code>TxGemma</code> &amp; Partner <code>Claude 4.6 Opus</code>.</li>
-                <li><strong>Security Boundary:</strong> Single <code>VPC Service Controls (VPC-SC)</code> perimeter, <code>CMEK</code>, and <code>Zero Data Retention</code>.</li>
-              </ul>
-            </div>
-            <div style="background:rgba(15,23,42,0.78);border:1px solid #10b981;border-radius:8px;padding:0.85rem 1rem;">
-              <div style="font-weight:700;color:#34d399;font-size:0.88rem;margin-bottom:0.35rem;">Option B — AWS-Hybrid (AWS EKS Control Plane &rarr; GCP 1P Spoke)</div>
-              <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
-                <li><strong>Runs Locally in AWS (<code>EKS + RDS + EFS</code>):</strong> Scion Hub, all 17 OASE agent containers, and all 7 compiled tools (<code>Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>).</li>
-                <li><strong>Local R&amp;D Data &amp; Bedrock:</strong> Direct AWS VPC access to <code>Benchling</code>, <code>CDD Vault</code> &amp; <code>S3</code> assay lakes; optional local Claude on AWS Bedrock (<code>CLAUDE_CODE_USE_BEDROCK=1</code>).</li>
-                <li><strong>Crosses AWS &rarr; GCP Interconnect:</strong> Only sequence, variant &amp; SMILES payloads for 1P <code>AlphaFold 3</code>, <code>AlphaGenome</code>, <code>Gemini 2.5 Pro</code> / <code>Co-Scientist</code> &amp; <code>TxGemma</code>.</li>
-                <li><strong>Keyless Auth:</strong> AWS EKS IAM Role &rarr; GCP <strong>Workload Identity Federation (WIF)</strong> (zero static service account JSON keys).</li>
-              </ul>
-            </div>
-          </div>
-          <details style="margin-top:0.75rem;">
-            <summary style="cursor:pointer;font-weight:700;color:#93c5fd;font-size:0.84rem;">
-              🔒 View Exact AWS &rarr; GCP Interconnect Egress Allowlist (4 FQDN Patterns over TCP :443) &amp; Copy .env Configs
-            </summary>
-            <div style="margin-top:0.65rem;overflow-x:auto;">
-              <table style="width:100%;border-collapse:collapse;font-size:0.78rem;color:#e2e8f0;">
-                <thead>
-                  <tr style="background:rgba(30,41,59,0.9);color:#93c5fd;">
-                    <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">#</th>
-                    <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Allowlisted GCP Endpoint (TCP :443)</th>
-                    <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Method / Env Vars</th>
-                    <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Purpose &amp; Data Scope</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>1</strong></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>sts.googleapis.com</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST /v1/token</code> (<code>GCP_WIF_POOL_PROVIDER</code>)</td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Exchanges AWS EKS OIDC / IAM role token for short-lived GCP federated token (zero static keys)</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>2</strong></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>iamcredentials.googleapis.com</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :generateAccessToken</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Mints 1-hour access token for least-privilege <code>oase-agent-sa</code> inside customer VPC-SC spoke</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>3</strong></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>*.prediction.vertexai.goog</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :predict</code> (<code>OASE_AF3_*</code>, <code>OASE_AG_*</code>)</td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Dedicated 1P <strong>AlphaFold 3</strong> co-folding &amp; <strong>AlphaGenome</strong> 1 Mb regulatory variant scoring</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>4</strong></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>*-aiplatform.googleapis.com</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :streamGenerateContent</code> / <code>:predict</code></td>
-                    <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Vertex AI <strong>Gemini 2.5 Pro</strong>, <strong>AI Co-Scientist</strong> &amp; <strong>TxGemma</strong> (Zero Data Retention)</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div style="display:flex;gap:0.55rem;flex-wrap:wrap;margin-top:0.6rem;">
-                <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(envOptA)})'>📋 Copy Option A (.env — 100% GCP-Native VPC-SC)</button>
-                <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(envOptB)})'>📋 Copy Option B (.env — AWS-Hybrid EKS + Keyless WIF + Bedrock)</button>
-              </div>
-            </div>
-          </details>
-        `;
-        if (agyCard.parentNode) {
-          agyCard.parentNode.insertBefore(depCard, agyCard.nextSibling);
-        }
       }
+    }
+
+    const escAttr = (v) => JSON.stringify(v).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
+    const escHtml = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    // Mount Deployment Options card on panel-why (Option 1: All-in-GCP vs Option 2: Hybrid Cloud)
+    document.querySelectorAll('#cockpit-deployment-options-card').forEach(el => el.remove());
+    if (whyPanel) {
+      const depCard = document.createElement('div');
+      depCard.id = 'cockpit-deployment-options-card';
+      depCard.className = 'cockpit-stage-card';
+      const envOptA = 'export OASE_DEPLOYMENT_TOPOLOGY="gcp-native"\nexport GCP_PROJECT_ID="enterprise-oase-vpc-spoke"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"\nexport SCION_HARNESS_REVIEWER="gcp/claude-sonnet-4-6"';
+      const envOptB = 'export OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"\nexport GOOGLE_APPLICATION_CREDENTIALS="/var/run/secrets/gcp-wif/credential-configuration.json"\nexport GCP_WIF_POOL_PROVIDER="projects/<PROJECT_NUM>/locations/global/workloadIdentityPools/aws-eks-pool/providers/aws-eks-oidc"\nexport CLAUDE_CODE_USE_BEDROCK="1"\nexport OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"\nexport OASE_AG_ENDPOINT_DNS="<ENDPOINT_ID>.us-central1-<PROJECT_NUM>.prediction.vertexai.goog"\nexport SCION_HARNESS_ORCHESTRATOR="gcp/gemini-2.5-pro"';
+      depCard.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
+          <div>
+            <strong style="color:#38bdf8;font-size:0.98rem;">🏗️ Enterprise Deployment Options: Option 1 (All-in-GCP VPC-SC) vs. Option 2 (Hybrid Cloud: AWS + GCP Science APIs)</strong>
+            <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
+              Deploy the entire Scion + OASE stack inside a single-cloud <strong>Google Cloud VPC-SC perimeter (Option 1)</strong>, or run the <strong>Scion Control Plane, all 17 OASE agent containers, compiled C/Python binaries (<code>Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>), and Benchling/CDD/S3 MCP bridges locally on AWS EKS (Option 2)</strong> with keyless Workload Identity Federation to Google Cloud&rsquo;s 1P Science APIs.
+            </div>
+          </div>
+          <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+            <span class="pilot-badge-pill ready">ZERO STATIC GCP KEYS (WIF)</span>
+            <span class="pilot-badge-pill ready">VPC-SC + CMEK + ZERO DATA RETENTION</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0.85rem;margin-top:0.55rem;">
+          <div style="background:rgba(15,23,42,0.78);border:1px solid #1e40af;border-radius:8px;padding:0.85rem 1rem;">
+            <div style="font-weight:700;color:#60a5fa;font-size:0.88rem;margin-bottom:0.35rem;">Option 1 — All-in-GCP (Single-Cloud VPC-SC)</div>
+            <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
+              <li><strong>Control Plane &amp; 17 Agents:</strong> <code>GKE Autopilot / GCE</code> + <code>Cloud SQL</code> + <code>Cloud Filestore</code> in customer GCP VPC.</li>
+              <li><strong>Local Deterministic Binaries:</strong> <code>AutoDock Vina 1.2.5</code>, <code>fpocket 4.2.2</code>, <code>RDKit</code> &amp; <code>oase validate check</code> run in isolated GKE pods.</li>
+              <li><strong>1P Science &amp; Frontier LLMs:</strong> Private Service Connect (<code>PSC</code>) to dedicated <code>AlphaFold 3</code> &amp; <code>AlphaGenome</code> A100/H100 endpoints + Vertex <code>Gemini 2.5 Pro</code>, <code>TxGemma</code> &amp; Partner <code>Claude Opus 4.6</code>.</li>
+              <li><strong>Security Boundary:</strong> Single <code>VPC Service Controls (VPC-SC)</code> perimeter, <code>CMEK</code>, and <code>Zero Data Retention</code>.</li>
+            </ul>
+          </div>
+          <div style="background:rgba(15,23,42,0.78);border:1px solid #10b981;border-radius:8px;padding:0.85rem 1rem;">
+            <div style="font-weight:700;color:#34d399;font-size:0.88rem;margin-bottom:0.35rem;">Option 2 — Hybrid Cloud (AWS EKS Control Plane &rarr; GCP 1P Spoke)</div>
+            <ul style="margin:0;padding-left:1.15rem;color:#e2e8f0;font-size:0.79rem;line-height:1.5;">
+              <li><strong>Stays Local in AWS (<code>EKS + RDS + S3</code>):</strong> Scion Hub, all 17 OASE agent containers, and all 7 compiled tools (<code>Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>).</li>
+              <li><strong>Local R&amp;D Data &amp; Bedrock:</strong> Direct AWS VPC access to <code>Benchling</code>, <code>CDD Vault</code> &amp; <code>S3</code> assay lakes; optional local Claude on AWS Bedrock (<code>CLAUDE_CODE_USE_BEDROCK=1</code>).</li>
+              <li><strong>Called in Google Cloud (<code>VPC-SC Spoke</code>):</strong> Only sequence, variant &amp; SMILES payloads for 1P <code>AlphaFold 3</code>, <code>AlphaGenome</code>, <code>Gemini 2.5 Pro</code> / <code>Co-Scientist</code> &amp; <code>TxGemma</code> over Cross-Cloud Interconnect (<code>restricted.googleapis.com</code>, Zero Data Retention).</li>
+              <li><strong>Keyless Auth:</strong> AWS EKS IAM Role &rarr; GCP <strong>Workload Identity Federation (WIF)</strong> (zero static service account JSON keys).</li>
+            </ul>
+          </div>
+        </div>
+        <details style="margin-top:0.75rem;">
+          <summary style="cursor:pointer;font-weight:700;color:#93c5fd;font-size:0.84rem;">
+            🔒 View Exact AWS &rarr; GCP Interconnect Egress Allowlist (4 FQDN Patterns over TCP :443) &amp; Copy .env Configs
+          </summary>
+          <div style="margin-top:0.65rem;overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:0.78rem;color:#e2e8f0;">
+              <thead>
+                <tr style="background:rgba(30,41,59,0.9);color:#93c5fd;">
+                  <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">#</th>
+                  <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Allowlisted GCP Endpoint (TCP :443)</th>
+                  <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Method / Env Vars</th>
+                  <th style="padding:0.45rem 0.6rem;border:1px solid #334155;">Purpose &amp; Data Scope</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>1</strong></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>sts.googleapis.com</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST /v1/token</code> (<code>GCP_WIF_POOL_PROVIDER</code>)</td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Exchanges AWS EKS OIDC / IAM role token for short-lived GCP federated token (zero static keys)</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>2</strong></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>iamcredentials.googleapis.com</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :generateAccessToken</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Mints 1-hour access token for least-privilege <code>oase-agent-sa</code> inside customer VPC-SC spoke</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>3</strong></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>*.prediction.vertexai.goog</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :predict</code> (<code>OASE_AF3_*</code>, <code>OASE_AG_*</code>)</td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Dedicated 1P <strong>AlphaFold 3</strong> co-folding &amp; <strong>AlphaGenome</strong> 1 Mb regulatory variant scoring</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><strong>4</strong></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>*-aiplatform.googleapis.com</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;"><code>POST :streamGenerateContent</code> / <code>:predict</code></td>
+                  <td style="padding:0.42rem 0.6rem;border:1px solid #334155;">Vertex AI <strong>Gemini 2.5 Pro</strong>, <strong>AI Co-Scientist</strong> &amp; <strong>TxGemma</strong> (Zero Data Retention)</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="display:flex;gap:0.55rem;flex-wrap:wrap;margin-top:0.6rem;">
+              <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(envOptA)})'>📋 Copy Option 1 (.env — All-in-GCP VPC-SC)</button>
+              <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(envOptB)})'>📋 Copy Option 2 (.env — AWS-Hybrid EKS + Keyless WIF + Bedrock)</button>
+            </div>
+          </div>
+        </details>
+      `;
+      const existingFw = document.getElementById('cockpit-full-walkthrough-card');
+      const whatifHero = document.getElementById('whatif-hero');
+      if (existingFw && existingFw.parentNode) {
+        existingFw.parentNode.insertBefore(depCard, existingFw.nextSibling);
+      } else if (whatifHero && whatifHero.parentNode) {
+        whatifHero.parentNode.insertBefore(depCard, whatifHero.nextSibling);
+      }
+    }
+
+    // Mount Cloud Shell + Antigravity (agy CLI) <-> Scion Engine Walkthrough inside Step 8 (#panel-ch8)
+    document.querySelectorAll('#cockpit-cloudshell-agy-card').forEach(el => el.remove());
+    const ch8Mount = document.getElementById('ch8-agy-mount');
+    if (ch8Mount) {
+      const agyCard = document.createElement('div');
+      agyCard.id = 'cockpit-cloudshell-agy-card';
+      agyCard.className = 'cockpit-stage-card';
+      const sarahEmail = (cfg && cfg.workshop_domain) ? `oase-sarah@${cfg.workshop_domain}` : 'oase-sarah@losiern-1.altostrat.com';
+      const cloudShellUrl = `https://shell.cloud.google.com/?ephemeral=false&show=terminal&authuser=${encodeURIComponent(sarahEmail)}`;
+      const activeProjUuid = (activeCamp && activeCamp.scion_project_id) || (cid === 'io-cold-to-hot' ? 'ab3d65d5-f32c-463e-be48-d535034de34f' : 'dfe725e0-2c33-4569-84b2-1af9bb7b96fa');
+      const scionGraphUrl = (cfg && cfg.scion_hub_url)
+        ? `${cfg.scion_hub_url}/projects/${activeProjUuid}`
+        : `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/${activeProjUuid}`;
+      const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=64`;
+      const isIoCamp = cid === 'io-cold-to-hot';
+      const p1 = isIoCamp
+        ? 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."'
+        : 'agy -p "Use scion-oase-bridge to bootstrap the pcsk9-oral-live-v2 campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
+      const p2 = isIoCamp
+        ? 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."'
+        : 'agy -p "Use scion-oase-bridge to analyze pcsk9-oral-live-v2 across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why PCSK9-A02 was disqualified on hERG at DEC-005 and how OASE-PCSK9-014 cleared Gate 4."';
+      agyCard.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
+          <div>
+            <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 65s &middot; 1080p)</strong>
+            <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
+              Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run in the CLI &rarr; Scion Project Messages reacting</strong>.
+            </div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <a class="cockpit-btn primary" href="${cloudShellUrl}" target="_blank" rel="noopener" style="text-decoration:none;">☁️ Open Cloud Shell as Dr. Sarah Chen ↗</a>
+            <a class="cockpit-btn" href="${scionGraphUrl}" target="_blank" rel="noopener" style="text-decoration:none;">🕸️ Open Scion 4-Tier Agent Graph ↗</a>
+          </div>
+        </div>
+        <div class="cockpit-video-wrap">
+          <video id="video-cloudshell-agy" controls preload="metadata" src="${agyVideoSrc}"></video>
+        </div>
+        <div class="scrub-bar">
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) &middot; Dr. Sarah Chen</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 23.1)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:23) &middot; @science-program-lead</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series Feedback (0:39) &middot; Dr. Sarah Chen</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Gate Sign-Off (1:00) &middot; @admet-dmpk-scientist</button>
+        </div>
+        <div style="margin-top:0.65rem;">
+          <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>
+          <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p2)})'>📋 Copy Cloud Shell Prompt 2 (Analyze Run &amp; Stage Gates): ${escHtml(p2)}</button>
+        </div>
+      `;
+      ch8Mount.appendChild(agyCard);
     }
 
     ['ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7'].forEach(chId => {
@@ -2422,7 +2459,7 @@ selectStation('s3');
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
           <div>
-            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini 3.8 Live Avatars + Multi-Model Grove)</strong>
+            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini Live Avatars + Multi-Model Grove)</strong>
             <div id="cockpit-state-badge-${chId}" style="font-size:0.77rem;color:#94a3b8;font-family:monospace;margin-top:0.15rem;">
               ${subBadge}
             </div>
@@ -2791,7 +2828,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 11-Agent Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 3.8 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 17-Agent 4-Tier Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini Live Avatar</code> (<code>gemini-2.5-pro</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 2.5 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>

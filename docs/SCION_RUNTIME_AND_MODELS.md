@@ -1,6 +1,6 @@
 # Scion Multi-Model Runtime, Toolchain & Endpoint Configuration Runbook
 
-This runbook documents the complete, repeatable procedure to configure a Scion Hub VM (`scion-hub-oase`) for multi-model live OASE execution using **Gemini 4 Argon**, **Anthropic Claude Opus 5.5**, and **Gemini 3.8 Flash**, together with a portable shared `oase v0.3.0` scientific toolchain and dedicated Vertex AI GPU endpoints (`AlphaGenome` and `AlphaFold 3`).
+This runbook documents the complete, repeatable procedure to configure a Scion Hub VM (`scion-hub-oase`) for multi-model live OASE execution using **Gemini 4 Argon**, **Anthropic Claude Claude Opus 4.6**, and **Gemini 2.5 Flash**, together with a portable shared `oase v0.3.0` scientific toolchain and dedicated Vertex AI GPU endpoints (`AlphaGenome` and `AlphaFold 3`).
 
 All steps are automated by two idempotent repository scripts:
 - [`scripts/enable-vertex-models.py`](../scripts/enable-vertex-models.py) — Enables Vertex AI partner model data sharing (`:setPublisherModelConfig`), configures `constraints/vertexai.allowedPartnerModelFeatures`, and surfaces the one-time Model Garden subscription links.
@@ -15,11 +15,11 @@ Scion routes each specialist agent template to a container harness (`antigravity
 | Harness | Container Image | CLI Version Requirement | Tier Alias | Resolved Vertex AI Model ID | Assigned OASE Specialist Templates |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **`antigravity`** | `scion-antigravity:latest` | `agy` (Antigravity CLI) | `extra-large` | **`gemini-4-argon-high`** (`Gemini 4 Argon (High)`) | `science-program-lead`, `head-of-discovery`, `structural-biologist`, `hypex-supervisor`, `hypex-generation`, `hypex-tournament`, `hypex-meta-review` |
-| **`claude`** | `scion-claude:latest` | `@anthropic-ai/claude-code >= 2.1.280` | `large` | **`claude-opus-5-5`** (`Claude Opus 5.5`) | `scientific-reviewer`, `medicinal-chemist`, `hypex-reflection` |
+| **`claude`** | `scion-claude:latest` | `@anthropic-ai/claude-code >= 2.1.280` | `large` | **`claude-opus-5-5`** (`Claude Claude Opus 4.6`) | `scientific-reviewer`, `medicinal-chemist`, `hypex-reflection` |
 | **`antigravity`** | `scion-antigravity:latest` | `agy` (Antigravity CLI) | `large` | **`gemini-4-argon-medium`** (`Gemini 4 Argon (Medium)`) | `admet-dmpk-scientist`, `computational-chemist`, `computational-biologist`, `experimental-biologist`, `preclinical-toxicologist`, `regulatory-scientist`, `hypex-evolution` |
-| **`antigravity`** | `scion-antigravity:latest` | `agy` (Antigravity CLI) | `medium` | **`gemini-3.8-flash-medium`** (`Gemini 3.8 Flash (Medium)`) | `finding-validator`, `project-curator`, `research-operations-controller`, `hypex-proximity`, `bootstrapper` |
+| **`antigravity`** | `scion-antigravity:latest` | `agy` (Antigravity CLI) | `medium` | **`gemini-2.5-flash-medium`** (`Gemini 2.5 Flash (Medium)`) | `finding-validator`, `project-curator`, `research-operations-controller`, `hypex-proximity`, `bootstrapper` |
 
-> **Why Cross-Family Peer Review (`Gemini 4 Argon` + `Claude Opus 5.5`) Matters**: Routing `scientific-reviewer`, `medicinal-chemist`, and `hypex-reflection` to **Anthropic Claude Opus 5.5** while `science-program-lead`, `structural-biologist`, and `hypex-generation` run on **Gemini 4 Argon (High)** eliminates single-model self-confirmation bias during Two-Phase Peer Review (`oase review record`) and Co-Scientist tournament reflection.
+> **Why Cross-Family Peer Review (`Gemini 4 Argon` + `Claude Claude Opus 4.6`) Matters**: Routing `scientific-reviewer`, `medicinal-chemist`, and `hypex-reflection` to **Anthropic Claude Claude Opus 4.6** while `science-program-lead`, `structural-biologist`, and `hypex-generation` run on **Gemini 4 Argon (High)** eliminates single-model self-confirmation bias during Two-Phase Peer Review (`oase review record`) and Co-Scientist tournament reflection.
 
 ### Specialist Persona Prompts (`system-prompt.md` + `agents.md`) & Template Hydration
 
@@ -34,18 +34,18 @@ Every specialist template in `/home/scion/.scion/projects/open-agentic-science-e
 `hydrate_and_repair_templates()` in `scripts/reconcile-scion-runtime.py` ensures that for all 220 template rows across all groves (`open-agentic-science-engine`, `00..07`, and `pcsk9-oral-live-v2`):
 - Content-addressed blobs are written to `/home/scion/.scion/workspace-storage/<storage_path>.blobs/<sha256_hex>` (`layout = 'blobs'`),
 - Unpacked template directories (`agents.md`, `scion-agent.yaml`, `system-prompt.md`) are populated in `/home/scion/.scion/cache/templates/<content_hash>/` and registered in `/home/scion/.scion/cache/templates/index.json`, and
-- Every provisioned agent home (`home/.scion/harness/inputs/{instructions.md,system-prompt.md}`, `.gemini/GEMINI.md`, and `.claude/{CLAUDE.md,system-prompt.md}`) is hydrated so neither `Gemini 4 Argon` nor `Claude Opus 5.5` ever falls back to `templates/default` (`# Placeholder`).
+- Every provisioned agent home (`home/.scion/harness/inputs/{instructions.md,system-prompt.md}`, `.gemini/GEMINI.md`, and `.claude/{CLAUDE.md,system-prompt.md}`) is hydrated so neither `Gemini 4 Argon` nor `Claude Claude Opus 4.6` ever falls back to `templates/default` (`# Placeholder`).
 
 ---
 
 ## 2. Step-by-Step Repeatable Enablement
 
-### Step 2.1 — Enable Vertex AI Partner Models (`Claude Opus 5.5`)
+### Step 2.1 — Enable Vertex AI Partner Models (`Claude Claude Opus 4.6`)
 
  Enabling Anthropic Claude models (`claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5`, `claude-haiku-4-5`) on a Google Cloud project requires three layers:
 
 1. **One-Time Model Garden Partner Subscription (Console EULA)**:
-   - In the Google Cloud Console, open the Model Garden questionnaire for **Claude Opus 5.5** (`publishers/anthropic/models/claude-opus-5-5`, partner service `anthropic-914.cloudpartnerservices.goog`) and click **Enable / Agree**.
+   - In the Google Cloud Console, open the Model Garden questionnaire for **Claude Claude Opus 4.6** (`publishers/anthropic/models/claude-opus-5-5`, partner service `anthropic-914.cloudpartnerservices.goog`) and click **Enable / Agree**.
    - Run `python3 scripts/enable-vertex-models.py --project "$GCP_PROJECT_ID"` to print the exact pre-populated `model_garden_enable_urls` for your project.
 2. **Per-Location Data Sharing (`:setPublisherModelConfig`)**:
    - Vertex AI requires opting into Anthropic partner data sharing **per model and per location** (`global`, `us`, `us-east5`, `us-central1`):
@@ -165,20 +165,20 @@ gcloud compute ssh scion-hub-oase \
 
 ### Verification Checklist
 
-1. **`oase doctor --json` inside both `antigravity` (`Gemini 4 Argon`) and `claude` (`Claude Opus 5.5`) containers**:
+1. **`oase doctor --json` inside both `antigravity` (`Gemini 4 Argon`) and `claude` (`Claude Claude Opus 4.6`) containers**:
    - Returns `"verdict": "PROCEED"`, `"failures": []` (`0` failures across all `17` checks), and `"env_version": "sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2acac5b"`.
 2. **Live Model Inference Verification**:
    - `pcsk9-oral-live-v2--science-program-lead` runs `scion-antigravity:latest` with `SCION_MODEL=extra-large` -> **`Gemini 4 Argon (High)`** (`gemini-4-argon-high`).
-   - `pcsk9-oral-live-v2--scientific-reviewer` runs `scion-claude:latest` with `SCION_MODEL=large` -> **`Claude Opus 5.5`** (`claude-opus-5-5`).
-   - `pcsk9-oral-live-v2--controller` runs `scion-antigravity:latest` with `SCION_MODEL=medium` -> **`Gemini 3.8 Flash (Medium)`** (`gemini-3.8-flash-medium`).
+   - `pcsk9-oral-live-v2--scientific-reviewer` runs `scion-claude:latest` with `SCION_MODEL=large` -> **`Claude Claude Opus 4.6`** (`claude-opus-5-5`).
+   - `pcsk9-oral-live-v2--controller` runs `scion-antigravity:latest` with `SCION_MODEL=medium` -> **`Gemini 2.5 Flash (Medium)`** (`gemini-2.5-flash-medium`).
 3. **Zero Mutation of Reference Groves (`00..07`)**:
    - All 8 reference pilot chapters (`00-pcsk9-initial-seed` through `07-pcsk9-mission-closeout`) remain untouched and selectable in the Story Arc Presenter Cockpit.
 
 ---
 
-## 6. Argolis First-Try Execution Hardening (Lessons from `venter-scion`)
+## 6. Argolis First-Try Execution Hardening (Lessons from `io-cold-to-hot`)
 
-Cross-referencing the original `venter-scion` pilot handoff (`docs/pilot-handoff.md`, `docs/quickstart-pilot.md`, and `docs/alphafold-complex-prediction.md`) surfaced six operational safeguards now enforced by [`scripts/reconcile-scion-runtime.py`](../scripts/reconcile-scion-runtime.py):
+Cross-referencing the original `io-cold-to-hot` pilot handoff (`docs/pilot-handoff.md`, `docs/quickstart-pilot.md`, and `docs/alphafold-complex-prediction.md`) surfaced six operational safeguards now enforced by [`scripts/reconcile-scion-runtime.py`](../scripts/reconcile-scion-runtime.py):
 
 1. **Container PID 1 `OASE_PROJECT` & `OASE_TOOLS_HOME` Injection:**
    - Because Scion launches `claude` and `agy` via `tmux new-session ... sh -c` (non-interactive shell before `.bashrc` runs), `OASE_PROJECT=/workspace` and `OASE_TOOLS_HOME=/workspace/.scion-volumes/tools` are injected directly via Hub `env_vars` (`injection_mode='always'`) so every agent sees `OASE_PROJECT=/workspace` immediately on startup.

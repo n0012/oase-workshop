@@ -41,11 +41,11 @@
       "id": "pcsk9-live-argolis",
       "grove_slug": "pcsk9-oral-live-v2",
       "short_label": "PCSK9 Oral Small Molecule · Full Stage 1–4 Pre-IND Campaign",
-      "nav_slug": "pcsk9-oral · Argon+Opus",
-      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 2.5 Pro + Claude 4.6 Opus + 1P GPUs",
+      "nav_slug": "pcsk9-oral · Gemini+Claude",
+      "title": "PCSK9 Oral Small Molecule — Multi-Model Live Campaign: Gemini 2.5 Pro + Claude Opus 4.6 + 1P GPUs",
       "status": "ready",
       "badge": "LIVE · 78/78 DOCTOR · FULL PRE-IND",
-      "target": "PCSK9 (Q8NBP7) · Gemini 2.5 Pro (High/Med) + Claude 4.6 Opus + 1P AlphaGenome & AlphaFold 3",
+      "target": "PCSK9 (Q8NBP7) · Gemini 2.5 Pro + Claude Opus 4.6 + 1P AlphaGenome & AlphaFold 3",
       "stack_summary": "Live Multi-Model Grove (pcsk9-oral-live-v2) · All 41 Verification Skills Active (78/78 PASS) · Dedicated Vertex AI A100 Endpoints · 8/8 Work Orders Accepted",
       "gcs_video_prefix": "campaigns/pcsk9-live-argolis/videos",
       "static_video_prefix": "assets/videos",
@@ -54,7 +54,7 @@
       "live_grove_url": "https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa",
       "kpis": [
         {
-          "val": "Argon + Opus 5.5",
+          "val": "Gemini + Claude",
           "lbl": "Multi-Model Frontier Squadron"
         },
         {
@@ -81,7 +81,7 @@
       "pause_links": {
         "ch1": [
           {
-            "label": "🏆 Interactive 7-Agent Hypex Bracket (Argon + Opus 5.5)",
+            "label": "🏆 Interactive 7-Agent Hypex Bracket (Gemini 2.5 Pro + Claude Opus 4.6)",
             "href": "viewers/coscientist-live-viewer.html",
             "mode": "tab"
           },
@@ -147,7 +147,7 @@
         ],
         "ch4": [
           {
-            "label": "💊 Claude 4.6 Opus Med-Chem DMTA & Wet-Lab Gate",
+            "label": "💊 Claude Opus 4.6 Med-Chem DMTA & Wet-Lab Gate",
             "href": "viewers/dmta-live-viewer.html",
             "mode": "tab"
           },
@@ -426,7 +426,7 @@
         "ch5": {
           "sarah": {
             "wingman": "Grove-1 (@science-program-lead)",
-            "focus": "Stage Gate 4 Candidate Nomination (DEC-007) & WO-008 Dossier Synthesis",
+            "focus": "Stage Gate 4 Candidate Nomination (DEC-010) & WO-008 Dossier Synthesis",
             "scion_prompts": [
               "@science-program-lead Confirm all 8 Work Orders (WO-001..WO-008), 36/36 threshold schemas, and 7 mandatory epistemic risk relays verified in findings/regulatory/WO-008.md.",
               "@science-program-lead How does the nominated candidate OASE-PCSK9-014 (40 mg QD oral tablet) satisfy every Target Product Profile criterion set in Step 1?"
@@ -446,7 +446,7 @@
             "wingman": "Fold-3 (@structural-biologist)",
             "focus": "Biophysical Residence Time & Target Engagement Margin at 40 mg QD",
             "scion_prompts": [
-              "@structural-biologist How do the experimental SPR KD (14 nM) and slow off-rate (koff) returned at Gate 3 support once-daily 40 mg oral dosing in WO-007?",
+              "@structural-biologist How do the experimental SPR KD (118 nM) and slow off-rate (koff) returned at Gate 3 support once-daily 40 mg oral dosing in WO-007?",
               "@structural-biologist Summarize how the 3D co-fold and docking artifacts (WO-004..005) are cross-referenced inside the final WO-008 regulatory candidate dossier."
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @structural-biologist how the Gate 3 SPR KD and off-rate support 40 mg QD oral dosing in WO-007.\""
@@ -570,13 +570,13 @@
     {
       "id": "io-cold-to-hot",
       "grove_slug": "io-cold-to-hot",
-      "short_label": "IO Cold-to-Hot ENPP1 · Halted at Wet-Lab Wall (DEC-003)",
+      "short_label": "IO Cold-to-Hot ENPP1 · Wet-Lab Wall -> Series B (DEC-003..010)",
       "nav_slug": "io-cold-to-hot · ENPP1",
-      "title": "IO Cold-to-Hot Tumor Reprogramming — ENPP1 cGAMP/STING Blockade & Wet-Lab Wall Dossier",
+      "title": "IO Cold-to-Hot Tumor Reprogramming — ENPP1 Wet-Lab Wall (DEC-003/008) & Series B Recovery (DEC-010)",
       "status": "ready",
-      "badge": "LIVE · 78/78 DOCTOR · WET-LAB WALL (DEC-003)",
+      "badge": "LIVE · 78/78 DOCTOR · DEC-003 -> SERIES B (DEC-010)",
       "target": "ENPP1 (P22413) vs TREX1/PTPN2/ADAR1 · 1P AlphaGenome (chr6) + 1P AlphaFold 3 + Wet-Lab Request Package",
-      "stack_summary": "Live Grove (io-cold-to-hot) · All 41 Verification Skills Active (78/78 PASS) · Halted at DEC-003 Wet-Lab Wall Awaiting EXP-01..04",
+      "stack_summary": "Live Grove (io-cold-to-hot) · 41 Skills (78/78 PASS) · Phase 1 Wet-Lab Hold (DEC-003) -> Phase 2 Efflux Pivot (DEC-008) & Series B Nomination (DEC-010)",
       "gcs_video_prefix": "campaigns/io-cold-to-hot/videos",
       "static_video_prefix": "assets/videos-io-cold-to-hot",
       "video_manifest": "assets/video-chapters-io-cold-to-hot-manifest.json",
@@ -600,12 +600,12 @@
           "lbl": "AF3-enpp1_009_complex.cif"
         },
         {
-          "val": "OASE-ENPP1-009",
-          "lbl": "cLogP 2.01 · TPSA 111.8 Å²"
+          "val": "114.0 -> 79.40 Å²",
+          "lbl": "RDKit TPSA (Series A -> B)"
         },
         {
-          "val": "DEC-003 HALTED",
-          "lbl": "Wet-Lab Wall (EXP-01..04)"
+          "val": "DEC-008 -> DEC-010",
+          "lbl": "Wet-Lab Pivot -> Series B"
         }
       ],
       "pause_links": {
@@ -621,12 +621,12 @@
             "mode": "tab"
           },
           {
-            "label": "🗺 David's Scion Multi-Agent Grove Topology",
+            "label": "🗺 Live Scion 17-Agent Grove Topology",
             "href": "assets/io-cold-to-hot-provenance/02_oase_agent_map.png",
             "mode": "tab"
           },
           {
-            "label": "💬 Live Tandem Chat (Nick & David)",
+            "label": "💬 Multiplayer Pod Chat Transcript",
             "href": "assets/io-cold-to-hot-provenance/04b_tandem_chat_nick_and_david.png",
             "mode": "tab"
           }
@@ -877,7 +877,7 @@
             "focus": "WO-006 DMTA Profiling & Triggering the DEC-008 / DEC-003 Wet-Lab Wall",
             "scion_prompts": [
               "@science-program-lead Explain why Series A lead oase_enpp1_009 passed biochemical potency (ENPP1 IC50 = 18 nM, SPR KD = 14 nM) in WO-006 but triggered the DEC-008 Wet-Lab Wall on oral absorption.",
-              "@science-program-lead How did @medicinal-chemist and @admet-dmpk-scientist coordinate the Series B pivot to N-alkoxycarbonyl carbamate oase_enpp1_019?"
+              "@science-program-lead How did @medicinal-chemist and @admet-dmpk-scientist coordinate the Series B pivot to neutral pyrazole heteroaryl ZBG oase_enpp1_019 (TPSA = 79.40 Å²)?"
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to read reports/wet-lab-wall-readiness.md and ask @science-program-lead why oase_enpp1_009 triggered the Wet-Lab Wall.\""
           },
@@ -892,21 +892,21 @@
           },
           "elena": {
             "wingman": "Fold-3 (@structural-biologist)",
-            "focus": "Series B Masked Monoester (oase_enpp1_019) Binding Mode & Zn2+ Retention",
+            "focus": "Series B Neutral Pyrazole ZBG (oase_enpp1_019) Binding Mode & Zn2+ Retention",
             "scion_prompts": [
-              "@structural-biologist How does the Series B aza-quinazoline N-alkoxycarbonyl carbamate (oase_enpp1_019) maintain sub-35 nM ENPP1 potency (IC50 = 31 nM, SPR KD = 24 nM) while lowering tPSA from 114.0 to 79.4 Å²?",
+              "@structural-biologist How does the Series B 6,7-dimethoxyquinazoline neutral pyrazole ZBG (oase_enpp1_019, MW = 430.51 Da) maintain sub-35 nM ENPP1 potency (IC50 = 31 nM, SPR KD = 24 nM) while lowering RDKit TPSA from 113.96 to 79.40 Å²?",
               "@structural-biologist Compare the 3D catalytic groove contacts of Series A (oase_enpp1_009) and Series B (oase_enpp1_019)."
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @structural-biologist how Series B oase_enpp1_019 preserves catalytic Zn2+ binding at tPSA = 79.4 Å².\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @structural-biologist how Series B oase_enpp1_019 preserves catalytic Zn2+ binding at RDKit TPSA = 79.40 Å².\""
           },
           "raj": {
             "wingman": "Spark-4 (@medicinal-chemist)",
-            "focus": "Series A -> Series B MMP Pivot: Replacing Bare Sulfamide with Masked Monoester (oase_enpp1_019)",
+            "focus": "Series A -> Series B MMP Pivot: Replacing Acidic Sulfamide with Neutral Pyrazole ZBG (oase_enpp1_019)",
             "scion_prompts": [
-              "@medicinal-chemist Walk through the medicinal chemistry pivot in DEC-008: how replacing the polar acylsulfonamide in oase_enpp1_009 (tPSA = 114.0 Å²) with the N-alkoxycarbonyl carbamate/aza-quinazoline in oase_enpp1_019 (tPSA = 79.4 Å²) solved P-gp efflux.",
-              "@medicinal-chemist Compare Series A (oase_enpp1_009), Series B (oase_enpp1_019), and the backup PTPN2 series across potency, tPSA, MDCK Papp, P-gp ER, and hERG."
+              "@medicinal-chemist Walk through the medicinal chemistry pivot in DEC-008: how replacing the acidic acylsulfonamide/sulfamide in oase_enpp1_009 (TPSA = 113.96 Å²) with the RDKit-verified neutral pyrazole heteroaryl ZBG in oase_enpp1_019 (MW = 430.51 Da, cLogP = 3.46, TPSA = 79.40 Å²) solved P-gp efflux.",
+              "@medicinal-chemist Compare Series A (oase_enpp1_009), Series B (oase_enpp1_019), and the backup PTPN2 series across potency, RDKit TPSA, MDCK Papp, P-gp ER, and hERG."
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how the N-alkoxycarbonyl carbamate swap in oase_enpp1_019 lowered tPSA to 79.4 Å² and solved P-gp efflux.\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to read raw/compounds/oase_enpp1_019.descriptors.json and ask @medicinal-chemist how the neutral pyrazole ZBG lowered TPSA to 79.40 Å² and solved P-gp efflux.\""
           },
           "claire": {
             "wingman": "Shield-5 (@admet-dmpk-scientist)",
@@ -977,9 +977,9 @@
           },
           "marcus": {
             "wingman": "@scientific-reviewer + Aegis-6 (@finding-validator)",
-            "focus": "Cross-Model Peer Review (Gemini 2.5 Pro + Claude 4.6 Opus) & Citation Gate",
+            "focus": "Cross-Model Peer Review (Gemini 2.5 Pro + Claude Opus 4.6) & Citation Gate",
             "scion_prompts": [
-              "@scientific-reviewer Summarize your independent Claude 4.6 Opus peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
+              "@scientific-reviewer Summarize your independent Claude Opus 4.6 peer review of the DEC-008 Wet-Lab Wall falsification of oase_enpp1_009 and Series B recovery via oase_enpp1_019.",
               "@finding-validator Confirm that all 6/6 mandatory epistemic relays and +/-1% JSONPath citations passed across WO-001..WO-008."
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @scientific-reviewer for its independent peer review of the DEC-008 Wet-Lab Wall pivot.\""

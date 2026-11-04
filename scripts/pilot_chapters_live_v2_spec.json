@@ -348,7 +348,7 @@
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
           "chat_text": "@medicinal-chemist Report our live WO-006 RDKit descriptors, matched-molecular-pair SAR (501deb1a), and ADMET profiling comparing seed pcsk9_ic001 (cLogP 5.4) against redesigned 1,2,4-oxadiazole oase_pcsk9_014 (551aa489, 7c2fc75a) in 2 bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Spark Four, run RDKit descriptors, matched-molecular-pair S-A-R, and add-met on our oxadiazole redesign OASE-P-C-S-K-nine-zero-one-four versus the greasy seed!"
+          "tts_text": "Spark Four, run RDKit descriptors, matched-molecular-pair S-A-R, and add-met on our oxadiazole redesign O-A-S-E P-C-S-K-nine-zero-one-four versus the greasy seed!"
         },
         {
           "turn_id": "ch4_t2",
@@ -382,7 +382,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Signed \u2014 WO-006 Accepted] Seed pcsk9_ic001 retired on lipophilicity; oase_pcsk9_014 (MW 394.38, cLogP 4.19, SA 2.52) dispatched to CRO wet-lab bridge before Step 5 oral PK unlocks.",
-          "tts_text": "That is why we never let AI skip the wet lab! Gate Three is signed, sending OASE-P-C-S-K-nine-zero-one-four to the physical lab for patch-clamp and cassette P-K!"
+          "tts_text": "That is why we never let AI skip the wet lab! Gate Three is signed, sending O-A-S-E P-C-S-K-nine-zero-one-four to the physical lab for patch-clamp and cassette P-K!"
         }
       ]
     },
@@ -435,7 +435,7 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "[Stage Gate 4 Candidate Nomination \u2014 APPROVED] Nominating OASE-PCSK9-014 (MW 394.38 Da, human t1/2 = 8.18 h, CL = 0.00997 L/h/kg, 40 mg oral QD tablet) for IND-enabling GLP toxicology. Now let's run our live red-team tamper drills in Step 6!",
-          "tts_text": "Stage Gate Four is signed, nominating OASE-P-C-S-K-nine-zero-one-four for GLP toxicology! Now let's try to break our own guardrails in Step Six!"
+          "tts_text": "Stage Gate Four is signed, nominating O-A-S-E P-C-S-K-nine-zero-one-four for GLP toxicology! Now let's try to break our own guardrails in Step Six!"
         }
       ]
     },

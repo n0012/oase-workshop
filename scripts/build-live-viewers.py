@@ -132,11 +132,11 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
-    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 4 Argon (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 5.5</strong>.</p>
+    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 2.5 Pro (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Claude Opus 4.6</strong>.</p>
     <div class="badge-row">
       <span class="pill argon">oase coscientist · clear-leader (+54.5 Elo)</span>
       <span class="pill argon">oase hypex · leader-with-advisories (+130.5 Elo)</span>
-      <span class="pill opus">scientific-reviewer · Claude Opus 5.5</span>
+      <span class="pill opus">scientific-reviewer · Claude Claude Opus 4.6</span>
       <span class="pill pass">export.json sha256: efb254b442e22d96</span>
       <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
     </div>
@@ -150,7 +150,7 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
           <button class="btn active" onclick="filterMatches('all', this)">All Rounds (24)</button>
           <button class="btn" onclick="filterMatches('r1', this)">Co-Scientist</button>
           <button class="btn" onclick="filterMatches('r2', this)">Hypex Elo</button>
-          <button class="btn" onclick="filterMatches('opus', this)">Opus 5.5 Audit</button>
+          <button class="btn" onclick="filterMatches('opus', this)">Claude Opus 4.6 Audit</button>
         </div>
       </div>
       <table>
@@ -208,26 +208,26 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
 
     <div>
       <div class="card">
-        <h2>7-Agent Debate &amp; Claude Opus 5.5 Audit (`hx-pcsk9-elo-live`)</h2>
+        <h2>7-Agent Debate &amp; Claude Claude Opus 4.6 Audit (`hx-pcsk9-elo-live`)</h2>
         <div id="match-list">
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)</strong>
-              <span class="pill argon">Gemini 4 Argon (High)</span>
+              <span class="pill argon">Gemini 2.5 Pro (High)</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)</strong>
-              <span class="pill argon">Gemini 4 Argon (High)</span>
+              <span class="pill argon">Gemini 2.5 Pro (High)</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Adversarial Assumption &amp; Falsification Audit (`FP-001`)</strong>
-              <span class="pill opus">Claude Opus 5.5</span>
+              <span class="pill opus">Claude Claude Opus 4.6</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket &ge; 0.50`, `Vina &le; -7.5 kcal/mol`).</div>
           </div>
@@ -248,9 +248,9 @@ env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2ac
 <script>
 document.getElementById('nav-cosci').classList.add('active');
 const ROUNDS = [
-  {{ tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 4 Argon (High)', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' }},
-  {{ tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 4 Argon (High)', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' }},
-  {{ tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Opus 5.5', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }}
+  {{ tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 2.5 Pro (High)', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' }},
+  {{ tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 2.5 Pro (High)', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' }},
+  {{ tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Claude Opus 4.6', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }}
 ];
 function filterMatches(tag, btn) {{
   document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));
@@ -289,7 +289,7 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
     <p>Live `1,048,576 bp` sequence context window (`chr1:54,515,686–55,564,262`, hg38) for `chr1:55039974:G&gt;T` (`rs2479409`) scored on our Dedicated Vertex AI `us-central1` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5`), paired with live `gnomAD v4` constraint (`pLI = 2.765e-18`, `LOEUF = 1.144`, `lof_tolerant`) and `GTEx v8` extrahepatic whole-blood silence (`0.246 TPM`, `not_expressed`).</p>
     <div class="badge-row">
       <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681 (us-central1 A100)</span>
-      <span class="pill argon">computational-biologist · Gemini 4 Argon (Med)</span>
+      <span class="pill argon">computational-biologist · Gemini 2.5 Pro (Med)</span>
       <span class="pill pass">PCSK9 Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks</span>
       <span class="pill pass">response.ndjson (603 KB) sha256: 9fb08cf573947868</span>
     </div>
@@ -406,7 +406,7 @@ def _build_af3_html(cif_text: str) -> str:
     <p>All-atom `PCSK9` catalytic/EGF-A domain + `pcsk9_ic001` (`LIG_B`) co-fold (`588` atoms, `57,032 bytes`) computed live on our Dedicated Vertex AI `us-east4` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0`), paired with full-length `AF-Q8NBP7-F1` (`global_plddt = 85.19`), `fpocket` Pocket #3 (`druggability = 0.788`, `volume = 298.979 &Aring;&sup3;`), and 3-phase `AutoDock Vina` docking (`best_score = -7.991 kcal/mol` across `9` poses).</p>
     <div class="badge-row">
       <span class="pill pass">1P AlphaFold 3 · mg-endpoint-3f634779 (us-east4 A100)</span>
-      <span class="pill argon">structural-biologist · Gemini 4 Argon (High)</span>
+      <span class="pill argon">structural-biologist · Gemini 2.5 Pro (High)</span>
       <span class="pill pass">AF3 ipTM = 0.61 · has_clash = 0.0 · fpocket = 0.788 · Vina = -7.991 kcal/mol</span>
       <span class="pill pass">AF3-pcsk9_ic001_complex.cif sha256: 093bfe32e46d827f</span>
     </div>
@@ -842,7 +842,7 @@ DMTA_HTML = f"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 4 — Claude Opus 5.5 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
+<title>Step 4 — Claude Claude Opus 4.6 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
 <style>{SHARED_CSS}</style>
 </head>
 <body>
@@ -850,10 +850,10 @@ DMTA_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, Matched Molecular Pairs (`MMP`), `ADMET` &amp; Wet-Lab CRO Handoff</h1>
-    <p>`@medicinal-chemist` (**Claude Opus 5.5**) and `@admet-dmpk-scientist` (**Gemini 4 Argon Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.40`, `1` Lipinski violation, `borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `drug-like`), enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
+    <p>`@medicinal-chemist` (**Claude Claude Opus 4.6**) and `@admet-dmpk-scientist` (**Gemini 2.5 Pro Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.40`, `1` Lipinski violation, `borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `drug-like`), enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
     <div class="badge-row">
-      <span class="pill opus">medicinal-chemist · Claude Opus 5.5</span>
-      <span class="pill argon">admet-dmpk-scientist · Gemini 4 Argon (Med)</span>
+      <span class="pill opus">medicinal-chemist · Claude Claude Opus 4.6</span>
+      <span class="pill argon">admet-dmpk-scientist · Gemini 2.5 Pro (Med)</span>
       <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Violations</span>
       <span class="pill pass">descriptors.json sha256: 551aa4897aee43e9</span>
     </div>

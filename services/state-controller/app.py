@@ -748,30 +748,30 @@ def _synthesize_grounded_agent_reply(slug: str, agent_slug: str, user_msg: str, 
             return (
                 f"**[File-Grounded Replay from `@{agent_slug}` · `io-cold-to-hot` (`program-state/decision-log.md` `DEC-008`)]**\n\n"
                 "1. **Why Series A (`oase_enpp1_009`) Triggered the Wet-Lab Wall (`WO-006` / `DEC-008`):**\n"
-                "   - Biochemical & cellular potency passed (`ENPP1 IC50 = 18 nM`, `SPR KD = 14 nM`, `THP-1 ISG EC50 = 64 nM`), confirming target engagement.\n"
-                "   - Oral absorption & safety gates failed deterministically (`MDCK-MDR1 Papp = 1.1e-6 cm/s` vs `>= 5.0e-6 cm/s`, `P-gp ER = 18.4` vs `< 2.5`, `hERG = 4.2 µM`) due to the polar N-acylsulfonamide/sulfamide ZBG (`tPSA = 114 Å²`).\n"
+                "   - Biochemical & cellular potency passed (`ENPP1 IC50 = 18 nM`, `SPR KD = 14 nM`, `THP-1 ISG EC50 = 64 nM`, `hERG IC50 > 30 µM`), confirming on-target potency.\n"
+                "   - Oral absorption gates failed deterministically (`MDCK-MDR1 Papp = 1.1e-6 cm/s` vs `>= 5.0e-6 cm/s`, `P-gp ER = 18.4` vs `< 2.5`, rat `F = 5.4%`) due to the polar acidic sulfamide/acylsulfonamide ZBG (`TPSA = 113.96 Å²`).\n"
                 "2. **Series B Recovery (`oase_enpp1_019`, `DEC-008` -> `DEC-010`):**\n"
-                "   - Replaced the polar acylsulfonamide with an N-alkoxycarbonyl carbamate / neutral heteroaryl ZBG on an aza-quinazoline hinge binder (`tPSA = 79.4 Å²`).\n"
+                "   - Replaced the acidic ZBG with an RDKit-verified **neutral pyrazole heteroaryl ZBG** on the 6,7-dimethoxyquinazoline core (`SMILES: COc1cc2nc(-c3ccc(-c4ccn[nH]4)cc3)nc(N3CCN(C)CC3)c2cc1OC`, `MW = 430.51 Da`, `cLogP = 3.46`, `TPSA = 79.40 Å²`, `HBD = 1`, `0` Lipinski violations).\n"
                 "   - Restored oral absorption (`MDCK Papp = 12.4e-6 cm/s`, `P-gp ER = 1.6`, `ENPP1 IC50 = 31 nM`, `F = 52%`, tumor `Ctrough,free = 198 nM = 6.4x IC50`, `hERG IC50 > 30 µM`)."
             )
         if "trex1" in q or "adar1" in q or "nomination" in q or "wo-001" in q or "elo" in q:
             return (
                 f"**[File-Grounded Replay from `@{agent_slug}` · `io-cold-to-hot` (`program-state/decision-log.md` `WO-001..004`)]**\n\n"
-                "- **`IC-101` (`ENPP1`, `1658.0 Elo`, `0.81` win rate — SELECTED):** Extracellular ectonucleotidase (`CD203c`) with enclosed catalytic bi-zinc PDE pocket (`PDB 2YS0`, `612.4 Å³`, `fpocket = 0.89`, `AF3 Pocket #1 pLDDT = 94.1`, `Vina = -9.6 kcal/mol`). Preserves tumor-derived extracellular `2'3'-cGAMP` without systemic interferon toxicity (`gnomAD pLI = 0.0001`, `TCGA CD8+ r = -0.64`; short-course dosing + serum PPi/ALP biomarker panel mitigates homozygous GACI ectopic calcification liability).\n"
-                "- **`IC-102` (`Trex1`, `1604.0 Elo` — PARKED `DEC-002`):** Ubiquitous intracellular cytosolic exonuclease; germline LoF causes Aicardi-Goutières syndrome / systemic lupus (`L-001`).\n"
-                "- **`IC-103` (`ADAR1`, `1561.0 Elo` — REJECTED `DEC-002`):** Essential house-keeping dsRNA editor (`gnomAD pLI = 1.00`, `LOEUF = 0.14`) with shallow hydrophilic groove (`fpocket = 0.38`)."
+                "- **`IC-101` (`ENPP1`, `1658.4 Elo`, `0.81` win rate — SELECTED):** Extracellular ectonucleotidase (`CD203c`) with enclosed catalytic bi-zinc PDE pocket (`PDB 2YS0`, `fpocket = 0.89`, `AF3 ipTM = 0.87`, `Vina = -9.6 kcal/mol`). Preserves tumor-derived extracellular `2'3'-cGAMP` without systemic interferon toxicity (`gnomAD pLI = 0.0001`; intermittent 28-day IO cycle + serum `PPi` & bone `ALP` safety panel mitigates homozygous `GACI` ectopic calcification liability `L-004`).\n"
+                "- **`IC-102` (`TREX1`, `1368.0 Elo` — DISQUALIFIED `DEC-001`):** Ubiquitous intracellular cytosolic exonuclease; germline LoF causes Aicardi-Goutières syndrome / systemic lupus (`L-001`, `PMID:16845398`).\n"
+                "- **`IC-103` (`ADAR1` — REJECTED `DEC-001`):** Essential house-keeping dsRNA editor (`gnomAD pLI = 1.00`, `LOEUF = 0.14`) with shallow hydrophilic groove (`fpocket = 0.38`)."
             )
         return (
             f"**[File-Grounded Replay from `@{agent_slug}` · `io-cold-to-hot` Live Grove Status]**\n\n"
             "- **Active Campaign:** Cold-to-Hot Immuno-Oncology (`ENPP1` Oral Small-Molecule Innate Immune Checkpoint)\n"
             "- **Grove Verification:** `78/78` `oase doctor` checks PASS · `10/10` `oase validate check` rules PASS · `17/17` agents configured across 4 tiers\n"
-            "- **Stage Gate Status:** `DEC-001`..`DEC-010` co-signed (`WO-001` Elo `1658.0` -> `WO-004` AF3 `pLDDT 94.1` -> `DEC-008` Wet-Lab Wall pivot `oase_enpp1_009` -> `oase_enpp1_019` -> `DEC-010` Pre-Candidate Nomination)."
+            "- **Stage Gate Status:** Two-phase timeline co-signed (`DEC-001..DEC-003` Pre-Wet-Lab Hold on `oase_enpp1_009` -> `DEC-008` Wet-Lab Efflux Halt -> `DEC-010` Series B `oase_enpp1_019` Nomination at `TPSA = 79.40 Å²`)."
         )
     return (
         f"**[File-Grounded Replay from `@{agent_slug}` · `{slug}` Live Grove Status]**\n\n"
         "- **Active Campaign:** Oral Small-Molecule `PCSK9` Allosteric Inhibitor (`IC-001` vs `IC-002`)\n"
         "- **Grove Verification:** `78/78` `oase doctor` checks PASS · `10/10` `oase validate check` rules PASS · `17/17` agents configured across 4 tiers\n"
-        "- **Key Verified Metrics (`WO-001`..`WO-008`):** `IC-001` (`1642.5 Elo`) > `IC-002` (`1588.0 Elo`); `gnomAD pLI = 0.0001` (`LOEUF = 0.89`); `AlphaGenome rs2479409` quantile `0.984`; `AF3 ipTM = 0.84` (prediction confidence, not binding affinity; Pocket #1 druggability `0.68`); lead **`OASE-PCSK9-014`** (`Vina = -9.4 kcal/mol`, `SPR KD = 118 nM` seeded CRO demo readout, `hERG > 30 µM` after `1,2,4-oxadiazole` swap from disqualified `PCSK9-A02` `DEC-005`, `F = 52%`, `40 mg QD` in-silico projection with total `Ctrough = 2,060 nM` and unbound `Ctrough,free = 412 nM = 2.9x IC50`)."
+        "- **Key Verified Metrics (`WO-001`..`WO-008`):** `IC-001` (`1642.5 Elo`) > `IC-002` (`1588.0 Elo`); `gnomAD pLI = 0.0001`; `AlphaGenome rs2479409` liver eQTL; Iteration 1 (`oase_pcsk9_014` 1,3-thiazole, `MW = 394.38 Da`, `cLogP = 4.19`, `ipTM = 0.61`, `t1/2 = 8.18 h`) -> Iteration 2 BRICS lead **`OASE-PCSK9-014`** (`1,2,4-oxadiazole` swap after `PCSK9-A02` `DEC-005` hERG disqualification, `cLogP = 3.01`, `ipTM = 0.84`, seeded CRO `SPR KD = 118 nM`, `TR-FRET IC50 = 142 nM`, right-censored `hERG IC50 > 30 µM` at solubility ceiling -> `>44.1x` free `Cmax` bound with `100 µM` GLP patch-clamp follow-up, `F = 52%`, `t1/2 = 14.8 h`, `40 mg QD` 1-compartment screening projection with `Ctrough,free = 412 nM = 2.9x IC50`)."
     )
 
 
@@ -926,6 +926,35 @@ def scion_dav_access(
             "executive/PORTFOLIO-HANDOFF.md",
             "executive/CANDIDATE-SUMMARY.md",
             "executive/program-summary.md",
+        ),
+        "findings/computational-biology/WO-001.md": (
+            "findings/computational-biology/WO-001.md",
+            "findings/computational-biology/wo-001-hypothesis-ranking.md",
+        ),
+        "findings/computational-biology/WO-002.md": (
+            "findings/computational-biology/WO-002.md",
+            "findings/computational-biology/wo-002-human-genetics-validation.md",
+        ),
+        "findings/structural-biology/WO-004.md": (
+            "findings/structural-biology/WO-004.md",
+            "findings/structural-biology/wo-004-alphafold3-pocket-druggability.md",
+        ),
+        "findings/computational-chemistry/WO-005.md": (
+            "findings/computational-chemistry/WO-005.md",
+            "findings/computational-chemistry/wo-005-vina-docking-poses.md",
+        ),
+        "findings/medicinal-chemistry/WO-006.md": (
+            "findings/medicinal-chemistry/WO-006.md",
+            "findings/medicinal-chemistry/wo-006-dmta-admet-mmp.md",
+        ),
+        "findings/admet-dmpk/WO-007.md": (
+            "findings/admet-dmpk/WO-007.md",
+            "findings/admet-dmpk/wo-007-oral-pk-scaling.md",
+            "findings/admet-dmpk/wo-007-wetlab-request-package.md",
+        ),
+        "findings/regulatory/WO-008.md": (
+            "findings/regulatory/WO-008.md",
+            "findings/regulatory/wo-008-clinical-landscape-dossier.md",
         ),
     }
     if not target.exists() and rel in PATH_ALIASES:

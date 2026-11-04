@@ -78,7 +78,51 @@ def _call_bridge(method: str, path: str, payload: dict[str, Any] | None = None) 
         except Exception:
             continue
 
-    # Fallback: execute curl directly on scion-hub-oase over IAP using active gcloud identity (or lab SA if available)
+    # Try starting a background IAP TCP tunnel on 127.0.0.1:18780 first (fast & works with roles/iap.tunnelResourceAccessor)
+    env = dict(os.environ)
+    if SA_ACCOUNT:
+        env["CLOUDSDK_CORE_ACCOUNT"] = SA_ACCOUNT
+    elif "CLOUDSDK_CORE_ACCOUNT" not in env and _has_gcloud_account(DEFAULT_LAB_SA):
+        env["CLOUDSDK_CORE_ACCOUNT"] = DEFAULT_LAB_SA
+
+    try:
+        subprocess.Popen(
+            [
+                "gcloud",
+                "compute",
+                "start-iap-tunnel",
+                GCE_INSTANCE,
+                "8780",
+                "--local-host-port=127.0.0.1:18780",
+                "--quiet",
+                f"--project={GCP_PROJECT}",
+                f"--zone={GCP_ZONE}",
+            ],
+            env=env,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+        import time
+
+        for _ in range(12):
+            time.sleep(0.5)
+            try:
+                req = urllib.request.Request(
+                    f"http://127.0.0.1:18780{path}",
+                    data=body_bytes,
+                    method=method,
+                    headers={"Content-Type": "application/json"} if body_bytes else {},
+                )
+                with urllib.request.urlopen(req, timeout=http_timeout) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except Exception:
+                continue
+    except Exception:
+        pass
+
+    # Fallback: execute curl directly on scion-hub-oase over IAP SSH using active gcloud identity (or lab SA if available)
     remote_url = f"http://127.0.0.1:8780{path}"
     if method.upper() == "GET":
         remote_cmd = f"curl -sS {shlex.quote(remote_url)}"
@@ -90,12 +134,6 @@ def _call_bridge(method: str, path: str, payload: dict[str, Any] | None = None) 
             f"-d {shlex.quote(json_str)} "
             f"{shlex.quote(remote_url)}"
         )
-
-    env = dict(os.environ)
-    if SA_ACCOUNT:
-        env["CLOUDSDK_CORE_ACCOUNT"] = SA_ACCOUNT
-    elif "CLOUDSDK_CORE_ACCOUNT" not in env and _has_gcloud_account(DEFAULT_LAB_SA):
-        env["CLOUDSDK_CORE_ACCOUNT"] = DEFAULT_LAB_SA
 
     proc = subprocess.run(
         [
@@ -138,7 +176,7 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
     },
     {
         "name": "list_agents",
-        "description": "List the 17-agent 4-tier discovery hierarchy (`controller`, `hypex-supervisor`, `science-program-lead`, and 12 specialists) for a Scion project.",
+        "description": "List the 17-agent 4-tier discovery hierarchy (`controller`, `bootstrapper`, `head-of-discovery`, `hypex-supervisor`, `science-program-lead`, and 12 specialists) for a Scion project.",
         "inputSchema": {
             "type": "object",
             "properties": {
