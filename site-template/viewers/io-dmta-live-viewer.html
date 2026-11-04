@@ -19,7 +19,7 @@
   .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
   .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
   .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
-  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.gpro { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
   .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
   .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
   .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
@@ -57,9 +57,9 @@
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, `BRICS MMP` (`enpp1_hit_001` &rarr; `oase_enpp1_009`) &amp; `ADMET` Qualification</h1>
-    <p>Executed inside `io-cold-to-hot--medicinal-chemist` and `io-cold-to-hot--admet-dmpk-scientist`: replacing the lipophilic chlorophenyl urea in `enpp1_hit_001` (`cLogP = 3.32`, `TPSA = 74.62 &Aring;&sup2;`) with a polar fluorophenyl-sulfonylurea in lead **`oase_enpp1_009`** (`MW = 507.52 Da`, `cLogP = 2.01`, `TPSA = 111.79 &Aring;&sup2;`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations) enforces extracellular TME retention and clears all in silico CYP and hERG pharmacophore alerts (`0` liabilities).</p>
+    <p>Executed inside `io-cold-to-hot--medicinal-chemist` and `io-cold-to-hot--admet-dmpk-scientist`: replacing the lipophilic chlorophenyl urea in `enpp1_hit_001` (`cLogP = 3.32`, `TPSA = 74.62 &Aring;&sup2;`) with a polar sulfamide ZBG in Series A lead **`oase_enpp1_009`** (`MW = 475.50 Da`, `cLogP = 2.01`, `TPSA = 113.96 &Aring;&sup2;`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations) enforces extracellular TME retention and clears all in silico CYP and hERG pharmacophore alerts (`0` liabilities).</p>
     <div class="badge-row">
-      <span class="pill pass">oase_enpp1_009 · cLogP = 2.01 · TPSA = 111.79 Å² (Extracellular Retention)</span>
+      <span class="pill pass">oase_enpp1_009 · MW = 475.50 Da · cLogP = 2.01 · TPSA = 113.96 Å² (Extracellular Retention)</span>
       <span class="pill pass">0 Lipinski / 0 Veber / 0 PAINS / 0 Brenk · SA-Score = 2.59</span>
       <span class="pill pass">ADMET: 0 CYP Isoforms Flagged · 0 hERG Pharmacophore Features Matched</span>
     </div>
@@ -81,9 +81,9 @@
             <td><span class="pill opus">hERG IC50 8.5 µM</span><br><small>Cell-permeant risk</small></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.14);">
-            <td><strong><code>oase_enpp1_009</code></strong><br><small>(Sulfonylurea Lead)</small></td>
-            <td><strong>507.52 Da</strong><br><small>HBD=1, HBA=9</small></td>
-            <td>cLogP <strong>2.01</strong> (&Delta;-1.31)<br>TPSA <strong>111.79 &Aring;&sup2;</strong></td>
+            <td><strong><code>oase_enpp1_009</code></strong><br><small>(Series A Sulfamide Lead)</small></td>
+            <td><strong>475.50 Da</strong><br><small>HBD=2, HBA=9</small></td>
+            <td>cLogP <strong>2.01</strong> (&Delta;-1.31)<br>TPSA <strong>113.96 &Aring;&sup2;</strong></td>
             <td><span class="pill pass">0 Violations</span><br><small>0 PAINS · SA 2.59</small></td>
             <td><span class="pill pass">0 CYP · 0 hERG</span><br><small>&rarr; WET-LAB WALL</small></td>
           </tr>
@@ -102,8 +102,8 @@
       <div class="card">
         <h2>`WO-006` Live Container Receipts (`raw/compounds/` &amp; `raw/admet/`)</h2>
         <div class="term">Containers  : io-cold-to-hot--medicinal-chemist &amp; io-cold-to-hot--admet-dmpk-scientist
-Lead SMILES : COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC
-Descriptors : MW=507.52 Da, logP=2.01, TPSA=111.79 A^2, HBD=1, HBA=9, RotBonds=6
+Lead SMILES : COc1cc2ncnc(N3CCN(S(=O)(=O)NCc4ccc(F)cc4)CC3)c2cc1OC
+Descriptors : MW=475.50 Da, logP=2.01, TPSA=113.96 A^2, HBD=2, HBA=9, RotBonds=6
 Alerts      : PAINS=0, Brenk=0, NIH=0, ZINC=0, SA-Score=2.59 (drug-like)
 ADMET       : LogS=-4.083 (moderate), CYP_flagged=0, hERG_matched=0, n_liabilities=0
 Relays Kept : compound.alerts_not_toxicology, compound.sa_score_is_estimate, mmp.small_pair_count</div>

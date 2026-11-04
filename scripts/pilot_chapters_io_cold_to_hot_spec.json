@@ -10,7 +10,7 @@
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Ingrid (Leda)"
+      "accent_label": "Gemini Live Avatar \u00b7 Ingrid (Leda)"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
@@ -20,7 +20,7 @@
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Sam (Sadaltager)"
+      "accent_label": "Gemini Live Avatar \u00b7 Sam (Sadaltager)"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
@@ -30,7 +30,7 @@
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Kira (Kore)"
+      "accent_label": "Gemini Live Avatar \u00b7 Kira (Kore)"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
@@ -40,7 +40,7 @@
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Jay (Alnilam)"
+      "accent_label": "Gemini Live Avatar \u00b7 Jay (Alnilam)"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
@@ -50,7 +50,7 @@
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Vera (Pulcherrima)"
+      "accent_label": "Gemini Live Avatar \u00b7 Vera (Pulcherrima)"
     },
     "ai_lead": {
       "display_name": "Grove-1 \u00b7 AI Program Lead",
@@ -60,10 +60,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-techagent-3",
-      "model_label": "Gemini 4 Argon (High)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (High) \u00b7 Grove-1 [SP]"
+      "accent_label": "Gemini 2.5 Pro \u00b7 Grove-1 [SP]"
     },
     "ai_compbio": {
       "display_name": "Helix-2 \u00b7 AI Comp Bio",
@@ -73,10 +73,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-8",
-      "model_label": "Gemini 4 Argon (Med)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (Med) \u00b7 Helix-2 [CB]"
+      "accent_label": "Gemini 2.5 Pro \u00b7 Helix-2 [CB]"
     },
     "ai_structbio": {
       "display_name": "Fold-3 \u00b7 AI Structural Bio",
@@ -86,10 +86,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-gb-tutor-17",
-      "model_label": "Gemini 4 Argon (High)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 4 Argon (High) \u00b7 Fold-3 [SB]"
+      "accent_label": "Gemini 2.5 Pro \u00b7 Fold-3 [SB]"
     },
     "ai_medchem": {
       "display_name": "Spark-4 \u00b7 AI Med Chemist",
@@ -99,10 +99,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-in-tutor-12",
-      "model_label": "Claude Opus 5.5",
+      "model_label": "Claude Opus 4.6",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 5.5 \u00b7 Spark-4 [MC]"
+      "accent_label": "Claude Opus 4.6 \u00b7 Spark-4 [MC]"
     },
     "ai_dmpk": {
       "display_name": "Shield-5 \u00b7 AI Translational",
@@ -112,10 +112,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-ie-advisor-4",
-      "model_label": "Gemini 4 Argon (Med)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 4 Argon (Med) \u00b7 Shield-5 [AD]"
+      "accent_label": "Gemini 2.5 Pro \u00b7 Shield-5 [AD]"
     },
     "ai_validator": {
       "display_name": "Aegis-6 \u00b7 AI Validator",
@@ -125,10 +125,10 @@
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-10",
-      "model_label": "Gemini 3.8 Flash",
+      "model_label": "Gemini 2.5 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 3.8 Flash \u00b7 Aegis-6 [FV]"
+      "accent_label": "Gemini 2.5 Flash \u00b7 Aegis-6 [FV]"
     }
   },
   "chapters": [
@@ -142,11 +142,11 @@
         {
           "turn_id": "ch1_t1",
           "scrub_key": "brief_kickoff",
-          "scrub_label": "1. Mission 03 Cold-to-Hot Kickoff",
+          "scrub_label": "1. Mission 02 Cold-to-Hot Kickoff",
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Mission 03 Kickoff \u2014 io-cold-to-hot] Gold Squadron, we are replaying David's Immuno-Oncology Cold-to-Hot tumor conversion campaign live in our Argolis Grove with all 78 oase doctor checks and 41 verification skills online. Let's execute WO-001!",
+          "chat_text": "[Mission 02 Kickoff \u2014 io-cold-to-hot] Gold Squadron, we are replaying David's Immuno-Oncology Cold-to-Hot tumor conversion campaign live in our Argolis Grove with all 78 oase doctor checks and 41 verification skills online. Let's execute WO-001!",
           "tts_text": "Gold Squadron, welcome to Mission Two: Immuno-Oncology Cold-to-Hot! All seventy-eight doctor checks and forty-one verification skills are live. Let's launch Work Order one!"
         },
         {
@@ -328,7 +328,7 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage 2 Structural Gate Co-Signed \u2014 PASS] Live WO-004 and WO-005 passed oase validate check with afdb.model_is_not_docking_ready and docking.score_is_not_affinity explicitly relayed. Handing off to Raj and Claude Opus 5.5 for Step 4!",
+          "chat_text": "[Stage 2 Structural Gate Co-Signed \u2014 PASS] Live WO-004 and WO-005 passed oase validate check with afdb.model_is_not_docking_ready and docking.score_is_not_affinity explicitly relayed. Handing off to Raj and Claude Opus 4.6 for Step 4!",
           "tts_text": "Work Order four and Work Order five are hashed and verified with every structural caveat relayed! Raj and Spark Four, take it into Step Four Med-Chem!"
         }
       ]
@@ -337,7 +337,7 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "io-cold-to-hot",
-      "title": "Step 4 \u2014 Opus 5.5 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
+      "title": "Step 4 \u2014 Opus 4.6 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
       "video_filename": "chapter-04.mp4",
       "turns": [
         {
@@ -353,14 +353,14 @@
         {
           "turn_id": "ch4_t2",
           "scrub_key": "agent_analysis",
-          "scrub_label": "2. Opus 5.5 Readout: oase_enpp1_009 Drug-Like",
+          "scrub_label": "2. Opus 4.6 Readout: oase_enpp1_009 Drug-Like",
           "speaker": "ai_medchem",
           "action": "wait_agent_reply",
           "target_agent": "medicinal-chemist",
           "console_viewer": "io-dmta-live-viewer.html",
-          "console_caption": "LIVE DMTA & ADMET CONSOLE \u00b7 oase_enpp1_009 \u00b7 0 Lipinski/Veber/PAINS/Brenk Violations \u00b7 BRICS MMP Verified",
+          "console_caption": "Step 4 Live DMTA Viewer \u2014 ENPP1 Quinazoline Sulfamide BRICS MMP (oase_enpp1_009: MW = 475.50 Da, cLogP = 2.01, TPSA = 113.96 \u00c5\u00b2, 0 PAINS, 0 CYP/hERG flags)",
           "tts_text": "Live Work Order six receipts verified, Raj! Replacing the chloro-aniline urea in hit one with the fluorophenyl sulfamide in O-A-S-E E-N-P-P-one-zero-zero-nine cut c-Log-P, cleared all Lipinski, Veber, PAINS, and Brenk filters, and kept synthetic accessibility at two point five!",
-          "chat_text": "**[WO-006 Complete \u2014 DMTA Optimization (`enpp1_hit_001` -> `oase_enpp1_009`), RDKit, BRICS MMP & ADMET]**\n- **RDKit & BRICS MMP (`enpp1_series_mmp.mmp-pairs.json`):** Replacing the lipophilic chloro-phenylurea of `enpp1_hit_001` with the polar fluorophenyl-sulfamide in **`oase_enpp1_009`** (`ENPP1-Lead-Series-1`) achieves **0 Lipinski, 0 Veber, 0 PAINS, and 0 Brenk violations** (`verdict: drug-like`) with `sa_score = 2.53`.\n- **In Silico ADMET Limit (`raw/admet/oase_enpp1_009.analysis.json`):** High predicted aqueous solubility and oral permeability confirmed with all mandatory relays (`compound.alerts_not_toxicology`, `compound.sa_score_is_estimate`, `mmp.small_pair_count`) preserved."
+          "chat_text": "[Live Claude Opus 4.6 RDKit + BRICS MMP + ADMET Receipt (`WO-006`)] @priya @sarah \u2014 Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n\u2022 Parent Hit `enpp1_hit_001`: `MW = 441.92 Da`, `cLogP = 3.32`, `TPSA = 74.62 \u00c5\u00b2` (hERG alert `8.5 \u00b5M`)\n\u2022 Series A Lead `oase_enpp1_009` (polar sulfamide ZBG): `MW = 475.50 Da`, `cLogP = 2.01`, `TPSA = 113.96 \u00c5\u00b2`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations\n\u2022 In Silico ADMET (`oase_enpp1_009.admet.json`): `LogS = -4.083`, `0` CYP isoforms flagged, `0` hERG pharmacophore features matched (`0` in silico liabilities; mandatory relay `compound.alerts_not_toxicology` preserved)"
         },
         {
           "turn_id": "ch4_t3",
@@ -370,7 +370,7 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "console_viewer": "io-dmta-live-viewer.html",
-          "console_caption": "COMPUTATIONAL LIMIT REACHED \u00b7 Chemistry & Structural Tractability De-Risked -> Biological TME Conversion Requires Wet Lab",
+          "console_caption": "Step 4 Live DMTA Viewer \u2014 Extracellular Polarity Lock (TPSA = 113.96 \u00c5\u00b2, cLogP = 2.01) & In Silico ADMET Qualification",
           "chat_text": "Inspecting oase_enpp1_009 in the DMTA console: we have pushed computational target genetics, 1P AlphaFold 3 co-folding, Vina docking, RDKit, and ADMET to their exact epistemic limit. Next up is the Wet-Lab Wall at DEC-003.",
           "tts_text": "Look at the add-met console: we have pushed computational chemistry and structural biology to their exact epistemic limit! Now we face the Wet-Lab Wall in Step Five!"
         },
@@ -546,12 +546,12 @@
         {
           "turn_id": "ch7_t5",
           "scrub_key": "debrief_medchem",
-          "scrub_label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
+          "scrub_label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
-          "chat_text": "[Debrief \u2014 Med Chem + Spark-4] Pairing with Claude Opus 5.5 on WO-006 optimized enpp1_hit_001 into quinazoline-piperazine sulfamide oase_enpp1_009 with 0 Lipinski, Veber, PAINS, or Brenk violations and clean BRICS MMP and ADMET profiles.",
-          "tts_text": "Spark Four on Claude Opus Five-Point-Five helped me optimize our quinazoline sulfamide lead to zero Lipinski, Veber, PAINS, or Brenk violations with clean add-met!"
+          "chat_text": "[Debrief \u2014 Med Chem + Spark-4] Pairing with Claude Opus 4.6 on WO-006 optimized enpp1_hit_001 into quinazoline-piperazine sulfamide oase_enpp1_009 with 0 Lipinski, Veber, PAINS, or Brenk violations and clean BRICS MMP and ADMET profiles.",
+          "tts_text": "Spark Four on Claude Opus Four-Point-Six helped me optimize our quinazoline sulfamide lead to zero Lipinski, Veber, PAINS, or Brenk violations with clean add-met!"
         },
         {
           "turn_id": "ch7_t6",
@@ -570,7 +570,7 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Mission 03 Pre-Wet-Lab Dossier Ready \u2014 Awaiting CRO Wet-Lab Results] All 8 Work Orders, DEC-001..003, 3 Tamper Drills, and our compiled Evidence Portal are live in GCP. Explore the 3D co-fold, the provenance gallery, or jump into any live scientist seat below!",
+          "chat_text": "[Mission 02 Pre-Wet-Lab Dossier Ready \u2014 Awaiting CRO Wet-Lab Results] All 8 Work Orders, DEC-001..003, 3 Tamper Drills, and our compiled Evidence Portal are live in GCP. Explore the 3D co-fold, the provenance gallery, or jump into any live scientist seat below!",
           "tts_text": "Mission Two's Pre-Wet-Lab Dossier is sealed in GCP and waiting on wet-lab results! Inspect the 3D co-fold, the provenance gallery, or jump into a live scientist seat below!"
         }
       ]

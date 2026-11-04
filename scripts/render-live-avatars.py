@@ -156,6 +156,10 @@ def normalize_biopharma_tts_text(text: str) -> str:
     return out
 
 
+def _word_weight(s: str) -> int:
+    return len(s.strip().split())
+
+
 def split_for_avatar(text: str, max_words: int = 24) -> list[str]:
     """Split long dialogue into <= max_words sentence/clause chunks for Live Avatar."""
     sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s.strip()]
@@ -163,16 +167,16 @@ def split_for_avatar(text: str, max_words: int = 24) -> list[str]:
     cur: list[str] = []
     cur_words = 0
     for sent in sentences:
-        words = sent.split()
-        if len(words) > max_words:
+        w_cnt = _word_weight(sent)
+        if w_cnt > max_words:
             if cur:
                 chunks.append(" ".join(cur))
                 cur, cur_words = [], 0
-            clauses = [c.strip() for c in re.split(r"(?<=[,;—])\s+", sent) if c.strip()]
+            clauses = [c.strip() for c in re.split(r"(?<=[,;—])\s*", sent) if c.strip()]
             sub: list[str] = []
             sub_w = 0
             for cl in clauses:
-                cw = len(cl.split())
+                cw = _word_weight(cl)
                 if sub and sub_w + cw > max_words:
                     chunks.append(" ".join(sub))
                     sub, sub_w = [cl], cw
@@ -182,12 +186,12 @@ def split_for_avatar(text: str, max_words: int = 24) -> list[str]:
             if sub:
                 chunks.append(" ".join(sub))
             continue
-        if cur and cur_words + len(words) > max_words:
+        if cur and cur_words + w_cnt > max_words:
             chunks.append(" ".join(cur))
-            cur, cur_words = [sent], len(words)
+            cur, cur_words = [sent], w_cnt
         else:
             cur.append(sent)
-            cur_words += len(words)
+            cur_words += w_cnt
     if cur:
         chunks.append(" ".join(cur))
     return chunks or [text.strip()]
@@ -540,7 +544,7 @@ def render_single_human_turn(
     clean_text = re.sub(r"<[^>]+>", " ", raw_text)
     clean_text = normalize_biopharma_tts_text(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    chunks = split_for_avatar(clean_text, max_words=32)
+    chunks = split_for_avatar(clean_text, max_words=28)
 
     turn_work = work_dir / tid
     turn_work.mkdir(parents=True, exist_ok=True)

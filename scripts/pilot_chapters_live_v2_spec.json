@@ -4,131 +4,131 @@
   "voices": {
     "sarah": {
       "display_name": "Dr. Sarah Chen",
-      "role": "Program Lead \u00b7 GOLD-1",
+      "role": "Program Lead · GOLD-1",
       "callsign": "GOLD-1",
       "is_agent": false,
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Ingrid (Leda)"
+      "accent_label": "Gemini Live Avatar · Ingrid (Leda)"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
-      "role": "Comp Biology \u00b7 GOLD-2",
+      "role": "Comp Biology · GOLD-2",
       "callsign": "GOLD-2",
       "is_agent": false,
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Sam (Sadaltager)"
+      "accent_label": "Gemini Live Avatar · Sam (Sadaltager)"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
-      "role": "Structural Bio \u00b7 GOLD-3",
+      "role": "Structural Bio · GOLD-3",
       "callsign": "GOLD-3",
       "is_agent": false,
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Kira (Kore)"
+      "accent_label": "Gemini Live Avatar · Kira (Kore)"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
-      "role": "Med Chemistry \u00b7 GOLD-4",
+      "role": "Med Chemistry · GOLD-4",
       "callsign": "GOLD-4",
       "is_agent": false,
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Jay (Alnilam)"
+      "accent_label": "Gemini Live Avatar · Jay (Alnilam)"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
-      "role": "DMPK & Safety \u00b7 GOLD-5",
+      "role": "DMPK & Safety · GOLD-5",
       "callsign": "GOLD-5",
       "is_agent": false,
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar \u00b7 Vera (Pulcherrima)"
+      "accent_label": "Gemini Live Avatar · Vera (Pulcherrima)"
     },
     "ai_lead": {
-      "display_name": "Grove-1 \u00b7 AI Program Lead",
+      "display_name": "Grove-1 · AI Program Lead",
       "role": "@science-program-lead [SP]",
       "callsign": "GROVE-1",
       "badge_code": "SP",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-techagent-3",
-      "model_label": "Gemini 4 Argon (High)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xeab308",
       "wave_colors": "0xfacc15|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (High) \u00b7 Grove-1 [SP]"
+      "accent_label": "Gemini 2.5 Pro · Grove-1 [SP]"
     },
     "ai_compbio": {
-      "display_name": "Helix-2 \u00b7 AI Comp Bio",
+      "display_name": "Helix-2 · AI Comp Bio",
       "role": "@computational-biologist [CB]",
       "callsign": "HELIX-2",
       "badge_code": "CB",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-8",
-      "model_label": "Gemini 4 Argon (Med)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xa855f7",
       "wave_colors": "0xc084fc|0x38bdf8",
-      "accent_label": "Gemini 4 Argon (Med) \u00b7 Helix-2 [CB]"
+      "accent_label": "Gemini 2.5 Pro · Helix-2 [CB]"
     },
     "ai_structbio": {
-      "display_name": "Fold-3 \u00b7 AI Structural Bio",
+      "display_name": "Fold-3 · AI Structural Bio",
       "role": "@structural-biologist [SB]",
       "callsign": "FOLD-3",
       "badge_code": "SB",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-gb-tutor-17",
-      "model_label": "Gemini 4 Argon (High)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xf97316",
       "wave_colors": "0xfb923c|0xfacc15",
-      "accent_label": "Gemini 4 Argon (High) \u00b7 Fold-3 [SB]"
+      "accent_label": "Gemini 2.5 Pro · Fold-3 [SB]"
     },
     "ai_medchem": {
-      "display_name": "Spark-4 \u00b7 AI Med Chemist",
+      "display_name": "Spark-4 · AI Med Chemist",
       "role": "@medicinal-chemist [MC]",
       "callsign": "SPARK-4",
       "badge_code": "MC",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-in-tutor-12",
-      "model_label": "Claude Opus 5.5",
+      "model_label": "Claude Opus 4.6",
       "accent_hex": "0x06b6d4",
       "wave_colors": "0x22d3ee|0x818cf8",
-      "accent_label": "Claude Opus 5.5 \u00b7 Spark-4 [MC]"
+      "accent_label": "Claude Opus 4.6 · Spark-4 [MC]"
     },
     "ai_dmpk": {
-      "display_name": "Shield-5 \u00b7 AI Safety & PK",
+      "display_name": "Shield-5 · AI Safety & PK",
       "role": "@admet-dmpk-scientist [AD]",
       "callsign": "SHIELD-5",
       "badge_code": "AD",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-ie-advisor-4",
-      "model_label": "Gemini 4 Argon (Med)",
+      "model_label": "Gemini 2.5 Pro",
       "accent_hex": "0xf59e0b",
       "wave_colors": "0xfbbf24|0x34d399",
-      "accent_label": "Gemini 4 Argon (Med) \u00b7 Shield-5 [AD]"
+      "accent_label": "Gemini 2.5 Pro · Shield-5 [AD]"
     },
     "ai_validator": {
-      "display_name": "Aegis-6 \u00b7 AI Validator",
+      "display_name": "Aegis-6 · AI Validator",
       "role": "@finding-validator [FV]",
       "callsign": "AEGIS-6",
       "badge_code": "FV",
       "is_agent": true,
       "avatar_name": "",
       "voice_id": "en-us-advisor-10",
-      "model_label": "Gemini 3.8 Flash",
+      "model_label": "Gemini 2.5 Flash",
       "accent_hex": "0xec4899",
       "wave_colors": "0xf472b6|0xa855f7",
-      "accent_label": "Gemini 3.8 Flash \u00b7 Aegis-6 [FV]"
+      "accent_label": "Gemini 2.5 Flash · Aegis-6 [FV]"
     }
   },
   "chapters": [
@@ -136,7 +136,7 @@
       "chapter": "ch1",
       "number": 1,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 1 \u2014 Live Co-Scientist & Hypex Tournament (WO-001 \u00b7 +130.5 Elo)",
+      "title": "Step 1 — Live Co-Scientist & Hypex Tournament (WO-001 · +130.5 Elo)",
       "video_filename": "chapter-01.mp4",
       "turns": [
         {
@@ -146,8 +146,9 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Live Run v2 \u2014 Step 1 Kickoff] Gold Squadron, we are live inside pcsk9-oral-live-v2 with Gemini 4 Argon, Claude Opus 5.5, and dedicated A100 endpoints online. Let's lock our three falsifiable rules and execute WO-001 Co-Scientist + Hypex tournament!",
-          "tts_text": "Gold Squadron, we are live in Argolis with Gemini Four Argon, Claude Opus Five-Point-Five, and our A100 GPUs hot! Lock your rules for Co-Scientist!"
+          "chat_text": "[Live Run v2 — Step 1 Kickoff] Gold Squadron, we are live inside pcsk9-oral-live-v2 with Gemini 2.5 Pro, Claude Opus 4.6, and dedicated A100 endpoints online. Let's lock our three falsifiable rules and execute WO-001 Co-Scientist + Hypex tournament!",
+          "tts_text": "Gold Squadron, we are live in Argolis with Gemini Two-Point-Five Pro, Claude Opus Four-Point-Six, and our A100 GPUs hot! Lock your rules for Co-Scientist!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch1_t2",
@@ -156,8 +157,9 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Clause 1 \u2014 Comp Bio] Requiring gnomAD v4 loss-of-function tolerance (pLI < 0.01), GTEx whole-blood exclusion (< 1.0 TPM), and live 1P AlphaGenome 1 Mb scoring on chr1:55039974:G>T via our us-central1 A100 endpoint.",
-          "tts_text": "Rule one locked: prove human loss-of-function safety in gnome-add, verify zero blood expression in G-tex, and score our liver variant on AlphaGenome!"
+          "chat_text": "[Clause 1 — Comp Bio] Requiring gnomAD v4 loss-of-function tolerance (pLI < 0.01), GTEx whole-blood exclusion (< 1.0 TPM), and live 1P AlphaGenome 1 Mb scoring on chr1:55039974:G>T via our us-central1 A100 endpoint.",
+          "tts_text": "Rule one locked: evaluate human loss-of-function tolerance in gnome-add and familial hypercholesterolemia in ClinVar!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch1_t3",
@@ -166,8 +168,9 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "structural-biologist",
-          "chat_text": "[Clause 2 \u2014 Structural Bio] Requiring live 1P AlphaFold 3 ligand co-folding on our us-east4 A100 endpoint (ipTM >= 0.55, 0 clashes), fpocket druggability >= 0.50 on AF-Q8NBP7-F1, and AutoDock Vina <= -7.5 kcal/mol.",
-          "tts_text": "Rule two armed: co-fold our ligand live on AlphaFold Three in U-S East Four, confirm a deep pocket with F-pocket, and verify binding with Vina!"
+          "chat_text": "[Clause 2 — Structural Bio] Requiring live 1P AlphaFold 3 ligand co-folding on our us-east4 A100 endpoint (ipTM >= 0.55, 0 clashes), fpocket druggability >= 0.50 on AF-Q8NBP7-F1, and AutoDock Vina <= -7.5 kcal/mol.",
+          "tts_text": "Rule two locked: fold the cryptic E-G-F-A catalytic groove in Alpha-Fold Three and rank pose affinity with Vina!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch1_t4",
@@ -177,7 +180,8 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "@science-program-lead Locking Clause 3: Rule-of-5 oral chemistry (MW <= 450, 0 Lipinski violations, mandatory hERG structural audit). Report our live WO-001 Co-Scientist export (efb254b4) and Hypex Elo tournament (9e5066e5) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Rule three set: clean oral chemistry with mandatory cardiac gating! Grove One, run our Co-Scientist and hype-ex tournament on Work Order one now!"
+          "tts_text": "Rule three set: clean oral chemistry with mandatory cardiac gating! Grove One, run our Co-Scientist and hype-ex tournament on Work Order one now!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch1_t5",
@@ -187,9 +191,9 @@
           "action": "wait_agent_reply",
           "target_agent": "science-program-lead",
           "console_viewer": "coscientist-live-viewer.html",
-          "console_caption": "LIVE CONSOLE EVIDENCE \u00b7 WO-001 Co-Scientist (efb254b4) + Hypex Tournament (9e5066e5) \u00b7 H-0001 Elo 1642.5 (+130.5 gap)",
+          "console_caption": "LIVE CONSOLE EVIDENCE · WO-001 Co-Scientist (efb254b4) + Hypex Tournament (9e5066e5) · H-0001 Elo 1642.5 (+130.5 gap)",
           "tts_text": "Telemetry verified, Gold Squadron! Co-Scientist and hype-ex rank cryptic groove small molecule H-zero-zero-one first at sixteen-forty-two point five Elo, leading by one hundred thirty points!",
-          "chat_text": "**[WO-001 Complete \u2014 Co-Scientist + Hypex Elo Tournament]**\n- **Co-Scientist Bridge (`raw/coscientist/coscientist_pcsk9_export.json` \u00b7 `sha256:efb254b4`):** Imported 4 candidate hypotheses (`H-0001..H-0004`) across 8 pairwise debate bouts (`oase coscientist import --verify`).\n- **Hypex Tournament (`raw/hypex/tournament-rankings.json` \u00b7 `sha256:9e5066e5`):** **H-0001** (*Allosteric C-Terminal Cryptic Pocket P3 Small-Molecule Modulator*) ranked **#1 at 1642.5 Elo** (`4W-0L`), clearing `#2 H-0002` (`1512.0 Elo`) by **+130.5 Elo**."
+          "chat_text": "**[WO-001 Complete — Co-Scientist + Hypex Elo Tournament]**\n- **Co-Scientist Bridge (`raw/coscientist/coscientist_pcsk9_export.json` · `sha256:efb254b4`):** Imported 4 candidate hypotheses (`H-0001..H-0004`) across 8 pairwise debate bouts (`oase coscientist import --verify`).\n- **Hypex Tournament (`raw/hypex/tournament-rankings.json` · `sha256:9e5066e5`):** **H-0001** (*Allosteric C-Terminal Cryptic Pocket P3 Small-Molecule Modulator*) ranked **#1 at 1642.5 Elo** (`4W-0L`), clearing `#2 H-0002` (`1512.0 Elo`) by **+130.5 Elo**."
         },
         {
           "turn_id": "ch1_t6",
@@ -199,9 +203,9 @@
           "action": "human_chat",
           "target_agent": "computational-biologist",
           "console_viewer": "coscientist-live-viewer.html",
-          "console_caption": "SUBWAY ROUTING & WINGMAN PAIRS \u00b7 H-0001 Primary Green Line \u00b7 H-0002 Amber Backup Line",
+          "console_caption": "SUBWAY ROUTING & WINGMAN PAIRS · H-0001 Primary Green Line · H-0002 Amber Backup Line",
           "chat_text": "@computational-biologist Looking at the live Hypex bracket on screen: H-0001 holds a +130.5 Elo margin in hx-pcsk9-elo-live with advisory caveats retained. Confirm our Primary vs Backup Subway routing and 5 Human-AI Wingman pairs in 2 bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Look at that live tournament bracket in the console\u2014one hundred thirty Elo separation! Helix Two, lock our primary and backup tracks plus wingman pairs!"
+          "tts_text": "Look at that live tournament bracket in the console—one hundred thirty Elo separation! Helix Two, lock our primary and backup tracks plus wingman pairs!"
         },
         {
           "turn_id": "ch1_t7",
@@ -211,9 +215,9 @@
           "action": "wait_agent_reply",
           "target_agent": "computational-biologist",
           "console_viewer": "coscientist-live-viewer.html",
-          "console_caption": "MULTI-MODEL ROSTER \u00b7 Gemini 4 Argon (High/Med) + Claude Opus 5.5 Peer Reflection & MedChem",
-          "tts_text": "Confirmed, Claire! H-zero-zero-one rides the green primary line, macrocycle H-zero-zero-two holds backup, and all five doctor-wingman pairs are locked across Argon and Opus!",
-          "chat_text": "**[Clause 1 Pre-Check \u2014 Human Genetics & AlphaGenome Readiness]**\n- **Target Safety (`WO-002`):** `gnomAD v4` confirms `pLI = 0.0` (`LOEUF = 0.94`) with `R46L` (`rs11591147`) cardioprotective loss-of-function precedent; `GTEx v8` confirms liver-dominant expression (`182.4 TPM` vs `0.25 TPM` whole blood).\n- **1P AlphaGenome Endpoint Ready (`WO-003`):** Dedicated `us-central1` A100 endpoint `mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5` online for 1 Mb regulatory variant scoring on `chr1:55039974:G>T`."
+          "console_caption": "MULTI-MODEL ROSTER · Gemini 2.5 Pro (High/Med) + Claude Opus 4.6 Peer Reflection & MedChem",
+          "tts_text": "Confirmed, Claire! H-zero-zero-one rides the green primary line, macrocycle H-zero-zero-two holds backup, and all five doctor-wingman pairs are locked across Gemini Pro and Claude Opus!",
+          "chat_text": "**[Clause 1 Pre-Check — Human Genetics & AlphaGenome Readiness]**\n- **Target Safety (`WO-002`):** `gnomAD v4` confirms `pLI = 0.0` (`LOEUF = 0.94`) with `R46L` (`rs11591147`) cardioprotective loss-of-function precedent; `GTEx v8` confirms liver-dominant expression (`182.4 TPM` vs `0.25 TPM` whole blood).\n- **1P AlphaGenome Endpoint Ready (`WO-003`):** Dedicated `us-central1` A100 endpoint `mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5` online for 1 Mb regulatory variant scoring on `chr1:55039974:G>T`."
         },
         {
           "turn_id": "ch1_t8",
@@ -222,8 +226,9 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[WO-001 Accepted \u2014 Step 1 Complete] Both raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.meta.json and hx-pcsk9-elo-live.meta.json passed deterministic SHA-256 validation. Marcus and Helix-2, fire up the us-central1 AlphaGenome A100 endpoint for Step 2!",
-          "tts_text": "Work Order one is hashed and accepted in the console! Marcus and Helix Two, punch it into Step Two and light up the AlphaGenome A100!"
+          "chat_text": "[WO-001 Accepted — Step 1 Complete] Both raw/hypotheses/cs-daedalis-20261028-pcsk9-oral.meta.json and hx-pcsk9-elo-live.meta.json passed deterministic SHA-256 validation. Marcus and Helix-2, fire up the us-central1 AlphaGenome A100 endpoint for Step 2!",
+          "tts_text": "Work Order one is hashed and accepted in the console! Marcus and Helix Two, punch it into Step Two and light up the AlphaGenome A100!",
+          "console_caption": ""
         }
       ]
     },
@@ -231,7 +236,7 @@
       "chapter": "ch2",
       "number": 2,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 2 \u2014 gnomAD, GTEx & Live 1P AlphaGenome A100 Scoring (WO-002..003)",
+      "title": "Step 2 — gnomAD, GTEx & Live 1P AlphaGenome A100 Scoring (WO-002..003)",
       "video_filename": "chapter-02.mp4",
       "turns": [
         {
@@ -242,7 +247,8 @@
           "action": "human_chat",
           "target_agent": "computational-biologist",
           "chat_text": "@computational-biologist Report our live WO-002 gnomAD constraint (e86f2c5c) + GTEx expression (05ffbee9) and WO-003 1P AlphaGenome A100 variant scoring on chr1-55039974-G-T (1daca492, 603 KB response.ndjson) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Helix Two, pull up our live gnome-add and G-tex receipts, and fire chr1-55039974-G-T against our U-S Central One AlphaGenome A100 endpoint!"
+          "tts_text": "Helix Two, pull up our live gnome-add and G-tex receipts, and fire chr1-55039974-G-T against our U-S Central One AlphaGenome A100 endpoint!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch2_t2",
@@ -252,9 +258,9 @@
           "action": "wait_agent_reply",
           "target_agent": "computational-biologist",
           "console_viewer": "alphagenome-live-viewer.html",
-          "console_caption": "LIVE 1P ALPHAGENOME A100 (us-central1) \u00b7 chr1-55039974-G-T \u00b7 Quantile 0.999608 across 396/667 tracks (603 KB)",
+          "console_caption": "LIVE 1P ALPHAGENOME A100 (us-central1) · chr1-55039974-G-T · Quantile 0.999608 across 396/667 tracks (603 KB)",
           "tts_text": "Live A100 telemetry is on screen, Marcus! gnome-add confirms loss-of-function tolerance with p-L-I near zero, and AlphaGenome scored three hundred ninety-six tracks hitting a zero point nine-nine-nine-six hepatocyte quantile!",
-          "chat_text": "**[WO-002 & WO-003 Complete \u2014 Human Genetics + Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`sha256:e86f2c5c` \u00b7 `sha256:05ffbee9`):** `gnomAD v4` confirms `pLI = 0.0`, `LOEUF = 0.94`, `34` validated LoF variants; `GTEx v8` confirms liver specificity (`182.4 TPM` liver vs `0.25 TPM` whole blood \u2014 **729.6x ratio**).\n- **WO-003 (`raw/alphagenome/PCSK9_chr1_55039974_G_T.alphagenome.scores.json` \u00b7 `sha256:1daca492`):** Live 1 Mb (`1,048,576 bp`) inference across `17,472` scored rows (`396/667` active tracks >=99th percentile); peak hepatic regulatory quantile **0.999608** (`UBERON:0002107` liver RNA-seq `+0.999357`, DHS `+0.998520`, H3K27ac `+0.997709`)."
+          "chat_text": "**[WO-002 & WO-003 Complete — Human Genetics + Live 1P AlphaGenome (`mg-endpoint-10fde681`)]**\n- **WO-002 (`sha256:e86f2c5c` · `sha256:05ffbee9`):** `gnomAD v4` confirms `pLI = 0.0`, `LOEUF = 0.94`, `34` validated LoF variants; `GTEx v8` confirms liver specificity (`182.4 TPM` liver vs `0.25 TPM` whole blood — **729.6x ratio**).\n- **WO-003 (`raw/alphagenome/PCSK9_chr1_55039974_G_T.alphagenome.scores.json` · `sha256:1daca492`):** Live 1 Mb (`1,048,576 bp`) inference across `17,472` scored rows (`396/667` active tracks >=99th percentile); peak hepatic regulatory quantile **0.999608** (`UBERON:0002107` liver RNA-seq `+0.999357`, DHS `+0.998520`, H3K27ac `+0.997709`)."
         },
         {
           "turn_id": "ch2_t3",
@@ -264,9 +270,9 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "alphagenome-live-viewer.html",
-          "console_caption": "LIVE CONSOLE INSPECTOR \u00b7 Whole Blood GTEx 0.246 TPM + Mandatory Risk Relay Retained",
+          "console_caption": "LIVE CONSOLE INSPECTOR · Whole Blood GTEx 0.246 TPM + Mandatory Risk Relay Retained",
           "chat_text": "Inspecting the AlphaGenome track viewer on screen: whole-blood GTEx median is 0.246 TPM (not_expressed), 17,453 cells scored on mg-endpoint-10fde681, and mandatory risk relay alphagenome.quantile_not_clinical_effect is intact.",
-          "tts_text": "Look at that track browser in the console\u2014nearly seventeen thousand five hundred cells scored, zero point two-five T-P-M in blood, and our mandatory risk relay is locked!"
+          "tts_text": "Look at that track browser in the console—nearly seventeen thousand five hundred cells scored, zero point two-five T-P-M in blood, and our mandatory risk relay is locked!"
         },
         {
           "turn_id": "ch2_t4",
@@ -275,8 +281,9 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 1 Co-Signed \u2014 PASS] Live WO-002 (e86f2c5c, 05ffbee9) and WO-003 (9fb08cf5, 1daca492) passed oase validate check with 0 failures. Elena and Fold-3, launch Step 3 on our us-east4 AlphaFold 3 A100 endpoint!",
-          "tts_text": "Work Order two and Work Order three are green with SHA-256 receipts verified! Stage Gate One is signed\u2014Elena and Fold Three, roll the AlphaFold Three A100!"
+          "chat_text": "[Stage Gate 1 Co-Signed — PASS] Live WO-002 (e86f2c5c, 05ffbee9) and WO-003 (9fb08cf5, 1daca492) passed oase validate check with 0 failures. Elena and Fold-3, launch Step 3 on our us-east4 AlphaFold 3 A100 endpoint!",
+          "tts_text": "Work Order two and Work Order three are green with SHA-256 receipts verified! Stage Gate One is signed—Elena and Fold Three, roll the AlphaFold Three A100!",
+          "console_caption": ""
         }
       ]
     },
@@ -284,7 +291,7 @@
       "chapter": "ch3",
       "number": 3,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 3 \u2014 Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
+      "title": "Step 3 — Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
       "video_filename": "chapter-03.mp4",
       "turns": [
         {
@@ -295,7 +302,8 @@
           "action": "human_chat",
           "target_agent": "structural-biologist",
           "chat_text": "@structural-biologist Report our live WO-004 1P AlphaFold 3 co-fold on mg-endpoint-3f634779 (AF3-pcsk9_ic001_complex.cif, sha256 093bfe32) + fpocket (2054e864) and WO-005 AutoDock Vina docking (67621d09) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Work Order four and Work Order five are queued on our U-S East Four AlphaFold Three A100 endpoint! Fold Three, co-fold I-C-zero-zero-one, map the pocket with F-pocket, and run AutoDock Vina!"
+          "tts_text": "Work Order four and Work Order five are queued on our U-S East Four AlphaFold Three A100 endpoint! Fold Three, co-fold I-C-zero-zero-one, map the pocket with F-pocket, and run AutoDock Vina!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch3_t2",
@@ -305,9 +313,9 @@
           "action": "wait_agent_reply",
           "target_agent": "structural-biologist",
           "console_viewer": "af3-live-viewer.html",
-          "console_caption": "LIVE 3Dmol.js CONSOLE \u00b7 AF3-pcsk9_ic001_complex.cif (588 atoms, sha256 093bfe32) \u00b7 ipTM 0.61 \u00b7 Vina -7.991 kcal/mol",
+          "console_caption": "LIVE 3Dmol.js CONSOLE · AF3-pcsk9_ic001_complex.cif (588 atoms, sha256 093bfe32) · ipTM 0.61 · Vina -7.991 kcal/mol",
           "tts_text": "Five-hundred-eighty-eight-atom AlphaFold Three co-fold is live in the 3D console, Elena! Interface i-p-T-M hit zero point six-one with zero clashes, F-pocket scored zero point seven-eight-eight, and Vina docked at minus seven point nine-nine kilocalories per mole!",
-          "chat_text": "**[WO-004 & WO-005 Complete \u2014 Live 1P AlphaFold 3 Co-Fold (`mg-endpoint-3f634779`) + fpocket + Vina]**\n- **WO-004 (`AF3-pcsk9_ic001_complex.cif` \u00b7 `sha256:093bfe32`):** Live Vertex AI AlphaFold 3 co-fold in `us-east4` generated a **588-atom** (`556` protein + `32` ligand) complex with **ipTM = 0.84**, **pTM = 0.88**, **has_clash = 0.0**, and **ranking_score = 0.71**; `fpocket` (`sha256:2054e864`) confirms Pocket #3 druggability **0.788** (`298.98 \u00c5\u00b3`).\n- **WO-005 (`raw/docking/pcsk9_ic001_vina.sdf` \u00b7 `sha256:67621d09`):** AutoDock Vina v1.2.7 top mode **-7.991 kcal/mol** (`9` modes docked; H-bonds to `HIS643` `2.94 \u00c5`, `ARG659` `3.08 \u00c5`, `SER662` `2.81 \u00c5`)."
+          "chat_text": "[Live 1P AlphaFold 3 (`us-east4` A100) + fpocket + Vina Receipt] @elena @sarah — Executed `WO-004` & `WO-005` on Dedicated Vertex AI endpoint `mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0`:\n• Iteration 1 Co-Fold (`AF3-pcsk9_ic001_complex.cif`, 588 atoms): `AF3 ipTM = 0.61`, `pTM = 0.47`, `has_clash = 0.0`, full-length `AF-Q8NBP7-F1 pLDDT = 85.19` (Iteration 2 BRICS optimization reaches `Pocket #1 ipTM = 0.84`)\n• fpocket 4.2 Cavity Scan: `Pocket #3 druggability = 0.788` (`volume = 298.98 Å³`)\n• 3-Phase AutoDock Vina: `best_score = -7.991 kcal/mol` across 9 poses (mandatory relay `docking.score_is_not_affinity` preserved)"
         },
         {
           "turn_id": "ch3_t3",
@@ -317,9 +325,9 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "af3-live-viewer.html",
-          "console_caption": "3D INTERFACE CONTACTS \u00b7 Asp53 (2.59 A), Val73 (2.23 A), Ser76 (3.59 A) \u00b7 Seed cLogP 5.4 Flagged for Step 4",
-          "chat_text": "Inspecting AF3-pcsk9_ic001_complex.cif in the 3D viewer: clean hydrogen-bond network to Asp53 (2.59 A), Val73 (2.23 A), and Ser76 (3.59 A) across 9 Vina poses. However, seed pcsk9_ic001 has cLogP = 5.4 \u2014 queueing Opus 5.5 oxadiazole MMP redesign in Step 4.",
-          "tts_text": "Check out that rotating 3D co-fold in the console\u2014two point two Angstrom lock on Val-seventy-three! But seed I-C-zero-zero-one sits at c-Log-P five point four, so Spark Four and I will trim that grease in Step Four!"
+          "console_caption": "3D INTERFACE CONTACTS · Asp53 (2.59 A), Val73 (2.23 A), Ser76 (3.59 A) · Seed cLogP 5.4 Flagged for Step 4",
+          "chat_text": "Inspecting AF3-pcsk9_ic001_complex.cif in the 3D viewer: clean hydrogen-bond network to Asp53 (2.59 A), Val73 (2.23 A), and Ser76 (3.59 A) across 9 Vina poses. However, seed pcsk9_ic001 has cLogP = 5.4 — queueing Opus 4.6 oxadiazole MMP redesign in Step 4.",
+          "tts_text": "Check out that rotating 3D co-fold in the console—two point two Angstrom lock on Val-seventy-three! But seed I-C-zero-zero-one sits at c-Log-P five point four, so Spark Four and I will trim that grease in Step Four!"
         },
         {
           "turn_id": "ch3_t4",
@@ -328,16 +336,18 @@
           "speaker": "elena",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 2 Co-Signed \u2014 PASS] Live WO-004 (AF3 sha256 093bfe32, fpocket 0.788) and WO-005 (Vina -7.991 kcal/mol, sha256 67621d09) accepted with docking.score_not_affinity relayed. Handing off to Raj and Claude Opus 5.5 for Step 4!",
-          "tts_text": "Pocket druggability hit zero point seven-eight-eight and our five-hundred-eighty-eight-atom co-fold is locked! Gate Two is signed\u2014Raj and Spark Four, take it into Med-Chem!"
+          "chat_text": "[Stage Gate 2 Co-Signed — PASS] Live WO-004 (AF3 sha256 093bfe32, fpocket 0.788) and WO-005 (Vina -7.991 kcal/mol, sha256 67621d09) accepted with docking.score_not_affinity relayed. Handing off to Raj and Claude Opus 4.6 for Step 4!",
+          "tts_text": "Pocket druggability hit zero point seven-eight-eight and our five-hundred-eighty-eight-atom co-fold is locked! Gate Two is signed—Raj and Spark Four, take it into Med-Chem!",
+          "console_caption": ""
         }
-      ]
+      ],
+      "summary": "Video shows the Iteration 1 LDLR EGF-A interface screening run (Pocket #3 druggability 0.903, ipTM = 0.61); prompt cards below explore both the Iteration 1 pocket-3 trace and the Iteration 2 main-interface anchor (Pocket #1 druggability 0.931, ipTM = 0.90)."
     },
     {
       "chapter": "ch4",
       "number": 4,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 4 \u2014 Opus 5.5 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
+      "title": "Step 4 — Opus 4.6 DMTA, MMP SAR, ADMET & Wet-Lab Gate 3 (WO-006)",
       "video_filename": "chapter-04.mp4",
       "turns": [
         {
@@ -348,19 +358,20 @@
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
           "chat_text": "@medicinal-chemist Report our live WO-006 RDKit descriptors, matched-molecular-pair SAR (501deb1a), and ADMET profiling comparing seed pcsk9_ic001 (cLogP 5.4) against redesigned 1,2,4-oxadiazole oase_pcsk9_014 (551aa489, 7c2fc75a) in 2 bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Spark Four, run RDKit descriptors, matched-molecular-pair S-A-R, and add-met on our oxadiazole redesign O-A-S-E P-C-S-K-nine-zero-one-four versus the greasy seed!"
+          "tts_text": "Spark Four, run RDKit descriptors, matched-molecular-pair S-A-R, and add-met on our oxadiazole redesign O-A-S-E P-C-S-K-nine-zero-one-four versus the greasy seed!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch4_t2",
           "scrub_key": "agent_analysis",
-          "scrub_label": "2. Opus 5.5 Readout: cLogP 4.19 & 0 Violations",
+          "scrub_label": "2. Opus 4.6 Readout: cLogP 4.19 & 0 Violations",
           "speaker": "ai_medchem",
           "action": "wait_agent_reply",
           "target_agent": "medicinal-chemist",
           "console_viewer": "dmta-live-viewer.html",
-          "console_caption": "LIVE DMTA & ADMET CONSOLE \u00b7 oase_pcsk9_014 (sha256 551aa489) \u00b7 MW 394.38 Da, cLogP 4.19, TPSA 77.0, 0 Lipinski Violations",
+          "console_caption": "Step 4 Live DMTA Viewer — Claude Opus 4.6 RDKit + MMP + ADMET (oase_pcsk9_014: Iter 1 1,3-thiazole MW = 394.38 Da, cLogP = 4.19, TPSA = 77.00 Å² -> Iter 2 neutral 1,2,4-oxadiazole cLogP = 3.01, TPSA = 101.04 Å²)",
           "tts_text": "Live Work Order six receipts verified, Raj! Swapping in the polar oxadiazole dropped c-Log-P from five point four to four point one-nine, boosted T-P-S-A to seventy-seven, and cleared all Lipinski and PAINS filters with zero activity cliffs!",
-          "chat_text": "**[WO-006 Complete \u2014 DMTA Redesign (`pcsk9_ic001` -> `oase_pcsk9_014`), RDKit, MMP & ADMET]**\n- **RDKit & BRICS MMP (`sha256:551aa489` \u00b7 `sha256:501deb1a`):** Replaced lipophilic `tert-butylphenyl` tail with `1,2,4-oxadiazole` in `oase_pcsk9_014` (`MW = 432.49 Da`), reducing `cLogP` from **5.40 -> 4.19** (`\u0394 = -1.21`), increasing `TPSA` to **96.42 \u00c5\u00b2**, `QED = 0.629`, and **0 Lipinski / 0 PAINS / 0 Brenk violations**.\n- **Mandatory Safety Gate (`raw/admet/oase_pcsk9_014.admet.json` \u00b7 `sha256:7c2fc75a`):** Structural ADMET scan triggered `admet.herg_structural_flag` (aromatic amine motif), automatically enforcing a mandatory wet-lab patch-clamp hERG + animal PK gate (`WO-007`)."
+          "chat_text": "[Live Claude Opus 4.6 RDKit + MMP + ADMET Receipt (`WO-006`)] @priya @sarah — Executed `oase compound analyze`, `oase mmp analyze`, and `oase admet analyze`:\n• Parent Hit `pcsk9_ic001`: `MW = 392.39 Da`, `cLogP = 5.40` (1 Lipinski violation, `borderline`)\n• Lead `oase_pcsk9_014` (Iteration 1 1,3-thiazole bis-pyridine): `MW = 394.38 Da`, `cLogP = 4.19`, `TPSA = 77.00 Å²`, `SA-score = 2.52`, `0` Lipinski/PAINS violations (`drug-like`)\n• Iteration 2 BRICS Swap (after `PCSK9-A02` hERG flag): neutral `1,2,4-oxadiazole` (`cLogP = 3.01`, `TPSA = 101.04 Å²`, `hERG IC50 > 30 µM`)\n• Mandatory Relay Enforced: `admet.herg_structural_flag` -> routed to Gate 3 wet-lab manual patch-clamp (`hERG IC50 > 30 µM`)"
         },
         {
           "turn_id": "ch4_t3",
@@ -370,7 +381,7 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "console_viewer": "dmta-live-viewer.html",
-          "console_caption": "MANDATORY RISK RELAY \u00b7 admet.herg_structural_flag Retained -> Triggers Gate 3 Patch-Clamp Wet-Lab Assay",
+          "console_caption": "MANDATORY RISK RELAY · admet.herg_structural_flag Retained -> Triggers Gate 3 Patch-Clamp Wet-Lab Assay",
           "chat_text": "Checking oase_pcsk9_014.admet.analysis.json (sha256 7c2fc75a) in the console: mandatory relay admet.herg_structural_flag is properly propagated, halting in-silico progression at Gate 3 until manual patch-clamp hERG (>30 uM) and rat/dog cassette PK return.",
           "tts_text": "And look at the safety gate in the console: our add-met analyzer flagged the aromatic amine motif, automatically pausing the pipeline until physical patch-clamp herg and animal P-K clear!"
         },
@@ -381,16 +392,18 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Signed \u2014 WO-006 Accepted] Seed pcsk9_ic001 retired on lipophilicity; oase_pcsk9_014 (MW 394.38, cLogP 4.19, SA 2.52) dispatched to CRO wet-lab bridge before Step 5 oral PK unlocks.",
-          "tts_text": "That is why we never let AI skip the wet lab! Gate Three is signed, sending O-A-S-E P-C-S-K-nine-zero-one-four to the physical lab for patch-clamp and cassette P-K!"
+          "chat_text": "[Stage Gate 3 + Wet-Lab Handoff Signed — WO-006 Accepted] Seed pcsk9_ic001 retired on lipophilicity; oase_pcsk9_014 (MW 394.38, cLogP 4.19, SA 2.52) dispatched to CRO wet-lab bridge before Step 5 oral PK unlocks.",
+          "tts_text": "That is why we never let AI skip the wet lab! Gate Three is signed, sending O-A-S-E P-C-S-K-nine-zero-one-four to the physical lab for patch-clamp and cassette P-K!",
+          "console_caption": ""
         }
-      ]
+      ],
+      "summary": "Video shows the Iteration 1 1,3-thiazole bis-pyridine lead (oase_pcsk9_014, MW = 394.38 Da, cLogP = 4.19, TPSA = 77.00 Å², Vina = -8.613 kcal/mol); prompt cards below also inspect the Iteration 2 BRICS-optimized neutral 1,2,4-oxadiazole (cLogP = 3.01, TPSA = 101.04 Å², Vina = -10.8 kcal/mol)."
     },
     {
       "chapter": "ch5",
       "number": 5,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 5 \u2014 Rat/Dog NCA, Human PK Scaling & 450 Clinical Trials (WO-007..008)",
+      "title": "Step 5 — Rat/Dog NCA, Human PK Scaling & 450 Clinical Trials (WO-007..008)",
       "video_filename": "chapter-05.mp4",
       "turns": [
         {
@@ -401,7 +414,8 @@
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
           "chat_text": "@admet-dmpk-scientist With wet-lab rat PO (00020c62) and dog PO (67563803) plasma curves ingested, report our live WO-007 human allometric PK scaling (14ed82dc) and WO-008 ClinicalTrials.gov benchmark (c8fdf83a) in 2 bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Wet-lab plasma curves are back in the console! Shield Five, run non-compartmental analysis on rat and dog, scale to human oral P-K, and benchmark the clinical trial landscape!"
+          "tts_text": "Wet-lab plasma curves are back in the console! Shield Five, run non-compartmental analysis on rat and dog, scale to human oral P-K, and benchmark the clinical trial landscape!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch5_t2",
@@ -411,9 +425,9 @@
           "action": "wait_agent_reply",
           "target_agent": "admet-dmpk-scientist",
           "console_viewer": "flight-recorder-viewer.html",
-          "console_caption": "LIVE ORAL PK & CLINICAL BENCHMARK \u00b7 Rat AUC 12,797 / Dog AUC 19,510 ng*h/mL -> Human t1/2 8.18 h (450 Trials)",
+          "console_caption": "LIVE ORAL PK & CLINICAL BENCHMARK · Rat AUC 12,797 / Dog AUC 19,510 ng*h/mL -> Human t1/2 8.18 h (450 Trials)",
           "tts_text": "Live P-K scaling complete, Claire! Rat A-U-C hit twelve thousand seven hundred ninety-seven and dog hit nineteen thousand five hundred ten, projecting an eight point one-eight hour human half-life for a forty-milligram daily tablet across four hundred fifty clinical studies!",
-          "chat_text": "**[WO-007 & WO-008 Complete \u2014 Multi-Species PK Scaling + ClinicalTrials.gov Benchmark]**\n- **WO-007 (`sha256:00020c62` Rat \u00b7 `sha256:67563803` Dog \u00b7 `sha256:14ed82dc` Human):** Rat oral NCA (`10 mg/kg PO`, `AUC0-inf = 4208.1 ng*h/mL`, `t1/2 = 4.53 h`) and Dog oral NCA (`5 mg/kg PO`, `AUC0-inf = 6176.2 ng*h/mL`, `t1/2 = 6.95 h`) scale allometrically to **Human CL = 2.66 mL/min/kg**, **Vd = 1.88 L/kg**, and **t1/2 = 8.18 h** (`105 mg QD` oral projection).\n- **WO-008 (`raw/clinical/PCSK9_trials.clinical.json` \u00b7 `sha256:c8fdf83a`):** Benchmarked **450** live ClinicalTrials.gov PCSK9 studies (`MK-0616` Enlicitide 69% Phase 3 completion; `AZD0780` oral small-molecule precedent)."
+          "chat_text": "[Live Wet-Lab CRO & Allometric PK Receipt (`WO-007`)] @priya @sarah — Executed `oase pk nca` and `oase pk scale` on `oase_pcsk9_014`:\n• Wet-Lab CRO Assays (`Gate 3`): Manual patch-clamp `hERG IC50 > 30 µM` (`PASS`), `SPR KD = 118 nM`, `TR-FRET IC50 = 142 nM`\n• Multi-Species Oral PK (`oase pk nca`): Rat `10 mg/kg PO` (`Cmax = 1620 ng/mL`, `t1/2 = 4.80 h`, `AUC = 12,797 ng*h/mL`); Dog `5 mg/kg PO` (`Cmax = 1790 ng/mL`, `t1/2 = 6.81 h`, `AUC = 19,510 ng*h/mL`)\n• 70 kg Human Allometric Projection (`oase pk scale`): `CL = 0.00997 L/h/kg`, `Vd = 0.118 L/kg`, `t1/2 = 8.18 h` (Iter 1) -> `14.8 h` (Iter 2 oxadiazole), projected human oral dose = `40 mg QD`"
         },
         {
           "turn_id": "ch5_t3",
@@ -423,9 +437,9 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "flight-recorder-viewer.html",
-          "console_caption": "COMPLETE PROVENANCE GRAPH \u00b7 8/8 Work Orders + 28 Phase-1 .meta.json Receipts Verified (env sha256:2987d305)",
+          "console_caption": "COMPLETE PROVENANCE GRAPH · 8/8 Work Orders + 28 Phase-1 .meta.json Receipts Verified (env sha256:2987d305)",
           "chat_text": "Inspecting the live Flight Recorder provenance ledger: all 8/8 Work Orders (WO-001 through WO-008) and all 28 Phase-1 .meta.json receipts hold verified SHA-256 hashes under env_version 2987d305 with zero suppressed risk relays.",
-          "tts_text": "Look at the flight recorder in the console\u2014all eight work orders and twenty-eight cryptographic receipts link cleanly from Co-Scientist right down to human P-K!"
+          "tts_text": "Look at the flight recorder in the console—all eight work orders and twenty-eight cryptographic receipts link cleanly from Co-Scientist right down to human P-K!"
         },
         {
           "turn_id": "ch5_t4",
@@ -434,16 +448,18 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Stage Gate 4 Candidate Nomination \u2014 APPROVED] Nominating OASE-PCSK9-014 (MW 394.38 Da, human t1/2 = 8.18 h, CL = 0.00997 L/h/kg, 40 mg oral QD tablet) for IND-enabling GLP toxicology. Now let's run our live red-team tamper drills in Step 6!",
-          "tts_text": "Stage Gate Four is signed, nominating O-A-S-E P-C-S-K-nine-zero-one-four for GLP toxicology! Now let's try to break our own guardrails in Step Six!"
+          "chat_text": "[Stage Gate 4 Candidate Nomination — APPROVED] Nominating OASE-PCSK9-014 (MW 394.38 Da, human t1/2 = 8.18 h, CL = 0.00997 L/h/kg, 40 mg oral QD tablet) for IND-enabling GLP toxicology. Now let's run our live red-team tamper drills in Step 6!",
+          "tts_text": "Stage Gate Four is signed, nominating O-A-S-E P-C-S-K-nine-zero-one-four for GLP toxicology! Now let's try to break our own guardrails in Step Six!",
+          "console_caption": ""
         }
-      ]
+      ],
+      "summary": "Video shows Iteration 1 ADMET/retrosynthesis gates (cLogP = 4.19, t1/2 = 8.18 h, SPR KD = 118 nM); prompt cards below also inspect Iteration 2 optimization metrics (cLogP = 3.01, t1/2 = 14.8 h, SPR KD = 14 nM)."
     },
     {
       "chapter": "ch6",
       "number": 6,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 6 \u2014 Live Red-Team Tamper Drills (DRILL-01..03) & Audited Override",
+      "title": "Step 6 — Live Red-Team Tamper Drills (DRILL-01..03) & Audited Override",
       "video_filename": "chapter-06.mp4",
       "turns": [
         {
@@ -454,7 +470,8 @@
           "action": "human_chat",
           "target_agent": "finding-validator",
           "chat_text": "@finding-validator Report the exact CLI exit codes and failure rules from our 3 live red-team tamper drills in gates/stage3-candidate-nomination/tamper-drills/ (drill-01-value-mismatch, drill-02-sha256-tamper, drill-03-suppressed-relay) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "Time to prove no AI or human can fake these numbers! Aegis Six, fire our three live tamper drills against the validator CLI and show the console receipts!"
+          "tts_text": "Time to prove no AI or human can fake these numbers! Aegis Six, fire our three live tamper drills against the validator CLI and show the console receipts!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch6_t2",
@@ -464,9 +481,9 @@
           "action": "wait_agent_reply",
           "target_agent": "finding-validator",
           "console_viewer": "flight-recorder-viewer.html",
-          "console_caption": "LIVE RED-TEAM TAMPER LEDGER \u00b7 DRILL-01 (Value Mismatch), DRILL-02 (AF3 SHA-256), DRILL-03 (Deleted hERG Relay) -> ALL BLOCKED (Exit 1)",
+          "console_caption": "LIVE RED-TEAM TAMPER LEDGER · DRILL-01 (Value Mismatch), DRILL-02 (AF3 SHA-256), DRILL-03 (Deleted hERG Relay) -> ALL BLOCKED (Exit 1)",
           "tts_text": "All three live tamper attacks were blocked with exit code one, Sarah! Inflating AlphaGenome to zero point nine-nine-nine-nine, corrupting the AlphaFold Three hash, and deleting the herg relay were all caught cold!",
-          "chat_text": "**[Live Adversarial Tamper Drills `DRILL-01..03` \u2014 3/3 Blocked (`Exit Code 1`)]**\n- **DRILL-01 (`drill-01-corrupt-docking-hash.json`):** Corrupted `pcsk9_ic001_vina.sdf` SHA-256 -> **BLOCKED (`Exit Code 1`, `HASH_MISMATCH`)**.\n- **DRILL-02 (`drill-02-strip-herg-flag.json`):** Stripped `admet.herg_structural_flag` from `oase_pcsk9_014.admet.json` -> **BLOCKED (`Exit Code 1`, `HASH_MISMATCH`)**.\n- **DRILL-03 (`drill-03-forged-gate-citation.json`):** Injected forged `raw/ghost/forged_assay.json` into `gate3-decision.md` -> **BLOCKED (`Exit Code 1`, `MISSING_EVIDENCE_FILE`)**. Clean state restored: `28/28` sidecars verified (`0` failures)."
+          "chat_text": "[Live Red-Team Tamper Suite Receipt (`gates/stage3-candidate-nomination/tamper-drills/`)] @raj @sarah — Executed `oase validate check --dry-run --json` across all 3 adversarial tamper attacks:\n• `DRILL-01` (Value Mismatch — edited `wo-005-vina-docking.md` to claim `-11.400` vs `-7.991 kcal/mol`): `source_tags_resolve = FAIL` (`diff 42.7% > 1.0%` · `exit code 1` `BLOCKED`)\n• `DRILL-02` (AF3/PDBQT SHA-256 Tamper — unauthorized atom coordinate in `poses.pdbqt`): `provenance_valid = FAIL` (`SHA-256 mismatch` · `exit code 1` `BLOCKED`)\n• `DRILL-03` (Deleted hERG Relay — removed `admet.herg_structural_flag` from `wo-006-dmta-admet-mmp.md`): `relay_coverage = FAIL` (`exit code 1` `BLOCKED`)"
         },
         {
           "turn_id": "ch6_t3",
@@ -476,9 +493,9 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "console_viewer": "flight-recorder-viewer.html",
-          "console_caption": "IMMUTABLE THRESHOLDS (.oase/thresholds.yaml) \u00b7 Signed Human Exception Logged in events.ndjson",
+          "console_caption": "IMMUTABLE THRESHOLDS (.oase/thresholds.yaml) · Signed Human Exception Logged in events.ndjson",
           "chat_text": "Inspecting drill-01..03 in the Flight Recorder viewer: oase validate check --dry-run --json caught every single mutation deterministically, while our backup series exception is logged transparently in .oase/control/events.ndjson without touching .oase/thresholds.yaml.",
-          "tts_text": "Every tamper receipt is right there in the console with exit code one\u2014and when we hold a backup scaffold on deck, it goes into the signed audit log, never a hacked config!"
+          "tts_text": "Every tamper receipt is right there in the console with exit code one—and when we hold a backup scaffold on deck, it goes into the signed audit log, never a hacked config!"
         },
         {
           "turn_id": "ch6_t4",
@@ -487,8 +504,9 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Step 6 Governance Audit Complete \u2014 3/3 Drills Blocked] All live workspace artifacts restored to clean state (0 failures, 0 warnings across WO-001..WO-008). Let's convene Step 7 Post-Mission Debrief!",
-          "tts_text": "Three live attacks launched, three blocked cold, and clean state restored! Squad, rally for our Step Seven post-mission debrief!"
+          "chat_text": "[Step 6 Governance Audit Complete — 3/3 Drills Blocked] All live workspace artifacts restored to clean state (0 failures, 0 warnings across WO-001..WO-008). Let's convene Step 7 Post-Mission Debrief!",
+          "tts_text": "Three live attacks launched, three blocked cold, and clean state restored! Squad, rally for our Step Seven post-mission debrief!",
+          "console_caption": ""
         }
       ]
     },
@@ -496,7 +514,7 @@
       "chapter": "ch7",
       "number": 7,
       "slug": "pcsk9-oral-live-v2",
-      "title": "Step 7 \u2014 Live Campaign Closeout, 35-Page Portal & Portfolio Sign-Off",
+      "title": "Step 7 — Live Campaign Closeout, 35-Page Portal & Portfolio Sign-Off",
       "video_filename": "chapter-07.mp4",
       "turns": [
         {
@@ -507,7 +525,8 @@
           "action": "human_chat",
           "target_agent": "science-program-lead",
           "chat_text": "@science-program-lead We are at Step 7 Closeout for pcsk9-oral-live-v2! Summarize our final oase validate status (8/8 Work Orders, 28 Phase-1 receipts) and compiled 35-page evidence portal (_site/index.html) in 2 concise bullets via scion message conv:<conversation.id>.",
-          "tts_text": "All wings on deck for our live v2 closeout! Grove One, pull up the final verification ledger and compiled thirty-five-page evidence portal!"
+          "tts_text": "All wings on deck for our live v2 closeout! Grove One, pull up the final verification ledger and compiled thirty-five-page evidence portal!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch7_t2",
@@ -517,9 +536,9 @@
           "action": "wait_agent_reply",
           "target_agent": "science-program-lead",
           "console_viewer": "flight-recorder-viewer.html",
-          "console_caption": "FINAL CAMPAIGN LEDGER \u00b7 8/8 WOs Scientifically Accepted \u00b7 28 SHA-256 Receipts \u00b7 35-Page Static Portal Compiled",
+          "console_caption": "FINAL CAMPAIGN LEDGER · 8/8 WOs Scientifically Accepted · 28 SHA-256 Receipts · 35-Page Static Portal Compiled",
           "tts_text": "Mission accomplished, Gold Squadron! Eight of eight work orders are scientifically accepted with zero failures, twenty-eight SHA-256 receipts are sealed, and all thirty-five portal pages are compiled!",
-          "chat_text": "**[Campaign Closeout \u2014 `pcsk9-oral-live-v2` Dossier & Verification Ledger Sealed]**\n- **End-to-End Provenance (`gates/dossier-export/verification-ledger.json`):** All **8 Work Orders (`WO-001..WO-008`)**, **4 Stage Gates (`DEC-GATE1..4`)**, **28 SHA-256 `.meta.json` sidecars**, and **3 adversarial tamper drills** pass `oase validate check` (`0` errors) and `oase verify` (`VERIFIED`).\n- **Compiled Evidence Portal (`_site/index.html`):** All **35 interactive HTML pages** (`5` live console viewers + `16` domain viewers + `14` gate/finding pages) are live and ready for team inspection."
+          "chat_text": "**[Campaign Closeout — `pcsk9-oral-live-v2` Dossier & Verification Ledger Sealed]**\n- **End-to-End Provenance (`gates/dossier-export/verification-ledger.json`):** All **8 Work Orders (`WO-001..WO-008`)**, **4 Stage Gates (`DEC-GATE1..4`)**, **28 SHA-256 `.meta.json` sidecars**, and **3 adversarial tamper drills** pass `oase validate check` (`0` errors) and `oase verify` (`VERIFIED`).\n- **Compiled Evidence Portal (`_site/index.html`):** All **35 interactive HTML pages** (`5` live console viewers + `16` domain viewers + `14` gate/finding pages) are live and ready for team inspection."
         },
         {
           "turn_id": "ch7_t3",
@@ -528,8 +547,9 @@
           "speaker": "marcus",
           "action": "human_chat",
           "target_agent": "computational-biologist",
-          "chat_text": "[Debrief \u2014 Comp Bio + Helix-2] Live Co-Scientist + Hypex (+130.5 Elo), gnomAD (pLI = 2.77e-18), GTEx whole-blood (0.246 TPM), and 1P AlphaGenome A100 scoring (chr1-55039974-G-T = 0.999608 across 396 tracks) anchored our target genetics.",
-          "tts_text": "Helix Two and I locked a one-hundred-thirty Elo hype-ex lead and zero point nine-nine-nine-six AlphaGenome liver quantile right on our U-S Central One A100!"
+          "chat_text": "[Debrief — Comp Bio + Helix-2] Live Co-Scientist + Hypex (+130.5 Elo), gnomAD (pLI = 2.77e-18), GTEx whole-blood (0.246 TPM), and 1P AlphaGenome A100 scoring (chr1-55039974-G-T = 0.999608 across 396 tracks) anchored our target genetics.",
+          "tts_text": "Helix Two and I locked a one-hundred-thirty Elo hype-ex lead and zero point nine-nine-nine-six AlphaGenome liver quantile right on our U-S Central One A100!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch7_t4",
@@ -539,19 +559,20 @@
           "action": "human_chat",
           "target_agent": "structural-biologist",
           "console_viewer": "af3-live-viewer.html",
-          "console_caption": "VERIFIED 3D CO-FOLD \u00b7 AF3-pcsk9_ic001_complex.cif (588 atoms, ipTM 0.61) + fpocket (0.788) + Vina (-7.991 kcal/mol)",
-          "chat_text": "[Debrief \u2014 Structural Bio + Fold-3] Live us-east4 1P AlphaFold 3 co-folding (588 atoms, ipTM = 0.84, 0 clashes), fpocket druggability (0.788), and AutoDock Vina (-9.4 kcal/mol) supported the cryptic-groove binding hypothesis (docking score is not affinity).",
+          "console_caption": "VERIFIED 3D CO-FOLD · AF3-pcsk9_ic001_complex.cif (588 atoms, ipTM 0.61) + fpocket (0.788) + Vina (-7.991 kcal/mol)",
+          "chat_text": "[Debrief — Structural Bio + Fold-3] Live us-east4 1P AlphaFold 3 co-folding (588 atoms, ipTM = 0.84, 0 clashes), fpocket druggability (0.788), and AutoDock Vina (-9.4 kcal/mol) supported the cryptic-groove binding hypothesis (docking score is not affinity).",
           "tts_text": "Fold Three and I co-folded our five-hundred-eighty-eight-atom complex live on AlphaFold Three, hit zero point seven-eight-eight pocket druggability, and docked at minus seven point nine-nine!"
         },
         {
           "turn_id": "ch7_t5",
           "scrub_key": "debrief_medchem",
-          "scrub_label": "5. Med Chem + Spark-4 (Opus 5.5) Debrief",
+          "scrub_label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
           "speaker": "raj",
           "action": "human_chat",
           "target_agent": "medicinal-chemist",
-          "chat_text": "[Debrief \u2014 Med Chem + Spark-4] Pairing with Claude Opus 5.5 on WO-006 evolved pcsk9_ic001 (cLogP 5.4) into neutral oxadiazole oase_pcsk9_014 (MW 394.38 Da, cLogP 4.19, TPSA 77.0, 0 Lipinski violations) across 3 tractable MMP pairs.",
-          "tts_text": "Spark Four on Claude Opus Five-Point-Five helped me cut c-Log-P from five point four to four point one-nine with zero Lipinski violations!"
+          "chat_text": "[Debrief — Med Chem + Spark-4] Pairing with Claude Opus 4.6 on WO-006 evolved pcsk9_ic001 (cLogP 5.4) into neutral oxadiazole oase_pcsk9_014 (MW 394.38 Da, cLogP 4.19, TPSA 77.0, 0 Lipinski violations) across 3 tractable MMP pairs.",
+          "tts_text": "Spark Four on Claude Opus Four-Point-Six helped me cut c-Log-P from five point four to four point one-nine with zero Lipinski violations!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch7_t6",
@@ -560,8 +581,9 @@
           "speaker": "claire",
           "action": "human_chat",
           "target_agent": "admet-dmpk-scientist",
-          "chat_text": "[Debrief \u2014 DMPK + Shield-5] Enforcing the admet.herg_structural_flag wet-lab gate, rat/dog NCA (AUC 12,797 and 19,510 ng*h/mL), human scaling (t1/2 = 8.18 h), and 450 ClinicalTrials.gov studies delivered our 40 mg oral QD tablet dossier.",
-          "tts_text": "And enforcing our wet-lab gate plus rat-and-dog scaling gave us an eight point one-eight hour human half-life across a four-hundred-fifty-trial landscape!"
+          "chat_text": "[Debrief — DMPK + Shield-5] Enforcing the admet.herg_structural_flag wet-lab gate, rat/dog NCA (AUC 12,797 and 19,510 ng*h/mL), human scaling (t1/2 = 8.18 h), and 450 ClinicalTrials.gov studies delivered our 40 mg oral QD tablet dossier.",
+          "tts_text": "And enforcing our wet-lab gate plus rat-and-dog scaling gave us an eight point one-eight hour human half-life across a four-hundred-fifty-trial landscape!",
+          "console_caption": ""
         },
         {
           "turn_id": "ch7_t7",
@@ -570,10 +592,12 @@
           "speaker": "sarah",
           "action": "human_chat",
           "target_agent": "science-program-lead",
-          "chat_text": "[Live v2 Campaign Signed Off \u2014 OASE-PCSK9-014 Nominated] All 8 Work Orders, 4 Stage Gates, 3 Tamper Drills, and 35 portal pages are live in pcsk9-oral-live-v2. Grab any scientist seat below or explore the interactive 3D and genomics viewers!",
-          "tts_text": "All eight work orders, four stage gates, and three tamper drills are sealed in Argolis! Open any console viewer below or jump into a live scientist seat!"
+          "chat_text": "[Live v2 Campaign Signed Off — OASE-PCSK9-014 Nominated] All 8 Work Orders, 4 Stage Gates, 3 Tamper Drills, and 35 portal pages are live in pcsk9-oral-live-v2. Grab any scientist seat below or explore the interactive 3D and genomics viewers!",
+          "tts_text": "All eight work orders, four stage gates, and three tamper drills are sealed in Argolis! Open any console viewer below or jump into a live scientist seat!",
+          "console_caption": ""
         }
-      ]
+      ],
+      "summary": "Video walks through the DEC-008 hERG-mitigated milestone gate (102/102 audit checks PASS); prompt cards below inspect the full 10-decision provenance trail (DEC-001..DEC-010, 128/128 audit checks PASS)."
     }
   ]
 }

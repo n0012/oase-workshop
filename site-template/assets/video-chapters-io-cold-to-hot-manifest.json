@@ -4,9 +4,9 @@
       "chapter": "ch1",
       "number": 1,
       "slug": "io-cold-to-hot",
-      "title": "Step 1 — IO Cold-to-Hot Target Discovery & Elo Tournament (WO-001 · ENPP1 #1)",
+      "title": "Step 1 \u2014 IO Cold-to-Hot Target Discovery & Elo Tournament (WO-001 \u00b7 ENPP1 #1)",
       "video_filename": "chapter-01.mp4",
-      "duration_s": 110.4,
+      "duration_s": 114.3,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -17,70 +17,70 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         },
         {
           "key": "prompt_genetics",
           "label": "2. Innate Checkpoint & Genetics Rule",
-          "time_s": 14.57,
+          "time_s": 15.23,
           "timecode": "0:15",
           "speaker": "Dr. Marcus Vance",
-          "role": "Comp Biology · GOLD-2",
+          "role": "Comp Biology \u00b7 GOLD-2",
           "voice_id": "Sadaltager"
         },
         {
           "key": "prompt_structure",
           "label": "3. Catalytic Pocket & Wet-Lab Wall Rule",
-          "time_s": 31.1,
-          "timecode": "0:31",
+          "time_s": 32.4,
+          "timecode": "0:32",
           "speaker": "Dr. Elena Rostova",
-          "role": "Structural Bio · GOLD-3",
+          "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
         },
         {
           "key": "coscientist_launch",
           "label": "4. Execute WO-001 Co-Scientist + Hypex",
-          "time_s": 45.63,
-          "timecode": "0:46",
+          "time_s": 47.57,
+          "timecode": "0:48",
           "speaker": "Dr. Raj Patel",
-          "role": "Med Chemistry · GOLD-4",
+          "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
         },
         {
           "key": "tournament_readout",
           "label": "5. ENPP1 #1 at 1658.4 Elo (+103.9 Gap)",
-          "time_s": 59.07,
-          "timecode": "0:59",
-          "speaker": "Grove-1 · AI Program Lead",
+          "time_s": 61.63,
+          "timecode": "1:02",
+          "speaker": "Grove-1 \u00b7 AI Program Lead",
           "role": "@science-program-lead [SP]",
           "voice_id": "en-us-techagent-3"
         },
         {
           "key": "subway_routing",
           "label": "6. Inspect 5-Target Bracket & Relays",
-          "time_s": 72.67,
-          "timecode": "1:13",
+          "time_s": 75.23,
+          "timecode": "1:15",
           "speaker": "Dr. Claire Moreau",
-          "role": "DMPK & Translational · GOLD-5",
+          "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
         },
         {
           "key": "wingman_roster",
           "label": "7. Citations & Subway Tracks Verified",
-          "time_s": 86.23,
-          "timecode": "1:26",
-          "speaker": "Helix-2 · AI Comp Bio",
+          "time_s": 89.47,
+          "timecode": "1:29",
+          "speaker": "Helix-2 \u00b7 AI Comp Bio",
           "role": "@computational-biologist [CB]",
           "voice_id": "en-us-advisor-8"
         },
         {
           "key": "mission_launch",
           "label": "8. WO-001 Accepted & Step 2 Launch",
-          "time_s": 97.8,
-          "timecode": "1:38",
+          "time_s": 101.03,
+          "timecode": "1:41",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ]
@@ -89,9 +89,9 @@
       "chapter": "ch2",
       "number": 2,
       "slug": "io-cold-to-hot",
-      "title": "Step 2 — Human Genetics, TREX1 Rejection & Live 1P AlphaGenome (WO-002..003)",
+      "title": "Step 2 \u2014 Human Genetics, TREX1 Rejection & Live 1P AlphaGenome (WO-002..003)",
       "video_filename": "chapter-02.mp4",
-      "duration_s": 63.77,
+      "duration_s": 65.73,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -102,34 +102,34 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Marcus Vance",
-          "role": "Comp Biology · GOLD-2",
+          "role": "Comp Biology \u00b7 GOLD-2",
           "voice_id": "Sadaltager"
         },
         {
           "key": "agent_analysis",
           "label": "2. Live 1P AlphaGenome & TREX1 Disqualification",
-          "time_s": 19.63,
+          "time_s": 20.27,
           "timecode": "0:20",
-          "speaker": "Helix-2 · AI Comp Bio",
+          "speaker": "Helix-2 \u00b7 AI Comp Bio",
           "role": "@computational-biologist [CB]",
           "voice_id": "en-us-advisor-8"
         },
         {
           "key": "validator_verdict",
-          "label": "3. Target Constraint & Safety Review",
-          "time_s": 37.4,
-          "timecode": "0:37",
+          "label": "3. Nick & David Tandem Target Review",
+          "time_s": 38.03,
+          "timecode": "0:38",
           "speaker": "Dr. Claire Moreau",
-          "role": "DMPK & Translational · GOLD-5",
+          "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
         },
         {
           "key": "gate_signoff",
           "label": "4. DEC-002 Target Gate Co-Signed",
-          "time_s": 50.17,
-          "timecode": "0:50",
+          "time_s": 51.47,
+          "timecode": "0:51",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ]
@@ -138,9 +138,9 @@
       "chapter": "ch3",
       "number": 3,
       "slug": "io-cold-to-hot",
-      "title": "Step 3 — Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
+      "title": "Step 3 \u2014 Live 1P AlphaFold 3 Co-Fold, fpocket & AutoDock Vina (WO-004..005)",
       "video_filename": "chapter-03.mp4",
-      "duration_s": 57.03,
+      "duration_s": 58.97,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -151,34 +151,34 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Elena Rostova",
-          "role": "Structural Bio · GOLD-3",
+          "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
         },
         {
           "key": "agent_analysis",
           "label": "2. Live AF3 Co-Fold & Vina Catalytic Pose",
-          "time_s": 15.53,
+          "time_s": 16.17,
           "timecode": "0:16",
-          "speaker": "Fold-3 · AI Structural Bio",
+          "speaker": "Fold-3 \u00b7 AI Structural Bio",
           "role": "@structural-biologist [SB]",
           "voice_id": "en-gb-tutor-17"
         },
         {
           "key": "validator_verdict",
           "label": "3. Inspect 3D Catalytic Helices & Sulfamide Pose",
-          "time_s": 31.83,
+          "time_s": 32.47,
           "timecode": "0:32",
           "speaker": "Dr. Raj Patel",
-          "role": "Med Chemistry · GOLD-4",
+          "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
         },
         {
           "key": "gate_signoff",
           "label": "4. Stage 2 Structural Gate Co-Signed",
-          "time_s": 45.1,
-          "timecode": "0:45",
+          "time_s": 46.4,
+          "timecode": "0:46",
           "speaker": "Dr. Elena Rostova",
-          "role": "Structural Bio · GOLD-3",
+          "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
         }
       ]
@@ -187,9 +187,9 @@
       "chapter": "ch4",
       "number": 4,
       "slug": "io-cold-to-hot",
-      "title": "Step 4 — Claude Opus 4.6 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
+      "title": "Step 4 \u2014 Opus 4.6 DMTA, BRICS MMP & ADMET to the Computational Limit (WO-006)",
       "video_filename": "chapter-04.mp4",
-      "duration_s": 56.8,
+      "duration_s": 58.8,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -200,46 +200,46 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Raj Patel",
-          "role": "Med Chemistry · GOLD-4",
+          "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
         },
         {
           "key": "agent_analysis",
-          "label": "2. Claude Opus 4.6 Readout: oase_enpp1_009 Drug-Like",
-          "time_s": 13.3,
-          "timecode": "0:13",
-          "speaker": "Spark-4 · AI Med Chemist",
+          "label": "2. Opus 4.6 Readout: oase_enpp1_009 Drug-Like",
+          "time_s": 13.97,
+          "timecode": "0:14",
+          "speaker": "Spark-4 \u00b7 AI Med Chemist",
           "role": "@medicinal-chemist [MC]",
           "voice_id": "en-in-tutor-12"
         },
         {
           "key": "validator_verdict",
           "label": "3. Approaching the Epistemic Boundary",
-          "time_s": 33.43,
-          "timecode": "0:33",
+          "time_s": 34.1,
+          "timecode": "0:34",
           "speaker": "Dr. Claire Moreau",
-          "role": "DMPK & Translational · GOLD-5",
+          "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
         },
         {
           "key": "gate_signoff",
           "label": "4. WO-006 Accepted & Advance to DEC-003",
-          "time_s": 45.2,
-          "timecode": "0:45",
+          "time_s": 46.53,
+          "timecode": "0:47",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ],
-      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 Å²) in the live Grove & prompt deck below.]"
+      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 \u00c5\u00b2) in the live Grove & prompt deck below.]"
     },
     "ch5": {
       "chapter": "ch5",
       "number": 5,
       "slug": "io-cold-to-hot",
-      "title": "Step 5 — The Wet-Lab Wall Gate (DEC-003 · Halted Pending Wet-Lab Validation)",
+      "title": "Step 5 \u2014 The Wet-Lab Wall Gate (DEC-003 \u00b7 Halted Pending Wet-Lab Validation)",
       "video_filename": "chapter-05.mp4",
-      "duration_s": 62.13,
+      "duration_s": 64.1,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -250,46 +250,46 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Claire Moreau",
-          "role": "DMPK & Translational · GOLD-5",
+          "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
         },
         {
           "key": "agent_analysis",
           "label": "2. Formal Halt: halted_pending_wet_lab (L-003)",
-          "time_s": 14.77,
+          "time_s": 15.43,
           "timecode": "0:15",
-          "speaker": "Shield-5 · AI Translational",
+          "speaker": "Shield-5 \u00b7 AI Translational",
           "role": "@admet-dmpk-scientist [AD]",
           "voice_id": "en-ie-advisor-4"
         },
         {
           "key": "validator_verdict",
           "label": "3. Inspect Ex Vivo & Syngeneic Assay Spec",
-          "time_s": 29.83,
+          "time_s": 30.5,
           "timecode": "0:30",
           "speaker": "Dr. Marcus Vance",
-          "role": "Comp Biology · GOLD-2",
+          "role": "Comp Biology \u00b7 GOLD-2",
           "voice_id": "Sadaltager"
         },
         {
           "key": "gate_signoff",
           "label": "4. DEC-003 Signed & Pre-Wet-Lab Dossier Staged",
-          "time_s": 47.37,
-          "timecode": "0:47",
+          "time_s": 48.67,
+          "timecode": "0:49",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ],
-      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 Å²) in the live Grove & prompt deck below.]"
+      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 \u00c5\u00b2) in the live Grove & prompt deck below.]"
     },
     "ch6": {
       "chapter": "ch6",
       "number": 6,
       "slug": "io-cold-to-hot",
-      "title": "Step 6 — Live Red-Team Tamper Drills (DRILL-01..03) & Anti-Hallucination Audit",
+      "title": "Step 6 \u2014 Live Red-Team Tamper Drills (DRILL-01..03) & Anti-Hallucination Audit",
       "video_filename": "chapter-06.mp4",
-      "duration_s": 52.97,
+      "duration_s": 54.9,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -300,34 +300,34 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         },
         {
           "key": "agent_analysis",
           "label": "2. All 3 Tamper Drills Blocked (Exit Code 1)",
-          "time_s": 12.27,
-          "timecode": "0:12",
-          "speaker": "Aegis-6 · AI Validator",
+          "time_s": 12.93,
+          "timecode": "0:13",
+          "speaker": "Aegis-6 \u00b7 AI Validator",
           "role": "@finding-validator [FV]",
           "voice_id": "en-us-advisor-10"
         },
         {
           "key": "validator_verdict",
           "label": "3. Compare 78/78 Doctor & Skill Audit",
-          "time_s": 26.9,
-          "timecode": "0:27",
+          "time_s": 27.57,
+          "timecode": "0:28",
           "speaker": "Dr. Raj Patel",
-          "role": "Med Chemistry · GOLD-4",
+          "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
         },
         {
           "key": "gate_signoff",
           "label": "4. Governance Audit Signed & Step 7 Debrief",
-          "time_s": 41.33,
-          "timecode": "0:41",
+          "time_s": 42.63,
+          "timecode": "0:43",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ]
@@ -336,9 +336,9 @@
       "chapter": "ch7",
       "number": 7,
       "slug": "io-cold-to-hot",
-      "title": "Step 7 — Team Debrief: Pre-Wet-Lab Dossier Ready While Awaiting Wet-Lab Results",
+      "title": "Step 7 \u2014 Team Debrief: Pre-Wet-Lab Dossier Ready While Awaiting Wet-Lab Results",
       "video_filename": "chapter-07.mp4",
-      "duration_s": 100.03,
+      "duration_s": 103.67,
       "resolution": "1920x1080",
       "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
       "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
@@ -349,70 +349,70 @@
           "time_s": 0.0,
           "timecode": "0:00",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         },
         {
           "key": "ledger_readout",
           "label": "2. Pre-Wet-Lab Dossier & Portal Sealed",
-          "time_s": 12.6,
+          "time_s": 13.27,
           "timecode": "0:13",
-          "speaker": "Grove-1 · AI Program Lead",
+          "speaker": "Grove-1 \u00b7 AI Program Lead",
           "role": "@science-program-lead [SP]",
           "voice_id": "en-us-techagent-3"
         },
         {
           "key": "debrief_compbio",
           "label": "3. Comp Bio + Helix-2 Debrief",
-          "time_s": 25.3,
-          "timecode": "0:25",
+          "time_s": 25.97,
+          "timecode": "0:26",
           "speaker": "Dr. Marcus Vance",
-          "role": "Comp Biology · GOLD-2",
+          "role": "Comp Biology \u00b7 GOLD-2",
           "voice_id": "Sadaltager"
         },
         {
           "key": "debrief_structbio",
           "label": "4. Structural Bio + Fold-3 Debrief",
-          "time_s": 41.03,
-          "timecode": "0:41",
+          "time_s": 42.33,
+          "timecode": "0:42",
           "speaker": "Dr. Elena Rostova",
-          "role": "Structural Bio · GOLD-3",
+          "role": "Structural Bio \u00b7 GOLD-3",
           "voice_id": "Kore"
         },
         {
           "key": "debrief_medchem",
-          "label": "5. Med Chem + Spark-4 (Claude Opus 4.6) Debrief",
-          "time_s": 55.57,
-          "timecode": "0:56",
+          "label": "5. Med Chem + Spark-4 (Opus 4.6) Debrief",
+          "time_s": 57.5,
+          "timecode": "0:58",
           "speaker": "Dr. Raj Patel",
-          "role": "Med Chemistry · GOLD-4",
+          "role": "Med Chemistry \u00b7 GOLD-4",
           "voice_id": "Alnilam"
         },
         {
           "key": "debrief_dmpk",
           "label": "6. Translational + Shield-5 Debrief",
-          "time_s": 68.13,
-          "timecode": "1:08",
+          "time_s": 70.47,
+          "timecode": "1:10",
           "speaker": "Dr. Claire Moreau",
-          "role": "DMPK & Translational · GOLD-5",
+          "role": "DMPK & Translational \u00b7 GOLD-5",
           "voice_id": "Pulcherrima"
         },
         {
           "key": "portfolio_handoff",
           "label": "7. Dossier Staged Awaiting Wet-Lab Readout",
-          "time_s": 84.6,
-          "timecode": "1:25",
+          "time_s": 87.6,
+          "timecode": "1:28",
           "speaker": "Dr. Sarah Chen",
-          "role": "Program Lead · GOLD-1",
+          "role": "Program Lead \u00b7 GOLD-1",
           "voice_id": "Leda"
         }
       ],
-      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 Å²) in the live Grove & prompt deck below.]"
+      "summary": "[Phase 1 Replay captures pre-wet-lab hold DEC-003 on Series A oase_enpp1_009; inspect Phase 2 wet-lab return DEC-008 & Series B recovery oase_enpp1_019 (TPSA = 79.40 \u00c5\u00b2) in the live Grove & prompt deck below.]"
     }
   },
   "full_walkthrough": {
     "video_filename": "full-pilot-walkthrough.mp4",
-    "duration_s": 503.13,
+    "duration_s": 520.47,
     "resolution": "1920x1080"
   }
 }

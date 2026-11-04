@@ -44,7 +44,7 @@ SHARED_CSS = """
   .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
   .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
   .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
-  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.gpro { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
   .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
   .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
   .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
@@ -132,11 +132,11 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
-    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 2.5 Pro (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Claude Opus 4.6</strong>.</p>
+    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 2.5 Pro</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 4.6</strong>.</p>
     <div class="badge-row">
-      <span class="pill argon">oase coscientist · clear-leader (+54.5 Elo)</span>
-      <span class="pill argon">oase hypex · leader-with-advisories (+130.5 Elo)</span>
-      <span class="pill opus">scientific-reviewer · Claude Claude Opus 4.6</span>
+      <span class="pill gpro">oase coscientist · clear-leader (+54.5 Elo)</span>
+      <span class="pill gpro">oase hypex · leader-with-advisories (+130.5 Elo)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 4.6</span>
       <span class="pill pass">export.json sha256: efb254b442e22d96</span>
       <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
     </div>
@@ -169,7 +169,7 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
             <td><strong>#2</strong></td>
             <td><code>H-0002</code><br><small><code>IC-002</code></small></td>
             <td><strong>Cyclic Peptide / Macrocycle Allosteric</strong><br><small style="color:#94a3b8;">MW 742 Da (beyond-Ro5 permeability risk)</small></td>
-            <td><span class="pill argon">1512.0 Elo</span><br><small>58.3% win</small></td>
+            <td><span class="pill gpro">1512.0 Elo</span><br><small>58.3% win</small></td>
             <td><span class="pill opus">AMBER BACKUP</span></td>
           </tr>
           <tr>
@@ -208,26 +208,26 @@ COSCIENTIST_HTML = f"""<!DOCTYPE html>
 
     <div>
       <div class="card">
-        <h2>7-Agent Debate &amp; Claude Claude Opus 4.6 Audit (`hx-pcsk9-elo-live`)</h2>
+        <h2>7-Agent Debate &amp; Claude Opus 4.6 Audit (`hx-pcsk9-elo-live`)</h2>
         <div id="match-list">
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)</strong>
-              <span class="pill argon">Gemini 2.5 Pro (High)</span>
+              <span class="pill gpro">Gemini 2.5 Pro</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)</strong>
-              <span class="pill argon">Gemini 2.5 Pro (High)</span>
+              <span class="pill gpro">Gemini 2.5 Pro</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Adversarial Assumption &amp; Falsification Audit (`FP-001`)</strong>
-              <span class="pill opus">Claude Claude Opus 4.6</span>
+              <span class="pill opus">Claude Opus 4.6</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket &ge; 0.50`, `Vina &le; -7.5 kcal/mol`).</div>
           </div>
@@ -248,9 +248,9 @@ env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2ac
 <script>
 document.getElementById('nav-cosci').classList.add('active');
 const ROUNDS = [
-  {{ tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 2.5 Pro (High)', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' }},
-  {{ tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 2.5 Pro (High)', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' }},
-  {{ tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Claude Opus 4.6', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }}
+  {{ tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 2.5 Pro', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' }},
+  {{ tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 2.5 Pro', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' }},
+  {{ tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Opus 4.6', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }}
 ];
 function filterMatches(tag, btn) {{
   document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));
@@ -261,7 +261,7 @@ function filterMatches(tag, btn) {{
     <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
         <strong style="color:#f8fafc;font-size:0.76rem;">${{r.title}}</strong>
-        <span class="pill ${{r.model.includes('Opus') ? 'opus' : 'argon'}}">${{r.model}}</span>
+        <span class="pill ${{r.model.includes('Opus') ? 'opus' : 'gpro'}}">${{r.model}}</span>
       </div>
       <div style="color:#cbd5e1;font-size:0.73rem;">${{r.body}}</div>
     </div>
@@ -289,7 +289,7 @@ ALPHAGENOME_HTML = f"""<!DOCTYPE html>
     <p>Live `1,048,576 bp` sequence context window (`chr1:54,515,686–55,564,262`, hg38) for `chr1:55039974:G&gt;T` (`rs2479409`) scored on our Dedicated Vertex AI `us-central1` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-10fde681-120f-41a6-a204-8db9bd052ef5`), paired with live `gnomAD v4` constraint (`pLI = 2.765e-18`, `LOEUF = 1.144`, `lof_tolerant`) and `GTEx v8` extrahepatic whole-blood silence (`0.246 TPM`, `not_expressed`).</p>
     <div class="badge-row">
       <span class="pill pass">1P AlphaGenome · mg-endpoint-10fde681 (us-central1 A100)</span>
-      <span class="pill argon">computational-biologist · Gemini 2.5 Pro (Med)</span>
+      <span class="pill gpro">computational-biologist · Gemini 2.5 Pro</span>
       <span class="pill pass">PCSK9 Quantile = 0.999608 · Raw = 0.026925 · 396/667 Tracks</span>
       <span class="pill pass">response.ndjson (603 KB) sha256: 9fb08cf573947868</span>
     </div>
@@ -406,7 +406,7 @@ def _build_af3_html(cif_text: str) -> str:
     <p>All-atom `PCSK9` catalytic/EGF-A domain + `pcsk9_ic001` (`LIG_B`) co-fold (`588` atoms, `57,032 bytes`) computed live on our Dedicated Vertex AI `us-east4` `NVIDIA_A100_80GB` endpoint (`mg-endpoint-3f634779-eb94-4690-951f-f36f3aac86e0`), paired with full-length `AF-Q8NBP7-F1` (`global_plddt = 85.19`), `fpocket` Pocket #3 (`druggability = 0.788`, `volume = 298.979 &Aring;&sup3;`), and 3-phase `AutoDock Vina` docking (`best_score = -7.991 kcal/mol` across `9` poses).</p>
     <div class="badge-row">
       <span class="pill pass">1P AlphaFold 3 · mg-endpoint-3f634779 (us-east4 A100)</span>
-      <span class="pill argon">structural-biologist · Gemini 2.5 Pro (High)</span>
+      <span class="pill gpro">structural-biologist · Gemini 2.5 Pro</span>
       <span class="pill pass">AF3 ipTM = 0.61 · has_clash = 0.0 · fpocket = 0.788 · Vina = -7.991 kcal/mol</span>
       <span class="pill pass">AF3-pcsk9_ic001_complex.cif sha256: 093bfe32e46d827f</span>
     </div>
@@ -842,7 +842,7 @@ DMTA_HTML = f"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Step 4 — Claude Claude Opus 4.6 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
+<title>Step 4 — Claude Opus 4.6 RDKit/MMP/ADMET Optimization &amp; Wet-Lab Gate</title>
 <style>{SHARED_CSS}</style>
 </head>
 <body>
@@ -850,11 +850,11 @@ DMTA_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, Matched Molecular Pairs (`MMP`), `ADMET` &amp; Wet-Lab CRO Handoff</h1>
-    <p>`@medicinal-chemist` (**Claude Claude Opus 4.6**) and `@admet-dmpk-scientist` (**Gemini 2.5 Pro Med**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.40`, `1` Lipinski violation, `borderline`) against optimized oxadiazole lead **`oase_pcsk9_014`** (`MW = 394.38`, `cLogP = 4.19`, `TPSA = 77.0 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `drug-like`), enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
+    <p>`@medicinal-chemist` (**Claude Opus 4.6**) and `@admet-dmpk-scientist` (**Gemini 2.5 Pro**) evaluate parent hit `pcsk9_ic001` (`cLogP = 5.40`, `1` Lipinski violation, `borderline`) against Iteration 1 1,3-thiazole bis-pyridine lead **`oase_pcsk9_014`** (`MW = 394.38 Da`, `cLogP = 4.19`, `TPSA = 77.00 &Aring;&sup2;`, `0` Lipinski violations, `0` PAINS, `drug-like`) and Iteration 2 BRICS neutral 1,2,4-oxadiazole (`cLogP = 3.01`, `TPSA = 101.04 &Aring;&sup2;`), enforcing the mandatory `admet.herg_structural_flag` relay via a hard Gate 3 wet-lab patch-clamp assay.</p>
     <div class="badge-row">
-      <span class="pill opus">medicinal-chemist · Claude Claude Opus 4.6</span>
-      <span class="pill argon">admet-dmpk-scientist · Gemini 2.5 Pro (Med)</span>
-      <span class="pill pass">oase_pcsk9_014 · MW = 394.38 · cLogP = 4.19 · TPSA = 77.0 · 0 Violations</span>
+      <span class="pill opus">medicinal-chemist · Claude Opus 4.6</span>
+      <span class="pill gpro">admet-dmpk-scientist · Gemini 2.5 Pro</span>
+      <span class="pill pass">oase_pcsk9_014 · Iter 1 Thiazole (394.38 Da, cLogP 4.19, TPSA 77.0) &rarr; Iter 2 Oxadiazole (cLogP 3.01, TPSA 101.04)</span>
       <span class="pill pass">descriptors.json sha256: 551aa4897aee43e9</span>
     </div>
   </div>
@@ -875,9 +875,9 @@ DMTA_HTML = f"""<!DOCTYPE html>
             <td><span class="pill block">borderline</span><br><small>Superseded</small></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.14);">
-            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Oxadiazole Lead)</small></td>
+            <td><strong><code>oase_pcsk9_014</code></strong><br><small>(Iter 1 Thiazole &rarr; Iter 2 Oxadiazole)</small></td>
             <td><strong>394.38 Da</strong><br><small>HBD=1, HBA=6</small></td>
-            <td>cLogP <strong>4.19</strong> (&Delta;-1.21)<br>TPSA <strong>77.00 &Aring;&sup2;</strong></td>
+            <td>cLogP <strong>4.19 &rarr; 3.01</strong><br>TPSA <strong>77.00 &rarr; 101.04 &Aring;&sup2;</strong></td>
             <td><span class="pill pass">0 Violations</span><br><small>0 PAINS · SA 2.52</small></td>
             <td><span class="pill pass">drug-like</span><br><small>&rarr; CRO GATE 3</small></td>
           </tr>
@@ -892,7 +892,7 @@ DMTA_HTML = f"""<!DOCTYPE html>
       </table>
 
       <svg viewBox="0 0 520 132" style="width:100%;height:auto;margin-top:0.55rem;background:#020617;border:1px solid #334155;border-radius:6px;">
-        <text x="12" y="18" fill="#38bdf8" font-size="10.5" font-family="monospace" font-weight="bold">CLAUDE OPUS 5.5 MMP TRANSFORM: TERT-BUTYLPHENYL &rarr; 1,2,4-OXADIAZOLE</text>
+        <text x="12" y="18" fill="#38bdf8" font-size="10.5" font-family="monospace" font-weight="bold">CLAUDE OPUS 4.6 MMP TRANSFORM: ITER 1 THIAZOLE (4.19) &rarr; ITER 2 OXADIAZOLE (3.01)</text>
         <text x="12" y="42" fill="#fca5a5" font-size="10" font-family="monospace">Seed pcsk9_ic001 cLogP (Limit &le; 5.0)</text>
         <rect x="235" y="31" width="216" height="13" rx="3" fill="#ef4444"/>
         <text x="458" y="42" fill="#fca5a5" font-size="10.5" font-family="monospace" font-weight="bold">5.40 (FAIL)</text>
@@ -1090,8 +1090,8 @@ IO_COSCIENTIST_HTML = f"""<!DOCTYPE html>
     <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-venter-20261030-io-cold-to-hot`) + `Hypex` (`hx-io-cold-to-hot-elo`) Tournament</h1>
     <p>Live replay of David's `venter-scion` Immuno-Oncology Cold-to-Hot Tumor Reprogramming campaign on `losiern-oase-workshop` (`scion-hub-oase`). Five innate-immune targets (`ENPP1`, `ADAR1`, `PTPN2`, `TREX1`, `LSD1`/`KDM1A`) were evaluated by `oase coscientist ingest/analyze` and `oase hypex ingest/analyze`, converging on <strong>extracellular ENPP1 catalytic pocket blockade (`1658.4 Elo`)</strong> to preserve tumor-derived 2&prime;,3&prime;-cGAMP for paracrine dendritic-cell STING activation.</p>
     <div class="badge-row">
-      <span class="pill argon">oase coscientist · clear-leader (ENPP1 1658.4 Elo, +56.4 gap)</span>
-      <span class="pill argon">oase hypex · H-0001 Leader (1658.4 Elo, +103.9 gap over PTPN2)</span>
+      <span class="pill gpro">oase coscientist · clear-leader (ENPP1 1658.4 Elo, +56.4 gap)</span>
+      <span class="pill gpro">oase hypex · H-0001 Leader (1658.4 Elo, +103.9 gap over PTPN2)</span>
       <span class="pill opus">TREX1 Disqualified at DEC-001 (Aicardi-Goutières Autoimmunity L-001)</span>
       <span class="pill pass">0 Contradicted Literature Claims (PMID:32972994 Verified)</span>
     </div>
@@ -1116,14 +1116,14 @@ IO_COSCIENTIST_HTML = f"""<!DOCTYPE html>
             <td><strong>#2</strong></td>
             <td><code>ADAR1</code><br><small><code>H-002</code></small></td>
             <td><strong>Intracellular dsRNA Deaminase Inhibition</strong><br><small style="color:#94a3b8;">Derepresses MDA5/MAVS IFN signaling (`PMID:30559380`)</small></td>
-            <td><span class="pill argon">1602.0 Elo</span><br><small>68.8% win · RNA-edit tox risk</small></td>
+            <td><span class="pill gpro">1602.0 Elo</span><br><small>68.8% win · RNA-edit tox risk</small></td>
             <td><span class="pill opus">WATCHLIST</span></td>
           </tr>
           <tr>
             <td><strong>#3</strong></td>
             <td><code>PTPN2</code><br><small><code>H-0002</code></small></td>
             <td><strong>Intracellular Tyrosine Phosphatase Inhibition</strong><br><small style="color:#94a3b8;">Amplifies JAK/STAT1 IFN-&gamma; (`PMID:28723893`, `ABBV-CLS-484`)</small></td>
-            <td><span class="pill argon">1554.5 Elo</span><br><small>56.3% win · Active-site polarity</small></td>
+            <td><span class="pill gpro">1554.5 Elo</span><br><small>56.3% win · Active-site polarity</small></td>
             <td><span class="pill opus">BACKUP TARGET</span></td>
           </tr>
           <tr>
@@ -1168,7 +1168,7 @@ IO_COSCIENTIST_HTML = f"""<!DOCTYPE html>
         <h2>Why Extracellular `ENPP1` Defeated Intracellular Competitors (`WO-001`)</h2>
         <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
           <strong style="color:#6ee7b7;font-size:0.76rem;">1. Extracellular Ectoenzyme Accessibility (No Cytosolic Efflux Barrier)</strong>
-          <div style="color:#cbd5e1;font-size:0.73rem;margin-top:0.18rem;">Unlike `PTPN2` and `ADAR1`, `ENPP1` acts on the outer tumor plasma membrane (`TPSA = 111.79 Å²`), avoiding intracellular P-gp efflux and sparing healthy non-cGAMP-producing tissues.</div>
+          <div style="color:#cbd5e1;font-size:0.73rem;margin-top:0.18rem;">Unlike `PTPN2` and `ADAR1`, `ENPP1` acts on the outer tumor plasma membrane (`TPSA = 113.96 Å²`), avoiding intracellular P-gp efflux and sparing healthy non-cGAMP-producing tissues.</div>
         </div>
         <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
           <strong style="color:#fca5a5;font-size:0.76rem;">2. Elimination of `TREX1` Systemic Interferonopathy (`L-001`, `DEC-001`)</strong>
@@ -1301,9 +1301,9 @@ IO_DMTA_HTML = f"""<!DOCTYPE html>
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 4 (`WO-006`) — Live `RDKit` Descriptors, `BRICS MMP` (`enpp1_hit_001` &rarr; `oase_enpp1_009`) &amp; `ADMET` Qualification</h1>
-    <p>Executed inside `io-cold-to-hot--medicinal-chemist` and `io-cold-to-hot--admet-dmpk-scientist`: replacing the lipophilic chlorophenyl urea in `enpp1_hit_001` (`cLogP = 3.32`, `TPSA = 74.62 &Aring;&sup2;`) with a polar fluorophenyl-sulfonylurea in lead **`oase_enpp1_009`** (`MW = 507.52 Da`, `cLogP = 2.01`, `TPSA = 111.79 &Aring;&sup2;`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations) enforces extracellular TME retention and clears all in silico CYP and hERG pharmacophore alerts (`0` liabilities).</p>
+    <p>Executed inside `io-cold-to-hot--medicinal-chemist` and `io-cold-to-hot--admet-dmpk-scientist`: replacing the lipophilic chlorophenyl urea in `enpp1_hit_001` (`cLogP = 3.32`, `TPSA = 74.62 &Aring;&sup2;`) with a polar sulfamide ZBG in Series A lead **`oase_enpp1_009`** (`MW = 475.50 Da`, `cLogP = 2.01`, `TPSA = 113.96 &Aring;&sup2;`, `SA-score = 2.59`, `0` Lipinski/Veber/PAINS/Brenk violations) enforces extracellular TME retention and clears all in silico CYP and hERG pharmacophore alerts (`0` liabilities).</p>
     <div class="badge-row">
-      <span class="pill pass">oase_enpp1_009 · cLogP = 2.01 · TPSA = 111.79 Å² (Extracellular Retention)</span>
+      <span class="pill pass">oase_enpp1_009 · MW = 475.50 Da · cLogP = 2.01 · TPSA = 113.96 Å² (Extracellular Retention)</span>
       <span class="pill pass">0 Lipinski / 0 Veber / 0 PAINS / 0 Brenk · SA-Score = 2.59</span>
       <span class="pill pass">ADMET: 0 CYP Isoforms Flagged · 0 hERG Pharmacophore Features Matched</span>
     </div>
@@ -1325,9 +1325,9 @@ IO_DMTA_HTML = f"""<!DOCTYPE html>
             <td><span class="pill opus">hERG IC50 8.5 µM</span><br><small>Cell-permeant risk</small></td>
           </tr>
           <tr style="background:rgba(16,185,129,0.14);">
-            <td><strong><code>oase_enpp1_009</code></strong><br><small>(Sulfonylurea Lead)</small></td>
-            <td><strong>507.52 Da</strong><br><small>HBD=1, HBA=9</small></td>
-            <td>cLogP <strong>2.01</strong> (&Delta;-1.31)<br>TPSA <strong>111.79 &Aring;&sup2;</strong></td>
+            <td><strong><code>oase_enpp1_009</code></strong><br><small>(Series A Sulfamide Lead)</small></td>
+            <td><strong>475.50 Da</strong><br><small>HBD=2, HBA=9</small></td>
+            <td>cLogP <strong>2.01</strong> (&Delta;-1.31)<br>TPSA <strong>113.96 &Aring;&sup2;</strong></td>
             <td><span class="pill pass">0 Violations</span><br><small>0 PAINS · SA 2.59</small></td>
             <td><span class="pill pass">0 CYP · 0 hERG</span><br><small>&rarr; WET-LAB WALL</small></td>
           </tr>
@@ -1346,8 +1346,8 @@ IO_DMTA_HTML = f"""<!DOCTYPE html>
       <div class="card">
         <h2>`WO-006` Live Container Receipts (`raw/compounds/` &amp; `raw/admet/`)</h2>
         <div class="term">Containers  : io-cold-to-hot--medicinal-chemist &amp; io-cold-to-hot--admet-dmpk-scientist
-Lead SMILES : COc1cc2ncnc(N3CCN(C(=O)NS(=O)(=O)c4ccc(F)cc4)CC3)c2cc1OC
-Descriptors : MW=507.52 Da, logP=2.01, TPSA=111.79 A^2, HBD=1, HBA=9, RotBonds=6
+Lead SMILES : COc1cc2ncnc(N3CCN(S(=O)(=O)NCc4ccc(F)cc4)CC3)c2cc1OC
+Descriptors : MW=475.50 Da, logP=2.01, TPSA=113.96 A^2, HBD=2, HBA=9, RotBonds=6
 Alerts      : PAINS=0, Brenk=0, NIH=0, ZINC=0, SA-Score=2.59 (drug-like)
 ADMET       : LogS=-4.083 (moderate), CYP_flagged=0, hERG_matched=0, n_liabilities=0
 Relays Kept : compound.alerts_not_toxicology, compound.sa_score_is_estimate, mmp.small_pair_count</div>

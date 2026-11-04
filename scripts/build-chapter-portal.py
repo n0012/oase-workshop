@@ -780,7 +780,7 @@ relay fpocket.druggability_is_not_affinity: 0.788 is cavity shape; not an affini
           <thead><tr><th>Series / Run</th><th>Unoptimized High-Scoring Docker</th><th>Optimized Polar Lead (`OASE-PCSK9-014` / `PCSK9-A03`)</th><th>Gate 3 Verdict</th></tr></thead>
           <tbody>
             <tr><td><strong>Seeded Campaign (`WO-006`)</strong></td><td><code>pcsk9_analog_02</code>: <code>cLogP = 4.8</code> (&gt; <code>3.5</code> cutoff), basic-amine hERG liability <code>L-002</code></td><td><strong><code>OASE-PCSK9-014</code></strong>: <code>cLogP = 3.1</code>, <code>LipE = 5.2</code>, <code>MW = 462.5 Da</code>, <code>TPSA = 88.4 Å²</code>, <code>0</code> alerts, <code>4</code>-step synthesis (<code>0.87</code>)</td><td><span class="pass-pill">L-002 MITIGATED</span></td></tr>
-            <tr><td><strong>Live CLI Pair (`live-runs/`)</strong></td><td><code>PCSK9-A02</code>: <code>cLogP = 5.09</code>, <code>MW = 378.4 Da</code>, <strong>3 liabilities</strong> (hERG + MetStab + Sol)</td><td><strong><code>PCSK9-A03</code></strong>: <code>cLogP = 3.01</code>, <code>MW = 338.3 Da</code>, <code>TPSA = 101.0 Å²</code>, <strong>0 liabilities</strong></td><td><span class="pass-pill">0 ALERTS PASS</span></td></tr>
+            <tr><td><strong>Live CLI Pair (`live-runs/`)</strong></td><td><code>PCSK9-A02</code>: <code>cLogP = 5.09</code>, <code>MW = 378.4 Da</code>, <strong>3 liabilities</strong> (hERG + MetStab + Sol)</td><td><strong><code>PCSK9-A03</code> / <code>oase_pcsk9_014</code></strong>: Iter 1 thiazole (<code>MW = 394.38 Da</code>, <code>cLogP = 4.19</code>) &rarr; Iter 2 <code>1,2,4-oxadiazole</code> (<code>cLogP = 3.01</code>, <code>TPSA = 101.04 Å²</code>), <strong>0 liabilities</strong></td><td><span class="pass-pill">0 ALERTS PASS</span></td></tr>
           </tbody>
         </table>
         <div class="relay-box">
@@ -1165,7 +1165,7 @@ $ python3 ~/oase-workshop/scripts/scion_mcp_server.py --cli dav_read --project i
 
       <div>
         <h3 style="margin:0.2rem 0 0.45rem 0;color:#0f172a;">Assign the 5 Discovery Pod Seats (Individual or 2&ndash;4 Person Breakout Pods)</h3>
-        <p style="margin:0 0 0.65rem 0;font-size:0.88rem;color:#334155;">Each chapter video is <strong>36&ndash;43 seconds</strong> long to establish crisp context; spend the remaining 15&ndash;25 minutes of each block in live Scion Webchat Q&amp;A, CLI inspection, and scientific debate across the 5 roles:</p>
+        <p style="margin:0 0 0.65rem 0;font-size:0.88rem;color:#334155;">Each chapter video is <strong>50&ndash;110 seconds</strong> long to establish crisp context; spend the remaining 15&ndash;25 minutes of each block in live Scion Webchat Q&amp;A, CLI inspection, and scientific debate across the 5 roles:</p>
         <table>
           <thead><tr><th>Pod Seat</th><th>Scientist Persona</th><th>Login Handle</th><th>Stages Led in Workshop</th><th>Paired AI Wingmen</th></tr></thead>
           <tbody>
@@ -2338,18 +2338,18 @@ selectStation('s3');
       const scionGraphUrl = (cfg && cfg.scion_hub_url)
         ? `${cfg.scion_hub_url}/projects/${activeProjUuid}`
         : `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/${activeProjUuid}`;
-      const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=64`;
+      const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=87.3`;
       const isIoCamp = cid === 'io-cold-to-hot';
       const p1 = isIoCamp
-        ? 'agy -p "Use scion-oase-bridge to bootstrap the io-cold-to-hot campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."'
-        : 'agy -p "Use scion-oase-bridge to bootstrap the pcsk9-oral-live-v2 campaign, verify oase doctor (78/78 checks), list the 17-agent 4-tier discovery team, and show @controller and @science-program-lead\'s live kickoff feedback."';
+        ? 'agy -p "Use scion-oase-bridge to bootstrap io-cold-to-hot from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 PASS), and dispatch WO-001 to @controller."'
+        : 'agy -p "Use scion-oase-bridge to bootstrap pcsk9-oral-live-v2 from seed/pcsk9-oral/campaign-seed.json, verify oase doctor (78/78 PASS), and dispatch WO-001 to @controller."';
       const p2 = isIoCamp
-        ? 'agy -p "Use scion-oase-bridge to analyze io-cold-to-hot across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered oral absorption."'
-        : 'agy -p "Use scion-oase-bridge to analyze pcsk9-oral-live-v2 across WO-001..WO-008: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why PCSK9-A02 was disqualified on hERG at DEC-005 and how OASE-PCSK9-014 cleared Gate 4."';
+        ? 'agy -p "Use scion-oase-bridge to inspect io-cold-to-hot: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, compare Series A (oase_enpp1_009) vs Series B (oase_enpp1_019), and message @science-program-lead."'
+        : 'agy -p "Use scion-oase-bridge to inspect pcsk9-oral-live-v2: read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, compare PCSK9-A02 vs OASE-PCSK9-014, and message @science-program-lead."';
       agyCard.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
           <div>
-            <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 65s &middot; 1080p)</strong>
+            <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 87s &middot; 1080p)</strong>
             <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
               Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run in the CLI &rarr; Scion Project Messages reacting</strong>.
             </div>
@@ -2364,9 +2364,9 @@ selectStation('s3');
         </div>
         <div class="scrub-bar">
           <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) &middot; Dr. Sarah Chen</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 23.1)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:23) &middot; @science-program-lead</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series Feedback (0:39) &middot; Dr. Sarah Chen</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Gate Sign-Off (1:00) &middot; @admet-dmpk-scientist</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 27.83)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:28) &middot; @science-program-lead</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 45.47)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:45) &middot; Dr. Sarah Chen</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 65.87)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (1:06) &middot; @admet-dmpk-scientist</button>
         </div>
         <div style="margin-top:0.65rem;">
           <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>
@@ -2456,6 +2456,10 @@ selectStation('s3');
         : '';
       const roleHeader = `👩‍🔬 Select a Discovery Pod Persona / Avatar to View Tailored Scion &amp; Cloud Shell Prompts for ${activeCamp.short_label || cid} (${chId.toUpperCase()}):`;
 
+      const summaryHtml = (vmeta && vmeta.summary)
+        ? `<div class="provenance-bridge-banner" style="margin-top:0.55rem;padding:0.55rem 0.75rem;border-radius:8px;background:rgba(30,41,59,0.75);border-left:3px solid #38bdf8;font-size:0.78rem;color:#cbd5e1;line-height:1.45;"><strong style="color:#38bdf8;">📌 Chapter Video &amp; Grove Provenance Bridge:</strong> ${escHtml(vmeta.summary)}</div>`
+        : '';
+
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
           <div>
@@ -2470,6 +2474,7 @@ selectStation('s3');
           <video id="video-${chId}" controls preload="metadata" src="${videoSrc}"></video>
         </div>
         <div class="scrub-bar">${markersHtml}</div>
+        ${summaryHtml}
         ${pauseBarHtml}
         ${wetlabHtml}
         <div class="role-bar">

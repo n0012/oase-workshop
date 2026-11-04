@@ -456,7 +456,7 @@
             "focus": "CMC Scalability, Synthetic Accessibility (SA = 2.61) & GLP Tox Batch Plan",
             "scion_prompts": [
               "@medicinal-chemist Walk through the synthetic accessibility score (SA = 2.61) and 5-step convergent route for scaling OASE-PCSK9-014 to a 100g non-GLP / GLP toxicology batch.",
-              "@medicinal-chemist Why does OASE-PCSK9-014 (MW = 338.3 Da, achiral oxadiazole core) offer a decisive cost-of-goods advantage over peptide macrocycles?"
+              "@medicinal-chemist Why does OASE-PCSK9-014 (Iter 1 thiazole MW = 394.38 Da -> Iter 2 achiral 1,2,4-oxadiazole core, cLogP = 3.01, TPSA = 101.04 Å²) offer a decisive cost-of-goods advantage over peptide macrocycles?"
             ],
             "agy_prompt": "agy -p \"Use scion-oase-bridge on pcsk9-oral-live-v2 to ask @medicinal-chemist about the synthetic route and cost-of-goods advantage of OASE-PCSK9-014.\""
           },
@@ -950,10 +950,10 @@
             "wingman": "Spark-4 (@medicinal-chemist)",
             "focus": "Series B oase_enpp1_019 Scale-Up & Backup PTPN2 Series Readiness",
             "scion_prompts": [
-              "@medicinal-chemist Summarize how the N-alkoxycarbonyl carbamate / neutral heteroaryl ZBG oase_enpp1_019 converts cleanly after gut absorption while avoiding intestinal P-gp efflux.",
+              "@medicinal-chemist Summarize how swapping the bare sulfamide of oase_enpp1_009 (TPSA = 113.96 Å²) to the neutral pyrazole heteroaryl ZBG of oase_enpp1_019 (TPSA = 79.40 Å²) restores passive permeability and bypasses intestinal P-gp efflux.",
               "@medicinal-chemist Under what wet-lab failure condition in EXP-01..04 would we activate the backup PTPN2 series stored in program-state/active-series.md?"
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how oase_enpp1_019's N-alkoxycarbonyl carbamate bypasses intestinal P-gp efflux.\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how oase_enpp1_019's neutral pyrazole heteroaryl ZBG (TPSA = 79.40 Å²) bypasses intestinal P-gp efflux.\""
           },
           "claire": {
             "wingman": "Shield-5 (@admet-dmpk-scientist)",
@@ -995,12 +995,12 @@
           },
           "raj": {
             "wingman": "Spark-4 (@medicinal-chemist) + Aegis-6 (@finding-validator)",
-            "focus": "Liability Tracker Audit: L-001 (TREX1 Eliminated) & L-002 (Series A Efflux Mitigated)",
+            "focus": "Liability Tracker Audit: L-001 (TREX1 Eliminated) & L-003 (Series A Efflux Mitigated)",
             "scion_prompts": [
-              "@medicinal-chemist Show how liability L-002 (Series A sulfamide P-gp efflux ER = 18.4) in program-state/liability-tracker.md transitioned from ACTIVE_BLOCKER at DEC-008 to MITIGATED by oase_enpp1_019 at DEC-010.",
+              "@medicinal-chemist Show how liability L-003 (Series A sulfamide P-gp efflux ER = 18.4, MDCK Papp = 1.1e-6 cm/s) in program-state/liability-tracker.md transitioned from ACTIVE_BLOCKER at DEC-008 to MITIGATED by oase_enpp1_019 (Papp = 12.4e-6 cm/s, ER = 1.6) at DEC-010.",
               "@finding-validator Why does oase validate check reject any Stage 4 nomination if an unmitigated HIGH liability remains open in liability-tracker.md?"
             ],
-            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how L-002 in liability-tracker.md was mitigated by Series B oase_enpp1_019.\""
+            "agy_prompt": "agy -p \"Use scion-oase-bridge on io-cold-to-hot to ask @medicinal-chemist how L-003 in liability-tracker.md was mitigated by Series B oase_enpp1_019.\""
           },
           "claire": {
             "wingman": "Aegis-6 (@finding-validator) + Shield-5 (@admet-dmpk-scientist)",

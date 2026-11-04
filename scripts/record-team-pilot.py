@@ -898,7 +898,7 @@ def build_pip_overlay_clip(
 
     if is_agent:
         hdr_txt = escape_drawtext(f"COMMS // {vmeta.get('callsign', 'AI')} · AI WINGMAN")
-        model_lbl = vmeta.get("model_label", "Gemini 4 Argon")
+        model_lbl = vmeta.get("model_label", "Gemini 2.5 Pro")
         line3 = escape_drawtext(f"{model_lbl} · TTS ({voice_id}) | [{vmeta.get('badge_code', 'AI')}]")
         fc = (
             f"color=c=0x050b1a:s=288x288:r={FPS}:d={slot_dur_s:.4f},"
@@ -958,11 +958,11 @@ def build_pip_overlay_clip(
     live_turn_mp4 = talking_heads_dir / "live_turns" / f"{tid}_live30.mp4"
     if not live_turn_mp4.exists():
         raise FileNotFoundError(
-            f"Missing native Gemini 3.8 Live Avatar clip for {tid}: {live_turn_mp4}"
+            f"Missing native Gemini Live Avatar clip for {tid}: {live_turn_mp4}"
         )
 
     hdr_human = escape_drawtext(f"LIVE COMMS // {vmeta.get('callsign', speaker.upper())}")
-    line3 = escape_drawtext(f"Gemini 3.8 Live Avatar | {avatar_name} ({voice_id})")
+    line3 = escape_drawtext(f"Gemini Live Avatar | {avatar_name} ({voice_id})")
     # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream + Squadron Comms HUD
     fc_human = (
         f"[0:v]crop=iw*0.94:iw*0.94:iw*0.03:ih*0.121,scale=288:288,setsar=1,fps={FPS},"
@@ -1009,6 +1009,128 @@ def build_pip_overlay_clip(
     )
 
 
+def _format_chat_html(text: str) -> str:
+    import html as _html
+    import re
+    esc = _html.escape(text)
+    esc = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", esc)
+    esc = re.sub(r"`([^`]+)`", r"<code style='background:#f1f5f9;color:#0f172a;padding:1px 5px;border-radius:4px;font-family:ui-monospace,monospace;font-size:12px;border:1px solid #cbd5e1;'>\1</code>", esc)
+    return esc.replace("\n", "<br>")
+
+
+def build_webchat_and_banner_png(
+    ch: dict[str, Any],
+    turn_idx: int,
+    voices: dict[str, Any],
+    seg_tmp_dir: Path,
+) -> Path:
+    """Render a 1920x1080 transparent RGBA overlay covering #oase-pilot-banner and the Scion Webchat feed (154..1680, 108..990)."""
+    import html as _html
+
+    cache_dir = seg_tmp_dir / "_chat_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    turns = ch["turns"]
+    cur_turn = turns[turn_idx]
+    tid = cur_turn["turn_id"]
+    cur_sp = cur_turn["speaker"]
+    cur_vmeta = voices[cur_sp]
+    dot_hex = "#" + cur_vmeta.get("accent_hex", "0x10b981").replace("0x", "").replace("#", "")
+    progress_pct = int(round(((turn_idx + 1) / float(max(1, len(turns)))) * 100))
+
+    banner_txt = _html.escape(f"{ch['title']}  ·  COMMS: {cur_vmeta['display_name']} ({cur_vmeta['role']})")
+
+    # Build message cards up through turn_idx (keep last 4 messages so feed fits cleanly without clipping)
+    visible_turns = turns[max(0, turn_idx - 3) : turn_idx + 1]
+    msg_cards: list[str] = []
+    if turn_idx <= 2:
+        msg_cards.append(
+            """
+            <div style="background:#f8fafc;border:1px solid #cbd5e1;border-left:4px solid #2563eb;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:12.4px;color:#1e293b;line-height:1.45;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                <div><strong style="color:#0f172a;">@controller (Research Operations Controller)</strong> <span style="background:#e0f2fe;color:#0369a1;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;font-family:monospace;">Gemini 2.5 Flash · System Seed</span></div>
+                <span style="color:#64748b;font-size:11px;font-family:monospace;">Grove Active · 78/78 Doctor Checks PASS</span>
+              </div>
+              <div><strong>Active Multi-Model Roster:</strong> <code>@science-program-lead</code> (<strong>Gemini 2.5 Pro</strong>), <code>@computational-biologist</code> (<strong>Gemini 2.5 Pro</strong> + 1P <strong>AlphaGenome</strong> <code>us-central1</code>), <code>@structural-biologist</code> (<strong>Gemini 2.5 Pro</strong> + 1P <strong>AlphaFold 3</strong> <code>us-east4</code>), <code>@medicinal-chemist</code> (<strong>Claude Opus 4.6</strong>), <code>@admet-dmpk-scientist</code> (<strong>Gemini 2.5 Pro</strong>), <code>@scientific-reviewer</code> (<strong>Claude Opus 4.6</strong>), and <code>@finding-validator</code> (<strong>Gemini 2.5 Flash</strong>).</div>
+            </div>
+            """
+        )
+
+    for t in visible_turns:
+        sp = t["speaker"]
+        vm = voices[sp]
+        is_ag = bool(vm.get("is_agent", False))
+        ac = "#" + vm.get("accent_hex", "0x10b981").replace("0x", "").replace("#", "")
+        disp = _html.escape(vm["display_name"])
+        role = _html.escape(vm["role"])
+        mdl = _html.escape(vm.get("model_label", "Gemini Live Avatar" if not is_ag else "Gemini 2.5 Pro"))
+        badge_bg = "#eff6ff" if is_ag else "#ecfdf5"
+        badge_fg = "#1d4ed8" if is_ag else "#047857"
+        card_bg = "#ffffff"
+        body_html = _format_chat_html(t.get("chat_text", ""))
+        scrub_lbl = _html.escape(t.get("scrub_label", ""))
+        msg_cards.append(
+            f"""
+            <div style="background:{card_bg};border:1px solid #e2e8f0;border-left:4px solid {ac};border-radius:8px;padding:11px 15px;margin-bottom:8px;box-shadow:0 1px 3px rgba(15,23,42,0.04);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="width:9px;height:9px;border-radius:50%;background:{ac};display:inline-block;"></span>
+                  <strong style="color:#0f172a;font-size:13px;">{disp}</strong>
+                  <span style="color:#64748b;font-size:11.8px;">{role}</span>
+                  <span style="background:{badge_bg};color:{badge_fg};border:1px solid {ac}55;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:700;font-family:ui-monospace,monospace;">{mdl}</span>
+                </div>
+                <span style="color:#64748b;font-size:11px;font-family:ui-monospace,monospace;">{scrub_lbl}</span>
+              </div>
+              <div style="color:#1e293b;font-size:12.8px;line-height:1.48;word-wrap:break-word;overflow-wrap:break-word;">{body_html}</div>
+            </div>
+            """
+        )
+
+    overlay_html = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  html, body {{ width: 1920px; height: 1080px; background: transparent; overflow: hidden; font-family: system-ui, -apple-system, sans-serif; }}
+</style>
+</head>
+<body>
+  <div style="position:fixed;top:0;left:0;right:0;height:4px;background:rgba(15,23,42,0.18);">
+    <div style="height:100%;width:{progress_pct}%;background:linear-gradient(90deg,#2563eb,#10b981);"></div>
+  </div>
+  <div style="position:fixed;top:5px;left:262px;width:1260px;height:38px;background:#ffffff;display:flex;align-items:center;">
+    <div style="margin-left:6px;background:rgba(15,23,42,0.92);color:#f8fafc;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.01em;box-shadow:0 4px 14px rgba(15,23,42,0.22);border:1px solid rgba(56,189,248,0.40);display:inline-flex;align-items:center;gap:8px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:{dot_hex};box-shadow:0 0 8px {dot_hex};display:inline-block;"></span>
+      <span>{banner_txt}</span>
+    </div>
+  </div>
+  <div style="position:fixed;left:154px;top:108px;width:1526px;height:882px;background:#f8f9fb;padding:14px 22px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;">
+    {''.join(msg_cards)}
+  </div>
+</body>
+</html>"""
+
+    html_file = cache_dir / f"{tid}_chat_overlay.html"
+    png_file = cache_dir / f"{tid}_chat_overlay.png"
+    html_file.write_text(overlay_html, encoding="utf-8")
+    subprocess.run(
+        [
+            "/usr/bin/google-chrome",
+            "--headless",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--hide-scrollbars",
+            "--default-background-color=00000000",
+            "--window-size=1920,1080",
+            f"--screenshot={png_file.resolve()}",
+            f"file://{html_file.resolve()}",
+        ],
+        check=True,
+        capture_output=True,
+    )
+    return png_file
+
+
 def build_console_drawer_clip(
     tid: str,
     viewer_name: str,
@@ -1019,8 +1141,6 @@ def build_console_drawer_clip(
     seg_tmp_dir: Path,
 ) -> Path:
     """Render an exact `slot_frames`-frame 1004x992 @ 30fps Console Evidence Drawer MP4 without parent-iframe CSP."""
-    from playwright.sync_api import sync_playwright
-
     viewers_dir = REPO_ROOT / "site-template" / "viewers"
     viewer_file = viewers_dir / viewer_name
     if not viewer_file.exists():
@@ -1048,74 +1168,30 @@ def build_console_drawer_clip(
     out_drawer_mp4 = seg_tmp_dir / f"{tid}_drawer.mp4"
     slot_dur_s = slot_frames / float(FPS)
 
-    if viewer_name == "af3-live-viewer.html":
-        # Record live 60fps spinning 3D AlphaFold 3 canvas in Playwright!
-        vid_tmp = cache_dir / f"vid_{tid}"
-        if vid_tmp.exists():
-            shutil.rmtree(vid_tmp, ignore_errors=True)
-        vid_tmp.mkdir(parents=True, exist_ok=True)
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, executable_path="/usr/bin/google-chrome")
-            ctx = browser.new_context(
-                viewport={"width": 1004, "height": 992},
-                record_video_dir=str(vid_tmp),
-                record_video_size={"width": 1004, "height": 992},
-            )
-            page = ctx.new_page()
-            page.goto(f"file://{wrapped_file.resolve()}", wait_until="load")
-            half_ms = int((slot_dur_s + 0.5) * 500)
-            page.wait_for_timeout(half_ms)
-            if do_scroll:
-                page.evaluate("window.scrollTo({ top: 110, behavior: 'smooth' })")
-            page.wait_for_timeout(half_ms)
-            vpath = Path(page.video.path())
-            ctx.close()
-            browser.close()
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-y",
-                "-ss",
-                "0.25",
-                "-i",
-                str(vpath),
-                "-vf",
-                f"fps={FPS},scale=1004:992,drawbox=x=0:y=0:w=1004:h=992:color={accent_hex}:t=2",
-                "-frames:v",
-                str(slot_frames),
-                "-r",
-                str(FPS),
-                "-c:v",
-                "libx264",
-                "-preset",
-                "fast",
-                "-crf",
-                "18",
-                "-pix_fmt",
-                "yuv420p",
-                "-an",
-                str(out_drawer_mp4),
-            ],
-            check=True,
-            capture_output=True,
-        )
-        shutil.rmtree(vid_tmp, ignore_errors=True)
-        return out_drawer_mp4
-
-    # For SVG/table viewers, capture exact 1004x1120 PNG once and animate smooth scroll in ffmpeg
+    # Capture exact 1004x1120 PNG via headless Chrome and animate smooth scroll in ffmpeg
     png_path = cache_dir / f"{tid}_drawer.png"
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, executable_path="/usr/bin/google-chrome")
-        page = browser.new_page(viewport={"width": 1004, "height": 1120})
-        page.goto(f"file://{wrapped_file.resolve()}", wait_until="load")
-        page.wait_for_timeout(200)
-        page.screenshot(path=str(png_path), clip={"x": 0, "y": 0, "width": 1004, "height": 1120})
-        browser.close()
+    subprocess.run(
+        [
+            "/usr/bin/google-chrome",
+            "--headless",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--hide-scrollbars",
+            "--window-size=1004,1120",
+            f"--screenshot={png_path.resolve()}",
+            f"file://{wrapped_file.resolve()}",
+        ],
+        check=True,
+        capture_output=True,
+    )
 
     half_s = slot_dur_s * 0.50
     scroll_px = 96 if do_scroll else 0
     fc_drawer = (
-        f"[0:v]fps={FPS},crop=1004:992:0:'if(lt(t,{half_s:.3f}),0,min({scroll_px},(t-{half_s:.3f})*140))',"
+        f"[0:v]fps={FPS},split=2[full][hdrsrc];"
+        f"[full]crop=1004:992:0:'if(lt(t,{half_s:.3f}),0,min({scroll_px},(t-{half_s:.3f})*140))'[scrolled];"
+        f"[hdrsrc]crop=1004:40:0:0[hdr];"
+        f"[scrolled][hdr]overlay=0:0,"
         f"drawbox=x=0:y=0:w=1004:h=992:color={accent_hex}:t=2[vout]"
     )
     subprocess.run(
@@ -1186,32 +1262,33 @@ def master_chapter_videos(
 
         # 1. Decode index-less Playwright WebM sequentially ONCE into a keyframe-indexed 30.00 fps CFR MP4
         cfr_mp4 = seg_tmp_dir / f"{ch_id}_cfr30.mp4"
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-y",
-                "-i",
-                str(raw_webm),
-                "-vf",
-                f"fps={FPS},scale=1920:1080",
-                "-r",
-                str(FPS),
-                "-c:v",
-                "libx264",
-                "-preset",
-                "ultrafast",
-                "-crf",
-                "16",
-                "-g",
-                "15",
-                "-pix_fmt",
-                "yuv420p",
-                "-an",
-                str(cfr_mp4),
-            ],
-            check=True,
-            capture_output=True,
-        )
+        if not (cfr_mp4.exists() and cfr_mp4.stat().st_size > 1_000_000):
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-i",
+                    str(raw_webm),
+                    "-vf",
+                    f"fps={FPS},scale=1920:1080",
+                    "-r",
+                    str(FPS),
+                    "-c:v",
+                    "libx264",
+                    "-preset",
+                    "ultrafast",
+                    "-crf",
+                    "16",
+                    "-g",
+                    "15",
+                    "-pix_fmt",
+                    "yuv420p",
+                    "-an",
+                    str(cfr_mp4),
+                ],
+                check=True,
+                capture_output=True,
+            )
         cfr_total_frames = max(1, int(round(ffprobe_duration(cfr_mp4) * FPS)))
         beacon_frames = detect_beacon_start_frames(cfr_mp4, rec["turns"], float(rec.get("perf_total_s", 90.0)))
 
@@ -1229,24 +1306,35 @@ def master_chapter_videos(
             vmeta = voices[speaker]
             spec_turn = spec_turns_by_id.get(tid, {})
             src_wav = audio_dir / f"{tid}.wav"
-            slot_frames = int(tinfo.get("slot_frames") or round(float(tinfo["target_slot_s"]) * FPS))
+            wav_slot_frames = int(round((ffprobe_duration(src_wav) + BREATH_GAP_S) * FPS))
+            slot_frames = max(int(tinfo.get("slot_frames") or round(float(tinfo["target_slot_s"]) * FPS)), wav_slot_frames)
             slot_dur_s = slot_frames / float(FPS)
 
             # Build exact `slot_frames * 1600` sample 48kHz stereo WAV (+ Squadron Comms pips & AI EQ)
             wav_48k = seg_tmp_dir / f"{tid}_48k.wav"
-            build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=bool(vmeta.get("is_agent", False)))
+            if not (wav_48k.exists() and wav_48k.stat().st_size > 10_000):
+                build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=bool(vmeta.get("is_agent", False)))
             aseg_files.append(wav_48k)
 
-            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar / AI Hologram PiP card
+            # Build exact `slot_frames`-frame native Gemini Live Avatar / AI Hologram PiP card
             pip_mp4 = seg_tmp_dir / f"{tid}_pip.mp4"
-            build_pip_overlay_clip(
-                tid=tid,
-                speaker=speaker,
-                vmeta=vmeta,
-                wav_48k_path=wav_48k,
-                slot_frames=slot_frames,
-                talking_heads_dir=talking_heads_dir,
-                out_pip_mp4=pip_mp4,
+            if not (pip_mp4.exists() and pip_mp4.stat().st_size > 10_000):
+                build_pip_overlay_clip(
+                    tid=tid,
+                    speaker=speaker,
+                    vmeta=vmeta,
+                    wav_48k_path=wav_48k,
+                    slot_frames=slot_frames,
+                    talking_heads_dir=talking_heads_dir,
+                    out_pip_mp4=pip_mp4,
+                )
+
+            # Render clean Webchat stream + top banner overlay directly from spec.json
+            chat_png = build_webchat_and_banner_png(
+                ch=ch,
+                turn_idx=idx,
+                voices=voices,
+                seg_tmp_dir=seg_tmp_dir,
             )
 
             # Slice exact 1.0x real-time frames starting at `f_start` (paint over the 8x4 beacon pixel cleanly!)
@@ -1271,18 +1359,20 @@ def master_chapter_videos(
                 )
                 fc = (
                     f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
-                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base0];"
+                    f"[base0][3:v]overlay=0:0[base];"
                     f"[base][2:v]overlay=586:48[with_drawer];"
                     f"[with_drawer][1:v]overlay=1608:700[vout]"
                 )
-                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4)]
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4), "-i", str(chat_png)]
             else:
                 fc = (
                     f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
-                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base0];"
+                    f"[base0][2:v]overlay=0:0[base];"
                     f"[base][1:v]overlay=1608:700[vout]"
                 )
-                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4)]
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(chat_png)]
 
             subprocess.run(
                 [
@@ -1321,8 +1411,8 @@ def master_chapter_videos(
                 ss = 0
             scrub_markers.append(
                 {
-                    "key": tinfo["scrub_key"],
-                    "label": tinfo["scrub_label"],
+                    "key": spec_turn.get("scrub_key") or tinfo["scrub_key"],
+                    "label": spec_turn.get("scrub_label") or tinfo["scrub_label"],
                     "time_s": round(cursor_s, 2),
                     "timecode": f"{mm}:{ss:02d}",
                     "speaker": vmeta["display_name"],
@@ -1383,7 +1473,8 @@ def master_chapter_videos(
             capture_output=True,
         )
         actual_dur = ffprobe_duration(final_mp4)
-        existing_manifest["chapters"][ch_id] = {
+        prev_ch = existing_manifest.get("chapters", {}).get(ch_id, {})
+        ch_entry = {
             "chapter": ch_id,
             "number": ch["number"],
             "slug": ch["slug"],
@@ -1391,10 +1482,13 @@ def master_chapter_videos(
             "video_filename": ch["video_filename"],
             "duration_s": round(actual_dur, 2),
             "resolution": "1920x1080",
-            "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
-            "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+            "tts_model": "gemini-2.5-pro + gemini-2.5-flash-tts",
+            "avatar_stack": "gemini-2.5-pro (native BidiGenerateContent audio+video avatar)",
             "markers": scrub_markers,
         }
+        if ch.get("summary") or prev_ch.get("summary"):
+            ch_entry["summary"] = ch.get("summary") or prev_ch.get("summary")
+        existing_manifest["chapters"][ch_id] = ch_entry
         print(
             f"[OK] Mastered {final_mp4.name} -> {actual_dur:.2f}s ({final_mp4.stat().st_size / (1024 * 1024):.2f} MB)",
             flush=True,

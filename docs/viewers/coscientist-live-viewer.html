@@ -19,7 +19,7 @@
   .hdr-card p { margin: 0; color: #cbd5e1; font-size: 0.77rem; line-height: 1.38; }
   .badge-row { display: flex; gap: 0.38rem; flex-wrap: wrap; margin-top: 0.48rem; }
   .pill { font-family: ui-monospace, monospace; font-size: 0.67rem; font-weight: 700; padding: 0.14rem 0.45rem; border-radius: 999px; display: inline-block; }
-  .pill.argon { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
+  .pill.gpro { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); }
   .pill.opus { background: rgba(249, 115, 22, 0.18); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.45); }
   .pill.flash { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
   .pill.pass { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
@@ -57,11 +57,11 @@
 <div class="wrap">
   <div class="hdr-card">
     <h1>Step 1 (`WO-001`) — Live `Co-Scientist` (`cs-daedalis-20261028-pcsk9-oral`) + 7-Agent `Hypex` (`hx-pcsk9-elo-live`) Tournament</h1>
-    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 2.5 Pro (High)</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Claude Opus 4.6</strong>.</p>
+    <p>Executed live inside `pcsk9-oral-live-v2` via `oase coscientist import` + `oase coscientist analyze` (`+54.5 Elo` gap) and `oase hypex import` + `oase hypex analyze` (`+130.5 Elo` gap). Frontier generation &amp; debate run on <strong>Gemini 2.5 Pro</strong> while adversarial assumptions &amp; kill criteria (`FP-001`) are audited by <strong>Claude Opus 4.6</strong>.</p>
     <div class="badge-row">
-      <span class="pill argon">oase coscientist · clear-leader (+54.5 Elo)</span>
-      <span class="pill argon">oase hypex · leader-with-advisories (+130.5 Elo)</span>
-      <span class="pill opus">scientific-reviewer · Claude Claude Opus 4.6</span>
+      <span class="pill gpro">oase coscientist · clear-leader (+54.5 Elo)</span>
+      <span class="pill gpro">oase hypex · leader-with-advisories (+130.5 Elo)</span>
+      <span class="pill opus">scientific-reviewer · Claude Opus 4.6</span>
       <span class="pill pass">export.json sha256: efb254b442e22d96</span>
       <span class="pill pass">hypex.json sha256: 9e5066e535c82799</span>
     </div>
@@ -94,7 +94,7 @@
             <td><strong>#2</strong></td>
             <td><code>H-0002</code><br><small><code>IC-002</code></small></td>
             <td><strong>Cyclic Peptide / Macrocycle Allosteric</strong><br><small style="color:#94a3b8;">MW 742 Da (beyond-Ro5 permeability risk)</small></td>
-            <td><span class="pill argon">1512.0 Elo</span><br><small>58.3% win</small></td>
+            <td><span class="pill gpro">1512.0 Elo</span><br><small>58.3% win</small></td>
             <td><span class="pill opus">AMBER BACKUP</span></td>
           </tr>
           <tr>
@@ -133,26 +133,26 @@
 
     <div>
       <div class="card">
-        <h2>7-Agent Debate &amp; Claude Claude Opus 4.6 Audit (`hx-pcsk9-elo-live`)</h2>
+        <h2>7-Agent Debate &amp; Claude Opus 4.6 Audit (`hx-pcsk9-elo-live`)</h2>
         <div id="match-list">
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)</strong>
-              <span class="pill argon">Gemini 2.5 Pro (High)</span>
+              <span class="pill gpro">Gemini 2.5 Pro</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)</strong>
-              <span class="pill argon">Gemini 2.5 Pro (High)</span>
+              <span class="pill gpro">Gemini 2.5 Pro</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).</div>
           </div>
           <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
               <strong style="color:#f8fafc;font-size:0.76rem;">Adversarial Assumption &amp; Falsification Audit (`FP-001`)</strong>
-              <span class="pill opus">Claude Claude Opus 4.6</span>
+              <span class="pill opus">Claude Opus 4.6</span>
             </div>
             <div style="color:#cbd5e1;font-size:0.73rem;">Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket &ge; 0.50`, `Vina &le; -7.5 kcal/mol`).</div>
           </div>
@@ -173,9 +173,9 @@ env_version: sha256:2987d3053f138de06c119fb09bd1eed054f75c013cfc25c8b294d1dee2ac
 <script>
 document.getElementById('nav-cosci').classList.add('active');
 const ROUNDS = [
-  { tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 2.5 Pro (High)', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' },
-  { tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 2.5 Pro (High)', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' },
-  { tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Claude Opus 4.6', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }
+  { tag: 'r1', title: 'Co-Scientist Import (`cs-daedalis-20261028-pcsk9-oral`)', model: 'Gemini 2.5 Pro', body: '`H-001` (`1578.5 Elo`) defeats `H-002` (`1524.0 Elo`) by `+54.5 Elo` across 24 debate matches (`verdict = clear-leader`).' },
+  { tag: 'r2', title: 'Hypex 7-Agent Bracket (`hx-pcsk9-elo-live`)', model: 'Gemini 2.5 Pro', body: '`H-0001` (`1642.5 Elo`) leads `H-0002` (`1512.0 Elo`) by `+130.5 Elo` (`verdict = leader-with-advisories`).' },
+  { tag: 'opus', title: 'Adversarial Assumption & Falsification Audit (`FP-001`)', model: 'Claude Opus 4.6', body: 'Enforces mandatory relays (`coscientist.elo_is_not_probability`, `hypex.elo_is_not_truth`) and locks falsification rule `FP-001` (`fpocket >= 0.50`, `Vina <= -7.5 kcal/mol`).' }
 ];
 function filterMatches(tag, btn) {
   document.querySelectorAll('.card .btn').forEach(b => b.classList.remove('active'));
@@ -186,7 +186,7 @@ function filterMatches(tag, btn) {
     <div style="background:#0f172a;border:1px solid #334155;border-radius:6px;padding:0.5rem 0.65rem;margin-bottom:0.45rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
         <strong style="color:#f8fafc;font-size:0.76rem;">${r.title}</strong>
-        <span class="pill ${r.model.includes('Opus') ? 'opus' : 'argon'}">${r.model}</span>
+        <span class="pill ${r.model.includes('Opus') ? 'opus' : 'gpro'}">${r.model}</span>
       </div>
       <div style="color:#cbd5e1;font-size:0.73rem;">${r.body}</div>
     </div>
