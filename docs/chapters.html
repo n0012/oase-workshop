@@ -2322,7 +2322,7 @@ selectStation('s3');
       const scionGraphUrl = (cfg && cfg.scion_hub_url)
         ? `${cfg.scion_hub_url}/projects/${activeProjUuid}`
         : `https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/${activeProjUuid}`;
-      const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=87.3`;
+      const agyVideoSrc = `${videoBase}cloudshell-agy-scion.mp4?v=66.2`;
       const isIoCamp = cid === 'io-cold-to-hot';
       const p1 = isIoCamp
         ? 'agy -p "Use scion-oase-bridge to bootstrap io-cold-to-hot from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 PASS), and dispatch WO-001 to @controller."'
@@ -2333,7 +2333,7 @@ selectStation('s3');
       agyCard.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.65rem;">
           <div>
-            <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 87s &middot; 1080p)</strong>
+            <strong style="color:#10b981;font-size:0.98rem;">☁️ Google Cloud Shell + Antigravity (agy CLI) &harr; Scion Engine Walkthrough (Dr. Sarah Chen &middot; 66s &middot; 1080p)</strong>
             <div style="color:#cbd5e1;font-size:0.81rem;margin-top:0.2rem;">
               Watch Dr. Sarah Chen (<code>${sarahEmail}</code>) use the <strong>Antigravity CLI (<code>agy</code>)</strong> in Google Cloud Shell with the 41 Science Agent skills &amp; <code>scion-oase-mcp</code> bridge to <strong>(1) initiate a campaign with live CLI feedback &rarr; Scion 17-Agent Graph reacting</strong> and <strong>(2) analyze a completed program run in the CLI &rarr; Scion Project Messages reacting</strong>.
             </div>
@@ -2348,9 +2348,9 @@ selectStation('s3');
         </div>
         <div class="scrub-bar">
           <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) &middot; Dr. Sarah Chen</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 27.83)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:28) &middot; @science-program-lead</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 45.47)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:45) &middot; Dr. Sarah Chen</button>
-          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 65.87)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (1:06) &middot; @admet-dmpk-scientist</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 14.13)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:14) &middot; @science-program-lead</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 31.77)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:32) &middot; Dr. Sarah Chen</button>
+          <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 44.73)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (0:45) &middot; @admet-dmpk-scientist</button>
         </div>
         <div style="margin-top:0.65rem;">
           <button class="prompt-chip" onclick='oaseCopyPrompt(${escAttr(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${escHtml(p1)}</button>

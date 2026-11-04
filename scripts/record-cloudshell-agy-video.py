@@ -82,10 +82,8 @@ TURNS: list[dict[str, Any]] = [
         "scrub_key": "bootstrap",
         "scrub_label": "1. Cloud Shell (agy CLI): Initiate Campaign & Live CLI Feedback",
         "tts_text": (
-            "From Google Cloud Shell as Doctor Sarah Chen, I run the Antigravity CLI with our forty-one "
-            "Open Agentic Science Engine skills and Scion MCP bridge. I bootstrap the Cold-to-Hot Immuno-Oncology "
-            "campaign in Scion. Then I dispatch the five-target tournament across E-N-P-P-one, ay-dar-one, "
-            "P-T-P-N-two, K-D-M-one-A, and T-rex-one."
+            "From Google Cloud Shell as Doctor Sarah Chen, I run the Antigravity CLI with our Scion MCP bridge "
+            "to bootstrap Cold-to-Hot Immuno-Oncology and launch our five-target tournament."
         ),
     },
     {
@@ -107,9 +105,8 @@ TURNS: list[dict[str, Any]] = [
         "scrub_key": "analyze",
         "scrub_label": "3. Cloud Shell (agy CLI): Program Run Audit & Series B Feedback",
         "tts_text": (
-            "Back in the Antigravity CLI, I audit the completed Science Agent run by reading the decision log "
-            "and candidate summary. I compare Series A polar sulfamide against Series B's neutral pyrazole "
-            "heteroaryl zinc-binding group after the Decision Eight Wet-Lab Wall."
+            "Back in the Antigravity CLI, I audit our completed Science Agent run, comparing Series A "
+            "against Series B's neutral pyrazole lead after the Decision Eight Wet-Lab Wall."
         ),
     },
     {
@@ -597,11 +594,16 @@ def main() -> int:
         cached_mp4 = live_dir / f"{tid}_live30.mp4"
         if cached_wav.exists() and cached_wav.stat().st_size > 10000 and (vmeta["is_agent"] or cached_mp4.exists()):
             dur = float(rtp.ffprobe_duration(cached_wav))
+            slot_f = (
+                int(round((dur + BREATH_GAP_S) * FPS))
+                if vmeta["is_agent"]
+                else int(rla.ffprobe_video_frames(cached_mp4))
+            )
             turn_meta[tid] = {
                 "turn_id": tid,
                 "wav": str(cached_wav),
                 "duration_s": round(dur, 4),
-                "slot_frames": int(round((dur + BREATH_GAP_S) * FPS)),
+                "slot_frames": slot_f,
             }
             continue
         tok = rla.gcloud_access_token(None)
@@ -622,6 +624,7 @@ def main() -> int:
                 "avatar_name": vmeta["avatar_name"],
                 "voice_id": vmeta["voice_id"],
                 "tts_text": rla.normalize_biopharma_tts_text(t["tts_text"]),
+                "single_take": True,
             }
             turn_meta[tid] = rla.render_single_human_turn(
                 job, live_dir, audio_dir, WORK_DIR / "work", gcp_project, "us-central1", None

@@ -544,7 +544,7 @@ def render_single_human_turn(
     clean_text = re.sub(r"<[^>]+>", " ", raw_text)
     clean_text = normalize_biopharma_tts_text(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    chunks = split_for_avatar(clean_text, max_words=28)
+    chunks = [clean_text] if job.get("single_take") else split_for_avatar(clean_text, max_words=28)
 
     turn_work = work_dir / tid
     turn_work.mkdir(parents=True, exist_ok=True)
@@ -580,8 +580,8 @@ def render_single_human_turn(
 
     tpad_expr = f",tpad=stop_mode=clone:stop_duration={extra_hold_s:.3f}" if extra_hold_s > 0.001 else ""
     vf = (
-        f"[0:v]trim=start={trim_start:.4f}:end={raw_trim_end:.4f},setpts=PTS-STARTPTS,"
-        f"fps={FPS}:start_time=0,settb=1/{FPS},setsar=1,format=yuv420p{tpad_expr}[v];"
+        f"[0:v]fps={FPS}:start_time=0,trim=start={trim_start:.4f}:end={raw_trim_end:.4f},"
+        f"setpts=PTS-STARTPTS,settb=1/{FPS},setsar=1,format=yuv420p{tpad_expr}[v];"
         f"[0:a]atrim=start={trim_start:.4f}:end={raw_trim_end:.4f},asetpts=PTS-STARTPTS,"
         f"volume={gain_db:.2f}dB,aresample={AUDIO_SR},pan=stereo|c0=c0|c1=c0,"
         f"apad,atrim=0:{exact_slot_s:.6f}[a]"

@@ -683,13 +683,13 @@ COCKPIT_ENHANCEMENT_SNIPPET = r"""
             </div>
           </div>
           <div class="cockpit-video-wrap">
-            <video id="video-cloudshell-agy" controls preload="metadata" src="/api/videos/cloudshell-agy-scion.mp4?v=64"></video>
+            <video id="video-cloudshell-agy" controls preload="metadata" src="/api/videos/cloudshell-agy-scion.mp4?v=66.2"></video>
           </div>
           <div class="scrub-bar">
             <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 0)">▶ 1. Cloud Shell (agy CLI): Initiate Campaign &amp; Live CLI Feedback (0:00) · Dr. Sarah Chen</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 23.1)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:23) · @science-program-lead</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 39.4)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:39) · Dr. Sarah Chen</button>
-            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 59.7)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (1:00) · @admet-dmpk-scientist</button>
+            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 14.13)">▶ 2. Scion Reacting: 4-Tier 17-Agent Graph Dispatches WO-001 (0:14) · @science-program-lead</button>
+            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 31.77)">▶ 3. Cloud Shell (agy CLI): Program Run Audit &amp; Series B Feedback (0:32) · Dr. Sarah Chen</button>
+            <button class="scrub-pill" onclick="oaseSeekVideo('cloudshell-agy', 44.73)">▶ 4. Scion Reacting: Live Project Messages &amp; Series B Pivot (0:45) · @admet-dmpk-scientist</button>
           </div>
           <div style="margin-top:0.65rem;">
             <button class="prompt-chip" onclick='oaseCopyPrompt(${JSON.stringify(p1)})'>📋 Copy Cloud Shell Prompt 1 (Initiate Campaign): ${p1}</button>
