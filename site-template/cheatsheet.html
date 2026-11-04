@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow" />
+<meta name="googlebot" content="noindex, nofollow" />
+<title>GCP-OASE &amp; Scion — Live Workshop Facilitator &amp; Demo Cheat Sheet</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: #0f172a; background: #f1f5f9; }
+  nav { background: #1e293b; color: #f8fafc; padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 3px solid #f59e0b; position: sticky; top: 0; z-index: 40; }
+  nav .left { display: flex; align-items: center; gap: 1.15rem; flex-wrap: wrap; }
+  nav .left a { color: #e2e8f0; text-decoration: none; font-size: 0.9rem; }
+  nav .left a:hover, nav .left a.active-nav { color: #ffffff; font-weight: 700; text-decoration: underline; }
+  nav .nav-title { font-weight: 700; font-size: 1.05rem; color: #ffffff; margin-right: 0.25rem; }
+  .badge-env { background: #0f172a; color: #38bdf8; border: 1px solid #0284c7; padding: 0.25rem 0.65rem; border-radius: 4px; font-family: ui-monospace, monospace; font-size: 0.8rem; }
+
+  .hero { background: linear-gradient(135deg, #090d16 0%, #1e293b 60%, #0f172a 100%); color: #ffffff; padding: 1.6rem 2.2rem; border-bottom: 1px solid #334155; }
+  .hero-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.25rem; flex-wrap: wrap; }
+  .hero h1 { margin: 0 0 0.35rem 0; font-size: 1.55rem; color: #ffffff; }
+  .hero p { margin: 0; color: #cbd5e1; font-size: 0.93rem; max-width: 780px; line-height: 1.48; }
+  .hero-actions { display: flex; gap: 0.55rem; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.48rem 0.9rem; border-radius: 7px; font-size: 0.83rem; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+  .btn-primary { background: #2563eb; color: #ffffff; border-color: #3b82f6; }
+  .btn-primary:hover { background: #1d4ed8; }
+  .btn-emerald { background: #059669; color: #ffffff; border-color: #10b981; }
+  .btn-emerald:hover { background: #047857; }
+  .btn-dark { background: #0f172a; color: #e2e8f0; border-color: #475569; }
+  .btn-dark:hover { background: #1e293b; border-color: #94a3b8; }
+
+  .jump-bar { background: #ffffff; border-bottom: 1px solid #cbd5e1; padding: 0.6rem 2.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .jump-inner { max-width: 1240px; margin: 0 auto; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  .jump-pill { background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; text-decoration: none; padding: 0.36rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+  .jump-pill:hover { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; }
+
+  .wrap { max-width: 1240px; margin: 1.4rem auto 3rem; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 1.35rem; }
+  .card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.35rem 1.5rem; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04); }
+  .card-hdr { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; padding-bottom: 0.7rem; border-bottom: 1px solid #e2e8f0; }
+  .card-hdr h2 { margin: 0; font-size: 1.18rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem; }
+  .card-sub { margin: 0.25rem 0 0 0; font-size: 0.86rem; color: #475569; }
+  .tag { font-family: ui-monospace, monospace; font-size: 0.73rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .tag-blue { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+  .tag-amber { background: #fffbeb; color: #92400e; border-color: #fde68a; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 0.95rem; }
+  .subcard { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .subcard h3 { margin: 0; font-size: 0.96rem; color: #0f172a; }
+  .subcard ol, .subcard ul { margin: 0.15rem 0 0 1.2rem; padding: 0; font-size: 0.86rem; line-height: 1.56; color: #334155; }
+  .subcard li { margin-bottom: 0.32rem; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #e2e8f0; color: #0f172a; padding: 0.1rem 0.34rem; border-radius: 4px; font-size: 0.81rem; }
+
+  .cmd-box { position: relative; background: #0f172a; color: #e2e8f0; border: 1px solid #334155; border-radius: 8px; padding: 0.8rem 0.95rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.79rem; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+  .cmd-hdr { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.42rem; padding-bottom: 0.36rem; border-bottom: 1px solid #1e293b; font-size: 0.73rem; color: #94a3b8; }
+  .copy-btn { background: #1e293b; color: #7dd3fc; border: 1px solid #0284c7; border-radius: 5px; padding: 0.22rem 0.58rem; font-size: 0.73rem; font-weight: 700; cursor: pointer; font-family: system-ui, sans-serif; }
+  .copy-btn:hover { background: #0284c7; color: #ffffff; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.3rem; }
+  th, td { text-align: left; padding: 0.52rem 0.65rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  th { background: #f8fafc; font-weight: 700; color: #334155; }
+
+  .note-banner { background: #eff6ff; border-left: 4px solid #2563eb; padding: 0.7rem 0.95rem; border-radius: 0 7px 7px 0; font-size: 0.84rem; color: #1e3a8a; line-height: 1.48; }
+  #toast { position: fixed; bottom: 22px; right: 22px; background: #059669; color: #ffffff; font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1rem; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.28); opacity: 0; pointer-events: none; transition: opacity 0.18s; z-index: 999; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="left">
+    <span class="nav-title">GCP-OASE &amp; Scion</span>
+    <a href="chapters.html#arcade" style="color:#fbbf24;font-weight:700;">&#127918; Mission Select Cover</a>
+    <a href="index.html">Portal Home (30 Pages)</a>
+    <a href="chapters.html#why">Story Arc &amp; Replay</a>
+    <a href="plan.html" style="color:#4ade80;font-weight:700;">Build Tracker</a>
+    <a href="cheatsheet.html" class="active-nav" style="color:#fde047;font-weight:800;">&#128203; Live Cheat Sheet</a>
+  </div>
+  <span class="badge-env">Live Workshop Runbook &middot; Safe Sandbox Guide</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>&#128203; Live Workshop Facilitator &amp; Demo Cheat Sheet</h1>
+      <p>Copy-paste runbook for spinning up a duplicate PCSK9 sandbox pilot live, inspecting or editing agent system prompts &amp; LLM models in Scion UI, driving Antigravity CLI (<code>agy</code>) from Cloud Shell, and running interactive scientist Q&amp;A — without disturbing the two golden pilots (<code>pcsk9-oral-live-v2</code> &amp; <code>io-cold-to-hot</code>).</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-emerald" id="btn-open-pcsk9" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa" target="_blank" rel="noopener">&#129516; Scion: PCSK9 Grove ↗</a>
+      <a class="btn btn-primary" id="btn-open-io" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/ab3d65d5-f32c-463e-be48-d535034de34f" target="_blank" rel="noopener">&#128300; Scion: Cold-to-Hot IO Grove ↗</a>
+      <a class="btn btn-dark" href="chapters.html">&#8592; Back to Cockpit</a>
+    </div>
+  </div>
+</div>
+
+<div class="jump-bar">
+  <div class="jump-inner">
+    <span style="font-size:0.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.04em;">Jump to:</span>
+    <a class="jump-pill" href="#sec-duplicate">1. Duplicate PCSK9 Pilot Live</a>
+    <a class="jump-pill" href="#sec-config">2. Agent Prompts &amp; LLM Config in UI</a>
+    <a class="jump-pill" href="#sec-agy">3. Cloud Shell + Antigravity (agy) CLI</a>
+    <a class="jump-pill" href="#sec-prompts">4. Live Scion Webchat Prompts</a>
+    <a class="jump-pill" href="#sec-hybrid">5. Hybrid AWS + GCP Science APIs</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- SECTION 1: DUPLICATE PCSK9 PILOT LIVE -->
+  <section class="card" id="sec-duplicate">
+    <div class="card-hdr">
+      <div>
+        <h2>&#128640; 1. Kick Off a Duplicate PCSK9 Pilot Live (<code>pcsk9-oral-sandbox</code>)</h2>
+        <p class="card-sub">Three safe ways to launch a fresh <code>t=0</code> PCSK9 pilot in front of the room while keeping <code>pcsk9-oral-live-v2</code> and <code>io-cold-to-hot</code> untouched.</p>
+      </div>
+      <span class="tag">ZERO IMPACT ON GOLDEN PILOTS</span>
+    </div>
+
+    <div class="grid-2">
+      <!-- Option A: Scion Web UI -->
+      <div class="subcard">
+        <h3>Option A — Interactive in Scion Web UI (4 Clicks · ~45s)</h3>
+        <ol>
+          <li>Sign in as <strong>Dr. Sarah Chen</strong> (Project Admin) and click <strong>Projects</strong> (left sidebar) &rarr; <strong><code>+ New Project</code></strong>.</li>
+          <li>Enter Name: <code>pcsk9-oral-sandbox</code>, select Broker <code>scion-hub-oase (us-central1-c)</code>, and click <strong>Create</strong>.</li>
+          <li>Inside <code>pcsk9-oral-sandbox</code>, click <strong><code>+ Create Agent</code></strong>:
+            <ul>
+              <li><strong>Agent Name:</strong> <code>science-program-lead</code></li>
+              <li><strong>Harness Config:</strong> <code>antigravity</code> &middot; <strong>Model:</strong> <code>extra-large</code> (<code>Gemini 4 Argon (High)</code>)</li>
+              <li><strong>Task Prompt:</strong> paste the kickoff prompt below and click <strong>Start</strong>.</li>
+            </ul>
+          </li>
+          <li><em>Optional Multi-Model Peer Reviewer:</em> Click <strong><code>+ Create Agent</code></strong> &rarr; Name <code>scientific-reviewer</code> &rarr; Harness <code>claude</code> &rarr; Model <code>large</code> (<code>Claude Opus 5.5</code>).</li>
+          <li>Toggle <strong>Graph View</strong> + <strong><code>Show users</code> ON</strong> and message <code>@science-program-lead</code> in <strong>Conversations</strong>.</li>
+        </ol>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>Stage 0 PCSK9 Task Prompt (paste into + Create Agent or Conversations)</span><button class="copy-btn" onclick="copyText('cmd-ui-kickoff')">&#128203; Copy</button></div>
+          <div id="cmd-ui-kickoff">Initialize a clean Stage 0 PCSK9 oral small-molecule discovery run from /workspace/.seed/pcsk9-oral/campaign-seed.json: verify oase doctor (78/78 checks) and .oase/thresholds.yaml, compare cryptic Pocket #1 (IC-001) vs flat EGF-A PPI (IC-002), and post our WO-001 tournament kickoff summary.</div>
+        </div>
+      </div>
+
+      <!-- Option B: 1-Command Full 17-Agent Clone -->
+      <div class="subcard">
+        <h3>Option B — Instant Full 17-Agent Duplicate Grove (1 Command · ~10s)</h3>
+        <p style="margin:0;font-size:0.85rem;color:#334155;line-height:1.5;">Clones the complete <code>t=0</code> PCSK9 seed (<code>seed/pcsk9-oral/</code>, <code>.oase/thresholds.yaml</code>, all <code>41</code> verification skills, and all <code>17</code> specialist templates), grants RBAC to all 5 scientist personas, builds the 4-tier 17-agent graph, and starts a live <code>@science-program-lead</code> container.</p>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>1. Create &amp; Start Full Duplicate Grove (run from Cloud Shell or laptop)</span><button class="copy-btn" onclick="copyText('cmd-clone-create')">&#128203; Copy</button></div>
+          <div id="cmd-clone-create">gcloud compute ssh scion-hub-oase --project=losiern-oase-workshop --zone=us-central1-c --tunnel-through-iap --command="sudo -u scion python3 /home/scion/oase-workshop/scripts/clone-pcsk9-pilot.py --slug pcsk9-oral-sandbox --start-lead"</div>
+        </div>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>2. Clean Teardown After Demo (deletes ONLY pcsk9-oral-sandbox)</span><button class="copy-btn" onclick="copyText('cmd-clone-delete')">&#128203; Copy</button></div>
+          <div id="cmd-clone-delete">gcloud compute ssh scion-hub-oase --project=losiern-oase-workshop --zone=us-central1-c --tunnel-through-iap --command="sudo -u scion python3 /home/scion/oase-workshop/scripts/clone-pcsk9-pilot.py --delete pcsk9-oral-sandbox"</div>
+        </div>
+        <div class="note-banner">
+          <strong>Safety Guardrail:</strong> <code>clone-pcsk9-pilot.py --delete</code> hard-blocks deleting <code>pcsk9-oral-live-v2</code> or <code>io-cold-to-hot</code>, so your two primary pilots cannot be accidentally removed.
+        </div>
+      </div>
+    </div>
+
+    <details style="margin-top:0.9rem;">
+      <summary style="cursor:pointer;font-weight:700;color:#1d4ed8;font-size:0.87rem;">&#9654; Option C — Show Raw Under-the-Hood <code>scion</code> CLI Commands on the Hub VM</summary>
+      <div class="cmd-box" style="margin-top:0.55rem;">
+        <div class="cmd-hdr"><span>Manual scion init + scion hub link + scion start</span><button class="copy-btn" onclick="copyText('cmd-raw-scion')">&#128203; Copy</button></div>
+        <div id="cmd-raw-scion">mkdir -p /home/scion/.scion/projects/pcsk9-oral-manual &amp;&amp; cd /home/scion/.scion/projects/pcsk9-oral-manual
+cp -R /home/scion/.scion/projects/pcsk9-oral-live-v2/seed /home/scion/.scion/projects/pcsk9-oral-live-v2/skills .
+git init -q &amp;&amp; scion init --non-interactive &amp;&amp; cp -R ../pcsk9-oral-live-v2/.scion/templates/. .scion/templates/
+scion hub link --non-interactive
+scion start science-program-lead --non-interactive --harness antigravity "Bootstrap PCSK9 oral campaign from seed/pcsk9-oral/campaign-seed.json and run oase doctor."</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- SECTION 2: AGENT PROMPTS & LLM CONFIG IN SCION UI -->
+  <section class="card" id="sec-config">
+    <div class="card-hdr">
+      <div>
+        <h2>&#9881;&#65039; 2. Show Agent System Prompts &amp; LLM Configuration Live in Scion UI</h2>
+        <p class="card-sub">Note: Sign in as <strong>Dr. Sarah Chen</strong> (Project Admin) so the <strong><code>&#9881;&#65039; Settings</code></strong> tab is visible (Domain Scientist accounts have Contributor access).</p>
+      </div>
+      <span class="tag tag-blue">17 / 17 TEMPLATES HYDRATED</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="subcard">
+        <h3>A. Where to Edit an Agent's System Prompt &amp; Guardrails</h3>
+        <ol>
+          <li>Open <strong><code>pcsk9-oral-live-v2</code></strong> (or <code>io-cold-to-hot</code>) in Scion Web UI.</li>
+          <li>Click <strong><code>&#9881;&#65039; Settings</code></strong> (top project bar) &rarr; <strong><code>Resources</code></strong> tab &rarr; <strong><code>Templates</code></strong> sub-tab.</li>
+          <li>Click any of the <strong>17 specialist templates</strong> (e.g., <code>computational-biologist</code>).</li>
+          <li>Under <strong><code>File Editor</code></strong> (default tab), click and edit live with Save:
+            <ul>
+              <li><code>AGENTS.md</code> — Role instructions, scientific workflow, and falsification rules</li>
+              <li><code>system-prompt.md</code> — Core persona prompt &amp; epistemic relay contract</li>
+              <li><code>scion-agent.yaml</code> — Harness config, model tier, image, and telemetry</li>
+            </ul>
+          </li>
+        </ol>
+        <div style="display:flex;gap:0.45rem;flex-wrap:wrap;margin-top:0.25rem;">
+          <a class="btn btn-dark" id="link-tpl-compbio" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa/templates/bf198ff0-f683-5257-94da-c98e9579c49b" target="_blank" rel="noopener">Open <code>computational-biologist</code> Template ↗</a>
+          <a class="btn btn-dark" id="link-hub-harnesses" href="https://scion-hub-oase-iap-proxy-zw7klespva-uc.a.run.app/harnesses" target="_blank" rel="noopener">Open Hub Harness Configs ↗</a>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>B. Where to Configure / Swap the LLM Model (Gemini vs. Claude)</h3>
+        <ol>
+          <li><strong>Template Default (UI Form):</strong> Inside the agent's Template page, switch from <code>File Editor</code> to the <strong><code>Configuration</code></strong> tab &rarr; <strong>Harness &amp; Model</strong> &rarr; set <code>Default Harness Config</code> (<code>antigravity</code> or <code>claude</code>) and <code>Model</code> &rarr; <strong>Save Configuration</strong>.</li>
+          <li><strong>YAML Pinning:</strong> In <code>File Editor</code> &rarr; <code>scion-agent.yaml</code>, edit <code>default_harness_config</code> and <code>model</code>.</li>
+          <li><strong>Per-Run Override:</strong> Click <strong><code>+ Create Agent</code></strong> in any project and pick <code>Harness Config</code> + <code>Model</code> from the dropdowns.</li>
+        </ol>
+        <table>
+          <thead>
+            <tr><th>Harness Config</th><th>Alias</th><th>Resolved Model</th><th>Primary Agents</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>antigravity</code></td><td><code>extra-large</code></td><td><strong>Gemini 4 Argon (High)</strong></td><td><code>science-program-lead</code>, <code>head-of-discovery</code>, <code>structural-biologist</code>, <code>rank-1..3</code></td></tr>
+            <tr><td><code>antigravity</code></td><td><code>large</code></td><td><strong>Gemini 4 Argon (Medium)</strong></td><td><code>computational-biologist</code>, <code>computational-chemist</code>, <code>admet-dmpk-scientist</code>, <code>toxicology-scientist</code></td></tr>
+            <tr><td><code>claude</code></td><td><code>large</code></td><td><strong>Claude Opus 5.5</strong></td><td><code>medicinal-chemist</code>, <code>scientific-reviewer</code>, <code>hypex-reflection</code></td></tr>
+            <tr><td><code>antigravity</code></td><td><code>medium</code></td><td><strong>Gemini 3.8 Flash (Med)</strong></td><td><code>controller</code>, <code>bootstrapper</code>, <code>finding-validator</code>, <code>project-curator</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CLOUD SHELL + ANTIGRAVITY (AGY) CLI -->
+  <section class="card" id="sec-agy">
+    <div class="card-hdr">
+      <div>
+        <h2>&#9729;&#65039; 3. Step 8 — Google Cloud Shell + Antigravity CLI (<code>agy</code>) &harr; Scion Bridge</h2>
+        <p class="card-sub">Run as Dr. Sarah Chen in Cloud Shell to drive Scion Hub over MCP and watch the 17-agent graph + Project Messages react live.</p>
+      </div>
+      <span class="tag tag-amber">SUB-100MS IAP TUNNEL READY</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="cmd-box">
+        <div class="cmd-hdr"><span>1. One-Time Cloud Shell Bootstrap + Fast Background IAP Tunnel</span><button class="copy-btn" onclick="copyText('cmd-agy-setup')">&#128203; Copy</button></div>
+        <div id="cmd-agy-setup">cd ~/oase-workshop || (git clone https://github.com/n0012/oase-workshop.git ~/oase-workshop &amp;&amp; cd ~/oase-workshop)
+bash scripts/setup-sarah-cloudshell.sh
+gcloud compute start-iap-tunnel scion-hub-oase 8780 --local-host-port=127.0.0.1:18780 --project=losiern-oase-workshop --zone=us-central1-c &amp;
+python3 scripts/scion_mcp_server.py --cli hub_status</div>
+      </div>
+
+      <div class="cmd-box">
+        <div class="cmd-hdr"><span>2. Live Prompt A — PCSK9 Campaign Audit &amp; Lead Comparison</span><button class="copy-btn" onclick="copyText('cmd-agy-pcsk9')">&#128203; Copy</button></div>
+        <div id="cmd-agy-pcsk9">agy -p "Use scion-oase-bridge to inspect pcsk9-oral-live-v2: verify oase doctor (78/78), list the 17-agent 4-tier team, read program-state/decision-log.md, compare PCSK9-A02 vs nominated lead OASE-PCSK9-014, and message @science-program-lead."</div>
+      </div>
+
+      <div class="cmd-box">
+        <div class="cmd-hdr"><span>3. Live Prompt B — Cold-to-Hot IO Initiate &amp; 5-Target Tournament</span><button class="copy-btn" onclick="copyText('cmd-agy-io1')">&#128203; Copy</button></div>
+        <div id="cmd-agy-io1">agy -p "Use scion-oase-bridge to bootstrap io-cold-to-hot from seed/io-cold-to-hot/campaign-seed.json, verify oase doctor (78/78 PASS), list the 17-agent 4-tier discovery team, and dispatch WO-001 to @controller."</div>
+      </div>
+
+      <div class="cmd-box">
+        <div class="cmd-hdr"><span>4. Live Prompt C — Cold-to-Hot IO DEC-008 Wet-Lab Wall Pivot</span><button class="copy-btn" onclick="copyText('cmd-agy-io2')">&#128203; Copy</button></div>
+        <div id="cmd-agy-io2">agy -p "Use scion-oase-bridge on io-cold-to-hot to read program-state/decision-log.md and executive/CANDIDATE-SUMMARY.md, and message @science-program-lead to explain why Series A (oase_enpp1_009) hit the DEC-008 Wet-Lab Wall and how Series B (oase_enpp1_019) recovered F=52% oral bioavailability."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: COPY-PASTE SCION WEBCHAT PROMPTS -->
+  <section class="card" id="sec-prompts">
+    <div class="card-hdr">
+      <div>
+        <h2>&#128172; 4. Interactive Scientist Webchat Prompts (Paste into Scion <code>Conversations</code>)</h2>
+        <p class="card-sub">Each participant can sign in with one of the 5 scientist accounts (<code>oase-sarah</code>, <code>oase-marcus</code>, <code>oase-elena</code>, <code>oase-raj</code>, <code>oase-claire</code>) and @mention their partner agent.</p>
+      </div>
+      <span class="tag">5 HUMAN SCIENTISTS &times; 17 AGENTS</span>
+    </div>
+
+    <div class="grid-3">
+      <div class="subcard">
+        <h3>Dr. Marcus Vance &rarr; <code>@computational-biologist</code></h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>Target Genetics &amp; 1P AlphaGenome</span><button class="copy-btn" onclick="copyText('p-marcus')">&#128203; Copy</button></div>
+          <div id="p-marcus">@computational-biologist Compare hepatocyte vs CNS expression in GTEx and explain why alphagenome.quantile_not_clinical_effect must remain attached past Stage Gate 1.</div>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>Dr. Elena Rostova &rarr; <code>@structural-biologist</code></h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>1P AlphaFold 3 &amp; Pocket Druggability</span><button class="copy-btn" onclick="copyText('p-elena')">&#128203; Copy</button></div>
+          <div id="p-elena">@structural-biologist Summarize our 1P AlphaFold 3 co-fold confidence (ipTM / pTM), fpocket druggability score, and why docking.score_not_affinity is enforced on AutoDock Vina poses.</div>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>Dr. Raj Patel &rarr; <code>@medicinal-chemist</code> (Claude Opus 5.5)</h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>DMTA Lead Optimization &amp; SAR</span><button class="copy-btn" onclick="copyText('p-raj')">&#128203; Copy</button></div>
+          <div id="p-raj">@medicinal-chemist Walk through the matched-molecular-pair modification that resolved our primary liability while preserving target potency and synthetic accessibility.</div>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>Dr. Claire Moreau &rarr; <code>@admet-dmpk-scientist</code></h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>Wet-Lab Gate, Oral PK &amp; Safety</span><button class="copy-btn" onclick="copyText('p-claire')">&#128203; Copy</button></div>
+          <div id="p-claire">@admet-dmpk-scientist List the wet-lab CRO permeability, efflux, and hERG gates required before Stage 4 oral PK sign-off and summarize our nominated lead's safety margins.</div>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>Dr. Sarah Chen &rarr; <code>@scientific-reviewer</code> (Claude Opus 5.5)</h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>Cross-Model Peer Review &amp; Relays</span><button class="copy-btn" onclick="copyText('p-reviewer')">&#128203; Copy</button></div>
+          <div id="p-reviewer">@scientific-reviewer Audit whether any epistemic relay caveats or SHA-256 provenance receipts were dropped between WO-001 and WO-008 before Pre-IND nomination.</div>
+        </div>
+      </div>
+
+      <div class="subcard">
+        <h3>Dr. Sarah Chen &rarr; <code>@finding-validator</code></h3>
+        <div class="cmd-box">
+          <div class="cmd-hdr"><span>Tamper &amp; Governance Verification</span><button class="copy-btn" onclick="copyText('p-validator')">&#128203; Copy</button></div>
+          <div id="p-validator">@finding-validator Summarize the 3 adversarial tamper drills caught by oase validate check and how co-signed human overrides are recorded in .oase/control/events.ndjson.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: HYBRID AWS + GCP SCIENCE APIS -->
+  <section class="card" id="sec-hybrid">
+    <div class="card-hdr">
+      <div>
+        <h2>&#127959;&#65039; 5. Hybrid Cloud Deployment Reference (AWS EKS + Google Cloud 1P Science APIs)</h2>
+        <p class="card-sub">Quick reference when discussing hybrid AWS R&amp;D environments (Workshop Guide Slide 12 &amp; Cockpit Overview Option 2).</p>
+      </div>
+      <span class="tag tag-blue">KEYLESS WIF &middot; ZERO STATIC KEYS</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="subcard">
+        <h3>Hybrid Split Summary</h3>
+        <ul>
+          <li><strong>Runs Locally in Existing AWS VPC / EKS:</strong> Scion Hub control plane, all 17 OASE agent containers, deterministic C/Python toolchains (<code>AutoDock Vina</code>, <code>fpocket</code>, <code>RDKit</code>, <code>oase validate check</code>), and internal wet-lab MCP connectors (Benchling, CDD Vault, S3).</li>
+          <li><strong>Consumed on Google Cloud Vertex AI (via Keyless AWS &rarr; GCP Workload Identity Federation):</strong> First-party <strong>AlphaFold 3</strong> (dedicated A100 endpoint), <strong>AlphaGenome</strong> (1 Mb regulatory variant scoring), and <strong>Gemini 4 Argon / 3.8 Flash</strong> reasoning &amp; Co-Scientist tournaments inside a VPC-SC perimeter.</li>
+        </ul>
+      </div>
+      <div class="cmd-box">
+        <div class="cmd-hdr"><span>Hybrid AWS EKS &rarr; Vertex AI WIF Environment Config</span><button class="copy-btn" onclick="copyText('cmd-hybrid-env')">&#128203; Copy</button></div>
+        <div id="cmd-hybrid-env">export OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"
+export GOOGLE_APPLICATION_CREDENTIALS="/var/run/secrets/gcp-wif/credential-configuration.json"
+export GCP_WIF_POOL_PROVIDER="projects/&lt;PROJECT_NUM&gt;/locations/global/workloadIdentityPools/aws-eks-pool/providers/aws-eks-oidc"
+export OASE_AF3_ENDPOINT_NAME="alphafold3-dedicated-endpoint"
+export OASE_AG_ENDPOINT_DNS="&lt;ENDPOINT_ID&gt;.us-central1-&lt;PROJECT_NUM&gt;.prediction.vertexai.goog"
+export SCION_HARNESS_ORCHESTRATOR="gcp/gemini-4-argon"</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="toast">Copied to clipboard</div>
+
+<script>
+  function copyText(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const txt = el.innerText || el.textContent || '';
+    navigator.clipboard.writeText(txt.trim()).then(() => {
+      const t = document.getElementById('toast');
+      t.textContent = 'Copied to clipboard!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1800);
+    });
+  }
+
+  (async function hydrateLiveHubLinks() {
+    try {
+      const r = await fetch('/api/cockpit/config');
+      if (!r.ok) return;
+      const cfg = await r.json();
+      if (cfg && cfg.scion_hub_url) {
+        const base = cfg.scion_hub_url.replace(/\/$/, '');
+        const b1 = document.getElementById('btn-open-pcsk9');
+        const b2 = document.getElementById('btn-open-io');
+        const t1 = document.getElementById('link-tpl-compbio');
+        const h1 = document.getElementById('link-hub-harnesses');
+        if (b1) b1.href = base + '/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa';
+        if (b2) b2.href = base + '/projects/ab3d65d5-f32c-463e-be48-d535034de34f';
+        if (t1) t1.href = base + '/projects/dfe725e0-2c33-4569-84b2-1af9bb7b96fa/templates/bf198ff0-f683-5257-94da-c98e9579c49b';
+        if (h1) h1.href = base + '/harnesses';
+      }
+    } catch (_) {}
+  })();
+</script>
+</body>
+</html>

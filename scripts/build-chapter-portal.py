@@ -191,6 +191,7 @@ CHAPTERS_HTML = r"""<!DOCTYPE html>
     <a href="chapters.html#why" onclick="showChapter('why');return false;" class="active-nav">Story Arc &amp; Replay</a>
     <a href="finding_findings_regulatory_WO-008_md.html">WO-008 Dossier</a>
     <a href="plan.html" style="color:#4ade80;font-weight:700;">Build Tracker</a>
+    <a href="cheatsheet.html" style="color:#fde047;font-weight:800;">&#128203; Live Cheat Sheet</a>
   </div>
   <span class="badge-env">Project: __PROJECT_BADGE__ | scion + oase 0.3.0 | ENV __ENV_SHA__</span>
 </nav>
@@ -2933,6 +2934,11 @@ def main() -> int:
     chapters_path = site_dir / "chapters.html"
     chapters_path.write_text(html_out, encoding="utf-8")
 
+    cheatsheet_src = repo_root / "site-template" / "cheatsheet.html"
+    cheatsheet_dst = site_dir / "cheatsheet.html"
+    if cheatsheet_src.is_file() and cheatsheet_src.resolve() != cheatsheet_dst.resolve():
+        shutil.copy2(cheatsheet_src, cheatsheet_dst)
+
     nav_target = '<a href="index.html">Home</a>'
     nav_replacement = (
         '<a href="index.html">Home</a>\n'
@@ -2941,11 +2947,13 @@ def main() -> int:
         '  <a href="chapters.html#why" style="color:#38bdf8;font-weight:600;">'
         "Architecture, Value Prop &amp; Campaign Replay</a>\n"
         '  <a href="plan.html" style="color:#4ade80;font-weight:700;">'
-        "Pilot Vision &amp; Build Tracker</a>"
+        "Pilot Vision &amp; Build Tracker</a>\n"
+        '  <a href="cheatsheet.html" style="color:#fde047;font-weight:800;">'
+        "&#128203; Live Cheat Sheet</a>"
     )
     patched = 0
     for html_file in sorted(site_dir.glob("*.html")):
-        if html_file.name in ("chapters.html", "plan.html"):
+        if html_file.name in ("chapters.html", "plan.html", "cheatsheet.html"):
             continue
         txt = html_file.read_text(encoding="utf-8")
         changed = False
@@ -2989,6 +2997,7 @@ def main() -> int:
                 '<a href="chapters.html?campaign=pcsk9-live-argolis#ch1" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#128640; Mission 01: PCSK9 Oral &rarr;</a>'
                 '<a href="chapters.html?campaign=io-cold-to-hot#ch1" style="background:#0284c7;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#129516; Mission 02: IO Cold-to-Hot &rarr;</a>'
                 '<a href="plan.html" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">Build Tracker &rarr;</a>'
+                '<a href="cheatsheet.html" style="background:#ca8a04;color:#ffffff;text-decoration:none;font-weight:800;padding:0.52rem 0.9rem;border-radius:6px;font-size:0.85rem;">&#128203; Live Cheat Sheet &rarr;</a>'
                 '</div></div></div>'
             )
             idx_txt = idx_txt.replace("</nav>", banner, 1)
