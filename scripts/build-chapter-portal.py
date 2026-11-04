@@ -2866,7 +2866,7 @@ def main() -> int:
 
     subpages = {}
     for html_file in sorted(site_dir.glob("*.html")):
-        if html_file.name == "chapters.html":
+        if html_file.name in ("chapters.html", "cheatsheet.html"):
             continue
         raw_html = html_file.read_text(encoding="utf-8")
         m = re.search(r"<body[^>]*>(.*)</body>", raw_html, re.DOTALL | re.IGNORECASE)
@@ -2903,13 +2903,16 @@ def main() -> int:
         or {"chapters": {}}
     )
 
+    def _safe_script_json(obj: object) -> str:
+        return json.dumps(obj).replace("</", "<\\/")
+
     html_out = (
         CHAPTERS_HTML.replace("__PROJECT_BADGE__", proj_badge)
         .replace("__ENV_SHA__", env_sha)
-        .replace("__SUBPAGES_JSON__", json.dumps(subpages))
-        .replace("__VIDEO_MANIFEST_JSON__", json.dumps(vmanifest_data))
-        .replace("__VIDEO_MANIFESTS_BY_CAMPAIGN_JSON__", json.dumps(manifests_by_campaign))
-        .replace("__CAMPAIGNS_REGISTRY_JSON__", json.dumps(cregistry_data))
+        .replace("__SUBPAGES_JSON__", _safe_script_json(subpages))
+        .replace("__VIDEO_MANIFEST_JSON__", _safe_script_json(vmanifest_data))
+        .replace("__VIDEO_MANIFESTS_BY_CAMPAIGN_JSON__", _safe_script_json(manifests_by_campaign))
+        .replace("__CAMPAIGNS_REGISTRY_JSON__", _safe_script_json(cregistry_data))
     )
     # Inline assets/* and assets/avatars/* as base64 data URIs so chapters.html renders all figures in sandboxed iframes, srcdoc viewers, and standalone HTML exports
     for img_path in sorted(site_assets.iterdir()):

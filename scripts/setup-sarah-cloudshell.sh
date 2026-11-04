@@ -73,6 +73,24 @@ for cfg_path in [
     servers = data.setdefault("mcpServers", {})
     servers["scion"] = mcp_entry
     cfg_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+
+# Ensure headless `agy -p "..."` auto-approves MCP, file reads, and shell commands
+agy_settings_path = Path.home() / ".gemini" / "antigravity-cli" / "settings.json"
+agy_settings_path.parent.mkdir(parents=True, exist_ok=True)
+try:
+    agy_settings = json.loads(agy_settings_path.read_text(encoding="utf-8")) if agy_settings_path.exists() else {}
+except Exception:
+    agy_settings = {}
+if not isinstance(agy_settings, dict):
+    agy_settings = {}
+agy_settings.setdefault("gcp", {"project": proj, "location": "global"})
+agy_settings["toolPermission"] = "always-proceed"
+perms = agy_settings.setdefault("permissions", {})
+allow_list = perms.setdefault("allow", [])
+for rule in ("mcp(*)", "read_file(*)", "run_command(*)"):
+    if rule not in allow_list:
+        allow_list.append(rule)
+agy_settings_path.write_text(json.dumps(agy_settings, indent=2) + "\n", encoding="utf-8")
 PY
 
 # In Google Cloud Shell, `gemini` CLI is pre-installed while `agy` may not be pre-installed.
