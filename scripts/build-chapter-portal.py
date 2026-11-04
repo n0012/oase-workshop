@@ -2031,7 +2031,7 @@ selectStation('s3');
       bar.innerHTML = `
         <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
           <span class="cockpit-status-pill">${isStaging ? '⚡ Staging Pilot Workspace · Queued for Live Sovereign GPU Run' : '● Public Replay Preview · 7 Recorded Squadron Chapters Ready (1080p)'}</span>
-          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : 'Native Gemini 3.8 Live Avatars + 6 Specialist AI Wingmen'}</span>
+          <span style="color:#94a3b8;font-family:monospace;font-size:0.78rem;">${activeCamp ? activeCamp.short_label : '5 Discovery Scientists + 17-Agent Multi-Model Scion Grove'}</span>
         </div>
         <div style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
           <a class="cockpit-btn primary" href="${liveGroveUrl}" target="_blank" rel="noopener" style="text-decoration:none;">💬 Open Live Scion Grove ↗</a>
@@ -2450,7 +2450,7 @@ selectStation('s3');
       const videoSrc = `${videoBase}${videoFilename}?v=${videoVer}`;
       const subBadge = isLive && cstate.slug
         ? `Live Project: ${cstate.slug} · Git ${cstate.git_commit} · ${cstate.message_count} Webchat msgs · ${(cstate.running_agents || []).length} live containers`
-        : `Scion Grove Checkpoint: ${(vmeta && vmeta.slug) || chId} · ${vmeta && vmeta.duration_s ? vmeta.duration_s + 's' : '1080p'} · 5 Live Avatars + 6 AI Wingmen`;
+        : `Scion Grove Checkpoint: ${(vmeta && vmeta.slug) || chId} · ${vmeta && vmeta.duration_s ? vmeta.duration_s + 's' : '1080p'} · Gemini 4 Argon + Claude Opus 5.5 + Gemini 3.8 Flash`;
       const resetBtnHtml = isLive
         ? `<button class="cockpit-btn" onclick="oaseResetChapter('${chId}')">↺ Reset ${chId.toUpperCase()} (&lt;2s)</button>`
         : '';
@@ -2463,7 +2463,7 @@ selectStation('s3');
       card.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
           <div>
-            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Native Gemini 3.8 Live Avatars + Multi-Model Grove)</strong>
+            <strong style="font-size:1rem;color:#38bdf8;">🎬 Recorded Multi-Human + Multi-Agent Scion Walkthrough (1080p · Gemini 4 Argon + Claude Opus 5.5 Grove)</strong>
             <div id="cockpit-state-badge-${chId}" style="font-size:0.77rem;color:#94a3b8;font-family:monospace;margin-top:0.15rem;">
               ${subBadge}
             </div>
@@ -2833,7 +2833,7 @@ def main() -> int:
 </nav>
 <div class="hero">
   <h1>Team-Based Human + Agent Drug Discovery Pilot: Vision &amp; Live Build Tracker</h1>
-  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 17-Agent 4-Tier Multi-Model Grove, 7-Chapter Squadron Walkthrough with Native <code>Gemini 3.8 Live Avatar</code> (<code>gemini-3.8-live</code>) Scientists + 6 Specialist AI Wingmen (<code>Gemini 3.8 Flash TTS</code>), Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
+  <p>Shared team blueprint and milestone tracker for the 5-Human Discovery Pod (<code>GOLD-1..5</code>) + 17-Agent 4-Tier Multi-Model Grove (<code>Gemini 4 Argon</code> + <code>Claude Opus 5.5</code> + <code>Gemini 3.8 Flash</code>), 7-Chapter Squadron Walkthrough, Role-Based Live Scion Logins, Sub-2s Reset, and Portable GCP Redeployment.</p>
   <div class="prog-wrap">
     <div class="prog-lbl">Build Progress: {done_cnt} / {total_cnt} Milestones Complete ({pct}%)</div>
     <div class="prog-bar"><div class="prog-fill"></div></div>

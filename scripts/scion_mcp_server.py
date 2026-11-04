@@ -171,7 +171,7 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
     },
     {
         "name": "list_projects",
-        "description": "List all Scion Hub OASE discovery projects (`pcsk9-oral-live-v2`, `io-cold-to-hot`, `open-agentic-science-engine`) with agent and message counts.",
+        "description": "List all Scion Hub OASE discovery projects (`pcsk9-oral-live-v2`, `io-cold-to-hot`) with agent and message counts.",
         "inputSchema": {"type": "object", "properties": {}, "required": []},
     },
     {
@@ -182,7 +182,7 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
             "properties": {
                 "project": {
                     "type": "string",
-                    "description": "Project slug or UUID (e.g. `io-cold-to-hot`, `pcsk9-oral-live-v2`, `open-agentic-science-engine`).",
+                    "description": "Project slug or UUID (e.g. `io-cold-to-hot`, `pcsk9-oral-live-v2`).",
                 }
             },
             "required": ["project"],
@@ -227,7 +227,7 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
     },
     {
         "name": "bootstrap_campaign",
-        "description": "Initialize or re-verify an OASE discovery campaign Grove (`io-cold-to-hot`, `pcsk9-oral-live-v2`, `open-agentic-science-engine`) from its campaign seed, checking `oase doctor` (78/78), 41 skills, and the 17-agent 4-tier hierarchy.",
+        "description": "Initialize or re-verify an OASE discovery campaign Grove (`io-cold-to-hot`, `pcsk9-oral-live-v2`) from its campaign seed, checking `oase doctor` (78/78), 41 skills, and the 17-agent 4-tier hierarchy.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -242,7 +242,7 @@ TOOLS_SCHEMA: list[dict[str, Any]] = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "project": {"type": "string", "description": "Project slug or UUID (`io-cold-to-hot`, `pcsk9-oral-live-v2`, `open-agentic-science-engine`)."},
+                "project": {"type": "string", "description": "Project slug or UUID (`io-cold-to-hot`, `pcsk9-oral-live-v2`)."},
                 "agent": {"type": "string", "description": "Target agent slug (default `science-program-lead`)."},
                 "message": {"type": "string", "description": "Instruction or scientific question to send."},
             },

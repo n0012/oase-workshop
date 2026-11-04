@@ -72,9 +72,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "research-operations-controller",
         "parent": "USER",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "working",
+        "status": "working",
         "model": "Gemini 3.8 Flash (Medium)",
+        "model_size": "medium",
         "has_container": False,
         "task_summary": "Research Operations Controller — Orchestrating Grove Lifecycle & Stage Gates",
     },
@@ -86,6 +87,7 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "activity": "completed",
         "status": "completed",
         "model": "Gemini 3.8 Flash (Medium)",
+        "model_size": "medium",
         "has_container": False,
         "task_summary": "Verified shared Grove: 41 skills, 78/78 oase doctor checks, compiled binaries ready",
     },
@@ -94,9 +96,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "head-of-discovery",
         "parent": "controller",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "working",
+        "status": "working",
         "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": False,
         "task_summary": "Portfolio & Target Strategy Lead — Co-signing Stage Gates with Human Program Lead",
     },
@@ -108,6 +111,7 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "activity": "completed",
         "status": "completed",
         "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": True,
         "task_summary": "Hypothesis Tournament Supervisor — Completed RUN-001 Elo Pairwise Ranking",
     },
@@ -116,42 +120,46 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "science-program-lead",
         "parent": "controller",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "working",
+        "status": "working",
         "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": True,
         "task_summary": "Discovery Program Lead (Gemini 4 Argon High) — Coordinating WO-001..WO-008",
     },
     {
         "slug": "rank-1",
-        "template": "hypex-ranker",
+        "template": "hypex-tournament",
         "parent": "hypex-supervisor",
         "phase": "running",
         "activity": "completed",
         "status": "completed",
-        "model": "Gemini 3.8 Flash (Medium)",
+        "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": False,
         "task_summary": "Pairwise Tournament Judge #1 — Mechanism & Tractability Scoring",
     },
     {
         "slug": "rank-2",
-        "template": "hypex-ranker",
+        "template": "hypex-tournament",
         "parent": "hypex-supervisor",
         "phase": "running",
         "activity": "completed",
         "status": "completed",
-        "model": "Gemini 3.8 Flash (Medium)",
+        "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": False,
         "task_summary": "Pairwise Tournament Judge #2 — Structural Plausibility & Pocket Geometry",
     },
     {
         "slug": "rank-3",
-        "template": "hypex-ranker",
+        "template": "hypex-tournament",
         "parent": "hypex-supervisor",
         "phase": "running",
         "activity": "completed",
         "status": "completed",
-        "model": "Claude Opus 5.5",
+        "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": False,
         "task_summary": "Pairwise Tournament Judge #3 — Translational & DMPK Risk Assessment",
     },
@@ -163,6 +171,7 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "activity": "completed",
         "status": "completed",
         "model": "Claude Opus 5.5",
+        "model_size": "large",
         "has_container": True,
         "task_summary": "Hypothesis Reflection & Critique — Logged mandatory caveats & falsification gates",
     },
@@ -171,9 +180,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "computational-biologist",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 4 Argon (Medium)",
+        "model_size": "large",
         "has_container": True,
         "task_summary": "Human Genetics, Omics & AlphaGenome Regulatory Variant Scoring (WO-002..WO-003)",
     },
@@ -182,9 +192,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "structural-biologist",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 4 Argon (High)",
+        "model_size": "extra-large",
         "has_container": True,
         "task_summary": "AlphaFold 3 Co-Folding, fpocket Druggability & AutoDock Vina (WO-004)",
     },
@@ -193,9 +204,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "computational-chemist",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 4 Argon (Medium)",
+        "model_size": "large",
         "has_container": False,
         "task_summary": "Pharmacophore Alignment, 20-Analog MPO Ranking & Pose Rescoring (WO-005)",
     },
@@ -204,9 +216,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "medicinal-chemist",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Claude Opus 5.5",
+        "model_size": "large",
         "has_container": True,
         "task_summary": "DMTA Lead Optimization, Synthetic Tractability & Wet-Lab SAR Integration (WO-005..WO-006)",
     },
@@ -215,9 +228,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "admet-dmpk-scientist",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 4 Argon (Medium)",
+        "model_size": "large",
         "has_container": True,
         "task_summary": "ADMET Permeability/Efflux Audit, 1-Compartment Oral PK & Safety Margins (WO-006..WO-007)",
     },
@@ -226,9 +240,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "scientific-reviewer",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Claude Opus 5.5",
+        "model_size": "large",
         "has_container": True,
         "task_summary": "Independent Cross-Model Peer Reviewer (Claude Opus 5.5) — Relay & Falsification Audit",
     },
@@ -237,9 +252,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "finding-validator",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 3.8 Flash (Medium)",
+        "model_size": "medium",
         "has_container": True,
         "task_summary": "Deterministic Governance Validator — 10/10 oase validate check & SHA-256 Sidecars (WO-008)",
     },
@@ -248,9 +264,10 @@ AGENT_SPECS: list[dict[str, Any]] = [
         "template": "project-curator",
         "parent": "science-program-lead",
         "phase": "running",
-        "activity": "waiting_for_input",
-        "status": "waiting_for_input",
+        "activity": "completed",
+        "status": "completed",
         "model": "Gemini 3.8 Flash (Medium)",
+        "model_size": "medium",
         "has_container": True,
         "task_summary": "Evidence Site & Artifact Bundle Curator — oase site build (13/13 Scion Artifacts)",
     },
@@ -646,6 +663,125 @@ def populate_project_hierarchy_and_messages(
                 list(row_copy.values()),
             )
 
+    # Load harness_configs and project-scoped templates so all 17/17 agents link to their exact role template
+    cur.execute("SELECT slug, id, content_hash FROM harness_configs")
+    harness_map: dict[str, tuple[str, str]] = {
+        r[0]: (r[1], r[2] or "") for r in cur.fetchall()
+    }
+    cur.execute(
+        "SELECT slug, id, harness, default_harness_config, agent_config, content_hash, storage_path FROM templates WHERE scope_id = ?",
+        (project_id,),
+    )
+    tpl_map: dict[str, dict[str, Any]] = {}
+    for t_slug, t_id, t_harness, t_hcfg, t_acfg, t_hash, t_spath in cur.fetchall():
+        tpl_map[t_slug] = {
+            "id": t_id,
+            "harness": t_harness or "antigravity",
+            "harness_config": t_hcfg or t_harness or "antigravity",
+            "agent_config": json.loads(t_acfg) if t_acfg else {},
+            "content_hash": t_hash or "",
+            "storage_path": t_spath or "",
+        }
+
+    ws_storage_root = HUB_DIR / "workspace-storage"
+    pcfg_root = HUB_DIR / "project-configs" / f"{project_slug}__{project_id[:8]}"
+    proj_ws_root = HUB_DIR / "projects" / project_slug
+
+    # Mirror all project templates into <workspace>/.scion/templates/<slug>/ so the Workspace file browser also shows them
+    for t_slug, t_info in tpl_map.items():
+        rel_sp = (t_info["storage_path"] or "").lstrip("/")
+        src_tdir = ws_storage_root / rel_sp
+        if rel_sp and src_tdir.is_dir() and proj_ws_root.is_dir():
+            dst_tdir = proj_ws_root / ".scion" / "templates" / t_slug
+            dst_tdir.mkdir(parents=True, exist_ok=True)
+            for fname in ("scion-agent.yaml", "system-prompt.md", "agents.md"):
+                sf = src_tdir / fname
+                if sf.is_file():
+                    shutil.copy2(sf, dst_tdir / fname)
+
+    platform_skills = [
+        {"uri": "scion-platform://git-operations", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://git-sandbox", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-agent-manage", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-cli-operations", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-conversation", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-messaging", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-scheduler", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://scion-web-serving", "optional": True, "scope": "hub"},
+        {"uri": "scion-platform://team-creation", "optional": True, "scope": "hub"},
+    ]
+
+    def build_agent_applied_config(existing_raw: str | None, spec: dict[str, Any]) -> str:
+        try:
+            ac = json.loads(existing_raw or "{}")
+        except Exception:
+            ac = {}
+        if not ac:
+            try:
+                ac = json.loads(base_dict.get("applied_config") or "{}")
+            except Exception:
+                ac = {}
+        t_info = tpl_map.get(spec["template"])
+        if t_info:
+            h_name = t_info["harness"]
+            hc_name = t_info["harness_config"]
+            hc_id, hc_hash = harness_map.get(hc_name, ("", ""))
+            ac["templateId"] = t_info["id"]
+            ac["templateHash"] = t_info["content_hash"]
+            ac["harness"] = h_name
+            ac["harnessConfig"] = hc_name
+            if hc_id:
+                ac["harnessConfigId"] = hc_id
+                ac["harnessConfigHash"] = hc_hash
+                ac["harnessConfigSource"] = "hub-hydrated"
+            ac["image"] = "scion-claude:latest" if h_name == "claude" else "scion-antigravity:latest"
+            t_acfg = dict(t_info["agent_config"] or {})
+            domain_skills = list(t_acfg.get("skills") or [])
+            seen_uris = {s.get("uri") for s in domain_skills if isinstance(s, dict)}
+            merged_skills = domain_skills + [ps for ps in platform_skills if ps["uri"] not in seen_uris]
+            ac["inlineConfig"] = {
+                "detached": t_acfg.get("detached", None),
+                "system_prompt": t_acfg.get("system_prompt") or "system-prompt.md",
+                "agent_instructions": t_acfg.get("agent_instructions") or "agents.md",
+                "skills": merged_skills,
+            }
+        ac["model"] = spec["model"]
+        ac["modelSize"] = spec.get("model_size") or ac.get("modelSize") or "large"
+        ac["task"] = spec["task_summary"]
+        ac["workspace"] = f"/home/scion/.scion/projects/{project_slug}"
+        return json.dumps(ac)
+
+    def hydrate_agent_home_files(agent_slug: str, tpl_slug: str) -> None:
+        t_info = tpl_map.get(tpl_slug)
+        if not t_info:
+            return
+        rel_sp = (t_info["storage_path"] or "").lstrip("/")
+        src_tdir = ws_storage_root / rel_sp
+        if not (rel_sp and src_tdir.is_dir() and pcfg_root.is_dir()):
+            return
+        sp_file = src_tdir / "system-prompt.md"
+        ag_file = src_tdir / "agents.md"
+        if not (sp_file.is_file() and ag_file.is_file()):
+            return
+        sp_txt = sp_file.read_text(encoding="utf-8")
+        ag_txt = ag_file.read_text(encoding="utf-8")
+        combined = sp_txt.rstrip() + "\n\n" + ag_txt
+
+        ag_home = pcfg_root / ".scion" / "agents" / agent_slug / "home"
+        inp_dir = ag_home / ".scion" / "harness" / "inputs"
+        inp_dir.mkdir(parents=True, exist_ok=True)
+        (inp_dir / "system-prompt.md").write_text(sp_txt, encoding="utf-8")
+        (inp_dir / "instructions.md").write_text(ag_txt, encoding="utf-8")
+        if t_info["harness"] == "claude":
+            cl_dir = ag_home / ".claude"
+            cl_dir.mkdir(parents=True, exist_ok=True)
+            (cl_dir / "system-prompt.md").write_text(sp_txt, encoding="utf-8")
+            (cl_dir / "CLAUDE.md").write_text(combined, encoding="utf-8")
+        else:
+            gem_dir = ag_home / ".gemini"
+            gem_dir.mkdir(parents=True, exist_ok=True)
+            (gem_dir / "GEMINI.md").write_text(combined, encoding="utf-8")
+
     # 2. Compute 4-tier ancestry chains and update all 17 agents
     for spec in AGENT_SPECS:
         slug = spec["slug"]
@@ -660,15 +796,10 @@ def populate_project_hierarchy_and_messages(
 
         ancestry_json = json.dumps(ancestry)
         has_container = False if force_no_container else spec["has_container"]
-        try:
-            cur.execute("SELECT applied_config FROM agents WHERE id = ?", (aid,))
-            r_ac = cur.fetchone()
-            ac = json.loads((r_ac[0] if r_ac else "") or "{}")
-            ac["model"] = spec["model"]
-            ac["task"] = spec["task_summary"]
-            ac_str = json.dumps(ac)
-        except Exception:
-            ac_str = base_dict.get("applied_config") or "{}"
+        cur.execute("SELECT applied_config FROM agents WHERE id = ?", (aid,))
+        r_ac = cur.fetchone()
+        ac_str = build_agent_applied_config(r_ac[0] if r_ac else None, spec)
+        hydrate_agent_home_files(slug, spec["template"])
 
         if has_container:
             cur.execute(
@@ -949,6 +1080,42 @@ def write_cloud_logging_messages(
     print(f"[cloud-logging] Wrote {len(entries)} scion-messages entries via REST API for {project_slug} ({project_id})", flush=True)
 
 
+def remove_project_from_hub_db(cur: sqlite3.Cursor, project_id: str) -> None:
+    """Remove a project row (and all dependent DB rows) from hub.db while leaving disk source files intact."""
+    cur.execute("PRAGMA foreign_keys = OFF;")
+    cur.execute(
+        "DELETE FROM message_addressees WHERE message_id IN (SELECT id FROM messages WHERE project_id = ? OR sender_project_id = ? OR recipient_project_id = ?)",
+        (project_id, project_id, project_id),
+    )
+    for table, col in (
+        ("messages", "project_id"),
+        ("messages", "sender_project_id"),
+        ("messages", "recipient_project_id"),
+        ("webchat_conversation_context", "project_id"),
+        ("webchat_topic", "project_id"),
+        ("conversations", "project_id"),
+        ("agent_credentials", "project_id"),
+        ("agent_holds", "project_id"),
+        ("agent_identity_keys", "project_id"),
+        ("agent_service_account_assignments", "project_id"),
+        ("agent_service_account_assignments", "ceiling_boundary_project_id"),
+        ("delegation_edges", "scope_id"),
+        ("delegation_edges", "ceiling_boundary_project_id"),
+        ("groups", "project_id"),
+        ("project_contributors", "project_id"),
+        ("gcp_service_accounts", "scope_id"),
+        ("skills", "scope_id"),
+        ("templates", "scope_id"),
+        ("templates", "project_id"),
+        ("agents", "project_id"),
+        ("projects", "id"),
+    ):
+        try:
+            cur.execute(f"DELETE FROM {table} WHERE {col} = ?", (project_id,))
+        except sqlite3.OperationalError:
+            pass
+
+
 def main() -> int:
     import sys
 
@@ -958,6 +1125,8 @@ def main() -> int:
     conn = sqlite3.connect(str(DB_PATH), timeout=30.0)
     cur = conn.cursor()
     cur.execute("PRAGMA busy_timeout = 30000;")
+
+    remove_project_from_hub_db(cur, OASE_BASE_PID)
 
     cur.execute("SELECT id, email FROM users WHERE email LIKE 'oase-sarah@%'")
     row = cur.fetchone()
@@ -981,22 +1150,12 @@ def main() -> int:
         sarah_email=sarah_email,
         inter_agent_msgs=IO_INTER_AGENT_MESSAGES,
     )
-    oase_base_map = populate_project_hierarchy_and_messages(
-        cur=cur,
-        project_id=OASE_BASE_PID,
-        project_slug="open-agentic-science-engine",
-        sarah_id=sarah_id,
-        sarah_email=sarah_email,
-        inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
-        force_no_container=True,
-    )
 
     conn.commit()
     conn.close()
     print(
-        f"[sqlite] Updated 17-node 4-tier hierarchy + delegation_edges + messages for "
-        f"pcsk9-oral-live-v2 ({len(pcsk9_map)}), io-cold-to-hot ({len(io_map)}), and "
-        f"open-agentic-science-engine ({len(oase_base_map)})",
+        f"[sqlite] Removed open-agentic-science-engine from hub.db and updated 17/17 agents + templates + green statuses for "
+        f"pcsk9-oral-live-v2 ({len(pcsk9_map)}) and io-cold-to-hot ({len(io_map)})",
         flush=True,
     )
 
@@ -1028,14 +1187,6 @@ def main() -> int:
             sarah_email=sarah_email,
             slug_to_id=io_map,
             inter_agent_msgs=IO_INTER_AGENT_MESSAGES,
-        )
-        write_cloud_logging_messages(
-            project_id=OASE_BASE_PID,
-            project_slug="open-agentic-science-engine",
-            sarah_id=sarah_id,
-            sarah_email=sarah_email,
-            slug_to_id=oase_base_map,
-            inter_agent_msgs=PCSK9_INTER_AGENT_MESSAGES,
         )
 
     return 0

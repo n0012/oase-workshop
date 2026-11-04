@@ -45,6 +45,9 @@ VOICES: dict[str, dict[str, Any]] = {
         "voice_id": "Leda",
         "callsign": "SARAH-LEAD",
         "accent_hex": "0x10b981",
+        "pip_line3": "@science-program-lead | Gemini 4 Argon",
+        "accent_label": "Partner: @science-program-lead · Gemini 4 Argon (High)",
+        "model_label": "Gemini 4 Argon (High)",
         "is_agent": False,
     },
     "science-program-lead": {
@@ -318,7 +321,7 @@ def _build_scene_html(turn_idx: int) -> str:
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">AF3 ipTM=0.36 · 6B2J Anchor</div>
                   </div>
                   <div style="background:#0f172a;border:1px solid #10b981;border-radius:7px;padding:8px 10px;font-family:monospace;font-size:11px;color:#e2e8f0;">
-                    <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @comp-chem-scientist</div>
+                    <div style="color:#6ee7b7;font-weight:700;"><span style="color:#10b981;">●</span> @computational-chemist</div>
                     <div style="color:#94a3b8;font-size:10.3px;margin-top:2px;">Gemini 4 Argon (Med) · fpocket/Vina</div>
                     <div style="color:#cbd5e1;font-size:10.3px;margin-top:2px;">Pocket #1=0.903 · -7.861 kcal</div>
                   </div>

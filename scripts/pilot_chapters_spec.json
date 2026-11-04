@@ -8,8 +8,9 @@
       "avatar_name": "Ingrid",
       "voice_id": "Leda",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Ingrid (Leda)",
-      "model_label": "Gemini 3.8 Live Avatar"
+      "pip_line3": "@science-program-lead | Gemini 4 Argon",
+      "accent_label": "Partner: @science-program-lead · Gemini 4 Argon (High)",
+      "model_label": "Gemini 4 Argon (High)"
     },
     "marcus": {
       "display_name": "Dr. Marcus Vance",
@@ -19,8 +20,9 @@
       "avatar_name": "Sam",
       "voice_id": "Sadaltager",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar · Sam (Sadaltager)",
-      "model_label": "Gemini 3.8 Live Avatar"
+      "pip_line3": "@computational-biologist | Gemini 4 Argon",
+      "accent_label": "Partner: @computational-biologist · Gemini 4 Argon (Med)",
+      "model_label": "Gemini 4 Argon (Med)"
     },
     "elena": {
       "display_name": "Dr. Elena Rostova",
@@ -30,8 +32,9 @@
       "avatar_name": "Kira",
       "voice_id": "Kore",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Kira (Kore)",
-      "model_label": "Gemini 3.8 Live Avatar"
+      "pip_line3": "@structural-biologist | Gemini 4 Argon",
+      "accent_label": "Partner: @structural-biologist · Gemini 4 Argon (High)",
+      "model_label": "Gemini 4 Argon (High)"
     },
     "raj": {
       "display_name": "Dr. Raj Patel",
@@ -41,8 +44,9 @@
       "avatar_name": "Jay",
       "voice_id": "Alnilam",
       "accent_hex": "0x38bdf8",
-      "accent_label": "Gemini 3.8 Live Avatar · Jay (Alnilam)",
-      "model_label": "Gemini 3.8 Live Avatar"
+      "pip_line3": "@medicinal-chemist | Claude Opus 5.5",
+      "accent_label": "Partner: @medicinal-chemist · Claude Opus 5.5",
+      "model_label": "Claude Opus 5.5"
     },
     "claire": {
       "display_name": "Dr. Claire Moreau",
@@ -52,8 +56,9 @@
       "avatar_name": "Vera",
       "voice_id": "Pulcherrima",
       "accent_hex": "0x10b981",
-      "accent_label": "Gemini 3.8 Live Avatar · Vera (Pulcherrima)",
-      "model_label": "Gemini 3.8 Live Avatar"
+      "pip_line3": "@admet-dmpk-scientist | Gemini 4 Argon",
+      "accent_label": "Partner: @admet-dmpk-scientist · Gemini 4 Argon (Med)",
+      "model_label": "Gemini 4 Argon (Med)"
     },
     "ai_lead": {
       "display_name": "Grove-1 · AI Program Lead",

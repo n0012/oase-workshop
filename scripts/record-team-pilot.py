@@ -497,7 +497,7 @@ def record_live_chapters(
                 vmeta = voices[speaker]
                 dot_hex = "#" + vmeta.get("accent_hex", "0x10b981").removeprefix("0x")
                 tts_dur = float(durations[tid]["duration_s"])
-                slot_frames = int(round((tts_dur + BREATH_GAP_S) * FPS))
+                slot_frames = int(durations[tid].get("slot_frames") or round((tts_dur + BREATH_GAP_S) * FPS))
                 target_slot_s = slot_frames / float(FPS)
                 progress_pct = int((turn_num / len(ch["turns"])) * 100)
                 viewer_name = turn.get("console_viewer", "").strip()
@@ -962,7 +962,8 @@ def build_pip_overlay_clip(
         )
 
     hdr_human = escape_drawtext(f"LIVE COMMS // {vmeta.get('callsign', speaker.upper())}")
-    line3 = escape_drawtext(f"Gemini 3.8 Live Avatar | {avatar_name} ({voice_id})")
+    partner_tag = vmeta.get("pip_line3") or vmeta.get("accent_label") or "@science-program-lead | Gemini 4 Argon"
+    line3 = escape_drawtext(partner_tag)
     # Aspect-preserving 1:1 crown-to-collar crop on 704x1280 (9:16) Live Avatar stream + Squadron Comms HUD
     fc_human = (
         f"[0:v]crop=iw*0.94:iw*0.94:iw*0.03:ih*0.121,scale=288:288,setsar=1,fps={FPS},"
@@ -1243,6 +1244,10 @@ def master_chapter_videos(
     seg_tmp_dir = out_videos_dir / "_segments"
     seg_tmp_dir.mkdir(parents=True, exist_ok=True)
     voices = spec["voices"]
+    durations_map: dict[str, Any] = {}
+    dur_json = audio_dir / "audio_durations.json"
+    if dur_json.exists():
+        durations_map = json.loads(dur_json.read_text(encoding="utf-8"))
 
     existing_manifest: dict[str, Any] = {"chapters": {}}
     if manifest_out.exists():
@@ -1306,17 +1311,22 @@ def master_chapter_videos(
             vmeta = voices[speaker]
             spec_turn = spec_turns_by_id.get(tid, {})
             src_wav = audio_dir / f"{tid}.wav"
-            wav_slot_frames = int(round((ffprobe_duration(src_wav) + BREATH_GAP_S) * FPS))
-            slot_frames = max(int(tinfo.get("slot_frames") or round(float(tinfo["target_slot_s"]) * FPS)), wav_slot_frames)
+            is_agent_turn = bool(vmeta.get("is_agent", False))
+            if tid in durations_map and durations_map[tid].get("slot_frames"):
+                slot_frames = int(durations_map[tid]["slot_frames"])
+            elif not is_agent_turn:
+                slot_frames = int(round(ffprobe_duration(src_wav) * FPS))
+            else:
+                slot_frames = int(round((ffprobe_duration(src_wav) + BREATH_GAP_S) * FPS))
             slot_dur_s = slot_frames / float(FPS)
 
             # Build exact `slot_frames * 1600` sample 48kHz stereo WAV (+ Squadron Comms pips & AI EQ)
             wav_48k = seg_tmp_dir / f"{tid}_48k.wav"
             if not (wav_48k.exists() and wav_48k.stat().st_size > 10_000):
-                build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=bool(vmeta.get("is_agent", False)))
+                build_exact_48k_stereo_wav(src_wav, slot_frames, wav_48k, is_agent=is_agent_turn)
             aseg_files.append(wav_48k)
 
-            # Build exact `slot_frames`-frame native Gemini 3.8 Live Avatar / AI Hologram PiP card
+            # Build exact `slot_frames`-frame scientist / AI Wingman PiP card
             pip_mp4 = seg_tmp_dir / f"{tid}_pip.mp4"
             if not (pip_mp4.exists() and pip_mp4.stat().st_size > 10_000):
                 build_pip_overlay_clip(
@@ -1328,14 +1338,6 @@ def master_chapter_videos(
                     talking_heads_dir=talking_heads_dir,
                     out_pip_mp4=pip_mp4,
                 )
-
-            # Render clean Webchat stream + top banner overlay directly from spec.json
-            chat_png = build_webchat_and_banner_png(
-                ch=ch,
-                turn_idx=idx,
-                voices=voices,
-                seg_tmp_dir=seg_tmp_dir,
-            )
 
             # Slice exact 1.0x real-time frames starting at `f_start` (paint over the 8x4 beacon pixel cleanly!)
             f_start = beacon_frames[tnum]
@@ -1359,20 +1361,18 @@ def master_chapter_videos(
                 )
                 fc = (
                     f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
-                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base0];"
-                    f"[base0][3:v]overlay=0:0[base];"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
                     f"[base][2:v]overlay=586:48[with_drawer];"
                     f"[with_drawer][1:v]overlay=1608:700[vout]"
                 )
-                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4), "-i", str(chat_png)]
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(drawer_mp4)]
             else:
                 fc = (
                     f"[0:v]tpad=stop_mode=clone:stop_duration=15,trim=start_frame={f_start}:end_frame={f_end},setpts=PTS-STARTPTS,"
-                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base0];"
-                    f"[base0][2:v]overlay=0:0[base];"
+                    f"drawbox=x=0:y=0:w=10:h=4:color=0x2563eb:t=fill[base];"
                     f"[base][1:v]overlay=1608:700[vout]"
                 )
-                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4), "-i", str(chat_png)]
+                ff_inputs = ["-i", str(cfr_mp4), "-i", str(pip_mp4)]
 
             subprocess.run(
                 [
@@ -1482,8 +1482,7 @@ def master_chapter_videos(
             "video_filename": ch["video_filename"],
             "duration_s": round(actual_dur, 2),
             "resolution": "1920x1080",
-            "tts_model": "gemini-3.8-live + gemini-3.8-flash-tts",
-            "avatar_stack": "gemini-3.8-live (native BidiGenerateContent audio+video avatar)",
+            "scion_models": "Gemini 4 Argon (High/Med) + Claude Opus 5.5 + Gemini 3.8 Flash",
             "markers": scrub_markers,
         }
         if ch.get("summary") or prev_ch.get("summary"):

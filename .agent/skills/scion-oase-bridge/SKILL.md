@@ -1,6 +1,6 @@
 ---
 name: scion-oase-bridge
-description: Connect Antigravity (agy), Gemini CLI, or Jetski directly to the Argolis OASE Scion Hub (`scion-hub-oase` in `losiern-oase-workshop`) to inspect the 17-agent 4-tier discovery hierarchy, read live Grove artifacts (`decision-log.md`, `WO-001..008`, `reports/*.md`), and dispatch live directives to `@science-program-lead`, `@controller`, and domain specialists. Use whenever asked to connect to Scion/OASE, check campaign status (`io-cold-to-hot`, `pcsk9-oral-live-v2`, `open-agentic-science-engine`), message an OASE agent, or run the live Gemini/Antigravity workshop demo.
+description: Connect Antigravity (agy), Gemini CLI, or Jetski directly to the Argolis OASE Scion Hub (`scion-hub-oase` in `losiern-oase-workshop`) to inspect the 17-agent 4-tier discovery hierarchy, read live Grove artifacts (`decision-log.md`, `WO-001..008`, `reports/*.md`), and dispatch live directives to `@science-program-lead`, `@controller`, and domain specialists. Use whenever asked to connect to Scion/OASE, check campaign status (`io-cold-to-hot`, `pcsk9-oral-live-v2`), message an OASE agent, or run the live Gemini/Antigravity workshop demo.
 ---
 
 # Scion / OASE Bridge Skill (`scion-oase-bridge`)
@@ -13,7 +13,6 @@ This skill connects **Antigravity (`agy`)**, **Gemini CLI**, or **Jetski** to th
 |---|---|---|---|
 | `io-cold-to-hot` | `ab3d65d5-f32c-463e-be48-d535034de34f` | **Cold-to-Hot Immuno-Oncology** (`ENPP1` `IC-101` vs `Trex1` `IC-102` vs `ADAR1` `IC-103`; Series A `oase_enpp1_009` Wet-Lab Wall -> Series B `oase_enpp1_019`) | `17/17` running agents (4-tier DAG), `DEC-001`..`DEC-010` co-signed |
 | `pcsk9-oral-live-v2` | `dfe725e0-2c33-4569-84b2-1af9bb7b96fa` | **Oral Small-Molecule PCSK9 Inhibitor** (`IC-001` cryptic `Pocket #1` vs `IC-002` flat `EGF-A`; lead `oase_pcsk9_014`) | `17/17` running agents (4-tier DAG), `DEC-001`..`DEC-010` co-signed |
-| `open-agentic-science-engine` | `4df4c1ab-2091-4bd6-944b-da423d69fd3d` | **Base OASE Reference Grove** (`41` domain verification skills, `22` specialist templates, `78/78` `oase doctor` checks) | `17/17` running agents (4-tier DAG), clean sandbox for live prompts |
 
 ---
 
@@ -33,7 +32,7 @@ If the `scion` MCP server (`scripts/scion_mcp_server.py`) is registered in your 
 You can also invoke any tool directly via the `--cli` bridge from the `oase-workshop` repository root:
 
 ```bash
-# 1. Verify Hub connectivity, persona (Dr. Sarah Chen), and all 3 projects
+# 1. Verify Hub connectivity, persona (Dr. Sarah Chen), and both active projects
 python3 scripts/scion_mcp_server.py --cli hub_status
 
 # 2. Initiate / bootstrap a Science Agent campaign & verify oase doctor (78/78 checks)
