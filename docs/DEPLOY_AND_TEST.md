@@ -77,8 +77,8 @@ cp .env.example .env
 #    systemd oase-state-controller :8780, Cloud Run oase-story-arc, and 5-persona IAP bindings)
 ./scripts/deploy-pilot-stack.sh
 
-# 5. Enable Vertex AI partner models (Claude Opus 5.5) and reconcile Scion multi-model runtime
-#    (Gemini 4 Argon + Claude Opus 5.5 + Gemini 3.8 Flash + portable oase v0.3.0 + live-v2 grove)
+# 5. Enable Vertex AI partner models (Claude 4.6 Opus) and reconcile Scion multi-model runtime
+#    (Gemini 2.5 Pro + Claude 4.6 Opus + Gemini 2.5 Flash + portable oase v0.3.0 + live-v2 grove)
 #    See docs/SCION_RUNTIME_AND_MODELS.md for full details.
 python3 scripts/enable-vertex-models.py --project "$GCP_PROJECT_ID"
 gcloud compute scp scripts/reconcile-scion-runtime.py scion-hub-oase:/tmp/reconcile-scion-runtime.py --project="$GCP_PROJECT_ID" --zone=us-central1-c
@@ -150,3 +150,32 @@ python3 scripts/build-chapter-portal.py
 ```
 
 All prompts used during synthesis and Grove agent execution are version-controlled in [**`prompts/`**](../prompts/).
+
+---
+
+## Tier 5 — Enterprise Deployment Topologies: Option A (100% GCP-Native) vs. Option B (AWS-Hybrid Control Plane)
+
+Because biopharma discovery teams often run core R&D assay lakes (`Benchling`, `CDD Vault`, `S3`) inside AWS while relying on Google Cloud for 1P scientific foundation models (`AlphaFold 3`, `AlphaGenome`, `TxGemma`, `Gemini 2.5 Pro`), OASE + Scion supports two production deployment topologies out of the box:
+
+### Topology Comparison
+
+| Layer / Component | Option A: 100% GCP-Native (`Single-Cloud VPC-SC`) | Option B: AWS-Hybrid (`AWS Control Plane -> GCP 1P Science Spoke`) |
+|---|---|---|
+| **Scion Hub & State Controller** | `GKE Autopilot` or `GCE` + `Cloud SQL` + `Cloud Filestore` inside customer GCP VPC | **`AWS EKS` + `RDS PostgreSQL` + `EFS`** inside customer AWS VPC (colocated with S3 / ELN) |
+| **17 OASE Agent Containers & Compiled Tools** | Runs in `GKE` / `GCE` (`AutoDock Vina 1.2.5`, `fpocket 4.2.2`, `RDKit`, `oase validate check`) | **Runs 100% locally in `AWS EKS`** (`AutoDock Vina`, `fpocket`, `RDKit`, `oase validate check` never leave AWS) |
+| **Internal Assay & ELN MCP Bridges** | Private Service Connect / Cloud VPN to `Benchling`, `CDD Vault`, internal LIMS | **Local AWS VPC endpoints** to `Benchling`, `CDD Vault`, and `S3` assay data lakes |
+| **Frontier Reasoning Models (`Gemini` / `Claude`)** | Vertex AI `Gemini 2.5 Pro` + Vertex Partner `Claude 4.6 Opus` (`gcp/claude-sonnet-4-6`) | Vertex AI `Gemini 2.5 Pro` / `AI Co-Scientist` over interconnect; **Claude optionally local on AWS Bedrock** (`CLAUDE_CODE_USE_BEDROCK=1`) |
+| **1P Scientific GPU Models (`AF3`, `AlphaGenome`, `TxGemma`)** | Dedicated Vertex AI `A100`/`H100` endpoints via Private Service Connect (`PSC`) | **Dedicated Vertex AI endpoints in customer GCP VPC-SC spoke** called over AWS Direct Connect / Cloud Interconnect |
+| **Authentication & Data Governance** | Native GCP Workload Identity + `VPC-SC` + `CMEK` + `Zero Data Retention (ZDR)` | **Keyless Workload Identity Federation (`WIF`)** (`sts.googleapis.com`, zero static JSON keys) + `VPC-SC` + `CMEK` + `ZDR` |
+
+### Exact AWS -> GCP Network Allowlist & Keyless WIF Surface (Option B)
+
+When deploying Option B (`OASE_DEPLOYMENT_TOPOLOGY="aws-hybrid"`), AWS EKS pods authenticate using their native AWS IAM role (`sts:AssumeRoleWithWebIdentity`) via Google Cloud **Workload Identity Federation**—requiring **zero static service account JSON keys**—and only **4 HTTPS destination patterns (`TCP :443`)** across the AWS-to-GCP interconnect:
+
+| # | Destination FQDN Pattern (`TCP :443`) | API Method / Protocol | Purpose & Payload Scope |
+|---|---|---|---|
+| **1** | `sts.googleapis.com` | `POST /v1/token` (OAuth 2.0 Token Exchange) | Exchanges AWS EKS OIDC / `GetCallerIdentity` token for short-lived federated token |
+| **2** | `iamcredentials.googleapis.com` | `POST /v1/projects/-/serviceAccounts/*:generateAccessToken` | Impersonates least-privilege `oase-agent-sa@<GCP_PROJECT>.iam.gserviceaccount.com` (1 hr TTL) |
+| **3** | `*.prediction.vertexai.goog` | `POST :predict` (`OASE_AF3_*`, `OASE_AG_*`) | Calls dedicated 1P **`AlphaFold 3`** co-folding & **`AlphaGenome`** 1 Mb variant scoring endpoints inside VPC-SC |
+| **4** | `*-aiplatform.googleapis.com` (e.g. `us-central1-aiplatform.googleapis.com`) | `POST :streamGenerateContent` / `:predict` | Calls **`Gemini 2.5 Pro`**, **`AI Co-Scientist`**, and **`TxGemma`** on Vertex AI with Zero Data Retention |
+
